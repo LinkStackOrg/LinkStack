@@ -22,10 +22,15 @@ composer update
 npm install
 npm run dev
 ```
+
 edit .env file
+
 DB_DATABASE=YOUR_DATABASE_NAME
+
 DB_USERNAME=YOUR_NAME
+
 DB_PASSWORD=YOUR_PASSWORD
+
 ```sh
 php artisan migrate
 php artisan db:seed 
@@ -35,9 +40,13 @@ php artisan db:seed --class="PageSeeder"
 php artisan db:seed --class="ButtonSeeder"
 php artisan serve
 ```
+
 login:
+
 http://127.0.0.1:8000/login
+
 email: admin@admin.com
+
 password: 12345678
 
 ## Partner
