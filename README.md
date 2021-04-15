@@ -23,7 +23,7 @@ npm install
 npm run dev
 ```
 
--change .env.example to .env and edit .env file
+- change .env.example to .env and edit .env file
 
 DB_DATABASE=YOUR_DATABASE_NAME
 
@@ -31,7 +31,7 @@ DB_USERNAME=YOUR_USERNAME
 
 DB_PASSWORD=YOUR_PASSWORD
 
--rename the website: /config/app.php
+- rename the website: /config/app.php
 
 'name' => env('APP_NAME', 'Admin Littlelink'),
 
@@ -45,7 +45,7 @@ php artisan db:seed --class="ButtonSeeder"
 php artisan serve
 ```
 
--login:
+- login:
 
 http://127.0.0.1:8000/login
 
