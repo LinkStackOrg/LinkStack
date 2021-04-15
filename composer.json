@@ -2,7 +2,7 @@
     "name": "khashayarzavosh/admin-littlelink",
     "description": "Admin littlelink is an admin panel for littlelink",
     "type": "project",
-    "license": "n",
+    "license": "GNU GPLv3",
     "minimum-stability": "stable",
     "require": {}
 }
