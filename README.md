@@ -34,7 +34,7 @@ DB_PASSWORD=YOUR_PASSWORD
 ```sh
 php artisan migrate
 php artisan db:seed 
-or commands below
+"or commands below"
 php artisan db:seed --class="AdminSeeder"
 php artisan db:seed --class="PageSeeder"
 php artisan db:seed --class="ButtonSeeder"
