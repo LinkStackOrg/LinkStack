@@ -1,0 +1,8 @@
+{
+    "name": "khashayarzavosh/admin-littlelink",
+    "description": "Admin littlelink is an admin panel for littlelink",
+    "type": "project",
+    "license": "n",
+    "minimum-stability": "stable",
+    "require": {}
+}
