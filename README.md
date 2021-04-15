@@ -23,13 +23,17 @@ npm install
 npm run dev
 ```
 
-edit .env file
+change .env.example to .env and edit .env file
 
 DB_DATABASE=YOUR_DATABASE_NAME
 
 DB_USERNAME=YOUR_USERNAME
 
 DB_PASSWORD=YOUR_PASSWORD
+
+Rename the website: /config/app.php
+
+'name' => env('APP_NAME', 'Admin Littlelink'),
 
 ```sh
 php artisan migrate
