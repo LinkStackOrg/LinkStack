@@ -51,6 +51,7 @@ password: 12345678
 
 - [littlelink]
 - [laravel]
+- [panel template]
 
 ## [Donate](#donate)
 
@@ -61,4 +62,5 @@ bitcoin: 1FQJWCZJoLKfJei7NFisTH65yNUjugJRi4
    [home]: <https://github.com/khashayarzavosh/admin-littlelink/blob/main/demo-home.png>
    [panel]: <https://github.com/khashayarzavosh/admin-littlelink/blob/main/demo-panel.png>
    [laravel]: <https://github.com/laravel/laravel>
+   [panel template]: <https://colorlib.com/wp/bootstrap-sidebar>
    
