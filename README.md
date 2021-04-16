@@ -30,12 +30,10 @@ DB_USERNAME=YOUR_USERNAME
 
 DB_PASSWORD=YOUR_PASSWORD
 
-- rename the website: /config/app.php
-
-'name' => env('APP_NAME', 'Admin Littlelink'),
 
 ```sh
 php artisan migrate
+php artisan key:generate
 php artisan db:seed 
 (or commands below)
 php artisan db:seed --class="AdminSeeder"
