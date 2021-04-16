@@ -18,11 +18,9 @@ Admin littlelink is an admin panel for [littlelink] that provides you a website 
 
 ```sh
 composer create-project khashayarzavosh/admin-littlelink
-npm install
-npm run dev
 ```
 
-- change .env.example to .env and edit .env file
+- edit .env file
 
 DB_DATABASE=YOUR_DATABASE_NAME
 
@@ -30,10 +28,11 @@ DB_USERNAME=YOUR_USERNAME
 
 DB_PASSWORD=YOUR_PASSWORD
 
+APP_NAME="Admin littlelink"
 
 ```sh
+cd admin-littlelink
 php artisan migrate
-php artisan key:generate
 php artisan db:seed 
 (or commands below)
 php artisan db:seed --class="AdminSeeder"
@@ -43,8 +42,6 @@ php artisan serve
 ```
 
 - login:
-
-http://127.0.0.1:8000/login
 
 email: admin@admin.com
 
