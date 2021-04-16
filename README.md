@@ -17,8 +17,8 @@ Admin littlelink is an admin panel for [littlelink] that provides you a website 
 ## Install
 
 ```sh
-composer require khashayarzavosh/admin-littlelink
-composer update
+composer create-project khashayarzavosh/admin-littlelink
+composer install
 npm install
 npm run dev
 ```
