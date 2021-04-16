@@ -92,7 +92,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/+{{ Auth::user()->name }}" target="_blank">Watch Page</a>
+                    <a class="nav-link" href="/+{{ Auth::user()->littlelink_name }}" target="_blank">Watch Page</a>
                 </li>
               </ul>
             </div>
