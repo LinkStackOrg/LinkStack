@@ -21,13 +21,13 @@ class UserController extends Controller
     {
         $userId = Auth::user()->id;
 
-        $name = Auth::user()->name;
+        $littlelink_name = Auth::user()->littlelink_name;
 
         $links = Link::where('user_id', $userId)->select('link')->count();
 
         $clicks = Link::where('user_id', $userId)->sum('click_number');
 
-        return view('studio/index', ['name' => $name, 'links' => $links, 'clicks' => $clicks]);
+        return view('studio/index', ['littlelink_name' => $littlelink_name, 'links' => $links, 'clicks' => $clicks]);
     }
 
     //Show littlelink page. example => http://127.0.0.1:8000/+admin
@@ -175,7 +175,7 @@ class UserController extends Controller
     public function editPage(request $request)
     {
         $userId = Auth::user()->id;
-        $username = Auth::user()->name;
+        $littlelink_name = Auth::user()->littlelink_name;
 
         $profilePhoto = $request->file('image');
         $pageName = $request->pageName;
@@ -184,7 +184,7 @@ class UserController extends Controller
         User::where('id', $userId)->update(['littlelink_name' => $pageName, 'littlelink_description' => $pageDescription]);
 
         if(!empty($profilePhoto)){
-        $profilePhoto->move(public_path('/img'), $username . ".png");
+        $profilePhoto->move(public_path('/img'), $littlelink_name . ".png");
         }
 
         return back();

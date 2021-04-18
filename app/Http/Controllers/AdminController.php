@@ -20,8 +20,7 @@ class AdminController extends Controller
     public function index()
     {
         $userId = Auth::user()->id;
-        $name = Auth::user()->name;
-
+        $littlelink_name = Auth::user()->littlelink_name;
         $links = Link::where('user_id', $userId)->select('link')->count();
         $clicks = Link::where('user_id', $userId)->sum('click_number');
        
@@ -29,7 +28,7 @@ class AdminController extends Controller
         $siteLinks = Link::count();
         $siteClicks = Link::sum('click_number');
 
-        return view('panel/index', ['name' => $name, 'links' => $links, 'clicks' => $clicks, 'siteLinks' => $siteLinks, 'siteClicks' => $siteClicks, 'userNumber' => $userNumber]);
+        return view('panel/index', ['littlelink_name' => $littlelink_name, 'links' => $links, 'clicks' => $clicks, 'siteLinks' => $siteLinks, 'siteClicks' => $siteClicks, 'userNumber' => $userNumber]);
     }
 
     //Get users by type
@@ -110,7 +109,7 @@ class AdminController extends Controller
         User::where('id', $id)->update(['name' => $name, 'email' => $email, 'password' => $password, 'littlelink_name' => $littlelink_name, 'littlelink_description' => $littlelink_description, 'role' => $role]);
 
         if(!empty($profilePhoto)){
-        $profilePhoto->move(public_path('/img'), $name . ".png");
+        $profilePhoto->move(public_path('/img'), $littlelink_name . ".png");
         }
 
         return back();

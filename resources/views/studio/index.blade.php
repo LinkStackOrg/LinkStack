@@ -2,7 +2,7 @@
 
 @section('content')
 
-        <h2 class="mb-4"> 👋 Hi {{ $name }}</h2>
+        <h2 class="mb-4"> 👋 Hi {{ $littlelink_name }}</h2>
 
         <p>
             Wellcome to littlelink. You are ready to raise links?! 😉

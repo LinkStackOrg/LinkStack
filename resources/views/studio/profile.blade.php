@@ -8,7 +8,7 @@
         @csrf
         @foreach($profile as $profile)
           <div class="form-group col-lg-8">
-            <label>name</label>
+            <label>Username</label>
             <input type="text" class="form-control" name="name" value="{{ $profile->name }}">
           </div>
           <div class="form-group col-lg-8">
