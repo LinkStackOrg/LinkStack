@@ -63,3 +63,4 @@ bitcoin: 1FQJWCZJoLKfJei7NFisTH65yNUjugJRi4
    [panel]: <https://github.com/khashayarzavosh/admin-littlelink/blob/main/demo-panel.png>
    [laravel]: <https://github.com/laravel/laravel>
    [panel template]: <https://colorlib.com/wp/bootstrap-sidebar>
+   [edit]:
