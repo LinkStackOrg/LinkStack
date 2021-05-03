@@ -2,7 +2,7 @@
 
 Admin littlelink is an admin panel for [littlelink] that provides you a website similar [linktree].
 
-## Features
+## 📑 Features
 
 - creating a link page with more than 20 buttons
 - raising important links on the page
@@ -10,11 +10,11 @@ Admin littlelink is an admin panel for [littlelink] that provides you a website 
 - managing users and pages and links
 - and ...
 
-## Demo
+## ✨ Demo
 
 [home] / [panel]
 
-## Install
+## 🔨 Install
 
 ```sh
 composer create-project khashayarzavosh/admin-littlelink
@@ -47,13 +47,13 @@ email: admin@admin.com
 
 password: 12345678
 
-## Partner
+## 💞 Partners
 
 - [littlelink]
 - [laravel]
 - [panel template]
 
-## [Donate](#donate)
+## 🎲 [Donate](#donate)
 
 bitcoin: 1FQJWCZJoLKfJei7NFisTH65yNUjugJRi4
 
