@@ -28,7 +28,7 @@ DB_USERNAME=YOUR_USERNAME
 
 DB_PASSWORD=YOUR_PASSWORD
 
-APP_NAME="Admin littlelink"
+APP_NAME="Littlelink admin"
 
 ```sh
 cd admin-littlelink
