@@ -36,19 +36,17 @@ button {
   display: inline-block;
   text-decoration: none;
   height: 48px;
-  padding: 0 16px;
   text-align: center;
   vertical-align: middle;
   font-size: 18px;
   width: 300px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 48px;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.1px;
   white-space: wrap;
-  background-color: transparent;
   border-radius: 8px;
   cursor: pointer;
-  box-sizing: border-box; }
+ }
 button:hover,
 .button:focus {
   color: #333;
@@ -77,10 +75,18 @@ button:hover,
 /* Brand Styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+/* Default (this is great for your own brand color!) */
+.button.button-default {
+  color: #FFFFFF;
+  background-color: #0085FF }
+.button.button-default:hover,
+.button.button-default:focus {
+  filter: brightness(90%) }
+
 /* Discord */
 .button.button-discord {
   color: #FFFFFF;
-  background-color: #7289DA }
+  background-color: #5865F2 }
 .button.button-discord:hover,
 .button.button-discord:focus {
   filter: brightness(90%) }
@@ -165,6 +171,17 @@ button:hover,
 .button.button-pinterest:focus {
   filter: brightness(90%) }
 
+/* Producthunt */
+.button.button-producthunt {
+  color: #DA552F;
+  border-style: solid;
+  border-color: #DA552F;
+  border-width: 2px;
+  background-color: #FFFFFF }
+.button.button-producthunt:hover,
+.button.button-producthunt:focus {
+  filter: brightness(90%) }
+
 /* Reddit */
 .button.button-reddit {
   color: #000000;
@@ -219,6 +236,14 @@ button:hover,
   background-color: #3faee8 }
 .button.button-telegram:hover,
 .button.button-telegram:focus {
+  filter: brightness(90%) }
+
+/* TikTok */
+.button.button-tiktok {
+  color: #FFFFFF;
+  background-color: #000000 }
+.button.button-tiktok:hover,
+.button.button-tiktok:focus {
   filter: brightness(90%) }
 
 /* Tumblr */

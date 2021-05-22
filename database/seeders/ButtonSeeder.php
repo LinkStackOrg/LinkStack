@@ -111,6 +111,15 @@ class ButtonSeeder extends Seeder
             [
                 'name' => 'skoob'
             ],
+            [
+                'name' => 'tiktok'
+            ],
+            [
+                'name' => 'default email'
+            ],
+            [
+                'name' => 'default email_alt'
+            ],
         ];
 
          Button::insert($buttons);

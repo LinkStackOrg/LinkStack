@@ -68,8 +68,8 @@
 	        	<p>
 			    Copyright &copy; @php echo date('Y'); @endphp <i class="icon-heart" aria-hidden="true"></i> </br>
                <a href="/" target="_blank">Home</a> .
-               <a href="https://github.com/khashayarzavosh/admin-littlelink/#donate" target="_blank">Donate</a> .
-               <a href="https://github.com/khashayarzavosh/admin-littlelink" target="_blank">Programmers</a> .
+               <a href="https://github.com/khashayarzavosh/littlelink-admin/#donate" target="_blank">Donate</a> .
+               <a href="https://github.com/khashayarzavosh/littlelink-admin" target="_blank">Programmers</a> .
                <a href="/pages/terms" target="_blank">Terms</a> .
                <a href="/pages/privacy" target="_blank">Privacy</a> .
                <a href="/pages/contact" target="_blank">Contact</a>

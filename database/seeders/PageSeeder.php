@@ -30,7 +30,7 @@ class PageSeeder extends Seeder
                 ',
 
                 'home_message' => '
-                 Admin littlelink is an admin panel for littlelink that provides you a website similar linktree.
+                 Littlelink admin is an admin panel for littlelink that provides you a website similar linktree.
                  Some features of the program: creating a link page with more than 20 buttons, counting clicks, 
                  raising important links on the page and managing users and pages and ...
                 ',

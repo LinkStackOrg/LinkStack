@@ -53,7 +53,8 @@
         @endforeach
         <!-- Buttons -->
         @foreach($links as $link)
-        <a class="button button-{{ $link->name }}" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon" src="{{ asset('\/littlelink/icons\/') . $link->name }}.svg">{{ ucfirst($link->name) }}</a>
+         @php $linkName = str_replace('default ','',$link->name) @endphp
+        <a class="button button-{{ $link->name }}" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon" src="{{ asset('\/littlelink/icons\/') . $linkName }}.svg">{{ ucfirst($linkName) }}</a>
           <br>
         @endforeach
 
