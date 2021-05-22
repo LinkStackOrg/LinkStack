@@ -1,7 +1,7 @@
 {
-    "name": "khashayarzavosh/admin-littlelink",
+    "name": "khashayarzavosh/littlelink-admin",
     "type": "project",
-    "description": "Admin littlelink is an admin panel for littlelink",
+    "description": "Littlelink admin is an admin panel for littlelink",
     "keywords": ["link"],
     "license": "GPL-3.0-or-later",
     "require": {
