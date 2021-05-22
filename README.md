@@ -17,7 +17,7 @@ LittleLink Admin is an admin panel for [littlelink] that provides you a website 
 ## 🔨 Install
 
 ```sh
-composer create-project khashayarzavosh/admin-littlelink
+composer create-project khashayarzavosh/littlelink-admin
 ```
 
 - edit .env file
