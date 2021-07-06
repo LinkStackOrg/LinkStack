@@ -31,7 +31,7 @@
   <div class="container">
     <div class="row">
 
-      <div class="column" style="margin-top: 10%">
+      <div class="column" style="margin-top: 5%">
         <!-- Your Image Here -->
           @if(file_exists(public_path("img/$littlelink_name" . ".png" )))
           <img src="{{ asset("img/$littlelink_name" . ".png") }}" width="100px" height="100px">
