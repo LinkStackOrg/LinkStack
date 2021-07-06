@@ -20,14 +20,15 @@ use App\Http\Controllers\UserController;
 //Public route
 Route::get('/going/{id?}/{link?}', [UserController::class, 'clickNumber'])->where('link', '.*')->name('clickNumber');
 Route::get('/+{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
+Route::get('/@{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
 Route::get('/pages/{name}', [AdminController::class, 'pages'])->name('pages');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
-
 
 //User route
 Route::group([
     'middleware' => 'auth',
 ], function () {
+URL::forceScheme('https'); # comment to disable https
 Route::get('/studio/index', [UserController::class, 'index'])->name('studioIndex');
 Route::get('/studio/add-link', [UserController::class, 'showButtons'])->name('showButtons');
 Route::post('/studio/add-link', [UserController::class, 'addLink'])->name('addLink');
@@ -46,6 +47,7 @@ Route::post('/studio/profile', [UserController::class, 'editProfile'])->name('ed
 Route::group([
     'middleware' => 'admin',
 ], function () {
+URL::forceScheme('https'); # comment to disable https
 Route::get('/panel/index', [AdminController::class, 'index'])->name('panelIndex');
 Route::get('/panel/users/{type}', [AdminController::class, 'users'])->name('showUsers');
 Route::post('/panel/users/{name?}', [AdminController::class, 'searchUser'])->name('searchUser');
@@ -57,6 +59,5 @@ Route::post('/panel/pages', [AdminController::class, 'editSitePage'])->name('edi
 Route::get('/panel/site', [AdminController::class, 'showSite'])->name('showSite');
 Route::post('/panel/site', [AdminController::class, 'editSite'])->name('editSite');
 });
-
 
 require __DIR__.'/auth.php';
