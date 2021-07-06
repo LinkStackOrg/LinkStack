@@ -85,11 +85,18 @@ class UserController extends Controller
     public function clickNumber(request $request)
     {
         $link = $request->link;
+        $query = $request->query();
         $linkId = $request->id;
 
         if(empty($link && $linkId))
         {
             return abort(404);
+        }
+        
+        if(!empty($query)) {
+        	$qs = '';
+        	foreach($query as $qk => $qv) { $qs .= $qk .'='. $qv; }
+        	$link = $link .'?'. $qs;
         }
 
         Link::where('id', $linkId)->increment('click_number', 1);
