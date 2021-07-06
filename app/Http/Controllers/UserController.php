@@ -40,11 +40,12 @@ class UserController extends Controller
             return abort(404);
         }
         
-        $information = User::select('littlelink_name', 'littlelink_description')->where('id', $id)->get();
+        $userinfo = User::select('name', 'littlelink_name', 'littlelink_description')->where('id', $id)->first();
+        $information = User::select('name', 'littlelink_name', 'littlelink_description')->where('id', $id)->get();
         
-        $links = DB::table('links')->join('buttons', 'buttons.id', '=', 'links.button_id')->select('links.link', 'links.id', 'buttons.name')->where('user_id', $id)->orderBy('up_link', 'asc')->get();
+        $links = DB::table('links')->join('buttons', 'buttons.id', '=', 'links.button_id')->select('links.link', 'links.id', 'links.button_id', 'links.title', 'buttons.name')->where('user_id', $id)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->get();
 
-        return view('littlelink', ['information' => $information, 'links' => $links, 'littlelink_name' => $littlelink_name]);
+        return view('littlelink', ['userinfo' => $userinfo, 'information' => $information, 'links' => $links, 'littlelink_name' => $littlelink_name]);
     }
 
     //Show buttons for add link
@@ -59,10 +60,12 @@ class UserController extends Controller
     {
         $request->validate([
             'link' => 'required',
+            'title' => 'required',
             'button' => 'required'
         ]);
 
         $link = $request->link;
+        $title = $request->title;
         $button = $request->button;
 
         $userId = Auth::user()->id;
@@ -71,6 +74,7 @@ class UserController extends Controller
         $links = new Link;
         $links->link = $link;
         $links->user_id = $userId;
+        $links->title = $title;
         $links->button_id = $buttonId;
         $links->save();
 
@@ -98,7 +102,7 @@ class UserController extends Controller
     {
         $userId = Auth::user()->id;
         
-        $data['links'] = Link::select('id', 'link', 'click_number', 'up_link')->where('user_id', $userId)->orderBy('created_at', 'desc')->paginate(10);
+        $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(10);
         return view('studio/links', $data);
     }
 
@@ -135,10 +139,13 @@ class UserController extends Controller
         $linkId = $request->id;
 
         $link = Link::where('id', $linkId)->value('link');
+        $title = Link::where('id', $linkId)->value('title');
+        $order = Link::where('id', $linkId)->value('order');
+        $buttonId = Link::where('id', $linkId)->value('button_id');
 
-        $buttons = Button::select('name')->get();
+        $buttons = Button::select('id', 'name')->get();
        
-        return view('studio/edit-link', ['buttons' => $buttons, 'link' => $link, 'id' => $linkId]);
+        return view('studio/edit-link', ['buttonId' => $buttonId, 'buttons' => $buttons, 'link' => $link, 'title' => $title, 'order' => $order, 'id' => $linkId]);
 
     }
 
@@ -147,16 +154,19 @@ class UserController extends Controller
     {
         $request->validate([
             'link' => 'required',
+            'title' => 'required',
             'button' => 'required',
         ]);
 
         $link = $request->link;
+        $title = $request->title;
+        $order = $request->order;
         $button = $request->button;
         $linkId = $request->id;
 
         $buttonId = Button::select('id')->where('name' , $button)->value('id');
 
-        Link::where('id', $linkId)->update(['link' => $link, 'button_id' => $buttonId]);
+        Link::where('id', $linkId)->update(['link' => $link, 'title' => $title, 'order' => $order, 'button_id' => $buttonId]);
 
         return redirect('/studio/links');
     }
@@ -195,7 +205,7 @@ class UserController extends Controller
     {
         $userId = Auth::user()->id;
 
-        $data['profile'] = User::where('id', $userId)->select('name', 'email')->get();
+        $data['profile'] = User::where('id', $userId)->select('name', 'email', 'role')->get();
 
         return view('/studio/profile', $data);
     }
