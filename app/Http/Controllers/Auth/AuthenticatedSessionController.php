@@ -36,7 +36,7 @@ class AuthenticatedSessionController extends Controller
         //Redirect admin and users to their panels
         $role = Auth::user()->role;
 
-        if($role == 'user'){
+        if($role == 'user' || $role == 'vip'){
            return redirect('/studio/index');
         }elseif($role == 'admin'){
             return redirect('/panel/index');
