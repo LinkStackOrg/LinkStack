@@ -16,26 +16,47 @@
           </div>
           <div class="form-group col-lg-8">
             <label>Password</label>
-            <input type="password" class="form-control" name="password">
+            <input type="password" class="form-control" name="password" placeholder="if empty, password will blank">
           </div>
+          
           <div class="form-group col-lg-8">
             <label>Logo</label>
             <input type="file" class="form-control-file" name="image">
           </div>
+          
           <div class="form-group col-lg-8">
+          @if(file_exists(public_path("img/$user->littlelink_name" . ".png" )))
+          <img src="{{ asset("img/$user->littlelink_name" . ".png") }}" srcset="{{ asset("img/$user->littlelink_name" . "@2x.png 2x") }}" width="100px" height="100px">
+          @else
+          <img src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}">
+          @endif
+          </div>
+          
+          <!--<div class="form-group col-lg-8">
             <label>Littlelink name </label>
             <input type="text" class="form-control" name="littlelink_name" value="{{ $user->littlelink_name }}">
-          </div>
+          </div>-->
+          
           <div class="form-group col-lg-8">
-            <label> Littlelink description</label>
+            <label>Page URL</label>
+	          <div class="input-group">
+				  <div class="input-group-prepend">
+					<div class="input-group-text">{{ config('app.url') }}/@</div>
+				  </div>
+				  <input type="text" class="form-control" name="littlelink_name" value="{{ $user->littlelink_name }}">
+			  </div>
+		  </div>
+          
+          <div class="form-group col-lg-8">
+            <label> Page description</label>
             <textarea class="form-control" name="littlelink_description" rows="3">{{ $user->littlelink_description }}</textarea>
           </div>
           <div class="form-group col-lg-8">
             <label for="exampleFormControlSelect1">Role</label>
             <select class="form-control" name="role">
-              <option>User</option>
-              <option>Vip</option>
-              <option>Admin</option>
+              <option <?= ($user->role === strtolower('User')) ? 'selected' : '' ?>>User</option>
+              <option <?= ($user->role === strtolower('VIP')) ? 'selected' : '' ?>>VIP</option>
+              <option <?= ($user->role === strtolower('Admin')) ? 'selected' : '' ?>>Admin</option>
             </select>
           </div>
           @endforeach
