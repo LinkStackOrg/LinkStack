@@ -61,7 +61,7 @@ password: 12345678
 
 ## 🎲 [Donate](#donate)
 
-bitcoin: 1FQJWCZJoLKfJei7NFisTH65yNUjugJRi4
+@khashayarzavosh bitcoin: 1FQJWCZJoLKfJei7NFisTH65yNUjugJRi4
 
    [littlelink-admin]: <https://github.com/khashayarzavosh/littlelink-admin>
    [littlelink]: <https://github.com/sethcottle/littlelink>
