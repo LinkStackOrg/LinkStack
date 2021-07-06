@@ -1,37 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <!-- Page Information
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   <title>{{ config('app.name') }}</title>
-  <meta name="description" content="Find us online!">
-  <meta name="author" content="Seth Cottle">
-
-  <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- FONT
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800&display=swap" rel="stylesheet">
-
-  <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
-
-  <!-- Favicon
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
-
 </head>
 <body>
-
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
     <div class="row">
     <div class="sign" style="margin-top: 30px; text-align: right;">
@@ -63,23 +42,23 @@
         <a class="button button-github" href="#"><img class="icon" src="{{ asset('littlelink/icons/github.svg') }}">Github</a>
         <a class="button button-twitter" href="#"><img class="icon" src="{{ asset('littlelink/icons/twitter.svg') }}">Twitter</a>
         <a class="button button-instagram" href="#"><img class="icon" src="{{ asset('littlelink/icons/instagram.svg') }}">Instagram</a>
-        <a class="button button-pinterest" href="#"><img class="icon" src="{{ asset('littlelink/icons/pinterest.svg') }}">Pinterest</a>
+        <!--<a class="button button-pinterest" href="#"><img class="icon" src="{{ asset('littlelink/icons/pinterest.svg') }}">Pinterest</a>-->
         </br></br>
 
-        <p>and {{ $countButton - 4 }} other button ...</p>
+        <p>and {{ $countButton - 3 }} other button ...</p>
       
-        <hr class="my-4">
+        <hr class="my-4" style="display:none">
 
-        <p>updated pages</p>
+        <p style="display:none">updated pages</p>
 
-        <div class="updated">
+        <div class="updated" style="display:none">
         @foreach($updatedPages as $page)
           @if(file_exists(public_path("img/$page->littlelink_name" . ".png" )))
-          <a href="/+{{ $page->littlelink_name }}" target="_blank">
+          <a href="{{ config('app.url') }}/@<?= $page->littlelink_name ?>" target="_blank">
           <img src="{{ asset("img/$page->littlelink_name" . ".png") }}" srcset="{{ asset("img/$page->littlelink_name" . "@2x.png 2x") }}" width="50px" height="50px">
           </a>
           @else
-          <a href="/+{{ $page->littlelink_name }}" target="_blank">
+          <a href="{{ config('app.url') }}/@<?= $page->littlelink_name ?>" target="_blank">
           <img src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="50px" height="50px">
           </a>
           @endif
@@ -91,8 +70,5 @@
       </div>
     </div>
   </div>
-
-<!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
 </html>
