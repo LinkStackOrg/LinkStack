@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 		<link rel="stylesheet" href="{{ asset('/studio/css/bootstrap.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('/studio/css/style-dashboard.css') }}">
@@ -17,7 +17,7 @@
 		<div class="wrapper d-flex align-items-stretch">
 			<nav id="sidebar">
 				<div class="p-4 pt-5">
-        @if(auth()->user()->role == 'user')
+        @if(auth()->user()->role == 'user' || auth()->user()->role == 'vip')
         <a href="{{ url('/studio/index') }}">
         @elseif(auth()->user()->role == 'admin')
         <a href="{{ url('/panel/index') }}">
@@ -60,19 +60,19 @@
 	          </li>
             <form action="{{ route('logout') }}" method="post">
              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-             <button type="submit" class="buttonLogout">logout</button>
+             <button type="submit" class="buttonLogout">Logout</button>
             </form>
 	        </ul>
 
-	        <div class="footer">
+	        <div class="footer" style="display:none">
 	        	<p>
 			    Copyright &copy; @php echo date('Y'); @endphp <i class="icon-heart" aria-hidden="true"></i> </br>
                <a href="/" target="_blank">Home</a> .
                <a href="https://github.com/khashayarzavosh/littlelink-admin/#donate" target="_blank">Donate</a> .
                <a href="https://github.com/khashayarzavosh/littlelink-admin" target="_blank">Programmers</a> .
-               <a href="/pages/terms" target="_blank">Terms</a> .
-               <a href="/pages/privacy" target="_blank">Privacy</a> .
-               <a href="/pages/contact" target="_blank">Contact</a>
+               <a href="{{ config('app.url') }}/pages/terms" target="_blank">Terms</a> .
+               <a href="{{ config('app.url') }}/pages/privacy" target="_blank">Privacy</a> .
+               <a href="{{ config('app.url') }}/pages/contact" target="_blank">Contact</a>
             </p>
 	        </div>
 	      </div>
@@ -92,7 +92,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/+{{ Auth::user()->littlelink_name }}" target="_blank">Watch Page</a>
+                    <a class="nav-link" href="{{ config('app.url') }}/@<?= Auth::user()->littlelink_name ?>" target="_blank">Watch Page</a>
                 </li>
               </ul>
             </div>
