@@ -18,6 +18,9 @@ class CreateButtonsTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
+        
+        // https://laraveldaily.com/set-auto-increment-start-laravel-migrations/
+        DB::statement("ALTER TABLE `buttons` AUTO_INCREMENT=0;");
     }
 
     /**
