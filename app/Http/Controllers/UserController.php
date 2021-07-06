@@ -94,9 +94,9 @@ class UserController extends Controller
         }
         
         if(!empty($query)) {
-        	$qs = '';
-        	foreach($query as $qk => $qv) { $qs .= $qk .'='. $qv; }
-        	$link = $link .'?'. $qs;
+        	$qs = [];
+        	foreach($query as $qk => $qv) { $qs[] = $qk .'='. $qv; }
+        	$link = $link .'?'. implode('&', $qs);
         }
 
         Link::where('id', $linkId)->increment('click_number', 1);
