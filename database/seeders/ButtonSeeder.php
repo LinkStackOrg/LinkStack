@@ -16,6 +16,10 @@ class ButtonSeeder extends Seeder
     public function run()
     {
         $buttons = [
+        	[
+                'name' => '-'
+            ],
+            
             [
                 'name' => 'github'
             ],
