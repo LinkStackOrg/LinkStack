@@ -27,10 +27,14 @@ composer update -vvv
 
 - edit .env file
 
+```sh
 DB_DATABASE=YOUR_DB_NAME
 DB_USERNAME=YOUR_DB_USER
 DB_PASSWORD=YOUR_DB_PASS
 APP_NAME="YOUR_APP_NAME"
+```
+
+- run migration & db seed
 
 ```sh
 php artisan migrate
@@ -39,13 +43,15 @@ php artisan db:seed
 php artisan db:seed --class="AdminSeeder"
 php artisan db:seed --class="PageSeeder"
 php artisan db:seed --class="ButtonSeeder"
-php artisan serve
+php artisan serve (optional)
 ```
 
 - login:
 
+```sh
 email: admin@admin.com
 password: 12345678
+```
 
 ## 💞 Partners
 
