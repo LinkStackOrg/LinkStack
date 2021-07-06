@@ -1,4 +1,5 @@
 ## _⚙️ LittleLink Admin_
+Forked from [littlelink-admin]
 
 LittleLink Admin is an admin panel for [littlelink] that provides you a website similar [linktree].
 
@@ -6,6 +7,7 @@ LittleLink Admin is an admin panel for [littlelink] that provides you a website 
 
 - creating a link page with more than 20 buttons
 - raising important links on the page
+- ordering links (new)
 - counting clicks
 - managing users and pages and links
 - and ...
@@ -17,7 +19,8 @@ LittleLink Admin is an admin panel for [littlelink] that provides you a website 
 ## 🔨 Install
 
 ```sh
-composer create-project khashayarzavosh/littlelink-admin
+composergit clone
+composer update
 ```
 
 - edit .env file
@@ -57,6 +60,7 @@ password: 12345678
 
 bitcoin: 1FQJWCZJoLKfJei7NFisTH65yNUjugJRi4
 
+   [littlelink-admin]: <https://github.com/khashayarzavosh/littlelink-admin>
    [littlelink]: <https://github.com/sethcottle/littlelink>
    [linktree]: <https://linktr.ee>
    [home]: <https://github.com/khashayarzavosh/littlelink-admin/blob/main/demo-home.png>
