@@ -21,8 +21,8 @@
           <tr>
             <td title="{{ $link->link }}">{{ Str::limit($link->link, 30) }}</td>
             <td title="{{ $link->title }}">{{ Str::limit($link->title, 30) }}</td>
-            <td>{{ $link->click_number }}</td>
-            <td>{{ $link->order }}</td>
+            <td class="text-right">{{ $link->click_number }}</td>
+            <td class="text-right">{{ $link->order }}</td>
             <td><a href="{{ route('upLink', ['up' => $link->up_link, 'id' => $link->id]) }}" class="text-primary">{{ $link->up_link }}</a></td>
             <td><a href="{{ route('editLink', $link->id ) }}">Edit</a></td>
             <td><a href="{{ route('deleteLink', $link->id ) }}" class="text-danger">Delete</a></td>
