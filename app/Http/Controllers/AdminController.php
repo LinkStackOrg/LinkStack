@@ -38,19 +38,19 @@ class AdminController extends Controller
 
         switch($usersType){
             case 'all':
-                $data['users'] = User::select('id', 'name', 'role', 'block')->get();
+                $data['users'] = User::select('id', 'name', 'littlelink_name', 'role', 'block')->get();
                 return view('panel/users', $data);
                 break;
             case 'user':
-                $data['users'] = User::where('role', 'user')->select('id', 'name', 'role', 'block')->get();
+                $data['users'] = User::where('role', 'user')->select('id', 'name', 'littlelink_name', 'role', 'block')->get();
                 return view('panel/users', $data);
                 break;
             case 'vip':
-                $data['users'] = User::where('role', 'vip')->select('id', 'name', 'role', 'block')->get();
+                $data['users'] = User::where('role', 'vip')->select('id', 'name', 'littlelink_name', 'role', 'block')->get();
                 return view('panel/users', $data);
                 break;     
             case 'admin':
-                $data['users'] = User::where('role', 'admin')->select('id', 'name', 'role', 'block')->get();
+                $data['users'] = User::where('role', 'admin')->select('id', 'name', 'littlelink_name', 'role', 'block')->get();
                 return view('panel/users', $data);
                 break;
             }
@@ -97,6 +97,13 @@ class AdminController extends Controller
     //Save user edit
     public function editUser(request $request)
     {
+    	$request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'littlelink_name' => 'required',
+        ]);
+        
         $id = $request->id;
         $name = $request->name;
         $email = $request->email;
