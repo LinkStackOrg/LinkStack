@@ -19,22 +19,20 @@ LittleLink Admin is an admin panel for [littlelink] that provides you a website 
 ## 🔨 Install
 
 ```sh
-composergit clone
-composer update
+git clone https://github.com/latuminggi/littlelink-admin
+cd littlelink-admin
+cp .env.example .env
+composer update -vvv
 ```
 
 - edit .env file
 
-DB_DATABASE=YOUR_DATABASE_NAME
-
-DB_USERNAME=YOUR_USERNAME
-
-DB_PASSWORD=YOUR_PASSWORD
-
-APP_NAME="Littlelink admin"
+DB_DATABASE=YOUR_DB_NAME
+DB_USERNAME=YOUR_DB_USER
+DB_PASSWORD=YOUR_DB_PASS
+APP_NAME="YOUR_APP_NAME"
 
 ```sh
-cd admin-littlelink
 php artisan migrate
 php artisan db:seed 
 (or commands below)
@@ -47,7 +45,6 @@ php artisan serve
 - login:
 
 email: admin@admin.com
-
 password: 12345678
 
 ## 💞 Partners
