@@ -16,6 +16,8 @@ class CreateLinksTable extends Migration
         Schema::create('links', function (Blueprint $table) {
             $table->id();
             $table->text('link');
+            $table->string('title');
+            $table->integer('order')->default(0);
             $table->integer('click_number')->default(0);
             $table->enum('up_link', ['yes', 'no'])->default('no');
             $table->unsignedbigInteger('user_id');
