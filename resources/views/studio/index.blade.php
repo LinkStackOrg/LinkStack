@@ -2,10 +2,10 @@
 
 @section('content')
 
-        <h2 class="mb-4"> 👋 Hi {{ $littlelink_name }}</h2>
+        <h2 class="mb-4"> 👋 Hi, @<?= $littlelink_name ?></h2>
 
         <p>
-            Wellcome to littlelink. You are ready to raise links?! 😉
+            Welcome to {{ config('app.name') }}!
         </p>
         <div class="mt-5 row">
           <h5 class="mb-4"><i class="bi bi-link"> link: {{ $links }} </i></h5>
