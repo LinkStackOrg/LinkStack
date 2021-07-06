@@ -19,8 +19,8 @@
         <tbody>
         @foreach($links as $link)
           <tr>
-            <td title="{{ $link->link }}">{{ Str::limit($link->link, 50) }}</td>
-            <td title="{{ $link->title }}">{{ Str::limit($link->title, 50) }}</td>
+            <td title="{{ $link->link }}">{{ Str::limit($link->link, 30) }}</td>
+            <td title="{{ $link->title }}">{{ Str::limit($link->title, 30) }}</td>
             <td>{{ $link->click_number }}</td>
             <td>{{ $link->order }}</td>
             <td><a href="{{ route('upLink', ['up' => $link->up_link, 'id' => $link->id]) }}" class="text-primary">{{ $link->up_link }}</a></td>
