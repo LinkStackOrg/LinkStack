@@ -12,10 +12,6 @@ LittleLink Admin is an admin panel for [littlelink] that provides you a website 
 - managing users and pages and links
 - and ...
 
-## ✨ Demo
-
-[home] / [panel]
-
 ## 🔨 Install
 
 ```sh
@@ -66,7 +62,5 @@ password: 12345678
    [littlelink-admin]: <https://github.com/khashayarzavosh/littlelink-admin>
    [littlelink]: <https://github.com/sethcottle/littlelink>
    [linktree]: <https://linktr.ee>
-   [home]: <https://github.com/khashayarzavosh/littlelink-admin/blob/main/demo-home.png>
-   [panel]: <https://github.com/khashayarzavosh/littlelink-admin/blob/main/demo-panel.png>
    [laravel]: <https://github.com/laravel/laravel>
    [panel template]: <https://colorlib.com/wp/bootstrap-sidebar>
