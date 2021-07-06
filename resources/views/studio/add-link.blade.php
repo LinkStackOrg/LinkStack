@@ -11,6 +11,10 @@
           <input type="text" name="link" class="form-control" placeholder="https://google.com">
         </div>
         <div class="form-group col-lg-8">
+          <label>Title</label>
+          <input type="text" name="title" class="form-control" placeholder="Google">
+        </div>
+        <div class="form-group col-lg-8">
           <label for="exampleFormControlSelect1">Button</label>
           <select class="form-control" name="button">
             @foreach($buttons as $button)
