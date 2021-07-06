@@ -8,7 +8,7 @@
         @csrf
         @foreach($profile as $profile)
           <div class="form-group col-lg-8">
-            <label>Username</label>
+            <label>Name</label>
             <input type="text" class="form-control" name="name" value="{{ $profile->name }}">
           </div>
           <div class="form-group col-lg-8">
@@ -17,7 +17,11 @@
           </div>
           <div class="form-group col-lg-8">
             <label>Password</label>
-            <input type="password" name="password" class="form-control">
+            <input type="password" name="password" class="form-control" placeholder="if empty, password will blank">
+          </div>
+          <div class="form-group col-lg-8">
+            <label>Role</label>
+            <input type="text" class="form-control" value="{{ strtoupper($profile->role) }}" readonly>
           </div>
           <button type="submit" class="mt-3 ml-3 btn btn-info">Submit</button>
           @endforeach
