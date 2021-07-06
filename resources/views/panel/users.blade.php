@@ -12,26 +12,28 @@
           </div>
         </form>
         Users: 
-        <a href="/panel/users/all">All</a> - 
-        <a href="/panel/users/user">User</a> - 
-        <a href="/panel/users/vip">Vip</a> - 
-        <a href="/panel/users/admin">Admin</a> 
+        <a href="{{ config('app.url') }}/panel/users/all">All</a> - 
+        <a href="{{ config('app.url') }}/panel/users/user">User</a> - 
+        <a href="{{ config('app.url') }}/panel/users/vip">Vip</a> - 
+        <a href="{{ config('app.url') }}/panel/users/admin">Admin</a> 
 
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th scope="col">Username</th>
-              <th scope="col">Edit</th>
+              <th scope="col">Name</th>
+              <th scope="col">Page</th>
               <th scope="col">Role</th>
+              <th scope="col">Edit</th>
               <th scope="col">Block</th>
             </tr>
           </thead>
           <tbody>
           @foreach($users as $user)
             <tr>
-              <td><a href="/+{{ $user->name }}" target="_blank"><i class="bi bi-box-arrow-up-right"></i> {{ $user->name }} </a></td>
-              <td><a href="{{ route('editUser', $user->id ) }}">Edit</a></td>
+              <td> {{ $user->name }} </td>
+              <td><a href="{{ config('app.url') }}/@<?= $user->littlelink_name ?>" target="_blank" class="text-info"><i class="bi bi-box-arrow-up-right"></i>&nbsp; {{ $user->littlelink_name }} </a></td>
               <td>{{ $user->role }}</td>
+              <td><a href="{{ route('editUser', $user->id ) }}">Edit</a></td>
               <td><a href="{{ route('blockUser', ['block' => $user->block, 'id' => $user->id] ) }}" class="text-danger">{{ $user->block }}</a></td>
             </tr>
             @endforeach
