@@ -17,7 +17,7 @@ class ButtonSeeder extends Seeder
     {
         $buttons = [
         	[
-                'name' => '-'
+                'name' => 'custom'
             ],
             
             [
