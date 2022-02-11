@@ -34,9 +34,9 @@
       <div class="column" style="margin-top: 5%">
         <!-- Your Image Here -->
           @if(file_exists(public_path("img/$littlelink_name" . ".png" )))
-          <img src="{{ asset("img/$littlelink_name" . ".png") }}" width="100px" height="100px">
+          <img class="rounded-avatar" src="{{ asset("img/$littlelink_name" . ".png") }}" width="100px" height="100px">
           @else
-          <img src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
+          <img class="rounded-avatar" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
           @endif
 
         @foreach($information as $info)
@@ -53,6 +53,9 @@
          @if($link->button_id === 0)
          <a class="button button-title" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank">
          	{{ $link->title }}</a>
+          <br>
+         @elseif($link->name === "custom")
+         <a class="button button-{{ $link->name }}" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon" src="{{ asset('\/littlelink/icons\/') . $linkName }}.svg">{{ $link->title }}</a>
           <br>
          @else
          <a class="button button-{{ $link->name }}" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon" src="{{ asset('\/littlelink/icons\/') . $linkName }}.svg">{{ ucfirst($linkName) }}</a>
