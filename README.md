@@ -16,7 +16,7 @@ LittleLink Admin is an admin panel for [littlelink] that provides you a website 
 ## 🔨 Install
 
 ```sh
-git clone https://github.com/latuminggi/littlelink-admin
+git clone https://github.com/JulianPrieber/littlelink-admin
 cd littlelink-admin
 cp .env.example .env
 composer update -vvv
