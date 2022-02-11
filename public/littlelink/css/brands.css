@@ -22,10 +22,20 @@
 /* Table of contents
 ––––––––––––––––––––––––––––––––––––––––––––––––––
 
+- Rounded user avatars
 - Buttons
 - Brand Styles
 
 */
+
+
+/* Rounded avatars
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Disable this if you don't want rounded avatars for users */
+.rounded-avatar {
+  border-radius: 50%;
+}
 
 
 /* Buttons
