@@ -85,6 +85,15 @@ button:hover,
 /* Brand Styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+/* Added custom link button*/
+.button.button-custom {
+  color: #FFFFFF;
+  background-color: #FFFFFF;
+  background-image: linear-gradient(-135deg,#0f0c29,#302b63,#24243e) }
+.button.button-custom:hover,
+.button.button-custom:focus {
+  filter: brightness(90%) }
+
 /* Default (this is great for your own brand color!) */
 .button.button-default {
   color: #FFFFFF;
