@@ -58,6 +58,7 @@ password: 12345678
 - [littlelink]
 - [laravel]
 - [panel template]
+- [button animations]
 
 ## 🎲 [Donate](#donate)
 
@@ -68,3 +69,4 @@ password: 12345678
    [linktree]: <https://linktr.ee>
    [laravel]: <https://github.com/laravel/laravel>
    [panel template]: <https://colorlib.com/wp/bootstrap-sidebar>
+   [button animations]: <https://github.com/IanLunn/Hover>
