@@ -7,6 +7,7 @@ LittleLink Admin is an admin panel for [littlelink] that provides you a website 
 
 - creating a link page with more than 20 buttons
 - raising important links on the page
+- button hover animations (new) | [demo]
 - ordering links (new)
 - custom link option (new)
 - Social Share Preview for individual users (new)
@@ -70,3 +71,4 @@ password: 12345678
    [laravel]: <https://github.com/laravel/laravel>
    [panel template]: <https://colorlib.com/wp/bootstrap-sidebar>
    [button animations]: <https://github.com/IanLunn/Hover>
+   [demo]: <https://julianprieber.github.io/littlelink-admin-demo>
