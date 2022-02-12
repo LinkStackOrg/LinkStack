@@ -41,6 +41,8 @@ php artisan db:seed
 php artisan db:seed --class="AdminSeeder"
 php artisan db:seed --class="PageSeeder"
 php artisan db:seed --class="ButtonSeeder"
+
+php artisan key:generate
 php artisan serve (optional)
 ```
 
