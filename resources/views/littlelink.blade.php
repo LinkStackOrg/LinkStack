@@ -39,6 +39,7 @@
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
+  <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
   <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
   <style>
 	.container { max-width: 1080px !important; }
@@ -80,14 +81,14 @@
         @foreach($links as $link)
          @php $linkName = str_replace('default ','',$link->name) @endphp
          @if($link->button_id === 0)
-         <a class="button button-title" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank">
+         <a class="button button-title button hvr-grow hvr-icon-wobble-vertical" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank">
          	{{ $link->title }}</a>
           <br>
          @elseif($link->name === "custom")
-         <a class="button button-{{ $link->name }}" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon" src="{{ asset('\/littlelink/icons\/') . $linkName }}.svg">{{ $link->title }}</a>
+         <a class="button button-{{ $link->name }} button hvr-grow hvr-icon-wobble-vertical" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/') . $linkName }}.svg">{{ $link->title }}</a>
           <br>
          @else
-         <a class="button button-{{ $link->name }}" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon" src="{{ asset('\/littlelink/icons\/') . $linkName }}.svg">{{ ucfirst($linkName) }}</a>
+         <a class="button button-{{ $link->name }} button hvr-grow hvr-icon-wobble-vertical" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/') . $linkName }}.svg">{{ ucfirst($linkName) }}</a>
           <br>
          @endif
         @endforeach
