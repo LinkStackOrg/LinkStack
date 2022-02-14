@@ -116,7 +116,7 @@ class AdminController extends Controller
         User::where('id', $id)->update(['name' => $name, 'email' => $email, 'password' => $password, 'littlelink_name' => $littlelink_name, 'littlelink_description' => $littlelink_description, 'role' => $role]);
 
         if(!empty($profilePhoto)){
-        $profilePhoto->move(public_path('/img'), $littlelink_name . ".png");
+        $profilePhoto->move(base_path('/img'), $littlelink_name . ".png");
         }
 
         return back();
@@ -157,7 +157,7 @@ class AdminController extends Controller
         Page::first()->update(['home_message' => $message]);
 
         if(!empty($logo)){
-            $logo->move(public_path('/littlelink/images/'), "avatar.png");
+            $logo->move(base_path('/littlelink/images/'), "avatar.png");
             }
 
         return back();
