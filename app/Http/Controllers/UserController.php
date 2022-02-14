@@ -201,7 +201,7 @@ class UserController extends Controller
         User::where('id', $userId)->update(['littlelink_name' => $pageName, 'littlelink_description' => $pageDescription]);
 
         if(!empty($profilePhoto)){
-        $profilePhoto->move(public_path('/img'), $littlelink_name . ".png");
+        $profilePhoto->move(base_path('/img'), $littlelink_name . ".png");
         }
 
         return back();
