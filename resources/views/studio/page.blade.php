@@ -13,7 +13,7 @@
           @foreach($pages as $page)
           
           <div class="form-group col-lg-8">
-          @if(file_exists(public_path("img/$page->littlelink_name" . ".png" )))
+          @if(file_exists(base_path("img/$page->littlelink_name" . ".png" )))
           <img src="{{ asset("img/$page->littlelink_name" . ".png") }}" srcset="{{ asset("img/$page->littlelink_name" . "@2x.png 2x") }}" width="100px" height="100px">
           @else
           <img src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}">
