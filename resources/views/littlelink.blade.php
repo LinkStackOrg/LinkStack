@@ -15,7 +15,7 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ $userinfo->littlelink_name }}">
     <meta property="og:description" content="{{ $userinfo->littlelink_description }}">
-    @if(file_exists(public_path("img/$littlelink_name" . ".png" )))
+    @if(file_exists(base_path("img/$littlelink_name" . ".png" )))
     <meta property="og:image" content="{{ asset("img/$littlelink_name" . ".png") }}">
     @else
     <meta property="og:image" content="{{ asset('littlelink/images/avatar@2x.png') }}">
@@ -27,7 +27,7 @@
     <meta property="twitter:url" content="https://prieber.com/socials/index.php/">
     <meta name="twitter:title" content="{{ $userinfo->littlelink_name }}">
     <meta name="twitter:description" content="{{ $userinfo->littlelink_description }}">
-    @if(file_exists(public_path("img/$littlelink_name" . ".png" )))
+    @if(file_exists(base_path("img/$littlelink_name" . ".png" )))
     <meta name="twitter:image" content="{{ asset("img/$littlelink_name" . ".png") }}">
     @else
     <meta name="twitter:image" content="{{ asset('littlelink/images/avatar@2x.png') }}">
@@ -63,7 +63,7 @@
 
       <div class="column" style="margin-top: 5%">
         <!-- Your Image Here -->
-          @if(file_exists(public_path("img/$littlelink_name" . ".png" )))
+          @if(file_exists(base_path("img/$littlelink_name" . ".png" )))
           <img class="rounded-avatar" src="{{ asset("img/$littlelink_name" . ".png") }}" width="100px" height="100px">
           @else
           <img class="rounded-avatar" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
