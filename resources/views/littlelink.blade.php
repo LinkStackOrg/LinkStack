@@ -40,6 +40,7 @@
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
+  <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
   <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
   <style>
 	.container { max-width: 1080px !important; }
@@ -77,19 +78,19 @@
         <p>{{ $info->littlelink_description }}</p>
         
         @endforeach
+		
+		
         <!-- Buttons -->
+<?php $initial=1; // <-- Effectively sets the initial loading time of the buttons. This value should be left at 1. ?>
         @foreach($links as $link)
          @php $linkName = str_replace('default ','',$link->name) @endphp
          @if($link->button_id === 0)
-         <a class="button button-title button hvr-grow hvr-icon-wobble-vertical" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank">
-         	{{ $link->title }}</a>
-          <br>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-title button hvr-grow hvr-icon-wobble-vertical" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank">
+         	{{ $link->title }}</a></div>
          @elseif($link->name === "custom")
-         <a class="button button-{{ $link->name }} button hvr-grow hvr-icon-wobble-vertical" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/') . $linkName }}.svg">{{ $link->title }}</a>
-          <br>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button hvr-grow hvr-icon-wobble-vertical" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/') . $linkName }}.svg">{{ $link->title }}</a></div>
          @else
-         <a class="button button-{{ $link->name }} button hvr-grow hvr-icon-wobble-vertical" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/') . $linkName }}.svg">{{ ucfirst($linkName) }}</a>
-          <br>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button hvr-grow hvr-icon-wobble-vertical" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/') . $linkName }}.svg">{{ ucfirst($linkName) }}</a></div>
          @endif
         @endforeach
 
