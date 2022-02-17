@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
+  <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
   <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
 </head>
 <body>
@@ -37,12 +38,11 @@
         <!-- Short Bio -->
         <p class="mt-5">{{ $message->home_message }}</p>
         
-
+<?php $initial=1; // <-- Effectively sets the initial loading time of the buttons. This value should be left at 1. ?>
         <!-- Replace # with your profile URL. Delete whatever you don't need & create your own brand styles in css/brands.css -->  
-
-        <a class="button button-github button hvr-grow hvr-icon-wobble-vertical" href="#"><img class="icon hvr-icon" src="{{ asset('littlelink/icons/github.svg') }}">Github</a>
-        <a class="button button-twitter button hvr-grow hvr-icon-wobble-vertical" href="#"><img class="icon hvr-icon" src="{{ asset('littlelink/icons/twitter.svg') }}">Twitter</a>
-        <a class="button button-instagram button hvr-grow hvr-icon-wobble-vertical" href="#"><img class="icon hvr-icon" src="{{ asset('littlelink/icons/instagram.svg') }}">Instagram</a>
+        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-github button hvr-grow hvr-icon-wobble-vertical" href="#"><img class="icon hvr-icon" src="{{ asset('littlelink/icons/github.svg') }}">Github</a></div>
+        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-twitter button hvr-grow hvr-icon-wobble-vertical" href="#"><img class="icon hvr-icon" src="{{ asset('littlelink/icons/twitter.svg') }}">Twitter</a></div>
+        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-instagram button hvr-grow hvr-icon-wobble-vertical" href="#"><img class="icon hvr-icon" src="{{ asset('littlelink/icons/instagram.svg') }}">Instagram</a></div>
         <!--<a class="button button-pinterest" href="#"><img class="icon" src="{{ asset('littlelink/icons/pinterest.svg') }}">Pinterest</a>-->
         </br></br>
 
