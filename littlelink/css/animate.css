@@ -1,0 +1,25 @@
+/*!
+ * animate.css - https://animate.style/
+ * Version - 4.1.1
+ * Licensed under the Hippocratic License 2.1 - http://firstdonoharm.dev
+ * animation-delay: calc(var(--delay)/10);
+ * Copyright (c) 2022 Animate.css
+ */
+
+.button-entrance {
+  animation-name: zoomIn;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-delay: calc(var(--delay)/10);
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
