@@ -11,34 +11,6 @@
   <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
   <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
-
-  <!-- begin dark mode detection -->
-	<script src="{{ asset('littlelink/js/js.cookie.min.js') }}"></script>
-	<script>
-		// code to set the `color_scheme` cookie
-		var $color_scheme = Cookies.get("color_scheme");
-		function get_color_scheme() {
-		return (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
-		}
-		function update_color_scheme() {
-		Cookies.set("color_scheme", get_color_scheme());
-		}
-		// read & compare cookie `color-scheme`
-		if ((typeof $color_scheme === "undefined") || (get_color_scheme() != $color_scheme))
-		update_color_scheme();
-		// detect changes and change the cookie
-		if (window.matchMedia)
-		window.matchMedia("(prefers-color-scheme: dark)").addListener( update_color_scheme );
-	</script>
-		<?php // loads dark mode CSS if dark mode detected
-		     $color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : false; ?>
-		@if ($color_scheme == 'dark')
-					<!-- switch the two <link> Tags below to default to dark mode if cookie detection fails -->
-					<link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
-				@else
-					<link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
-					@endif
-  <!-- end dark mode detection -->
 </head>
 <body>
   <div class="container">
