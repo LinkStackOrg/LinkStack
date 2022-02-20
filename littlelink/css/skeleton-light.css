@@ -168,4 +168,24 @@ hr {
   border-width: 0;
   border-top: 1px solid #E1E1E1; }
 
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #323232 #dbdbdb;
+  }
 
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #dbdbdb;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #323232;
+    border-radius: 30px;
+    border: 3px none #ffffff;
+  }
