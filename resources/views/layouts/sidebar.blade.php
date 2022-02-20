@@ -7,8 +7,35 @@
 
     <link href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-		<link rel="stylesheet" href="{{ asset('/studio/css/bootstrap.min.css') }}">
-		<link rel="stylesheet" href="{{ asset('/studio/css/style-dashboard.css') }}">
+  <!-- begin dark mode detection -->
+	<script src="{{ asset('littlelink/js/js.cookie.min.js') }}"></script>
+	<script>
+		// code to set the `color_scheme` cookie
+		var $color_scheme = Cookies.get("color_scheme");
+		function get_color_scheme() {
+		return (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+		}
+		function update_color_scheme() {
+		Cookies.set("color_scheme", get_color_scheme());
+		}
+		// read & compare cookie `color-scheme`
+		if ((typeof $color_scheme === "undefined") || (get_color_scheme() != $color_scheme))
+		update_color_scheme();
+		// detect changes and change the cookie
+		if (window.matchMedia)
+		window.matchMedia("(prefers-color-scheme: dark)").addListener( update_color_scheme );
+	</script>
+		<?php // loads dark mode CSS if dark mode detected
+		     $color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : false; ?>
+		@if ($color_scheme == 'dark')
+					<!-- switch the two <link> Tags below to default to dark mode if cookie detection fails -->
+					<link rel="stylesheet" href="{{ asset('/studio/css/bootstrap.min-dark.css') }}">
+					<link rel="stylesheet" href="{{ asset('/studio/css/style-dashboard-dark.css') }}">
+				@else
+					<link rel="stylesheet" href="{{ asset('/studio/css/bootstrap.min.css') }}">
+					<link rel="stylesheet" href="{{ asset('/studio/css/style-dashboard.css') }}">
+					@endif
+  <!-- end dark mode detection -->
 
     @if(file_exists(base_path("littlelink/images/avatar.png" )))
     <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
