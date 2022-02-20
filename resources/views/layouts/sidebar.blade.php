@@ -27,7 +27,11 @@
         <a href="{{ url('/panel/index') }}">
         @endif
 
+        @if(file_exists(base_path("littlelink/images/avatar.png" )))
           <img class="img logo rounded-circle" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}">
+          @else
+          <link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
+          @endif
           </a>
           <ul class="list-unstyled components mb-5">
 
