@@ -28,7 +28,7 @@
         @endif
 
         @if(file_exists(base_path("littlelink/images/avatar.png" )))
-          <img class="img logo rounded-circle" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}">
+          <img class="img logo rounded-circle" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" style="width: 150px;>
           @else
           <img class="img logo rounded-circle" type="image/svg+xml" src="{{ asset('littlelink/images/logo.svg') }}" style="width:100px;">
           @endif
