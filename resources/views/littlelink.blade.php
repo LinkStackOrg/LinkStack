@@ -43,7 +43,11 @@
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
-  <link rel="icon" type="image/png" href="{{ asset('littlelink/images/logo.svg') }}">
+  @if(file_exists(base_path("littlelink/images/avatar.png" )))
+  <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
+  @else
+  <link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
+  @endif
   <style>
 	.container { max-width: 1080px !important; }
   	.button-title { 

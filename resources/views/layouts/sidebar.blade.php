@@ -13,7 +13,7 @@
     @if(file_exists(base_path("littlelink/images/avatar.png" )))
     <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
     @else
-    <img src="{{ asset('littlelink/images/logo.svg') }}" alt="Logo"></img>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
     @endif
   </head>
   <body>
