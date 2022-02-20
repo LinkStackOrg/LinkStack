@@ -11,26 +11,28 @@
   <!-- This shows a preview for title, description and avatar image of users profiles if shared on social media sites -->
 
     <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="{{ config('app.url') }}/@littlelink_name"">
+    <meta property="og:url" content="{{ config('app.url') }}/@littlelink_name">
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ $userinfo->littlelink_name }}">
     <meta property="og:description" content="{{ $userinfo->littlelink_description }}">
     @if(file_exists(base_path("img/$littlelink_name" . ".png" )))
     <meta property="og:image" content="{{ asset("img/$littlelink_name" . ".png") }}">
+    @if(file_exists(base_path("littlelink/images/avatar.png" )))
+    <img class="rounded-avatar" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
     @else
-    <meta property="og:image" content="{{ asset('littlelink/images/avatar@2x.png') }}">
+    <meta property="og:image" content="{{ asset('littlelink/images/logo.svg') }}">
     @endif
     
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="{{ config('app.url') }}/@littlelink_name">
-    <meta property="twitter:url" content="https://prieber.com/socials/index.php/">
+    <meta property="twitter:url" content="{{ config('app.url') }}/@littlelink_name">
     <meta name="twitter:title" content="{{ $userinfo->littlelink_name }}">
     <meta name="twitter:description" content="{{ $userinfo->littlelink_description }}">
     @if(file_exists(base_path("img/$littlelink_name" . ".png" )))
     <meta name="twitter:image" content="{{ asset("img/$littlelink_name" . ".png") }}">
     @else
-    <meta name="twitter:image" content="{{ asset('littlelink/images/avatar@2x.png') }}">
+    <meta name="twitter:image" content="{{ asset('littlelink/images/logo.svg') }}">
     @endif
 
 <!--#### END Meta Tags social media preview images  ####-->
@@ -41,7 +43,7 @@
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
-  <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
+  <link rel="icon" type="image/png" href="{{ asset('littlelink/images/logo.svg') }}">
   <style>
 	.container { max-width: 1080px !important; }
   	.button-title { 
@@ -94,8 +96,10 @@
         <!-- Your Image Here -->
           @if(file_exists(base_path("img/$littlelink_name" . ".png" )))
           <img class="rounded-avatar" src="{{ asset("img/$littlelink_name" . ".png") }}" width="100px" height="100px">
-          @else
+          @if(file_exists(base_path("littlelink/images/avatar.png" )))
           <img class="rounded-avatar" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
+          @else
+          <img class="rounded-avatar" src="{{ asset('littlelink/images/logo.svg') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
           @endif
 
         @foreach($information as $info)

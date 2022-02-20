@@ -10,7 +10,11 @@
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
+  @if(file_exists(base_path("littlelink/images/avatar.png" )))
   <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
+  @else
+  <link rel="icon" type="image/png" href="{{ asset('littlelink/images/logo.svg') }}">
+  @endif
 
   <!-- begin dark mode detection -->
 	<script src="{{ asset('littlelink/js/js.cookie.min.js') }}"></script>
@@ -58,7 +62,14 @@
     </div>
       <div class="column" style="margin-top: 10%">
         <!-- Your Image Here -->
-        <img src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}">
+        @if(file_exists(base_path("littlelink/images/avatar.png" )))
+        <img class="rounded-avatar" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
+        @else
+		<div class="parent fadein" >
+			<img class="image1 rotate" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo"></img>
+			<img class="image2" src="{{ asset('littlelink/images/just-ll.svg') }}" alt="Logo"></img>
+		</div>
+        @endif
 
         <!-- Your Name -->
         <h1 class="mt-5"> {{ config('app.name') }} </h1>
@@ -88,7 +99,7 @@
           </a>
           @else
           <a href="{{ config('app.url') }}/@<?= $page->littlelink_name ?>" target="_blank">
-          <img src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="50px" height="50px">
+          <img src="{{ asset('littlelink/images/logo.svg') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="50px" height="50px">
           </a>
           @endif
         @endforeach

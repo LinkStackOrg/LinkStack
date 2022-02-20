@@ -10,7 +10,11 @@
 		<link rel="stylesheet" href="{{ asset('/studio/css/bootstrap.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('/studio/css/style-dashboard.css') }}">
 
+    @if(file_exists(base_path("littlelink/images/avatar.png" )))
     <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
+    @else
+    <img src="{{ asset('littlelink/images/logo.svg') }}" alt="Logo"></img>
+    @endif
   </head>
   <body>
 

@@ -25,7 +25,11 @@
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  @if(file_exists(base_path("littlelink/images/avatar.png" )))
   <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
+  @else
+  <link rel="icon" type="image/png" href="{{ asset('littlelink/images/logo.svg') }}">
+  @endif
 
 </head>
 <body>
@@ -37,7 +41,11 @@
 
       <div class="column" style="margin-top: 10%">
         <!-- Your Image Here -->
-        <img src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}">
+        @if(file_exists(base_path("littlelink/images/avatar.png" )))
+        <img src="{{ asset('littlelink/images/logo.svg') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}">
+        @else
+        <img src="https://prieber.com/social/littlelink/images/logo.svg" alt="Logo"></img>
+        @endif
         <br>
 
         <div class="jumbotron">
