@@ -17,8 +17,6 @@
     <meta property="og:description" content="{{ $userinfo->littlelink_description }}">
     @if(file_exists(base_path("img/$littlelink_name" . ".png" )))
     <meta property="og:image" content="{{ asset("img/$littlelink_name" . ".png") }}">
-    @elseif(file_exists(base_path("littlelink/images/avatar.png" )))
-    <img class="rounded-avatar" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
     @else
     <meta property="og:image" content="{{ asset('littlelink/images/logo.svg') }}">
     @endif
