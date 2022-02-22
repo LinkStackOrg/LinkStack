@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="682.7" height="682.7">
+  <defs>
+    <clipPath clipPathUnits="userSpaceOnUse" id="a">
+      <path d="M2560 0c1413.8 0 2560 1146.2 2560 2560S3973.8 5120 2560 5120 0 3973.8 0 2560 1146.2 0 2560 0Z" clip-rule="evenodd" />
+    </clipPath>
+    <clipPath clipPathUnits="userSpaceOnUse" id="b">
+      <path d="M0 0h5120v5120H0Z" />
+    </clipPath>
+    <clipPath clipPathUnits="userSpaceOnUse" id="c">
+      <path d="M3057.8 1755H1190l872.2 1610H3930l-872.2-1610" clip-rule="evenodd" />
+    </clipPath>
+    <clipPath clipPathUnits="userSpaceOnUse" id="d">
+      <path d="M0 0h5120v5120H0Z" />
+    </clipPath>
+  </defs>
+  <g clip-path="url(#a)" transform="matrix(.13333 0 0 -.13333 0 682.7)">
+    <g clip-path="url(#b)">
+      <path d="M2560 0c1413.8 0 2560 1146.2 2560 2560S3973.8 5120 2560 5120 0 3973.8 0 2560 1146.2 0 2560 0Z" style="fill:none;stroke:#fff;stroke-width:320;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+  </g>
+  <g clip-path="url(#c)" transform="matrix(.13333 0 0 -.13333 0 682.7)">
+    <g clip-path="url(#d)">
+      <path d="M1140 1705h2840v1710H1140Z" style="fill:#fff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    </g>
+  </g>
+</svg>

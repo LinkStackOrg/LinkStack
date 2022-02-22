@@ -115,14 +115,57 @@ class ButtonSeeder extends Seeder
             [
                 'name' => 'skoob'
             ],
+
             [
                 'name' => 'tiktok'
             ],
+
             [
                 'name' => 'default email'
             ],
+
             [
                 'name' => 'default email_alt'
+            ],
+
+        	[
+                'name' => 'bandcamp'
+            ],
+            
+            [
+                'name' => 'patreon'
+            ],
+
+            [
+                'name' => 'signal'
+            ],
+
+            [
+                'name' => 'venmo'
+            ],
+
+            [
+                'name' => 'cashapp'
+            ],
+
+            [
+                'name' => 'gitlab'
+            ],
+
+            [
+                'name' => 'mastodon'
+            ],
+
+            [
+                'name' => 'paypal'
+            ],
+
+            [
+                'name' => 'whatsapp'
+            ],
+
+            [
+                'name' => 'xing'
             ],
         ];
 

@@ -312,3 +312,103 @@ button:hover,
 .button.button-wordpress:hover,
 .button.button-wordpress:focus {
   filter: brightness(90%) }
+
+/* Bandcamp */
+.button.button-bandcamp {
+  color: #ffffff;
+  background-color: #1d9fc3;
+}
+.button.button-bandcamp:hover,
+.button.button-bandcamp:focus {
+  filter: brightness(90%);
+}
+
+/* Patreon */
+.button.button-patreon {
+  color: #ffffff;
+  background-color: #ff424d;
+}
+.button.button-patreon:hover,
+.button.button-patreon:focus {
+  filter: brightness(90%);
+}
+
+/* Signal */
+.button.button-signal {
+  color: #ffffff;
+  background-color: #3a76f0;
+}
+.button.button-signal:hover,
+.button.button-signal:focus {
+  filter: brightness(90%);
+}
+
+/* Venmo */
+.button.button-venmo {
+  color: #ffffff;
+  background-color: #3d95ce;
+}
+.button.button-venmo:hover,
+.button.button-venmo:focus {
+  filter: brightness(90%);
+}
+
+/* Cash App */
+.button.button-cashapp {
+  color: #ffffff;
+  background-image: linear-gradient(to bottom, #00d64b, #00c244);
+}
+.button.button-cashapp:hover,
+.button.button-cashapp:focus {
+  filter: brightness(90%);
+}
+
+/* Gitlab */
+.button.button-gitlab {
+  color: #ffffff;
+  background-color: #6151b2;
+}
+.button.button-gitlab:hover,
+.button.button-gitlab:focus {
+  filter: brightness(90%);
+}
+
+/* Mastodon */
+.button.button-mastodon {
+  color: #ffffff;
+  background-color: #1f232b;
+}
+.button.button-mastodon:hover,
+.button.button-mastodon:focus {
+  filter: brightness(90%);
+}
+
+/* PayPal */
+.button.button-paypal {
+  color: #ffffff;
+  background-color: #003087;
+}
+.button.button-paypal:hover,
+.button.button-paypal:focus {
+  filter: brightness(90%);
+}
+
+/* WhatsApp */
+.button.button-whatsapp {
+  color: #ffffff;
+  background-color: #455a64;
+}
+.button.button-whatsapp:hover,
+.button.button-whatsapp:focus {
+  filter: brightness(90%);
+}
+
+/* Xing */
+.button.button-xing {
+  color: #ffffff;
+  background-color: #026466;
+}
+.button.button-xing:hover,
+.button.button-xing:focus {
+  filter: brightness(90%);
+}
