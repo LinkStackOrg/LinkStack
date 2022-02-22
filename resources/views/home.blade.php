@@ -72,10 +72,10 @@
         @endif
 
         <!-- Your Name -->
-        <h1 class="mt-5"> {{ config('app.name') }} </h1>
+        <h1 class="mt-5 fadein"> {{ config('app.name') }} </h1>
 
         <!-- Short Bio -->
-        <p class="mt-5">{{ $message->home_message }}</p>
+        <p class="mt-5 fadein">{{ $message->home_message }}</p>
         
 <?php $initial=1; // <-- Effectively sets the initial loading time of the buttons. This value should be left at 1. ?>
         <!-- Replace # with your profile URL. Delete whatever you don't need & create your own brand styles in css/brands.css -->  
