@@ -97,19 +97,19 @@
       <div class="column" style="margin-top: 5%">
         <!-- Your Image Here -->
           @if(file_exists(base_path("img/$littlelink_name" . ".png" )))
-          <img class="rounded-avatar" src="{{ asset("img/$littlelink_name" . ".png") }}" width="100px" height="100px">
+          <img class="rounded-avatar fadein" src="{{ asset("img/$littlelink_name" . ".png") }}" width="100px" height="100px">
           @elseif(file_exists(base_path("littlelink/images/avatar.png" )))
-          <img class="rounded-avatar" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
+          <img class="rounded-avatar fadein" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
           @else
-          <img class="rounded-avatar" src="{{ asset('littlelink/images/logo.svg') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
+          <img class="rounded-avatar fadein" src="{{ asset('littlelink/images/logo.svg') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
           @endif
 
         @foreach($information as $info)
         <!-- Your Name -->
-        <h1>{{ $info->littlelink_name }}</h1>
+        <h1 class="fadein">{{ $info->littlelink_name }}</h1>
 
         <!-- Short Bio -->
-        <p>{{ $info->littlelink_description }}</p>
+        <p class="fadein">{{ $info->littlelink_description }}</p>
         
         @endforeach
 		
