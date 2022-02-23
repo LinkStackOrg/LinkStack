@@ -45,6 +45,15 @@
   <!-- end dark mode detection -->
 </head>
 <body>
+
+<?php
+$pages = DB::table('pages')->get();
+foreach($pages as $page)
+{
+	//Gets value from database
+}
+?>
+
   <div class="container">
     <div class="row">
     <div class="sign" style="margin-top: 30px; text-align: right;">
@@ -54,7 +63,7 @@
                     @else
                         <a href="{{ route('login') }}" class="underline">Log in</a>
 
-                        @if (Route::has('register'))
+                        @if (Route::has('register') and $page->register == 'true')
                             <a href="{{ route('register') }}" class="underline">Register</a>
                         @endif
                     @endauth

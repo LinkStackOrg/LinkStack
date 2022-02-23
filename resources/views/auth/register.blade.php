@@ -1,3 +1,11 @@
+<?php
+$pages = DB::table('pages')->get();
+foreach($pages as $page)
+{
+	//Gets value from database
+}
+?>
+
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
@@ -5,7 +13,7 @@
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a>
         </x-slot>
-
+		  @if($page->register == 'true')
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
@@ -55,5 +63,6 @@
                 </x-button>
             </div>
         </form>
+		  @endif
     </x-auth-card>
 </x-guest-layout>

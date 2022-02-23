@@ -19,6 +19,7 @@ class CreatePagesTable extends Migration
             $table->text('privacy')->nullable();
             $table->text('contact')->nullable();
             $table->text('home_message')->nullable();
+            $table->text('register')->nullable();
             $table->timestamps();
         });
     }

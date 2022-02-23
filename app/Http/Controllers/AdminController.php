@@ -125,7 +125,7 @@ class AdminController extends Controller
     //Show site pages to edit
     public function showSitePage()
     {
-        $data['pages'] = Page::select('terms', 'privacy', 'contact')->get();
+        $data['pages'] = Page::select('terms', 'privacy', 'contact', 'register')->get();
         return view('panel/pages', $data);
     }
 
@@ -135,8 +135,9 @@ class AdminController extends Controller
         $terms = $request->terms;
         $privacy = $request->privacy;
         $contact = $request->contact;
+        $register = $request->register;
 
-        Page::first()->update(['terms' => $terms, 'privacy' => $privacy, 'contact' => $contact]);
+        Page::first()->update(['terms' => $terms, 'privacy' => $privacy, 'contact' => $contact, 'register' => $register]);
 
         return back();
     }

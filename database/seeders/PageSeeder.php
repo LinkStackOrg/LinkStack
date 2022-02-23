@@ -36,6 +36,7 @@ class PageSeeder extends Seeder
                 themed around customization for the individual users, LittleLink pages.
                 ',
 
+                'register' => 'true',
             ]
          ];
 
