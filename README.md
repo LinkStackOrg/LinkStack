@@ -167,7 +167,7 @@ LittleLink Admin is in itself a fork of [LittleLink](https://github.com/sethcott
 ### special thanks to:
 * [Seth Cottle](https://github.com/sethcottle) for creating [LittleLink](https://github.com/sethcottle/littlelink) the base of all this.
 * [Khashayar Zavosh](https://github.com/khashayarzavosh) for creating [LittleLink Admin](https://github.com/khashayarzavosh/littlelink-admin), the base framework of the admin panel and many other essentials features of this project.
-* [Aprillio Latuminggi (latuminggi)](https://github.com/latuminggi) for creating the fork this fork is based [LittleLink Admin (fork)](https://github.com/latuminggi/littlelink-admin)  
+* [Aprillio Latuminggi (latuminggi)](https://github.com/latuminggi) for creating the fork this fork is based on [LittleLink Admin (fork)](https://github.com/latuminggi/littlelink-admin)  
    
 <h4 align="center">Thank you!</h4>
 
