@@ -125,7 +125,42 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
+                  <div class="row">
+
+            <! –– #### begin update detection #### ––>
+
+					<?php // Checks if URL exists
+					function URL_exists(string $url): bool
+					{
+						return str_contains(get_headers($url)[0], "200 OK");
+					}
+					         // Sets $ServerExists to true if URL exists
+						if (URL_exists("https://littlelink-custom.tru.io/version.json")){
+							$ServerExists = "true";
+						} else {
+							$ServerExists = "false";
+						}
+						?>
+
+                <! –– Checks if file version.json exists AND if version.json exists on server to continue (without this PHP will throw ErrorException ) ––>
+                @if(file_exists(base_path("version.json")) and $ServerExists == 'true')
+
+                  <?php // Requests newest version from server and sets it as variable
+                  $Vgit = file_get_contents("https://littlelink-custom.tru.io/version.json"); 
+
+				       // Requests current version from the local version file and sets it as variable
+                  $Vlocal = file_get_contents(base_path("version.json")); 
+					?>
+
+					<! –– If user has role admin AND newest GitHub release version is higher than the local one an update notice will be displayed ––>
+					@if(auth()->user()->role == 'admin' and $Vgit > $Vlocal)
+					<a style="color:#007bff" class="nav-link" href="https://littlelink-custom.tru.io/how-to-update.html" target="_blank" title="Click here to learn more about how to update">An update is available</a>
+					@endif
+				@endif
+            <! –– #### end update detection #### ––>
+
                     <a class="nav-link" href="{{ config('app.url') }}/@<?= Auth::user()->littlelink_name ?>" target="_blank">Watch Page</a>
+                  </div>
                 </li>
               </ul>
             </div>
