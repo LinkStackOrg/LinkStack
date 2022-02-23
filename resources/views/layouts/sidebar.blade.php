@@ -130,6 +130,7 @@
             <! –– #### begin update detection #### ––>
 
 					<?php // Checks if URL exists
+					try {
 					function URL_exists(string $url): bool
 					{
 						return str_contains(get_headers($url)[0], "200 OK");
@@ -137,7 +138,8 @@
 					         // Sets $ServerExists to true if URL exists
 						if (URL_exists("https://littlelink-custom.tru.io/version.json")){
 							$ServerExists = "true";
-						} else {
+						}
+						} catch (exception $e) {
 							$ServerExists = "false";
 						}
 						?>
