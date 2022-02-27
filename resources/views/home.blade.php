@@ -103,11 +103,11 @@ foreach($pages as $page)
         <div class="updated" style="display:none">
         @foreach($updatedPages as $page)
           @if(file_exists(base_path("img/$page->littlelink_name" . ".png" )))
-          <a href="{{ config('app.url') }}/@<?= $page->littlelink_name ?>" target="_blank">
+          <a href="{{ url('') }}/@<?= $page->littlelink_name ?>" target="_blank">
           <img src="{{ asset("img/$page->littlelink_name" . ".png") }}" srcset="{{ asset("img/$page->littlelink_name" . "@2x.png 2x") }}" width="50px" height="50px">
           </a>
           @else
-          <a href="{{ config('app.url') }}/@<?= $page->littlelink_name ?>" target="_blank">
+          <a href="{{ url('') }}/@<?= $page->littlelink_name ?>" target="_blank">
           <img src="{{ asset('littlelink/images/logo.svg') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="50px" height="50px">
           </a>
           @endif

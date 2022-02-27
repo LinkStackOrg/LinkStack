@@ -103,9 +103,9 @@
 	        	<p>
 			    Copyright &copy; @php echo date('Y'); @endphp <i class="icon-heart" aria-hidden="true"></i> </br>
                <a href="/" target="_blank">Home</a> .
-               <a href="{{ config('app.url') }}/pages/terms" target="_blank">Terms</a> .
-               <a href="{{ config('app.url') }}/pages/privacy" target="_blank">Privacy</a> .
-               <a href="{{ config('app.url') }}/pages/contact" target="_blank">Contact</a>
+               <a href="{{ url('') }}/pages/terms" target="_blank">Terms</a> .
+               <a href="{{ url('') }}/pages/privacy" target="_blank">Privacy</a> .
+               <a href="{{ url('') }}/pages/contact" target="_blank">Contact</a>
             </p>
 	        </div>
 	      </div>
@@ -161,7 +161,7 @@
 				@endif
             <! –– #### end update detection #### ––>
 
-                    <a class="nav-link" href="{{ config('app.url') }}/@<?= Auth::user()->littlelink_name ?>" target="_blank">Watch Page</a>
+                    <a class="nav-link" href="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>" target="_blank">Watch Page</a>
                   </div>
                 </li>
               </ul>

@@ -29,7 +29,7 @@
             <label>Page URL</label>
 	          <div class="input-group">
 				  <div class="input-group-prepend">
-					<div class="input-group-text">{{ config('app.url') }}/@</div>
+					<div class="input-group-text">{{ url('') }}/@</div>
 				  </div>
 				  <input type="text" class="form-control" name="pageName" value="{{ $page->littlelink_name ?? '' }}">
 			  </div>

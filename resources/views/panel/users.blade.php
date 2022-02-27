@@ -12,10 +12,10 @@
           </div>
         </form>
         Users: 
-        <a href="{{ config('app.url') }}/panel/users/all">All</a> - 
-        <a href="{{ config('app.url') }}/panel/users/user">User</a> - 
-        <a href="{{ config('app.url') }}/panel/users/vip">Vip</a> - 
-        <a href="{{ config('app.url') }}/panel/users/admin">Admin</a> 
+        <a href="{{ url('') }}/panel/users/all">All</a> - 
+        <a href="{{ url('') }}/panel/users/user">User</a> - 
+        <a href="{{ url('') }}/panel/users/vip">Vip</a> - 
+        <a href="{{ url('') }}/panel/users/admin">Admin</a> 
 
         <table class="table table-bordered">
           <thead>
@@ -31,7 +31,7 @@
           @foreach($users as $user)
             <tr>
               <td> {{ $user->name }} </td>
-              <td><a href="{{ config('app.url') }}/@<?= $user->littlelink_name ?>" target="_blank" class="text-info"><i class="bi bi-box-arrow-up-right"></i>&nbsp; {{ $user->littlelink_name }} </a></td>
+              <td><a href="{{ url('') }}/@<?= $user->littlelink_name ?>" target="_blank" class="text-info"><i class="bi bi-box-arrow-up-right"></i>&nbsp; {{ $user->littlelink_name }} </a></td>
               <td>{{ $user->role }}</td>
               <td><a href="{{ route('editUser', $user->id ) }}">Edit</a></td>
               <td><a href="{{ route('blockUser', ['block' => $user->block, 'id' => $user->id] ) }}" class="text-danger">{{ $user->block }}</a></td>
