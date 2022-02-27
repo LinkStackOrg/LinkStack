@@ -120,7 +120,7 @@ When a **new version** is released, you will get an update notification on your 
 
 ### Disclaimer: Always make a backup  before updating in case something breaks!
 
-To update, simply download the 'update' file from the [release tab on GitHub](https://github.com/JulianPrieber/littlelink-custom/releases). Do not use the regular release for the update, as it contains files that will overwrite important files that store your links and user information, effectively resetting your installation.
+To update, simply download the 'update' file from the [here](https://github.com/JulianPrieber/littlelink-custom/tree/update). Do not use the regular release for the update, as it contains files that will overwrite important files that store your links and user information, effectively resetting your installation.
 
 The downloaded archive contains a 'README' which tells you exactly how to update.
 
