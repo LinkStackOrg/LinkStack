@@ -36,7 +36,7 @@
 	</script>
 		<?php // loads dark mode CSS if dark mode detected
 		     $color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : false; ?>
-		@if(strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome' !== false) and $color_scheme == 'dark')
+		@if($color_scheme == 'dark')
 		<link rel="stylesheet" href="{{ asset('css/app-dark.css') }}">
 		@endif
   <!-- end dark mode detection -->
