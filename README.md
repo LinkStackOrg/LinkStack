@@ -23,7 +23,7 @@
 </p>
 
 <p align="center">
-  <a href="littlelink-custom-demo.tru.io"><img src="https://i.imgur.com/EJNaMNW.png" alt="Live Demo" width="250" ></a>
+  <a href="https://littlelink-custom-demo.tru.io"><img src="https://i.imgur.com/EJNaMNW.png" alt="Live Demo" width="250" ></a>
 </p>
 
 ---
