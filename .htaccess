@@ -19,3 +19,13 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+# Restrict access to critical files
+<FilesMatch "^\.">
+Order allow,deny
+Deny from all
+</FilesMatch>
+<Files ~ "\.sqlite$">
+    Order allow,deny
+    Deny from all
+</Files>
