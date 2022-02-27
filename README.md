@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/JulianPrieber/littlelink-custom"><img src="https://i.imgur.com/qNe686V.png" alt="LittleLink Custom"></a>
+  <a href="https://littlelink-custom-demo.tru.io/"><img src="https://i.imgur.com/qNe686V.png" alt="LittleLink Custom"></a>
 </h1>
 
 <h4 align="center">The "plug and play" approach to LittleLink</h4>
@@ -47,10 +47,18 @@ On this website, other users can register and create their own links, you can ac
 	    
 ## Demo	    
 
-<h3 align="center">Try a live demonstration of the LittleLink page with button animations and selectable dark mode</h3>
-<br>	    
+<h3 align="center">Try a live demonstration of the LittleLink page and all its features</h3>
+This is a full-fledged demo of the website, complete with login and register functionality.
+Feel free to register your account and try out all the features of LittleLink Custom.
+
+<br>
+</br>
+
+> *Please take into account that performance on this page might not represent optimal performance achievable with LittleLink Custom due to compromises regarding our web hosting budget.*
+
+<br>
 <p align="center">
-  <a href="https://julianprieber.github.io/littlelink-custom-demo/"><img src="https://i.imgur.com/EJNaMNW.png" alt="Live Demo" width="350" ></a>
+  <a href="https://littlelink-custom-demo.tru.io/"><img src="https://i.imgur.com/EJNaMNW.png" alt="Live Demo" width="350" ></a>
 </p>
 	    
 ## Features
