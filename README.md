@@ -23,7 +23,7 @@
 </p>
 
 <p align="center">
-  <a href="https://julianprieber.github.io/littlelink-custom-demo/"><img src="https://i.imgur.com/EJNaMNW.png" alt="Live Demo" width="250" ></a>
+  <a href="littlelink-custom-demo.tru.io"><img src="https://i.imgur.com/EJNaMNW.png" alt="Live Demo" width="250" ></a>
 </p>
 
 ---
@@ -137,7 +137,7 @@ If the update contains new features like new buttons, you would have to use the 
 <br>
 
 ## Fork-Structure
-Fork of a fork of a fork of LittleLink...
+> *Fork of a fork of a fork of LittleLink...*
 <br>
 #### LittleLink fork-tree:
 <pre>
