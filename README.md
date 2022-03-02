@@ -72,7 +72,6 @@ Feel free to register your account and try out all the features of LittleLink Cu
 | Button hover animations                         |         ✔️         |        ❌        |        ❌        |
 | custom link option                              |         ✔️         |        ❌        |        ❌        |
 | Social Share Preview for individual users       |         ✔️         |        ❌        |        ❌        |
-| No database required                            |         ✔️         |        ❌        |        ❌        |
 | Update notice if new version is available       |         ✔️         |        ❌        |        ❌        |
 | Setup without command line                      |         ✔️         |        ❌        |        ❌        |
 		    
