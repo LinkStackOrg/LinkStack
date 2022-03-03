@@ -24,6 +24,13 @@
 		// detect changes and change the cookie
 		if (window.matchMedia)
 		window.matchMedia("(prefers-color-scheme: dark)").addListener( update_color_scheme );
+		// reloads page to apply the dark mode cookie
+		window.onload = function() {
+		    if(!window.location.hash && get_color_scheme() == "dark" && (get_color_scheme() != $color_scheme)) {
+		        window.location = window.location + '#dark';
+		        window.location.reload();
+		    }
+		}
 	</script>
 		<?php // loads dark mode CSS if dark mode detected
 		     $color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : false; ?>
