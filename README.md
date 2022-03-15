@@ -26,6 +26,11 @@
   <a href="https://littlelink-custom-demo.tru.io"><img src="https://i.imgur.com/EJNaMNW.png" alt="Live Demo" width="250" ></a>
 </p>
 
+<br>
+<p align="center">
+  <a href="https://blog.littlelink-custom.com"><img src="https://i.imgur.com/ZuuGLU5.png" alt="Read the official LittleLink Custom Dev Blog" width="350" ></a>
+</p>
+
 ---
 
 ## About
