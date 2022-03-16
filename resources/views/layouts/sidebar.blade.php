@@ -75,6 +75,9 @@
 	            <a href="#adminSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin</a>
 	            <ul class="collapse list-unstyled" id="adminSubmenu">
                 <li>
+                    <a href="{{ url('env-editor') }}">Config</a>
+                </li>
+                <li>
                     <a href="{{ url('panel/users/all') }}">Users</a>
                 </li>
                 <li>
