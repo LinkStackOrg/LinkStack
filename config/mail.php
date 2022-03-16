@@ -36,41 +36,51 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'host' => env('MAIL_HOST'),
+            'port' => env('MAIL_PORT'),
+            'encryption' => env('MAIL_ENCRYPTION'),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'auth_mode' => null,
+        'from' => [
+			'address' => env('MAIL_FROM_ADDRESS'),
+			'name' => env('MAIL_FROM_NAME'),
+			],
         ],
 
-        'ses' => [
-            'transport' => 'ses',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Built in SMTP server
+    |--------------------------------------------------------------------------
+    |
+    | LittleLink Custom now includes an open and free to use SMTP server. 
+    | Mails from this service may only be used for
+    | password recovery and registration purposes involving
+    | users personal LittleLink Custom or LittleLink Admin pages.
+    | Users of this service must abide by our Terms and Conditions
+    | found at https://llc-mail.tru.io/.
+    |
+    */
+
+        'built-in' => [
+            'transport' => 'smtp',
+            'host' => 'llc-mail.tru.io',
+            'port' => '587',
+            'encryption' => 'tls',
+            'username' => 'littlelink-custom@llc-mail.tru.io',
+            'password' => 'fTwsn=eNB4',
+            'timeout' => null,
+            'auth_mode' => null,
+        'from' => [
+			'address' => 'littlelink-custom@llc-mail.tru.io',
+			'name' => env('MAIL_FROM_NAME'),
+			],
         ],
 
-        'mailgun' => [
-            'transport' => 'mailgun',
-        ],
-
-        'postmark' => [
-            'transport' => 'postmark',
-        ],
-
-        'sendmail' => [
-            'transport' => 'sendmail',
-            'path' => '/usr/sbin/sendmail -bs',
-        ],
-
-        'log' => [
-            'transport' => 'log',
-            'channel' => env('MAIL_LOG_CHANNEL'),
-        ],
-
-        'array' => [
-            'transport' => 'array',
-        ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -82,11 +92,6 @@ return [
     | used globally for all e-mails that are sent by your application.
     |
     */
-
-    'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
-    ],
 
     /*
     |--------------------------------------------------------------------------
