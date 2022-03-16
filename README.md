@@ -78,6 +78,7 @@ Feel free to register your account and try out all the features of LittleLink Cu
 | custom link option                              |         ✔️         |        ❌        |        ❌        |
 | Social Share Preview for individual users       |         ✔️         |        ❌        |        ❌        |
 | Update notice if new version is available       |         ✔️         |        ❌        |        ❌        |
+| Built in SMTP server                            |         ✔️         |        ❌        |        ❌        |
 | Setup without command line                      |         ✔️         |        ❌        |        ❌        |
 		    
 ¹[littlelink-admin](https://github.com/latuminggi) by [latuminggi](https://github.com/latuminggi/littlelink-admin) | 
