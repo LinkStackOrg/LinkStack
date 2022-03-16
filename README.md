@@ -194,4 +194,5 @@ LittleLink Admin is in itself a fork of [LittleLink](https://github.com/sethcott
 - [panel template](https://colorlib.com/wp/bootstrap-sidebar)
 - [button animations](https://github.com/IanLunn/Hover)
 - [general animations](https://github.com/animate-css/animate.css)
+- [config editor](https://github.com/GeoSot/Laravel-EnvEditor)
 
