@@ -109,10 +109,10 @@
             </form>
 	        </ul>
 
-	        <div class="footer" style="display:none">
+	        <div class="footer">
 	        	<p>
-			    Copyright &copy; @php echo date('Y'); @endphp <i class="icon-heart" aria-hidden="true"></i> </br>
-               <a href="/" target="_blank">Home</a> .
+			    Copyright &copy; @php echo date('Y'); @endphp {{ config('app.name') }}<i class="icon-heart" aria-hidden="true"></i> </br>
+               <a href="{{ url('') }}/">Home</a> .
                <a href="{{ url('') }}/pages/terms" target="_blank">Terms</a> .
                <a href="{{ url('') }}/pages/privacy" target="_blank">Privacy</a> .
                <a href="{{ url('') }}/pages/contact" target="_blank">Contact</a>

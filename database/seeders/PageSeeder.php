@@ -26,7 +26,7 @@ class PageSeeder extends Seeder
                 ',
 
                 'contact' => '
-                 Send your suggestions and criticisms to khashayar.zavosh@gmail.com
+                 Send your suggestions and criticisms to info@littlelink-custom.com
                 ',
 
                 'home_message' => '
