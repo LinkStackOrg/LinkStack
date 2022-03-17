@@ -412,3 +412,23 @@ button:hover,
 .button.button-xing:focus {
   filter: brightness(90%);
 }
+
+/* Buy Me a Coffee */
+.button.button-coffee {
+  color: #100a26;
+  background-color: #ffdd00;
+}
+.button.button-coffee:hover,
+.button.button-coffee:focus {
+  filter: brightness(90%);
+}
+
+/* Website */
+.button.button-website {
+  color: #ffffff;
+  background-color: #000000;
+}
+.button.button-web:hover,
+.button.button-web:focus {
+  filter: brightness(90%);
+}

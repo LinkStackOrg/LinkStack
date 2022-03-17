@@ -167,6 +167,14 @@ class ButtonSeeder extends Seeder
             [
                 'name' => 'xing'
             ],
+
+            [
+                'name' => 'buy me a coffee'
+            ],
+
+            [
+                'name' => 'website'
+            ],
         ];
 
          Button::insert($buttons);
