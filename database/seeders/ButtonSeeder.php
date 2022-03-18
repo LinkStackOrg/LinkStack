@@ -19,6 +19,10 @@ class ButtonSeeder extends Seeder
         	[
                 'name' => 'custom'
             ],
+
+            [
+                'name' => 'custom_website'
+            ],
             
             [
                 'name' => 'github'

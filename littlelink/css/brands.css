@@ -428,6 +428,13 @@ button:hover,
   color: #ffffff;
   background-color: #000000;
 }
+
+/* Custom Website */
+.button.button-custom_website {
+  color: #ffffff;
+  background-color: #000000;
+}
+
 .button.button-web:hover,
 .button.button-web:focus {
   filter: brightness(90%);
