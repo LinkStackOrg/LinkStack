@@ -18,11 +18,7 @@
           <label for="exampleFormControlSelect1">Button*</label>
           <select class="form-control" name="button">
             @foreach($buttons as $button)
-            @if($button->name == 'custom')
-            <option>Custom button (Title determines text on button)</option>
-            @else
             <option> {{ $button->name }} </option>
-            @endif
             @endforeach
           </select>
           <br>
