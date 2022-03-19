@@ -1,8 +1,11 @@
+#Email verification=Changes if users have to verify their email after registration.
+#=Register_auth either auth or verified. If auth is selected, no verification is required. Default is verified.
+Register_auth=verified
+
 #App Settings=Changes settings regarding your LittleLink Custom installation. You probably only want to change the App Name setting.
 #=App_Name changes  the displayed name for the App in the title, for example.
 App_Name="LittleLink Custom"
-# You can get a new App Key from https://littlelink-custom.com/key.php
-App_Key=base64:YOU+MUST+CHANGE+THIS+YUFukELiN6Bk9gQ19+9zwk=
+APP_KEY=base64:YOU+MUST+CHANGE+THIS+YUFukELiN6Bk9gQ19+9zwk=
 App_URL=
 
 

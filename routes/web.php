@@ -26,7 +26,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('hom
 
 //User route
 Route::group([
-    'middleware' => 'auth',
+    'middleware' => env('REGISTER_AUTH'),
 ], function () {
 URL::forceScheme('https'); # comment to disable https
 Route::get('/studio/index', [UserController::class, 'index'])->name('studioIndex');
