@@ -146,7 +146,7 @@
 						return str_contains(get_headers($url)[0], "200 OK");
 					}
 					         // Sets $ServerExists to true if URL exists
-						if (URL_exists("https://littlelink-custom.com/version.json")){
+						if (URL_exists("https://julianprieber.github.io/littlelink-custom/version.json")){
 							$ServerExists = "true";
 						}
 						} catch (exception $e) {
@@ -158,7 +158,7 @@
                 @if(file_exists(base_path("version.json")) and $ServerExists == 'true')
 
                   <?php // Requests newest version from server and sets it as variable
-                  $Vgit = file_get_contents("https://littlelink-custom.com/version.json"); 
+                  $Vgit = file_get_contents("https://julianprieber.github.io/littlelink-custom/version.json"); 
 
 				       // Requests current version from the local version file and sets it as variable
                   $Vlocal = file_get_contents(base_path("version.json")); 
