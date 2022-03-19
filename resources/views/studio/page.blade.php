@@ -26,6 +26,10 @@
           </div>-->
           
           <div class="form-group col-lg-8">
+           <?php 
+            $url = $_SERVER['REQUEST_URI'];
+             if( strpos( $url, "no_page_name" ) == true ) echo '<span style="color:#FF0000; font-size:120%;">You do not have a Page URL</span>'; ?>
+              <br>
             <label>Page URL</label>
 	          <div class="input-group">
 				  <div class="input-group-prepend">

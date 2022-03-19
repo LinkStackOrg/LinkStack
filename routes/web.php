@@ -17,6 +17,11 @@ use App\Http\Controllers\UserController;
 |
 */
 
+//Redirect if no page URL is set
+Route::get('/@', function () {
+    return redirect('/studio/no_page_name');
+});
+
 //Public route
 Route::get('/going/{id?}/{link?}', [UserController::class, 'clickNumber'])->where('link', '.*')->name('clickNumber');
 Route::get('/+{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
@@ -38,6 +43,7 @@ Route::get('/upLink/{up}/{id}', [UserController::class, 'upLink'])->name('upLink
 Route::get('/studio/edit-link/{id}', [UserController::class, 'showLink'])->name('showLink');
 Route::post('/studio/edit-link/{id}', [UserController::class, 'editLink'])->name('editLink');
 Route::get('/studio/page', [UserController::class, 'showPage'])->name('showPage');
+Route::get('/studio/no_page_name', [UserController::class, 'showPage'])->name('showPage');
 Route::post('/studio/page', [UserController::class, 'editPage'])->name('editPage');
 Route::get('/studio/profile', [UserController::class, 'showProfile'])->name('showProfile');
 Route::post('/studio/profile', [UserController::class, 'editProfile'])->name('editProfile');
