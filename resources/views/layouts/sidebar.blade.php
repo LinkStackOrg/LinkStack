@@ -35,7 +35,7 @@
 		<?php // loads dark mode CSS if dark mode detected
 		     $color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : false; ?>
 		@if ($color_scheme == 'dark')
-					<!-- switch the two <link> Tags below to default to dark mode if cookie detection fails -->
+					<!-- switch the two <link> Tags below to default to dark mode if cookie detection fails -->
 					<link rel="stylesheet" href="{{ asset('/studio/css/bootstrap.min-dark.css') }}">
 					<link rel="stylesheet" href="{{ asset('/studio/css/style-dashboard-dark.css') }}">
 				@else
@@ -138,7 +138,7 @@
                   <div class="row">
 
             <! –– #### begin update detection #### ––>
-
+	@if(env('Notify_updates') === true)
 					<?php // Checks if URL exists
 					try {
 					function URL_exists(string $url): bool
@@ -169,16 +169,53 @@
 					<a style="color:#007bff" class="nav-link" href="https://littlelink-custom.com/how-to-update.html" target="_blank" title="Click here to learn more about how to update">An update is available</a>
 					@endif
 				@endif
+	@endif
             <! –– #### end update detection #### ––>
 
                     <a class="nav-link" href="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>" target="_blank">Watch Page</a>
                   </div>
                 </li>
               </ul>
-            </div>
+            </div
           </div>
         </nav>
-
+      <! –– #### begin event detection #### ––>
+		<?php
+			try {
+				function URL_event_exists(string $url): bool
+				{
+				return str_contains(get_headers($url)[0], "200 OK");
+					}
+						if (URL_event_exists("https://julianprieber.github.io/littlelink-custom-events/event.json")){
+							$EventServerExists = "true";
+						}
+							} catch (exception $e) {
+								$EventServerExists = "false";
+							}
+						?>
+	@if(env('Notify_events') === true and $EventServerExists == 'true')
+        <?php
+        $GetEventJson = file_get_contents("https://julianprieber.github.io/littlelink-custom-events/event.json");
+		$EventJson = json_decode($GetEventJson, true);
+		?>
+		@if(auth()->user()->role == 'admin' and strtotime(date("d-m-Y")) < strtotime($EventJson['enddate']))
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+					<a class="nav-link" href="{{ $EventJson['link'] }}" target="{{ $EventJson['target'] }}"><mark onMouseOver="{{ $EventJson['hoveron'] }}" onMouseOut="{{ $EventJson['hoveroff'] }}" style="{{ $EventJson['style'] }}" title="{{ $EventJson['hover'] }}">{{ $EventJson['title'] }}</mark></a>
+            </div>
+		</nav>
+		@endif
+	@endif
+	@if(env('Notify_events') === false and auth()->user()->role == 'admin')
+		<a href="{{ url('env-editor') }}" id="notify" style="color:#F75D59; font-weight:600; font-size:120%; background-color:#F5FFFA;"></a>
+<script>
+if(localStorage.getItem("firstTime")==null){
+   document.getElementById("notify").innerHTML = "➡️ Click here to get notified about important events or security vulnerabilities";
+   localStorage.setItem("firstTime","done");
+}
+</script>
+			@endif
+      <! –– #### end event detection #### ––>
               @yield('content')
 
              </div>

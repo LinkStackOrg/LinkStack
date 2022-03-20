@@ -2,12 +2,15 @@
 #=Register_auth either auth or verified. If auth is selected, no verification is required. Default is verified.
 Register_auth=verified
 
+#Internal notifications=Notify if update is available or and event is happening such as a poll about the future of this project.
+Notify_events=false
+Notify_updates=true
+
 #App Settings=Changes settings regarding your LittleLink Custom installation. You probably only want to change the App Name setting.
 #=App_Name changes  the displayed name for the App in the title, for example.
 App_Name="LittleLink Custom"
 APP_KEY=base64:YOU+MUST+CHANGE+THIS+YUFukELiN6Bk9gQ19+9zwk=
 App_URL=
-
 
 #Debug Settings=Changes if your page should display a full error description instead of a generic error 500
 #=App_debug either true or false. You might want to change this to false after you're done installing, but it's very useful for troubleshooting.
@@ -17,10 +20,8 @@ App_env=local
 Log_channel=stack
 Log_level=debug
 
-
 #Database Settings=Should be left alone. If you wish to use mysql you'd have to seed the database again.
 DB_connection=sqlite
-
 
 #Mail Settings=LittleLink Custom comes with a free to use built-in SMTP server for sending mail. You can leave this setting as is, if you wish to use this service please read our terms and conditions at llc-mail.tru.io. If you do not wish to use the built-in SMTP server, change the setting below
 #=Mail_mailer either smtp or built-in. Make sure to change this setting if you want to add a custom SMTP server.
@@ -33,13 +34,11 @@ Mail_encryption=
 Mail_from_address=
 Mail_from_name="${app_name}"
 
-
 #Cache Settings=Completely optional
 Memcached_host=127.0.0.1
 Redis_host=127.0.0.1
 Redis_password=null
 Redis_port=6379
-
 
 #Miscellaneous Settings=Should be left alone if you don't know what you're doing.
 Broadcast_driver=log
