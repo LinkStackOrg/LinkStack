@@ -4,6 +4,8 @@
   	<title>Studio ⚙️ {{ config('app.name') }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
+    <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
 
     <link href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
@@ -108,8 +110,8 @@
              <button type="submit" class="buttonLogout">Logout</button>
             </form>
 	        </ul>
-
 	        <div class="footer">
+		@if(env('DISPLAY_FOOTER') === true)
 	        	<p>
 			    Copyright &copy; @php echo date('Y'); @endphp {{ config('app.name') }}<i class="icon-heart" aria-hidden="true"></i> </br>
                <a href="{{ url('') }}/">Home</a> .
@@ -117,6 +119,20 @@
                <a href="{{ url('') }}/pages/privacy" target="_blank">Privacy</a> .
                <a href="{{ url('') }}/pages/contact" target="_blank">Contact</a>
             </p>
+			@endif
+@if(env('DISPLAY_CREDIT') === true)
+<a href="https://littlelink-custom.com" target="_blank" title="Learn more">
+	<section class="hvr-grow fadein sections">
+		<div class="parent-footers" >
+			<img id="footer_spin" class="footer_spin image-footers1" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="LittleLink Custom"></img>
+			<img class="image-footers2" src="{{ asset('littlelink/images/just-ll.svg') }}" alt="LittleLink Custom"></img>
+		</div>
+
+		<a class="text-footers" style="color: #FFFFFF; font-weight: 700; font-size: 15px;">&nbsp;&nbsp;Powered by</a><br>
+		<a class="text-footers" style="color: #FFFFFF; font-weight: 700; font-size: 15px;">LittleLink Custom</a>
+	</section>
+</a>
+@endif
 	        </div>
 	      </div>
     	</nav>

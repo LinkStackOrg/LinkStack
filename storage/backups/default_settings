@@ -5,6 +5,8 @@ REGISTER_AUTH=verified
 #Internal notifications=Notify if update is available or and event is happening such as a poll about the future of this project.
 NOTIFY_EVENTS=true
 NOTIFY_UPDATES=true
+DISPLAY_FOOTER=true
+DISPLAY_CREDIT=true
 
 #App Settings=Changes settings regarding your LittleLink Custom installation. You probably only want to change the App Name setting.
 #=App_Name changes  the displayed name for the App in the title, for example.
