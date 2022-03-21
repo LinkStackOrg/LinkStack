@@ -27,9 +27,9 @@
             </li>
         </ul>
 
-	@if(env('Notify_events') === false)
+	@if(env('NOTIFY_EVENTS') === false)
 <br><br>
-<a style="color:#ffbb39; font-weight:300; font-size:120%;">You currently have Event Notifications disabled. To get notified about polls, possible security vulnerabilities or important news, change the setting <code>Notify_events</code> below to <code>true</code>. If you enable this and an event is happening, a small text will pop up on your Admin Panel which will only be visible for admins.</a>
+<a style="color:#ffbb39; font-weight:300; font-size:120%;">You currently have Event Notifications disabled. To get notified about polls, possible security vulnerabilities or important news, change the setting <code>NOTIFY_EVENTS</code> below to <code>true</code>. If you enable this and an event is happening, a small text will pop up on your Admin Panel which will only be visible for admins.</a>
 	@endif
 
         <div class="tab-content" id="nav-tabContent">

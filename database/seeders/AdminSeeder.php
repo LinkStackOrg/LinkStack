@@ -20,6 +20,7 @@ class AdminSeeder extends Seeder
             [
                 'name' => 'admin',
                 'email' => 'admin@admin.com',
+                'email_verified_at' => '0000-00-00 00:00:00',
                 'password' => Hash::make('12345678'),
                 'role' => 'admin',
                 'littlelink_name' => 'admin',

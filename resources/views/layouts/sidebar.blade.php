@@ -138,7 +138,7 @@
                   <div class="row">
 
             <! –– #### begin update detection #### ––>
-	@if(env('Notify_updates') === true)
+	@if(env('NOTIFY_UPDATES') === true)
 					<?php // Checks if URL exists
 					try {
 					function URL_exists(string $url): bool
@@ -193,7 +193,7 @@
 								$EventServerExists = "false";
 							}
 						?>
-	@if(env('Notify_events') === true and $EventServerExists == 'true')
+	@if(env('NOTIFY_EVENTS') === true and $EventServerExists == 'true')
         <?php
         $GetEventJson = file_get_contents("https://julianprieber.github.io/littlelink-custom-events/event.json");
 		$EventJson = json_decode($GetEventJson, true);
@@ -221,7 +221,7 @@
 		</nav>
 		@endif
 	@endif
-	@if(env('Notify_events') === false and auth()->user()->role == 'admin')
+	@if(env('NOTIFY_EVENTS') === false and auth()->user()->role == 'admin')
 		<a href="{{ url('env-editor') }}" id="notify" style="color:#F75D59; font-weight:600; font-size:120%; background-color:#F5FFFA;"></a>
 <script>
 if(localStorage.getItem("firstTime")==null){
