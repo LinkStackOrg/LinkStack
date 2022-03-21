@@ -23,7 +23,7 @@
 </p>
 
 <p align="center">
-  <a href="https://demo.littlelink-custom.com"><img src="https://i.imgur.com/VzPWZyQ.png" alt="Live Demo" width="280" ></a><a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+  <a href="https://blog.littlelink-custom.com"><img src="https://i.imgur.com/VzPWZyQ.png" alt="Live Demo" width="280" ></a><a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
   <a href="https://demo.littlelink-custom.com"><img src="https://i.imgur.com/EJNaMNW.png" alt="Live Demo" width="280" ></a>
 </p>
 
@@ -56,7 +56,7 @@ Feel free to register your account and try out all the features of LittleLink Cu
 
 <br>
 <p align="center">
-  <a href="https://blog.littlelink-custom.com/"><img src="https://i.imgur.com/EJNaMNW.png" alt="Live Demo" width="350" ></a>
+  <a href="https://demo.littlelink-custom.com/"><img src="https://i.imgur.com/EJNaMNW.png" alt="Live Demo" width="350" ></a>
 </p>
 	    
 ## Features
