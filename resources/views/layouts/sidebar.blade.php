@@ -210,13 +210,13 @@
 
 
 					<a class="nav-link" href="{{ $EventJson['link'] }}" target="{{ $EventJson['target'] }}"><mark onMouseOver="{{ $EventJson['hoveron'] }}" onMouseOut="{{ $EventJson['hoveroff'] }}" style="{{ $EventJson['style'] }}" title="{{ $EventJson['hover'] }}">{{ $EventJson['title'] }}</mark></a> <a href="?hide_event" title="Click to hide this message">❌</a>
-<?php
-if (strpos($_SERVER['REQUEST_URI'], "hide_event") !== false){
-    setcookie("HideEvent",$_COOKIE['ID'] = $EventJson['id'], time()+60*60*24*5, "/");
-    header('Location: ' . url('/panel/index'));
-    exit();
-} 
-?>
+    <?php
+        if (strpos($_SERVER['REQUEST_URI'], "hide_event") !== false){
+        setcookie("HideEvent",$_COOKIE['ID'] = $EventJson['id'], time()+60*60*24*5, "/");
+        header('Location: ' . url('/panel/index'));
+          exit();
+            } 
+            ?>
             </div>
 		</nav>
 		@endif
