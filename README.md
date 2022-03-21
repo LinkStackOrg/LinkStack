@@ -23,12 +23,10 @@
 </p>
 
 <p align="center">
-  <a href="https://demo.littlelink-custom.com"><img src="https://i.imgur.com/EJNaMNW.png" alt="Live Demo" width="250" ></a>
+  <a href="https://demo.littlelink-custom.com"><img src="https://i.imgur.com/EJNaMNW.png" alt="Live Demo" width="280" ></a>
 </p>
-
-<br>
 <p align="center">
-  <a href="https://blog.littlelink-custom.com"><img src="https://i.imgur.com/ZuuGLU5.png" alt="Read the official LittleLink Custom Dev Blog" width="350" ></a>
+  <a href="https://blog.littlelink-custom.com"><img src="https://i.imgur.com/ZuuGLU5.png" alt="Read the official LittleLink Custom Dev Blog" width="200" ></a>
 </p>
 
 ---
