@@ -15,7 +15,7 @@
 			<img class="image-footer2" src="{{ asset('littlelink/images/just-ll.svg') }}" alt="LittleLink Custom"></img>
 		</div>
 
-		<a style="color: #FFFFFF; font-weight: 700; font-size: 15px;">Powered by LittleLink Custom</a>
+		<a href="" style="color: #FFFFFF; font-weight: 700; font-size: 15px;">Powered by LittleLink Custom</a>
 	</section>
 </a><br><br><br>
 @endif

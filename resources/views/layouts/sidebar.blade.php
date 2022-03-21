@@ -128,8 +128,8 @@
 			<img class="image-footers2" src="{{ asset('littlelink/images/just-ll.svg') }}" alt="LittleLink Custom"></img>
 		</div>
 
-		<a class="text-footers" style="color: #FFFFFF; font-weight: 700; font-size: 15px;">&nbsp;&nbsp;Powered by</a><br>
-		<a class="text-footers" style="color: #FFFFFF; font-weight: 700; font-size: 15px;">LittleLink Custom</a>
+		<a href="" class="text-footers" style="color: #FFFFFF; font-weight: 700; font-size: 15px;">&nbsp;&nbsp;Powered by</a><br>
+		<a href="" class="text-footers" style="color: #FFFFFF; font-weight: 700; font-size: 15px;">LittleLink Custom</a>
 	</section>
 </a>
 @endif
