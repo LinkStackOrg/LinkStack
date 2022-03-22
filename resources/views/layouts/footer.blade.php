@@ -8,6 +8,11 @@
 </div>
 
 @if(env('DISPLAY_CREDIT') === true)
+<?php if ($color_scheme == 'dark') {
+			$textcolor = '#FFFFFF';
+				} else {
+					$textcolor = '#100a26';
+						} ?>
 <a href="https://littlelink-custom.com" target="_blank" title="Learn more">
 	<section class="hvr-grow fadein">
 		<div class="parent-footer" >
@@ -15,7 +20,7 @@
 			<img class="image-footer2" src="{{ asset('littlelink/images/just-ll.svg') }}" alt="LittleLink Custom"></img>
 		</div>
 
-		<a href="https://littlelink-custom.com" style="color: #FFFFFF; font-weight: 700; font-size: 15px;">Powered by LittleLink Custom</a>
+		<a href="https://littlelink-custom.com" style="color: {{ $textcolor }}; font-weight: 700; font-size: 15px;">Powered by LittleLink Custom</a>
 	</section>
 </a><br><br><br>
 @endif
