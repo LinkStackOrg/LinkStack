@@ -16,6 +16,7 @@
   <a href="#Features">Features</a> •
   <a href="#Installation">Installation</a> •
   <a href="#Updating">Updating</a> •
+  <a href="#Discord">Discord</a> •
   <a href="#Fork-Structure">Fork structure</a> •
   <a href="#License">License</a> •
   <a href="#Special-thanks">Special thanks</a> •
@@ -23,8 +24,12 @@
 </p>
 
 <p align="center">
-  <a href="https://blog.littlelink-custom.com"><img src="https://i.imgur.com/VzPWZyQ.png" alt="Live Demo" width="280" ></a><a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+  <a href="https://blog.littlelink-custom.com"><img src="https://i.imgur.com/VzPWZyQ.png" alt="Blog" width="280" ></a><a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
   <a href="https://demo.littlelink-custom.com"><img src="https://i.imgur.com/EJNaMNW.png" alt="Live Demo" width="280" ></a>
+</p>
+
+<p align="center">
+  <a href="#Discord"><img src="https://i.imgur.com/BsKFWqk.png" alt="Join the Discord" width="280" ></a>
 </p>
 
 ---
@@ -132,8 +137,15 @@ The downloaded archive contains a 'README' which tells you exactly how to update
 
 In most cases, you will just have to move the contents of the update file into your LittleLink Custom directory. It is essential to overwrite existing files for the updates to apply.
 
-### Exceptions:
-If the update contains new features like new buttons, you would have to use the command line to implement these new features. This step will always be optional. Instructions on how to do this will always be in the 'README' file.
+## Discord
+
+<br>
+
+<p align="center">
+  <a href="https://discord.littlelink-custom.com"><img src="https://i.imgur.com/92ceyuH.png" alt="Join the Discord" width="600" ></a>
+</p>
+
+<br>
 
 <br>
 
@@ -192,4 +204,3 @@ LittleLink Admin is in itself a fork of [LittleLink](https://github.com/sethcott
 - [button animations](https://github.com/IanLunn/Hover)
 - [general animations](https://github.com/animate-css/animate.css)
 - [config editor](https://github.com/GeoSot/Laravel-EnvEditor)
-
