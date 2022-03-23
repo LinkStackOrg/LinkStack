@@ -73,7 +73,7 @@
           <h1 class="display-4">{{ $name }}</h1>
           <hr class="my-4">
           <p>
-          {{ $data['page']->$name }}
+            <?php echo $data['page']->$name; ?>
           </p>
           <p class="lead">
           </p>
