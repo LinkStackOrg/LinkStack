@@ -19,7 +19,10 @@ return [
             'currentEnv' => 'Current .env',
         ],
         'currentEnv' => [
-            'title'       => 'Current .env file Content',
+            'title'       => '
+            To be able to save values you see here PHP needs to be able to write to your current directory.
+            Strings with a # in front of them are comments and wont affect anything.
+',
             'tableTitles' => [
                 'key'     => 'Key',
                 'value'   => 'Value',

@@ -17,6 +17,14 @@ use App\Http\Controllers\UserController;
 |
 */
 
+//Changes the homepage to a LittleLink Custom profile if set in the config
+if(env('HOME_URL') != '') {
+  Route::get('/', [UserController::class, 'littlelinkhome'])->name('littlelink');
+  Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+} else {
+  Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+}
+
 //Redirect if no page URL is set
 Route::get('/@', function () {
     return redirect('/studio/no_page_name');
@@ -27,7 +35,6 @@ Route::get('/going/{id?}/{link?}', [UserController::class, 'clickNumber'])->wher
 Route::get('/+{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
 Route::get('/@{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
 Route::get('/pages/{name}', [AdminController::class, 'pages'])->name('pages');
-Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 
 //User route
 Route::group([
