@@ -71,6 +71,7 @@ Route::get('/panel/pages', [AdminController::class, 'showSitePage'])->name('show
 Route::post('/panel/pages', [AdminController::class, 'editSitePage'])->name('editSitePage');
 Route::get('/panel/site', [AdminController::class, 'showSite'])->name('showSite');
 Route::post('/panel/site', [AdminController::class, 'editSite'])->name('editSite');
+Route::get('/panel/phpinfo', [AdminController::class, 'phpinfo'])->name('phpinfo');
 });
 
 require __DIR__.'/auth.php';

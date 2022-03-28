@@ -177,4 +177,11 @@ class AdminController extends Controller
 
         return view('pages', ['data' => $data, 'name' => $name]);
     }
+
+    //Statistics of the number of clicks and links 
+    public function phpinfo()
+    {
+        return view('panel/phpinfo');
+    }
+
 }
