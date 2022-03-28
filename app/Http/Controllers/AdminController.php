@@ -98,12 +98,12 @@ class AdminController extends Controller
     public function editUser(request $request)
     {
     	$request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'littlelink_name' => 'required',
+            'name' => '',
+            'email' => '',
+            'password' => '',
+            'littlelink_name' => '',
         ]);
-        
+    
         $id = $request->id;
         $name = $request->name;
         $email = $request->email;
@@ -113,8 +113,11 @@ class AdminController extends Controller
         $littlelink_description = $request->littlelink_description;
         $role = $request->role;
         
+        if($request->password == '' ) {
+        User::where('id', $id)->update(['name' => $name, 'email' => $email, 'littlelink_name' => $littlelink_name, 'littlelink_description' => $littlelink_description, 'role' => $role]);
+          } else {
         User::where('id', $id)->update(['name' => $name, 'email' => $email, 'password' => $password, 'littlelink_name' => $littlelink_name, 'littlelink_description' => $littlelink_description, 'role' => $role]);
-
+        }
         if(!empty($profilePhoto)){
         $profilePhoto->move(base_path('/img'), $littlelink_name . ".png");
         }
