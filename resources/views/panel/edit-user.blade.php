@@ -16,7 +16,7 @@
           </div>
           <div class="form-group col-lg-8">
             <label>Password</label>
-            <input type="password" class="form-control" name="password" placeholder="if empty, password will blank">
+            <input type="password" class="form-control" name="password" placeholder="Leave empty for no change">
           </div>
           
           <div class="form-group col-lg-8">
@@ -30,7 +30,7 @@
           @elseif(file_exists(base_path("littlelink/images/avatar.png" )))
           <img class="rounded-avatar" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
           @else
-          <img src="{{ asset('littlelink/images/logo.svg') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}">
+          <img src="{{ asset('littlelink/images/logo.svg') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
           @endif
           </div>
           
@@ -56,9 +56,9 @@
           <div class="form-group col-lg-8">
             <label for="exampleFormControlSelect1">Role</label>
             <select class="form-control" name="role">
-              <option <?= ($user->role === strtolower('User')) ? 'selected' : '' ?>>User</option>
-              <option <?= ($user->role === strtolower('VIP')) ? 'selected' : '' ?>>VIP</option>
-              <option <?= ($user->role === strtolower('Admin')) ? 'selected' : '' ?>>Admin</option>
+              <option <?= ($user->role === strtolower('user')) ? 'selected' : '' ?>>user</option>
+              <option <?= ($user->role === strtolower('vip')) ? 'selected' : '' ?>>vip</option>
+              <option <?= ($user->role === strtolower('admin')) ? 'selected' : '' ?>>admin</option>
             </select>
           </div>
           @endforeach
