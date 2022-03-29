@@ -39,7 +39,6 @@
   max-width: 600px;
   text-align: center;
   margin: 0 auto;
-  padding: 0 20px;
   box-sizing: border-box; }
 .column {
   position: center;
@@ -110,6 +109,9 @@ a {
 a:hover {
   color: #0085FF; }
 
+.spacing {
+  padding: 0 10px;
+}
 
 /* Code
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

@@ -1,9 +1,9 @@
 <div class="footer fadein" style="margin:5% 0px 35px 0px;">
 @if(env('DISPLAY_FOOTER') === true)
-    <a class="hvr-float" href="{{ url('') }}/">Home</a>
-    <a class="hvr-float" href="{{ url('') }}/pages/terms">Terms</a>
-    <a class="hvr-float" href="{{ url('') }}/pages/privacy">Privacy</a>
-    <a class="hvr-float" href="{{ url('') }}/pages/contact">Contact</a>
+    <a class="hvr-float spacing" href="{{ url('') }}/">Home</a>
+    <a class="hvr-float spacing" href="{{ url('') }}/pages/terms">Terms</a>
+    <a class="hvr-float spacing" href="{{ url('') }}/pages/privacy">Privacy</a>
+    <a class="hvr-float spacing" href="{{ url('') }}/pages/contact">Contact</a>
 @endif
 </div>
 

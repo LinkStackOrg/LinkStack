@@ -66,12 +66,12 @@ foreach($pages as $page)
     <div class="sign" style="margin-top: 30px; text-align: right;">
             @if (Route::has('login'))
                     @auth
-                        <a href="{{ route('studioIndex') }}" class="underline">Studio</a>
+                        <a href="{{ route('studioIndex') }}" class="underline spacing">Studio</a>
                     @else
-                        <a href="{{ route('login') }}" class="underline">Log in</a>
+                        <a href="{{ route('login') }}" class="underline spacing">Log in</a>
 
                         @if (Route::has('register') and $page->register == 'true')
-                            <a href="{{ route('register') }}" class="underline">Register</a>
+                            <a href="{{ route('register') }}" class="underline spacing">Register</a>
                         @endif
                     @endauth
               @endif
