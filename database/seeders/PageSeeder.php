@@ -257,15 +257,7 @@ class PageSeeder extends Seeder
 
 <p><strong>4. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?</strong></p>
 
-<p><strong><em>In Short:</em></strong><em>&nbsp;We may share information in specific situations described in this section and/or with the following categories of third parties.</em></p>
-
-<p><strong>Vendors, Consultants, and Other Third-Party Service Providers.</strong> We may share your data with third-party vendors, service providers, contractors, or agents (&ldquo;<strong>third parties</strong>&rdquo;) who perform services for us or on our behalf and require access to such information to do that work. The categories of third parties we may share personal information with are as follows:</p>
-
-<p>We also may need to share your personal information in the following situations:</p>
-
-<ul>
-	<li><strong>Business Transfers.</strong> We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.</li>
-</ul>
+<p><strong><em>In Short:</em></strong><em>&nbsp;We do not disclose any personal information to any party under any circumstance.</em></p>
 
 <p><strong>5. DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?</strong></p>
 
