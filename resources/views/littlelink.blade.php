@@ -41,6 +41,7 @@
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
+  <link rel="stylesheet" href="{{ asset('littlelink/css/share.button.css') }}">
   @if(file_exists(base_path("littlelink/images/avatar.png" )))
   <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
   @else
@@ -61,7 +62,7 @@
   	@media (max-width: 767px) {
   	}
   </style>
-
+  
   <!-- begin dark mode detection -->
 	<script src="{{ asset('littlelink/js/js.cookie.min.js') }}"></script>
 	<script>
@@ -98,9 +99,77 @@
   <!-- end dark mode detection -->
 </head>
 <body>
+
+<?php ////begin share button//// ?>
+<?php 
+//Get browser type
+$arr_browsers = ["Opera", "Edg", "Chrome", "Safari", "Firefox", "MSIE", "Trident"];
+ 
+$agent = $_SERVER['HTTP_USER_AGENT'];
+ 
+$user_browser = '';
+foreach ($arr_browsers as $browser) {
+    if (strpos($agent, $browser) !== false) {
+        $user_browser = $browser;
+        break;
+    }   
+}
+  
+switch ($user_browser) {
+    case 'MSIE':
+        $user_browser = 'Internet Explorer';
+        break;
+  
+    case 'Trident':
+        $user_browser = 'Internet Explorer';
+        break;
+  
+    case 'Edg':
+        $user_browser = 'Microsoft Edge';
+        break;
+}
+
+function get_operating_system() {
+    $u_agent = $_SERVER['HTTP_USER_AGENT'];
+    $operating_system = 'NULL';
+
+    //get operating-system type
+        if (preg_match('/iphone/i', $u_agent)) {
+        $operating_system = 'mobile';
+    } elseif (preg_match('/ipod/i', $u_agent)) {
+        $operating_system = 'mobile';
+    } elseif (preg_match('/ipad/i', $u_agent)) {
+        $operating_system = 'mobile';
+    } elseif (preg_match('/android/i', $u_agent)) {
+        $operating_system = 'mobile';
+    } elseif (preg_match('/blackberry/i', $u_agent)) {
+        $operating_system = 'mobile';
+    } elseif (preg_match('/webos/i', $u_agent)) {
+        $operating_system = 'mobile';
+    }
+    
+    return $operating_system;
+}
+?>
+
+@if($user_browser === 'Chrome' or get_operating_system() == 'mobile')
+<script  src="{{ asset('littlelink/js/jquery.min.js') }}"></script>
+<div align="right" class="sharediv"><div class="button-entrance"><a class="sharebutton hvr-grow hvr-icon-wobble-vertical" id='share-share-button'><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}share.svg">Share</a></div></div>
+<span class="copy-icon" role="button">
+</span>
+@else
+<span class="copy-icon" role="button">
+<div align="right" class="sharediv"><div class="button-entrance"><a class="sharebutton hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}share.svg">Share</a></div></div>
+</span>
+@endif
+<div class="toastdiv">
+<span class="toastbox" role="alert"></span>
+<script  src="{{ asset('littlelink/js/share.button.js') }}"></script>
+</div>
+<?php ////end share button//// ?>
+
   <div class="container">
     <div class="row">
-
       <div class="column" style="margin-top: 5%">
         <!-- Your Image Here -->
           @if(file_exists(base_path("img/$littlelink_name" . ".png" )))
@@ -118,9 +187,7 @@
         <!-- Short Bio -->
         <p class="fadein">{{ $info->littlelink_description }}</p>
         
-        @endforeach
-		
-		
+        @endforeach		
         <!-- Buttons -->
 <?php $initial=1; // <-- Effectively sets the initial loading time of the buttons. This value should be left at 1. ?>
         @foreach($links as $link)
