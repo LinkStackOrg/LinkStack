@@ -13,7 +13,7 @@
 				} else {
 					$textcolor = '#100a26';
 						} ?>
-<a href="https://littlelink-custom.com" target="_blank" title="Learn more">
+<a class="spacing" href="https://littlelink-custom.com" target="_blank" title="Learn more">
 	<section class="hvr-grow fadein">
 		<div class="parent-footer" >
 			<img id="footer_spin" class="footer_spin image-footer1 generic" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="LittleLink Custom"></img>
