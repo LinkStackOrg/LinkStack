@@ -4,27 +4,39 @@
 
         <h2 class="mb-4"><i class="bi bi-person"> Profile</i></h2>
 
+        @foreach($profile as $profile)
+
         <form  action="{{ route('editProfile') }}" method="post">
         @csrf
-        @foreach($profile as $profile)
           <div class="form-group col-lg-8">
-            <label>Name</label>
+            <h3>Name</h3>
             <input type="text" class="form-control" name="name" value="{{ $profile->name }}">
           </div>
-          <div class="form-group col-lg-8">
-            <label>Email</label>
-            <input type="email" class="form-control" name="email" value="{{ $profile->email }}">
-          </div>
-          <div class="form-group col-lg-8">
-            <label>Password</label>
-            <input type="password" name="password" class="form-control" placeholder="if empty, password will blank">
-          </div>
-          <div class="form-group col-lg-8">
-            <label>Role</label>
-            <input type="text" class="form-control" value="{{ strtoupper($profile->role) }}" readonly>
-          </div>
-          <button type="submit" class="mt-3 ml-3 btn btn-info">Submit</button>
-          @endforeach
+          <button type="Change " class="mt-3 ml-3 btn btn-info">Change name</button>
         </form>
 
+        <br><br><form  action="{{ route('editProfile') }}" method="post">
+        @csrf
+          <div class="form-group col-lg-8">
+            <h3>Email</h3>
+            <input type="email" class="form-control" name="email" value="{{ $profile->email }}">
+          </div>
+          <button type="Change " class="mt-3 ml-3 btn btn-info">Change email</button>
+        </form>
+
+        <br><br><form  action="{{ route('editProfile') }}" method="post">
+        @csrf
+          <div class="form-group col-lg-8">
+            <h3>Password</h3>
+            <input type="password" name="password" class="form-control" placeholder="if empty, password will blank">
+          </div>
+          <button type="Change " class="mt-3 ml-3 btn btn-info">Change password</button>
+        </form>
+		
+        @csrf
+          <br><br><div class="form-group col-lg-8">
+            <h3>Role</h3>
+            <input type="text" class="form-control" value="{{ strtoupper($profile->role) }}" readonly>
+          </div>
+          @endforeach
 @endsection

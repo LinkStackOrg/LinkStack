@@ -242,9 +242,9 @@ class UserController extends Controller
     public function editProfile(request $request)
     {
         $request->validate([
-            'name' => 'required|unique:users',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
+            'name' => 'sometimes|required|unique:users',
+            'email' => 'sometimes|required|email|unique:users',
+            'password' => 'sometimes|min:8',
         ]);
 
         $userId = Auth::user()->id;
@@ -253,8 +253,13 @@ class UserController extends Controller
         $email = $request->email;
         $password = Hash::make($request->password);
 
-        User::where('id', $userId)->update(['name' => $name, 'email' => $email, 'password' => $password]);
-
+if($request->name != '' ) {
+        User::where('id', $userId)->update(['name' => $name]);
+} elseif($request->email != '' ) {
+        User::where('id', $userId)->update(['email' => $email]);
+} elseif($request->password != '' ) {
+        User::where('id', $userId)->update(['password' => $password]);
+        }
         return back();
     }
 }
