@@ -15,6 +15,7 @@
           <button type="Change " class="mt-3 ml-3 btn btn-info">Change name</button>
         </form>
 
+@if(env('REGISTER_AUTH') != 'verified')
         <br><br><form  action="{{ route('editProfile') }}" method="post">
         @csrf
           <div class="form-group col-lg-8">
@@ -23,6 +24,7 @@
           </div>
           <button type="Change " class="mt-3 ml-3 btn btn-info">Change email</button>
         </form>
+@endif
 
         <br><br><form  action="{{ route('editProfile') }}" method="post">
         @csrf
