@@ -12,6 +12,22 @@ use App\Models\User;
 use App\Models\Button;
 use App\Models\Link;
 
+    //Function tests if string starts with certain string (used to test for illegal strings)
+function stringStartsWith($haystack,$needle,$case=true) {
+    if ($case){
+        return strpos($haystack, $needle, 0) === 0;
+    }
+    return stripos($haystack, $needle, 0) === 0;
+}
+
+    //Function tests if string ends with certain string (used to test for illegal strings)
+function stringEndsWith($haystack,$needle,$case=true) {
+    $expectedPosition = strlen($haystack) - strlen($needle);
+    if ($case){
+        return strrpos($haystack, $needle, 0) === $expectedPosition;
+    }
+    return strripos($haystack, $needle, 0) === $expectedPosition;
+}
 
 class UserController extends Controller
 {
@@ -82,7 +98,10 @@ class UserController extends Controller
             'button' => 'required'
         ]);
 
+        if (stringStartsWith($request->link,'http://') == 'true' or stringStartsWith($request->link,'https://') == 'true' or stringStartsWith($request->link,'mailto:') == 'true')
         $link = $request->link;
+        else
+		$link = 'https://' . $request->link;
         if ($request->title == '')
         $title = $request->button;
         else
@@ -186,7 +205,10 @@ class UserController extends Controller
             'button' => 'required',
         ]);
 
+        if (stringStartsWith($request->link,'http://') == 'true' or stringStartsWith($request->link,'https://') == 'true' or stringStartsWith($request->link,'mailto:') == 'true')
         $link = $request->link;
+        else
+		$link = 'https://' . $request->link;
         $title = $request->title;
         $order = $request->order;
         $button = $request->button;
