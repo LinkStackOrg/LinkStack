@@ -30,9 +30,6 @@
         <br><br><details>
     <summary>More information</summary>
 <pre style="color: grey;">
-Always add links with 'http://' or 'https://' before your URLs, otherwise this will cause error when clicking on the link.
-Make sure that added URLs don't have a trailing slash at the end of a URL (e.g. 'n.com' instead of 'n.com/') as this causes errors when redirecting to that URL.
-
 The 'Custom' button allows you to add a custom link, where the text on the button is determined with the link title set above.
 The 'Custom_website' button functions similar to the Custom button, with the addition of a function that requests the favicon from the chosen URL and uses it as the button icon.
 </pre>
