@@ -99,9 +99,13 @@ class UserController extends Controller
         ]);
 
         if (stringStartsWith($request->link,'http://') == 'true' or stringStartsWith($request->link,'https://') == 'true' or stringStartsWith($request->link,'mailto:') == 'true')
-        $link = $request->link;
+        $link1 = $request->link;
         else
-		$link = 'https://' . $request->link;
+		$link1 = 'https://' . $request->link;
+        if (stringEndsWith($request->link,'/') == 'true')
+		$link = rtrim($link1, "/ ");
+		else
+		$link = $link1;
         if ($request->title == '')
         $title = $request->button;
         else
@@ -206,9 +210,13 @@ class UserController extends Controller
         ]);
 
         if (stringStartsWith($request->link,'http://') == 'true' or stringStartsWith($request->link,'https://') == 'true' or stringStartsWith($request->link,'mailto:') == 'true')
-        $link = $request->link;
+        $link1 = $request->link;
         else
-		$link = 'https://' . $request->link;
+		$link1 = 'https://' . $request->link;
+        if (stringEndsWith($request->link,'/') == 'true')
+		$link = rtrim($link1, "/ ");
+		else
+		$link = $link1;
         $title = $request->title;
         $order = $request->order;
         $button = $request->button;
