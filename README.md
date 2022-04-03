@@ -8,7 +8,9 @@
 <p align="center">
 
 </p>
-      
+
+
+
 <p align="center">
   <a href="#Function">Function</a> •
   <a href="#About">About</a> •
@@ -31,6 +33,12 @@
 <p align="center">
   <a href="#Discord"><img src="https://i.imgur.com/BsKFWqk.png" alt="Join the Discord" width="280" ></a>
 </p>
+
+
+<h3 align="center">
+<a href="https://littlelink-custom.com/request-feature/" target="_blank">Request a feature</a>
+</h3>
+
 
 ---
 ## Function    
