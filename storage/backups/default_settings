@@ -2,9 +2,11 @@
 #=REGISTER_AUTH either auth or verified. If auth is selected, no verification is required. Default is verified.
 REGISTER_AUTH=verified
 
-#Internal notifications=Notify if update is available or and event is happening such as a poll about the future of this project.
+#Internal notifications=Changes if certain messages should be displayed or not
+#=NOTIFY_EVENTS notifies admins if an important event is happening, such as polls about the future of this project or security vulnerabilities.
 NOTIFY_EVENTS=true
-NOTIFY_UPDATES=true
+#=NOTIFY_UPDATES either all, major or false. All notifies about all updates, major only notifies about major or important updates, false does not notify about any updates.
+NOTIFY_UPDATES=major
 DISPLAY_FOOTER=true
 DISPLAY_CREDIT=true
 
