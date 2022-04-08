@@ -208,7 +208,7 @@ class UserController extends Controller
             'link' => 'required',
             'title' => 'required',
             'button' => 'required',
-            'custom_css' => 'required',
+            //'custom_css' => 'required',
         ]);
 
         if (stringStartsWith($request->link,'http://') == 'true' or stringStartsWith($request->link,'https://') == 'true' or stringStartsWith($request->link,'mailto:') == 'true')
@@ -223,11 +223,11 @@ class UserController extends Controller
         $order = $request->order;
         $button = $request->button;
         $linkId = $request->id;
-        $custom_css = $request->custom_css;
+        //$custom_css = $request->custom_css;
 
         $buttonId = Button::select('id')->where('name' , $button)->value('id');
 
-        Link::where('id', $linkId)->update(['link' => $link, 'title' => $title, 'order' => $order, 'button_id' => $buttonId, 'custom_css' => $custom_css]);
+        Link::where('id', $linkId)->update(['link' => $link, 'title' => $title, 'order' => $order, 'button_id' => $buttonId]);
 
         return redirect('/studio/links');
     }
