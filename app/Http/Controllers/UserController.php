@@ -201,6 +201,23 @@ class UserController extends Controller
 
     }
 
+    //Show custom CSS
+    public function showCSS(request $request)
+    {
+        $linkId = $request->id;
+
+        $link = Link::where('id', $linkId)->value('link');
+        $title = Link::where('id', $linkId)->value('title');
+        $order = Link::where('id', $linkId)->value('order');
+        $custom_css = Link::where('id', $linkId)->value('custom_css');
+        $buttonId = Link::where('id', $linkId)->value('button_id');
+
+        $buttons = Button::select('id', 'name')->get();
+       
+        return view('studio/button-editor', ['custom_css' => $custom_css, 'buttonId' => $buttonId, 'buttons' => $buttons, 'link' => $link, 'title' => $title, 'order' => $order, 'id' => $linkId]);
+
+    }
+
     //Save edit link
     public function editLink(request $request)
     {
@@ -230,6 +247,21 @@ class UserController extends Controller
         Link::where('id', $linkId)->update(['link' => $link, 'title' => $title, 'order' => $order, 'button_id' => $buttonId]);
 
         return redirect('/studio/links');
+    }
+
+    //Save edit custom CSS
+    public function editCSS(request $request)
+    {
+        $request->validate([
+            'custom_css' => 'required',
+        ]);
+
+        $linkId = $request->id;
+        $custom_css = $request->custom_css;
+
+        Link::where('id', $linkId)->update(['custom_css' => $custom_css]);
+
+        return header("Refresh:0");
     }
 
     //Show littlelinke page for edit
