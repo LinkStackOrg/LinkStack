@@ -49,6 +49,8 @@ Route::get('/deleteLink/{id}', [UserController::class, 'deleteLink'])->name('del
 Route::get('/upLink/{up}/{id}', [UserController::class, 'upLink'])->name('upLink');
 Route::get('/studio/edit-link/{id}', [UserController::class, 'showLink'])->name('showLink');
 Route::post('/studio/edit-link/{id}', [UserController::class, 'editLink'])->name('editLink');
+Route::get('/studio/button-editor/{id}', [UserController::class, 'showCSS'])->name('showCSS');
+Route::post('/studio/button-editor/{id}', [UserController::class, 'editCSS'])->name('editCSS');
 Route::get('/studio/page', [UserController::class, 'showPage'])->name('showPage');
 Route::get('/studio/no_page_name', [UserController::class, 'showPage'])->name('showPage');
 Route::post('/studio/page', [UserController::class, 'editPage'])->name('editPage');
