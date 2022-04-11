@@ -34,7 +34,10 @@
     @endif
 
 <!--#### END Meta Tags social media preview images  ####-->
-  
+
+  <!-- Custom icons font-awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
@@ -196,9 +199,9 @@ function get_operating_system() {
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-title button hvr-grow hvr-icon-wobble-vertical" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank">
          	{{ $link->title }}</a></div>
          @elseif($link->name === "custom" and $link->custom_css === "")
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button hvr-grow hvr-icon-wobble-vertical" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/') . $linkName }}.svg">{{ $link->title }}</a></div>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button hvr-grow hvr-icon-wobble-vertical" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><i class="icon hvr-icon fa {{$link->custom_icon}}"></i>{{ $link->title }}</a></div>
          @elseif($link->name === "custom" and $link->custom_css != "")
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button hvr-grow hvr-icon-wobble-vertical" style="{{ $link->custom_css }}" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/') . $linkName }}.svg">{{ $link->title }}</a></div>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button hvr-grow hvr-icon-wobble-vertical" style="{{ $link->custom_css }}" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><i class="icon hvr-icon fa {{$link->custom_icon}}"></i>{{ $link->title }}</a></div>
          @elseif($link->name === "buy me a coffee")
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-coffee button hvr-grow hvr-icon-wobble-vertical" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}coffee.svg">Buy me a Coffee</a></div>
          @elseif($link->name === "custom_website")
