@@ -11,7 +11,7 @@
             <th scope="col">Title</th>
             <th scope="col">Click</th>
             <th scope="col">Order ⏶</th>
-            <th scope="col">Up Link ⏶</th>
+            <th scope="col">Pin Link ⏶</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
           </tr>
