@@ -153,7 +153,7 @@ class UserController extends Controller
     {
         $userId = Auth::user()->id;
         
-        $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(10);
+        $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link', 'links.button_id')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(10);
         return view('studio/links', $data);
     }
 
