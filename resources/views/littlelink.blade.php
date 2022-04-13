@@ -13,7 +13,7 @@
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="{{ url('') }}/@littlelink_name">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ $userinfo->littlelink_name }}">
+    <meta property="og:title" content="{{ $userinfo->name }}">
     <meta property="og:description" content="{{ $userinfo->littlelink_description }}">
     @if(file_exists(base_path("img/$littlelink_name" . ".png" )))
     <meta property="og:image" content="{{ asset("img/$littlelink_name" . ".png") }}">
@@ -185,7 +185,7 @@ function get_operating_system() {
 
         @foreach($information as $info)
         <!-- Your Name -->
-        <h1 class="fadein">{{ $info->littlelink_name }}</h1>
+        <h1 class="fadein">{{ $info->name }}</h1>
 
         <!-- Short Bio -->
         <p class="fadein">{{ $info->littlelink_description }}</p>
