@@ -201,7 +201,7 @@ class UserController extends Controller
 
     }
 
-    //Show custom CSS
+    //Show custom CSS + custom icon
     public function showCSS(request $request)
     {
         $linkId = $request->id;
@@ -226,7 +226,6 @@ class UserController extends Controller
             'link' => 'required',
             'title' => 'required',
             'button' => 'required',
-            //'custom_css' => 'required',
         ]);
 
         if (stringStartsWith($request->link,'http://') == 'true' or stringStartsWith($request->link,'https://') == 'true' or stringStartsWith($request->link,'mailto:') == 'true')
@@ -241,7 +240,6 @@ class UserController extends Controller
         $order = $request->order;
         $button = $request->button;
         $linkId = $request->id;
-        //$custom_css = $request->custom_css;
 
         $buttonId = Button::select('id')->where('name' , $button)->value('id');
 
@@ -250,18 +248,20 @@ class UserController extends Controller
         return redirect('/studio/links');
     }
 
-    //Save edit custom CSS
+    //Save edit custom CSS + custom icon
     public function editCSS(request $request)
     {
-        $request->validate([
-            'custom_css' => 'required',
-        ]);
-
         $linkId = $request->id;
+        $custom_icon = $request->custom_icon;
         $custom_css = $request->custom_css;
 
+        if ($request->custom_css == "" and $request->custom_icon =! "") {
+        Link::where('id', $linkId)->update(['custom_icon' => $custom_icon]);
+    } elseif ($request->custom_icon == "" and $request->custom_css =! "") {
         Link::where('id', $linkId)->update(['custom_css' => $custom_css]);
-
+    } else {
+        Link::where('id', $linkId)->update([]);
+    }
         return header("Refresh:0");
     }
 
