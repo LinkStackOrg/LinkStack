@@ -210,11 +210,12 @@ class UserController extends Controller
         $title = Link::where('id', $linkId)->value('title');
         $order = Link::where('id', $linkId)->value('order');
         $custom_css = Link::where('id', $linkId)->value('custom_css');
+        $custom_icon = Link::where('id', $linkId)->value('custom_icon');
         $buttonId = Link::where('id', $linkId)->value('button_id');
 
         $buttons = Button::select('id', 'name')->get();
        
-        return view('studio/button-editor', ['custom_css' => $custom_css, 'buttonId' => $buttonId, 'buttons' => $buttons, 'link' => $link, 'title' => $title, 'order' => $order, 'id' => $linkId]);
+        return view('studio/button-editor', ['custom_icon' => $custom_icon, 'custom_css' => $custom_css, 'buttonId' => $buttonId, 'buttons' => $buttons, 'link' => $link, 'title' => $title, 'order' => $order, 'id' => $linkId]);
 
     }
 
