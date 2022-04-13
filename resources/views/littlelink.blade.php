@@ -36,7 +36,7 @@
 <!--#### END Meta Tags social media preview images  ####-->
 
   <!-- Custom icons font-awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <script src="https://kit.fontawesome.com/c4a5e06183.js" crossorigin="anonymous"></script>
 
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
