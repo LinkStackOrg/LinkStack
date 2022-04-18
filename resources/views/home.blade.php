@@ -97,9 +97,9 @@ foreach($pages as $page)
         
 <?php $initial=1; // <-- Effectively sets the initial loading time of the buttons. This value should be left at 1. ?>
         <!-- Replace # with your profile URL. Delete whatever you don't need & create your own brand styles in css/brands.css -->  
-        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-github button hvr-grow hvr-icon-wobble-vertical" href="#"><img class="icon hvr-icon" src="{{ asset('littlelink/icons/github.svg') }}">Github</a></div>
-        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-twitter button hvr-grow hvr-icon-wobble-vertical" href="#"><img class="icon hvr-icon" src="{{ asset('littlelink/icons/twitter.svg') }}">Twitter</a></div>
-        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-instagram button hvr-grow hvr-icon-wobble-vertical" href="#"><img class="icon hvr-icon" src="{{ asset('littlelink/icons/instagram.svg') }}">Instagram</a></div>
+        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-github button hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon" src="{{ asset('littlelink/icons/github.svg') }}">Github</div></div>
+        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-twitter button hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon" src="{{ asset('littlelink/icons/twitter.svg') }}">Twitter</div></div>
+        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-instagram button hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon" src="{{ asset('littlelink/icons/instagram.svg') }}">Instagram</div></div>
         <!--<a class="button button-pinterest" href="#"><img class="icon" src="{{ asset('littlelink/icons/pinterest.svg') }}">Pinterest</a>-->
         </br></br>
 
