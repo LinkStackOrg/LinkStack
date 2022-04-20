@@ -23,10 +23,10 @@
                 <a class="nav-link" data-toggle="tab" href="#upload-env" role="tab">{{__($translatePrefix.'views.tabTitles.upload')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/panel/diagnose') }}" role="tab">Diagnosis</a>
+                <a class="nav-link" href="{{ url('/panel/diagnose') }}" role="tab">Diagnosis ⤻</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/panel/phpinfo') }}" role="tab">PHP Info</a>
+                <a class="nav-link" href="{{ url('/panel/phpinfo') }}" role="tab">PHP Info ⤻</a>
             </li>
             <li class="nav-item ml-auto">
                 <env-editor-config-actions></env-editor-config-actions>
