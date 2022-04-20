@@ -46,6 +46,40 @@
 					@endif
   <!-- end dark mode detection -->
 
+<?php //security check, checks if config files got compromised
+if(auth()->user()->role == 'admin'){
+
+$serversb = $_SERVER['SERVER_NAME'];
+$urisb = $_SERVER['REQUEST_URI'];
+
+// Tests if a URL has a valid SSL certificate
+function has_sslsb( $domain ) {
+	$ssl_check = @fsockopen( 'ssl://' . $domain, 443, $errno, $errstr, 30 );
+	$res = !! $ssl_check;
+	if ( $ssl_check ) { fclose( $ssl_check ); }
+	return $res;
+  }
+  
+  // Changes probed URL to HTTP if no valid SSL certificate is present, otherwise an error would be thrown
+  if (has_sslsb($serversb)) {
+	$actual_linksb = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+  } else {
+	$actual_linksb = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+  }
+
+// Files or directories to test if accessible externally
+$url1sb = Http::get($actual_linksb . '/../../.env');
+$url2sb = Http::get($actual_linksb . '/../../database/database.sqlite');
+
+// sets compromised to true if config files got compromised
+if ($url1sb->successful() or $url2sb->successful()) {
+	$compromised = "true";
+} else {
+	$compromised = "false";
+}
+}
+ // end security check ?>
+
     @if(file_exists(base_path("littlelink/images/avatar.png" )))
     <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
     @else
@@ -207,7 +241,11 @@
 	@endif
             <! –– #### end update detection #### ––>
 
-                    <a class="nav-link" href="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>" target="_blank">Watch Page</a>
+					@if(auth()->user()->role == 'admin' and $compromised === "true")
+					<a style="color:tomato;" class="nav-link" href="{{ url('panel/diagnose') }}" title="Your security is at risk. Some files can be accessed by everyone. Immediate action is required! Click this message to learn more.">Your security is at risk!</a>
+					@endif
+
+                    <a class="nav-link" href="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>" target="_blank">View Page</a>
                   </div>
                 </li>
               </ul>
