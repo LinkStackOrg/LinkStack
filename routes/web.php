@@ -30,6 +30,11 @@ Route::get('/@', function () {
     return redirect('/studio/no_page_name');
 });
 
+//Show diagnose page
+Route::get('/panel/diagnose', function () {
+        return view('panel/diagnose', []);
+});
+
 //Public route
 Route::get('/going/{id?}/{link?}', [UserController::class, 'clickNumber'])->where('link', '.*')->name('clickNumber');
 Route::get('/+{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
@@ -49,8 +54,6 @@ Route::get('/deleteLink/{id}', [UserController::class, 'deleteLink'])->name('del
 Route::get('/upLink/{up}/{id}', [UserController::class, 'upLink'])->name('upLink');
 Route::get('/studio/edit-link/{id}', [UserController::class, 'showLink'])->name('showLink');
 Route::post('/studio/edit-link/{id}', [UserController::class, 'editLink'])->name('editLink');
-Route::get('/studio/button-editor/{id}', [UserController::class, 'showCSS'])->name('showCSS');
-Route::post('/studio/button-editor/{id}', [UserController::class, 'editCSS'])->name('editCSS');
 Route::get('/studio/page', [UserController::class, 'showPage'])->name('showPage');
 Route::get('/studio/no_page_name', [UserController::class, 'showPage'])->name('showPage');
 Route::post('/studio/page', [UserController::class, 'editPage'])->name('editPage');
