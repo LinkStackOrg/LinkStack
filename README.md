@@ -26,7 +26,7 @@
 </p>
 
 <p align="center">
-  <a href="https://littlelink-custom.com/blog."><img src="https://i.imgur.com/VzPWZyQ.png" alt="Blog" width="280" ></a><a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+  <a href="https://littlelink-custom.com/blog"><img src="https://i.imgur.com/VzPWZyQ.png" alt="Blog" width="280" ></a><a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
   <a href="https://demo.littlelink-custom.com"><img src="https://i.imgur.com/EJNaMNW.png" alt="Live Demo" width="280" ></a>
 </p>
 
