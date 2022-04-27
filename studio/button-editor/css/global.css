@@ -94,7 +94,7 @@ label, input[type="button"], input[type="submit"], input[type="image"], button {
 
 button, input, select, textarea { margin: 0; }
 
-input:valid, textarea:valid   {  }
+input:valid, textarea:valid   {}
 input:invalid, textarea:invalid {
    border-radius: 1px; -moz-box-shadow: 0px 0px 5px red; 
    -webkit-box-shadow: 0px 0px 5px red; box-shadow: 0px 0px 5px red;
@@ -562,8 +562,7 @@ footer .social .facebook:hover span{background-position: -161px -238px;}
 
 #details
 {
-	#background: #1c1d21;
-	background: rgba( 0,0,0,0.15 );
+	background: #1c1d21;
 	margin-top: 0px;
 	padding: 25px 0 10px 0;
 	
@@ -584,7 +583,6 @@ footer .social .facebook:hover span{background-position: -161px -238px;}
 #details nav li
 {
 	float: left;
-	line-height: ;
 }
 
 #details nav li a
@@ -721,4 +719,5 @@ footer .social .facebook:hover span{background-position: -161px -238px;}
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3{ page-break-after: avoid; }
+}
 }
