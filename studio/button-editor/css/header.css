@@ -1,0 +1,169 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	vertical-align: baseline;
+
+}
+
+
+#main-footer {
+	
+	clear:both;
+	width:100%;
+	float:left;
+background: black;
+	
+}
+
+#footer-wrap {
+	
+	
+	position:relative;
+		margin:0 auto;
+		width:900px;
+		color: white;
+		font-family: Arial,Verdana,sans-serif;
+	background: black;
+	
+	padding:30px;
+	padding-left:40px;
+	padding-top:30px;
+	
+	
+	
+}
+
+.foot-tab {
+	float:left;
+	margin-right: 100px;
+	
+}
+.foot-tab header{
+	
+	margin-botom:10px;
+	font-size:1.1em;
+	font-family: sans-serif;
+}
+
+.foot-tab div {
+	margin-top:20px;
+	color:#818181;
+	font-size: 0.8em;
+	font-family: Tahoma;
+	font-weight: normal;
+	margin-bottom: 40px;
+}
+
+.bold {
+	font-size: 0.9em;
+	color:white;
+	font-family: Helvetica;
+	
+	
+}
+
+.footer-email {
+	background: #818181;
+	color:#ffffff;
+	border: none;
+	outline:none;
+	height:25px;
+	width: 130px;
+	margin-left:-3px;	
+
+}
+
+::-webkit-input-placeholder {
+   color: #b1b1b1;
+}
+
+:-moz-placeholder {  
+   color: #b1b1b1;  
+}
+
+.foot-submit {
+	height: 26px;
+	width: 26px;
+	color:black;
+	background: white;
+	font-family: "Lucida Grande";
+	border: none;
+	
+	
+}
+
+
+
+
+
+
+.headertile{
+width:200px;
+float:left;
+height:50px;
+/*margin-left:5px;*/
+top:0;
+background:black;
+/*outline: 1px #ffffff solid;*/
+
+}
+
+.header{
+margin-top:1px;
+margin-bottom:1px;
+background:black;
+height:50px;
+box-shadow:50px 50px 50px 20px black;	
+}
+
+.headertile:hover{
+
+background:#7FBA00;
+opacity:0.9;
+}
+#heading{
+margin-left:150px;
+
+}
+
+.heading 
+{
+color:white;
+text-align:center;
+margin:10px 10px 0px 0px;
+font:Times New Roman, serif;
+font-weight:400;
+font-size:20px;
+
+}
+
+#heading:hover{
+color:white;
+
+}
+
+#userinfo{
+float:right;
+text-align:right;
+color:white;
+margin-right:140px;
+margin-top:10px;
+font-size:20px;
+}
+
+#userimage{
+margin-left:20px;
+}
+

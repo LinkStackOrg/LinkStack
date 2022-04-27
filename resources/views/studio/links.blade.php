@@ -13,6 +13,7 @@
             <th scope="col">Order ⏶</th>
             <th scope="col">Pin Link ⏶</th>
             <th scope="col">Edit</th>
+            <th scope="col">Button Editor<span style="color:tomato">&nbsp; beta</span></th>
             <th scope="col">Delete</th>
           </tr>
         </thead>
@@ -25,6 +26,11 @@
             <td class="text-right">{{ $link->order }}</td>
             <td><a href="{{ route('upLink', ['up' => $link->up_link, 'id' => $link->id]) }}" class="text-primary">{{ $link->up_link }}</a></td>
             <td><a href="{{ route('editLink', $link->id ) }}">Edit</a></td>
+            @if($link->button_id == 1 or $link->button_id == 2)
+            <td><a href="{{ route('editCSS', $link->id ) }}" class="text-success">Customize Button</a></td>
+            @else
+            <td><a> - </a></td>
+            @endif
             <td><a href="{{ route('deleteLink', $link->id ) }}" class="text-danger">Delete</a></td>
           </tr>
           @endforeach
