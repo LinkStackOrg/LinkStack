@@ -78,7 +78,7 @@ Feel free to register your account and try out all the features of LittleLink Cu
 | ------------------------------------------------| :----------------: | :---------------: | :--------------: |
 | Creating a link page with more than 20 buttons  |         ✔️         |        ✔️        |        ✔️        |
 | Code free setup                                 |         ✔️         |        ✔️        |        ❌        |
-| Raising important links on the page             |         ✔️         |        ✔️        |        ❌        |
+| Pinning important links                         |         ✔️         |        ✔️        |        ❌        |
 | Ordering links                                  |         ✔️         |        ✔️        |        ❌        |
 | Counting clicks                                 |         ✔️         |        ✔️        |        ❌        |
 | Managing users and pages and links              |         ✔️         |        ✔️        |        ❌        |
