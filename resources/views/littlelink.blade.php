@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>{{ $littlelink_name }} 🔗 {{ config('app.name') }} </title>
+  <title>{{ $userinfo->name }} 🔗 {{ config('app.name') }} </title>
   <meta name="description" content="{{ $userinfo->littlelink_description }}">
   <meta name="author" content="{{ $userinfo->name }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
