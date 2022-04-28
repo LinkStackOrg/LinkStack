@@ -188,7 +188,7 @@ function get_operating_system() {
         <h1 class="fadein">{{ $info->name }}</h1>
 
         <!-- Short Bio -->
-        <p class="fadein">{{ $info->littlelink_description }}</p>
+        <center><p style="width: 50%; min-width: 300px;" class="fadein">{{ $info->littlelink_description }}</p></center>
         
         @endforeach		
         <!-- Buttons -->
