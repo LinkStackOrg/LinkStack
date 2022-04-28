@@ -84,7 +84,7 @@ Feel free to register your account and try out all the features of LittleLink Cu
 | Managing users and pages and links              |         ✔️         |        ✔️        |        ❌        |
 | Automatic dark mode detection                   |         ✔️         |        ✖️²       |        ❌        |
 | Button hover animations                         |         ✔️         |        ❌        |        ❌        |
-| custom link option                              |         ✔️         |        ❌        |        ❌        |
+| Custom link option                              |         ✔️         |        ❌        |        ❌        |
 | Social Share Preview for individual users       |         ✔️         |        ❌        |        ❌        |
 | Update notice if new version is available       |         ✔️         |        ❌        |        ❌        |
 | Built in SMTP server                            |         ✔️         |        ❌        |        ❌        |
