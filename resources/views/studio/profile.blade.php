@@ -15,7 +15,7 @@
           <button type="Change " class="mt-3 ml-3 btn btn-info">Change name</button>
         </form>
 
-@if(env('REGISTER_AUTH') != 'verified')
+@if(env('REGISTER_AUTH') != 'verified' or auth()->user()->role == 'admin')
         <br><br><form  action="{{ route('editProfile') }}" method="post">
         @csrf
           <div class="form-group col-lg-8">
