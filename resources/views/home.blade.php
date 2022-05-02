@@ -72,6 +72,8 @@ foreach($pages as $page)
 
                         @if (Route::has('register') and $page->register == 'true')
                             <a href="{{ route('register') }}" class="underline spacing">Register</a>
+                        @elseif (env('REGISTER_OVERRIDE') === true)
+                            <a href="{{ route('register') }}" class="underline spacing">Register</a>
                         @endif
                     @endauth
               @endif
