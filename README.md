@@ -26,19 +26,16 @@
 </p>
 
 <p align="center">
-  <a href="https://littlelink-custom.com/blog"><img src="https://i.imgur.com/VzPWZyQ.png" alt="Blog" width="280" ></a><a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
-  <a href="https://demo.littlelink-custom.com"><img src="https://i.imgur.com/EJNaMNW.png" alt="Live Demo" width="280" ></a>
+  <a href="https://littlelink-custom.com/blog"><img src="https://i.imgur.com/VzPWZyQ.png" alt="Blog" width="250" ></a><a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+  <a href="https://demo.littlelink-custom.com"><img src="https://i.imgur.com/EJNaMNW.png" alt="Live Demo" width="250" ></a>
 </p>
 
 <p align="center">
-  <a href="#Discord"><img src="https://i.imgur.com/BsKFWqk.png" alt="Join the Discord" width="280" ></a>
+<a href="https://github.com/littlelink-custom"><img src="https://img.shields.io/github/stars/julianprieber?logo=github&style=flat&logo=appveyor"></img></a>
+<a href="https://discord.littlelink-custom.com"><img src="https://img.shields.io/discord/955765706111193118?color=4A55CC&label=Discord&logo=discord&style=flat&logo=appveyor"></img></a>
+<a href="https://github.com/sponsors/julianprieber"><img src="https://img.shields.io/github/sponsors/JulianPrieber?color=BF4B8A&logo=githubsponsors&style=flat&logo=appveyor=Sponsor%20on%20Github"></img></a>
+<a href="https://patreon.com/julianprieber"><img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Djulianprieber%26type%3Dpatrons&style=flat&logo=appveyor"></img></a>
 </p>
-
-
-<h3 align="center">
-<a href="https://littlelink-custom.com/request-feature/" target="_blank">Request a feature</a>
-</h3>
-
 
 ---
 ## Function    
