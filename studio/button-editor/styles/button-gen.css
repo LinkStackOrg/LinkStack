@@ -6,7 +6,7 @@
 	margin-top: 5px;
 	background-color: #2c2d3a;
 	margin-top:-10px;
-	width: 67%;
+	max-width: 1010px;
 	left:1%;
 	
 }
@@ -27,7 +27,7 @@
 
 #preview {
 	
-	width: 67%;
+	max-width: 1010px;
 	height: 300px;
 	margin-top:50px;
 	background: url('../images/grid2.png');
