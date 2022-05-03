@@ -242,7 +242,7 @@ background-image: linear-gradient(-135deg,#0f0c29,#302b63,#24243e)
         <button type="submit" class="mt-3 ml-3 btn btn-info">Reset to default</button>
       </form>
 
-<br><br><div style="left: 1%; position: relative; background-color:#2c2d3a; border-radius: 25px; min-width:300px; max-width:950px; height:300px; box-shadow: 0 10px 20px -10px rgba(0,0,0, 0.6);">
+<br><br><div id="result" style="left: 1%; position: relative; background-color:#2c2d3a; border-radius: 25px; min-width:300px; max-width:950px; height:300px; box-shadow: 0 10px 20px -10px rgba(0,0,0, 0.6);">
   <div style="position: relative; top: 50%; transform: translateY(-50%);">
     <h2 align="center" style="color:white">Result:</h2>
       @if($custom_css === "")

@@ -262,7 +262,7 @@ class UserController extends Controller
     } else {
         Link::where('id', $linkId)->update([]);
     }
-        return header("Refresh:0");
+        return Redirect('#result');
     }
 
     //Show littlelinke page for edit
