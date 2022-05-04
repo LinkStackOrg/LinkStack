@@ -24,7 +24,7 @@
           <br>
           <label>* Required fields</label><br>
         </div>
-        <button type="submit" class="mt-3 ml-3 btn btn-info">Submit</button>
+        <div class="row"><button type="submit" class="mt-3 ml-3 btn btn-info">Submit</button><a style="color:white;background-color:#f8b739;" class="mt-3 ml-3 btn" href="{{ url('/studio/links') }}">See all links</a></div>
         </form>
 
         <br><br><details>
