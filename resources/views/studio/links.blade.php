@@ -13,7 +13,7 @@
             <th scope="col">Order ⏶</th>
             <th scope="col">Pin Link ⏶</th>
             <th scope="col">Edit</th>
-            @if(env('ENABLE_BUTTON_EDITOR') === true)<th scope="col">Button Editor<span style="color:tomato">&nbsp; beta</span></th>@endif
+            @if(env('ENABLE_BUTTON_EDITOR') === true)<th scope="col">Button Editor</th>@endif
             <th scope="col">Delete</th>
           </tr>
         </thead>
