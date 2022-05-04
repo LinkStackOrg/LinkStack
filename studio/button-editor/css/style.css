@@ -516,6 +516,12 @@ button-demo {
   width: 20px;
   height: 20px;
 }
+.wicon {
+	padding: 0px 6px 0px 0px;
+	vertical-align: middle;
+	width: 26px;
+	height: 20px;
+  }
 .button.button-custom {
   color: #FFFFFF;
   background-color: #FFFFFF;
@@ -523,6 +529,24 @@ button-demo {
 .button.button-custom:hover,
 .button.button-custom:focus {
   filter: brightness(90%) }
+
+  .button.button-custom_website {
+	color: #ffffff;
+	background-color: #000000;
+	display: inline-block;
+	text-decoration: none;
+	height: 48px;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 18px;
+	width: 300px;
+	font-weight: 700;
+	line-height: 48px;
+	letter-spacing: 0.1px;
+	white-space: wrap;
+	border-radius: 8px;
+	cursor: pointer;
+  }
 
   details {
   width: 64.7%;

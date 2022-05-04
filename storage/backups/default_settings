@@ -10,7 +10,7 @@ NOTIFY_UPDATES=major
 DISPLAY_FOOTER=true
 DISPLAY_CREDIT=true
 
-#Home URL=Changes if a user profile should be displayed as the homepage
+#Home URL=Changes if a user profile should be displayed as the homepage.
 #=Leave empty to use the default homepage. To set your profile as the homepage, enter a LittleLink name. You can find this on the user panel under the page setting, the name is what comes after the '@'.
 #=(e.g. 'admin' without the '@')
 HOME_URL=
@@ -21,6 +21,10 @@ APP_NAME="LittleLink Custom"
 APP_KEY=base64:YOU+MUST+CHANGE+THIS+YUFukELiN6Bk9gQ19+9zwk=
 #=The APP_URL should be left empty under most circumstances. This setting is not required for LittleLink Custom, and you should only change this if required for your setup.
 APP_URL=
+
+#ENABLE_BUTTON-EDITOR=Determines if the custom button editor should be enabled or not, default is true.
+#=ENABLE_BUTTON-EDITOR either true or false.
+ENABLE_BUTTON-EDITOR=true
 
 #Debug Settings=Changes if your page should display a full error description instead of a generic error 500
 #=App_debug either true or false. You might want to change this to false after you're done installing, but it's very useful for troubleshooting.

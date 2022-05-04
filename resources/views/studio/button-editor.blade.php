@@ -1,3 +1,4 @@
+@if(env('ENABLE_BUTTON_EDITOR') === true)
 @extends('layouts.sidebar')
 
 @section('content')
@@ -208,7 +209,11 @@ var button_css = {
 </aside>
 
 <section id="preview">
-<center><div id="sample" style="--delay: 1s; border-radius:8px !important; max-width: 400px; width: 80%; class="button-entrance"><div class="button-demo button hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/') . 'custom' }}.svg">Example</div></div></center>
+@if($buttonId == 1)
+<center><div id="sample" style="--delay: 1s; border-radius:8px !important; max-width: 400px; width: 80%; class="button-entrance"><div class="button-demo button hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/') . 'custom' }}.svg">{{ $title }}</div></div></center>
+@else
+<center><div id="sample" style="--delay: 1s; border-radius:8px !important; max-width: 400px; width: 80%; class="button-entrance"><div class="button-demo button hvr-grow hvr-icon-wobble-vertical"><img class="wicon hvr-icon" src="http://www.google.com/s2/favicons?domain={{$link}}">{{ $title }}</div></div></center>
+@endif
 
 </section>
 </div>
@@ -245,14 +250,19 @@ background-image: linear-gradient(-135deg,#0f0c29,#302b63,#24243e)
 <br><br><div id="result" style="left: 1%; position: relative; background-color:#2c2d3a; border-radius: 25px; min-width:300px; max-width:950px; height:300px; box-shadow: 0 10px 20px -10px rgba(0,0,0, 0.6);">
   <div style="position: relative; top: 50%; transform: translateY(-50%);">
     <h2 align="center" style="color:white">Result:</h2>
-      @if($custom_css === "")
-        <center><div style="--delay: 1s" class="button-entrance"><div class="button-demo button-custom button hvr-grow hvr-icon-wobble-vertical" href=""><img class="icon hvr-icon fa {{$custom_icon}}">Example</div></div></center>
-      @elseif($custom_css != "")
-        <center><div style="--delay: 1s" class="button-entrance"><div style="{{ $custom_css }}" class="button-demo hvr-grow hvr-icon-wobble-vertical" href=""><i style="color: {{$custom_icon}}" class="icon hvr-icon fa {{$custom_icon}}"></i>Example</div></div></center>
+      @if($custom_css === "" and $buttonId == 1)
+        <center><div style="--delay: 1s" class="button-entrance"><div class="button-demo button-custom button hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon fa {{$custom_icon}}">{{ $title }}</div></div></center>
+        @elseif($custom_css === "" and $buttonId == 2)
+        <center><div style="--delay: 1s" class="button-entrance"><div class="button-custom_website button hvr-grow hvr-icon-wobble-vertical"><img class="wicon hvr-icon" src="http://www.google.com/s2/favicons?domain={{$link}}">{{ $title }}</div></div></center>
+        @elseif($custom_css != "" and $buttonId == 2)
+        <center><div style="--delay: 1s" class="button-entrance"><div style="{{ $custom_css }}" class="button-custom_website button hvr-grow hvr-icon-wobble-vertical"><img class="wicon hvr-icon" src="http://www.google.com/s2/favicons?domain={{$link}}">{{ $title }}</div></div></center>
+        @else
+        <center><div style="--delay: 1s" class="button-entrance"><div style="{{ $custom_css }}" class="button-demo hvr-grow hvr-icon-wobble-vertical"><i style="color: {{$custom_icon}}" class="icon hvr-icon fa {{$custom_icon}}"></i>{{ $title }}</div></div></center>
       @endif
       </div>
 </div>
         <br><br>
+        @if($buttonId == 1)
         <form action="{{ route('editCSS', $id) }}" method="post">
         @csrf
         <div class="form-group col-lg-8">
@@ -315,14 +325,14 @@ background-image: linear-gradient(-135deg,#0f0c29,#302b63,#24243e)
         </details>
 
         <div class="row">
-        <button type="submit" class="mt-3 ml-3 btn btn-info">Submit</button>
+        <button type="submit" class="mt-3 ml-3 btn btn-info">Update icon</button>
         <button class="mt-3 ml-3 btn btn-info"><a href="https://fontawesome.com/search?m=free" target="_blank">See all icons</a></button>
         </div>
       </form><br><br><br><br>
+      @endif
 
 </div>
 
 
 @endsection
-
-
+@endif
