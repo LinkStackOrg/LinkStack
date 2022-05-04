@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>{{ $userinfo->name }} 🔗 {{ config('app.name') }} </title>
+  <title>{{ $littlelink_name }} 🔗 {{ config('app.name') }} </title>
   <meta name="description" content="{{ $userinfo->littlelink_description }}">
   <meta name="author" content="{{ $userinfo->name }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -188,7 +188,7 @@ function get_operating_system() {
         <h1 class="fadein">{{ $info->name }}</h1>
 
         <!-- Short Bio -->
-        <center><p style="width: 50%; min-width: 300px;" class="fadein">{{ $info->littlelink_description }}</p></center>
+        <p class="fadein">{{ $info->littlelink_description }}</p>
         
         @endforeach		
         <!-- Buttons -->
@@ -204,8 +204,10 @@ function get_operating_system() {
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button hvr-grow hvr-icon-wobble-vertical" style="{{ $link->custom_css }}" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><i style="color: {{$link->custom_icon}}" class="icon hvr-icon fa {{$link->custom_icon}}"></i>{{ $link->title }}</a></div>
          @elseif($link->name === "buy me a coffee")
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-coffee button hvr-grow hvr-icon-wobble-vertical" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}coffee.svg">Buy me a Coffee</a></div>
-         @elseif($link->name === "custom_website")
+         @elseif($link->name === "custom_website"and $link->custom_css === "")
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-custom_website button hvr-grow hvr-icon-wobble-vertical" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon hvr-icon" src="http://www.google.com/s2/favicons?domain={{$link->link}}">{{ $link->title }}</a></div>
+         @elseif($link->name === "custom_website" and $link->custom_css != "")
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button hvr-grow hvr-icon-wobble-vertical" style="{{ $link->custom_css }}" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon hvr-icon" src="http://www.google.com/s2/favicons?domain={{$link->link}}">{{ $link->title }}</a></div>
          @else
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button hvr-grow hvr-icon-wobble-vertical" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/') . $linkName }}.svg">{{ ucfirst($linkName) }}</a></div>
          @endif
