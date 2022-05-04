@@ -43,4 +43,6 @@
                   {!! $links ?? ''->links() !!}
             </ul>
 
+<a class="btn btn-primary" href="{{ url('/studio/add-link') }}">Add a link</a>
+
 @endsection
