@@ -72,7 +72,7 @@ Feel free to register your account and try out all the features of LittleLink Cu
 	
 |                                                 | LittleLink Custom  | LittleLink Admin¹   |LittleLink      |
 | ------------------------------------------------| :----------------: | :---------------: | :--------------: |
-| Creating a link page with more than 20 buttons  |         ✔️         |        ✔️        |        ✔️        |
+| Creating a link page with more than 30 buttons  |         ✔️         |        ✔️        |        ✔️        |
 | Code free setup                                 |         ✔️         |        ✔️        |        ❌        |
 | Pinning important links                         |         ✔️         |        ✔️        |        ❌        |
 | Ordering links                                  |         ✔️         |        ✔️        |        ❌        |
@@ -86,6 +86,7 @@ Feel free to register your account and try out all the features of LittleLink Cu
 | Built in SMTP server                            |         ✔️         |        ❌        |        ❌        |
 | Visual HTML editor to edit text                 |         ✔️         |        ❌        |        ❌        |
 | Setup without command line                      |         ✔️         |        ❌        |        ❌        |
+| Button Editor with Font Awesome support         |         ✔️         |        ❌        |        ❌        |
 		    
 ¹[littlelink-admin](https://github.com/latuminggi) by [latuminggi](https://github.com/latuminggi/littlelink-admin) | 
 ²Not fully implemented on most pages
