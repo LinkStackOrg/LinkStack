@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>{{ $littlelink_name }} 🔗 {{ config('app.name') }} </title>
+  <title>{{ $userinfo->name }} 🔗 {{ config('app.name') }} </title>
   <meta name="description" content="{{ $userinfo->littlelink_description }}">
   <meta name="author" content="{{ $userinfo->name }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -188,7 +188,7 @@ function get_operating_system() {
         <h1 class="fadein">{{ $info->name }}</h1>
 
         <!-- Short Bio -->
-        <p class="fadein">{{ $info->littlelink_description }}</p>
+        <center><p style="width: 50%; min-width: 300px;" class="fadein">{{ $info->littlelink_description }}</p></center>
         
         @endforeach		
         <!-- Buttons -->
