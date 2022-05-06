@@ -208,6 +208,17 @@ function get_operating_system() {
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-custom_website button hvr-grow hvr-icon-wobble-vertical" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon hvr-icon" src="http://www.google.com/s2/favicons?domain={{$link->link}}">{{ $link->title }}</a></div>
          @elseif($link->name === "custom_website" and $link->custom_css != "")
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button hvr-grow hvr-icon-wobble-vertical" style="{{ $link->custom_css }}" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon hvr-icon" src="http://www.google.com/s2/favicons?domain={{$link->link}}">{{ $link->title }}</a></div>
+         @elseif($link->name === "space")
+         <?php 
+          if (is_numeric($link->title) and $link->title < 10)
+          echo str_repeat("<br>",$link->title);
+          elseif (is_numeric($link->title) and $link->title >= 10)
+          echo str_repeat("<br>",10);
+          else
+          echo "<br><br><br>"
+          ?>
+         @elseif($link->name === "heading")
+         <h2>{{ $link->title }}</h2>
          @else
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button hvr-grow hvr-icon-wobble-vertical" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/') . $linkName }}.svg">{{ ucfirst($linkName) }}</a></div>
          @endif

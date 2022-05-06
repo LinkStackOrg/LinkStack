@@ -32,6 +32,9 @@
 <pre style="color: grey;">
 The 'Custom' button allows you to add a custom link, where the text on the button is determined with the link title set above.
 The 'Custom_website' button functions similar to the Custom button, with the addition of a function that requests the favicon from the chosen URL and uses it as the button icon.
+
+The 'Space' button will be replaced with an empty space, so buttons could be visually separated into groups. Entering a number between 1-10 in the title section will change the empty space's distance.
+The 'Heading' button will be replaced with a sub-heading, where the title defines the text on that heading.
 </pre>
 </details>
 

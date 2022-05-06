@@ -92,6 +92,13 @@ class UserController extends Controller
     //Save add link
     public function addLink(request $request)
     {
+        if ($request->button == 'heading' or $request->button == 'space')
+            $request->validate([
+                'link' => '',
+                'title' => '',
+                'button' => 'required'
+            ]);
+    else
         $request->validate([
             'link' => 'required',
             'title' => '',
