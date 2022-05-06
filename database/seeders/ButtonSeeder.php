@@ -181,7 +181,7 @@ class ButtonSeeder extends Seeder
             ],
 
             [
-                'name' => 'header'
+                'name' => 'heading'
             ],
 
             [
