@@ -36,6 +36,12 @@
 <a href="https://patreon.com/julianprieber"><img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Djulianprieber%26type%3Dpatrons&style=flat&logo=appveyor"></img></a>
 </p>
 
+<br>
+
+<p align="center">
+  <a href="https://github.com/JulianPrieber/littlelink-custom/releases/latest/download/littlelink-custom.zip"><img src="https://i.imgur.com/XnnwdmG.png" alt="Download latest" width="280" ></a>
+</p>
+
 ---
 ## Function    
 **LittleLink Custom provides** you with **a website similar to** [Linktree](https://linktr.ee/). Many **social media platforms only allow you to add one link**, with this you can simply **link to your LittleLink Custom page** and have **all the links you want** displayed on one site. You can share all your links to your social media platform or important links to **easy accessible and hosted on your own web-server** or web-hosting provider. On this website, other users can register and create their own links, you can access other user via the Admin Panel.
