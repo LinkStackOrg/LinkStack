@@ -2,7 +2,7 @@
 @extends('layouts.sidebar')
 
 @section('content')
-@push('scripts')
+@push('sidebar-scripts')
   <!-- start button editor -->
 <script>
 $(document).ready(function() {

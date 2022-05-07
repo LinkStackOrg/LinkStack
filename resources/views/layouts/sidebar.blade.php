@@ -86,7 +86,7 @@ if ($url1sb->successful() or $url2sb->successful()) {
     <link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
     @endif
 
-	@stack('stylesheets')
+	@stack('sidebar-stylesheets')
   </head>
   <body>
 
@@ -317,6 +317,6 @@ if(localStorage.getItem("firstTime")==null){
     <script src="{{ asset('/studio/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('/studio/js/main-dashboard.js') }}"></script>
 
-	@stack('scripts')
+	@stack('sidebar-scripts')
   </body>
 </html>
