@@ -155,7 +155,8 @@ var button_css = {
 
 <div>
 <h2 class="mb-4"><i class="bi bi-pen"> Button Editor</i>
-<br><br><a href="{{ url('/studio/links') }}"><button style="font-size: 40px;" >&nbsp; &nbsp; &nbsp;⬅ Back</button></a><br><br>
+
+<br><br><a class="btn btn-primary" href="{{ url('/studio/links') }}">⬅ Back</a>
 
         <h2>Custom Button</h2><br>
 
@@ -333,6 +334,7 @@ background-image: linear-gradient(-135deg,#0f0c29,#302b63,#24243e)
 
 </div>
 
+<a class="btn btn-primary" href="{{ url('/studio/links') }}">⬅ Back</a>
 
 @endsection
 @endif
