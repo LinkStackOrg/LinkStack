@@ -490,7 +490,8 @@ button-demo {
   text-align: center;
   vertical-align: middle;
   font-size: 18px;
-  min-width: 200px;
+  max-width: 300px;
+  width: 80%;
   font-weight: 700;
   line-height: 48px;
   letter-spacing: 0.1px;
