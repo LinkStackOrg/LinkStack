@@ -4,6 +4,7 @@
 
         <h2 class="mb-4"><i class="bi bi-link-45deg"> Links</i></h2>
 
+        <div style="overflow-y: auto;">
         <table class="table table-bordered">
         <thead>
           <tr>
@@ -38,6 +39,7 @@
           @endforeach
         </tbody>
         </table>
+</div>
 
             <ul class="pagination justify-content-center">
                   {!! $links ?? ''->links() !!}
