@@ -109,7 +109,30 @@ Feel free to register your account and try out all the features of LittleLink Cu
 <img height="450" src="https://i.imgur.com/OL0sf89.gif">
 </p>
 
+<br><br>
+
+<h3 align="center">Infinite button combinations with the built in Button Editor</h3>
+
 <br>
+
+<h4 align="center">Create custom background colors and gradients with as many colors you want.</h4>
+<p align="center">
+  <img src="https://i.imgur.com/fX0y0IY.png" width="650" >
+</p>
+
+<br>
+
+<h4 align="center">Add custom icons with Font Awesome</h4>
+<p align="center">
+  <img src="https://i.imgur.com/PvFCjON.png" width="650" >
+</p>
+
+<br>
+
+<h4 align="center">Get a live preview of your edits.</h4>
+<p align="center">
+  <img src="https://i.imgur.com/Otue6Hl.png" width="650" >
+</p>
 
 ## Installation
 
