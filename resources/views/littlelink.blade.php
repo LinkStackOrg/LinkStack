@@ -107,12 +107,12 @@ function get_operating_system() {
 
 @if($user_browser === 'Chrome' or get_operating_system() == 'mobile')
 <script  src="{{ asset('littlelink/js/jquery.min.js') }}"></script>
-<div align="right" class="sharediv"><div class="button-entrance"><a class="sharebutton hvr-grow hvr-icon-wobble-vertical" id='share-share-button'><img class="sharebutton-img icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}share.svg"><span class="sharebutton-mb">Share</span></a></div></div>
+<div align="right" class="sharediv"><div class="button-entrance"><span class="sharebutton hvr-grow hvr-icon-wobble-vertical" id='share-share-button'><img alt="share-icon" class="sharebutton-img icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}share.svg"><span class="sharebutton-mb">Share</span></span></div></div>
 <span class="copy-icon" role="button">
 </span>
 @else
 <span class="copy-icon" role="button">
-<div align="right" class="sharediv"><div class="button-entrance"><a class="sharebutton hvr-grow hvr-icon-wobble-vertical"><img class="sharebutton-img icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}share.svg"><span class="sharebutton-mb">Share</span></a></div></div>
+<div align="right" class="sharediv"><div class="button-entrance"><a class="sharebutton hvr-grow hvr-icon-wobble-vertical"><img alt="share-icon" class="sharebutton-img icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}share.svg"><span class="sharebutton-mb">Share</span></a></div></div>
 </span>
 @endif
 <div class="toastdiv">
@@ -126,11 +126,11 @@ function get_operating_system() {
       <div class="column" style="margin-top: 5%">
         <!-- Your Image Here -->
           @if(file_exists(base_path("img/$littlelink_name" . ".png" )))
-          <img class="rounded-avatar fadein" src="{{ asset("img/$littlelink_name" . ".png") }}" width="128px" height="128px">
+          <img alt="avatar" class="rounded-avatar fadein" src="{{ asset("img/$littlelink_name" . ".png") }}" width="128px" height="128px">
           @elseif(file_exists(base_path("littlelink/images/avatar.png" )))
-          <img class="rounded-avatar fadein" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
+          <img alt="avatar" class="rounded-avatar fadein" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
           @else
-          <img class="rounded-avatar fadein" src="{{ asset('littlelink/images/logo.svg') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
+          <img alt="avatar" class="rounded-avatar fadein" src="{{ asset('littlelink/images/logo.svg') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
           @endif
 
         @foreach($information as $info)
