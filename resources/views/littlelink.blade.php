@@ -126,7 +126,7 @@ function get_operating_system() {
       <div class="column" style="margin-top: 5%">
         <!-- Your Image Here -->
           @if(file_exists(base_path("img/$littlelink_name" . ".png" )))
-          <img class="rounded-avatar fadein" src="{{ asset("img/$littlelink_name" . ".png") }}" width="100px" height="100px">
+          <img class="rounded-avatar fadein" src="{{ asset("img/$littlelink_name" . ".png") }}" width="128px" height="128px">
           @elseif(file_exists(base_path("littlelink/images/avatar.png" )))
           <img class="rounded-avatar fadein" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
           @else
