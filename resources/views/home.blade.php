@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
+  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-auto.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
@@ -15,41 +15,6 @@
   @else
   <link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
   @endif
-
-  <!-- begin dark mode detection -->
-	<script src="{{ asset('littlelink/js/js.cookie.min.js') }}"></script>
-	<script>
-		// code to set the `color_scheme` cookie
-		var $color_scheme = Cookies.get("color_scheme");
-		function get_color_scheme() {
-		return (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
-		}
-		function update_color_scheme() {
-		Cookies.set("color_scheme", get_color_scheme());
-		}
-		// read & compare cookie `color-scheme`
-		if ((typeof $color_scheme === "undefined") || (get_color_scheme() != $color_scheme))
-		update_color_scheme();
-		// detect changes and change the cookie
-		if (window.matchMedia)
-		window.matchMedia("(prefers-color-scheme: dark)").addListener( update_color_scheme );
-		// reloads page to apply the dark mode cookie
-		window.onload = function() {
-		    if(!window.location.hash && get_color_scheme() == "dark" && (get_color_scheme() != $color_scheme)) {
-		        window.location = window.location + '#dark';
-		        window.location.reload();
-		    }
-		}
-	</script>
-		<?php // loads dark mode CSS if dark mode detected
-		     $color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : false; ?>
-		@if ($color_scheme == 'dark')
-					<!-- switch the two <link> Tags below to default to dark mode if cookie detection fails -->
-					<link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
-				@else
-					<link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
-					@endif
-  <!-- end dark mode detection -->
 </head>
 <body>
 
@@ -97,12 +62,10 @@ foreach($pages as $page)
 		      <?php echo $message->home_message; ?>
         </div>
         
-<?php $initial=1; // <-- Effectively sets the initial loading time of the buttons. This value should be left at 1. ?>
-        <!-- Replace # with your profile URL. Delete whatever you don't need & create your own brand styles in css/brands.css -->  
+        <?php $initial=1; // <-- Effectively sets the initial loading time of the buttons. This value should be left at 1. ?>
         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-github button hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon" src="{{ asset('littlelink/icons/github.svg') }}">Github</div></div>
         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-twitter button hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon" src="{{ asset('littlelink/icons/twitter.svg') }}">Twitter</div></div>
         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-instagram button hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon" src="{{ asset('littlelink/icons/instagram.svg') }}">Instagram</div></div>
-        <!--<a class="button button-pinterest" href="#"><img class="icon" src="{{ asset('littlelink/icons/pinterest.svg') }}">Pinterest</a>-->
         </br></br>
 
         <p>and {{ $countButton - 3 }} other buttons ...</p>
