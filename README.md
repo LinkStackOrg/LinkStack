@@ -20,6 +20,7 @@
   <a href="#Discord">Discord</a> •
   <a href="#Fork-Structure">Fork structure</a> •
   <a href="#License">License</a> •
+  <a href="#Supporters">Supporters</a> •
   <a href="#Special-thanks">Special thanks</a> •
   <a href="#Additional-credit">Additional credit</a>
 </p>
@@ -213,6 +214,18 @@ LittleLink Admin is in itself a fork of [LittleLink](https://github.com/sethcott
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://raw.githubusercontent.com/JulianPrieber/littlelink-custom/main/LICENSE?token=GHSAT0AAAAAABRPYRQAPFRUGQA4A2OMFBUQYQWHZCQ)
 
+
+<br>
+
+## Supporters
+You can support LittleLink Custom [here](https://littlelink-custom.com/sponsor). If you choose to support LittleLink Custom, you will get exclusive rewards such as access to a private LittleLink Custom instance hosted by us at [llc.bio](https://llc.bio) for free.
+
+
+**💖 Thank you:**
+
+- Stephen Marshall
+
+- [Add Your Name](https://littlelink-custom.com/sponsor)
 
 <br>
 
