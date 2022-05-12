@@ -25,8 +25,8 @@ class CreateLinksTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('button_id')->references('id')->on('buttons');
             $table->timestamps();
-            $table->text('custom_css')->default('');
-            $table->text('custom_icon')->default('fa-external-link');
+            $table->string('custom_css')->default('');
+            $table->string('custom_icon')->default('fa-external-link');
         });
     }
 
