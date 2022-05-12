@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>{{ config('app.name') }}</title>
+  <?php $cleaner_input = strip_tags($message->home_message); ?>
+  <meta name="description" content="{{ $cleaner_input }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
@@ -46,11 +48,11 @@ foreach($pages as $page)
       <div class="column" style="margin-top: 10%">
         <!-- Your Image Here -->
         @if(file_exists(base_path("littlelink/images/avatar.png" )))
-        <img src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="128px" height="128px">
+        <img alt="avatar" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="128px" height="128px">
         @else
 		<div class="parent fadein" >
-			<img class="image1 rotate" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo"></img>
-			<img class="image2" src="{{ asset('littlelink/images/just-ll.svg') }}" alt="Logo"></img>
+			<img alt="logo" class="image1 rotate" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo"></img>
+			<img alt="logo" class="image2" src="{{ asset('littlelink/images/just-ll.svg') }}" alt="Logo"></img>
 		</div>
         @endif
 
@@ -63,9 +65,9 @@ foreach($pages as $page)
         </div>
         
         <?php $initial=1; // <-- Effectively sets the initial loading time of the buttons. This value should be left at 1. ?>
-        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-github button hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon" src="{{ asset('littlelink/icons/github.svg') }}">Github</div></div>
-        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-twitter button hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon" src="{{ asset('littlelink/icons/twitter.svg') }}">Twitter</div></div>
-        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-instagram button hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon" src="{{ asset('littlelink/icons/instagram.svg') }}">Instagram</div></div>
+        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-github button hvr-grow hvr-icon-wobble-vertical"><img alt="button-icon" class="icon hvr-icon" src="{{ asset('littlelink/icons/github.svg') }}">Github</div></div>
+        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-twitter button hvr-grow hvr-icon-wobble-vertical"><img alt="button-icon" class="icon hvr-icon" src="{{ asset('littlelink/icons/twitter.svg') }}">Twitter</div></div>
+        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-instagram button hvr-grow hvr-icon-wobble-vertical"><img alt="button-icon" class="icon hvr-icon" src="{{ asset('littlelink/icons/instagram.svg') }}">Instagram</div></div>
         </br></br>
 
         <p>and {{ $countButton - 3 }} other buttons ...</p>
