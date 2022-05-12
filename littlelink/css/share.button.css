@@ -31,24 +31,44 @@
   -webkit-transform: translateY(-150px);
   transform: translateY(-150px);
 }
-.sharebutton,
-sharebutton {
-  display: inline-block;
-  text-decoration: none;
-  height: 48px;
-  text-align: center;
-  vertical-align: middle;
-  font-size: 18px;
-  width: 150px;
-  font-weight: 700;
-  line-height: 48px;
-  letter-spacing: 0.1px;
-  white-space: wrap;
-  border-radius: 8px;
-  cursor: pointer;
-  color: #000000; 
-  background-color: #efefef
- }
+  .sharebutton,
+  sharebutton {
+    display: inline-block;
+    text-decoration: none;
+    height: 48px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
+    width: 48px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: 0.1px;
+    white-space: wrap;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #000000; 
+    background-color: #efefef
+   }
+@media screen and (min-width: 600px) {
+  .sharebutton,
+  sharebutton {
+    display: inline-block;
+    text-decoration: none;
+    height: 48px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
+    width: 150px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: 0.1px;
+    white-space: wrap;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #000000; 
+    background-color: #efefef
+   }
+}
 sharebutton:hover,
 .sharebutton:hover {
   color: #000000;
@@ -63,3 +83,15 @@ sharebutton:hover,
 .sharebutton.sharebutton-primary:focus {
   color: #FFFFFF;
   filter: brightness(90%) }
+
+  @media screen and (max-width: 600px) {
+    .sharebutton-mb {
+     display: none;
+    }
+    .sharebutton-img {
+      position: relative;
+      left: 3px;
+      margin-left: auto;
+      margin-right: auto;
+     }
+   }

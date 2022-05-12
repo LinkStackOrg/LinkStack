@@ -107,12 +107,12 @@ function get_operating_system() {
 
 @if($user_browser === 'Chrome' or get_operating_system() == 'mobile')
 <script  src="{{ asset('littlelink/js/jquery.min.js') }}"></script>
-<div align="right" class="sharediv"><div class="button-entrance"><a class="sharebutton hvr-grow hvr-icon-wobble-vertical" id='share-share-button'><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}share.svg">Share</a></div></div>
+<div align="right" class="sharediv"><div class="button-entrance"><a class="sharebutton hvr-grow hvr-icon-wobble-vertical" id='share-share-button'><img class="sharebutton-img icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}share.svg"><span class="sharebutton-mb">Share</span></a></div></div>
 <span class="copy-icon" role="button">
 </span>
 @else
 <span class="copy-icon" role="button">
-<div align="right" class="sharediv"><div class="button-entrance"><a class="sharebutton hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}share.svg">Share</a></div></div>
+<div align="right" class="sharediv"><div class="button-entrance"><a class="sharebutton hvr-grow hvr-icon-wobble-vertical"><img class="sharebutton-img icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}share.svg"><span class="sharebutton-mb">Share</span></a></div></div>
 </span>
 @endif
 <div class="toastdiv">
