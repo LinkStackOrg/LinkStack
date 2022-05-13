@@ -2,6 +2,8 @@
 
 @section('content')
 
+@if(env('ALLOW_USER_HTML') === true) <script src="{{ asset('resources/ckeditor/ckeditor.js') }}"></script> @endif
+
         <h2 class="mb-4"><i class="bi bi-file-earmark-break"> Page</i></h2>
         
         <form action="{{ route('editPage') }}" enctype="multipart/form-data" method="post">
@@ -41,7 +43,7 @@
           
           <div class="form-group col-lg-8">
             <label>Page Description</label>
-            <textarea class="form-control" name="pageDescription" rows="3">{{ $page->littlelink_description ?? '' }}</textarea>
+            <textarea class="form-control @if(env('ALLOW_USER_HTML') === true) ckeditor @endif" name="pageDescription" rows="3">{{ $page->littlelink_description ?? '' }}</textarea>
           </div>
           @endforeach
           <button type="submit" class="mt-3 ml-3 btn btn-info">Submit</button>

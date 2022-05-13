@@ -147,7 +147,7 @@ function get_operating_system() {
         <h1 class="fadein">{{ $info->name }}</h1>
 
         <!-- Short Bio -->
-        <center><p style="width: 50%; min-width: 300px;" class="fadein">{{ $info->littlelink_description }}</p></center>
+        <center><p style="width: 50%; min-width: 300px;" class="fadein">@if(env('ALLOW_USER_HTML') === true){!! $info->littlelink_description !!}@else{{ $info->littlelink_description }}@endif</p></center>
         
         @endforeach		
         <!-- Buttons -->
