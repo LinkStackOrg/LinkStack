@@ -8,7 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-auto.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
@@ -16,6 +15,16 @@
   <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
   @else
   <link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
+  @endif
+
+  <?php // override dark/light mode if override cookie is set
+  $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
+  @if ($color_scheme_override == 'dark')
+  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
+  @elseif ($color_scheme_override == 'light')
+  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
+  @else
+  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-auto.css') }}">
   @endif
 </head>
 <body>

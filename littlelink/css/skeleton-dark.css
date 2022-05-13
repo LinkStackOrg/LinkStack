@@ -31,6 +31,8 @@
 - Code
 - Spacing
 - Utilities
+- Misc
+- Credit footer
 *
 * You'll find the button css in css/brands.css.
 *
@@ -198,3 +200,15 @@ hr {
     border-radius: 30px;
     border: 3px none #ffffff;
   }
+
+/* Credit footer
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.credit-txt {
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.credit-txt-clr {
+  color: #FFF !important;
+}
