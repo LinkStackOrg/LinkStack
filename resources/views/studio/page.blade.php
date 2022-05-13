@@ -6,13 +6,15 @@
 
         <h2 class="mb-4"><i class="bi bi-file-earmark-break"> Page</i></h2>
         
+        @foreach($pages as $page)
         <form action="{{ route('editPage') }}" enctype="multipart/form-data" method="post">
           @csrf
+        @if($page->littlelink_name != '')
           <div class="form-group col-lg-8">
             <label>Logo</label>
             <input type="file" class="form-control-file" name="image">
           </div>
-          @foreach($pages as $page)
+        @endif
           
           <div class="form-group col-lg-8">
           @if(file_exists(base_path("img/$page->littlelink_name" . ".png" )))
