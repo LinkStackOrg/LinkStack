@@ -42,8 +42,9 @@
 		}
 	</script>
 		<?php // loads dark mode CSS if dark mode detected
-		     $color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : false; ?>
-		@if ($color_scheme == 'dark')
+		   $color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : false; 
+			 $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
+		@if ($color_scheme == 'dark' and $color_scheme_override != 'light' or $color_scheme_override == 'dark')
 					<!-- switch the two <link> Tags below to default to dark mode if cookie detection fails -->
 					<link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
 				@else

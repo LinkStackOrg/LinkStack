@@ -143,3 +143,46 @@ section #footer_spin{
   animation: spin 4s linear infinite;
   animation-play-state: paused; 
 }
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 140px;
+  transform: scale(0.7);
+}
+.toggle span {
+  margin: 0 0.5rem;
+}
+.toggle input[type=checkbox] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+.toggle input[type=checkbox]:checked + label {
+  background: teal;
+}
+.toggle input[type=checkbox]:checked + label:after {
+  left: calc(100% - 2px);
+  transform: translateX(-100%);
+}
+.toggle label {
+  cursor: pointer;
+  width: 75px;
+  height: 34px;
+  background: rgba(0, 0, 0, 0.27);
+  display: block;
+  border-radius: 40px;
+  position: relative;
+}
+.toggle label:after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 40px;
+  transition: 0.3s;
+}

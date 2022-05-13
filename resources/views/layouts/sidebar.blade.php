@@ -35,8 +35,9 @@
 		}
 	</script>
 		<?php // loads dark mode CSS if dark mode detected
-		     $color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : false; ?>
-		@if ($color_scheme == 'dark')
+		     $color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : false; 
+			 $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
+		@if ($color_scheme == 'dark' and $color_scheme_override != 'light' or $color_scheme_override == 'dark')
 					<!-- switch the two <link> Tags below to default to dark mode if cookie detection fails -->
 					<link rel="stylesheet" href="{{ asset('/studio/css/bootstrap.min-dark.css') }}">
 					<link rel="stylesheet" href="{{ asset('/studio/css/style-dashboard-dark.css') }}">
@@ -245,6 +246,14 @@ if ($url1sb->successful() or $url2sb->successful()) {
 
 					@if(auth()->user()->role == 'admin' and $compromised === "true")
 					<a style="color:tomato;" class="nav-link" href="{{ url('panel/diagnose') }}" title="Your security is at risk. Some files can be accessed by everyone. Immediate action is required! Click this message to learn more.">Your security is at risk!</a>
+					@endif
+
+					@if ($color_scheme_override == 'dark' or ($color_scheme == 'dark' and $color_scheme_override != 'dark' and $color_scheme_override != 'light'))
+					<div id="myBtn" class="toggle"><span>🌙</span><input type="checkbox" id="toggle-switch" /><label for="toggle-switch"></label><span>☀️</span></div>
+					<script>function ColorOverrride(){document.cookie="color_scheme_override=light; path=/",location.reload()}var btn=document.getElementById("myBtn");btn.addEventListener("click",ColorOverrride);</script>
+					@elseif ($color_scheme_override == 'light' or ($color_scheme == 'light' and $color_scheme_override != 'dark' and $color_scheme_override != 'light'))
+					<div id="myBtn" class="toggle"><span>🌙</span><input type="checkbox" id="toggle-switch" checked/><label for="toggle-switch"></label><span>☀️</span></div>
+					<script>function ColorOverrride(){document.cookie="color_scheme_override=dark; path=/",location.reload()}var btn=document.getElementById("myBtn");btn.addEventListener("click",ColorOverrride);</script>
 					@endif
 
                     <a class="nav-link" href="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>" target="_blank">View Page</a>
