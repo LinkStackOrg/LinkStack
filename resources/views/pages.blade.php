@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
@@ -51,12 +50,14 @@
 					<link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
 					@endif
   <!-- end dark mode detection -->
+
+<style>.container-text{position:relative;width:95%;max-width:900px;margin:0 auto;box-sizing:border-box}</style>
 </head>
 <body>
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div class="container">
+  <div class="container-text">
     <div class="row">
 
       <div class="column" style="margin-top: 10%">
@@ -64,7 +65,7 @@
         @if(file_exists(base_path("littlelink/images/avatar.png" )))
         <img src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
         @else
-		<div class="parent fadein" >
+		<div class="container parent fadein" >
 			<img class="image1 rotate" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo"></img>
 			<img class="image2" src="{{ asset('littlelink/images/just-ll.svg') }}" alt="Logo"></img>
 		</div>

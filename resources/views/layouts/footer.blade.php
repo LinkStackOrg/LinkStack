@@ -1,3 +1,4 @@
+<div class="container">
 <div class="footer fadein" style="margin:5% 0px 35px 0px;">
 @if(env('DISPLAY_FOOTER') === true)
     <a class="hvr-float spacing" href="{{ url('') }}/">Home</a>
@@ -19,3 +20,4 @@
 	</section>
 </a><br><br><br>
 @endif
+</div>
