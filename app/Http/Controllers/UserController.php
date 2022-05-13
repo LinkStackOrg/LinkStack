@@ -298,7 +298,7 @@ class UserController extends Controller
         $profilePhoto->move(base_path('/img'), $littlelink_name . ".png");
         }
 
-        return back();
+        return Redirect('/studio/page');
     }
 
     //Show user (name, email, password)
