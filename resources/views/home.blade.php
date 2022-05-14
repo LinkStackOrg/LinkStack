@@ -17,6 +17,9 @@
   <link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
   @endif
 
+                                                        {{-- custom font for logo text --}}
+  <style>@font-face{font-family:'ll';src:url({{ asset('littlelink/fonts/littlelink-custom.otf') }}) format("opentype")}</style>
+
   <?php // override dark/light mode if override cookie is set
   $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
   @if ($color_scheme_override == 'dark')
@@ -54,15 +57,15 @@ foreach($pages as $page)
                     @endauth
               @endif
     </div>
-      <div class="column" style="margin-top: 10%">
+      <div class="column" style="margin-top: 15%">
         <!-- Your Image Here -->
         @if(file_exists(base_path("littlelink/images/avatar.png" )))
         <img alt="avatar" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="128px" height="128px">
         @else
-		<div class="parent fadein" >
-			<img alt="logo" class="image1 rotate" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo"></img>
-			<img alt="logo" class="image2" src="{{ asset('littlelink/images/just-ll.svg') }}" alt="Logo"></img>
-		</div>
+        <div class="logo-container fadein">
+           <img class="rotate" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="width:150px; height:150px;">
+           <div class="logo-centered">l</div>
+        </div>
         @endif
 
         <!-- Your Name -->

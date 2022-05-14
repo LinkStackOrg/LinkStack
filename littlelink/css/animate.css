@@ -60,25 +60,20 @@
   }
 }
 
-.parent {
-    margin: auto;
-    padding-top: 50px;
-    position: relative;
-    left: 34px;
-}
-.image1 {
-    position: relative;
-    width: 150px !important;
-    min-width:150px;
+.logo-container {
+  position: relative;
+  text-align: center;
+  color: white;
 }
 
-.image2 {
-    position: relative;
-    bottom: 38px;
-    right: 107px;
-    width: 55px !important;
-    min-width: 55px;
-    height: auto;
+.logo-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-family: ll;
+  font-size: 78px;
+  font-weight: 100;
+  transform: translate(-50%, -50%);
 }
 
 .parent-footer {
