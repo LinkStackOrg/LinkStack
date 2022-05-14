@@ -335,7 +335,7 @@ class PageSeeder extends Seeder
 ',
 
                 'home_message' => '
-<p><a href="https://littlelink-custom.com/"><strong>LittleLink Custom</strong></a> allows you to create a <strong>customized profile page</strong> where you can <strong>link to other websites</strong>. Many social media platforms only allow you to add one link, with this you can simply <strong>link to your LittleLink Custom page</strong> and have all the links you want displayed on one site. You can<strong> share all your links</strong> to your social media platform or important links to easy accessible and hosted on your own web-server or web-hosting provider. On this website, other users can register and create their own links, you can access other user via the Admin Panel.</p>
+<p><strong><a href="https://littlelink-custom.com/">LittleLink Custom</a></strong> allows you to create a <strong>personal profile page</strong>. Many <strong>social media</strong> platforms <strong>only allow for one link</strong>. With this, you can have <strong>all the links you want</strong> clickable on one site. Set up your personal site on <strong>your own server</strong> in a few clicks.</p>
 ',
 
                 'register' => 'true',
