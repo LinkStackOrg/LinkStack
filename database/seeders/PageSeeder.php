@@ -335,7 +335,7 @@ class PageSeeder extends Seeder
 ',
 
                 'home_message' => '
-<p><strong><a href="https://littlelink-custom.com/">LittleLink Custom</a></strong> allows you to create a <strong>personal profile page</strong>. Many <strong>social media</strong> platforms <strong>only allow for one link</strong>. With this, you can have <strong>all the links you want</strong> clickable on one site. Set up your personal site on <strong>your own server</strong> in a few clicks.</p>
+<p><strong><a href="https://littlelink-custom.com/">LittleLink Custom</a></strong> allows you to create a <strong>personal profile page</strong>. Many <strong>social media</strong> platforms <strong>only allow for one link</strong>. With this, you can have <strong>all the links you want</strong> clickable on one site. Set up your personal site <strong>on your own server</strong> in a few clicks.</p>
 ',
 
                 'register' => 'true',
