@@ -12,7 +12,7 @@
         @if($page->littlelink_name != '')
           <div class="form-group col-lg-8">
             <label>Logo</label>
-            <input type="file" class="form-control-file" name="image">
+            <input type="file" accept="image/jpeg,image/jpg,image/png" class="form-control-file" name="image">
           </div>
         @endif
           
