@@ -18,9 +18,9 @@
           
           <div class="form-group col-lg-8">
           @if(file_exists(base_path("img/$page->littlelink_name" . ".png" )))
-          <img src="{{ asset("img/$page->littlelink_name" . ".png") }}" style="width: 75px; height: 75px; border-radius: 50%;">
+          <img src="{{ asset("img/$page->littlelink_name" . ".png") }}" style="width: 75px; height: 75px; border-radius: 50%; object-fit: cover;">
           @else
-          <img src="{{ asset('littlelink/images/logo.svg') }}" style="width: 75px; height: 75px;">
+          <img src="{{ asset('littlelink/images/logo.svg') }}" style="width: 75px; height: 75px; object-fit: cover;">
           @endif
           </div>
           
