@@ -118,21 +118,21 @@ Feel free to register your account and try out all the features of LittleLink Cu
 
 <h4 align="center">Create custom background colors and gradients with as many colors you want.</h4>
 <p align="center">
-  <img src="https://i.imgur.com/fX0y0IY.png" width="650" >
+  <img src="https://i.imgur.com/fX0y0IY.png" width="450" >
 </p>
 
 <br>
 
 <h4 align="center">Add custom icons with Font Awesome</h4>
 <p align="center">
-  <img src="https://i.imgur.com/PvFCjON.png" width="650" >
+  <img src="https://i.imgur.com/PvFCjON.png" width="450" >
 </p>
 
 <br>
 
 <h4 align="center">Get a live preview of your edits.</h4>
 <p align="center">
-  <img src="https://i.imgur.com/Otue6Hl.png" width="650" >
+  <img src="https://i.imgur.com/Otue6Hl.png" width="450" >
 </p>
 
 ## Installation
