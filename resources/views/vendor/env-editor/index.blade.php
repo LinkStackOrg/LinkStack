@@ -38,6 +38,8 @@
 <a style="color:#ffbb39; font-weight:300; font-size:120%;">You currently have Event Notifications disabled. To get notified about polls, possible security vulnerabilities or important news, change the setting <code>NOTIFY_EVENTS</code> below to <code>true</code>. If you enable this and an event is happening, a small text will pop up on your Admin Panel which will only be visible for admins.</a>
 	@endif
 
+<?php if(strpos($_SERVER['SERVER_SOFTWARE'], 'nginx') !== false)echo "<br><br><p style=\"color:tomato; font-weight:300; font-size:120%;\">You appear to be using NGINX. Some features of the Config Editor do not work on NGINX based servers. Learn more about this and how to use these features anyway <a href=\"https://littlelink-custom.com/config-editor\" target=\"_blank\">here</a>.</p>"; ?>
+
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active p-3" id="current-env" role="tabpanel" aria-labelledby="nav-home-tab">
                 <env-main-tab></env-main-tab>
