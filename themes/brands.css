@@ -1,0 +1,288 @@
+
+/* Table of contents
+––––––––––––––––––––––––––––––––––––––––––––––––––
+
+- Rounded user avatars
+- Buttons
+- Brand Styles
+
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body{
+  color: white !important;
+  background-color: #202124 !important;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  border-left: 0;
+  border-right: 0;
+  font-family: 'Roboto Mono', monospace !important;
+}
+
+/* Buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.button,
+button {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 17px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 5px;
+  border: dashed white 2px;
+  text-decoration: none;
+  color: white !important;
+  word-wrap: break-word;
+  width: 300px;
+ }
+button:hover,
+.button:focus {
+  color: #333;
+  border-color: #888;
+  outline: 0; }
+.button.button-primary {
+  color: #FFF;
+  filter: brightness(90%) }
+.button.button-primary:hover,
+.button.button-primary:focus {
+  color: #FFF;
+  filter: brightness(90%) }
+
+
+/* Brand Icons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.icon {
+  padding: 0px 8px 3.5px 0px;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+
+/* Brand Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Added custom link button*/
+.button.button-custom:hover,
+.button.button-custom:focus {
+  filter: brightness(90%) }
+
+/* Default (this is great for your own brand color!) */
+.button.button-default:hover,
+.button.button-default:focus {
+  filter: brightness(90%) }
+
+/* VRChat */
+.button.button-vrchat:hover,
+.button.button-vrchat:focus {
+  filter: brightness(90%);
+}
+
+/* Discord */
+.button.button-discord:hover,
+.button.button-discord:focus {
+  filter: brightness(90%) }
+
+/* Facebook */
+.button.button-facebook:hover,
+.button.button-facebook:focus {
+  filter: brightness(90%) }
+
+/* Facebook Messenger */
+.button.button-messenger:hover,
+.button.button-messenger:focus {
+  filter: brightness(90%) }
+
+/* Figma */
+.button.button-figma:hover,
+.button.button-figma:focus {
+  filter: brightness(90%) }
+
+/* Github */
+.button.button-github:hover,
+.button.button-github:focus {
+  filter: brightness(90%) }
+
+/* Goodreads */
+.button.button-goodreads:hover,
+.button.button-goodreads:focus {
+  filter: brightness(90%) }
+
+/* Instagram */
+.button.button-instagram:hover,
+.button.button-instagram:focus {
+  filter: brightness(90%) }
+
+/* Kit */
+.button.button-kit:hover,
+.button.button-kit:focus {
+  filter: brightness(90%) }
+
+/* LinkedIn */
+.button.button-linkedin:hover,
+.button.button-linkedin:focus {
+  filter: brightness(90%) }
+
+/* Medium */
+.button.button-medium:hover,
+.button.button-medium:focus {
+  filter: brightness(90%) }
+
+/* Pinterest */
+.button.button-pinterest:hover,
+.button.button-pinterest:focus {
+  filter: brightness(90%) }
+
+/* Producthunt */
+.button.button-producthunt:focus {
+  filter: brightness(90%) }
+
+/* Reddit */
+.button.button-reddit:hover,
+.button.button-reddit:focus {
+  filter: brightness(90%) }
+
+/* Skoob */
+.button.button-skoob:hover,
+.button.button-skoob:focus {
+  filter: brightness(90%) }
+
+/* Snapchat */
+.button.button-snapchat:hover,
+.button.button-snapchat:focus {
+  filter: brightness(90%) }
+
+/* SoundCloud */
+.button.button-soundcloud:hover,
+.button.button-soundcloud:focus {
+  filter: brightness(90%) }
+
+/* Spotify */
+.button.button-spotify:hover,
+.button.button-spotify:focus {
+  filter: brightness(90%) }
+
+/* Steam */
+.button.button-steam:hover,
+.button.button-steam:focus {
+  filter: brightness(90%) }
+  
+/* Telegram */
+.button.button-telegram:hover,
+.button.button-telegram:focus {
+  filter: brightness(90%) }
+
+/* TikTok */
+.button.button-tiktok:hover,
+.button.button-tiktok:focus {
+  filter: brightness(90%) }
+
+/* Tumblr */
+.button.button-tumblr:hover,
+.button.button-tumblr:focus {
+  filter: brightness(90%) }
+
+/* Twitch */
+.button.button-twitch:hover,
+.button.button-twitch:focus {
+  filter: brightness(90%) }
+
+/* Twitter */
+.button.button-twitter:hover,
+.button.button-twitter:focus {
+  filter: brightness(90%) }
+
+/* Vimeo */
+.button.button-vimeo:hover,
+.button.button-vimeo:focus {
+  filter: brightness(90%) }
+
+/* YouTube */
+.button.button-youtube:hover,
+.button.button-youtube:focus {
+  filter: brightness(90%) }
+
+/* Wordpress */
+.button.button-wordpress:hover,
+.button.button-wordpress:focus {
+  filter: brightness(90%) }
+
+/* Bandcamp */
+.button.button-bandcamp:hover,
+.button.button-bandcamp:focus {
+  filter: brightness(90%);
+}
+
+/* Patreon */
+.button.button-patreon:hover,
+.button.button-patreon:focus {
+  filter: brightness(90%);
+}
+
+/* Signal */
+.button.button-signal:hover,
+.button.button-signal:focus {
+  filter: brightness(90%);
+}
+
+/* Venmo */
+.button.button-venmo:hover,
+.button.button-venmo:focus {
+  filter: brightness(90%);
+}
+
+/* Cash App */
+.button.button-cashapp:hover,
+.button.button-cashapp:focus {
+  filter: brightness(90%);
+}
+
+/* Gitlab */
+.button.button-gitlab:hover,
+.button.button-gitlab:focus {
+  filter: brightness(90%);
+}
+
+/* Mastodon */
+.button.button-mastodon:hover,
+.button.button-mastodon:focus {
+  filter: brightness(90%);
+}
+
+/* PayPal */
+.button.button-paypal:hover,
+.button.button-paypal:focus {
+  filter: brightness(90%);
+}
+
+/* WhatsApp */
+.button.button-whatsapp:hover,
+.button.button-whatsapp:focus {
+  filter: brightness(90%);
+}
+
+/* Xing */
+.button.button-xing:hover,
+.button.button-xing:focus {
+  filter: brightness(90%);
+}
+
+/* Buy Me a Coffee */
+.button.button-coffee:hover,
+.button.button-coffee:focus {
+  filter: brightness(90%);
+}
+
+/* Custom Website */
+.button.button-web:hover,
+.button.button-web:focus {
+  filter: brightness(90%);
+}

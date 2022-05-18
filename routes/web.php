@@ -50,6 +50,8 @@ Route::get('/studio/index', [UserController::class, 'index'])->name('studioIndex
 Route::get('/studio/add-link', [UserController::class, 'showButtons'])->name('showButtons');
 Route::post('/studio/add-link', [UserController::class, 'addLink'])->name('addLink');
 Route::get('/studio/links', [UserController::class, 'showLinks'])->name('showLinks');
+Route::get('/studio/theme', [UserController::class, 'showTheme'])->name('showTheme');
+Route::post('/studio/theme', [UserController::class, 'editTheme'])->name('editTheme');
 Route::get('/deleteLink/{id}', [UserController::class, 'deleteLink'])->name('deleteLink');
 Route::get('/upLink/{up}/{id}', [UserController::class, 'upLink'])->name('upLink');
 Route::get('/studio/edit-link/{id}', [UserController::class, 'showLink'])->name('showLink');
