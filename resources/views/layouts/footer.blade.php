@@ -9,7 +9,7 @@
 </div>
 
 @if(env('DISPLAY_CREDIT') === true)
-<a style="text-decoration: none;" class="spacing" href="https://littlelink-custom.com" target="_blank" title="Learn more">
+<div class="credit-footer"><a style="text-decoration: none;" class="spacing" href="https://littlelink-custom.com" target="_blank" title="Learn more">
 	<section class="hvr-grow fadein">
 		<div class="parent-footer credit-icon" >
 			<img id="footer_spin" class="footer_spin image-footer1 generic" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="LittleLink Custom"></img>
@@ -18,6 +18,6 @@
 
 		<a href="https://littlelink-custom.com" target="_blank" title="Learn more" class="credit-txt credit-txt-clr credit-text">Powered by LittleLink Custom</a>
 	</section>
-</a><br><br><br>
+</a></div><br><br><br>
 @endif
 </div>
