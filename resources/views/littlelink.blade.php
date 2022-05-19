@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  @if(env('HOME_URL') != '')
+  <title>{{ $userinfo->name }}</title>
+  @else
   <title>{{ $userinfo->name }} 🔗 {{ config('app.name') }} </title>
+  @endif
   <meta name="description" content="{{ $userinfo->littlelink_description }}">
   <meta name="author" content="{{ $userinfo->name }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
