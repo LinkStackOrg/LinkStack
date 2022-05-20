@@ -52,7 +52,10 @@
             <label>Upload theme</label>
             <input type="file" accept=".zip" class="form-control-file" name="zip">
           </div>
+        <div class="row">
         <button type="submit" class="mt-3 ml-3 btn btn-info">Upload theme</button>
+        <button class="mt-3 ml-3 btn btn-primary" title="Download more themes"><a href="https://littlelink-custom.com/themes.php" target="_blank" style="color:#FFFFFF;">Download themes</a></button>
+        </div>
         </form>
         </details>
 
