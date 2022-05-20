@@ -240,9 +240,7 @@ var button_css = {
         @csrf
         <div class="form-group col-lg-8">
 <textarea style="display: none;" rows="9" type="text" name="custom_css" value="" class="form-control">
-color: #FFFFFF; 
-background-color: #FFFFFF; 
-background-image: linear-gradient(-135deg,#0f0c29,#302b63,#24243e)
+NULL
 </textarea>
         </div>
         <button type="submit" class="mt-3 ml-3 btn btn-info">Reset to default</button>
@@ -251,9 +249,9 @@ background-image: linear-gradient(-135deg,#0f0c29,#302b63,#24243e)
 <br><br><div id="result" style="left: 1%; position: relative; background-color:#2c2d3a; border-radius: 25px; min-width:300px; max-width:950px; height:300px; box-shadow: 0 10px 20px -10px rgba(0,0,0, 0.6);">
   <div style="position: relative; top: 50%; transform: translateY(-50%);">
     <h2 align="center" style="color:white">Result:</h2>
-      @if($custom_css === "" and $buttonId == 1)
+      @if($custom_css === "" or $custom_css === "NULL" and $buttonId == 1)
         <center><div style="--delay: 1s" class="button-entrance"><div class="button-demo button-custom button hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon fa {{$custom_icon}}">{{ $title }}</div></div></center>
-        @elseif($custom_css === "" and $buttonId == 2)
+        @elseif($custom_css === "" or $custom_css === "NULL" and $buttonId == 2)
         <center><div style="--delay: 1s" class="button-entrance"><div class="button-custom_website button hvr-grow hvr-icon-wobble-vertical"><img class="wicon hvr-icon" src="http://www.google.com/s2/favicons?domain={{$link}}">{{ $title }}</div></div></center>
         @elseif($custom_css != "" and $buttonId == 2)
         <center><div style="--delay: 1s" class="button-entrance"><div style="{{ $custom_css }}" class="button-custom_website button hvr-grow hvr-icon-wobble-vertical"><img class="wicon hvr-icon" src="http://www.google.com/s2/favicons?domain={{$link}}">{{ $title }}</div></div></center>

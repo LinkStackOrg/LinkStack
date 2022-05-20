@@ -139,6 +139,9 @@ if ($url1sb->successful() or $url2sb->successful()) {
             <li>
               <a href="{{ url('/studio/page') }}">Page</a>
 	          </li>
+			  <li>
+              <a href="{{ url('/studio/theme') }}">Themes</a>
+	          </li>
             <li>
               <a href="{{ url('/studio/profile') }}">Profile</a>
 	          </li>

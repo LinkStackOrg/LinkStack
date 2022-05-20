@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  @if(env('HOME_URL') != '')
+  <title>{{ $userinfo->name }}</title>
+  @else
   <title>{{ $userinfo->name }} 🔗 {{ config('app.name') }} </title>
+  @endif
   <meta name="description" content="{{ $userinfo->littlelink_description }}">
   <meta name="author" content="{{ $userinfo->name }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,18 +44,25 @@
 
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/share.button.css') }}">
   @if(file_exists(base_path("littlelink/images/avatar.png" )))
   <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
   @else
   <link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
   @endif
 
+@foreach($information as $info)
+@if($info->theme != '' and $info->theme != 'default')
+  <link rel="stylesheet" href="themes/{{$info->theme}}/share.button.css">
+  <link rel="stylesheet" href="themes/{{$info->theme}}/brands.css">
+  <link rel="stylesheet" href="themes/{{$info->theme}}/skeleton-auto.css">
+
+@else
   <?php // override dark/light mode if override cookie is set
   $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
+  <link rel="stylesheet" href="{{ asset('littlelink/css/share.button.css') }}">
+  <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
   @if ($color_scheme_override == 'dark')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
   @elseif ($color_scheme_override == 'light')
@@ -59,8 +70,17 @@
   @else
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-auto.css') }}">
   @endif
+@endif
 </head>
 <body>
+
+    <!-- Enables parallax background animations -->
+    <section class="parallax-background">
+      <div id="object1"></div>
+      <div id="object2"></div>
+      <div id="object3"></div>
+    </section>
+    <!-- End of parallax background animations -->
 
 <?php ////begin share button//// ?>
 <?php 
@@ -115,19 +135,16 @@ function get_operating_system() {
 ?>
 
 @if($user_browser === 'Chrome' or get_operating_system() == 'mobile')
-<script  src="{{ asset('littlelink/js/jquery.min.js') }}"></script>
-<div align="right" class="sharediv"><div class="button-entrance"><span class="sharebutton hvr-grow hvr-icon-wobble-vertical" id='share-share-button'><img alt="share-icon" class="sharebutton-img icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}share.svg"><span class="sharebutton-mb">Share</span></span></div></div>
+<script src="{{ asset('littlelink/js/jquery.min.js') }}"></script>
+<div align="right" class="sharediv"><div class="button-entrance"><span class="sharebutton hvr-grow hvr-icon-wobble-vertical" id='share-share-button'><img alt="share-icon" class="sharebutton-img share-icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}share.svg"><span class="sharebutton-mb">Share</span></span></div></div>
 <span class="copy-icon" role="button">
 </span>
 @else
 <span class="copy-icon" role="button">
-<div align="right" class="sharediv"><div class="button-entrance"><a class="sharebutton hvr-grow hvr-icon-wobble-vertical"><img alt="share-icon" class="sharebutton-img icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}share.svg"><span class="sharebutton-mb">Share</span></a></div></div>
+<div onclick="alert('URL has been copied to your clipboard!')" align="right" class="sharediv"><div class="button-entrance"><a class="sharebutton hvr-grow hvr-icon-wobble-vertical"><img alt="share-icon" class="sharebutton-img share-icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}share.svg"><span class="sharebutton-mb">Share</span></a></div></div>
 </span>
 @endif
-<div class="toastdiv">
-<span class="toastbox" role="alert"></span>
 <script  src="{{ asset('littlelink/js/share.button.js') }}"></script>
-</div>
 <?php ////end share button//// ?>
 
   <div class="container">
@@ -142,7 +159,6 @@ function get_operating_system() {
           <img alt="avatar" class="rounded-avatar fadein" src="{{ asset('littlelink/images/logo.svg') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="128px" height="128px" style="object-fit: cover;">
           @endif
 
-        @foreach($information as $info)
         <!-- Your Name -->
         <h1 class="fadein">{{ $info->name }}</h1>
 
@@ -157,13 +173,13 @@ function get_operating_system() {
          @if($link->button_id === 0)
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-title button hvr-grow hvr-icon-wobble-vertical" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank">
          	{{ $link->title }}</a></div>
-         @elseif($link->name === "custom" and $link->custom_css === "")
+         @elseif($link->name === "custom" and $link->custom_css === "" or $link->custom_css === "NULL")
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button hvr-grow hvr-icon-wobble-vertical" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><i style="color: {{$link->custom_icon}}" class="icon hvr-icon fa {{$link->custom_icon}}"></i>{{ $link->title }}</a></div>
          @elseif($link->name === "custom" and $link->custom_css != "")
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button hvr-grow hvr-icon-wobble-vertical" style="{{ $link->custom_css }}" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><i style="color: {{$link->custom_icon}}" class="icon hvr-icon fa {{$link->custom_icon}}"></i>{{ $link->title }}</a></div>
          @elseif($link->name === "buy me a coffee")
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-coffee button hvr-grow hvr-icon-wobble-vertical" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}coffee.svg">Buy me a Coffee</a></div>
-         @elseif($link->name === "custom_website"and $link->custom_css === "")
+         @elseif($link->name === "custom_website"and $link->custom_css === "" or $link->custom_css === "NULL")
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-custom_website button hvr-grow hvr-icon-wobble-vertical" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img alt="button-icon" class="icon hvr-icon" src="http://www.google.com/s2/favicons?domain={{$link->link}}">{{ $link->title }}</a></div>
          @elseif($link->name === "custom_website" and $link->custom_css != "")
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button hvr-grow hvr-icon-wobble-vertical" style="{{ $link->custom_css }}" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><img alt="button-icon" class="icon hvr-icon" src="http://www.google.com/s2/favicons?domain={{$link->link}}">{{ $link->title }}</a></div>

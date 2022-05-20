@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->enum('block', ['yes', 'no'])->default('no');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('theme')->nullable();
         });
     }
 

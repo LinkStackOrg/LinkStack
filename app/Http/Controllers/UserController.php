@@ -7,10 +7,12 @@ use Illuminate\Support\Facades\Hash;
 
 use Auth;
 use DB;
+use ZipArchive;
 
 use App\Models\User;
 use App\Models\Button;
 use App\Models\Link;
+
 
     //Function tests if string starts with certain string (used to test for illegal strings)
 function stringStartsWith($haystack,$needle,$case=true) {
@@ -56,8 +58,8 @@ class UserController extends Controller
             return abort(404);
         }
      
-        $userinfo = User::select('name', 'littlelink_name', 'littlelink_description')->where('id', $id)->first();
-        $information = User::select('name', 'littlelink_name', 'littlelink_description')->where('id', $id)->get();
+        $userinfo = User::select('name', 'littlelink_name', 'littlelink_description', 'theme')->where('id', $id)->first();
+        $information = User::select('name', 'littlelink_name', 'littlelink_description', 'theme')->where('id', $id)->get();
         
         $links = DB::table('links')->join('buttons', 'buttons.id', '=', 'links.button_id')->select('links.link', 'links.id', 'links.button_id', 'links.title', 'links.custom_css', 'links.custom_icon', 'buttons.name')->where('user_id', $id)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->get();
 
@@ -74,8 +76,8 @@ class UserController extends Controller
             return abort(404);
         }
         
-        $userinfo = User::select('name', 'littlelink_name', 'littlelink_description')->where('id', $id)->first();
-        $information = User::select('name', 'littlelink_name', 'littlelink_description')->where('id', $id)->get();
+        $userinfo = User::select('name', 'littlelink_name', 'littlelink_description', 'theme')->where('id', $id)->first();
+        $information = User::select('name', 'littlelink_name', 'littlelink_description', 'theme')->where('id', $id)->get();
         
         $links = DB::table('links')->join('buttons', 'buttons.id', '=', 'links.button_id')->select('links.link', 'links.id', 'links.button_id', 'links.title', 'links.custom_css', 'links.custom_icon', 'buttons.name')->where('user_id', $id)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->get();
 
@@ -301,8 +303,47 @@ class UserController extends Controller
         return Redirect('/studio/page');
     }
 
+    //Show custom theme
+    public function showTheme(request $request)
+    {
+        $userId = Auth::user()->id;
+
+        $data['pages'] = User::where('id', $userId)->select('littlelink_name', 'theme')->get();
+
+        return view('/studio/theme', $data);
+    }
+
+    //Save custom theme
+    public function editTheme(request $request)
+    {
+        $request->validate([
+            'zip' => 'sometimes|mimes:zip',
+        ]);
+
+        $userId = Auth::user()->id;
+
+        $zipfile = $request->file('zip');
+
+        $theme = $request->theme;
+        
+        User::where('id', $userId)->update(['theme' => $theme]);
+
+        if(!empty($zipfile)){
+
+        $zipfile->move(base_path('/themes'), "temp.zip");
+
+        $zip = new ZipArchive;
+        $zip->open(base_path() . '/themes/temp.zip');
+        $zip->extractTo(base_path() . '/themes');
+        $zip->close();
+        unlink(base_path() . '/themes/temp.zip');
+        }
+
+        return Redirect('/studio/theme');
+    }
+
     //Show user (name, email, password)
-    public function showProfile()
+    public function showProfile(request $request)
     {
         $userId = Auth::user()->id;
 

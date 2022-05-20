@@ -3,6 +3,9 @@
   vertical-align: middle;
   width: 20px;
   height: 20px;
+  -webkit-filter: invert(100%);
+  -moz-filter: invert(100%);
+  filter: invert(100%);
 }
 
 .sharediv {
@@ -38,6 +41,7 @@
   -webkit-transform: translateY(-150px);
   transform: translateY(-150px);
 }
+
   .sharebutton,
   sharebutton {
     display: inline-block;
@@ -51,11 +55,13 @@
     line-height: 48px;
     letter-spacing: 0.1px;
     white-space: wrap;
-    border-radius: 8px;
+    border: solid var(--accentColor) 2px;
+    border-radius: 10px;
     cursor: pointer;
-    color: #000000; 
-    background-color: #efefef
+    color: #ffffff; 
+    background-color: transparent;
    }
+   
 @media screen and (min-width: 600px) {
   .sharebutton,
   sharebutton {
@@ -70,26 +76,27 @@
     line-height: 48px;
     letter-spacing: 0.1px;
     white-space: wrap;
-    border-radius: 8px;
+    border: solid var(--accentColor) 2px;
+    border-radius: 10px;
     cursor: pointer;
-    color: #000000; 
-    background-color: #efefef
+    color: #ffffff; 
+    background-color: transparent;
+   }
+   .sharebutton-img {
+    position: relative;
+    left: 3px;
+    margin-left: auto;
+    margin-right: auto;
    }
 }
 sharebutton:hover,
 .sharebutton:hover {
   color: #000000;
-  opacity: 0.85;
-  filter: alpha(opacity=40);
-  border-color: #888;
-  outline: 0; }
-.sharebutton.sharebutton-primary {
-  color: #FFFFFF;
-  filter: brightness(90%) }
-.sharebutton.sharebutton-primary:hover,
-.sharebutton.sharebutton-primary:focus {
-  color: #FFFFFF;
-  filter: brightness(90%) }
+  background-color: #FFF; 
+}
+.sharebutton:hover .share-icon {
+  filter: none !important;
+}
 
   @media screen and (max-width: 600px) {
     .sharebutton-mb {
