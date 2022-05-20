@@ -22,6 +22,17 @@ body{
   font-family: 'Roboto Mono', monospace !important;
 }
 
+
+/* Rounded avatars
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+.rounded-avatar {
+  border-radius: 50%;
+}
+
+
+
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
