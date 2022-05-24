@@ -26,6 +26,8 @@
 
 @if($_SERVER['QUERY_STRING'] === 'backups')
 <?php Artisan::call('backup:run', ['--only-files' => true]);
+$tst = base_path('backups/');
+file_put_contents($tst.'CANUPDATE', '');
 $URL = Route::current()->getName();   
 header("Location: ".$URL."?backup-created");
 exit(); ?>
