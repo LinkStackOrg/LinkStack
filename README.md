@@ -110,6 +110,52 @@ Feel free to register your account and try out all the features of LittleLink Cu
 <img height="450" src="https://i.imgur.com/OL0sf89.gif">
 </p>
 
+
+<br><br>
+
+<h3 align="center">Custom Themes</h3>
+
+<br>
+<p align="center">
+Customize the look of your LittleLink Custom instance with themes. Themes allow you to change the look and feel of your site with a few clicks. Users can submit themes they created for everyone to download and use.
+</p>
+    
+<p align="center">
+Contribute by designing your own themes. You can read more about contributing below.
+</p>
+    
+<br>
+
+|![preview1](https://user-images.githubusercontent.com/60265788/169555321-0bc67664-ce3f-48e7-a4c2-9988a3079ce4.png) |![preview2](https://user-images.githubusercontent.com/60265788/169555323-8972dfe4-f46e-45f1-a3fc-1b0fc226147d.png)|
+| ------------- |-------------|
+|![preview3](https://user-images.githubusercontent.com/60265788/169555309-811ea607-b4f0-4ef5-8d99-92026995371d.png)|![preview4](https://user-images.githubusercontent.com/60265788/169555313-557428e6-a1c3-42dc-b6e4-bca72e4f570a.png)| 
+
+<br>
+
+You can find all available Themes on here:
+[littlelink-custom.com/themes](https://littlelink-custom.com/themes.php)
+
+
+<br>
+
+### How to add themes
+#### How to add themes to your LittleLink Custom instance
+You can add your downloaded themes to your LittleLink Custom instance on the Admin Panel. Navigate to the 'Themes' tab and scroll to the bottom of the page.
+
+Now click on Choose file and select your downloaded theme zip file. Now click on 'Upload theme' and you should be able to select your uploaded theme now.
+
+<br><br>
+
+### **Themes are envisioned to be made by users for users.**
+
+If you know a bit about CSS, consider making your own theme and adding it to the public directory.
+Everything is documented in the dedicated GitHub repository.
+
+[github.com/JulianPrieber/llc-themes/tree/main/contributing](https://github.com/JulianPrieber/llc-themes/tree/main/contributing )
+
+<br>
+
+
 <br><br>
 
 <h3 align="center">Infinite button combinations with the built in Button Editor</h3>
