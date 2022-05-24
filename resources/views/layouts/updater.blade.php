@@ -3,9 +3,6 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>{{ config('app.name') }}</title>
-  <?php $cleaner_input = strip_tags($message->home_message); ?>
-  <meta name="description" content="{{ $cleaner_input }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
