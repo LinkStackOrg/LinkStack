@@ -1,4 +1,3 @@
-
 @extends('layouts.updater')
 
 @Push('updater-body')
@@ -27,8 +26,10 @@
 
 @if($_SERVER['QUERY_STRING'] === 'backups')
 <?php Artisan::call('backup:run', ['--only-files' => true]);
-header("Location: /?backup-created");
+$URL = Route::current()->getName();   
+header("Location: ".$URL."?backup-created");
 exit(); ?>
+
 @endif
 
 @if($_SERVER['QUERY_STRING'] === '')
