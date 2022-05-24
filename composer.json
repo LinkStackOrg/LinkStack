@@ -6,6 +6,7 @@
     "license": "GPL-3.0-or-later",
     "require": {
         "php": "^7.3|^8.0",
+        "codedge/laravel-selfupdater": "^3.4",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "geo-sot/laravel-env-editor": "^1.1",
@@ -55,7 +56,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
