@@ -81,6 +81,7 @@ Route::post('/panel/pages', [AdminController::class, 'editSitePage'])->name('edi
 Route::get('/panel/site', [AdminController::class, 'showSite'])->name('showSite');
 Route::post('/panel/site', [AdminController::class, 'editSite'])->name('editSite');
 Route::get('/panel/phpinfo', [AdminController::class, 'phpinfo'])->name('phpinfo');
+Route::get('/update', function () {return view('update', []);});
 });
 
 require __DIR__.'/auth.php';
