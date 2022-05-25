@@ -82,6 +82,36 @@ Route::get('/panel/site', [AdminController::class, 'showSite'])->name('showSite'
 Route::post('/panel/site', [AdminController::class, 'editSite'])->name('editSite');
 Route::get('/panel/phpinfo', [AdminController::class, 'phpinfo'])->name('phpinfo');
 Route::get('/update', function () {return view('update', []);});
+
+Route::get('/updating', function (\Codedge\Updater\UpdaterManager $updater) {
+
+  // Check if new version is available
+  if($updater->source()->isNewVersionAvailable() and (file_exists(base_path("backups/CANUPDATE")))) {
+
+      // Get the current installed version
+      echo $updater->source()->getVersionInstalled();
+
+      // Get the new version available
+      $versionAvailable = $updater->source()->getVersionAvailable();
+
+      // Create a release
+      $release = $updater->source()->fetch($versionAvailable);
+
+      // Run the update process
+      $updater->source()->update($release);
+
+      unlink(base_path("backups/CANUPDATE"));
+
+      $URL = Route::current()->getName();   
+      header("Location: ".$URL."/../update?success");
+      exit(); 
+
+  } else {
+      echo "No new version available.";
+  }
+
+});
+
 });
 
 require __DIR__.'/auth.php';
