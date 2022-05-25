@@ -43,7 +43,8 @@
 @endif
 
 @if($_SERVER['QUERY_STRING'] === 'backups')
-<?php Artisan::call('backup:run', ['--only-files' => true]);
+<?php Artisan::call('backup:clean');
+Artisan::call('backup:run', ['--only-files' => true]);
 $tst = base_path('backups/');
 file_put_contents($tst.'CANUPDATE', '');
 $URL = Route::current()->getName();   
