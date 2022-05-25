@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('SELF_UPDATER_SOURCE', 'github'),
+    'default' => env('SELF_UPDATER_SOURCE', 'http'),
 
     /*
     |--------------------------------------------------------------------------
@@ -24,7 +24,7 @@ return [
     |
     */
 
-    'version_installed' => env('SELF_UPDATER_VERSION_INSTALLED', ''),
+    'version_installed' => file_get_contents(base_path("version.json")),
 
     /*
     |--------------------------------------------------------------------------
@@ -57,8 +57,8 @@ return [
         ],
         'http' => [
             'type'                 => 'http',
-            'repository_url'       => env('SELF_UPDATER_REPO_URL', ''),
-            'pkg_filename_format'  => env('SELF_UPDATER_PKG_FILENAME_FORMAT', 'v_VERSION_'),
+            'repository_url'       => env('SELF_UPDATER_REPO_URL', 'https://update.littlelink-custom.com/'),
+            'pkg_filename_format'  => env('SELF_UPDATER_PKG_FILENAME_FORMAT', '_VERSION_'),
             'download_path'        => env('SELF_UPDATER_DOWNLOAD_PATH', '/tmp'),
             'private_access_token' => env('SELF_UPDATER_HTTP_PRIVATE_ACCESS_TOKEN', ''),
         ],
@@ -97,7 +97,7 @@ return [
     |
     */
 
-    'log_events' => env('SELF_UPDATER_LOG_EVENTS', false),
+    'log_events' => env('SELF_UPDATER_LOG_EVENTS', true),
 
     /*
     |--------------------------------------------------------------------------
