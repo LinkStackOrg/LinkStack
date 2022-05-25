@@ -25,7 +25,7 @@
         <h4 class="">You can update your installation automatically or download the update and install it manually:</h4>
         <br><div class="row">
         &ensp;<a class="btn" href="{{url()->current()}}/?backup"><button style=""><i class="fa-solid fa-user-gear btn"></i> Update automatically</button></a>&ensp;
-        &ensp;<a class="btn" href="https://littlelink-custom.com/how-to-update"><button style=""><i class="fa-solid fa-download btn"></i> Update manually</button></a>&ensp;
+        &ensp;<a class="btn" href="https://littlelink-custom.com/update"><button style=""><i class="fa-solid fa-download btn"></i> Update manually</button></a>&ensp;
         </div>
       </center>
 @endif
