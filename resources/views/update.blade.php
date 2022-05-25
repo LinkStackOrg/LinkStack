@@ -24,8 +24,8 @@
         <center><h1>Updater</h1>
         <h4 class="">You can update your installation automatically or download the update and install it manually:</h4>
         <br><div class="row">
-        &ensp;<button style=""><i class="fa-solid fa-user-gear btn"></i><a class="btn" href="{{url()->current()}}/?backup"> Update automatically</a></button>&ensp;
-        &ensp;<button style=""><i class="fa-solid fa-download btn"></i><a class="btn" href="https://littlelink-custom.com/how-to-update"> Update manually</a></button>&ensp;
+        &ensp;<a class="btn" href="{{url()->current()}}/?backup"><button style=""><i class="fa-solid fa-user-gear btn"></i> Update automatically</button></a>&ensp;
+        &ensp;<a class="btn" href="https://littlelink-custom.com/how-to-update"><button style=""><i class="fa-solid fa-download btn"></i> Update manually</button></a>&ensp;
         </div>
       </center>
 @endif
@@ -78,7 +78,7 @@ exit(); ?>
         <center><h1>Success!</h1>
         <h4 class="">The update was successful, you can now return to the Admin Panel:</h4>
         <br><div class="row">
-        &ensp;<button style=""><i class="fa-solid fa-house-laptop btn"></i><a class="btn" href="{{ route('studioIndex') }}"> Admin Panel</a></button>&ensp;
+        &ensp;<a class="btn" href="{{ route('studioIndex') }}"><button style=""><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
         </div>
       </center>
 @endif
