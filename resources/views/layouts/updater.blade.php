@@ -108,6 +108,7 @@ button {
 }
 button:hover {
     background-color: #0065c1;
+    color: #FFF;
     box-shadow: 0 10px 20px -10px rgba(0,0,0, 0.6);
 }
 
