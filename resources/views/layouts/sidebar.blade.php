@@ -210,7 +210,7 @@ if ($url1sb->successful() or $url2sb->successful()) {
 
 					<! –– If user has role admin AND newest GitHub release version is higher than the local one an update notice will be displayed ––>
 					@if(auth()->user()->role == 'admin' and $Vgit > $Vlocal)
-					<a style="color:#007bff" class="nav-link" href="https://littlelink-custom.com/how-to-update.html" target="_blank" title="Click here to learn more about how to update">An update is available</a>
+					<a style="color:#007bff" class="nav-link" href="{{route('update', $id)}}" title="Click here to learn more about how to update">An update is available</a>
 					@endif
 				@endif
 	@elseif(env('NOTIFY_UPDATES') == 'major')
@@ -241,7 +241,7 @@ if ($url1sb->successful() or $url2sb->successful()) {
 
 					<! –– If user has role admin AND newest GitHub release version is higher than the local one an update notice will be displayed ––>
 					@if(auth()->user()->role == 'admin' and $Vgit > $Vlocal)
-					<a style="color:#007bff" class="nav-link" href="https://littlelink-custom.com/how-to-update.html" target="_blank" title="Click here to learn more about how to update">An update is available</a>
+					<a style="color:#007bff" class="nav-link" href="{{ url('update') }}" title="Click here to learn more about how to update">An update is available</a>
 					@endif
 				@endif
 	@endif
