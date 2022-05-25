@@ -2,15 +2,17 @@
 
 @Push('updater-body')
 
-@if($_SERVER['QUERY_STRING'] === 'updating')
+@if($_SERVER['QUERY_STRING'] === 'updating' and (file_exists(base_path("backups/CANUPDATE"))))
 <?php //updating... ?>
         <div class="logo-container fadein">
            <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="">
            <div class="logo-centered">l</div>
         </div>
         <center><h1 class="loadingtxt">Updating</h1></center>
+        @Push('updater-head')
+         <meta http-equiv="refresh" content="2; URL={{url()->current()}}/?updating-done" />
+         @endpush
 @endif
-
 
 @if($_SERVER['QUERY_STRING'] === 'backup')
 <?php //creating backup... ?>
@@ -51,34 +53,17 @@ exit(); ?>
 @endif
 
 
-@if($_SERVER['QUERY_STRING'] === 'backup-created')
+@if($_SERVER['QUERY_STRING'] === 'success' and (file_exists(base_path("backups/CANUPDATE"))))
       <?php //download backup ?>
         <style>.logo-container{padding-top:23vh;}.logo-centered{top:37vh;}</style>
         <div class="logo-container fadein">
            <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="">
            <div class="logo-centered">l</div>
         </div>
-        <center><h1>Download backup</h1>
-        <h4 class="">You can keep the update stored on the server or download it as a precaution:</h4>
-        <br><div class="row">
-        &ensp;<button style=""><i class="fa-solid fa-play btn"></i><a class="btn" href="{{url()->current()}}/?updating"> Start anyway</a></button>&ensp;
-        &ensp;<button style=""><i class="fa-solid fa-file-export btn"></i><a class="btn" href="{{url()->current()}}/?updating"> Start and download</a></button>&ensp;
-        </div>
-      </center>
-@endif
-
-
-@if($_SERVER['QUERY_STRING'] === 'success')
-      <?php //download backup ?>
-        <style>.logo-container{padding-top:23vh;}.logo-centered{top:37vh;}</style>
-        <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="">
-           <div class="logo-centered">l</div>
-        </div>
-        <center><h1>Download backup</h1>
+        <center><h1>Success!</h1>
         <h4 class="">The update was successful, you can now return to the Admin Panel:</h4>
         <br><div class="row">
-        &ensp;<button style=""><i class="fa-solid fa-house-laptop btn"></i><a class="btn" href="{{url()->current()}}/"> Admin Panel</a></button>&ensp;
+        &ensp;<button style=""><i class="fa-solid fa-house-laptop btn"></i><a class="btn" href="{{ route('studioIndex') }}"> Admin Panel</a></button>&ensp;
         </div>
       </center>
 @endif
