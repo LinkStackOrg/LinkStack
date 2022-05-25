@@ -66,7 +66,23 @@ exit(); ?>
 
 @endif
 
+@if($_SERVER['QUERY_STRING'] === 'finishing')
+<?php //updating... ?>
+        <div class="logo-container fadein">
+           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="">
+           <div class="logo-centered">l</div>
+        </div>
+        <center><h1 class="loadingtxt">Finishing up</h1></center>
+        
+        <?php 
 
+         //run before finishing:
+        // EnvEditor::addKey('MY_VALUE', 'truefalse'); // Adds key to .env file
+
+        $URL = Route::current()->getName();   
+        header("Location: ".$URL."?success");
+        exit(); ?>
+@endif
 
 @if($_SERVER['QUERY_STRING'] === 'success')
       <?php //success ?>
