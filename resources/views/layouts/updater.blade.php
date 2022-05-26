@@ -32,17 +32,35 @@
 
 <style>
 
-.logo-container {
-  padding-top: 30vh;
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+@media (min-width:700px) {
+.row {
+  display: flex;
+  flex-direction: row;
+  }
 }
 
 .logo-centered {
-  top: 44vh;
+  /* top: 44vh; */
   font-size: 130px;
 }
 
 .logo-img{
-    position: relative;
+    /* position: relative; */
     width: 250px;
     height: auto;
 }
