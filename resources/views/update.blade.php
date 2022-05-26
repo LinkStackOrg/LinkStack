@@ -1,7 +1,7 @@
 @extends('layouts.updater')
 
 @Push('updater-body')
-
+<div class="container">
 
 <?php // Requests newest version from server and sets it as variable
 					ini_set('user_agent', 'Mozilla/4.0 (compatible; MSIE 6.0)');
@@ -16,18 +16,18 @@
 
 @if($_SERVER['QUERY_STRING'] === '')
 <?php //landing page ?>
-        <style>.logo-container{padding-top:23vh;}.logo-centered{top:37vh;}</style>
+        
         <div class="logo-container fadein">
            <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="">
            <div class="logo-centered">l</div>
         </div>
-        <center><h1>Updater</h1>
+        <h1>Updater</h1>
         <h4 class="">You can update your installation automatically or download the update and install it manually:</h4>
         <br><div class="row">
         &ensp;<a class="btn" href="{{url()->current()}}/?backup"><button style=""><i class="fa-solid fa-user-gear btn"></i> Update automatically</button></a>&ensp;
-        &ensp;<a class="btn" href="https://littlelink-custom.com/update" target="_blank"><button style=""><i class="fa-solid fa-download btn"></i> Update manually</button></a>&ensp;
+        &ensp;<a class="btn" href="https://littlelink-custom.com/update"><button style=""><i class="fa-solid fa-download btn"></i> Update manually</button></a>&ensp;
         </div>
-      </center>
+      
 @endif
 
 @if($_SERVER['QUERY_STRING'] === 'backup')
@@ -39,7 +39,7 @@
            <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="">
            <div class="logo-centered">l</div>
         </div>
-        <center><h1 class="loadingtxt">Creating backup</h1></center>
+        <h1 class="loadingtxt">Creating backup</h1>
 @endif
 
 @if($_SERVER['QUERY_STRING'] === 'backups')
@@ -58,7 +58,7 @@ exit(); ?>
            <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="">
            <div class="logo-centered">l</div>
         </div>
-        <center><h1 class="loadingtxt">Updating</h1></center>
+        <h1 class="loadingtxt">Updating</h1>
         @Push('updater-head')
          <meta http-equiv="refresh" content="2; URL={{url()->current()}}/../updating" />
          @endpush
@@ -72,7 +72,7 @@ exit(); ?>
            <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="">
            <div class="logo-centered">l</div>
         </div>
-        <center><h1 class="loadingtxt">Finishing up</h1></center>
+        <h1 class="loadingtxt">Finishing up</h1>
         
         <?php 
 
@@ -86,18 +86,18 @@ exit(); ?>
 
 @if($_SERVER['QUERY_STRING'] === 'success')
       <?php //success ?>
-        <style>.logo-container{padding-top:23vh;}.logo-centered{top:37vh;}</style>
+        
         <div class="logo-container fadein">
            <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="">
            <div class="logo-centered">l</div>
         </div>
-        <center><h1>Success!</h1>
+        <h1>Success!</h1>
         <h4 class="">The update was successful, you can now return to the Admin Panel:</h4>
         <br><div class="row">
         &ensp;<a class="btn" href="{{ route('studioIndex') }}"><button style=""><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
         </div>
-      </center>
+      
 @endif
 
-
+</div>
 @endpush
