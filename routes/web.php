@@ -102,9 +102,7 @@ Route::get('/updating', function (\Codedge\Updater\UpdaterManager $updater) {
 
       unlink(base_path("backups/CANUPDATE"));
 
-      $URL = Route::current()->getName();   
-      header("Location: ".$URL."/../update?finishing");
-      exit(); 
+      echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "/../update?finishing />";
 
   } else {
       echo "No new version available.";
