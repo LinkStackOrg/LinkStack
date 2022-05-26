@@ -102,10 +102,10 @@ Route::get('/updating', function (\Codedge\Updater\UpdaterManager $updater) {
 
       unlink(base_path("backups/CANUPDATE"));
 
-      echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "/../update?finishing />";
+      echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "/../update?finishing\" />";
 
   } else {
-      echo "No new version available.";
+    echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "/../update?error\" />";
   }
 
 });
