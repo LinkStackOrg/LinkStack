@@ -22,11 +22,16 @@
            <div class="logo-centered">l</div>
         </div>
         <h1>Updater</h1>
+        @if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
+        <h4 class="">The updater only works on Linux based systems.</h4>
+        <a class="btn" href="https://littlelink-custom.com/update"><button style=""><i class="fa-solid fa-download btn"></i> Update manually</button></a>
+        @else
         <h4 class="">You can update your installation automatically or download the update and install it manually:</h4>
         <br><div class="row">
         &ensp;<a class="btn" href="{{url()->current()}}/?backup"><button style=""><i class="fa-solid fa-user-gear btn"></i> Update automatically</button></a>&ensp;
         &ensp;<a class="btn" href="https://littlelink-custom.com/update"><button style=""><i class="fa-solid fa-download btn"></i> Update manually</button></a>&ensp;
         </div>
+        @endif
       
 @endif
 
