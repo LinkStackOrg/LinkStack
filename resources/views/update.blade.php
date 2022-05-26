@@ -103,5 +103,20 @@ exit(); ?>
       
 @endif
 
+@if($_SERVER['QUERY_STRING'] === 'error')
+      <?php //success ?>
+        
+        <div class="logo-container fadein">
+           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="">
+           <div class="logo-centered">l</div>
+        </div>
+        <h1>Error</h1>
+        <h4 class="">Something went wrong with the update :(</h4>
+        <br><div class="row">
+        &ensp;<a class="btn" href="{{ route('studioIndex') }}"><button style=""><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
+        </div>
+      
+@endif
+
 </div>
 @endpush
