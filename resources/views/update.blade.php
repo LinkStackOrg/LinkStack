@@ -84,9 +84,8 @@ exit(); ?>
          //run before finishing:
         // EnvEditor::addKey('MY_VALUE', 'truefalse'); // Adds key to .env file
 
-        $URL = Route::current()->getName();   
-        header("Location: ".$URL."?success");
-        exit(); ?>
+        echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "?success\" />"; 
+        ?>
 @endif
 
 @if($_SERVER['QUERY_STRING'] === 'success')
