@@ -300,3 +300,4 @@ You can support LittleLink Custom [here](https://littlelink-custom.com/sponsor).
 - [config editor](https://github.com/GeoSot/Laravel-EnvEditor)
 - [text editor](https://github.com/ckeditor/ckeditor4)
 - [updater backend](https://github.com/codedge/laravel-selfupdater)
+- [backup backend](https://github.com/spatie/laravel-backup)
