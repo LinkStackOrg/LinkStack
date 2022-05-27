@@ -5,6 +5,7 @@
   <title>{{ config('app.name') }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,800&display=swap" rel="stylesheet">
+  <style>@font-face{font-family:'ll';src:url({{ asset('littlelink/fonts/littlelink-custom.otf') }}) format("opentype")}</style>
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
@@ -65,10 +66,10 @@
         @if(file_exists(base_path("littlelink/images/avatar.png" )))
         <img src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
         @else
-		<div class="container parent fadein" >
-			<img class="image1 rotate" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo"></img>
-			<img class="image2" src="{{ asset('littlelink/images/just-ll.svg') }}" alt="Logo"></img>
-		</div>
+        <div class="logo-container fadein">
+           <img class="rotate" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="width:150px; height:150px;">
+           <div class="logo-centered">l</div>
+        </div>
         @endif
 
         <div class="jumbotron" style="margin-top: 10%">
