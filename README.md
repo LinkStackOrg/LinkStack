@@ -181,6 +181,16 @@ Everything is documented in the dedicated GitHub repository.
   <img src="https://i.imgur.com/Otue6Hl.png" width="450" >
 </p>
 
+<br>
+
+<h3 align="center">Built in updater</h3>
+
+<h4 align="center">This updater allows users to update their installation with just one click.</h4>
+
+<p align="center">
+  <a href="https://i.imgur.com/OzdUVbU.png"><img src="https://i.imgur.com/OzdUVbU.png" width="600" ></a>
+</p>
+
 ## Installation
 
 ### Downloading and installing steps:
