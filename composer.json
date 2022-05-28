@@ -13,7 +13,7 @@
         "guzzlehttp/guzzle": "^7.4",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "spatie/laravel-backup": "^6.16"
+        "spatie/laravel-backup": "^7.8"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
