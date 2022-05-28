@@ -194,7 +194,7 @@ if ($url1sb->successful() or $url2sb->successful()) {
                   <div class="row">
 
             <! –– #### begin update detection #### ––>
-	@if(env('NOTIFY_UPDATES') == 'old')
+	@if(env('NOTIFY_UPDATES') === 'old')
                 <! –– Checks if file version.json exists to continue (without this PHP will throw ErrorException ) ––>
                 @if(file_exists(base_path("version.json")))
 
@@ -213,9 +213,7 @@ if ($url1sb->successful() or $url2sb->successful()) {
 					<a style="color:#007bff" class="nav-link" href="{{ url('update') }}" title="Click here to learn more about how to update">An update is available</a>
 					@endif
 				@endif
-	@elseif(env('NOTIFY_UPDATES') == 'false')
-	{{-- No update checks --}}
-	@else
+	@elseif(env('NOTIFY_UPDATES') === 'true' or env('NOTIFY_UPDATES') === 'major' or env('NOTIFY_UPDATES') === 'all')
 	<?php // Checks if URL exists
 					try {
 					function URL_exists(string $url): bool
