@@ -10,7 +10,7 @@ if (env('JOIN_BETA') == true) {
 
 if ($Vgit > $Vlocal) {
     $userver = 'https://update.littlelink-custom.com/';
-} elseif (env('JOIN_BETA') === true) {
+} elseif (env('JOIN_BETA') == true) {
     $userver = 'https://update.littlelink-custom.com/beta/';
 } else {
     $userver = 'https://update.littlelink-custom.com/';
