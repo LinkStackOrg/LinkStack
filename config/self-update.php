@@ -2,6 +2,22 @@
 
 declare(strict_types=1);
 
+
+ini_set('user_agent', 'Mozilla/4.0 (compatible; MSIE 6.0)');
+$json = file_get_contents("https://api.github.com/repos/julianprieber/littlelink-custom/releases/latest") ;
+$myObj = json_decode($json);
+$Vgit = $myObj->tag_name; 
+$Vlocal = 'v' . file_get_contents(base_path("version.json")); 
+
+
+if ($Vgit > $Vlocal) {
+    $userver = 'https://update.littlelink-custom.com/';
+} elseif (env('JOIN_BETA') === true) {
+    $userver = 'https://update.littlelink-custom.com/beta/';
+} else {
+    $userver = 'https://update.littlelink-custom.com/';
+}
+
 return [
 
     /*

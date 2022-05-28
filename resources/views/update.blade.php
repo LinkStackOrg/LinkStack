@@ -12,7 +12,7 @@
 				       // Requests current version from the local version file and sets it as variable
                   $Vlocal = 'v' . file_get_contents(base_path("version.json")); 
 					?>
-@if(auth()->user()->role == 'admin' and $Vgit > $Vlocal)
+@if(auth()->user()->role == 'admin' and $Vgit > $Vlocal or env('JOIN_BETA') === true)
 
 @if($_SERVER['QUERY_STRING'] === '')
 <?php //landing page ?>
@@ -26,7 +26,13 @@
         <h4 class="">The updater only works on Linux based systems.</h4>
         <a class="btn" href="https://littlelink-custom.com/update"><button style=""><i class="fa-solid fa-download btn"></i> Update manually</button></a>
         @else
+        @if(env('JOIN_BETA') === true)
+        <p><?php echo "latest beta version= " . file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?></p>
+        <p><?php  if(file_exists(base_path("vbeta.json"))) {echo "installed beta version= " . file_get_contents(base_path("vbeta.json"));} else {echo "installed beta version= none";}  ?></p>
+        <p><?php  if($Vgit > $Vlocal) {echo "You need to update to the latest mainline release";} else {echo "You're running the latest mainline release";}  ?></p>
+        @else
         <h4 class="">You can update your installation automatically or download the update and install it manually:</h4>
+        @endif
         <br><div class="row">
         &ensp;<a class="btn" href="{{url()->current()}}/?backup"><button style=""><i class="fa-solid fa-user-gear btn"></i> Update automatically</button></a>&ensp;
         &ensp;<a class="btn" href="https://littlelink-custom.com/update"><button style=""><i class="fa-solid fa-download btn"></i> Update manually</button></a>&ensp;
@@ -82,7 +88,8 @@ exit(); ?>
         <?php 
 
          //run before finishing:
-        // EnvEditor::addKey('MY_VALUE', 'truefalse'); // Adds key to .env file
+            if(EnvEditor::keyExists('JOIN_BETA')){ /* Do nothing if key already exists */ 
+            } else { EnvEditor::addKey('JOIN_BETA', 'false');} // Adds key to .env file 
 
         echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "?success\" />"; 
         ?>
