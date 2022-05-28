@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+$Vlocal = 'v' . file_get_contents(base_path("version.json"));
+
 if (env('JOIN_BETA') == true) {
     $Vgit = file_get_contents("https://julianprieber.github.io/littlelink-custom/version.json"); 
 } else {
