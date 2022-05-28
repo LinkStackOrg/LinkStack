@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-if (env('JOIN_BETA') === true) {
+if (env('JOIN_BETA') == true) {
     $Vgit = file_get_contents("https://julianprieber.github.io/littlelink-custom/version.json"); 
 } else {
     $Vgit = '0'; 
