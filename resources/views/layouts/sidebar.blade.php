@@ -194,18 +194,18 @@ if ($url1sb->successful() or $url2sb->successful()) {
                   <div class="row">
 
             <! –– #### begin update detection #### ––>
-	@if(env('NOTIFY_UPDATES') == 'all' or env('NOTIFY_UPDATES') == 'true')
+	@if(env('NOTIFY_UPDATES') == 'old')
                 <! –– Checks if file version.json exists to continue (without this PHP will throw ErrorException ) ––>
                 @if(file_exists(base_path("version.json")))
 
                   <?php // Requests newest version from server and sets it as variable
 					ini_set('user_agent', 'Mozilla/4.0 (compatible; MSIE 6.0)');
-					$json = file_get_contents("https://api.github.com/repos/julianprieber/littlelink-custom/releases/latest") ;
+					$json = file_get_contents("https://api.github.com/repos/julianprieber/littlelink-custom/releases/latest");
 					$myObj = json_decode($json);
-				  $Vgit = $myObj->tag_name; 
+				  $Vgit = $myObj->tag_name;
 
 				       // Requests current version from the local version file and sets it as variable
-                  $Vlocal = 'v' . file_get_contents(base_path("version.json")); 
+                  $Vlocal = 'v' . file_get_contents(base_path("version.json"));
 					?>
 
 					<! –– If user has role admin AND newest GitHub release version is higher than the local one an update notice will be displayed ––>
@@ -213,7 +213,7 @@ if ($url1sb->successful() or $url2sb->successful()) {
 					<a style="color:#007bff" class="nav-link" href="{{ url('update') }}" title="Click here to learn more about how to update">An update is available</a>
 					@endif
 				@endif
-	@elseif(env('NOTIFY_UPDATES') == 'major')
+	@else
 	<?php // Checks if URL exists
 					try {
 					function URL_exists(string $url): bool
