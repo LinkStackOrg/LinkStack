@@ -213,6 +213,8 @@ if ($url1sb->successful() or $url2sb->successful()) {
 					<a style="color:#007bff" class="nav-link" href="{{ url('update') }}" title="Click here to learn more about how to update">An update is available</a>
 					@endif
 				@endif
+	@elseif(env('NOTIFY_UPDATES') == 'false')
+	{{-- No update checks --}}
 	@else
 	<?php // Checks if URL exists
 					try {
