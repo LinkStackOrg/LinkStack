@@ -5,8 +5,8 @@ REGISTER_AUTH=verified
 #Internal notifications=Changes if certain messages should be displayed or not
 #=NOTIFY_EVENTS notifies admins if an important event is happening, such as polls about the future of this project or security vulnerabilities.
 NOTIFY_EVENTS=true
-#=NOTIFY_UPDATES either all, major or false. All notifies about all updates, major only notifies about major or important updates, false does not notify about any updates.
-NOTIFY_UPDATES=major
+#=NOTIFY_UPDATES either true or false.
+NOTIFY_UPDATES=true
 DISPLAY_FOOTER=true
 DISPLAY_CREDIT=true
 
