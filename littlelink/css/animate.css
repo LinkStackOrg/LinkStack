@@ -1,28 +1,3 @@
-/*!
- * animate.css - https://animate.style/
- * Version - 4.1.1
- * Licensed under the Hippocratic License 2.1 - http://firstdonoharm.dev
- * animation-delay: calc(var(--delay)/10);
- * Copyright (c) 2022 Animate.css
- */
-
- .button-entrance {
-  animation-name: zoomIn;
-  animation-duration: 1s;
-  animation-fill-mode: both;
-  animation-delay: calc(var(--delay)/10);
-}
-
-@keyframes zoomIn {
-  from {
-    opacity: 0;
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
 
 /* Rotating entrances */
 .rotate {
@@ -39,24 +14,6 @@
 
   to {
     transform: translate3d(0, 0, 0);
-  }
-}
-
-
-.fadein {
-  animation-name: fadein;
-  animation-duration: 3s;
-  animation-fill-mode: both;
-}
-
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
   }
 }
 
