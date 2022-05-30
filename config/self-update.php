@@ -2,18 +2,9 @@
 
 declare(strict_types=1);
 
-$Vlocal = 'v' . file_get_contents(base_path("version.json"));
 
 if (env('JOIN_BETA') == true) {
-    $Vgit = file_get_contents("https://julianprieber.github.io/littlelink-custom/version.json"); 
-} else {
-    $Vgit = '0'; 
-}
-
-if ($Vgit > $Vlocal) {
-    $userver = 'https://update.littlelink-custom.com/';
-} elseif (env('JOIN_BETA') == true) {
-    $userver = 'https://update.littlelink-custom.com/beta/';
+    $userver = 'https://beta.littlelink-custom.com/';
 } else {
     $userver = 'https://update.littlelink-custom.com/';
 }

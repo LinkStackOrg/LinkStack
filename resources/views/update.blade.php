@@ -4,10 +4,10 @@
 <div class="container">
 
 <?php // Requests newest version from server and sets it as variable
-			   		$Vgit = file_get_contents("https://julianprieber.github.io/littlelink-custom/version.json"); 
+			   		$Vgit = file_get_contents("https://julianprieber.github.io/littlelink-custom/version.json");
 
 				       // Requests current version from the local version file and sets it as variable
-                  $Vlocal = 'v' . file_get_contents(base_path("version.json")); 
+                  $Vlocal = 'v' . file_get_contents(base_path("version.json"));
 					?>
 @if(auth()->user()->role == 'admin' and $Vgit > $Vlocal or env('JOIN_BETA') === true)
 
@@ -15,13 +15,13 @@
 <?php //landing page ?>
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="">
+           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
            <div class="logo-centered">l</div>
         </div>
         <h1>Updater</h1>
         @if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
         <h4 class="">The updater only works on Linux based systems.</h4>
-        <a class="btn" href="https://littlelink-custom.com/update"><button style=""><i class="fa-solid fa-download btn"></i> Update manually</button></a>
+        <a class="btn" href="https://littlelink-custom.com/update"><button><i class="fa-solid fa-download btn"></i> Update manually</button></a>
         @else
         @if(env('JOIN_BETA') === true)
         <p><?php echo "latest beta version= " . file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?></p>
@@ -31,8 +31,12 @@
         <h4 class="">You can update your installation automatically or download the update and install it manually:</h4>
         @endif
         <br><div class="row">
-        &ensp;<a class="btn" href="{{url()->current()}}/?backup"><button style=""><i class="fa-solid fa-user-gear btn"></i> Update automatically</button></a>&ensp;
-        &ensp;<a class="btn" href="https://littlelink-custom.com/update"><button style=""><i class="fa-solid fa-download btn"></i> Update manually</button></a>&ensp;
+            @if(env('SKIP_UPDATE_BACKUP') == true)
+            &ensp;<a class="btn" href="{{url()->current()}}/?updating"><button><i class="fa-solid fa-user-gear btn"></i> Update automatically</button></a>&ensp;
+            @else
+            &ensp;<a class="btn" href="{{url()->current()}}/?backup"><button><i class="fa-solid fa-user-gear btn"></i> Update automatically</button></a>&ensp;
+            @endif
+        &ensp;<a class="btn" href="https://littlelink-custom.com/update"><button><i class="fa-solid fa-download btn"></i> Update manually</button></a>&ensp;
         </div>
         @endif
       
@@ -44,7 +48,7 @@
 <meta http-equiv="refresh" content="2; URL={{url()->current()}}/?backups" />
 @endpush
         <div class="logo-container fadein">
-           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="">
+           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
            <div class="logo-centered">l</div>
         </div>
         <h1 class="loadingtxt">Creating backup</h1>
@@ -60,10 +64,10 @@ header("Location: ".$URL."?updating");
 exit(); ?>
 @endif
 
-@if($_SERVER['QUERY_STRING'] === 'updating' and (file_exists(base_path("backups/CANUPDATE"))))
+@if($_SERVER['QUERY_STRING'] === 'updating' and (file_exists(base_path("backups/CANUPDATE")) or env('SKIP_UPDATE_BACKUP') == true))
 <?php //updating... ?>
         <div class="logo-container fadein">
-           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="">
+           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
            <div class="logo-centered">l</div>
         </div>
         <h1 class="loadingtxt">Updating</h1>
@@ -76,13 +80,13 @@ exit(); ?>
       <?php //success ?>
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="">
+           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
            <div class="logo-centered">l</div>
         </div>
         <h1>No new version</h1>
         <h4 class="">There is no new version available</h4>
         <br><div class="row">
-        &ensp;<a class="btn" href="{{ route('studioIndex') }}"><button style=""><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
+        &ensp;<a class="btn" href="{{ route('studioIndex') }}"><button><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
         </div>
       
 @endif
@@ -90,7 +94,7 @@ exit(); ?>
 @if($_SERVER['QUERY_STRING'] === 'finishing')
 <?php //updating... ?>
         <div class="logo-container fadein">
-           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="">
+           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
            <div class="logo-centered">l</div>
         </div>
         <h1 class="loadingtxt">Finishing up</h1>
@@ -101,6 +105,9 @@ exit(); ?>
             if(EnvEditor::keyExists('JOIN_BETA')){ /* Do nothing if key already exists */ 
             } else { EnvEditor::addKey('JOIN_BETA', 'false');} // Adds key to .env file 
 
+            if(EnvEditor::keyExists('SKIP_UPDATE_BACKUP')){ /* Do nothing if key already exists */ 
+            } else { EnvEditor::addKey('SKIP_UPDATE_BACKUP', 'false');} // Adds key to .env file 
+
         echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "?success\" />"; 
         ?>
 @endif
@@ -109,13 +116,13 @@ exit(); ?>
       <?php //success ?>
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="">
+           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
            <div class="logo-centered">l</div>
         </div>
         <h1>Success!</h1>
         <h4 class="">The update was successful, you can now return to the Admin Panel:</h4>
         <br><div class="row">
-        &ensp;<a class="btn" href="{{ route('studioIndex') }}"><button style=""><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
+        &ensp;<a class="btn" href="{{ route('studioIndex') }}"><button><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
         </div>
       
 @endif
@@ -124,13 +131,13 @@ exit(); ?>
       <?php //success ?>
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="">
+           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
            <div class="logo-centered">l</div>
         </div>
         <h1>Error</h1>
         <h4 class="">Something went wrong with the update :(</h4>
         <br><div class="row">
-        &ensp;<a class="btn" href="{{ route('studioIndex') }}"><button style=""><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
+        &ensp;<a class="btn" href="{{ route('studioIndex') }}"><button><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
         </div>
       
 @endif

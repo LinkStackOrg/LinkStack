@@ -86,7 +86,7 @@ Route::get('/update', function () {return view('update', []);});
 Route::get('/updating', function (\Codedge\Updater\UpdaterManager $updater) {
 
   // Check if new version is available
-  if($updater->source()->isNewVersionAvailable() and (file_exists(base_path("backups/CANUPDATE")))) {
+  if($updater->source()->isNewVersionAvailable() and (file_exists(base_path("backups/CANUPDATE")) or env('SKIP_UPDATE_BACKUP') == true)) {
 
       // Get the current installed version
       echo $updater->source()->getVersionInstalled();
@@ -100,7 +100,7 @@ Route::get('/updating', function (\Codedge\Updater\UpdaterManager $updater) {
       // Run the update process
       $updater->source()->update($release);
 
-      unlink(base_path("backups/CANUPDATE"));
+      if(env('SKIP_UPDATE_BACKUP') != true) {unlink(base_path("backups/CANUPDATE"));}
 
       echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "/../update?finishing\" />";
 
