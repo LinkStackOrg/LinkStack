@@ -3,6 +3,7 @@
 - Entrance animations
 - Button hover animations
 - Icon hover animations
+- Footer hover animations
 
 */
 
@@ -51,7 +52,7 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 /* (Also apply to icon) */
 
-.button-hover{
+.button-hover, .credit-hover{
     display:inline-block;
     -webkit-transform:perspective(1px) translateZ(0);
     transform:perspective(1px) translateZ(0);
@@ -61,7 +62,9 @@
     -webkit-transition-property:transform;
     transition-property:transform
 }
-.button-hover:active,.button-hover:focus,.button-hover:hover{
+.button-hover:active,.credit-hover:active, 
+.button-hover:focus,.credit-hover:focus, 
+.button-hover:hover,.credit-hover:hover{
     -webkit-transform:scale(1.1);
     transform:scale(1.1)
 }
@@ -144,4 +147,25 @@
         -webkit-transform:translateY(0);
         transform:translateY(0)
     }
+}
+
+
+/* Footer hover animations
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.footer-hover{
+    display:inline-block;
+    -webkit-transform:perspective(1px) translateZ(0);
+    transform:perspective(1px) translateZ(0);
+    box-shadow:0 0 1px rgba(0,0,0,0);
+    -webkit-transition-duration:.3s;
+    transition-duration:.3s;
+    -webkit-transition-property:transform;
+    transition-property:transform;
+    -webkit-transition-timing-function:ease-out;
+    transition-timing-function:ease-out
+}
+.footer-hover:active,.footer-hover:focus,.footer-hover:hover{
+    -webkit-transform:translateY(-8px);
+    transform:translateY(-8px)
 }
