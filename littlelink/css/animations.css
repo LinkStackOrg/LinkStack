@@ -52,6 +52,7 @@
 /* (Also apply to icon) */
 
 .button-hover{
+    display:inline-block;
     -webkit-transform:perspective(1px) translateZ(0);
     transform:perspective(1px) translateZ(0);
     box-shadow:0 0 1px rgba(0,0,0,0);
@@ -70,6 +71,7 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .icon-hover{
+    display:inline-block;
     -webkit-transform:perspective(1px) translateZ(0);
     transform:perspective(1px) translateZ(0);
     box-shadow:0 0 1px rgba(0,0,0,0);
