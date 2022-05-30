@@ -77,7 +77,7 @@ exit(); ?>
 @endif
 
 @elseif($_SERVER['QUERY_STRING'] === '')
-      <?php //success ?>
+      <?php //if no new version available ?>
         
         <div class="logo-container fadein">
            <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
@@ -92,7 +92,7 @@ exit(); ?>
 @endif
 
 @if($_SERVER['QUERY_STRING'] === 'finishing')
-<?php //updating... ?>
+<?php //finishing up update ?>
         <div class="logo-container fadein">
            <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
            <div class="logo-centered">l</div>
@@ -113,7 +113,7 @@ exit(); ?>
 @endif
 
 @if($_SERVER['QUERY_STRING'] === 'success')
-      <?php //success ?>
+      <?php //after successfully updating ?>
         
         <div class="logo-container fadein">
            <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
@@ -128,7 +128,7 @@ exit(); ?>
 @endif
 
 @if($_SERVER['QUERY_STRING'] === 'error')
-      <?php //success ?>
+      <?php //on error ?>
         
         <div class="logo-container fadein">
            <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
