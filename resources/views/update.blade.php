@@ -36,7 +36,7 @@
             @else
             &ensp;<a class="btn" href="{{url()->current()}}/?backup"><button><i class="fa-solid fa-user-gear btn"></i> Update automatically</button></a>&ensp;
             @endif
-        &ensp;<a class="btn" href="https://littlelink-custom.com/update"><button><i class="fa-solid fa-download btn"></i> Update manually</button></a>&ensp;
+        &ensp;<a class="btn" href="https://littlelink-custom.com/update" target="_blank"><button><i class="fa-solid fa-download btn"></i> Update manually</button></a>&ensp;
         </div>
         @endif
       
@@ -120,9 +120,19 @@ exit(); ?>
            <div class="logo-centered">l</div>
         </div>
         <h1>Success!</h1>
+        @if(env('JOIN_BETA') === true)
+        <p><?php echo "latest beta version= " . file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?></p>
+        <p><?php  if(file_exists(base_path("vbeta.json"))) {echo "installed beta version= " . file_get_contents(base_path("vbeta.json"));} else {echo "installed beta version= none";}  ?></p>
+        <p><?php  if($Vgit > $Vlocal) {echo "You need to update to the latest mainline release";} else {echo "You're running the latest mainline release";}  ?></p>
+        @else
         <h4 class="">The update was successful, you can now return to the Admin Panel:</h4>
+        @endif
         <br><div class="row">
         &ensp;<a class="btn" href="{{ route('studioIndex') }}"><button><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
+
+        @if(env('JOIN_BETA') === true)
+        &ensp;<a class="btn" href="{{url()->current()}}/"><button><i class="fa-solid fa-arrow-rotate-right btn"></i> Run again</button></a>&ensp;
+        @endif
         </div>
       
 @endif
