@@ -25,7 +25,7 @@
         @else
         @if(env('JOIN_BETA') === true)
         <p><?php echo "latest beta version= " . file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?></p>
-        <p><?php  if(file_exists(base_path("vbeta.json"))) {echo "installed beta version= " . file_get_contents(base_path("vbeta.json"));} else {echo "installed beta version= none";}  ?></p>
+        <p><?php  if(file_exists(base_path("vbeta.json"))) {echo "Installed beta version= " . file_get_contents(base_path("vbeta.json"));} else {echo "Installed beta version= none";}  ?></p>
         <p><?php  if($Vgit > $Vlocal) {echo "You need to update to the latest mainline release";} else {echo "You're running the latest mainline release";}  ?></p>
         @else
         <h4 class="">You can update your installation automatically or download the update and install it manually:</h4>
@@ -122,7 +122,7 @@ exit(); ?>
         <h1>Success!</h1>
         @if(env('JOIN_BETA') === true)
         <p><?php echo "latest beta version= " . file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?></p>
-        <p><?php  if(file_exists(base_path("vbeta.json"))) {echo "installed beta version= " . file_get_contents(base_path("vbeta.json"));} else {echo "installed beta version= none";}  ?></p>
+        <p><?php  if(file_exists(base_path("vbeta.json"))) {echo "Installed beta version= " . file_get_contents(base_path("vbeta.json"));} else {echo "Installed beta version= none";}  ?></p>
         <p><?php  if($Vgit > $Vlocal) {echo "You need to update to the latest mainline release";} else {echo "You're running the latest mainline release";}  ?></p>
         @else
         <h4 class="">The update was successful, you can now return to the Admin Panel:</h4>
