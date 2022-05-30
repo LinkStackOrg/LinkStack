@@ -35,7 +35,7 @@
               <td><a href="{{ url('') }}/@<?= $user->littlelink_name ?>" target="_blank" class="text-info"><i class="bi bi-box-arrow-up-right"></i>&nbsp; {{ $user->littlelink_name }} </a></td>
               <td>{{ $user->role }}</td>
               <td><a href="{{ route('editUser', $user->id ) }}">Edit</a></td>
-              <td><a href="{{ route('showLinksUser', $user->id ) }}">View</a></td>
+              <td><a href="{{ route('showLinksUser', $user->id ) }}" class="text-primary">View</a></td>
               <td><a href="{{ route('blockUser', ['block' => $user->block, 'id' => $user->id] ) }}" class="text-danger">{{ $user->block }}</a></td>
             </tr>
             @endforeach
