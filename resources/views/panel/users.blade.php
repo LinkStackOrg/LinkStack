@@ -24,7 +24,7 @@
               <th scope="col">Page</th>
               <th scope="col">Role</th>
               <th scope="col">Edit</th>
-              <th scope="col">Buttons</th>
+              <th scope="col">Links</th>
               <th scope="col">Block</th>
             </tr>
           </thead>
