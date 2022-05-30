@@ -2,8 +2,8 @@
 Find more themes: https://github.com/JulianPrieber/llc-themes
                                                                                                                                                                          
 *	Theme Name: Galaxy
-*	Theme Version: 1.0
-*	Theme Date: 2022-05-19
+*	Theme Version: 1.2
+*	Theme Date: 2022-05-30
 *	Theme Author: JulianPrieber
 *	Theme Author URI: https://github.com/JulianPrieber
 *	Theme License: GPLv3

@@ -71,3 +71,9 @@
   -moz-filter: grayscale(100%);
   filter: grayscale(100%);
 }
+
+.button:hover .icon {
+  -webkit-filter: invert(100%) grayscale(100%);
+  -moz-filter: invert(100%) grayscale(100%);
+  filter: invert(100%) grayscale(100%);
+}

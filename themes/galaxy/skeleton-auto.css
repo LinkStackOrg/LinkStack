@@ -170,7 +170,8 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
   button,
   .button {
-    margin-bottom: 1rem; }
+    margin-bottom: 1rem;
+    display: block !important; }
   input,
   textarea,
   select,
