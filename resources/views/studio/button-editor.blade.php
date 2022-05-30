@@ -140,6 +140,7 @@ var button_css = {
 <link rel="stylesheet" href="./styles/jquery.gradientPicker.css" type="text/css" />
 <link rel="stylesheet" href="./styles/colorpicker_1.css" type="text/css" />
 <link rel="stylesheet" type="text/css" href="./themes/blackboard.css">
+<link rel="stylesheet" href="{{ asset('littlelink/css/animations.css') }}">
 <link rel="stylesheet" type="text/css" href="./css/style.css">
 
 	<script src="./js/rainbow.js"></script>
