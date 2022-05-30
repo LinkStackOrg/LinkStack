@@ -24,6 +24,7 @@
               <th scope="col">Page</th>
               <th scope="col">Role</th>
               <th scope="col">Edit</th>
+              <th scope="col">Buttons</th>
               <th scope="col">Block</th>
             </tr>
           </thead>
@@ -34,6 +35,7 @@
               <td><a href="{{ url('') }}/@<?= $user->littlelink_name ?>" target="_blank" class="text-info"><i class="bi bi-box-arrow-up-right"></i>&nbsp; {{ $user->littlelink_name }} </a></td>
               <td>{{ $user->role }}</td>
               <td><a href="{{ route('editUser', $user->id ) }}">Edit</a></td>
+              <td><a href="{{ route('showLinksUser', $user->id ) }}">View</a></td>
               <td><a href="{{ route('blockUser', ['block' => $user->block, 'id' => $user->id] ) }}" class="text-danger">{{ $user->block }}</a></td>
             </tr>
             @endforeach

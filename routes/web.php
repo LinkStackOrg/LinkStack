@@ -73,6 +73,8 @@ URL::forceScheme('https'); # comment to disable https
 Route::get('/panel/index', [AdminController::class, 'index'])->name('panelIndex');
 Route::get('/panel/users/{type}', [AdminController::class, 'users'])->name('showUsers');
 Route::post('/panel/users/{name?}', [AdminController::class, 'searchUser'])->name('searchUser');
+Route::get('/panel/links/{id}', [AdminController::class, 'showLinksUser'])->name('showLinksUser');
+Route::get('/panel/deleteLink/{id}', [AdminController::class, 'deleteLinkUser'])->name('deleteLinkUser');
 Route::get('/panel/users/block/{block}/{id}', [AdminController::class, 'blockUser'])->name('blockUser');
 Route::get('/panel/edit-user/{id}', [AdminController::class, 'showUser'])->name('showUser');
 Route::post('/panel/edit-user/{id}', [AdminController::class, 'editUser'])->name('editUser');

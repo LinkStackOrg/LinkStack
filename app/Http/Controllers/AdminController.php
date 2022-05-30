@@ -94,6 +94,27 @@ class AdminController extends Controller
 
     }
 
+    //Show link, click number, up link in links page
+    public function showLinksUser(request $request)
+    {
+        $id = $request->id;
+        
+        $data['user'] = User::where('id', $id)->get();
+
+        $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link', 'links.button_id')->where('user_id', $id)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(10);
+        return view('panel/links', $data);
+    }
+
+    //Delete link
+    public function deleteLinkUser(request $request)
+    {
+        $linkId = $request->id;
+
+        Link::where('id', $linkId)->delete();
+        
+        return back();
+    }
+
     //Save user edit
     public function editUser(request $request)
     {
