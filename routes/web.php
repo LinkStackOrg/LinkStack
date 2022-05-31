@@ -40,6 +40,7 @@ Route::get('/going/{id?}/{link?}', [UserController::class, 'clickNumber'])->wher
 Route::get('/+{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
 Route::get('/@{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
 Route::get('/pages/{name}', [AdminController::class, 'pages'])->name('pages');
+Route::get('/theme/@{littlelink}', [UserController::class, 'theme'])->name('theme');
 
 //User route
 Route::group([

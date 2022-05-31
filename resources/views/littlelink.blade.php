@@ -53,10 +53,16 @@
 
 @foreach($information as $info)
 @if($info->theme != '' and $info->theme != 'default')
+
+  <!-- LittleLink Custom Theme: "{{$info->theme}}" -->
+
+  <!-- Theme details: -->
+  <meta name="designer" href="{{ url('') . "/theme/@" . $littlelink_name}}" content="{{ url('') . "/theme/@" . $littlelink_name}}">
+
   <link rel="stylesheet" href="themes/{{$info->theme}}/share.button.css">
   <link rel="stylesheet" href="themes/{{$info->theme}}/brands.css">
   <link rel="stylesheet" href="themes/{{$info->theme}}/skeleton-auto.css">
-  @if(file_exists(base_path("themes/{{$info->theme}}/skeleton-auto.css" )))
+  @if(file_exists(asset('themes/' . $info->theme . '/animations.css')))
   <link rel="stylesheet" href="<?php echo asset('themes/' . $info->theme . '/animations.css') ?>">
   @else
   <link rel="stylesheet" href="{{ asset('littlelink/css/animations.css') }}">
