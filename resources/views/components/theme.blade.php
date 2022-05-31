@@ -28,22 +28,15 @@
 
 <div class="container-theme">
 <h1>Theme: {{ ucfirst(trans($info->theme)) }}</h1>
+
 <?php
-$reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
-
-$text = file_get_contents('themes/' . $info->theme . '/readme.md');
-
-if(preg_match($reg_exUrl, $text, $url)) {
-
-       $txtspc = '<pre>' . preg_replace($reg_exUrl, "<a href=" . $url[0] . ">$url[0]</a> ", $text) . '</pre>';
-       echo preg_replace('/[ \t]+/', ' ', preg_replace('/\s\S*$^\s\S*/m', "\n", $txtspc));
-
-} else {
-
-       echo '<pre>' . preg_replace('/[ \t]+/', ' ', preg_replace('/\s\S*$^\s\S*/m', "\n", $txtspc)) . '</pre>';
-
-}
+$str = file_get_contents('themes/' . $info->theme . '/readme.md');
+$url_pattern = '/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/';   
+$str= preg_replace($url_pattern, '<a href="$0">$0</a>', $str);
+$txtspc = '<pre>' . $str . '</pre>';
+echo preg_replace('/[ \t]+/', ' ', preg_replace('/\s\S*$^\s\S*/m', "\n", $txtspc));
 ?>
+
 </div>
 
 @else
