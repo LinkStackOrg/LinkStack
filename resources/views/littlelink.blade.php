@@ -160,7 +160,7 @@ function get_operating_system() {
 
 @if($user_browser === 'Chrome' or get_operating_system() == 'mobile')
 <script src="{{ asset('littlelink/js/jquery.min.js') }}"></script>
-<div align="right" class="sharediv"><div><span class="sharebutton button-hover icon-hover" id='share-share-button'><img alt="share-icon" class="sharebutton-img share-icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}share.svg"><span class="sharebutton-mb">Share</span></span></div></div>
+<div align="right" class="sharediv"><div><span class="sharebutton button-hover icon-hover" id='share-share-button'><i style="color: black;" class="fa-solid fa-share sharebutton-img share-icon hvr-icon"></i><span class="sharebutton-mb">Share</span></span></div></div>
 <span class="copy-icon" role="button">
 </span>
 @else
