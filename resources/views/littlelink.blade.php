@@ -62,11 +62,11 @@
   <link rel="stylesheet" href="themes/{{$info->theme}}/share.button.css">
   <link rel="stylesheet" href="themes/{{$info->theme}}/brands.css">
   <link rel="stylesheet" href="themes/{{$info->theme}}/skeleton-auto.css">
-  @if(file_exists(asset('themes/' . $info->theme . '/animations.css')))
+@if(file_exists(asset('themes/' . $info->theme . '/animations.css')))
   <link rel="stylesheet" href="<?php echo asset('themes/' . $info->theme . '/animations.css') ?>">
-  @else
+@else
   <link rel="stylesheet" href="{{ asset('littlelink/css/animations.css') }}">
-  @endif
+@endif
 
 @else
   <?php // override dark/light mode if override cookie is set
