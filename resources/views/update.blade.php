@@ -7,7 +7,7 @@
 			   		$Vgit = file_get_contents("https://julianprieber.github.io/littlelink-custom/version.json");
 
 				       // Requests current version from the local version file and sets it as variable
-                  $Vlocal = 'v' . file_get_contents(base_path("version.json"));
+                  $Vlocal = file_get_contents(base_path("version.json"));
 					?>
 @if(auth()->user()->role == 'admin' and $Vgit > $Vlocal or env('JOIN_BETA') === true)
 
