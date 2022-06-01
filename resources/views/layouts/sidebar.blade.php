@@ -251,6 +251,10 @@ if ($url1sb->successful() or $url2sb->successful()) {
 					<a style="color:tomato;" class="nav-link" href="{{ url('panel/diagnose') }}" title="Your security is at risk. Some files can be accessed by everyone. Immediate action is required! Click this message to learn more.">Your security is at risk!</a>
 					@endif
 
+					@if(env('JOIN_BETA') === true)
+					<a style="color:tomato;" class="nav-link" href="{{ url('update') }}">You are in BETA mode! <img src="https://img.shields.io/static/v1?label=installed:&message=<?php  if(file_exists(base_path("vbeta.json"))) {echo file_get_contents(base_path("vbeta.json"));} else {echo "none";}  ?>&color=FFFFFF"> <img src="https://img.shields.io/static/v1?label=server:&message=<?php echo file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?>&color=FFFFFF"></a>
+					@endif
+
 					@if ($color_scheme_override == 'dark' or ($color_scheme == 'dark' and $color_scheme_override != 'dark' and $color_scheme_override != 'light'))
 					<div id="myBtn" class="toggle"><span>🌙</span><input type="checkbox" id="toggle-switch" /><label for="toggle-switch"></label><span>☀️</span></div>
 					<script>function ColorOverrride(){document.cookie="color_scheme_override=light; path=/",location.reload()}var btn=document.getElementById("myBtn");btn.addEventListener("click",ColorOverrride);</script>
