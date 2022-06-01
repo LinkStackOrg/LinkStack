@@ -65,3 +65,9 @@ CACHE_DRIVER=file
 QUEUE_CONNECTION=sync
 SESSION_DRIVER=file
 SESSION_LIFETIME=120
+
+#Updater Settings=Changes settings regarding the built-in updater.
+#=JOIN_BETA either true or false. Learn more about this setting at llc.bio/beta.
+JOIN_BETA=false
+#=SKIP_UPDATE_BACKUP either true or false. Skips backup before updating. Use at your own risk.
+SKIP_UPDATE_BACKUP=false
