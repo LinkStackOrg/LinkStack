@@ -90,9 +90,11 @@ Feel free to register your account and try out all the features of LittleLink Cu
 | Custom link option                              |         ✔️         |        ❌        |        ❌        |
 | Social Share Preview for individual users       |         ✔️         |        ❌        |        ❌        |
 | Update notice if new version is available       |         ✔️         |        ❌        |        ❌        |
-| Built in SMTP server                            |         ✔️         |        ❌        |        ❌        |
+| Built-in SMTP server                            |         ✔️         |        ❌        |        ❌        |
 | Visual HTML editor to edit text                 |         ✔️         |        ❌        |        ❌        |
 | Setup without command line                      |         ✔️         |        ❌        |        ❌        |
+| Custom Theme support                            |         ✔️         |        ❌        |        ❌        |
+| Built-in updater                                |         ✔️         |        ❌        |        ❌        |
 | Button Editor with Font Awesome support         |         ✔️         |        ❌        |        ❌        |
 		    
 ¹[littlelink-admin](https://github.com/latuminggi) by [latuminggi](https://github.com/latuminggi/littlelink-admin) | 
@@ -221,13 +223,24 @@ Additionally, the littlelink-custom directory can be renamed to anything you see
 
 When a **new version** is released, you will get an update notification on your Admin Panel.
 
-### Disclaimer: Always make a backup  before updating in case something breaks!
+### Automatic one click Updater
+This updater allows you to update your installation with just one click.
 
-To update, simply download the 'update' file from [here](https://github.com/JulianPrieber/littlelink-custom/releases). Do not use the regular release for the update, as it contains files that will overwrite important files that store your links and user information, effectively resetting your installation.
+<br>	
 
-The downloaded archive contains a 'README' which tells you exactly how to update.
+**How to use the Automatic Updater:**
 
-In most cases, you will just have to move the contents of the update file into your LittleLink Custom directory. It is essential to overwrite existing files for the updates to apply.
+- To update your instance, click on the update notification on your Admin Panel.
+
+- Click on “Update automatically” and the updater will take care of the rest.
+
+You can still download updates manually. New versions will are still uploaded to the GitHub repository as usual.
+
+<br>	
+
+Before updating, the updater will create a backup. Your instance won’t save more than two backups at a time. You can download these updates from the created folder: `backups\updater-backups`.
+
+If you switched your database to MySQL, your database will not be included in the backup.
 
 ## Discord
 
