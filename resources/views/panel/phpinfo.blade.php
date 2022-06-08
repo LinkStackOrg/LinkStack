@@ -34,6 +34,9 @@
 					<!-- switch the two <link> Tags below to default to dark mode if cookie detection fails -->
 					<link rel="stylesheet" href="{{ asset('/studio/css/bootstrap.min-dark.css') }}">
 					<link rel="stylesheet" href="{{ asset('/studio/css/style-dashboard-dark.css') }}">
+				@elseif(Config::get('meta.theme') == 'dark')
+					<link rel="stylesheet" href="{{ asset('/studio/css/bootstrap.min-dark.css') }}">
+					<link rel="stylesheet" href="{{ asset('/studio/css/style-dashboard-dark.css') }}">
 				@else
 					<link rel="stylesheet" href="{{ asset('/studio/css/bootstrap.min.css') }}">
 					<link rel="stylesheet" href="{{ asset('/studio/css/style-dashboard.css') }}">

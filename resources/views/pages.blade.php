@@ -50,9 +50,13 @@
 		@if ($color_scheme == 'dark' and $color_scheme_override != 'light' or $color_scheme_override == 'dark')
 					<!-- switch the two <link> Tags below to default to dark mode if cookie detection fails -->
 					<link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
-				@else
+		@elseif (Config::get('meta.theme') == 'dark')
+					<link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
+		@elseif (Config::get('meta.theme') == 'light')
 					<link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
-					@endif
+		@else
+					<link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
+		@endif
   <!-- end dark mode detection -->
 
 <style>.container-text{position:relative;width:95%;max-width:900px;margin:0 auto;box-sizing:border-box}</style>

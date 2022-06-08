@@ -16,7 +16,7 @@
   @endif
 
 @if(env('CUSTOM_META_TAGS') == 'true')
-@include('layouts.meta') 
+  @include('layouts.meta') 
 @else
   <meta name="description" content="{{ $userinfo->littlelink_description }}">
   <meta name="author" content="{{ $userinfo->name }}">
@@ -89,6 +89,10 @@
   @if ($color_scheme_override == 'dark')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
   @elseif ($color_scheme_override == 'light')
+  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
+  @elseif (Config::get('meta.theme') == 'dark')
+  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
+  @elseif (Config::get('meta.theme') == 'light')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
   @else
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-auto.css') }}">
