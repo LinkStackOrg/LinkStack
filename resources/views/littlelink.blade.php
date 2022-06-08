@@ -123,6 +123,26 @@
 @endif
 
 <?php ////begin share button//// ?>
+
+@if(Config::get('meta.display_share_button') != '')
+
+   @if(Config::get('meta.display_share_button') == 'false')
+   <?php $ShowShrBtn = 'false'; ?>
+   @elseif(Config::get('meta.display_share_button') == 'user')
+       @if($littlelink_names = Auth::user()->littlelink_name)
+       <?php $ShowShrBtn = 'true'; ?>
+       @else
+       <?php $ShowShrBtn = 'false'; ?>
+       @endif
+   @else
+   <?php $ShowShrBtn = 'true'; ?>
+   @endif
+
+@else
+<?php $ShowShrBtn = 'true'; ?>
+@endif
+
+@if($ShowShrBtn == 'true')
 <?php 
 //Get browser type
 $arr_browsers = ["Opera", "Edg", "Chrome", "Safari", "Firefox", "MSIE", "Trident"];
@@ -185,6 +205,8 @@ function get_operating_system() {
 </span>
 @endif
 <script  src="{{ asset('littlelink/js/share.button.js') }}"></script>
+
+@endif
 <?php ////end share button//// ?>
 
   <div class="container">

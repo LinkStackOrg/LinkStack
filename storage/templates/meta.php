@@ -71,6 +71,10 @@ return [
     'littlelink_title'  => '',
 
 
+    // Either "true", "false" or "auth". 
+    // If "auth" is selected, the share button will only be shown to users on their own page.
+    'display_share_button' => 'true',
+
     
     // Do not change here!
     'analytics'         => $analytics, // Set on top of page.
