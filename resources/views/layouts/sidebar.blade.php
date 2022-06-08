@@ -261,7 +261,10 @@ if ($url1sb->successful() or $url2sb->successful()) {
 					<a style="color:tomato;" class="nav-link" href="{{ url('update') }}">You are in BETA mode! <img src="https://img.shields.io/static/v1?label=installed:&message=<?php  if(file_exists(base_path("vbeta.json"))) {echo file_get_contents(base_path("vbeta.json"));} else {echo "none";}  ?>&color=FFFFFF"> <img src="https://img.shields.io/static/v1?label=server:&message=<?php echo file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?>&color=FFFFFF"></a>
 					@endif
 
-					@if ($color_scheme_override == 'dark' or ($color_scheme == 'dark' and $color_scheme_override != 'dark' and $color_scheme_override != 'light'))
+					@if (Config::get('meta.theme') == 'light' and $color_scheme_override != 'dark')
+					<div id="myBtn" class="toggle"><span>🌙</span><input type="checkbox" id="toggle-switch" checked/><label for="toggle-switch"></label><span>☀️</span></div>
+					<script>function ColorOverrride(){document.cookie="color_scheme_override=dark; path=/",location.reload()}var btn=document.getElementById("myBtn");btn.addEventListener("click",ColorOverrride);</script>
+					@elseif ($color_scheme_override == 'dark' or ($color_scheme == 'dark' and $color_scheme_override != 'dark' and $color_scheme_override != 'light'))
 					<div id="myBtn" class="toggle"><span>🌙</span><input type="checkbox" id="toggle-switch" /><label for="toggle-switch"></label><span>☀️</span></div>
 					<script>function ColorOverrride(){document.cookie="color_scheme_override=light; path=/",location.reload()}var btn=document.getElementById("myBtn");btn.addEventListener("click",ColorOverrride);</script>
 					@elseif ($color_scheme_override == 'light' or ($color_scheme == 'light' and $color_scheme_override != 'dark' and $color_scheme_override != 'light'))
