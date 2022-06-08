@@ -18,15 +18,7 @@ $analytics =
 <<<EOD
 <!----------Insert your analytics code here:---------->
 
-<!-- Global Site Tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=TRACKING_ID"></script>
 
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'TRACKING_ID');
-</script>
 
 <!--------------------------------------------------->
 EOD;;
@@ -49,13 +41,13 @@ return [
     */
 
     'lang'            => 'en', // Sets <html lang="en">
-    'title'           => 'Title', // Overrides the default meta page title. Leave empty to use your page title as the title.
-    'description'     => 'This is a description', // Overrides the default meta page description. Leave empty to use your page description as the description.
+    'title'           => '', // Overrides the default meta page title. Leave empty to use your page title as the title.
+    'description'     => '', // Overrides the default meta page description. Leave empty to use your page description as the description.
     'robots'          => 'index,follow',
     'viewport'        => 'width=device-width, initial-scale=1',
-    'canonical_url'   => 'https://example.com/', // Tells search engines to index "https://example.com/"  instead of "https://example.com/@admin",  for example.
-    'twitter_creator' => '@elonmusk', // Twitter @username. For example: "@elonmusk".
-    'author'          => 'Julian Prieber', // Your name.
+    'canonical_url'   => '', // Tells search engines to index "https://example.com/"  instead of "https://example.com/@admin",  for example.
+    'twitter_creator' => '', // Twitter @username. For example: "@elonmusk".
+    'author'          => '', // Your name.
 
     /*
     |--------------------------------------------------------------------------
