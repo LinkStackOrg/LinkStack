@@ -41,8 +41,8 @@ return [
     */
 
     'lang'            => 'en', // Sets <html lang="en">
-    'title'           => '', // Overrides the default meta page title. Leave empty to use your page title as the title.
-    'description'     => '', // Overrides the default meta page description. Leave empty to use your page description as the description.
+    'title'           => '', // Overrides the default meta page title. Leave empty to use your LittleLink page title as the title.
+    'description'     => '', // Overrides the default meta page description. Leave empty to use your LittleLink page description as the description.
     'robots'          => 'index,follow',
     'viewport'        => 'width=device-width, initial-scale=1',
     'canonical_url'   => '', // Tells search engines to index "https://example.com/"  instead of "https://example.com/@admin",  for example.
