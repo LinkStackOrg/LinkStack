@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+@include('layouts.lang')
 @if(auth()->user()->role == 'admin')
 <head>
   <!-- begin dark mode detection -->

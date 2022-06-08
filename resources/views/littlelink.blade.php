@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+@include('layouts.lang')
 <head>
   <meta charset="utf-8">
-  @if(env('HOME_URL') != '')
+  @if(Config::get('meta.littlelink_title') != '' and env('HOME_URL') === '')
+  <title>{{ $userinfo->name }} {{ Config::get('meta.littlelink_title') }}</title>
+  @elseif(env('CUSTOM_META_TAGS') == 'true' and Config::get('meta.title') != '')
+  <title>{{ Config::get('meta.title') }}</title>
+  @elseif(env('HOME_URL') != '')
   <title>{{ $userinfo->name }}</title>
   @else
   <title>{{ $userinfo->name }} 🔗 {{ config('app.name') }} </title>
   @endif
+
+@if(env('CUSTOM_META_TAGS') == 'true')
+@include('layouts.meta') 
+@else
   <meta name="description" content="{{ $userinfo->littlelink_description }}">
   <meta name="author" content="{{ $userinfo->name }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+@endif
   
 <!--#### BEGIN Meta Tags social media preview images  ####-->
   <!-- This shows a preview for title, description and avatar image of users profiles if shared on social media sites -->

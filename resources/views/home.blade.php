@@ -1,11 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+@include('layouts.lang')
 <head>
   <meta charset="utf-8">
+
+  @if(env('CUSTOM_META_TAGS') == 'true' and Config::get('meta.title') != '')
+  <title>{{ Config::get('meta.title') }}</title>
+  @else
   <title>{{ config('app.name') }}</title>
+  @endif
+
   <?php $cleaner_input = strip_tags($message->home_message); ?>
+
+  @if(env('CUSTOM_META_TAGS') == 'true')
+  @include('layouts.meta') 
+  @else
   <meta name="description" content="{{ $cleaner_input }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  @endif
+
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">

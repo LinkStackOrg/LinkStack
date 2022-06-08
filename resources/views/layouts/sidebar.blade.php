@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+@include('layouts.lang')
   <head>
   	<title>Studio ⚙️ {{ config('app.name') }}</title>
     <meta charset="utf-8">
