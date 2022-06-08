@@ -3,6 +3,9 @@
   <head>
   	<title>Studio ⚙️ {{ config('app.name') }}</title>
     <meta charset="utf-8">
+
+@include('layouts.analytics')
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
     <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">

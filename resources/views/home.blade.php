@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
 
+@include('layouts.analytics')
+
   @if(env('CUSTOM_META_TAGS') == 'true' and Config::get('meta.title') != '')
   <title>{{ Config::get('meta.title') }}</title>
   @else

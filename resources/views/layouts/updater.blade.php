@@ -3,6 +3,9 @@
 @include('layouts.lang')
 <head>
   <meta charset="utf-8">
+
+@include('layouts.analytics')
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 @stack('updater-head')

@@ -2,6 +2,9 @@
 @include('layouts.lang')
 <head>
   <meta charset="utf-8">
+
+@include('layouts.analytics')
+
   @if(Config::get('meta.littlelink_title') != '' and env('HOME_URL') === '')
   <title>{{ $userinfo->name }} {{ Config::get('meta.littlelink_title') }}</title>
   @elseif(env('CUSTOM_META_TAGS') == 'true' and Config::get('meta.title') != '')

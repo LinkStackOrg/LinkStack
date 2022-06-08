@@ -2,6 +2,9 @@
 @include('layouts.lang')
 <head>
   <meta charset="utf-8">
+
+@include('layouts.analytics')
+
   <title>{{ config('app.name') }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,800&display=swap" rel="stylesheet">
