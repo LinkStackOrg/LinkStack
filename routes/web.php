@@ -24,21 +24,21 @@ use App\Http\Controllers\UserController;
  if(!file_exists(base_path("config/advanced-config.php"))){copy(base_path('storage/templates/advanced-config.php'), base_path('config/advanced-config.php'));}
 
 //Changes the homepage to a LittleLink Custom profile if set in the config
-if(config('config.custom_home_url') != '') {
-  $custom_home_page_url = config('config.custom_home_url');
+if(config('advanced-config.custom_home_url') != '') {
+  $custom_home_page_url = config('advanced-config.custom_home_url');
 } else {
   $custom_home_page_url = "/home";
 }
 if(env('HOME_URL') != '') {
   Route::get('/', [UserController::class, 'littlelinkhome'])->name('littlelink');
-  if(config('config.disable_home_page') == 'redirect') {
-    Route::get($custom_home_page_url, function () {return redirect(config('config.redirect_home_page'));});
-  }elseif(config('config.disable_home_page') != 'true') {
+  if(config('advanced-config.disable_home_page') == 'redirect') {
+    Route::get($custom_home_page_url, function () {return redirect(config('advanced-config.redirect_home_page'));});
+  }elseif(config('advanced-config.disable_home_page') != 'true') {
   Route::get( $custom_home_page_url, [App\Http\Controllers\HomeController::class, 'home'])->name('home');}
 } else {
-  if(config('config.disable_home_page') == 'redirect') {
-    Route::get('/', function () {return redirect(config('config.redirect_home_page'));});
-  }elseif(config('config.disable_home_page') != 'true') {
+  if(config('advanced-config.disable_home_page') == 'redirect') {
+    Route::get('/', function () {return redirect(config('advanced-config.redirect_home_page'));});
+  }elseif(config('advanced-config.disable_home_page') != 'true') {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');}
 }
 
@@ -53,7 +53,7 @@ Route::get('/panel/diagnose', function () {
 });
 
 //Public route
-$custom_prefix = config('config.custom_url_prefix');
+$custom_prefix = config('advanced-config.custom_url_prefix');
 Route::get('/going/{id?}/{link?}', [UserController::class, 'clickNumber'])->where('link', '.*')->name('clickNumber');
 Route::get('/' . $custom_prefix . '{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
 Route::get('/@{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
