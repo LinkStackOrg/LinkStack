@@ -1,0 +1,101 @@
+/* ************************************************************* */
+/* 
+/* Use this file to add custom CSS animations.
+/* Delete this file if you wish to use the default animations.
+/* If you do not want to have animations in your theme,
+/* remove or comment them and include this file in your theme.
+/* 
+/* ************************************************************* */
+
+
+/* Table of contents
+––––––––––––––––––––––––––––––––––––––––––––––––––
+- Entrance animations
+- Button hover animations
+- Icon hover animations
+- Footer hover animations
+
+*/
+
+
+
+/* Entrance animations
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.button-entrance {
+    animation-name: popUp;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    /* Used to start button entrance animation one after another  */
+    animation-delay: calc(var(--delay)/10);
+  }
+
+@keyframes popUp {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.fadein {
+    animation-name: fadein;
+    animation-duration: 3s;
+    animation-fill-mode: both;
+  }
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* Button hover animations
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* (Also apply to icon) */
+
+.button-hover, .credit-hover{
+    display:inline-block;
+    -webkit-transform:perspective(1px) translateZ(0);
+    transform:perspective(1px) translateZ(0);
+    box-shadow:0 0 1px rgba(0,0,0,0);
+    -webkit-transition-duration:.1s;
+    transition-duration:.1s;
+    -webkit-transition-property:transform;
+    transition-property:transform
+}
+.button-hover:active,.credit-hover:active, 
+.button-hover:focus,.credit-hover:focus, 
+.button-hover:hover,.credit-hover:hover{
+    -webkit-transform:scale(1.02);
+    transform:scale(1.02)
+}
+
+
+/* Footer hover animations
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.footer-hover{
+    display:inline-block;
+    -webkit-transform:perspective(1px) translateZ(0);
+    transform:perspective(1px) translateZ(0);
+    box-shadow:0 0 1px rgba(0,0,0,0);
+    -webkit-transition-duration:.3s;
+    transition-duration:.3s;
+    -webkit-transition-property:transform;
+    transition-property:transform;
+    -webkit-transition-timing-function:ease-out;
+    transition-timing-function:ease-out
+}
+.footer-hover:active,.footer-hover:focus,.footer-hover:hover{
+    -webkit-transform:translateY(-8px);
+    transform:translateY(-8px)
+}
