@@ -79,4 +79,119 @@ return [
     // Do not change here!
     'analytics'         => $analytics, // Set on top of page.
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Buttons on Home Page
+    |--------------------------------------------------------------------------
+    |
+    | Here you can configure your own buttons for the Home Page.
+    | You can add or remove as many buttons as you like.
+    | 
+    | The syntax of the custom buttons is as follows:
+    | 
+    |       array(
+    |         'button' => '',
+    |         'link' => '',
+    |         'title' => '',
+    |         'icon' => '',
+    |         'custom_css' => ''
+    |       ),
+    | 
+    | In the 'button' field, you have to enter the button name (i.e. 'twitter', 'github', 'custom'...).
+    | You can find a list of all available buttons below.
+    | 
+    | In the 'link' field, can enter your desired link you can leave this field empty for a display only, non-functional button.
+    | 
+    | 
+    | 
+    | The input fields below only apply to buttons such as 'custom' and 'custom_website' but must always be included even if only empty.
+    |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    | 
+    | In the 'title' field, changes the text on a button, such as 'custom' and 'custom_website'.
+    | 
+    | In the 'icon' field, uses the same syntax as the Button Editor on the Admin Panel. 
+    | This allows you to add your own icons to 'custom' buttons. You can find a list of available icons on llc.bio/fa.
+    | 
+    | In the 'custom_css' field, here you can enter custom CSS to change the color of your button. 
+    | If you don't feel comfortable working with CSS,
+    | you can copy and paste the CSS from the 'Custom CSS' field of the Button Editor on the Admin Panel.
+    |
+    */
+
+    'use_custom_buttons'  => 'true', // Set this to false if you wish to display the old buttons.
+
+    'buttons' => array(
+      array(
+        'button' => 'github',
+        'link' => 'https://github.com/JulianPrieber/littlelink-custom',
+        'title' => '',
+        'icon' => '',
+        'custom_css' => ''
+      ),
+      array(
+          'button' => 'custom',
+          'link' => 'https://littlelink-custom.com',
+          'title' => 'Project Website',
+          'icon' => 'llc',
+          'custom_css' => 'color:#ffffff; background-image:linear-gradient(76deg, #f70fff 0%, #11d4de 100%);'),
+      array(
+        'button' => 'custom',
+        'link' => 'https://littlelink-custom.com/sponsor',
+        'title' => 'Help us out',
+        'icon' => 'fa-hand-holding-hand',
+        'custom_css' => 'color:#ffffff; background-image:radial-gradient(circle, #00d2ff 0%, #3a7bd5 95%);'
+      ),
+    )
+
+    /*
+    |--------------------------------|
+    | List of Available buttons:     |
+    |--------------------------------|
+    | 'button' => 'custom'           |
+    | 'button' => 'custom_website'   |
+    | 'button' => 'github'           |
+    | 'button' => 'twitter'          |
+    | 'button' => 'instagram'        |
+    | 'button' => 'facebook'         |
+    | 'button' => 'messenger'        |
+    | 'button' => 'linkedin'         |
+    | 'button' => 'youtube'          |
+    | 'button' => 'discord'          |
+    | 'button' => 'twitch'           |
+    | 'button' => 'snapchat'         |
+    | 'button' => 'spotify'          |
+    | 'button' => 'reddit'           |
+    | 'button' => 'medium'           |
+    | 'button' => 'pinterest'        |
+    | 'button' => 'soundcloud'       |
+    | 'button' => 'figma'            |
+    | 'button' => 'kit'              |
+    | 'button' => 'telegram'         |
+    | 'button' => 'tumblr'           |
+    | 'button' => 'steam'            |
+    | 'button' => 'vimeo'            |
+    | 'button' => 'wordpress'        |
+    | 'button' => 'goodreads'        |
+    | 'button' => 'skoob'            |
+    | 'button' => 'tiktok'           |
+    | 'button' => 'default email'    |
+    | 'button' => 'default email_alt'|
+    | 'button' => 'bandcamp'         |
+    | 'button' => 'patreon'          |
+    | 'button' => 'signal'           |
+    | 'button' => 'venmo'            |
+    | 'button' => 'cashapp'          |
+    | 'button' => 'gitlab'           |
+    | 'button' => 'mastodon'         |
+    | 'button' => 'paypal'           |
+    | 'button' => 'whatsapp'         |
+    | 'button' => 'xing'             |
+    | 'button' => 'buy me a coffee'  |
+    | 'button' => 'website'          |
+    | 'button' => 'heading'          |
+    | 'button' => 'space'            |
+    |--------------------------------|
+    */
+
 ];
