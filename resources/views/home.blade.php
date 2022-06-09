@@ -46,6 +46,7 @@
 
 @else
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
+  <link rel="stylesheet" href="{{ asset('littlelink/css/animations.css') }}">
   <?php // override dark/light mode if override cookie is set
   $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
   @if ($color_scheme_override == 'dark')
@@ -140,15 +141,15 @@ foreach($pages as $page)
         @foreach($array as $button)
          @php $linkName = str_replace('default ','',$button['button']) @endphp
          @if($button['button'] === "custom" and $button['custom_css'] === "" or $button['custom_css'] === "NULL")
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $button['button'] }} button button-hover icon-hover" @if($button['link'] != '')rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" target="_blank"@endif>@if($button['icon'] == 'llc')<img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}llc.svg">@else<i style="color: {{ $button['icon'] }}" class="icon hvr-icon fa {{ $button['icon'] }}"></i>@endif{{ $button['title'] }}</a></div>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $button['button'] }} button button-hover icon-hover" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif>@if($button['icon'] == 'llc')<img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}llc.svg">@else<i style="color: {{ $button['icon'] }}" class="icon hvr-icon fa {{ $button['icon'] }}"></i>@endif{{ $button['title'] }}</a></div>
          @elseif($button['button'] === "custom" and $button['custom_css'] != "")
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $button['custom_css'] }}" @if($button['link'] != '')rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" target="_blank"@endif>@if($button['icon'] == 'llc')<img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}llc.svg">@else<i style="color: {{ $button['icon'] }}" class="icon hvr-icon fa {{ $button['icon'] }}"></i>@endif{{ $button['title'] }}</a></div>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $button['custom_css'] }}" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif>@if($button['icon'] == 'llc')<img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}llc.svg">@else<i style="color: {{ $button['icon'] }}" class="icon hvr-icon fa {{ $button['icon'] }}"></i>@endif{{ $button['title'] }}</a></div>
          @elseif($button['button'] === "buy me a coffee")
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-coffee button button-hover icon-hover" @if($button['link'] != '')rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}coffee.svg">Buy me a Coffee</a></div>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-coffee button button-hover icon-hover" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}coffee.svg">Buy me a Coffee</a></div>
          @elseif($button['button'] === "custom_website"and $button['custom_css'] === "" or $button['custom_css'] === "NULL")
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-custom_website button button-hover icon-hover" @if($button['link'] != '')rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="http://www.google.com/s2/favicons?domain={{$link->link}}">{{ $button['title'] }}</a></div>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-custom_website button button-hover icon-hover" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="http://www.google.com/s2/favicons?domain={{$link->link}}">{{ $button['title'] }}</a></div>
          @elseif($button['button'] === "custom_website" and $button['custom_css'] != "")
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $button['custom_css'] }}" @if($button['link'] != '')rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="http://www.google.com/s2/favicons?domain={{$link->link}}">{{ $button['title'] }}</a></div>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $button['custom_css'] }}" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="http://www.google.com/s2/favicons?domain={{$link->link}}">{{ $button['title'] }}</a></div>
          @elseif($button['button'] === "space")
          <?php 
           if (is_numeric($button['title']) and $button['title'] < 10)
@@ -161,7 +162,7 @@ foreach($pages as $page)
          @elseif($button['button'] === "heading")
          <h2>{{ $button['title'] }}</h2>
          @else
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $button['button'] }} button button-hover icon-hover" @if($button['link'] != '')rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/') . $linkName }}.svg">{{ ucfirst($linkName) }}</a></div>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $button['button'] }} button button-hover icon-hover" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/') . $linkName }}.svg">{{ ucfirst($linkName) }}</a></div>
          @endif
         @endforeach
 @else
