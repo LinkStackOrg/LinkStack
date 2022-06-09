@@ -40,11 +40,11 @@
 		<?php // loads dark mode CSS if dark mode detected
 		     $color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : false; 
 			 $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
-		@if ($color_scheme == 'dark' and config('meta.theme') != 'light' and $color_scheme_override != 'light' or $color_scheme_override == 'dark')
+		@if ($color_scheme == 'dark' and config('advanced-config.theme') != 'light' and $color_scheme_override != 'light' or $color_scheme_override == 'dark')
 					<!-- switch the two <link> Tags below to default to dark mode if cookie detection fails -->
 					<link rel="stylesheet" href="{{ asset('/studio/css/bootstrap.min-dark.css') }}">
 					<link rel="stylesheet" href="{{ asset('/studio/css/style-dashboard-dark.css') }}">
-				@elseif(config('meta.theme') == 'dark')
+				@elseif(config('advanced-config.theme') == 'dark')
 					<link rel="stylesheet" href="{{ asset('/studio/css/bootstrap.min-dark.css') }}">
 					<link rel="stylesheet" href="{{ asset('/studio/css/style-dashboard-dark.css') }}">
 				@else
@@ -160,11 +160,11 @@ if ($url1sb->successful() or $url2sb->successful()) {
 		@if(env('DISPLAY_FOOTER') === true)
 	        	<p>
 			    Copyright &copy; @php echo date('Y'); @endphp {{ config('app.name') }}<i class="icon-heart" aria-hidden="true"></i> </br>
-	@php if(config('meta.display_link_home') != 'false' and config('meta.display_link_terms') != 'false' and config('meta.display_link_privacy') != 'false' and config('meta.display_link_contact') != 'false'){$dot=" . "; } else {$dot="&ensp;";} @endphp
-    @if(config('meta.display_link_home') != 'false')<a class="footer-hover spacing" @if(config('meta.custom_link_home') != '')href="{{ config('meta.custom_link_home') }}"@else href="{{ url('') }}/"@endif> @if(config('meta.custom_text_home') != ''){{config('meta.custom_text_home')}}@else Home @endif</a>{!!$dot!!}@endif
-    @if(config('meta.display_link_terms') != 'false')<a class="footer-hover spacing" href="{{ url('') }}/pages/terms">Terms</a>{!!$dot!!}@endif
-    @if(config('meta.display_link_privacy') != 'false')<a class="footer-hover spacing" href="{{ url('') }}/pages/privacy">Privacy</a>{!!$dot!!}@endif
-    @if(config('meta.display_link_contact') != 'false')<a class="footer-hover spacing" href="{{ url('') }}/pages/contact">Contact</a>@endif
+	@php if(config('advanced-config.display_link_home') != 'false' and config('advanced-config.display_link_terms') != 'false' and config('advanced-config.display_link_privacy') != 'false' and config('advanced-config.display_link_contact') != 'false'){$dot=" . "; } else {$dot="&ensp;";} @endphp
+    @if(config('advanced-config.display_link_home') != 'false')<a class="footer-hover spacing" @if(config('advanced-config.custom_link_home') != '')href="{{ config('advanced-config.custom_link_home') }}"@else href="{{ url('') }}/"@endif> @if(config('advanced-config.custom_text_home') != ''){{config('advanced-config.custom_text_home')}}@else Home @endif</a>{!!$dot!!}@endif
+    @if(config('advanced-config.display_link_terms') != 'false')<a class="footer-hover spacing" href="{{ url('') }}/pages/terms">Terms</a>{!!$dot!!}@endif
+    @if(config('advanced-config.display_link_privacy') != 'false')<a class="footer-hover spacing" href="{{ url('') }}/pages/privacy">Privacy</a>{!!$dot!!}@endif
+    @if(config('advanced-config.display_link_contact') != 'false')<a class="footer-hover spacing" href="{{ url('') }}/pages/contact">Contact</a>@endif
             </p>
 			@endif
 @if(env('DISPLAY_CREDIT') === true)
@@ -262,7 +262,7 @@ if ($url1sb->successful() or $url2sb->successful()) {
 					<a style="color:tomato;" class="nav-link" href="{{ url('update') }}">You are in BETA mode! <img src="https://img.shields.io/static/v1?label=installed:&message=<?php  if(file_exists(base_path("vbeta.json"))) {echo file_get_contents(base_path("vbeta.json"));} else {echo "none";}  ?>&color=FFFFFF"> <img src="https://img.shields.io/static/v1?label=server:&message=<?php echo file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?>&color=FFFFFF"></a>
 					@endif
 
-					@if (config('meta.theme') == 'light' and $color_scheme_override != 'dark')
+					@if (config('advanced-config.theme') == 'light' and $color_scheme_override != 'dark')
 					<div id="myBtn" class="toggle"><span>🌙</span><input type="checkbox" id="toggle-switch" checked/><label for="toggle-switch"></label><span>☀️</span></div>
 					<script>function ColorOverrride(){document.cookie="color_scheme_override=dark; path=/",location.reload()}var btn=document.getElementById("myBtn");btn.addEventListener("click",ColorOverrride);</script>
 					@elseif ($color_scheme_override == 'dark' or ($color_scheme == 'dark' and $color_scheme_override != 'dark' and $color_scheme_override != 'light'))

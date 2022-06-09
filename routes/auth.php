@@ -10,20 +10,20 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
-if(config('meta.register_url') != '') {
-    $register = config('meta.register_url');
+if(config('advanced-config.register_url') != '') {
+    $register = config('advanced-config.register_url');
 } else {
     $register = "/register";
 }
 
-if(config('meta.login_url') != '') {
-    $login = config('meta.login_url');
+if(config('advanced-config.login_url') != '') {
+    $login = config('advanced-config.login_url');
 } else {
     $login = "/login";
 }
 
-if(config('meta.forgot_password_url') != '') {
-    $forgot_password = config('meta.forgot_password_url');
+if(config('advanced-config.forgot_password_url') != '') {
+    $forgot_password = config('advanced-config.forgot_password_url');
 } else {
     $forgot_password = "/forgot-password";
 }

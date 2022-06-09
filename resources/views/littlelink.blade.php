@@ -5,10 +5,10 @@
 
 @include('layouts.analytics')
 
-  @if(config('meta.littlelink_title') != '' and env('HOME_URL') === '')
-  <title>{{ $userinfo->name }} {{ config('meta.littlelink_title') }}</title>
-  @elseif(env('CUSTOM_META_TAGS') == 'true' and config('meta.title') != '')
-  <title>{{ config('meta.title') }}</title>
+  @if(config('advanced-config.littlelink_title') != '' and env('HOME_URL') === '')
+  <title>{{ $userinfo->name }} {{ config('advanced-config.littlelink_title') }}</title>
+  @elseif(env('CUSTOM_META_TAGS') == 'true' and config('advanced-config.title') != '')
+  <title>{{ config('advanced-config.title') }}</title>
   @elseif(env('HOME_URL') != '')
   <title>{{ $userinfo->name }}</title>
   @else
@@ -90,9 +90,9 @@
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
   @elseif ($color_scheme_override == 'light')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
-  @elseif (config('meta.theme') == 'dark')
+  @elseif (config('advanced-config.theme') == 'dark')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
-  @elseif (config('meta.theme') == 'light')
+  @elseif (config('advanced-config.theme') == 'light')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
   @else
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-auto.css') }}">
@@ -124,11 +124,11 @@
 
 <?php ////begin share button//// ?>
 
-@if(config('meta.display_share_button') != '')
+@if(config('advanced-config.display_share_button') != '')
 
-   @if(config('meta.display_share_button') == 'false')
+   @if(config('advanced-config.display_share_button') == 'false')
    <?php $ShowShrBtn = 'false'; ?>
-   @elseif(config('meta.display_share_button') == 'user')
+   @elseif(config('advanced-config.display_share_button') == 'user')
        @if($littlelink_names = Auth::user()->littlelink_name)
        <?php $ShowShrBtn = 'true'; ?>
        @else

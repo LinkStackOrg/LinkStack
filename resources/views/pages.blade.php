@@ -47,12 +47,12 @@
 		<?php // loads dark mode CSS if dark mode detected
 		   $color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : false; 
 			 $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
-		@if ($color_scheme == 'dark' and config('meta.theme') != 'light' and $color_scheme_override != 'light' or $color_scheme_override == 'dark')
+		@if ($color_scheme == 'dark' and config('advanced-config.theme') != 'light' and $color_scheme_override != 'light' or $color_scheme_override == 'dark')
 					<!-- switch the two <link> Tags below to default to dark mode if cookie detection fails -->
 					<link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
-		@elseif (config('meta.theme') == 'dark')
+		@elseif (config('advanced-config.theme') == 'dark')
 					<link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
-		@elseif (config('meta.theme') == 'light')
+		@elseif (config('advanced-config.theme') == 'light')
 					<link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
 		@else
 					<link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
