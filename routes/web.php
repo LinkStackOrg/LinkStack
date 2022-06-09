@@ -24,11 +24,19 @@ use App\Http\Controllers\UserController;
  if(!file_exists(base_path("config/meta.php"))){copy(base_path('storage/templates/meta.php'), base_path('config/meta.php'));}
 
 //Changes the homepage to a LittleLink Custom profile if set in the config
+if(Config::get('meta.custom_home_url') != '') {
+  $custom_home_page_url = Config::get('meta.custom_home_url');
+} else {
+  $custom_home_page_url = "/home";
+}
 if(env('HOME_URL') != '') {
   Route::get('/', [UserController::class, 'littlelinkhome'])->name('littlelink');
-  Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+  Route::get( $custom_home_page_url, [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 } else {
-  Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+  if(Config::get('meta.disable_home_page') == 'redirect') {
+    Route::get('/', function () {return redirect(Config::get('meta.redirect_home_page'));});
+  }elseif(Config::get('meta.disable_home_page') != 'true') {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');}
 }
 
 //Redirect if no page URL is set
@@ -42,8 +50,9 @@ Route::get('/panel/diagnose', function () {
 });
 
 //Public route
+$custom_prefix = Config::get('meta.custom_url_prefix');
 Route::get('/going/{id?}/{link?}', [UserController::class, 'clickNumber'])->where('link', '.*')->name('clickNumber');
-Route::get('/+{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
+Route::get('/' . $custom_prefix . '{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
 Route::get('/@{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
 Route::get('/pages/{name}', [AdminController::class, 'pages'])->name('pages');
 Route::get('/theme/@{littlelink}', [UserController::class, 'theme'])->name('theme');

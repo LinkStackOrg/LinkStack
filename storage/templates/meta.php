@@ -86,6 +86,32 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Custom routes
+    |--------------------------------------------------------------------------
+    |
+    | You can change routes to improve security.
+    |
+    */
+
+    'login_url' => '/login',
+    'register_url' => '/register',
+    'forgot_password_url' => '/forgot-password',
+
+    'custom_home_url' => '/home', // Only applies if you set a "HOME_URL" in the config.
+
+    // If 'true' the Home Page will be disabled entirely.
+    // You will still be able to login on the login page etc.
+    'disable_home_page' => 'false', // Either 'true', 'false' or 'redirect'.
+    'redirect_home_page' => 'https://littlelink-custom.com', // Only active if value above is set to 'redirect'.
+
+    // The URL prefix is the symbol that comes before a LittleLink URL.
+    // For example the '@' in 'example.com/@admin'.
+    // If empty no prefix is required. Use with caution.
+    'custom_url_prefix' => '+', // The '@' prefix will always work regardless of this setting.
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Footer links
     |--------------------------------------------------------------------------
     |
@@ -103,6 +129,7 @@ return [
 
     'custom_link_home' => '', // Leave empty to use default value.
 
+    
     /*
     |--------------------------------------------------------------------------
     | Home Page settings
