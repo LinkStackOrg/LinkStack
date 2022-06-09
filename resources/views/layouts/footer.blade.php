@@ -1,7 +1,7 @@
 <div class="container">
 <div class="footer fadein" style="margin:5% 0px 35px 0px;">
 @if(env('DISPLAY_FOOTER') === true)
-    @if(Config::get('meta.display_link_home') != 'false')<a class="footer-hover spacing" @if(Config::get('meta.custom_link_home') != '')href="{{ Config::get('meta.custom_link_home') }}"@else href="{{ url('') }}/"@endif>Home</a>@endif
+    @if(Config::get('meta.display_link_home') != 'false')<a class="footer-hover spacing" @if(Config::get('meta.custom_link_home') != '')href="{{ Config::get('meta.custom_link_home') }}"@else href="{{ url('') }}/"@endif> @if(Config::get('meta.custom_text_home') != ''){{Config::get('meta.custom_text_home')}}@else Home @endif</a>@endif
     @if(Config::get('meta.display_link_terms') != 'false')<a class="footer-hover spacing" href="{{ url('') }}/pages/terms">Terms</a>@endif
     @if(Config::get('meta.display_link_privacy') != 'false')<a class="footer-hover spacing" href="{{ url('') }}/pages/privacy">Privacy</a>@endif
     @if(Config::get('meta.display_link_contact') != 'false')<a class="footer-hover spacing" href="{{ url('') }}/pages/contact">Contact</a>@endif

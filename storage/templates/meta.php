@@ -127,8 +127,10 @@ return [
     'display_link_privacy' => 'true',
     'display_link_contact' => 'true',
 
+    // Enter a custom home link (for example, 'https://littlelink-custom.com').
     'custom_link_home' => '', // Leave empty to use default value.
-
+    // Changes the text on the "Home" link.
+    'custom_text_home' => 'Home', // Leave empty to use default value.
     
     /*
     |--------------------------------------------------------------------------
