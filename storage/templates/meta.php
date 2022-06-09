@@ -121,12 +121,18 @@ return [
     |
     */
 
-    'home_footer' => 'default', // Either 'default', 'alt', 'custom' or 'false'
+    'home_footer' => 'default', // Either 'default', 'alt', 'custom' or 'false'.
 
     // You can enter plain text or HTML into this field.
     // You can use "{year}" as a placeholder for the current year.
     // So "©{year}" would output "©2033" (or whatever the current year is).
     'custom_home_footer_text' => '© Copyright {year} - All Rights Reserved',
+
+
+    // Apply a theme to your Home Page.
+    // Some themes are not compatible with the Home Page. Use at your own discretion.
+    // Enter the name of a theme located in your "themes" folder (for example, 'galaxy').
+    'home_theme' => 'default', // Leave empty or enter 'default' to use the default theme.
 
     /*
     |--------------------------------------------------------------------------
