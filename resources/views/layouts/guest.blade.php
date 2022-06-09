@@ -53,7 +53,7 @@
 		<?php // loads dark mode CSS if dark mode detected
 		     $color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : false; 
 			 $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
-		@if ($color_scheme == 'dark' and Config::get('meta.theme') != 'light' and $color_scheme_override != 'light' or $color_scheme_override == 'dark' or Config::get('meta.theme') == 'dark')
+		@if ($color_scheme == 'dark' and config('meta.theme') != 'light' and $color_scheme_override != 'light' or $color_scheme_override == 'dark' or config('meta.theme') == 'dark')
 		<link rel="stylesheet" href="{{ asset('css/app-dark.css') }}">
 		@endif
   <!-- end dark mode detection -->

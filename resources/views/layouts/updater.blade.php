@@ -32,9 +32,9 @@
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
   @elseif ($color_scheme_override == 'light')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
-  @elseif (Config::get('meta.theme') == 'dark')
+  @elseif (config('meta.theme') == 'dark')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
-  @elseif (Config::get('meta.theme') == 'light')
+  @elseif (config('meta.theme') == 'light')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
   @else
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-auto.css') }}">

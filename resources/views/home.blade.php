@@ -5,8 +5,8 @@
 
 @include('layouts.analytics')
 
-  @if(env('CUSTOM_META_TAGS') == 'true' and Config::get('meta.title') != '')
-  <title>{{ Config::get('meta.title') }}</title>
+  @if(env('CUSTOM_META_TAGS') == 'true' and config('meta.title') != '')
+  <title>{{ config('meta.title') }}</title>
   @else
   <title>{{ config('app.name') }}</title>
   @endif
@@ -32,14 +32,14 @@
   <link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
   @endif
 
-@if(Config::get('meta.home_theme') != '' and Config::get('meta.home_theme') != 'default')
+@if(config('meta.home_theme') != '' and config('meta.home_theme') != 'default')
 
-  <!-- LittleLink Custom Theme: "{{Config::get('meta.home_theme')}}" -->
+  <!-- LittleLink Custom Theme: "{{config('meta.home_theme')}}" -->
 
-  <link rel="stylesheet" href="themes/{{Config::get('meta.home_theme')}}/brands.css">
-  <link rel="stylesheet" href="themes/{{Config::get('meta.home_theme')}}/skeleton-auto.css">
-@if(file_exists(base_path('themes/' . Config::get('meta.home_theme') . '/animations.css')))
-  <link rel="stylesheet" href="<?php echo asset('themes/' . Config::get('meta.home_theme') . '/animations.css') ?>">
+  <link rel="stylesheet" href="themes/{{config('meta.home_theme')}}/brands.css">
+  <link rel="stylesheet" href="themes/{{config('meta.home_theme')}}/skeleton-auto.css">
+@if(file_exists(base_path('themes/' . config('meta.home_theme') . '/animations.css')))
+  <link rel="stylesheet" href="<?php echo asset('themes/' . config('meta.home_theme') . '/animations.css') ?>">
 @else
   <link rel="stylesheet" href="{{ asset('littlelink/css/animations.css') }}">
 @endif
@@ -53,9 +53,9 @@
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
   @elseif ($color_scheme_override == 'light')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
-  @elseif (Config::get('meta.theme') == 'dark')
+  @elseif (config('meta.theme') == 'dark')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
-  @elseif (Config::get('meta.theme') == 'light')
+  @elseif (config('meta.theme') == 'light')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
   @else
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-auto.css') }}">
@@ -68,7 +68,7 @@
 </head>
 <body>
 
-@if(Config::get('meta.home_theme') != '' and Config::get('meta.home_theme') != 'default')
+@if(config('meta.home_theme') != '' and config('meta.home_theme') != 'default')
     <!-- Enables parallax background animations -->
     <div class="background-container">
     <section class="parallax-background">
@@ -136,8 +136,8 @@ foreach($pages as $page)
 
         <!-- Buttons -->
 <?php $initial=1; // <-- Effectively sets the initial loading time of the buttons. This value should be left at 1. ?>
-@if(Config::get('meta.use_custom_buttons') == 'true')
-        <?php $array = Config::get('meta.buttons'); ?>
+@if(config('meta.use_custom_buttons') == 'true')
+        <?php $array = config('meta.buttons'); ?>
         @foreach($array as $button)
          @php $linkName = str_replace('default ','',$button['button']) @endphp
          @if($button['button'] === "custom" and $button['custom_css'] === "" or $button['custom_css'] === "NULL")
@@ -173,11 +173,11 @@ foreach($pages as $page)
         </br></br>
 
       <div class="fadein">
-        @if(Config::get('meta.home_footer') == 'custom')
-        <p><?php $year = date("Y"); echo strtr(Config::get('meta.custom_home_footer_text'), array('{year}' => $year)); ?></p>
-        @elseif(Config::get('meta.home_footer') == 'alt')
+        @if(config('meta.home_footer') == 'custom')
+        <p><?php $year = date("Y"); echo strtr(config('meta.custom_home_footer_text'), array('{year}' => $year)); ?></p>
+        @elseif(config('meta.home_footer') == 'alt')
         <p><i style="position:relative;top:1px;" class="fa-solid fa-infinity"></i> - Button combinations</p>
-        @elseif(Config::get('meta.home_footer') == 'false')
+        @elseif(config('meta.home_footer') == 'false')
         @else
         <p>and {{ $countButton - 3 }} other buttons ...</p>
         @endif

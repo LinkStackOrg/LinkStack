@@ -21,24 +21,24 @@ use App\Http\Controllers\UserController;
  if(EnvEditor::getKey('APP_KEY')==''){Artisan::call('key:generate');}
 
  // copies template meta config if none is present
- if(!file_exists(base_path("config/meta.php"))){copy(base_path('storage/templates/meta.php'), base_path('config/meta.php'));}
+ if(!file_exists(base_path("config/config.php"))){copy(base_path('storage/templates/config.php'), base_path('config/config.php'));}
 
 //Changes the homepage to a LittleLink Custom profile if set in the config
-if(Config::get('meta.custom_home_url') != '') {
-  $custom_home_page_url = Config::get('meta.custom_home_url');
+if(config('config.custom_home_url') != '') {
+  $custom_home_page_url = config('config.custom_home_url');
 } else {
   $custom_home_page_url = "/home";
 }
 if(env('HOME_URL') != '') {
   Route::get('/', [UserController::class, 'littlelinkhome'])->name('littlelink');
-  if(Config::get('meta.disable_home_page') == 'redirect') {
-    Route::get($custom_home_page_url, function () {return redirect(Config::get('meta.redirect_home_page'));});
-  }elseif(Config::get('meta.disable_home_page') != 'true') {
+  if(config('config.disable_home_page') == 'redirect') {
+    Route::get($custom_home_page_url, function () {return redirect(config('config.redirect_home_page'));});
+  }elseif(config('config.disable_home_page') != 'true') {
   Route::get( $custom_home_page_url, [App\Http\Controllers\HomeController::class, 'home'])->name('home');}
 } else {
-  if(Config::get('meta.disable_home_page') == 'redirect') {
-    Route::get('/', function () {return redirect(Config::get('meta.redirect_home_page'));});
-  }elseif(Config::get('meta.disable_home_page') != 'true') {
+  if(config('config.disable_home_page') == 'redirect') {
+    Route::get('/', function () {return redirect(config('config.redirect_home_page'));});
+  }elseif(config('config.disable_home_page') != 'true') {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');}
 }
 
@@ -53,7 +53,7 @@ Route::get('/panel/diagnose', function () {
 });
 
 //Public route
-$custom_prefix = Config::get('meta.custom_url_prefix');
+$custom_prefix = config('config.custom_url_prefix');
 Route::get('/going/{id?}/{link?}', [UserController::class, 'clickNumber'])->where('link', '.*')->name('clickNumber');
 Route::get('/' . $custom_prefix . '{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
 Route::get('/@{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');

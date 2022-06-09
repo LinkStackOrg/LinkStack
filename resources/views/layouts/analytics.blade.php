@@ -1,5 +1,5 @@
 <?php
-$analyticsHTML = Config::get('meta.analytics');
+$analyticsHTML = config('meta.analytics');
 $analyticsHTML = preg_replace("~<!--(.*?)-->~s", "", $analyticsHTML);
 $analyticsHTML = trim($analyticsHTML);
 ?>
