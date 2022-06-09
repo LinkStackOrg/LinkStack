@@ -31,7 +31,10 @@ if(Config::get('meta.custom_home_url') != '') {
 }
 if(env('HOME_URL') != '') {
   Route::get('/', [UserController::class, 'littlelinkhome'])->name('littlelink');
-  Route::get( $custom_home_page_url, [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+  if(Config::get('meta.disable_home_page') == 'redirect') {
+    Route::get($custom_home_page_url, function () {return redirect(Config::get('meta.redirect_home_page'));});
+  }elseif(Config::get('meta.disable_home_page') != 'true') {
+  Route::get( $custom_home_page_url, [App\Http\Controllers\HomeController::class, 'home'])->name('home');}
 } else {
   if(Config::get('meta.disable_home_page') == 'redirect') {
     Route::get('/', function () {return redirect(Config::get('meta.redirect_home_page'));});
