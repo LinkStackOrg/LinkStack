@@ -32,7 +32,7 @@ return [
     |
     | Will only be active if "CUSTOM_META_TAGS" is set to "true" in the config.
     | These tags will only be applied to the home page or if a LittleLink page 
-    | is set as the homepage in the config (for example: HOME_URL="@admin").
+    | is set as the homepage in the config (for example: HOME_URL="admin").
     | 
     | Empty entries will be ignored.
     |
