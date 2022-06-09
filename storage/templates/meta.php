@@ -149,7 +149,7 @@ return [
     | In the 'button' field, you have to enter the button name (i.e. 'twitter', 'github', 'custom'...).
     | You can find a list of all available buttons below.
     | 
-    | In the 'link' field, can enter your desired link you can leave this field empty for a display only, non-functional button.
+    | In the 'link' field, you can enter your desired link you may leave this field empty for a display only, non-functional button.
     | 
     | 
     | 
