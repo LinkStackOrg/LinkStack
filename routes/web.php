@@ -21,7 +21,7 @@ use App\Http\Controllers\UserController;
  if(EnvEditor::getKey('APP_KEY')==''){Artisan::call('key:generate');}
 
  // copies template meta config if none is present
- if(!file_exists(base_path("config/config.php"))){copy(base_path('storage/templates/config.php'), base_path('config/config.php'));}
+ if(!file_exists(base_path("config/advanced-config.php"))){copy(base_path('storage/templates/advanced-config.php'), base_path('config/advanced-config.php'));}
 
 //Changes the homepage to a LittleLink Custom profile if set in the config
 if(config('config.custom_home_url') != '') {
