@@ -160,10 +160,11 @@ if ($url1sb->successful() or $url2sb->successful()) {
 		@if(env('DISPLAY_FOOTER') === true)
 	        	<p>
 			    Copyright &copy; @php echo date('Y'); @endphp {{ config('app.name') }}<i class="icon-heart" aria-hidden="true"></i> </br>
-               <a href="{{ url('') }}/">Home</a> .
-               <a href="{{ url('') }}/pages/terms" target="_blank">Terms</a> .
-               <a href="{{ url('') }}/pages/privacy" target="_blank">Privacy</a> .
-               <a href="{{ url('') }}/pages/contact" target="_blank">Contact</a>
+	@php if(Config::get('meta.display_link_home') != 'false' and Config::get('meta.display_link_terms') != 'false' and Config::get('meta.display_link_privacy') != 'false' and Config::get('meta.display_link_contact') != 'false'){$dot=" . "; } else {$dot="&ensp;";} @endphp
+    @if(Config::get('meta.display_link_home') != 'false')<a class="footer-hover spacing" @if(Config::get('meta.custom_link_home') != '')href="{{ Config::get('meta.custom_link_home') }}"@else href="{{ url('') }}/"@endif> @if(Config::get('meta.custom_text_home') != ''){{Config::get('meta.custom_text_home')}}@else Home @endif</a>{!!$dot!!}@endif
+    @if(Config::get('meta.display_link_terms') != 'false')<a class="footer-hover spacing" href="{{ url('') }}/pages/terms">Terms</a>{!!$dot!!}@endif
+    @if(Config::get('meta.display_link_privacy') != 'false')<a class="footer-hover spacing" href="{{ url('') }}/pages/privacy">Privacy</a>{!!$dot!!}@endif
+    @if(Config::get('meta.display_link_contact') != 'false')<a class="footer-hover spacing" href="{{ url('') }}/pages/contact">Contact</a>@endif
             </p>
 			@endif
 @if(env('DISPLAY_CREDIT') === true)
