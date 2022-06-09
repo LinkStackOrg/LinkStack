@@ -137,8 +137,17 @@ foreach($pages as $page)
 @endif
         </br></br>
 
+      <div class="fadein">
+        @if(Config::get('meta.home_footer') == 'custom')
+        <p><?php $year = date("Y"); echo strtr(Config::get('meta.custom_home_footer_text'), array('{year}' => $year)); ?></p>
+        @elseif(Config::get('meta.home_footer') == 'alt')
+        <p><i style="position:relative;top:1px;" class="fa-solid fa-infinity"></i> - Button combinations</p>
+        @elseif(Config::get('meta.home_footer') == 'false')
+        @else
         <p>and {{ $countButton - 3 }} other buttons ...</p>
-      
+        @endif
+      </div>
+
         <hr class="my-4" style="display:none">
 
         <p style="display:none">updated pages</p>
