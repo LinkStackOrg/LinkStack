@@ -1,8 +1,11 @@
 
 <!DOCTYPE html>
-<html lang="en">
+@include('layouts.lang')
 <head>
   <meta charset="utf-8">
+
+@include('layouts.analytics')
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 @stack('updater-head')
@@ -28,6 +31,10 @@
   @if ($color_scheme_override == 'dark')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
   @elseif ($color_scheme_override == 'light')
+  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
+  @elseif (config('advanced-config.theme') == 'dark')
+  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
+  @elseif (config('advanced-config.theme') == 'light')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
   @else
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-auto.css') }}">

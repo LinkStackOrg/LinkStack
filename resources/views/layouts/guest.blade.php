@@ -2,8 +2,17 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
+
+@include('layouts.analytics')
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+
+		@if(file_exists(base_path("littlelink/images/avatar.png" )))
+		<link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
+		@else
+		<link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
+		@endif
 
         <title>{{ config('app.name') }}</title>
 
@@ -44,7 +53,7 @@
 		<?php // loads dark mode CSS if dark mode detected
 		     $color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : false; 
 			 $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
-		@if ($color_scheme == 'dark' and $color_scheme_override != 'light' or $color_scheme_override == 'dark')
+		@if ($color_scheme == 'dark' and config('advanced-config.theme') != 'light' and $color_scheme_override != 'light' or $color_scheme_override == 'dark' or config('advanced-config.theme') == 'dark')
 		<link rel="stylesheet" href="{{ asset('css/app-dark.css') }}">
 		@endif
   <!-- end dark mode detection -->

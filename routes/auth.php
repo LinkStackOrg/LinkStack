@@ -10,25 +10,43 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/register', [RegisteredUserController::class, 'create'])
+if(config('advanced-config.register_url') != '') {
+    $register = config('advanced-config.register_url');
+} else {
+    $register = "/register";
+}
+
+if(config('advanced-config.login_url') != '') {
+    $login = config('advanced-config.login_url');
+} else {
+    $login = "/login";
+}
+
+if(config('advanced-config.forgot_password_url') != '') {
+    $forgot_password = config('advanced-config.forgot_password_url');
+} else {
+    $forgot_password = "/forgot-password";
+}
+
+Route::get($register, [RegisteredUserController::class, 'create'])
                 ->middleware('guest')
                 ->name('register');
 
-Route::post('/register', [RegisteredUserController::class, 'store'])
+Route::post($register, [RegisteredUserController::class, 'store'])
                 ->middleware('guest');
 
-Route::get('/login', [AuthenticatedSessionController::class, 'create'])
+Route::get($login, [AuthenticatedSessionController::class, 'create'])
                 ->middleware('guest')
                 ->name('login');
 
-Route::post('/login', [AuthenticatedSessionController::class, 'store'])
+Route::post($login, [AuthenticatedSessionController::class, 'store'])
                 ->middleware('guest');
 
-Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
+Route::get( $forgot_password, [PasswordResetLinkController::class, 'create'])
                 ->middleware('guest')
                 ->name('password.request');
 
-Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
+Route::post( $forgot_password, [PasswordResetLinkController::class, 'store'])
                 ->middleware('guest')
                 ->name('password.email');
 

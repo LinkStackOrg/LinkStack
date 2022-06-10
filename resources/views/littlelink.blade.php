@@ -1,15 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+@include('layouts.lang')
 <head>
   <meta charset="utf-8">
-  @if(env('HOME_URL') != '')
+
+@include('layouts.analytics')
+
+  @if(config('advanced-config.littlelink_title') != '' and env('HOME_URL') === '')
+  <title>{{ $userinfo->name }} {{ config('advanced-config.littlelink_title') }}</title>
+  @elseif(env('CUSTOM_META_TAGS') == 'true' and config('advanced-config.title') != '')
+  <title>{{ config('advanced-config.title') }}</title>
+  @elseif(env('HOME_URL') != '')
   <title>{{ $userinfo->name }}</title>
   @else
   <title>{{ $userinfo->name }} 🔗 {{ config('app.name') }} </title>
   @endif
+
+@if(env('CUSTOM_META_TAGS') == 'true')
+  @include('layouts.meta') 
+@else
   <meta name="description" content="{{ $userinfo->littlelink_description }}">
   <meta name="author" content="{{ $userinfo->name }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+@endif
   
 <!--#### BEGIN Meta Tags social media preview images  ####-->
   <!-- This shows a preview for title, description and avatar image of users profiles if shared on social media sites -->
@@ -78,6 +90,10 @@
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
   @elseif ($color_scheme_override == 'light')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
+  @elseif (config('advanced-config.theme') == 'dark')
+  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
+  @elseif (config('advanced-config.theme') == 'light')
+  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
   @else
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-auto.css') }}">
   @endif
@@ -107,6 +123,26 @@
 @endif
 
 <?php ////begin share button//// ?>
+
+@if(config('advanced-config.display_share_button') != '')
+
+   @if(config('advanced-config.display_share_button') == 'false')
+   <?php $ShowShrBtn = 'false'; ?>
+   @elseif(config('advanced-config.display_share_button') == 'user')
+       @if($littlelink_names = Auth::user()->littlelink_name)
+       <?php $ShowShrBtn = 'true'; ?>
+       @else
+       <?php $ShowShrBtn = 'false'; ?>
+       @endif
+   @else
+   <?php $ShowShrBtn = 'true'; ?>
+   @endif
+
+@else
+<?php $ShowShrBtn = 'true'; ?>
+@endif
+
+@if($ShowShrBtn == 'true')
 <?php 
 //Get browser type
 $arr_browsers = ["Opera", "Edg", "Chrome", "Safari", "Firefox", "MSIE", "Trident"];
@@ -169,6 +205,8 @@ function get_operating_system() {
 </span>
 @endif
 <script  src="{{ asset('littlelink/js/share.button.js') }}"></script>
+
+@endif
 <?php ////end share button//// ?>
 
   <div class="container">
