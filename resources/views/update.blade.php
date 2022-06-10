@@ -108,6 +108,11 @@ exit(); ?>
             if(EnvEditor::keyExists('SKIP_UPDATE_BACKUP')){ /* Do nothing if key already exists */ 
             } else { EnvEditor::addKey('SKIP_UPDATE_BACKUP', 'false');} // Adds key to .env file 
 
+            if(EnvEditor::keyExists('CUSTOM_META_TAGS')){ /* Do nothing if key already exists */ 
+            } else {EnvEditor::addKey('#', 'CUSTOM_META_TAGS either true or false. Used to enable setting in advanced config file (config/advanced-config.php).');
+                    EnvEditor::addKey('#S', 'You can read more about this config at https://llc.bio/advanced-config.');
+                    EnvEditor::addKey('CUSTOM_META_TAGS', 'false');}
+
         echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "?success\" />"; 
         ?>
 @endif
