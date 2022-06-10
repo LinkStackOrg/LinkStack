@@ -67,7 +67,6 @@ return [
     'theme' => '', // Either "dark" or "light".
 
 
-    // Overwrites default theme regardless of preference defined by the operating system, unless manually overwritten by user.
     // Overwrites default page title after the LittleLink name on LittleLink pages.
     // Example: "admin 🔗 LittleLink Custom"
     //                 ⤌------------------⤍
