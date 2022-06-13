@@ -96,6 +96,7 @@ Feel free to register your account and try out all the features of LittleLink Cu
 | Custom Theme support                            |         ✔️         |        ❌        |        ❌        |
 | Built-in updater                                |         ✔️         |        ❌        |        ❌        |
 | Button Editor with Font Awesome support         |         ✔️         |        ❌        |        ❌        |
+| Ability to customize Home Page                  |         ✔️         |        ❌        |        ➖        |
 		    
 ¹[littlelink-admin](https://github.com/latuminggi) by [latuminggi](https://github.com/latuminggi/littlelink-admin) | 
 ²Not fully implemented on most pages
