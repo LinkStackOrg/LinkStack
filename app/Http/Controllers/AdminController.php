@@ -208,4 +208,30 @@ class AdminController extends Controller
         return view('panel/phpinfo');
     }
 
+    //Shows config file editor page
+    public function showFileEditor(request $request)
+    {
+        return view('/panel/config');
+    }
+
+    //Saves advanced config
+    public function editAC(request $request)
+    {
+        $AdvancedConfig = $request->AdvancedConfig;
+
+        file_put_contents('config/advanced-config.php', $AdvancedConfig);
+
+        return view('/panel/config');
+    }
+
+    //Saves .env config
+    public function editENV(request $request)
+    {
+        $AdvancedConfig = $request->AdvancedConfig;
+
+        file_put_contents('.env', $AdvancedConfig);
+
+        return view('/panel/config');
+    }
+
 }

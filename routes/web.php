@@ -99,6 +99,10 @@ Route::get('/panel/edit-user/{id}', [AdminController::class, 'showUser'])->name(
 Route::post('/panel/edit-user/{id}', [AdminController::class, 'editUser'])->name('editUser');
 Route::get('/panel/pages', [AdminController::class, 'showSitePage'])->name('showSitePage');
 Route::post('/panel/pages', [AdminController::class, 'editSitePage'])->name('editSitePage');
+Route::get('/panel/advanced-config', [AdminController::class, 'showFileEditor'])->name('showFileEditor');
+Route::post('/panel/advanced-config', [AdminController::class, 'editAC'])->name('editAC');
+Route::get('/panel/env', [AdminController::class, 'showFileEditor'])->name('showFileEditor');
+Route::post('/panel/env', [AdminController::class, 'editENV'])->name('editENV');
 Route::get('/panel/site', [AdminController::class, 'showSite'])->name('showSite');
 Route::post('/panel/site', [AdminController::class, 'editSite'])->name('editSite');
 Route::get('/panel/phpinfo', [AdminController::class, 'phpinfo'])->name('phpinfo');
