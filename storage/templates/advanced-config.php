@@ -221,7 +221,7 @@ return [
         'button' => 'custom',
         'link' => 'https://littlelink-custom.com/sponsor',
         'title' => 'Help us out',
-        'icon' => 'fa-hand-holding-hand',
+        'icon' => 'fa-hand-holding-heart',
         'custom_css' => 'color:#ffffff; background-image:radial-gradient(circle, #00d2ff 0%, #3a7bd5 95%);'
       ),
     )
