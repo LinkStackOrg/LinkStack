@@ -203,10 +203,6 @@ Everything is documented in the dedicated GitHub repository.
 
 <br>	
 
-#### Now access your install of LittleLink Custom with 'your-domain-name.com/littlelink-custom'.
-* At first, you will be greeted with a 'MissingAppKeyException'.
-* This is totally normal on first setups, simply click on the 'Generate app key' button and then 'Refresh now' and you're done.
-
 #### You can now log in to the Admin Panel with the credentials:
 -   **email:** `admin@admin.com`
 -   **password:** `12345678`
@@ -217,6 +213,8 @@ Optionally, you can change the app name in your ".env" file in the root director
 APP_NAME="LittleLink Custom" you can change "LittleLink Custom" to what ever you like. This setting defines the page title and welcome message.
 
 Additionally, the littlelink-custom directory can be renamed to anything you see fit, further customizing your personal LittleLink Custom install.
+
+For more configuration options, refer to the [documentation](https://littlelink-custom.com/docs/d/configuration-getting-started/).
 
 <br>
 
