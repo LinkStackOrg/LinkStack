@@ -1,7 +1,7 @@
 {
-    "name": "khashayarzavosh/littlelink-admin",
+    "name": "julianprieber/littlelink-custom",
     "type": "project",
-    "description": "Littlelink admin is an admin panel for littlelink",
+    "description": "LittleLink Custom is a highly customizable link sharing platform",
     "keywords": ["link"],
     "license": "GPL-3.0-or-later",
     "require": {
@@ -44,9 +44,7 @@
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
-        ]
+        "post-update-cmd": ["echo.> storage/app/ISINSTALLED"]
     },
     "extra": {
         "laravel": {
