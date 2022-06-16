@@ -31,7 +31,7 @@
 <hp>The server will never store more that two backups at a time.</hp><br><br><br>
     <?php 
     $test="test";
-    if ($handle = opendir('storage/updater-backups')) {
+    if ($handle = opendir('backups/updater-backups')) {
      while (false !== ($entry = readdir($handle))) {
         if ($entry != "." && $entry != "..") {
             echo '<div class="button-entrance"><a class="buttondm button-hover icon-hover" style="color:#ffffff; background-color:#000;" href="' . url()->current() . '/?' . $entry . '"><i style="color: " class="icon hvr-icon fa fa-download"></i>&nbsp; '; print_r($entry); echo '</a></div><br>';
