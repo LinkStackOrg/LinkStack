@@ -234,4 +234,10 @@ class AdminController extends Controller
         return view('/panel/config');
     }
 
+    //Shows config file editor page
+    public function showBackups(request $request)
+    {
+        return view('/panel/backups');
+    }
+
 }

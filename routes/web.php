@@ -109,6 +109,7 @@ Route::post('/panel/env', [AdminController::class, 'editENV'])->name('editENV');
 Route::get('/panel/site', [AdminController::class, 'showSite'])->name('showSite');
 Route::post('/panel/site', [AdminController::class, 'editSite'])->name('editSite');
 Route::get('/panel/phpinfo', [AdminController::class, 'phpinfo'])->name('phpinfo');
+Route::get('/panel/backups', [AdminController::class, 'showBackups'])->name('showBackups');
 Route::get('/update', function () {return view('update', []);});
 
 Route::get('/updating', function (\Codedge\Updater\UpdaterManager $updater) {
