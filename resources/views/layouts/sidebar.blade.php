@@ -74,12 +74,26 @@ function has_sslsb( $domain ) {
 	$actual_linksb = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   }
 
+function getUrlSatusCodesb($urlsb, $timeoutsb = 3)
+ {
+ $chsb = curl_init();
+ $optssb = array(CURLOPT_RETURNTRANSFER => true, // do not output to browser
+ CURLOPT_URL => $urlsb, 
+ CURLOPT_NOBODY => true, // do a HEAD request only
+ CURLOPT_TIMEOUT => $timeoutsb); 
+ curl_setopt_array($chsb, $optssb);
+ curl_exec($chsb);
+ $status = curl_getinfo($chsb, CURLINFO_HTTP_CODE);
+ curl_close($chsb);
+ return $status;
+ }
+
 // Files or directories to test if accessible externally
-$url1sb = Http::get($actual_linksb . '/../../.env');
-$url2sb = Http::get($actual_linksb . '/../../database/database.sqlite');
+$url1sb = getUrlSatusCodesb($actual_linksb . '/../../.env');
+$url2sb = getUrlSatusCodesb($actual_linksb . '/../../database/database.sqlite');
 
 // sets compromised to true if config files got compromised
-if ($url1sb->successful() or $url2sb->successful()) {
+if($url1sb == '200'  or $url2sb == '200') {
 	$compromised = "true";
 } else {
 	$compromised = "false";
@@ -223,9 +237,9 @@ if ($url1sb->successful() or $url2sb->successful()) {
 	@elseif(env('NOTIFY_UPDATES') == 'true' or env('NOTIFY_UPDATES') === 'major' or env('NOTIFY_UPDATES') === 'all')
 	<?php // Checks if URL exists
 					try {
-					function URL_exists(string $url): bool
+					function URL_exists(string $urlsb): bool
 					{
-						return str_contains(get_headers($url)[0], "200 OK");
+						return str_contains(get_headers($urlsb)[0], "200 OK");
 					}
 					         // Sets $ServerExists to true if URL exists
 						if (URL_exists("https://julianprieber.github.io/littlelink-custom/version.json")){
@@ -283,9 +297,9 @@ if ($url1sb->successful() or $url2sb->successful()) {
       <! –– #### begin event detection #### ––>
 		<?php
 			try {
-				function URL_event_exists(string $url): bool
+				function URL_event_exists(string $urlsb): bool
 				{
-				return str_contains(get_headers($url)[0], "200 OK");
+				return str_contains(get_headers($urlsb)[0], "200 OK");
 					}
 						if (URL_event_exists("https://julianprieber.github.io/littlelink-custom-events/event.json")){
 							$EventServerExists = "true";
