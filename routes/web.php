@@ -67,7 +67,7 @@ Route::get('/theme/@{littlelink}', [UserController::class, 'theme'])->name('them
 Route::group([
     'middleware' => env('REGISTER_AUTH'),
 ], function () {
-URL::forceScheme('https'); # comment to disable https
+# URL::forceScheme('https');  # uncomment to force https
 Route::get('/studio/index', [UserController::class, 'index'])->name('studioIndex');
 Route::get('/studio/add-link', [UserController::class, 'showButtons'])->name('showButtons');
 Route::post('/studio/add-link', [UserController::class, 'addLink'])->name('addLink');
@@ -91,7 +91,7 @@ Route::post('/studio/profile', [UserController::class, 'editProfile'])->name('ed
 Route::group([
     'middleware' => 'admin',
 ], function () {
-URL::forceScheme('https'); # comment to disable https
+# URL::forceScheme('https');  # uncomment to force https
 Route::get('/panel/index', [AdminController::class, 'index'])->name('panelIndex');
 Route::get('/panel/users/{type}', [AdminController::class, 'users'])->name('showUsers');
 Route::post('/panel/users/{name?}', [AdminController::class, 'searchUser'])->name('searchUser');
