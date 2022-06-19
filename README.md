@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://littlelink-custom.com/"><img src="https://i.imgur.com/RLKbjv4.png" alt="LittleLink Custom"></a>
+  <a href="https://littlelink-custom.com/"><img src="https://i.imgur.com/IR3NPXB.png" alt="LittleLink Custom"></a>
 </h1>
 
 <h4 align="center">The "plug and play" approach to LittleLink</h4>
