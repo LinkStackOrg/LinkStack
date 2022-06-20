@@ -16,6 +16,7 @@
   <a href="#Demo">Demo</a> •
   <a href="#Features">Features</a> •
   <a href="#Installation">Installation</a> •
+  <a href="#Docker">Docker Version</a> •
   <a href="#Updating">Updating</a> •
   <a href="#Discord">Discord</a> •
   <a href="#Fork-Structure">Fork structure</a> •
@@ -31,7 +32,8 @@
 </p>
 
 <p align="center">
-<a href="https://github.com/JulianPrieber/littlelink-custom/stargazers"><img src="https://img.shields.io/github/stars/julianprieber?logo=github&style=flat&logo=appveyor&label=star%20this%20project"></img></a>
+<a href="https://github.com/JulianPrieber/littlelink-custom/stargazers"><img src="https://img.shields.io/github/stars/julianprieber/littlelink-custom?logo=github&style=flat&logo=appveyor&label=Star%20this%20project"></img></a>
+<a href="https://hub.docker.com/r/julianprieber/littlelink-custom"><img src="https://img.shields.io/docker/stars/julianprieber/littlelink-custom?&style=flat&logo=appveyor&label=Docker%20hub"></img></a>
 <a href="https://discord.littlelink-custom.com"><img src="https://img.shields.io/discord/955765706111193118?color=4A55CC&label=Discord&logo=discord&style=flat&logo=appveyor"></img></a>
 <a href="https://github.com/sponsors/julianprieber"><img src="https://img.shields.io/github/sponsors/JulianPrieber?color=BF4B8A&logo=githubsponsors&style=flat&logo=appveyor=Sponsor%20on%20Github"></img></a>
 <a href="https://patreon.com/julianprieber"><img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Djulianprieber%26type%3Dpatrons&style=flat&logo=appveyor"></img></a>
@@ -44,6 +46,7 @@
 </p>
 
 ---
+
 ## Function    
 **LittleLink Custom provides** you with **a website similar to** [Linktree](https://linktr.ee/). Many **social media platforms only allow you to add one link**, with this you can simply **link to your LittleLink Custom page** and have **all the links you want** displayed on one site. You can share all your links to your social media platform or important links to **easy accessible and hosted on your own web-server** or web-hosting provider. On this website, other users can register and create their own links, you can access other user via the Admin Panel.
 
@@ -215,6 +218,28 @@ APP_NAME="LittleLink Custom" you can change "LittleLink Custom" to what ever you
 Additionally, the littlelink-custom directory can be renamed to anything you see fit, further customizing your personal LittleLink Custom install.
 
 For more configuration options, refer to the [documentation](https://littlelink-custom.com/docs/d/configuration-getting-started/).
+
+<br>
+
+## Docker
+
+<p align="center">
+    <a href="https://github.com/JulianPrieber/llc-docker"><img width="450" src="https://i.imgur.com/gPc22dn.png"></a>
+</p>
+
+The official docker version of [LittleLink Custom](https://github.com/JulianPrieber/littlelink-custom). This docker image is a simple to set up solution, containing everything you need to run LittleLink Custom.
+
+The docker version of LittleLink Custom retains all the features and customization options of the [original version](https://github.com/JulianPrieber/littlelink-custom).
+
+This docker is based on [Alpine Linux](https://www.alpinelinux.org/), a Linux distribution designed to be small, simple and secure. The web server is running [Apache2](https://www.apache.org/), a free and open-source cross-platform web server software. The docker comes with [PHP 8.0](https://www.php.net/releases/8.0/en.php) for high compatibility and performance.
+
+#### Using the docker is as simple as pulling and deploying.
+
+#### Pull
+
+`docker pull julianprieber/littlelink-custom`
+
+#### [Learn moure about the Docker version](https://github.com/JulianPrieber/llc-docker)
 
 <br>
 
