@@ -240,7 +240,7 @@ This docker is based on [Alpine Linux](https://www.alpinelinux.org/), a Linux di
 
 `docker pull julianprieber/littlelink-custom`
 
-#### [Learn moure about the Docker version](https://github.com/JulianPrieber/llc-docker)
+#### [Learn more about the Docker version](https://github.com/JulianPrieber/llc-docker)
 
 <br>
 
