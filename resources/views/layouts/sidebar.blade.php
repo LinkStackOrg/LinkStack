@@ -131,7 +131,7 @@ if($url1sb == '200'  or $url2sb == '200') {
             @if(auth()->user()->role == 'admin')
             <ul class="list-unstyled components mb-5">
             <li class="active">
-	            <a @if(config('advanced-config.expand_panel_admin_menu_permanently') != 'true') href="#adminSubmenu" data-toggle="collapse" aria-expanded="false" @endif class="dropdown-toggle">Admin</a>
+	            <a @if(config('advanced-config.expand_panel_admin_menu_permanently') != 'true') href="#adminSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" @endif>Admin</a>
 	            <ul class="@if(config('advanced-config.expand_panel_admin_menu_permanently') != 'true') collapse @endif list-unstyled" id="adminSubmenu">
                 <li>
                     <a href="{{ url('env-editor') }}">Config</a>
