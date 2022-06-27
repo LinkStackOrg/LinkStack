@@ -111,6 +111,28 @@ exit(); ?>
             if(EnvEditor::keyExists('CUSTOM_META_TAGS')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('CUSTOM_META_TAGS', 'false');}
 
+            if (!config()->has('advanced-config.expand_panel_admin_menu_permanently') and !config()->has('advanced-config.redirect_https')) {
+            
+            function getStringBetween($string, $start, $end) {
+                $lastStartIndex = strrpos($string, $start);
+                $lastEndIndex = strrpos($string, $end);
+            
+                $substringStartIndex = $lastStartIndex + strlen($start);
+                $substringSize = $lastStartIndex - $lastEndIndex - 1;
+            
+                return substr($string, $substringStartIndex, $substringSize);
+            }
+            
+            $subject = file_get_contents('config/advanced-config.php');
+            $search = ")";
+            $replace = "),";
+            
+            file_put_contents('config/advanced-config.php', str_replace('),,', '),', strrev(implode(strrev($replace), explode(strrev($search), strrev($subject), 2)))));
+            
+            $replace = "];";
+                file_put_contents('config/advanced-config.php', str_replace($replace, file_get_contents('storage/templates/advanced-config-update-1.php'), file_get_contents('config/advanced-config.php')));
+            }
+
         echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "?success\" />"; 
         ?>
 @endif
