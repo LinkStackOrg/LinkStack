@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
 
     <link href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   <!-- begin dark mode detection -->
 	<script src="{{ asset('littlelink/js/js.cookie.min.js') }}"></script>
 	<script>
@@ -294,6 +294,23 @@ if($url1sb == '200'  or $url2sb == '200') {
             </div
           </div>
         </nav>
+
+{{-- Displays a warning message if default password is still set --}}
+@php $userdbs = DB::table('users')->get(); @endphp
+
+@foreach($userdbs as $userdb)
+
+	@if(Hash::check('12345678', $userdb->password))
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+<a style="background-color:tomato;color:#fff;border-radius:5px;" class="nav-link" href="{{ url('/studio/profile') }}" target=""><i class="bi bi-exclamation-circle-fill"></i> <strong>You are still using the default password! Click here to change this.</strong></a>
+            </div>
+        </nav>
+	@endif
+	
+@endforeach
+
+
       <! –– #### begin event detection #### ––>
 		<?php
 			try {
