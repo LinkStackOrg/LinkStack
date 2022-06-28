@@ -11,4 +11,6 @@
 
     'redirect_https' => 'false',
 
+    'disable_default_password_notice' => 'false',
+
 ];

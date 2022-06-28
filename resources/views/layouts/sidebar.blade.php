@@ -295,6 +295,7 @@ if($url1sb == '200'  or $url2sb == '200') {
           </div>
         </nav>
 
+@if(config('advanced-config.disable_default_password_notice') != 'true')
 {{-- Displays a warning message if default password is still set --}}
 @php $userdbs = DB::table('users')->get(); @endphp
 
@@ -309,7 +310,7 @@ if($url1sb == '200'  or $url2sb == '200') {
 	@endif
 	
 @endforeach
-
+@endif
 
       <! –– #### begin event detection #### ––>
 		<?php
