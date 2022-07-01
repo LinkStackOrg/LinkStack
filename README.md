@@ -45,6 +45,10 @@
   <a href="https://github.com/JulianPrieber/littlelink-custom/releases/latest/download/littlelink-custom.zip"><img src="https://i.imgur.com/XnnwdmG.png" alt="Download latest" width="280" ></a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/JulianPrieber/littlelink-custom/discussions/49">New features and additions</a>
+</p>
+
 ---
 
 ## Function    
