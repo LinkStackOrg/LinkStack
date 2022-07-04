@@ -224,7 +224,7 @@ return [
         'icon' => 'fa-hand-holding-heart',
         'custom_css' => 'color:#ffffff; background-image:radial-gradient(circle, #00d2ff 0%, #3a7bd5 95%);'
       ),
-    )
+    ),
 
     /*
     |--------------------------------|
@@ -275,5 +275,19 @@ return [
     | 'button' => 'space'            |
     |--------------------------------|
     */
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Extra Settings
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    // Expands admin menu on the Admin Panel Sidebar permanently
+    'expand_panel_admin_menu_permanently' => 'false', // Either "true" or "false".
+
+    // Should only be used in a local testing environment
+    'disable_default_password_notice' => 'false', // Either "true" or "false".
 
 ];
