@@ -56,7 +56,7 @@
 
         <env-keys-modal ref="keysModal"></env-keys-modal>
     </div>
-
+<p style="color:#fff; font-weight:500; font-size:160%;">Use the <a href="{{url()->current()}}/../panel/env">Alternative Config Editor ⤻</a></p>
 
 
 
