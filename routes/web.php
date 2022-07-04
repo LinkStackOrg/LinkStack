@@ -110,6 +110,8 @@ Route::get('/panel/site', [AdminController::class, 'showSite'])->name('showSite'
 Route::post('/panel/site', [AdminController::class, 'editSite'])->name('editSite');
 Route::get('/panel/phpinfo', [AdminController::class, 'phpinfo'])->name('phpinfo');
 Route::get('/panel/backups', [AdminController::class, 'showBackups'])->name('showBackups');
+Route::post('/panel/theme', [AdminController::class, 'deleteTheme'])->name('deleteTheme');
+Route::get('/panel/theme', [AdminController::class, 'showThemes'])->name('showThemes');
 Route::get('/update', function () {return view('update', []);});
 
 Route::get('/updating', function (\Codedge\Updater\UpdaterManager $updater) {

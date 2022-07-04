@@ -52,6 +52,8 @@
             <label>Upload theme</label>
             <input type="file" accept=".zip" class="form-control-file" name="zip">
           </div>
+          <style>.deltheme{color:tomato;font-size:120%;}.deltheme:hover{color:red;text-decoration:underline;}</style>
+          <a class="deltheme" href="{{ url('/panel/theme') }}">&emsp; Delete themes</a>
         <div class="row">
         <button type="submit" class="mt-3 ml-3 btn btn-info">Upload theme</button>
         <button class="mt-3 ml-3 btn btn-primary" title="Download more themes"><a href="https://littlelink-custom.com/themes.php" target="_blank" style="color:#FFFFFF;">Download themes</a></button>

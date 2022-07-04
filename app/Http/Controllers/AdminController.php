@@ -240,4 +240,64 @@ class AdminController extends Controller
         return view('/panel/backups');
     }
 
+    //Delete custom theme
+    public function deleteTheme(request $request)
+    {
+
+        $del = $request->deltheme;
+
+        $folderName = base_path() . '/themes/' . $del;
+        
+           
+        
+        function removeFolder($folderName) {
+        
+                 if (is_dir($folderName))
+        
+                   $folderHandle = opendir($folderName);
+        
+          
+        
+                 if (!$folderHandle)
+        
+                      return false;
+        
+          
+        
+                 while($file = readdir($folderHandle)) {
+        
+                       if ($file != "." && $file != "..") {
+        
+                            if (!is_dir($folderName."/".$file))
+        
+                                 unlink($folderName."/".$file);
+        
+                            else
+        
+                                 removeFolder($folderName.'/'.$file);
+        
+                       }
+        
+                 }
+        
+          
+        
+                 closedir($folderHandle);
+        
+                 rmdir($folderName);
+    
+        
+        }
+
+        removeFolder($folderName);
+
+        return Redirect('/panel/theme');
+    }
+
+    //Shows config file editor page
+    public function showThemes(request $request)
+    {
+        return view('/panel/theme');
+    }
+
 }
