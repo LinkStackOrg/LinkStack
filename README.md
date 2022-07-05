@@ -42,11 +42,11 @@
 <br>
 
 <p align="center">
-  <a href="https://github.com/JulianPrieber/littlelink-custom/releases/latest/download/littlelink-custom.zip"><img src="https://i.imgur.com/cykhR1t.png" alt="Download latest" width="220" ></a>
+  <a href="https://github.com/JulianPrieber/llc-docker#readme"><img src="https://i.imgur.com/cykhR1t.png" alt="Download latest" width="220" ></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/JulianPrieber/llc-docker#readme"><img src="https://i.imgur.com/XnnwdmG.png" alt="Download latest" width="280" ></a>
+  <a href="https://github.com/JulianPrieber/littlelink-custom/releases/latest/download/littlelink-custom.zip"><img src="https://i.imgur.com/XnnwdmG.png" alt="Download latest" width="280" ></a>
 </p>
 
 <p align="center">
