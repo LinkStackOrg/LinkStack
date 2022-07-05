@@ -246,6 +246,13 @@ class AdminController extends Controller
 
         $del = $request->deltheme;
 
+        if (empty($del)) {
+            echo '<script type="text/javascript">'; 
+            echo 'alert("No themes to delete!");'; 
+            echo 'window.location.href = "../studio/theme";';
+            echo '</script>';
+        } else {
+
         $folderName = base_path() . '/themes/' . $del;
         
            
@@ -292,7 +299,7 @@ class AdminController extends Controller
         removeFolder($folderName);
 
         return Redirect('/panel/theme');
-    }
+    }}
 
     //Shows config file editor page
     public function showThemes(request $request)
