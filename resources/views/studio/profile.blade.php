@@ -30,7 +30,7 @@
         @csrf
           <div class="form-group col-lg-8">
             <h3>Password</h3>
-            <input type="password" name="password" class="form-control" placeholder="If empty, no changes will be made">
+            <input type="password" name="password" class="form-control" placeholder="At least 8 characters">
           </div>
           <button type="Change " class="mt-3 ml-3 btn btn-info">Change password</button>
         </form>
