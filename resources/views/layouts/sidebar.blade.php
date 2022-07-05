@@ -297,7 +297,10 @@ if($url1sb == '200'  or $url2sb == '200') {
 
 @if(config('advanced-config.disable_default_password_notice') != 'true')
 {{-- Displays a warning message if default password is still set --}}
-@php $userdbs = DB::table('users')->get(); @endphp
+@php 
+$littlelink_current = Auth::user()->id;
+$userdbs = DB::table('users')->where('id', $littlelink_current)->get();
+@endphp
 
 @foreach($userdbs as $userdb)
 
