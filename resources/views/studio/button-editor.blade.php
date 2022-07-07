@@ -230,7 +230,7 @@ var button_css = {
         <div class="form-group col-lg-8"><br>
           <p>Custom CSS</p>
 
-          <textarea name="custom_css" rows="9" id="sCode" type="text" value="{{ $custom_css }}" class="form-control">{{ $custom_css }}</textarea>
+          <textarea name="custom_css" rows="9" id="sCode" type="text" value="{{ $custom_css }}" class="form-control" required>{{ $custom_css }}</textarea>
         </div>
 </div>
 </details>
@@ -267,7 +267,7 @@ NULL
         @csrf
         <div class="form-group col-lg-8">
           <h2>Custom Icon</h2>
-          <textarea id="textareabox" type="text" name="custom_icon" value="{{ $custom_icon }}" class="form-control">{{ $custom_icon }}</textarea>
+          <textarea id="textareabox" type="text" name="custom_icon" value="{{ $custom_icon }}" class="form-control" required>{{ $custom_icon }}</textarea>
         </div>
         <script type="text/javascript">
         // Displays alert if custom icon doesn't contain string "fa-"
