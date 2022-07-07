@@ -10,7 +10,7 @@
         @csrf
           <div class="form-group col-lg-8">
             <h3>Name</h3>
-            <input type="text" class="form-control" name="name" value="{{ $profile->name }}">
+            <input type="text" class="form-control" name="name" value="{{ $profile->name }}" required>
           </div>
           <button type="Change " class="mt-3 ml-3 btn btn-info">Change name</button>
         </form>
@@ -20,7 +20,7 @@
         @csrf
           <div class="form-group col-lg-8">
             <h3>Email</h3>
-            <input type="email" class="form-control" name="email" value="{{ $profile->email }}">
+            <input type="email" class="form-control" name="email" value="{{ $profile->email }}" required>
           </div>
           <button type="Change " class="mt-3 ml-3 btn btn-info">Change email</button>
         </form>
@@ -30,7 +30,7 @@
         @csrf
           <div class="form-group col-lg-8">
             <h3>Password</h3>
-            <input type="password" name="password" class="form-control" placeholder="At least 8 characters">
+            <input type="password" name="password" class="form-control" placeholder="At least 8 characters" required>
           </div>
           <button type="Change " class="mt-3 ml-3 btn btn-info">Change password</button>
         </form>
