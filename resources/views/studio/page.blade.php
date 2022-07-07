@@ -39,7 +39,7 @@
 				  <div class="input-group-prepend">
 					<div class="input-group-text">{{ url('') }}/@</div>
 				  </div>
-				  <input type="text" class="form-control" name="pageName" value="{{ $page->littlelink_name ?? '' }}">
+				  <input type="text" class="form-control" name="pageName" value="{{ $page->littlelink_name ?? '' }}" required>
 			  </div>
 		  </div>
           
