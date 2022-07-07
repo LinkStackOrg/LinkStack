@@ -35,5 +35,12 @@
             if(EnvEditor::keyExists('FORCE_HTTPS')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('FORCE_HTTPS', 'false');}
 
+            /* Updates button database entries */ 
+            Schema::disableForeignKeyConstraints();
+            DB::table('buttons')->delete();
+            DB::table('buttons')->truncate();
+            Artisan::call('db:seed --class="ButtonSeeder"');
+            Schema::enableForeignKeyConstraints();
+
         echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "?success\" />"; 
         ?>
