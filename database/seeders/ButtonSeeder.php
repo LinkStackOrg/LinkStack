@@ -17,176 +17,180 @@ class ButtonSeeder extends Seeder
     {
         $buttons = [
         	[
-                'name' => 'custom'
+			'name' => 'custom'
             ],
+			
+            [
+			'name' => 'custom_website'
+            ],
+			
+            [
+			'name' => 'bandcamp'
+            ],
+			
+            [
+			'name' => 'buy me a coffee'
+            ],
+			
+            [
+			'name' => 'cashapp'
+            ],
+			
 
             [
-                'name' => 'custom_website'
+			'name' => 'default email'
             ],
-            
+			
             [
-                'name' => 'github'
+			'name' => 'default email_alt'
             ],
+			
+            [
+			'name' => 'discord'
+            ],
+			
+            [
+			'name' => 'facebook'
+            ],
+			
+            [
+			'name' => 'figma'
+            ],
+			
+            [
+			'name' => 'github'
+            ],
+			
+            [
+			'name' => 'gitlab'
+            ],
+			
+            [
+			'name' => 'goodreads'
+            ],
+			
 
             [
-                'name' => 'twitter'
+			'name' => 'instagram'
             ],
+			
+            [
+			'name' => 'kit'
+            ],
+			
+            [
+			'name' => 'linkedin'
+            ],
+			
+            [
+			'name' => 'mastodon'
+            ],
+			
+            [
+			'name' => 'medium'
+            ],
+			
+            [
+			'name' => 'messenger'
+            ],
+			
+            [
+			'name' => 'patreon'
+            ],
+			
 
             [
-                'name' => 'instagram'
+			'name' => 'paypal'
             ],
-
+			
             [
-                'name' => 'facebook'
+			'name' => 'pinterest'
             ],
-
+			
             [
-                'name' => 'messenger'
+			'name' => 'reddit'
             ],
-
+			
             [
-                'name' => 'linkedin'
+			'name' => 'signal'
             ],
-
+			
             [
-                'name' => 'youtube'
+			'name' => 'skoob'
             ],
-
+			
             [
-                'name' => 'discord'
+			'name' => 'snapchat'
             ],
-
+			
             [
-                'name' => 'twitch'
+			'name' => 'soundcloud'
             ],
-
+			
             [
-                'name' => 'snapchat'
+			'name' => 'spotify'
             ],
-
+			
             [
-                'name' => 'spotify'
+			'name' => 'steam'
             ],
-
+			
             [
-                'name' => 'reddit'
+			'name' => 'telegram'
             ],
-
+			
             [
-                'name' => 'medium'
+			'name' => 'tiktok'
             ],
-
+			
             [
-                'name' => 'pinterest'
+			'name' => 'tumblr'
             ],
-
+			
             [
-                'name' => 'soundcloud'
+			'name' => 'twitch'
             ],
-
+			
             [
-                'name' => 'figma'
+			'name' => 'twitter'
             ],
-
+			
             [
-                'name' => 'kit'
+			'name' => 'venmo'
             ],
-
+			
             [
-                'name' => 'telegram'
+			'name' => 'vimeo'
             ],
-
+			
             [
-                'name' => 'tumblr'
+			'name' => 'website'
             ],
-
+			
             [
-                'name' => 'steam'
+			'name' => 'whatsapp'
             ],
-
+			
             [
-                'name' => 'vimeo'
+			'name' => 'wordpress'
             ],
-
+			
             [
-                'name' => 'wordpress'
+			'name' => 'xing'
             ],
-
+			
             [
-                'name' => 'goodreads'
+			'name' => 'youtube'
             ],
-
+			
             [
-                'name' => 'skoob'
+			'name' => 'heading'
             ],
-
+			
             [
-                'name' => 'tiktok'
+			'name' => 'space'
             ],
-
-            [
-                'name' => 'default email'
-            ],
-
-            [
-                'name' => 'default email_alt'
-            ],
-
-        	[
-                'name' => 'bandcamp'
-            ],
-            
-            [
-                'name' => 'patreon'
-            ],
-
-            [
-                'name' => 'signal'
-            ],
-
-            [
-                'name' => 'venmo'
-            ],
-
-            [
-                'name' => 'cashapp'
-            ],
-
-            [
-                'name' => 'gitlab'
-            ],
-
-            [
-                'name' => 'mastodon'
-            ],
-
-            [
-                'name' => 'paypal'
-            ],
-
-            [
-                'name' => 'whatsapp'
-            ],
-
-            [
-                'name' => 'xing'
-            ],
-
-            [
-                'name' => 'buy me a coffee'
-            ],
-
-            [
-                'name' => 'website'
-            ],
-
-            [
-                'name' => 'heading'
-            ],
-
-            [
-                'name' => 'space'
-            ],
+			
         ];
 
          Button::insert($buttons);
