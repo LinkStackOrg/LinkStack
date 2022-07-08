@@ -39,7 +39,7 @@
             Schema::disableForeignKeyConstraints();
             DB::table('buttons')->delete();
             DB::table('buttons')->truncate();
-            Artisan::call('db:seed --class="ButtonSeeder"');
+            Artisan::call('db:seed --class="ButtonSeeder" --force');
             Schema::enableForeignKeyConstraints();
 
         echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "?success\" />"; 
