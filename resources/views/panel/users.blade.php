@@ -2,6 +2,8 @@
 
 @section('content')
 
+        <style>.delete{color:#fff; background-color:tomato; border-radius:5px; padding:8px 12px;}.delete:hover{color:#fff;background-color:#f13d1d;} @media(max-width: 1050px){.hide-mobile-del{display:none;}}</style>
+
         <h2 class="mb-4"><i class="bi bi-person"> Users</i></h2>
 
         <form action="{{ route('searchUser') }}" method="post">
@@ -25,9 +27,9 @@
               <th scope="col">Role</th>
               <th scope="col">Edit</th>
               <th scope="col">Links</th>
-              @if(env('REGISTER_AUTH') !== 'auth')<th style="width:10%" scope="col">E-Mail Verified</th>@endif
+              @if(env('REGISTER_AUTH') !== 'auth')<th style="width:15%" scope="col">E-Mail Verified</th>@endif
               <th scope="col">Block</th>
-              <th style="width:8%" scope="col">Delete user</th>
+              <th scope="col">Delete user</th>
             </tr>
           </thead>
           <tbody>
@@ -40,7 +42,7 @@
               <td><a href="{{ route('showLinksUser', $user->id ) }}" class="text-primary">View</a></td>
               @if(env('REGISTER_AUTH') !== 'auth')<td><a href="{{ route('verifyUser', ['verify' => '-' . $user->email_verified_at, 'id' => $user->id] ) }}" class="text-danger">@if($user->email_verified_at == '')<span>no</span>@else<span style="color:#228B22">yes</span>@endif</a></td>@endif
               <td><a href="{{ route('blockUser', ['block' => $user->block, 'id' => $user->id] ) }}" class="text-danger">{{ $user->block }}</a></td>
-              <td><a href="{{ route('deleteUser', ['id' => $user->id] ) }}" class="text-danger confirmation">Delete</a></td>
+              <td><a href="{{ route('deleteUser', ['id' => $user->id] ) }}" class="confirmation"><center><mark class="delete"><i class="bi bi-trash-fill del-icon"></i><span class="hide-mobile-del"> Delete</span></mark></center></a></td>
               <script type="text/javascript">
                 var elems = document.getElementsByClassName('confirmation');
                 var confirmIt = function (e) {
