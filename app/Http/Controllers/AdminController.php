@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Schema;
 
 use Auth;
 use Exception;
@@ -134,8 +135,11 @@ class AdminController extends Controller
     {
         $id = $request->id;
 
-        $user = User::find($id);    
+        $user = User::find($id);  
+
+        Schema::disableForeignKeyConstraints();
         $user->forceDelete();
+        Schema::enableForeignKeyConstraints();
 
         return redirect('panel/users/all');
     }
