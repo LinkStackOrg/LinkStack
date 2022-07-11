@@ -98,6 +98,7 @@ Route::post('/panel/users/{name?}', [AdminController::class, 'searchUser'])->nam
 Route::get('/panel/links/{id}', [AdminController::class, 'showLinksUser'])->name('showLinksUser');
 Route::get('/panel/deleteLink/{id}', [AdminController::class, 'deleteLinkUser'])->name('deleteLinkUser');
 Route::get('/panel/users/block/{block}/{id}', [AdminController::class, 'blockUser'])->name('blockUser');
+Route::get('/panel/users/verify/-{verify}/{id}', [AdminController::class, 'verifyUser'])->name('verifyUser');
 Route::get('/panel/edit-user/{id}', [AdminController::class, 'showUser'])->name('showUser');
 Route::post('/panel/edit-user/{id}', [AdminController::class, 'editUser'])->name('editUser');
 Route::get('/panel/pages', [AdminController::class, 'showSitePage'])->name('showSitePage');

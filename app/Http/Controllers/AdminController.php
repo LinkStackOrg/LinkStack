@@ -38,19 +38,19 @@ class AdminController extends Controller
 
         switch($usersType){
             case 'all':
-                $data['users'] = User::select('id', 'name', 'littlelink_name', 'role', 'block')->get();
+                $data['users'] = User::select('id', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
                 return view('panel/users', $data);
                 break;
             case 'user':
-                $data['users'] = User::where('role', 'user')->select('id', 'name', 'littlelink_name', 'role', 'block')->get();
+                $data['users'] = User::where('role', 'user')->select('id', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
                 return view('panel/users', $data);
                 break;
             case 'vip':
-                $data['users'] = User::where('role', 'vip')->select('id', 'name', 'littlelink_name', 'role', 'block')->get();
+                $data['users'] = User::where('role', 'vip')->select('id', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
                 return view('panel/users', $data);
                 break;     
             case 'admin':
-                $data['users'] = User::where('role', 'admin')->select('id', 'name', 'littlelink_name', 'role', 'block')->get();
+                $data['users'] = User::where('role', 'admin')->select('id', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
                 return view('panel/users', $data);
                 break;
             }
@@ -83,6 +83,23 @@ class AdminController extends Controller
         return redirect('panel/users/all');
     }
 
+    //Verify or un-verify users emails
+    public function verifyUser(request $request)
+    {
+        $id = $request->id;
+        $status = $request->verify;
+
+        if($status == '-'){
+            $verify = '0000-00-00 00:00:00';
+        }else{
+            $verify = NULL;
+        }
+
+        User::where('id', $id)->update(['email_verified_at' => $verify]);
+
+        return redirect('panel/users/all');
+    }
+    
     //Show user to edit
     public function showUser(request $request)
     {
