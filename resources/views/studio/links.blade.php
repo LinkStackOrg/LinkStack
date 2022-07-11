@@ -10,7 +10,7 @@
           <tr>
             <th scope="col">Link</th>
             <th scope="col">Title</th>
-            <th scope="col">Click</th>
+            <th scope="col">Clicks</th>
             <th scope="col">Order ⏶</th>
             <th scope="col">Pin Link ⏶</th>
             <th scope="col">Edit</th>
