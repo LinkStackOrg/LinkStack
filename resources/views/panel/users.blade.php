@@ -2,7 +2,7 @@
 
 @section('content')
 
-        <style>.delete{color:#fff; background-color:tomato; border-radius:5px; padding:8px 12px; cursor: pointer;}.delete:hover{color:#fff;background-color:#f13d1d;} @media(max-width: 1050px){.hide-mobile-del{display:none;}}</style>
+        <style>.delete{color:#fff; background-color:tomato; border-radius:5px; padding:8px 12px; cursor: pointer;}.delete:hover{color:#fff;background-color:#f13d1d;} @media(max-width: 1450px){.hide-mobile-del{display:none;}}</style>
 
         <h2 class="mb-4"><i class="bi bi-person"> Users</i></h2>
 
