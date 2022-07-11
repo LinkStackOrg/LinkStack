@@ -65,7 +65,7 @@ class AdminController extends Controller
         return view('panel/users', $data);
     }
 
-    //Block user and delete their links
+    //Block user
     public function blockUser(request $request)
     {
         $id = $request->id;
@@ -78,8 +78,6 @@ class AdminController extends Controller
         }
 
         User::where('id', $id)->update(['block' => $block]);
-
-        Link::where('user_id', $id)->delete();
 
         return redirect('panel/users/all');
     }
@@ -129,6 +127,17 @@ class AdminController extends Controller
         ]);
 
        return redirect('panel/edit-user/'. $user->id);
+    }
+
+    //Delete existing user
+    public function deleteUser(request $request)
+    {
+        $id = $request->id;
+
+        $user = User::find($id);    
+        $user->forceDelete();
+
+        return redirect('panel/users/all');
     }
 
     //Show user to edit
@@ -191,7 +200,7 @@ class AdminController extends Controller
         $profilePhoto->move(base_path('/img'), $littlelink_name . ".png");
         }
 
-        return back();
+        return redirect('panel/users/all');
     }
 
     //Show site pages to edit

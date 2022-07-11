@@ -102,6 +102,7 @@ Route::get('/panel/users/verify/-{verify}/{id}', [AdminController::class, 'verif
 Route::get('/panel/edit-user/{id}', [AdminController::class, 'showUser'])->name('showUser');
 Route::post('/panel/edit-user/{id}', [AdminController::class, 'editUser'])->name('editUser');
 Route::get('/panel/new-user', [AdminController::class, 'createNewUser'])->name('createNewUser');
+Route::get('/panel/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('deleteUser');
 Route::get('/panel/pages', [AdminController::class, 'showSitePage'])->name('showSitePage');
 Route::post('/panel/pages', [AdminController::class, 'editSitePage'])->name('editSitePage');
 Route::get('/panel/advanced-config', [AdminController::class, 'showFileEditor'])->name('showFileEditor');
