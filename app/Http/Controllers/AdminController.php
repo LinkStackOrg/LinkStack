@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 
 use Auth;
 use Exception;
@@ -100,6 +101,36 @@ class AdminController extends Controller
         return redirect('panel/users/all');
     }
     
+    //Create new user from the Admin Panel
+    public function createNewUser()
+    {
+
+        function random_str(
+            int $length = 64,
+            string $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        ): string {
+            if ($length < 1) {
+                throw new \RangeException("Length must be a positive integer");
+            }
+            $pieces = [];
+            $max = mb_strlen($keyspace, '8bit') - 1;
+            for ($i = 0; $i < $length; ++$i) {
+                $pieces []= $keyspace[random_int(0, $max)];
+            }
+            return implode('', $pieces);
+        }
+
+        $user = User::create([
+            'name' => 'Admin-Created-' . random_str(8),
+            'email' => random_str(8) . '@test.com',
+            'password' => Hash::make(random_str(32)),
+            'role' => 'user',
+            'block' => 'no',
+        ]);
+
+       return redirect('panel/edit-user/'. $user->id);
+    }
+
     //Show user to edit
     public function showUser(request $request)
     {

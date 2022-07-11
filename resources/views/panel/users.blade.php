@@ -43,5 +43,6 @@
             @endforeach
           </tbody>
         </table>
+        <a href="{{ url('') }}/panel/new-user">+ Add new user</a>
 
 @endsection

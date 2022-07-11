@@ -101,6 +101,7 @@ Route::get('/panel/users/block/{block}/{id}', [AdminController::class, 'blockUse
 Route::get('/panel/users/verify/-{verify}/{id}', [AdminController::class, 'verifyUser'])->name('verifyUser');
 Route::get('/panel/edit-user/{id}', [AdminController::class, 'showUser'])->name('showUser');
 Route::post('/panel/edit-user/{id}', [AdminController::class, 'editUser'])->name('editUser');
+Route::get('/panel/new-user', [AdminController::class, 'createNewUser'])->name('createNewUser');
 Route::get('/panel/pages', [AdminController::class, 'showSitePage'])->name('showSitePage');
 Route::post('/panel/pages', [AdminController::class, 'editSitePage'])->name('editSitePage');
 Route::get('/panel/advanced-config', [AdminController::class, 'showFileEditor'])->name('showFileEditor');
