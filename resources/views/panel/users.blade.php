@@ -2,7 +2,7 @@
 
 @section('content')
 
-        <style>.delete{color:#fff; background-color:tomato; border-radius:5px; padding:8px 12px;}.delete:hover{color:#fff;background-color:#f13d1d;} @media(max-width: 1050px){.hide-mobile-del{display:none;}}</style>
+        <style>.delete{color:#fff; background-color:tomato; border-radius:5px; padding:8px 12px; cursor: pointer;}.delete:hover{color:#fff;background-color:#f13d1d;} @media(max-width: 1050px){.hide-mobile-del{display:none;}}</style>
 
         <h2 class="mb-4"><i class="bi bi-person"> Users</i></h2>
 
@@ -42,7 +42,13 @@
               <td><a href="{{ route('showLinksUser', $user->id ) }}" class="text-primary">View</a></td>
               @if(env('REGISTER_AUTH') !== 'auth')<td><a href="{{ route('verifyUser', ['verify' => '-' . $user->email_verified_at, 'id' => $user->id] ) }}" class="text-danger">@if($user->email_verified_at == '')<span>no</span>@else<span style="color:#228B22">yes</span>@endif</a></td>@endif
               <td><a href="{{ route('blockUser', ['block' => $user->block, 'id' => $user->id] ) }}" class="text-danger">{{ $user->block }}</a></td>
-              <td><center><mark href="{{ route('deleteUser', ['id' => $user->id] ) }}" class="confirmation delete"><i class="bi bi-trash-fill del-icon"></i><span class="hide-mobile-del"> Delete</span></mark></center></td>
+              <td><center><a href="{{ route('deleteUser', ['id' => $user->id] ) }}" class="confirmation delete"><i class="bi bi-trash-fill del-icon"></i><span class="hide-mobile-del"> Delete</span></a></center></td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+        <a href="{{ url('') }}/panel/new-user">+ Add new user</a>
+
               <script type="text/javascript">
                 var elems = document.getElementsByClassName('confirmation');
                 var confirmIt = function (e) {
@@ -52,10 +58,5 @@
                     elems[i].addEventListener('click', confirmIt, false);
                 }
               </script>
-            </tr>
-            @endforeach
-          </tbody>
-        </table>
-        <a href="{{ url('') }}/panel/new-user">+ Add new user</a>
 
 @endsection
