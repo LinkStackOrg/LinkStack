@@ -71,7 +71,7 @@ return [
     */
 
 
-    // Overwrites default theme regardless of preference defined by the operating system, unless manually overwritten by user.
+    // Overwrites default theme regardless of preference defined by the operating system.
     'theme' => 'light', // Either "dark" or "light".
 
 
@@ -284,5 +284,20 @@ return [
     | 'button' => 'space'            |
     |--------------------------------|
     */
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Extra Settings
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    // Expands admin menu on the Admin Panel Sidebar permanently
+    'expand_panel_admin_menu_permanently' => 'true', // Either "true" or "false".
+
+    // Should only be used in a local testing environment
+    'disable_default_password_notice' => 'false', // Either "true" or "false".
+
 
 ];
