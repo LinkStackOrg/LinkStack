@@ -2,7 +2,7 @@
 
 @section('content')
 
-        <style>.delete{color:#fff; background-color:tomato; border-radius:5px; padding:8px 12px; cursor: pointer;}.delete:hover{color:#fff;background-color:#f13d1d;} @media(max-width: 1450px){.hide-mobile-del{display:none;}}</style>
+        <style>.delete{color:#fff; background-color:tomato; border-radius:5px; padding:8px 12px; cursor: pointer;}.delete:hover{color:#fff;background-color:#f13d1d;}}</style>
 
         <h2 class="mb-4"><i class="bi bi-person"> Users</i></h2>
 
@@ -30,7 +30,7 @@
               <th scope="col">Links</th>
               @if(env('REGISTER_AUTH') !== 'auth')<th style="width:15%" scope="col">E-Mail Verified</th>@endif
               <th scope="col">Block</th>
-              <th scope="col">Delete user</th>
+              <th scope="col" style="width:150px">Delete user</th>
             </tr>
           </thead>
           <tbody>
@@ -48,7 +48,7 @@
               @endif
               @endif
               <td>@if($user->find($user->id)->role == 'admin')-@else<a href="{{ route('blockUser', ['block' => $user->block, 'id' => $user->id] ) }}" class="text-danger">{{ $user->block }}</a>@endif</td>
-              <td>@if($user->find($user->id)->role == 'admin')<center>-</center>@else<center><a href="{{ route('deleteUser', ['id' => $user->id] ) }}" class="confirmation delete"><i class="bi bi-trash-fill del-icon"></i><span class="hide-mobile-del"> Delete</span></a></center>@endif</td>
+              <td>@if($user->find($user->id)->role == 'admin')<center>-</center>@else<center><a href="{{ route('deleteUser', ['id' => $user->id] ) }}" class="confirmation delete"><i class="bi bi-trash-fill del-icon"></i><span class="hide-mobile-del"></span></a></center>@endif</td>
             </tr>
             @endforeach
           </tbody>
