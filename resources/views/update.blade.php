@@ -18,10 +18,20 @@
            <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
            <div class="logo-centered">l</div>
         </div>
-        <h1>Updater</h1>
+        <h1>Windows Updater</h1>
         @if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
-        <h4 class="">The updater only works on Linux based systems.</h4>
-        <a class="btn" href="https://littlelink-custom.com/update"><button><i class="fa-solid fa-download btn"></i> Update manually</button></a>
+        @if(env('JOIN_BETA') === true)
+        <p><?php echo "latest beta version= " . file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?></p>
+        <p><?php  if(file_exists(base_path("vbeta.json"))) {echo "Installed beta version= " . file_get_contents(base_path("vbeta.json"));} else {echo "Installed beta version= none";}  ?></p>
+        <p><?php  if($Vgit > $Vlocal) {echo "You need to update to the latest mainline release";} else {echo "You're running the latest mainline release";}  ?></p>
+        @else
+        <h4 class="">You can update your installation automatically or download the update and install it manually:</h4>
+        <h5 class="">Windows users can use the alternative updater. This updater won't create a backup. Use at your own discretion.</h5>
+        @endif
+        <br><div class="row">
+        &ensp;<a class="btn" href="{{url()->current()}}/?updating-windows"><button><i class="fa-solid fa-user-gear btn"></i> Update automatically</button></a>&ensp;
+        &ensp;<a class="btn" href="https://littlelink-custom.com/update" target="_blank"><button><i class="fa-solid fa-download btn"></i> Update manually</button></a>&ensp;
+        </div>
         @else
         @if(env('JOIN_BETA') === true)
         <p><?php echo "latest beta version= " . file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?></p>
@@ -40,6 +50,57 @@
         </div>
         @endif
       
+@endif
+
+
+@if($_SERVER['QUERY_STRING'] === 'updating-windows' and strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
+<?php //updating on Windows ?>
+        <div class="logo-container fadein">
+           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
+           <div class="logo-centered">l</div>
+        </div>
+        <h1 class="loadingtxt">Updating</h1>
+        @Push('updater-head')
+         <meta http-equiv="refresh" content="2; URL={{url()->current()}}/?updating-windows-bat" />
+        @endpush
+@endif
+
+@if($_SERVER['QUERY_STRING'] === 'updating-windows-bat' and strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
+<?php //updating on Windows ?>
+<?php
+
+
+// Download the zip file
+
+$latestversion = trim(file_get_contents("https://raw.githubusercontent.com/JulianPrieber/littlelink-custom/main/version.json"));
+
+if(env('JOIN_BETA') === true){
+   $fileUrl = 'https://update.littlelink-custom.com/beta/'. $latestversion . '.zip';
+} else {
+   $fileUrl = 'https://update.littlelink-custom.com/'. $latestversion . '.zip';
+}
+
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $fileUrl);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+$result = curl_exec($curl);
+curl_close($curl);
+
+file_put_contents(base_path('storage/update.zip'), $result);
+
+
+$zip = new ZipArchive;
+$zip->open(base_path() . '/storage/update.zip');
+$zip->extractTo(base_path());
+$zip->close();
+unlink(base_path() . '/storage/update.zip');
+
+echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "/?finishing\" />";
+
+?>
+
+
 @endif
 
 @if($_SERVER['QUERY_STRING'] === 'backup')
