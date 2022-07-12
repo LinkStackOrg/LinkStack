@@ -121,7 +121,7 @@ class AdminController extends Controller
 
         $user = User::create([
             'name' => 'Admin-Created-' . random_str(8),
-            'email' => random_str(8) . '@test.com',
+            'email' => random_str(8) . '@example.com',
             'password' => Hash::make(random_str(32)),
             'role' => 'user',
             'block' => 'no',
