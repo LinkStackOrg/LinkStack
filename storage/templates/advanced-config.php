@@ -63,7 +63,7 @@ return [
     */
 
 
-    // Overwrites default theme regardless of preference defined by the operating system, unless manually overwritten by user.
+    // Overwrites default theme regardless of preference defined by the operating system.
     'theme' => '', // Either "dark" or "light".
 
 
