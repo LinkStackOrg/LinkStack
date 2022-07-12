@@ -23,6 +23,7 @@
           <thead>
             <tr>
               <th scope="col">Name</th>
+              <th scope="col">E-Mail</th>
               <th scope="col">Page</th>
               <th scope="col">Role</th>
               <th scope="col">Edit</th>
@@ -36,6 +37,7 @@
           @foreach($users as $user)
             <tr>
               <td> {{ $user->name }} </td>
+              <td> {{ $user->email }} </td>
               <td><a href="{{ url('') }}/@<?= $user->littlelink_name ?>" target="_blank" class="text-info"><i class="bi bi-box-arrow-up-right"></i>&nbsp; {{ $user->littlelink_name }} </a></td>
               <td>{{ $user->role }}</td>
               <td><a href="{{ route('editUser', $user->id ) }}">Edit</a></td>

@@ -40,19 +40,19 @@ class AdminController extends Controller
 
         switch($usersType){
             case 'all':
-                $data['users'] = User::select('id', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
+                $data['users'] = User::select('id', 'name', 'email', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
                 return view('panel/users', $data);
                 break;
             case 'user':
-                $data['users'] = User::where('role', 'user')->select('id', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
+                $data['users'] = User::where('role', 'email', 'user')->select('id', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
                 return view('panel/users', $data);
                 break;
             case 'vip':
-                $data['users'] = User::where('role', 'vip')->select('id', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
+                $data['users'] = User::where('role', 'email', 'vip')->select('id', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
                 return view('panel/users', $data);
                 break;     
             case 'admin':
-                $data['users'] = User::where('role', 'admin')->select('id', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
+                $data['users'] = User::where('role', 'email', 'admin')->select('id', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
                 return view('panel/users', $data);
                 break;
             }
