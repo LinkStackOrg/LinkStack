@@ -18,7 +18,7 @@
            <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
            <div class="logo-centered">l</div>
         </div>
-        <h1>Windows Updater</h1>
+        <h1>Updater</h1>
         @if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
         @if(env('JOIN_BETA') === true)
         <p><?php echo "latest beta version= " . file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?></p>
