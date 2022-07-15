@@ -98,11 +98,14 @@ class ButtonSeeder extends Seeder
 			'name' => 'patreon'
             ],
 			
-
             [
 			'name' => 'paypal'
             ],
 			
+            [
+            'name' => 'phone'
+            ],
+                
             [
 			'name' => 'pinterest'
             ],

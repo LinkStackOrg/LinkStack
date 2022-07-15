@@ -233,8 +233,9 @@ function get_operating_system() {
         @foreach($links as $link)
          @php $linkName = str_replace('default ','',$link->name) @endphp
          @if($link->button_id === 0)
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-title button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank">
-         	{{ $link->title }}</a></div>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-title button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank">{{ $link->title }}</a></div>
+         @elseif($link->name === "phone")
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-default button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ $link->link }}"><img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}phone.svg"></i>{{ $link->title }}</a></div>
          @elseif($link->name === "custom" and $link->custom_css === "" or $link->custom_css === "NULL")
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" target="_blank"><i style="color: {{$link->custom_icon}}" class="icon hvr-icon fa {{$link->custom_icon}}"></i>{{ $link->title }}</a></div>
          @elseif($link->name === "custom" and $link->custom_css != "")
