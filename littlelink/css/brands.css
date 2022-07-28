@@ -297,10 +297,10 @@ button:hover,
 .button.button-vimeo:focus {
   filter: brightness(90%) }
 
-/* YouTube */
+/* YouTube V2 */
 .button.button-youtube {
   color: #FFFFFF;
-  background-color:  #000000 }
+  background-color:  #FF0000 }
 .button.button-youtube:hover,
 .button.button-youtube:focus {
   filter: brightness(90%) }
@@ -420,6 +420,16 @@ button:hover,
 }
 .button.button-coffee:hover,
 .button.button-coffee:focus {
+  filter: brightness(90%);
+}
+
+/* Trello */
+.button.button-trello {
+  color: #ffffff;
+  background-color: #0079bf;
+}
+.button.button-trello:hover,
+.button.button-trello:focus {
   filter: brightness(90%);
 }
 
