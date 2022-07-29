@@ -357,6 +357,18 @@ Thank you for improving LittleLink Custom!
 
 <br>
 
+### Beta Testers
+
+Thank you for all your efforts.
+
+<p>
+  <a href="https://littlelink-custom.com/beta-tester"><img src="https://components.littlelink-custom.com/beta-testers/" alt="Contributors" width="600" ></a>
+</p>
+
+[Become a beta tester](https://littlelink-custom.com/beta-tester)
+
+<br>
+
 ## Additional-credit
 
 - [laravel](https://github.com/laravel/laravel)
