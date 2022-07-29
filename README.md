@@ -359,7 +359,7 @@ Thank you for improving LittleLink Custom!
 
 ### Beta Testers
 
-Thank you for all your efforts.
+Thank you for all your efforts!
 
 <p>
   <a href="https://littlelink-custom.com/beta-tester"><img src="https://components.littlelink-custom.com/beta-testers/" alt="Contributors" width="600" ></a>
