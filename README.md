@@ -347,6 +347,16 @@ You can support LittleLink Custom [here](https://littlelink-custom.com/sponsor).
 
 <br>
 
+### Contributors
+
+Thank you fort improving LittleLink Custom!
+
+<p>
+  <a href="https://github.com/JulianPrieber/littlelink-custom/graphs/contributors"><img src="https://components.littlelink-custom.com/contributors/" alt="Contributors" width="600" ></a>
+</p>
+
+<br>
+
 ## Additional-credit
 
 - [laravel](https://github.com/laravel/laravel)
