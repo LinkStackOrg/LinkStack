@@ -52,6 +52,7 @@
             <div class="tab-pane fade p-3" id="upload-env" role="tabpanel" aria-labelledby="nav-contact-tab">
                 <env-file-upload></env-file-upload>
             </div>
+            <p style="color:#fff; font-weight:500; font-size:100%; position:relative; bottom:25px;">You can disable or enable registration <a href="{{ url('panel/pages') }}">here</a>.</p>
         </div>
 
         <env-keys-modal ref="keysModal"></env-keys-modal>
