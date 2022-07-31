@@ -87,7 +87,7 @@ class UserController extends Controller
     //Show buttons for add link
     public function showButtons()
     {
-        $data['buttons'] = Button::select('name')->get();
+        $data['buttons'] = Button::select('name')->orderBy('name', 'asc')->get();
         return view('studio/add-link', $data);
     }
 
