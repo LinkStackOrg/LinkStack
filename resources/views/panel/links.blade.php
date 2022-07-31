@@ -17,7 +17,7 @@
         <tbody>
         @foreach($links as $link)
           <tr>
-            <td title="{{ $link->link }}">{{ Str::limit($link->link, 30) }}</td>
+            <td title="{{ $link->link }}"><a style="color:#8ab4f8;text-decoration:underline;" href="{{ $link->link }}" target="_blank">{{ Str::limit($link->link, 50) }}</a></td>
             <td title="{{ $link->title }}">{{ Str::limit($link->title, 30) }}</td>
             <td class="text-right">{{ $link->click_number }}</td>
             <td><a href="{{ route('deleteLinkUser', $link->id ) }}" class="text-danger">Delete</a></td>
