@@ -17,8 +17,11 @@
         <div class="form-group col-lg-8">
           <label for="exampleFormControlSelect1">Button</label>
           <select class="form-control" name="button">
+            <option> {{ $buttonName }} </option>
             @foreach($buttons as $button)
-            <option <?= ($buttonId === $button->id) ? 'selected' : '' ?>> {{ $button->name }} </option>
+            @if ($button->name != $buttonName)
+            <option> {{ $button->name }} </option>
+            @endif
             @endforeach
           </select>
         </div>
