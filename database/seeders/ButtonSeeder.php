@@ -101,10 +101,6 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'paypal'
             ],
-			
-            [
-            'name' => 'phone'
-            ],
                 
             [
 			'name' => 'pinterest'
@@ -148,10 +144,6 @@ class ButtonSeeder extends Seeder
 			
             [
 			'name' => 'tumblr'
-            ],
-			
-            [
-			'name' => 'trello'
             ],
             
             [
@@ -198,6 +190,14 @@ class ButtonSeeder extends Seeder
 			'name' => 'space'
             ],
 			
+            [
+            'name' => 'phone'
+            ],
+
+            [
+            'name' => 'trello'
+            ],
+
         ];
 
          Button::insert($buttons);
