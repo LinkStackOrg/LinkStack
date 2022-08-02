@@ -17,15 +17,15 @@
         <div class="form-group col-lg-8">
           <label for="exampleFormControlSelect1">Button*</label>
           <select class="form-control" name="button">
-            <option> custom </option>
-            <option> custom_website </option>
+            <option style="background-color:#ffe8e4;"> custom </option>
+            <option style="background-color:#ffe8e4;"> custom_website </option>
             @foreach($buttons as $button)
             @if (!in_array($button->name, ['custom', 'custom_website', 'heading', 'space']))
             <option> {{ $button->name }} </option>
             @endif
             @endforeach
-            <option> heading </option>
-            <option> space </option>
+            <option style="background-color:#ebebeb;"> heading </option>
+            <option style="background-color:#ebebeb;"> space </option>
           </select>
           <br>
           <label>* Required fields</label><br>
