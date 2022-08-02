@@ -18,10 +18,9 @@
           <label for="exampleFormControlSelect1">Button</label>
           <select class="form-control" name="button">
             <option style="background-color:#1e90ff;color:#fff"> {{ $buttonName }} </option>
-            @foreach($buttons as $button)
-            @if ($button->name != "custom")@if ($loop->first)<option style="background-color:#ffe8e4;"> custom </option>@endif @endif
-            @if ($button->name != "custom_website")@if ($loop->first)<option style="background-color:#ffe8e4;"> custom_website </option>@endif @endif
-            @endforeach
+
+            @if ($buttonName != "custom")<option style="background-color:#ffe8e4;"> custom </option>@endif
+            @if ($buttonName != "custom_website")<option style="background-color:#ffe8e4;"> custom_website </option>@endif
             @foreach($buttons as $button)
             @if (!in_array($button->name, ['custom', 'custom_website', 'heading', 'space']))
             @if ($button->name != $buttonName)
@@ -29,10 +28,9 @@
             @endif
             @endif
             @endforeach
-            @foreach($buttons as $button)
-            @if ($button->name != "heading")@if ($loop->first)<option style="background-color:#ebebeb;"> heading </option>@endif @endif
-            @if ($button->name != "space")@if ($loop->first)<option style="background-color:#ebebeb;"> space </option>@endif @endif
-            @endforeach
+            @if ($buttonName != "heading")<option style="background-color:#ebebeb;"> heading </option>@endif
+            @if ($buttonName != "space")<option style="background-color:#ebebeb;"> space </option>@endif
+
           </select>
         </div>
         
