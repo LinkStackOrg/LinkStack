@@ -170,6 +170,33 @@ class UserController extends Controller
         return view('studio/links', $data);
     }
 
+    //Show link, 20
+    public function showLinks20()
+    {
+        $userId = Auth::user()->id;
+        
+        $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link', 'links.button_id')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(20);
+        return view('studio/links', $data);
+    }
+
+    //Show link, 30
+    public function showLinks30()
+    {
+        $userId = Auth::user()->id;
+        
+        $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link', 'links.button_id')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(30);
+        return view('studio/links', $data);
+    }
+
+    //Show link, all
+    public function showLinksAll()
+    {
+        $userId = Auth::user()->id;
+        
+        $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link', 'links.button_id')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(10000000000);
+        return view('studio/links', $data);
+    }
+
     //Delete link
     public function deleteLink(request $request)
     {

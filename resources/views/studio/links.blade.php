@@ -2,8 +2,19 @@
 
 @section('content')
 
+@if(Request::is('studio/links/10'))
+    @php setcookie("LinkCount", "10", time()+60*60*24*5, "/"); @endphp
+@elseif(Request::is('studio/links/20'))
+    @php setcookie("LinkCount", "20", time()+60*60*24*5, "/"); @endphp
+@elseif(Request::is('studio/links/30'))
+    @php setcookie("LinkCount", "30", time()+60*60*24*5, "/"); @endphp
+@elseif(Request::is('studio/links/all'))
+    @php setcookie("LinkCount", "all", time()+60*60*24*5, "/"); @endphp
+@endif
+
         <h2 class="mb-4"><i class="bi bi-link-45deg"> Links</i></h2>
 
+<div style="text-align: right;"><a href="{{ url('/studio/links') }}/10">10</a> | <a href="{{ url('/studio/links') }}/20">20</a> | <a href="{{ url('/studio/links') }}/30">30</a> | <a href="{{ url('/studio/links') }}/all">all</a></div>
         <div style="overflow-y: auto;">
         <table class="table table-bordered">
         <thead>
