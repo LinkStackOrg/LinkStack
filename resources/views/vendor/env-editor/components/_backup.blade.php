@@ -3,6 +3,7 @@
     <div>
         <div class="h5 my-4">{{__($translatePrefix.'title')}}</div>
         <div class="h5 my-4">You can find your updater backups <span><a href="{{ url('panel/backups') }}">here</a></span></div>
+        <div class="h5 my-4">You can backup your instance <span><a href="{{ url('backup') }}">here</a></span></div>
         <div>
             <button class="btn-info btn " @click="createBackUp">{{__($translatePrefix.'btn.backUpCurrentEnv')}}</button>
             <a class="btn-info btn" href="{{route(config($package.'.route.name').'.download')}}">{{__($translatePrefix.'btn.downloadCurrentEnv')}}</a>

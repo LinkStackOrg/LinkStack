@@ -121,6 +121,7 @@ Route::get('/panel/backups', [AdminController::class, 'showBackups'])->name('sho
 Route::post('/panel/theme', [AdminController::class, 'deleteTheme'])->name('deleteTheme');
 Route::get('/panel/theme', [AdminController::class, 'showThemes'])->name('showThemes');
 Route::get('/update', function () {return view('update', []);});
+Route::get('/backup', function () {return view('backup', []);});
 
 Route::get('/updating', function (\Codedge\Updater\UpdaterManager $updater) {
 
