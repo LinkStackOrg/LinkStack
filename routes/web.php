@@ -17,12 +17,8 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// Displays Maintenance Mode page
-if(env('MAINTENANCE_MODE') == 'true' or file_exists(base_path("storage/MAINTENANCE"))){
-  Route::get('/{any}', function () {
-    return view('maintenance');
-    })->where('any', '.*');
-} else {
+// Disables routes if in Maintenance Mode
+if(env('MAINTENANCE_MODE') != 'true' and !file_exists(base_path("storage/MAINTENANCE"))){
 
 // Prevents section below from being run by 'composer update'
 if(file_exists(base_path('storage/app/ISINSTALLED'))){
@@ -163,5 +159,12 @@ Route::get('/updating', function (\Codedge\Updater\UpdaterManager $updater) {
 });
 
 });
+
+// Displays Maintenance Mode page
+if(env('MAINTENANCE_MODE') == 'true' or file_exists(base_path("storage/MAINTENANCE"))){
+Route::get('/{any}', function () {
+  return view('maintenance');
+  })->where('any', '.*');
+}
 
 require __DIR__.'/auth.php';
