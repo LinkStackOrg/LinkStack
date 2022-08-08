@@ -3,7 +3,8 @@
 @section('content')
 <style>button{border-style: none;background-color: #0085ff;color: #fff;padding: 13px;border-radius: 5px;}button:hover {background-color:#0065c1;color: #FFF;box-shadow: 0 10px 20px -10px rgba(0,0,0, 0.6);}.btn {color: #FFF !important;}.buttondm{display:inline-block;text-decoration:none;height:48px;text-align:center;vertical-align:middle;font-size:18px;width:300px;font-weight:700;line-height:48px;letter-spacing:.1px;white-space:wrap;border-radius:8px;cursor:pointer}.button-hover,.credit-hover{display:inline-block;-webkit-transform:perspective(1px) translateZ(0);transform:perspective(1px) translateZ(0);box-shadow:0 0 1px rgba(0,0,0,0);-webkit-transition-duration:.3s;transition-duration:.3s;-webkit-transition-property:transform;transition-property:transform}.button-hover:active,.credit-hover:active,.button-hover:focus,.credit-hover:focus,.button-hover:hover,.credit-hover:hover{-webkit-transform:scale(1.06);transform:scale(1.06)}.container{align-items:center;display:flex;flex-direction:column;justify-content:center;height:50%;width:100%}</style>
   <!-- Custom icons font-awesome -->
-  <script src="https://kit.fontawesome.com/c4a5e06183.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.2/css/solid.css" integrity="sha384-0BumEd2qDQ2SCps2Pnnhegpr+si0PveDhbdhKgLYwY9x611h8s22Zh8td+W7jeys" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.2/css/fontawesome.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous"/>
   @if (file_exists(base_path('backups/updater-backups/')) and is_dir(base_path('backups/updater-backups/')))
     @if($_SERVER['QUERY_STRING'] != '')
     <?php
