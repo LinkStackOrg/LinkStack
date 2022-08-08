@@ -10,6 +10,9 @@
             if(EnvEditor::keyExists('CUSTOM_META_TAGS')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('CUSTOM_META_TAGS', 'false');}
 
+            if(EnvEditor::keyExists('MAINTENANCE_MODE')){ /* Do nothing if key already exists */ 
+            } else {EnvEditor::addKey('MAINTENANCE_MODE', 'false');}
+
             if (!config()->has('advanced-config.expand_panel_admin_menu_permanently') and !config()->has('disable_default_password_notice')) {
             
             function getStringBetween($string, $start, $end) {
