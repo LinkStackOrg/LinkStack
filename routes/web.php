@@ -99,6 +99,8 @@ Route::get('/studio/profile', [UserController::class, 'showProfile'])->name('sho
 Route::post('/studio/profile', [UserController::class, 'editProfile'])->name('editProfile');
 });
 
+}
+
 //Admin route
 Route::group([
     'middleware' => 'admin',
@@ -161,6 +163,5 @@ Route::get('/updating', function (\Codedge\Updater\UpdaterManager $updater) {
 });
 
 });
-}
 
 require __DIR__.'/auth.php';
