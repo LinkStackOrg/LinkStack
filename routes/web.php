@@ -17,9 +17,6 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// Disables routes if in Maintenance Mode
-if(env('MAINTENANCE_MODE') != 'true' and !file_exists(base_path("storage/MAINTENANCE"))){
-
 // Prevents section below from being run by 'composer update'
 if(file_exists(base_path('storage/app/ISINSTALLED'))){
  // generates new APP KEY if no one is set
@@ -28,6 +25,9 @@ if(file_exists(base_path('storage/app/ISINSTALLED'))){
  // copies template meta config if none is present
  if(!file_exists(base_path("config/advanced-config.php"))){copy(base_path('storage/templates/advanced-config.php'), base_path('config/advanced-config.php'));}
 }
+
+// Disables routes if in Maintenance Mode
+if(env('MAINTENANCE_MODE') != 'true' and !file_exists(base_path("storage/MAINTENANCE"))){
 
 //Changes the homepage to a LittleLink Custom profile if set in the config
 if(config('advanced-config.custom_home_url') != '') {
