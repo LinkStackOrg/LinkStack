@@ -161,6 +161,8 @@ exit(); ?>
         <h1 class="loadingtxt">Finishing up</h1>
         
         @include('components.finishing')
+        
+        <?php if(file_exists(base_path("storage/MAINTENANCE"))){unlink(base_path("storage/MAINTENANCE"));} ?>
 @endif
 
 @if($_SERVER['QUERY_STRING'] === 'success')
@@ -194,6 +196,8 @@ exit(); ?>
 @if($_SERVER['QUERY_STRING'] === 'error')
       <?php //on error ?>
         
+        <?php if(file_exists(base_path("storage/MAINTENANCE"))){unlink(base_path("storage/MAINTENANCE"));} ?>
+
         <div class="logo-container fadein">
            <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
            <div class="logo-centered">l</div>

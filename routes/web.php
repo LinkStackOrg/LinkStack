@@ -17,6 +17,13 @@ use App\Http\Controllers\UserController;
 |
 */
 
+// Displays Maintenance Mode page
+if(env('MAINTENANCE_MODE') == 'true' or file_exists(base_path("storage/MAINTENANCE"))){
+  Route::get('/{any}', function () {
+    return view('maintenance');
+    })->where('any', '.*');
+} else {
+
 // Prevents section below from being run by 'composer update'
 if(file_exists(base_path('storage/app/ISINSTALLED'))){
  // generates new APP KEY if no one is set
@@ -128,6 +135,9 @@ Route::get('/updating', function (\Codedge\Updater\UpdaterManager $updater) {
   // Check if new version is available
   if($updater->source()->isNewVersionAvailable() and (file_exists(base_path("backups/CANUPDATE")) or env('SKIP_UPDATE_BACKUP') == true)) {
 
+      $tst = base_path('storage/');
+      file_put_contents($tst.'MAINTENANCE', '');
+
       // Get the current installed version
       echo $updater->source()->getVersionInstalled();
 
@@ -151,5 +161,6 @@ Route::get('/updating', function (\Codedge\Updater\UpdaterManager $updater) {
 });
 
 });
+}
 
 require __DIR__.'/auth.php';
