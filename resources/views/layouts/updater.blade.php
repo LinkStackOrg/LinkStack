@@ -16,8 +16,7 @@
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.2/css/solid.css" integrity="sha384-0BumEd2qDQ2SCps2Pnnhegpr+si0PveDhbdhKgLYwY9x611h8s22Zh8td+W7jeys" crossorigin="anonymous"/>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.2/css/fontawesome.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.2/css/all.css" integrity="sha384-fZCoUih8XsaUZnNDOiLqnby1tMJ0sE7oBbNk2Xxf5x8Z4SvNQ9j83vFMa/erbVrV" crossorigin="anonymous"/>
   @if(file_exists(base_path("littlelink/images/avatar.png" )))
   <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
   @else
