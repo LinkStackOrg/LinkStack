@@ -7,6 +7,7 @@
 @include('layouts.analytics')
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
     <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
 
@@ -376,6 +377,8 @@ if(localStorage.getItem("firstTime")==null){
     <script src="{{ asset('/studio/js/jquery.min.js') }}"></script>
     <script src="{{ asset('/studio/js/popper.js') }}"></script>
     <script src="{{ asset('/studio/js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('/studio/js/Sortable.min.js') }}"></script>
+	<script src="{{ asset('/studio/js/jquery-block-ui.js') }}"></script>
     <script src="{{ asset('/studio/js/main-dashboard.js') }}"></script>
 
 	@stack('sidebar-scripts')

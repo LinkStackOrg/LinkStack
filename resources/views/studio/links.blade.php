@@ -29,10 +29,10 @@
             <th scope="col">Delete</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="links-table-body" data-page="{{request('page', 1)}}" data-per-page="{{$pagePage ? $pagePage : 0}}">
         @foreach($links as $link)
-          <tr>
-            <td title="{{ $link->link }}">{{ Str::limit($link->link, 30) }}</td>
+          <tr data-id="{{$link->id}}">
+            <td title="{{ $link->link }}"><span class="sortable-handle"></span> {{ Str::limit($link->link, 30) }}</td>
             <td title="{{ $link->title }}">{{ Str::limit($link->title, 30) }}</td>
             <td class="text-right">{{ $link->click_number }}</td>
             <td class="text-right">{{ $link->order }}</td>
@@ -50,6 +50,9 @@
           @endforeach
         </tbody>
         </table>
+        <script type="text/javascript">
+          const linksTableOrders = "{{ implode("|", $links->pluck('id')->toArray()) }}"
+        </script>
 </div>
 
             <ul class="pagination justify-content-center">

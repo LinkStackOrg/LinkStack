@@ -134,8 +134,48 @@ class UserController extends Controller
         $links->title = $title;
         $links->button_id = $buttonId;
         $links->save();
+        $links->order = (intval($links->id) - 1);
+        $links->save();
 
         return back();
+    }
+
+    public function sortLinks(Request $request)
+    {
+        $linkOrders  = $request->input("linkOrders", []);
+        $currentPage = $request->input("currentPage", 1);
+        $perPage     = $request->input("perPage", 0);
+
+        if ($perPage == 0) {
+            $currentPage = 1;
+        }
+
+        $linkOrders = array_unique(array_filter($linkOrders));
+        if (!$linkOrders || $currentPage < 1) {
+            return response()->json([
+                'status' => 'ERROR',
+            ]);
+        }
+
+        $newOrder = $startLinkOrder = $perPage * ($currentPage - 1);
+        $linkNewOrders = [];
+        foreach ($linkOrders as $linkId) {
+            if ($linkId < 0) {
+                continue;
+            }
+
+            $linkNewOrders[$linkId] = $newOrder;
+            Link::where("id", $linkId)
+                ->update([
+                    'order' => $newOrder
+                ]);
+            $newOrder++;
+        }
+
+        return response()->json([
+            'status' => 'OK',
+            'linkOrders' => $linkNewOrders,
+        ]);
     }
 
     //Count the number of clicks and redirect to link
@@ -165,6 +205,7 @@ class UserController extends Controller
     public function showLinks()
     {
         $userId = Auth::user()->id;
+        $data['pagePage'] = 10;
         
         $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link', 'links.button_id')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(10);
         return view('studio/links', $data);
@@ -174,6 +215,7 @@ class UserController extends Controller
     public function showLinks20()
     {
         $userId = Auth::user()->id;
+        $data['pagePage'] = 20;
         
         $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link', 'links.button_id')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(20);
         return view('studio/links', $data);
@@ -183,6 +225,7 @@ class UserController extends Controller
     public function showLinks30()
     {
         $userId = Auth::user()->id;
+        $data['pagePage'] = 30;
         
         $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link', 'links.button_id')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(30);
         return view('studio/links', $data);
@@ -192,6 +235,7 @@ class UserController extends Controller
     public function showLinksAll()
     {
         $userId = Auth::user()->id;
+        $data['pagePage'] = 0;
         
         $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link', 'links.button_id')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(10000000000);
         return view('studio/links', $data);

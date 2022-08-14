@@ -8318,3 +8318,12 @@ a[data-toggle="collapse"] {
     border-radius: 30px;
     border: 3px none #ffffff;
   }
+
+  .sortable-handle {
+    padding: 0px 12px;
+    margin-right: 5px;
+    cursor: grab;
+    cursor: -webkit-grabbing;
+    background-image: url("/img/drag-dark.png");
+    background-size: 22px;
+  }
