@@ -134,7 +134,7 @@ class UserController extends Controller
         $links->title = $title;
         $links->button_id = $buttonId;
         $links->save();
-        $links->order = (intval($links->id) - 1);
+        $links->order = ($links->id - 1);
         $links->save();
 
         return back();
@@ -157,7 +157,7 @@ class UserController extends Controller
             ]);
         }
 
-        $newOrder = $startLinkOrder = $perPage * ($currentPage - 1);
+        $newOrder = $perPage * ($currentPage - 1);
         $linkNewOrders = [];
         foreach ($linkOrders as $linkId) {
             if ($linkId < 0) {
