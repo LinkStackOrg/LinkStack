@@ -326,6 +326,7 @@ You can support LittleLink Custom [here](https://littlelink-custom.com/sponsor).
 **💖 Thank you:**
 
 - Stephen Marshall
+- [LeoColman](https://github.com/LeoColman)
 
 - [Add Your Name](https://littlelink-custom.com/sponsor)
 
