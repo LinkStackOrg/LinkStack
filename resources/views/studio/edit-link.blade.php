@@ -8,11 +8,11 @@
         @csrf
         <div class="form-group col-lg-8">
           <label>Link</label>
-          <input type="text" name="link" value="{{ $link }}" class="form-control" placeholder="https://google.com" required>
+          <input type="text" name="link" value="{{ $link }}" class="form-control" placeholder="https://example.com" required>
         </div>
         <div class="form-group col-lg-8">
           <label>Title</label>
-          <input type="text" name="title" value="{{ $title }}" class="form-control" placeholder="Google">
+          <input type="text" name="title" value="{{ $title }}" class="form-control" placeholder="Example">
         </div>
         <div class="form-group col-lg-8">
           <label for="exampleFormControlSelect1">Button</label>
