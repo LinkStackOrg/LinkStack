@@ -42,14 +42,14 @@
 						'perPage': perPage,
 					};
 					$.blockUI({ 
-						message: '<img width="70px" src="/img/loading.gif" />',
+						message: '<img width="70px" src="img/loading.gif" />',
 						css: {
 							backgroundColor: 'transparent',
 							border: 'none',
 							color: '#444444',
 						}
 					});
-					$.post("/studio/sort-link", formData, function(response) {
+					$.post("studio/sort-link", formData, function(response) {
 						if (response.linkOrders) {
 							$.each(response.linkOrders, function(linkId, linkOrder){
 								$("#links-table-body tr[data-id='"+linkId+"']")
