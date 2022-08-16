@@ -135,6 +135,7 @@ foreach($pages as $page)
         
 
         <!-- Buttons -->
+<?php function strp($urlStrp){return str_replace(array('http://', 'https://'), '', $urlStrp);} ?>
 <?php $initial=1; // <-- Effectively sets the initial loading time of the buttons. This value should be left at 1. ?>
 @if(config('advanced-config.use_custom_buttons') == 'true')
         <?php $array = config('advanced-config.buttons'); ?>
@@ -147,9 +148,9 @@ foreach($pages as $page)
          @elseif($button['button'] === "buy me a coffee")
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-coffee button button-hover icon-hover" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}coffee.svg">Buy me a Coffee</a></div>
          @elseif($button['button'] === "custom_website"and $button['custom_css'] === "" or $button['custom_css'] === "NULL")
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-custom_website button button-hover icon-hover" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="https://www.google.com/s2/favicons?domain={{$link->link}}">{{ $button['title'] }}</a></div>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-custom_website button button-hover icon-hover" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="https://icons.duckduckgo.com/ip3/{{strp($link->link)}}.ico">{{ $button['title'] }}</a></div>
          @elseif($button['button'] === "custom_website" and $button['custom_css'] != "")
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $button['custom_css'] }}" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="https://www.google.com/s2/favicons?domain={{$link->link}}">{{ $button['title'] }}</a></div>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $button['custom_css'] }}" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="https://icons.duckduckgo.com/ip3/{{strp($link->link)}}.ico">{{ $button['title'] }}</a></div>
          @elseif($button['button'] === "space")
          <?php 
           if (is_numeric($button['title']) and $button['title'] < 10)
