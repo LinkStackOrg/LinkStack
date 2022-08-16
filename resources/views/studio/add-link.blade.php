@@ -8,7 +8,7 @@
         @csrf
         <div class="form-group col-lg-8">
           <label>Link*</label>
-          <input type="text" name="link" class="form-control" placeholder="https://google.com" required>
+          <input type="text" name="link" class="form-control" placeholder="https://example.com" required>
         </div>
         <div class="form-group col-lg-8">
           <label>Title</label>
