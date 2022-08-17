@@ -74,6 +74,7 @@ if(env('FORCE_HTTPS') == 'true'){URL::forceScheme('https');}
 if(isset($_COOKIE['LinkCount'])){if($_COOKIE['LinkCount'] == '20'){$LinkPage = 'showLinks20';}elseif($_COOKIE['LinkCount'] == '30'){$LinkPage = 'showLinks30';}elseif($_COOKIE['LinkCount'] == 'all'){$LinkPage = 'showLinksAll';} else {$LinkPage = 'showLinks';}} else {$LinkPage = 'showLinks';} //Shows correct link number
 Route::get('/studio/index', [UserController::class, 'index'])->name('studioIndex');
 Route::get('/studio/add-link', [UserController::class, 'showButtons'])->name('showButtons');
+Route::post('/studio/sort-link', [UserController::class, 'sortLinks'])->name('sortLinks');
 Route::post('/studio/add-link', [UserController::class, 'addLink'])->name('addLink');
 Route::get('/studio/links', [UserController::class, $LinkPage])->name($LinkPage);
 Route::get('/studio/links/10', [UserController::class, 'showLinks'])->name('showLinks');
