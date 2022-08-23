@@ -17,6 +17,7 @@ Home Page, links, titles, Google Analytics and meta tags.</p>
         <form action="{{ route('editAC') }}" method="post">
           @csrf
           <div class="form-group col-lg-8">
+            <br><a style="font-size:140%;" href="#bottom">🠟 Scroll to bottom 🠟</a><br>
             <label>Advanced Configuration file.</label>
             <pre><textarea class="form-control" name="AdvancedConfig" rows="280">{{ file_get_contents('config/advanced-config.php') }}</textarea></pre>
           </div>
@@ -34,10 +35,10 @@ Home Page, links, titles, Google Analytics and meta tags.</p>
         </form>
 @elseif(str_ends_with($_SERVER['REQUEST_URI'], 'env'))
         <h2 class="mb-4"><i class="bi bi-pencil-square"> ENV</i></h2>
-        
         <form action="{{ route('editENV') }}" method="post">
           @csrf
           <div class="form-group col-lg-8">
+            <br><a style="font-size:140%;" href="#bottom">🠟 Scroll to bottom 🠟</a><br>
             <label>.env</label>
             <pre><textarea class="form-control" name="AdvancedConfig" rows="80">{{ file_get_contents('.env') }}</textarea></pre>
           </div>
@@ -45,7 +46,7 @@ Home Page, links, titles, Google Analytics and meta tags.</p>
         </form>
 @endif
 
-
+<a name="bottom"></a>
 
 @endsection
 @endif
