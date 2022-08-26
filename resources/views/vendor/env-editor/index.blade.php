@@ -44,7 +44,6 @@
 
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active p-3" id="current-env" role="tabpanel" aria-labelledby="nav-home-tab">
-            <br><a style="font-size:140%;" href="#bottom">🠟 Scroll to bottom 🠟</a><br>
                 <env-main-tab></env-main-tab>
             </div>
             <div class="tab-pane fade p-3" id="backup-env" role="tabpanel" aria-labelledby="nav-profile-tab">
@@ -55,7 +54,7 @@
             </div>
             <p style="color:#fff; font-weight:500; font-size:100%; position:relative; bottom:25px;">You can disable or enable registration <a href="{{ url('panel/pages') }}">here</a>.</p>
         </div>
-            <a name="bottom"></a>
+
         <env-keys-modal ref="keysModal"></env-keys-modal>
     </div>
 <p style="color:#fff; font-weight:500; font-size:160%;">Use the <a href="{{url()->current()}}/../panel/env">Alternative Config Editor ⤻</a></p>
