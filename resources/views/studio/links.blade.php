@@ -27,7 +27,7 @@
             <th scope="col">Title</th>
             <th scope="col">Clicks</th>
             <th scope="col">Order ⏶</th>
-            <th scope="col">Pin Link ⏶</th>
+            {{-- <th scope="col">Pin Link ⏶</th> --}}
             <th scope="col">Edit</th>
             @if(env('ENABLE_BUTTON_EDITOR') === true)<th scope="col">Button Editor</th>@endif
             <th scope="col">Delete</th>
@@ -40,7 +40,7 @@
             <td title="{{ $link->title }}">{{ Str::limit($link->title, 30) }}</td>
             <td class="text-right">{{ $link->click_number }}</td>
             <td class="text-right">{{ $link->order }}</td>
-            <td><a href="{{ route('upLink', ['up' => $link->up_link, 'id' => $link->id]) }}" class="text-primary">{{ $link->up_link }}</a></td>
+            {{-- <td><a href="{{ route('upLink', ['up' => $link->up_link, 'id' => $link->id]) }}" class="text-primary">{{ $link->up_link }}</a></td> --}}
             <td><a href="{{ route('editLink', $link->id ) }}">Edit</a></td>
             @if(env('ENABLE_BUTTON_EDITOR') === true)
             @if($link->button_id == 1 or $link->button_id == 2)
