@@ -10,7 +10,6 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
     <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
-	<base href="{{asset('')}}" />
 
     <link href="//fonts.bunny.net/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">

@@ -2,6 +2,10 @@
 
 @section('content')
 
+@push('sidebar-stylesheets')
+		<base href="{{asset('')}}" />
+@endpush
+
 @if(Request::is('studio/links/10'))
     @php setcookie("LinkCount", "10", time()+60*60*24*5, "/"); @endphp
 @elseif(Request::is('studio/links/20'))
