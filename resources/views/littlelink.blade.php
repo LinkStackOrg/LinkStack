@@ -202,7 +202,7 @@ function get_operating_system() {
 </span>
 @else
 <span class="copy-icon" role="button">
-<div onclick="alert('URL has been copied to your clipboard!')" align="right" class="sharediv"><div><a class="sharebutton button-hover icon-hover"><img alt="share-icon" class="sharebutton-img share-icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}share.svg"><span class="sharebutton-mb">Share</span></a></div></div>
+<div onclick="alert('URL has been copied to your clipboard!')" align="right" class="sharediv"><div><a class="sharebutton button-hover icon-hover"><i style="color: black;" class="fa-solid fa-share sharebutton-img share-icon hvr-icon"></i><span class="sharebutton-mb">Share</span></a></div></div>
 </span>
 @endif
 <script  src="{{ asset('littlelink/js/share.button.js') }}"></script>
