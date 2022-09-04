@@ -354,7 +354,7 @@ You can support LittleLink Custom [here](https://littlelink-custom.com/sponsor).
 Thank you for improving LittleLink Custom!
 
 <p>
-  <a href="https://github.com/JulianPrieber/littlelink-custom/graphs/contributors"><img src="https://components.littlelink-custom.com/contributors/" alt="Contributors" width="600" ></a>
+  <a href="https://github.com/JulianPrieber/littlelink-custom/graphs/contributors"><img src="https://update.littlelink-custom.com/components/contributors/" alt="Contributors" width="600" ></a>
 </p>
 
 <br>
@@ -364,7 +364,7 @@ Thank you for improving LittleLink Custom!
 Thank you for all your efforts!
 
 <p>
-  <a href="https://littlelink-custom.com/beta-tester"><img src="https://components.littlelink-custom.com/beta-testers/" alt="Contributors" width="600" ></a>
+  <a href="https://littlelink-custom.com/beta-tester"><img src="https://update.littlelink-custom.com/components/beta-testers/" alt="Contributors" width="600" ></a>
 </p>
 
 [Become a beta tester](https://littlelink-custom.com/beta-tester)
