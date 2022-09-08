@@ -53,6 +53,10 @@
   <a href="https://github.com/JulianPrieber/littlelink-custom/discussions/49">New features and additions</a>
 </p>
 
+<p align="center">
+  <i>Make suggestions for additional features to be added to the list.</i>
+</p>
+
 ---
 
 ## Function    
