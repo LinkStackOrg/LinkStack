@@ -3,6 +3,28 @@
 <head>
   <meta charset="utf-8">
 
+@php $GLOBALS['themeName'] = config('advanced-config.home_theme'); @endphp
+
+<?php
+// Theme Config
+function theme($key){
+$key = trim($key);
+$file = base_path('themes/' . $GLOBALS['themeName'] . '/config.php');
+  if (file_exists($file)) {
+    $config = include $file;
+  if (isset($config[$key])) {
+    return $config[$key];
+}}
+return null;}
+
+// Theme Custom Asset
+function themeAsset($path){
+$path = url('themes/' . $GLOBALS['themeName'] . '/extra/custom-assets/' . $path);
+return $path;}
+?>
+
+@if(theme('enable_custom_code') == "true" and theme('enable_custom_head') == "true")@include($GLOBALS['themeName'] . '.extra.custom-head')@endif
+
 @include('layouts.analytics')
 
   @if(env('CUSTOM_META_TAGS') == 'true' and config('advanced-config.title') != '')
@@ -68,6 +90,8 @@
 
 </head>
 <body>
+
+@if(theme('enable_custom_code') == "true" and theme('enable_custom_body') == "true")@include($GLOBALS['themeName'] . '.extra.custom-body')@endif
 
 @if(config('advanced-config.home_theme') != '' and config('advanced-config.home_theme') != 'default')
     <!-- Enables parallax background animations -->
@@ -142,16 +166,16 @@ foreach($pages as $page)
         <?php $array = config('advanced-config.buttons'); ?>
         @foreach($array as $button)
          @php $linkName = str_replace('default ','',$button['button']) @endphp
-         @if($button['button'] === "custom" and $button['custom_css'] === "" or $button['custom_css'] === "NULL")
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $button['button'] }} button button-hover icon-hover" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif>@if($button['icon'] == 'llc')<img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}llc.svg">@else<i style="color: {{ $button['icon'] }}" class="icon hvr-icon fa {{ $button['icon'] }}"></i>@endif{{ $button['title'] }}</a></div>
+         @if($button['button'] === "custom" and ($button['custom_css'] === "" or $button['custom_css'] === "NULL") or (theme('allow_custom_buttons') != "true" and $button['button'] === "custom"))
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $button['button'] }} button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif >@if($button['icon'] == 'llc')<img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}llc.svg">@else<i style="color: {{$button['icon']}}" class="icon hvr-icon fa {{$button['icon']}}"></i>@endif {{ $button['title'] }}</a></div>
          @elseif($button['button'] === "custom" and $button['custom_css'] != "")
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $button['custom_css'] }}" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif>@if($button['icon'] == 'llc')<img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}llc.svg">@else<i style="color: {{ $button['icon'] }}" class="icon hvr-icon fa {{ $button['icon'] }}"></i>@endif{{ $button['title'] }}</a></div>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $button['custom_css'] }}" rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif >@if($button['icon'] == 'llc')<img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}llc.svg">@else<i style="color: {{$button['icon']}}" class="icon hvr-icon fa {{$button['icon']}}"></i>@endif{{ $button['title'] }}</a></div>
          @elseif($button['button'] === "buy me a coffee")
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-coffee button button-hover icon-hover" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}coffee.svg">Buy me a Coffee</a></div>
-         @elseif($button['button'] === "custom_website"and $button['custom_css'] === "" or $button['custom_css'] === "NULL")
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-custom_website button button-hover icon-hover" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="https://icons.duckduckgo.com/ip3/{{strp($link->link)}}.ico">{{ $button['title'] }}</a></div>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-coffee button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/coffee{{theme('custom_icon_extension')}} @else{{ asset('\/littlelink/icons\/')}}coffee.svg @endif">Buy me a Coffee</a></div>
+         @elseif($button['button'] === "custom_website" and ($button['custom_css'] === "" or $button['custom_css'] === "NULL") or (theme('allow_custom_buttons') != "true" and $button['button'] === "custom_website"))
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-custom_website button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="https://icons.duckduckgo.com/ip3/{{strp($button['link'])}}.ico">{{ $button['title'] }}</a></div>
          @elseif($button['button'] === "custom_website" and $button['custom_css'] != "")
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $button['custom_css'] }}" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="https://icons.duckduckgo.com/ip3/{{strp($link->link)}}.ico">{{ $button['title'] }}</a></div>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $button['custom_css'] }}" rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="https://icons.duckduckgo.com/ip3/{{strp($button['link'])}}.ico">{{ $button['title'] }}</a></div>
          @elseif($button['button'] === "space")
          <?php 
           if (is_numeric($button['title']) and $button['title'] < 10)
@@ -209,4 +233,7 @@ foreach($pages as $page)
     </div>
   </div>
 </body>
+
+@if(theme('enable_custom_code') == "true" and theme('enable_custom_body_end') == "true")@include($GLOBALS['themeName'] . '.extra.custom-body-end')@endif
+
 </html>
