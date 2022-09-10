@@ -13,6 +13,9 @@
             if(EnvEditor::keyExists('MAINTENANCE_MODE')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('MAINTENANCE_MODE', 'false');}
 
+            if(EnvEditor::keyExists('ALLOW_CUSTOM_CODE_IN_THEMES')){ /* Do nothing if key already exists */ 
+            } else {EnvEditor::addKey('ALLOW_CUSTOM_CODE_IN_THEMES', 'true');}
+
             if (!config()->has('advanced-config.expand_panel_admin_menu_permanently') and !config()->has('disable_default_password_notice')) {
             
             function getStringBetween($string, $start, $end) {

@@ -23,7 +23,7 @@ $path = url('themes/' . $GLOBALS['themeName'] . '/extra/custom-assets/' . $path)
 return $path;}
 ?>
 
-@if(theme('enable_custom_code') == "true" and theme('enable_custom_head') == "true")@include($GLOBALS['themeName'] . '.extra.custom-head')@endif
+@if(theme('enable_custom_code') == "true" and theme('enable_custom_head') == "true" and env('ALLOW_CUSTOM_CODE_IN_THEMES') == 'true')@include($GLOBALS['themeName'] . '.extra.custom-head')@endif
 
 @include('layouts.analytics')
 
@@ -124,7 +124,7 @@ return $path;}
 </head>
 <body>
 
-@if(theme('enable_custom_code') == "true" and theme('enable_custom_body') == "true")@include($GLOBALS['themeName'] . '.extra.custom-body')@endif
+@if(theme('enable_custom_code') == "true" and theme('enable_custom_body') == "true" and env('ALLOW_CUSTOM_CODE_IN_THEMES') == 'true')@include($GLOBALS['themeName'] . '.extra.custom-body')@endif
 
 @if($info->theme != '' and $info->theme != 'default')
     <!-- Enables parallax background animations -->
@@ -294,7 +294,7 @@ function get_operating_system() {
     </div>
   </div>
 
-@if(theme('enable_custom_code') == "true" and theme('enable_custom_body_end') == "true")@include($GLOBALS['themeName'] . '.extra.custom-body-end')@endif
+@if(theme('enable_custom_code') == "true" and theme('enable_custom_body_end') == "true" and env('ALLOW_CUSTOM_CODE_IN_THEMES') == 'true')@include($GLOBALS['themeName'] . '.extra.custom-body-end')@endif
 
 </body>
 </html>
