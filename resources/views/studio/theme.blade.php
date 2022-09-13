@@ -38,7 +38,7 @@
         </details>
 
         @if(auth()->user()->role == 'admin')
-
+@if(env('ENABLE_THEME_UPDATER') == 'true')
 <style>
 details {
   width: 65%;
@@ -203,6 +203,8 @@ table, th, td {
 </details>
 
 @if($GLOBALS['updateAv'] == true)<img style="padding-left:40px; padding-top:15px; scale: 1.5;" src="https://img.shields.io/static/v1?label=&message=A theme needs updating&color=brightgreen">@endif
+
+@endif
 
         <br><br><br>
         <form action="{{ route('editTheme') }}" enctype="multipart/form-data" method="post">
