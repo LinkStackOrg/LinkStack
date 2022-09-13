@@ -156,16 +156,18 @@ table, th, td {
                         preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
                         $sourceURL = substr($matches[0][0],13);
 
-                        $replaced = str_replace("https://github.com/", "https://api.github.com/repos/", trim($sourceURL));
-                        $replaced = $replaced . "/releases/latest";
+                        $replaced = str_replace("https://github.com/", "https://raw.githubusercontent.com/", trim($sourceURL));
+                        $replaced = $replaced . "/main/readme.md";
 
                         if (strpos($sourceURL, 'github.com')){
 
                         ini_set('user_agent', 'Mozilla/4.0 (compatible; MSIE 6.0)');
                         try{
-                            $jsont = file_get_contents($replaced);
-                            $myObjt = json_decode($jsont);
-                            $Vgitt = $myObjt->tag_name;
+                            $textGit = file_get_contents($replaced);
+                            $patternGit = '/Theme Version:.*/';
+                            preg_match($patternGit, $textGit, $matches, PREG_OFFSET_CAPTURE);
+                            $sourceURLGit = substr($matches[0][0],15);
+                            $Vgitt = 'v' . $sourceURLGit;
                             $verNrv = 'v' . $verNr;
                         }catch(Exception $ex){
                             $themeVe = "error";
