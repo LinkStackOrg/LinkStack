@@ -126,6 +126,7 @@ Route::get('/panel/phpinfo', [AdminController::class, 'phpinfo'])->name('phpinfo
 Route::get('/panel/backups', [AdminController::class, 'showBackups'])->name('showBackups');
 Route::post('/panel/theme', [AdminController::class, 'deleteTheme'])->name('deleteTheme');
 Route::get('/panel/theme', [AdminController::class, 'showThemes'])->name('showThemes');
+Route::get('/update/theme', [AdminController::class, 'updateThemes'])->name('updateThemes');
 Route::get('/update', function () {return view('update', []);});
 Route::get('/backup', function () {return view('backup', []);});
 

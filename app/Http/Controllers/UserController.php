@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Auth;
 use DB;
 use ZipArchive;
+use File;
 
 use App\Models\User;
 use App\Models\Button;
@@ -413,7 +414,30 @@ class UserController extends Controller
         $zip->extractTo(base_path() . '/themes');
         $zip->close();
         unlink(base_path() . '/themes/temp.zip');
+
+        // Removes version numbers from folder.
+        
+        $folder = base_path('themes');
+        $regex = '/[0-9.-]/';
+        $files = scandir($folder);
+
+        foreach($files as $file) {
+          if($file !== '.' && $file !== '..') {
+            if(preg_match($regex, $file)) {
+              $new_file = preg_replace($regex, '', $file);
+              File::copyDirectory($folder . '/' . $file, $folder . '/' . $new_file);
+              $dirname = $folder . '/' . $file;
+              if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                system('rmdir '.escapeshellarg($dirname).' /s /q');
+              } else {
+                system("rm -rf ".escapeshellarg($dirname));
+            }
+            }
+          }
         }
+
+    }
+
 
         return Redirect('/studio/theme');
     }

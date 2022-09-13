@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\File;
 
 use Auth;
 use Exception;
+use ZipArchive;
 
 use App\Models\User;
 use App\Models\Admin;
@@ -361,6 +363,93 @@ class AdminController extends Controller
 
         return Redirect('/panel/theme');
     }}
+
+    // Update themes
+    public function updateThemes()
+    {
+
+
+        if ($handle = opendir('themes')) {
+            while (false !== ($entry = readdir($handle))) {
+
+                   if(file_exists(base_path('themes') . '/' . $entry . '/readme.md')){
+                   $text = file_get_contents(base_path('themes') . '/' . $entry . '/readme.md');
+                   $pattern = '/Theme Version:.*/';
+                   preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
+                   $verNr = substr($matches[0][0],15);}
+
+                   $themeVe = NULL;
+
+               if ($entry != "." && $entry != "..") {
+                   if(file_exists(base_path('themes') . '/' . $entry . '/readme.md')){
+                     if(!strpos(file_get_contents(base_path('themes') . '/' . $entry . '/readme.md'), 'Source code:')){$hasSource = false;}else{
+                       $hasSource = true;
+
+                       $text = file_get_contents(base_path('themes') . '/' . $entry . '/readme.md');
+                       $pattern = '/Source code:.*/';
+                       preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
+                       $sourceURL = substr($matches[0][0],13);
+
+                       $replaced = str_replace("https://github.com/", "https://api.github.com/repos/", trim($sourceURL));
+                       $replaced = $replaced . "/releases/latest";
+
+                       if (strpos($sourceURL, 'github.com')){
+
+                       ini_set('user_agent', 'Mozilla/4.0 (compatible; MSIE 6.0)');
+                       try{
+                           $jsont = file_get_contents($replaced);
+                           $myObjt = json_decode($jsont);
+                           $Vgitt = $myObjt->tag_name;
+                           $verNrv = 'v' . $verNr;
+                       }catch(Exception $ex){
+                           $themeVe = "error";
+                           $Vgitt = NULL;
+                           $verNrv = NULL;
+                       }
+
+                       if(trim($Vgitt) > trim($verNrv)){
+
+
+                    $fileUrl = trim($sourceURL) . '/archive/refs/tags/' . trim($verNrv) . '.zip';
+
+                    
+                    file_put_contents(base_path('themes/theme.zip'), fopen($fileUrl, 'r'));
+                    
+                    
+                    $zip = new ZipArchive;
+                    $zip->open(base_path() . '/themes/theme.zip');
+                    $zip->extractTo(base_path('themes'));
+                    $zip->close();
+                    unlink(base_path() . '/themes/theme.zip');
+                         
+                    $folder = base_path('themes');
+                    $regex = '/[0-9.-]/';
+                    $files = scandir($folder);
+
+                    foreach($files as $file) {
+                        if($file !== '.' && $file !== '..') {
+                          if(preg_match($regex, $file)) {
+                            $new_file = preg_replace($regex, '', $file);
+                            File::copyDirectory($folder . '/' . $file, $folder . '/' . $new_file);
+                            $dirname = $folder . '/' . $file;
+                            if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                              system('rmdir '.escapeshellarg($dirname).' /s /q');
+                            } else {
+                              system("rm -rf ".escapeshellarg($dirname));
+                          }
+                          }
+                        }
+                      }
+
+                       }
+                       }
+                       }
+                     }
+                   }}}
+
+
+        return Redirect('/studio/theme');
+    }
 
     //Shows config file editor page
     public function showThemes(request $request)

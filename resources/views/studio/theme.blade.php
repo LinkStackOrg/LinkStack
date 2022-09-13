@@ -38,6 +38,172 @@
         </details>
 
         @if(auth()->user()->role == 'admin')
+
+<style>
+details {
+  width: 65%;
+  margin-left: 15px;
+  {{-- max-width: calc(100% - 20rem); --}}
+  position: relative;
+  border: 1px solid #78909C;
+  border-radius: 6px;
+  background-color: #ECEFF1;
+  color: #263238;
+  transition: background-color .15s;
+  
+  > :last-child {
+    margin-bottom: 1rem;
+  }
+  
+  &::before {
+    width: 100%;
+    height: 100%;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: inherit;
+    opacity: .15;
+    box-shadow: 0 .25em .5em #263238;
+    pointer-events: none;
+    transition: opacity .2s;
+    z-index: -1;
+  }
+  
+  &[open] {
+    background-color: #FFF;
+    
+    &::before {
+      opacity: .6;
+    }
+  }
+}
+
+summary {
+  padding: 0.375rem 0.75rem;
+  width: 100%;
+  display: block;
+  position: relative;
+  font-size: 1.33em;
+  font-weight: bold;
+  cursor: pointer;
+  
+  &::before,
+  &::after {
+    width: .75em;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    content: '';
+    background-color: currentColor;
+    text-align: right;
+    transform: translateY(-50%);
+    transition: transform .2s ease-in-out;
+  }
+  
+  &::after {
+    transform: translateY(-50%) rotate(90deg);
+    
+    [open] & {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+  
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<br><br><br>
+<details>
+  <summary><i class="bi bi-caret-down-fill"></i> Theme updater <img src="https://img.shields.io/static/v1?label=&message=BETA&color=yellow"></summary>
+  <div style="padding:10px;">
+  <table>
+    <tr>
+      <th style="width:85%;">Theme name:</th>
+      <th style="width: 15%;">Update status:</th>
+      <th>Version:</th>
+    </tr>
+            <?php 
+
+            if ($handle = opendir('themes')) {
+             while (false !== ($entry = readdir($handle))) {
+
+                    if(file_exists(base_path('themes') . '/' . $entry . '/readme.md')){
+                    $text = file_get_contents(base_path('themes') . '/' . $entry . '/readme.md');
+                    $pattern = '/Theme Version:.*/';
+                    preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
+                    $verNr = substr($matches[0][0],15);}
+
+                    $themeVe = NULL;
+                    $GLOBALS['updateAv'] = NULL;
+
+                if ($entry != "." && $entry != "..") {
+                    echo '<tr>';
+                    echo '<th>'; print_r(ucfirst($entry));
+                    echo '</th>';
+                    echo '<th><center>';
+                    if(file_exists(base_path('themes') . '/' . $entry . '/readme.md')){
+                      if(!strpos(file_get_contents(base_path('themes') . '/' . $entry . '/readme.md'), 'Source code:')){$hasSource = false;}else{
+                        $hasSource = true;
+
+                        $text = file_get_contents(base_path('themes') . '/' . $entry . '/readme.md');
+                        $pattern = '/Source code:.*/';
+                        preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
+                        $sourceURL = substr($matches[0][0],13);
+
+                        $replaced = str_replace("https://github.com/", "https://api.github.com/repos/", trim($sourceURL));
+                        $replaced = $replaced . "/releases/latest";
+
+                        if (strpos($sourceURL, 'github.com')){
+
+                        ini_set('user_agent', 'Mozilla/4.0 (compatible; MSIE 6.0)');
+                        try{
+                            $jsont = file_get_contents($replaced);
+                            $myObjt = json_decode($jsont);
+                            $Vgitt = $myObjt->tag_name;
+                            $verNrv = 'v' . $verNr;
+                        }catch(Exception $ex){
+                            $themeVe = "error";
+                            $Vgitt = NULL;
+                            $verNrv = NULL;
+                        }
+
+                        if(trim($Vgitt) > trim($verNrv)){
+                          $updateAv = true;
+                          $GLOBALS['updateAv'] = true;
+                        } else {
+                          $updateAv = false;
+                        }
+                        } else {$themeVe = "error";}
+
+                        }
+                      }
+
+                    if ($themeVe == "error") {
+                    echo '<img style="scale:0.9" src="https://img.shields.io/static/v1?label=&message=Error!&color=red">';
+                    } elseif ($hasSource == false) {
+                    echo '<img style="scale:0.9" src="https://img.shields.io/static/v1?label=&message=Update manually&color=red">';
+                    } elseif($updateAv == true) {
+                    echo '<img style="scale:0.9" src="https://img.shields.io/static/v1?label=&message=Update available&color=yellow">';
+                    } else {
+                    echo '<img style="scale:0.9" src="https://img.shields.io/static/v1?label=&message=Up to date&color=green">';
+                    }
+                    echo '</center></th>';
+                    echo '<th>' . $verNr . '</th>';
+                    echo '</tr>';}
+                    }} ?>
+  </table>
+  </div>
+  <a href="{{url('update/theme')}}" class="mt-3 ml-3 btn btn-info">Update themes</a><br><br>
+</details>
+
+@if($GLOBALS['updateAv'] == true)<img style="padding-left:40px; padding-top:15px; scale: 1.5;" src="https://img.shields.io/static/v1?label=&message=A theme needs updating&color=brightgreen">@endif
+
         <br><br><br>
         <form action="{{ route('editTheme') }}" enctype="multipart/form-data" method="post">
         @csrf
@@ -60,11 +226,8 @@
         </div>
         </form>
         </details>
-
-
         
         @endif
-
 
           @endforeach
 @endsection
