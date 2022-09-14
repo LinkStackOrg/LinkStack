@@ -188,7 +188,7 @@ table, th, td {
                     if ($themeVe == "error") {
                     echo '<img style="scale:0.9" src="https://img.shields.io/static/v1?label=&message=Error!&color=red">';
                     } elseif ($hasSource == false) {
-                    echo '<img style="scale:0.9" src="https://img.shields.io/static/v1?label=&message=Update manually&color=red">';
+                    echo '<a href="https://littlelink-custom.com/themes.php" target="_blank"><img style="scale:0.9" src="https://img.shields.io/static/v1?label=&message=Update manually&color=red"></a>';
                     } elseif($updateAv == true) {
                     echo '<img style="scale:0.9" src="https://img.shields.io/static/v1?label=&message=Update available&color=yellow">';
                     } else {
