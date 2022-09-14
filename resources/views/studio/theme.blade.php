@@ -117,6 +117,18 @@ summary {
 table, th, td {
   border:1px solid black;
 }
+
+.updatespin {
+  animation: upspin 1s linear infinite;
+  display:inline-block;
+}
+
+@keyframes upspin {
+	100% {
+			transform: rotate(360deg)
+	}
+}
+
 </style>
 <br><br><br>
 <details>
@@ -200,7 +212,8 @@ table, th, td {
                     }} ?>
   </table>
   </div>
-  <a href="{{url('update/theme')}}" class="mt-3 ml-3 btn btn-info"><i class="bi bi-arrow-repeat"></i> Update all themes</a><br><br>
+  <a href="{{url('update/theme')}}" onclick="updateicon()" class="mt-3 ml-3 btn btn-info row"><span id="updateicon" class=""><i class="bi bi-arrow-repeat"></i></span> Update all themes</a><br><br>
+  <script>function updateicon() {  var element = document.getElementById("updateicon"); element.classList.add("updatespin");}</script>
 </details>
 
 <?php 
