@@ -16,6 +16,9 @@
 */
 
 
+@import url('https://fonts.bunny.net/css?family=Karla:400,700&display=swap');
+
+
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .container {
@@ -57,8 +60,6 @@
   /* NOTE
   html is set to 62.5% so that all the REM measurements throughout Skeleton
   are based on 10px sizing. So basically 1.5rem = 15px :) */
-  
-  @import url('https://fonts.bunny.net/css?family=Karla:400,700&display=swap');
 
   html {
     font-size: 100%; }

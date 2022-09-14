@@ -2,11 +2,12 @@
 Find more themes: https://github.com/JulianPrieber/llc-themes
                                                                                                                                                                          
 *	Theme Name: Galaxy
-*	Theme Version: 1.3
+*	Theme Version: 1.6
 *	Theme Date: 2022-06-09
 *	Theme Author: JulianPrieber
 *	Theme Author URI: https://github.com/JulianPrieber
 *	Theme License: GPLv3
+*	Source code: https://github.com/JulianPrieber2/galaxy
 
 
 ### Used assets:
