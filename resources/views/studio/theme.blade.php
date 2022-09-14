@@ -140,7 +140,6 @@ table, th, td {
                     $verNr = substr($matches[0][0],15);}
 
                     $themeVe = NULL;
-                    $GLOBALS['updateAv'] = NULL;
 
                 if ($entry != "." && $entry != "..") {
                     echo '<tr>';
@@ -204,7 +203,10 @@ table, th, td {
   <a href="{{url('update/theme')}}" class="mt-3 ml-3 btn btn-info">Update themes</a><br><br>
 </details>
 
-@if($GLOBALS['updateAv'] == true)<img style="padding-left:40px; padding-top:15px; scale: 1.5;" src="https://img.shields.io/static/v1?label=&message=A theme needs updating&color=brightgreen">@endif
+<?php 
+try{ if($GLOBALS['updateAv'] == true) echo '<img style="padding-left:40px; padding-top:15px; scale: 1.5;" src="https://img.shields.io/static/v1?label=&message=A theme needs updating&color=brightgreen">';
+}catch(Exception $ex){}
+?>
 
 @endif
 
