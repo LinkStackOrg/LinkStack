@@ -120,7 +120,7 @@ table, th, td {
 </style>
 <br><br><br>
 <details>
-  <summary><i class="bi bi-caret-down-fill"></i> Theme updater <img src="https://img.shields.io/static/v1?label=&message=BETA&color=yellow"></summary>
+  <summary><i class="bi bi-caret-down-fill"></i> Theme updater </summary>
   <div style="padding:10px;">
   <table>
     <tr>
