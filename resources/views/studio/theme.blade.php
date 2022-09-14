@@ -200,7 +200,7 @@ table, th, td {
                     }} ?>
   </table>
   </div>
-  <a href="{{url('update/theme')}}" class="mt-3 ml-3 btn btn-info">Update themes</a><br><br>
+  <a href="{{url('update/theme')}}" class="mt-3 ml-3 btn btn-info"><i class="bi bi-arrow-repeat"></i> Update all themes</a><br><br>
 </details>
 
 <?php 
