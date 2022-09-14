@@ -126,7 +126,7 @@ table, th, td {
     <tr>
       <th style="width:85%;">Theme name:</th>
       <th style="width: 15%;">Update status:</th>
-      <th>Version:</th>
+      <th>Version:&nbsp;</th>
     </tr>
             <?php 
 
