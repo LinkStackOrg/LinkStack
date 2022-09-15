@@ -323,7 +323,7 @@ $userdbs = DB::table('users')->where('id', $littlelink_current)->get();
 				{
 				return str_contains(get_headers($urlsb)[0], "200 OK");
 					}
-						if (URL_event_exists("https://julianprieber.github.io/littlelink-custom-events/event.json")){
+						if (URL_event_exists("https://littlelink-custom.github.io/littlelink-custom-events/event.json")){
 							$EventServerExists = "true";
 						}
 							} catch (exception $e) {
@@ -332,7 +332,7 @@ $userdbs = DB::table('users')->where('id', $littlelink_current)->get();
 						?>
 	@if(env('NOTIFY_EVENTS') === true and $EventServerExists == 'true')
         <?php
-        $GetEventJson = file_get_contents("https://julianprieber.github.io/littlelink-custom-events/event.json");
+        $GetEventJson = file_get_contents("https://littlelink-custom.github.io/littlelink-custom-events/event.json");
 		$EventJson = json_decode($GetEventJson, true);
 		if(isset($_COOKIE['HideEvent']) == NULL) {
 			setcookie("HideEvent",$_COOKIE['ID'] = "0", time()+60*60*24*5, "/");
