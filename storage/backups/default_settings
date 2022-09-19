@@ -11,7 +11,7 @@ DISPLAY_FOOTER=true
 DISPLAY_CREDIT=true
 
 #Home URL=Changes if a user profile should be displayed as the homepage.
-#=Leave empty to use the default homepage. To set your profile as the homepage, enter a LittleLink name. You can find this on the user panel under the page setting, the name is what comes after the '@'.
+#=Leave empty to use the default homepage. To set your profile as the homepage, enter a Arcane Link name. You can find this on the user panel under the page setting, the name is what comes after the '@'.
 #=(e.g. 'admin' without the '@')
 HOME_URL=
 
@@ -20,11 +20,11 @@ HOME_URL=
 #=It is recommended to only turn this option on if you trust your users or only use this instance for yourself.
 ALLOW_USER_HTML=false
 
-#App Settings=Changes settings regarding your LittleLink Custom installation. You probably only want to change the App Name setting.
+#App Settings=Changes settings regarding the Arcane Link installation. You probably only want to change the App Name setting.
 #=App_Name changes  the displayed name for the App in the title, for example.
-APP_NAME="LittleLink Custom"
+APP_NAME="Arcane Link"
 APP_KEY=
-#=The APP_URL should be left empty under most circumstances. This setting is not required for LittleLink Custom, and you should only change this if required for your setup.
+#=The APP_URL should be left empty under most circumstances. This setting is not required for Arcane Link, and you should only change this if required for your setup.
 APP_URL=
 
 #ENABLE_BUTTON-EDITOR=Determines if the custom button editor should be enabled or not, default is true.
@@ -44,7 +44,7 @@ MAINTENANCE_MODE=false
 #Database Settings=Should be left alone. If you wish to use mysql you'd have to seed the database again.
 DB_CONNECTION=sqlite
 
-#Mail Settings=LittleLink Custom comes with a free to use built-in SMTP server for sending mail. You can leave this setting as is, if you wish to use this service please read our terms and conditions at llc-mail.tru.io. If you do not wish to use the built-in SMTP server, change the setting below
+#Mail Settings
 #=MAIL_MAILER either smtp or built-in. Make sure to change this setting if you want to add a custom SMTP server.
 MAIL_MAILER=built-in
 MAIL_HOST=

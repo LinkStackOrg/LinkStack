@@ -1,4 +1,4 @@
-# A LittleLink Custom Theme
+# A Arcane Link Theme
 Find more themes: https://github.com/JulianPrieber/llc-themes
                                                                                                                                                                          
 *	Theme Name: Galaxy

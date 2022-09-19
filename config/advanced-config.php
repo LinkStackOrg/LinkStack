@@ -9,7 +9,7 @@ $analytics =
 | Analytics
 |--------------------------------------------------------------------------
 |
-| Add external analytics services to the Arcane Link instance by adding them below.
+| Add external analytics services to your Arcane Link Custom instance by adding them below.
 | Everything you enter below will be added to the <head> tag of every page.
 | Formatting in plain HTML is expected.
 |
@@ -18,15 +18,7 @@ $analytics =
 <<<EOD
 <!----------Insert your analytics code here:---------->
 
-<!-- Global Site Tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=TRACKING_ID"></script>
 
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'TRACKING_ID');
-</script>
 
 <!--------------------------------------------------->
 EOD;;
@@ -47,13 +39,13 @@ return [
     */
 
     'lang'            => 'en', // Sets <html lang="en">
-    'title'           => 'Title', // Overrides the default meta page title. Leave empty to use the Arcane Link page title as the title.
-    'description'     => 'This is a description', // Overrides the default meta page description. Leave empty to use the Arcane Link page description as the description.
+    'title'           => '', // Overrides the default meta page title. Leave empty to use your arcanelink page title as the title.
+    'description'     => '', // Overrides the default meta page description. Leave empty to use your arcanelink page description as the description.
     'robots'          => 'index,follow',
     'viewport'        => 'width=device-width, initial-scale=1',
-    'canonical_url'   => 'https://example.com', // Tells search engines to index "https://example.com/"  instead of "https://example.com/@admin",  for example.
-    'twitter_creator' => '@elonmusk', // Twitter @username. For example: "@elonmusk".
-    'author'          => 'Julian Prieber', // Your name.
+    'canonical_url'   => '', // Tells search engines to index "https://example.com/"  instead of "https://example.com/@admin",  for example.
+    'twitter_creator' => '', // Twitter @username. For example: "@elonmusk".
+    'author'          => '', // Your name.
 
 
     /*
@@ -72,15 +64,14 @@ return [
 
 
     // Overwrites default theme regardless of preference defined by the operating system.
-    'theme' => 'light', // Either "dark" or "light".
+    'theme' => '', // Either "dark" or "light".
 
 
-    // Overwrites default theme regardless of preference defined by the operating system, unless manually overwritten by user.
-    // Overwrites default page title after the Arcane Link name on Arcane Link pages.
-    // Example: "admin 🔗 Arcane Link"
+    // Overwrites default page title after the arcanelink name on arcanelink pages.
+    // Example: "admin 🔗 arcanelink Custom"
     //                 ⤌------------------⤍
     //                 ⬑ What you can change with this setting.
-    'arcanelink_title' => '💡 Arcane Link',
+    'arcanelink_title' => '',
 
 
     // Either "true", "false" or "auth". 
@@ -110,12 +101,12 @@ return [
     // If 'true' the Home Page will be disabled entirely.
     // You will still be able to login on the login page etc.
     'disable_home_page' => 'false', // Either 'true', 'false' or 'redirect'.
-    'redirect_home_page' => 'https://arcanel.ink', // Only active if value above is set to 'redirect'.
+    'redirect_home_page' => 'https://arcanetechsolutions.com', // Only active if value above is set to 'redirect'.
 
-    // The URL prefix is the symbol that comes before a Arcane Link URL.
+    // The URL prefix is the symbol that comes before a arcanelink URL.
     // For example the '@' in 'example.com/@admin'.
     // If empty no prefix is required. Use with caution.
-    'custom_url_prefix' => '✅', // The '@' prefix will always work regardless of this setting.
+    'custom_url_prefix' => '+', // The '@' prefix will always work regardless of this setting.
 
 
     /*
@@ -136,9 +127,9 @@ return [
     'display_link_contact' => 'true',
 
     // Enter a custom home link (for example, 'https://arcanel.ink').
-    'custom_link_home' => 'https://arcanel.ink', // Leave empty to use default value.
+    'custom_link_home' => '', // Leave empty to use default value.
     // Changes the text on the "Home" link.
-    'custom_text_home' => 'Custom Text', // Leave empty to use default value.
+    'custom_text_home' => 'Home', // Leave empty to use default value.
     
     /*
     |--------------------------------------------------------------------------
@@ -158,7 +149,7 @@ return [
     |
     */
 
-    'home_footer' => 'custom', // Either 'default', 'alt', 'custom' or 'false'.
+    'home_footer' => 'alt', // Either 'default', 'alt', 'custom' or 'false'.
 
     // You can enter plain text or HTML into this field.
     // You can use "{year}" as a placeholder for the current year.
@@ -169,7 +160,7 @@ return [
     // Apply a theme to your Home Page.
     // Some themes are not compatible with the Home Page. Use at your own discretion.
     // Enter the name of a theme located in your "themes" folder (for example, 'galaxy').
-    'home_theme' => 'galaxy', // Leave empty or enter 'default' to use the default theme.
+    'home_theme' => 'default', // Leave empty or enter 'default' to use the default theme.
 
     /*
     |--------------------------------------------------------------------------
@@ -213,27 +204,35 @@ return [
     'use_custom_buttons'  => 'true', // Set this to false if you wish to display the old buttons.
 
     'buttons' => array(
-      array(
-        'button' => 'github',
-        'link' => 'https://github.com/arcane-technology/arcane-link',
-        'title' => '',
-        'icon' => '',
-        'custom_css' => ''
-      ),
+
+    array(
+      'button' => 'facebook',
+      'link' => 'https://www.facebook.com/ATS.ArcaneLink',
+      'title' => 'Follow Us',
+      'icon' => '',
+      'custom_css' => ''
+    ),
       array(
           'button' => 'custom',
-          'link' => 'https://arcanetechsolutions.com',
-          'title' => 'Arcane Technology Solutions, LLC',
-          'icon' => 'llc',
+          'link' => 'https://arcanetechsolutions.com/services/professional-email/',
+          'title' => 'Get Professional Email',
+          'icon' => 'fa-envelopes-bulk',
           'custom_css' => 'color:#ffffff; background-image:linear-gradient(76deg, #f70fff 0%, #11d4de 100%);'),
       array(
-        'button' => 'facebook',
-        'link' => 'https://facebook.com/ATSArcaneLink',
-        'title' => 'Visit us on Facebook',
-        'icon' => 'fa-hand-holding-hand',
-        'custom_css' => ''
-      );
-    )
+        'button' => 'custom',
+        'link' => 'https://donate.stripe.com/bIYdUzelK0bB0eY144',
+        'title' => 'Donate',
+        'icon' => 'fa-hand-holding-heart',
+        'custom_css' => 'color:#ffffff; background-image:radial-gradient(circle, #00d2ff 0%, #3a7bd5 95%);'
+      ),
+    array(
+      'button' => 'github',
+      'link' => 'https://github.com/Arcane-technology/',
+      'title' => '',
+      'icon' => '',
+      'custom_css' => ''
+    ),
+    ),
 
     /*
     |--------------------------------|
@@ -294,10 +293,9 @@ return [
     */
 
     // Expands admin menu on the Admin Panel Sidebar permanently
-    'expand_panel_admin_menu_permanently' => 'true', // Either "true" or "false".
+    'expand_panel_admin_menu_permanently' => 'false', // Either "true" or "false".
 
     // Should only be used in a local testing environment
     'disable_default_password_notice' => 'false', // Either "true" or "false".
-
 
 ];

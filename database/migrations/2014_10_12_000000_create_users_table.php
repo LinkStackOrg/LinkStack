@@ -19,8 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('littlelink_name')->unique()->nullable();
-            $table->string('littlelink_description')->nullable();
+            $table->string('arcanelink_name')->unique()->nullable();
+            $table->string('arcanelink_description')->nullable();
             $table->enum('role', ['user', 'vip', 'admin'])->default('user');
             $table->enum('block', ['yes', 'no'])->default('no');
             $table->rememberToken();

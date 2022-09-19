@@ -48,39 +48,9 @@ return [
 			'name' => env('MAIL_FROM_NAME'),
 			],
         ],
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Built in SMTP server
-    |--------------------------------------------------------------------------
-    |
-    | LittleLink Custom now includes an open and free to use SMTP server. 
-    | Mails from this service may only be used for
-    | password recovery and registration purposes involving
-    | users personal LittleLink Custom or LittleLink Admin pages.
-    | Users of this service must abide by our Terms and Conditions
-    | found at https://llc-mail.tru.io/.
-    |
-    */
-
-        'built-in' => [
-            'transport' => 'smtp',
-            'host' => 'llc-mail.tru.io',
-            'port' => '587',
-            'encryption' => 'tls',
-            'username' => 'littlelink-custom@llc-mail.tru.io',
-            'password' => 'fTwsn=eNB4',
-            'timeout' => null,
-            'auth_mode' => null,
-        'from' => [
-			'address' => 'littlelink-custom@llc-mail.tru.io',
-			'name' => env('MAIL_FROM_NAME'),
-			],
-        ],
-
     ],
 
+   
 
     /*
     |--------------------------------------------------------------------------
@@ -106,9 +76,8 @@ return [
 
     'markdown' => [
         'theme' => 'default',
-
         'paths' => [
-            resource_path('views/vendor/mail'),
+            resource_path('views/vendor/mail')
         ],
     ],
 

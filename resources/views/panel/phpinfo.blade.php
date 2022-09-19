@@ -3,7 +3,7 @@
 @if(auth()->user()->role == 'admin')
 <head>
   <!-- begin dark mode detection -->
-	<script src="{{ asset('littlelink/js/js.cookie.min.js') }}"></script>
+	<script src="{{ asset('content/js/js.cookie.min.js') }}"></script>
 	<script>
 		// code to set the `color_scheme` cookie
 		var $color_scheme = Cookies.get("color_scheme");

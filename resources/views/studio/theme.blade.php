@@ -19,7 +19,7 @@
 <div id="result" style="left: 1%; position: relative; background-color:#2c2d3a; border-radius: 25px; min-width:300px; max-width:950px; box-shadow: 0 10px 20px -10px rgba(0,0,0, 0.6);">
 <div style="padding:5%5%;">
 <h3 align="center" style="color:white">Preview:</h3>
-<center><img style="width:95%;max-width:700px;argin-left:1rem!important;" src="@if(file_exists(base_path() . '/themes/' . $page->theme . '/preview.png')){{url('/themes/' . $page->theme . '/preview.png')}}@elseif($page->theme === 'default' or empty($page->theme)){{url('/littlelink/images/themes/default.png')}}@else{{url('/littlelink/images/themes/no-preview.png')}}@endif"></img></center>
+<center><img style="width:95%;max-width:700px;argin-left:1rem!important;" src="@if(file_exists(base_path() . '/themes/' . $page->theme . '/preview.png')){{url('/themes/' . $page->theme . '/preview.png')}}@elseif($page->theme === 'default' or empty($page->theme)){{url('/content/images/themes/default.png')}}@else{{url('/content/images/themes/no-preview.png')}}@endif"></img></center>
 </div></div><br>
 
         <div class="form-group col-lg-8">
@@ -149,7 +149,10 @@ table, th, td {
                     $text = file_get_contents(base_path('themes') . '/' . $entry . '/readme.md');
                     $pattern = '/Theme Version:.*/';
                     preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
-                    $verNr = substr($matches[0][0],15);}
+                    if(sizeof($matches) > 0) {
+                      $verNr = substr($matches[0][0],15);
+                    }
+                  }
 
                     $themeVe = NULL;
 
@@ -200,7 +203,7 @@ table, th, td {
                     if ($themeVe == "error") {
                     echo '<img style="scale:0.9" src="https://img.shields.io/static/v1?label=&message=Error!&color=red">';
                     } elseif ($hasSource == false) {
-                    echo '<a href="https://littlelink-custom.com/themes.php" target="_blank"><img style="scale:0.9" src="https://img.shields.io/static/v1?label=&message=Update manually&color=red"></a>';
+                    echo '<a href="https://arcanel.ink/themes.php" target="_blank"><img style="scale:0.9" src="https://img.shields.io/static/v1?label=&message=Update manually&color=red"></a>';
                     } elseif($updateAv == true) {
                     echo '<img style="scale:0.9" src="https://img.shields.io/static/v1?label=&message=Update available&color=yellow">';
                     } else {
@@ -241,7 +244,7 @@ try{ if($GLOBALS['updateAv'] == true) echo '<img style="padding-left:40px; paddi
           <a class="deltheme" href="{{ url('/panel/theme') }}">&emsp; Delete themes</a>
         <div class="row">
         <button type="submit" class="mt-3 ml-3 btn btn-info">Upload theme</button>
-        <button class="mt-3 ml-3 btn btn-primary" title="Download more themes"><a href="https://littlelink-custom.com/themes.php" target="_blank" style="color:#FFFFFF;">Download themes</a></button>
+        <button class="mt-3 ml-3 btn btn-primary" title="Download more themes"><a href="https://arcanel.ink/themes.php" target="_blank" style="color:#FFFFFF;">Download themes</a></button>
         </div>
         </form>
         </details>

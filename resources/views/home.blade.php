@@ -47,46 +47,46 @@ return $path;}
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.2/css/all.css" integrity="sha384-fZCoUih8XsaUZnNDOiLqnby1tMJ0sE7oBbNk2Xxf5x8Z4SvNQ9j83vFMa/erbVrV" crossorigin="anonymous"/>
 
   <link href="//fonts.bunny.net/css?family=Open+Sans:400,600,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
-  @if(file_exists(base_path("littlelink/images/avatar.png" )))
-  <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
+  <link rel="stylesheet" href="{{ asset('content/css/normalize.css') }}">
+  <link rel="stylesheet" href="{{ asset('content/css/animate.css') }}">
+  @if(file_exists(base_path("arcanelink/images/avatar.png" )))
+  <link rel="icon" type="image/png" href="{{ asset('content/images/avatar.png') }}">
   @else
-  <link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
+  <link rel="icon" type="image/png" href="{{ asset('content/images/arcanelink-logo.png') }}">
   @endif
 
 @if(config('advanced-config.home_theme') != '' and config('advanced-config.home_theme') != 'default')
 
-  <!-- LittleLink Custom Theme: "{{config('advanced-config.home_theme')}}" -->
+  <!-- Arcane Link Theme: "{{config('advanced-config.home_theme')}}" -->
 
   <link rel="stylesheet" href="themes/{{config('advanced-config.home_theme')}}/brands.css">
   <link rel="stylesheet" href="themes/{{config('advanced-config.home_theme')}}/skeleton-auto.css">
 @if(file_exists(base_path('themes/' . config('advanced-config.home_theme') . '/animations.css')))
   <link rel="stylesheet" href="<?php echo asset('themes/' . config('advanced-config.home_theme') . '/animations.css') ?>">
 @else
-  <link rel="stylesheet" href="{{ asset('littlelink/css/animations.css') }}">
+  <link rel="stylesheet" href="{{ asset('content/css/animations.css') }}">
 @endif
 
 @else
-  <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/animations.css') }}">
+  <link rel="stylesheet" href="{{ asset('content/css/brands.css') }}">
+  <link rel="stylesheet" href="{{ asset('content/css/animations.css') }}">
   <?php // override dark/light mode if override cookie is set
   $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
   @if ($color_scheme_override == 'dark')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
+  <link rel="stylesheet" href="{{ asset('content/css/skeleton-dark.css') }}">
   @elseif ($color_scheme_override == 'light')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
+  <link rel="stylesheet" href="{{ asset('content/css/skeleton-light.css') }}">
   @elseif (config('advanced-config.theme') == 'dark')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
+  <link rel="stylesheet" href="{{ asset('content/css/skeleton-dark.css') }}">
   @elseif (config('advanced-config.theme') == 'light')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
+  <link rel="stylesheet" href="{{ asset('content/css/skeleton-light.css') }}">
   @else
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-auto.css') }}">
+  <link rel="stylesheet" href="{{ asset('content/css/skeleton-auto.css') }}">
   @endif
 @endif
 
                                                         {{-- custom font for logo text --}}
-  <style>@font-face{font-family:'ll';src:url({{ asset('littlelink/fonts/littlelink-custom.otf') }}) format("opentype")}</style>
+  <style>@font-face{font-family:'ll';src:url({{ asset('content/fonts/arcanelink-custom.otf') }}) format("opentype")}</style>
 
 </head>
 <body>
@@ -141,12 +141,11 @@ foreach($pages as $page)
     </div>
       <div class="column" style="margin-top: 15%">
         <!-- Your Image Here -->
-        @if(file_exists(base_path("littlelink/images/avatar.png" )))
-        <img alt="avatar" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="128px" height="128px">
+        @if(file_exists(base_path("arcanelink/images/avatar.png" )))
+        <img alt="avatar" src="{{ asset('content/images/avatar.png') }}" srcset="{{ asset('content/images/avatar@2x.png 2x') }}" width="128px" height="128px">
         @else
         <div class="logo-container fadein">
-           <img class="rotate" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="width:150px; height:150px;">
-           <div class="logo-centered">l</div>
+           <img class="rotate" src="{{ asset('content/images/arcanelink-logo.png') }}" alt="Logo" style="width:150px; height:150px;">
         </div>
         @endif
 
@@ -167,11 +166,11 @@ foreach($pages as $page)
         @foreach($array as $button)
          @php $linkName = str_replace('default ','',$button['button']) @endphp
          @if($button['button'] === "custom" and ($button['custom_css'] === "" or $button['custom_css'] === "NULL") or (theme('allow_custom_buttons') == "false" and $button['button'] === "custom"))
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $button['button'] }} button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif >@if($button['icon'] == 'llc')<img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}llc.svg">@else<i style="color: {{$button['icon']}}" class="icon hvr-icon fa {{$button['icon']}}"></i>@endif {{ $button['title'] }}</a></div>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $button['button'] }} button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif >@if($button['icon'] == 'llc')<img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/content/icons\/')}}llc.svg">@else<i style="color: {{$button['icon']}}" class="icon hvr-icon fa {{$button['icon']}}"></i>@endif {{ $button['title'] }}</a></div>
          @elseif($button['button'] === "custom" and $button['custom_css'] != "")
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $button['custom_css'] }}" rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif >@if($button['icon'] == 'llc')<img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}llc.svg">@else<i style="color: {{$button['icon']}}" class="icon hvr-icon fa {{$button['icon']}}"></i>@endif{{ $button['title'] }}</a></div>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $button['custom_css'] }}" rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif >@if($button['icon'] == 'llc')<img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/content/icons\/')}}llc.svg">@else<i style="color: {{$button['icon']}}" class="icon hvr-icon fa {{$button['icon']}}"></i>@endif{{ $button['title'] }}</a></div>
          @elseif($button['button'] === "buy me a coffee")
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-coffee button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/coffee{{theme('custom_icon_extension')}} @else{{ asset('\/littlelink/icons\/')}}coffee.svg @endif">Buy me a Coffee</a></div>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-coffee button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/coffee{{theme('custom_icon_extension')}} @else{{ asset('\/content/icons\/')}}coffee.svg @endif">Buy me a Coffee</a></div>
          @elseif($button['button'] === "custom_website" and ($button['custom_css'] === "" or $button['custom_css'] === "NULL") or (theme('allow_custom_buttons') == "false" and $button['button'] === "custom_website"))
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-custom_website button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="https://icons.duckduckgo.com/ip3/{{strp($button['link'])}}.ico">{{ $button['title'] }}</a></div>
          @elseif($button['button'] === "custom_website" and $button['custom_css'] != "")
@@ -188,13 +187,13 @@ foreach($pages as $page)
          @elseif($button['button'] === "heading")
          <h2>{{ $button['title'] }}</h2>
          @else
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $button['button'] }} button button-hover icon-hover" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/') . $linkName }}.svg">{{ ucfirst($linkName) }}</a></div>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $button['button'] }} button button-hover icon-hover" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/content/icons\/') . $linkName }}.svg">{{ ucfirst($linkName) }}</a></div>
          @endif
         @endforeach
 @else
-        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-github button button-hover icon-hover"><img alt="button-icon" class="icon hvr-icon" src="{{ asset('littlelink/icons/github.svg') }}">Github</div></div>
-        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-twitter button button-hover icon-hover"><img alt="button-icon" class="icon hvr-icon" src="{{ asset('littlelink/icons/twitter.svg') }}">Twitter</div></div>
-        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-instagram button button-hover icon-hover"><img alt="button-icon" class="icon hvr-icon" src="{{ asset('littlelink/icons/instagram.svg') }}">Instagram</div></div>
+        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-github button button-hover icon-hover"><img alt="button-icon" class="icon hvr-icon" src="{{ asset('content/icons/github.svg') }}">Github</div></div>
+        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-twitter button button-hover icon-hover"><img alt="button-icon" class="icon hvr-icon" src="{{ asset('content/icons/twitter.svg') }}">Twitter</div></div>
+        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-instagram button button-hover icon-hover"><img alt="button-icon" class="icon hvr-icon" src="{{ asset('content/icons/instagram.svg') }}">Instagram</div></div>
 @endif
         </br></br>
 
@@ -215,20 +214,31 @@ foreach($pages as $page)
 
         <div class="updated" style="display:none">
         @foreach($updatedPages as $page)
-          @if(file_exists(base_path("img/$page->littlelink_name" . ".png" )))
-          <a href="{{ url('') }}/@<?= $page->littlelink_name ?>" target="_blank">
-          <img src="{{ asset("img/$page->littlelink_name" . ".png") }}" srcset="{{ asset("img/$page->littlelink_name" . "@2x.png 2x") }}" width="50px" height="50px">
+          @if(file_exists(base_path("img/$page->arcanelink_name" . ".png" )))
+          <a href="{{ url('') }}/@<?= $page->arcanelink_name ?>" target="_blank">
+          <img src="{{ asset("img/$page->arcanelink_name" . ".png") }}" srcset="{{ asset("img/$page->arcanelink_name" . "@2x.png 2x") }}" width="50px" height="50px">
           </a>
           @else
-          <a href="{{ url('') }}/@<?= $page->littlelink_name ?>" target="_blank">
-          <img src="{{ asset('littlelink/images/logo.svg') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="50px" height="50px">
+          <a href="{{ url('') }}/@<?= $page->arcanelink_name ?>" target="_blank">
+          <img src="{{ asset('content/images/logo.svg') }}" srcset="{{ asset('content/images/avatar@2x.png 2x') }}" width="50px" height="50px">
           </a>
           @endif
         @endforeach
         </div>
 
         @include('layouts.footer')
+      <div class="credit-footer">
+	      <a style="text-decoration: none;" class="spacing" href="https://www.arcanetechsolutions.com?utm_source=arcanelink&utm_medium=website&utm_content=footer" target="_blank" title="Brought to you by">
+		      <section class="credit-hover hvr-grow fadein">
+			      <div class="parent-footer credit-icon" >
+				      <img id="footer_spin" class="footer_spin image-footer1 generic" src="{{ asset('content/images/arcanetech-logo-star.png') }}" alt="Arcane Technology Solutions, LLC"></img>
+				      <a href="https://www.arcanetechsolutions.com?utm_source=arcanelink&utm_medium=website&utm_content=footer" target="_blank" title="Learn more" class="credit-txt credit-txt-clr credit-text">Arcane Technology Solutions, LLC</a>
+			      </div>
 
+		      </section>
+	      </a>
+      </div>
+<br /><br /><br />
       </div>
     </div>
   </div>

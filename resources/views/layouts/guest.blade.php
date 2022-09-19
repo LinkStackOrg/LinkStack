@@ -8,10 +8,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-		@if(file_exists(base_path("littlelink/images/avatar.png" )))
-		<link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
+		@if(file_exists(base_path("/images/avatar.png" )))
+		<link rel="icon" type="image/png" href="{{ asset('/images/avatar.png') }}">
 		@else
-		<link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
+		<link rel="icon" type="image/png" href="{{ asset('/images/arcanelink-logo.png') }}">
 		@endif
 
         <title>{{ config('app.name') }}</title>
@@ -26,7 +26,7 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         
   <!-- begin dark mode detection -->
-	<script src="{{ asset('littlelink/js/js.cookie.min.js') }}"></script>
+	<script src="{{ asset('/js/js.cookie.min.js') }}"></script>
 	<script>
 		// code to set the `color_scheme` cookie
 		var $color_scheme = Cookies.get("color_scheme");

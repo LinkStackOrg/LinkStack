@@ -38,7 +38,7 @@
             <tr>
               <td> {{ $user->name }} </td>
               <td> {{ $user->email }} </td>
-              <td><a href="{{ url('') }}/@<?= $user->littlelink_name ?>" target="_blank" class="text-info"><i class="bi bi-box-arrow-up-right"></i>&nbsp; {{ $user->littlelink_name }} </a></td>
+              <td><a href="{{ url('') }}/@<?= $user->arcanelink_name ?>" target="_blank" class="text-info"><i class="bi bi-box-arrow-up-right"></i>&nbsp; {{ $user->arcanelink_name }} </a></td>
               <td>{{ $user->role }}</td>
               <td><a href="{{ route('editUser', $user->id ) }}">Edit</a></td>
               <td><a href="{{ route('showLinksUser', $user->id ) }}" class="text-primary">View</a></td>

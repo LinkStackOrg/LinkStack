@@ -9,8 +9,7 @@
 <?php //landing page ?>
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+           <img class="logo-img" src="{{ asset('content/images/arcanelink-logo.png') }}" alt="Arcane Link Logo">
         </div>
         <h1>Backup</h1>
         <h4 class="">You can back up your entire instance:</h4>
@@ -28,8 +27,7 @@
 <meta http-equiv="refresh" content="2; URL={{url()->current()}}/?backups" />
 @endpush
         <div class="logo-container fadein">
-           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+           <img class="logo-img loading" src="{{ asset('content/images/arcanelink-logo.png') }}" alt="Logo">
         </div>
         <h1 class="loadingtxt">Creating backup</h1>
 @endif
@@ -48,8 +46,7 @@ exit(); ?>
       <?php //after successfully updating ?>
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+           <img class="logo-img" src="{{ asset('content/images/arcanelink-logo.png') }}" alt="Logo">
         </div>
         <h1>Success!</h1>
         <h4 class="">The backup was successful, you can now return to the Admin Panel or see all your backups.</h4>

@@ -4,7 +4,7 @@
 <div class="container">
 
 <?php // Requests newest version from server and sets it as variable
-			   		$Vgit = file_get_contents("https://julianprieber.github.io/littlelink-custom/version.json");
+			   		$Vgit = file_get_contents("https://raw.githubusercontent.com/arcane-technology/arcane-link/main/version.json");
 
 				       // Requests current version from the local version file and sets it as variable
                   $Vlocal = file_get_contents(base_path("version.json"));
@@ -15,13 +15,12 @@
 <?php //landing page ?>
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+           <img class="logo-img" src="{{ asset('content/images/arcanelink-logo.png') }}" alt="Logo">
         </div>
         <h1>Updater</h1>
         @if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
         @if(env('JOIN_BETA') === true)
-        <p><?php echo "latest beta version= " . file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?></p>
+        <p><?php echo "latest beta version= " . file_get_contents("https://raw.githubusercontent.com/arcane-technology/arcane-link/beta/version.json"); ?></p>
         <p><?php  if(file_exists(base_path("vbeta.json"))) {echo "Installed beta version= " . file_get_contents(base_path("vbeta.json"));} else {echo "Installed beta version= none";}  ?></p>
         <p><?php  if($Vgit > $Vlocal) {echo "You need to update to the latest mainline release";} else {echo "You're running the latest mainline release";}  ?></p>
         @else
@@ -30,11 +29,11 @@
         @endif
         <br><div class="row">
         &ensp;<a class="btn" href="{{url()->current()}}/?updating-windows"><button><i class="fa-solid fa-user-gear btn"></i> Update automatically</button></a>&ensp;
-        &ensp;<a class="btn" href="https://littlelink-custom.com/update" target="_blank"><button><i class="fa-solid fa-download btn"></i> Update manually</button></a>&ensp;
+        &ensp;<a class="btn" href="https://raw.githubusercontent.com/arcane-technology/arcane-link/" target="_blank"><button><i class="fa-solid fa-download btn"></i> Update manually</button></a>&ensp;
         </div>
         @else
         @if(env('JOIN_BETA') === true)
-        <p><?php echo "latest beta version= " . file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?></p>
+        <p><?php echo "latest beta version= " . file_get_contents("https://raw.githubusercontent.com/arcane-technology/arcane-link/beta/version.json"); ?></p>
         <p><?php  if(file_exists(base_path("vbeta.json"))) {echo "Installed beta version= " . file_get_contents(base_path("vbeta.json"));} else {echo "Installed beta version= none";}  ?></p>
         <p><?php  if($Vgit > $Vlocal) {echo "You need to update to the latest mainline release";} else {echo "You're running the latest mainline release";}  ?></p>
         @else
@@ -46,7 +45,7 @@
             @else
             &ensp;<a class="btn" href="{{url()->current()}}/?backup"><button><i class="fa-solid fa-user-gear btn"></i> Update automatically</button></a>&ensp;
             @endif
-        &ensp;<a class="btn" href="https://littlelink-custom.com/update" target="_blank"><button><i class="fa-solid fa-download btn"></i> Update manually</button></a>&ensp;
+        &ensp;<a class="btn" href="https://raw.githubusercontent.com/arcane-technology/arcane-link/" target="_blank"><button><i class="fa-solid fa-download btn"></i> Update manually</button></a>&ensp;
         </div>
         @endif
       
@@ -56,8 +55,7 @@
 @if($_SERVER['QUERY_STRING'] === 'updating-windows' and strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
 <?php //updating on Windows ?>
         <div class="logo-container fadein">
-           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+           <img class="logo-img loading" src="{{ asset('/images/arcanelink-logo.png') }}" alt="Logo">
         </div>
         <h1 class="loadingtxt">Updating</h1>
         @Push('updater-head')
@@ -75,9 +73,9 @@
 $latestversion = trim(file_get_contents("https://raw.githubusercontent.com/JulianPrieber/littlelink-custom/main/version.json"));
 
 if(env('JOIN_BETA') === true){
-   $fileUrl = 'https://update.littlelink-custom.com/beta/'. $latestversion . '.zip';
+   $fileUrl = 'https://update.-custom.com/beta/'. $latestversion . '.zip';
 } else {
-   $fileUrl = 'https://update.littlelink-custom.com/'. $latestversion . '.zip';
+   $fileUrl = 'https://update.-custom.com/'. $latestversion . '.zip';
 }
 
 $curl = curl_init();
@@ -109,8 +107,8 @@ echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "/?finish
 <meta http-equiv="refresh" content="2; URL={{url()->current()}}/?backups" />
 @endpush
         <div class="logo-container fadein">
-           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+           <img class="logo-img loading" src="{{ asset('/images/arcanelink-logo.png') }}" alt="Logo">
+
         </div>
         <h1 class="loadingtxt">Creating backup</h1>
 @endif
@@ -128,8 +126,8 @@ exit(); ?>
 @if($_SERVER['QUERY_STRING'] === 'updating' and (file_exists(base_path("backups/CANUPDATE")) or env('SKIP_UPDATE_BACKUP') == true))
 <?php //updating... ?>
         <div class="logo-container fadein">
-           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+           <img class="logo-img loading" src="{{ asset('/images/arcanelink-logo.png') }}" alt="Logo">
+
         </div>
         <h1 class="loadingtxt">Updating</h1>
         @Push('updater-head')
@@ -141,8 +139,8 @@ exit(); ?>
       <?php //if no new version available ?>
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+           <img class="logo-img" src="{{ asset('/images/arcanelink-logo.png') }}" alt="Logo">
+
         </div>
         <h1>No new version</h1>
         <h4 class="">There is no new version available</h4>
@@ -155,8 +153,8 @@ exit(); ?>
 @if($_SERVER['QUERY_STRING'] === 'finishing')
 <?php //finishing up update ?>
         <div class="logo-container fadein">
-           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+           <img class="logo-img loading" src="{{ asset('/images/arcanelink-logo.png') }}" alt="Logo">
+
         </div>
         <h1 class="loadingtxt">Finishing up</h1>
         
@@ -169,8 +167,8 @@ exit(); ?>
       <?php //after successfully updating ?>
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+           <img class="logo-img" src="{{ asset('/images/arcanelink-logo.png') }}" alt="Logo">
+
         </div>
         <h1>Success!</h1>
         @if(env('JOIN_BETA') === true)
@@ -199,8 +197,8 @@ exit(); ?>
         <?php if(file_exists(base_path("storage/MAINTENANCE"))){unlink(base_path("storage/MAINTENANCE"));} ?>
 
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+           <img class="logo-img" src="{{ asset('/images/arcanelink-logo.png') }}" alt="Logo">
+
         </div>
         <h1>Error</h1>
         <h4 class="">Something went wrong with the update :(</h4>

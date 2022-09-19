@@ -19,7 +19,7 @@ class HomeController extends Controller
        
         $countButton = Button::count();
 
-        $updatedPages = DB::table('links')->join('users', 'users.id', '=', 'links.user_id')->select('users.littlelink_name', DB::raw('max(links.created_at) as created_at'))->groupBy('links.user_id')->orderBy('created_at', 'desc')->take(4)->get();
+        $updatedPages = DB::table('links')->join('users', 'users.id', '=', 'links.user_id')->select('users.arcanelink_name', DB::raw('max(links.created_at) as created_at'))->groupBy('links.user_id')->orderBy('created_at', 'desc')->take(4)->get();
 
         return view('home', ['message' => $message, 'countButton' => $countButton, 'updatedPages' => $updatedPages]);
     }

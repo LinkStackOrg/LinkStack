@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Admin Littlelink'),
+    'name' => env('APP_NAME', 'Arcane Link'),
 
     /*
     |--------------------------------------------------------------------------

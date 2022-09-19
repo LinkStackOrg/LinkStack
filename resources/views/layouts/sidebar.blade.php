@@ -8,13 +8,13 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
-    <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('content/css/hover-min.css') }}">
+    <link rel="stylesheet" href="{{ asset('content/css/animate.css') }}">
 
     <link href="//fonts.bunny.net/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   <!-- begin dark mode detection -->
-	<script src="{{ asset('littlelink/js/js.cookie.min.js') }}"></script>
+	<script src="{{ asset('content/js/js.cookie.min.js') }}"></script>
 	<script>
 		// code to set the `color_scheme` cookie
 		var $color_scheme = Cookies.get("color_scheme");
@@ -102,10 +102,10 @@ if($url1sb == '200'  or $url2sb == '200') {
 }
  // end security check ?>
 
-    @if(file_exists(base_path("littlelink/images/avatar.png" )))
-    <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
+    @if(file_exists(base_path("arcanelink/images/avatar.png" )))
+    <link rel="icon" type="image/png" href="{{ asset('content/images/avatar.png') }}">
     @else
-    <link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
+    <link rel="icon" type="image/png" href="{{ asset('content/images/arcanelink-logo.png') }}">
     @endif
 
 	@stack('sidebar-stylesheets')
@@ -121,10 +121,10 @@ if($url1sb == '200'  or $url2sb == '200') {
         <a href="{{ url('/panel/index') }}">
         @endif
 
-        @if(file_exists(base_path("littlelink/images/avatar.png" )))
-          <img class="img logo" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" style="width: 150px;>
+        @if(file_exists(base_path("arcanelink/images/avatar.png" )))
+          <img class="img logo" src="{{ asset('content/images/avatar.png') }}" srcset="{{ asset('content/images/avatar@2x.png 2x') }}" style="width: 150px;>
           @else
-          <img class="img logo" type="image/svg+xml" src="{{ asset('littlelink/images/logo.svg') }}" style="width:100px;">
+          <img class="img logo" type="image/png" src="{{ asset('content/images/arcanelink-logo.png') }}" style="width:100px;">
           @endif
           </a>
           <ul class="list-unstyled components mb-5">
@@ -183,15 +183,12 @@ if($url1sb == '200'  or $url2sb == '200') {
             </p>
 			@endif
 @if(env('DISPLAY_CREDIT') === true)
-<a href="https://littlelink-custom.com" target="_blank" title="Learn more">
+<a href="https://arcanetechsolutions.com" target="_blank" title="Learn more">
 	<section class="hvr-grow fadein sections">
 		<div class="parent-footers" >
-			<img id="footer_spin" class="footer_spin image-footers1" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="LittleLink Custom"></img>
-			<img class="image-footers2" src="{{ asset('littlelink/images/just-ll.svg') }}" alt="LittleLink Custom"></img>
+			<img id="footer_spin" class="footer_spin image-footers1" src="{{ asset('content/images/arcanetech-logo-star.png') }}" alt="Arcane Technology Solutions, LLC"></img>
+			<a href="https://www.arcanetechsolutions.com?utm_source=arcanelink&utm_medium=website&utm_content=footer" class="text-footers" style="color: #FFFFFF; font-weight: 700; font-size: 15px;">Arcane Technology Solutions, LLC</a>
 		</div>
-
-		<a href="https://littlelink-custom.com" class="text-footers" style="color: #FFFFFF; font-weight: 700; font-size: 15px;">&nbsp;&nbsp;Powered by</a><br>
-		<a href="https://littlelink-custom.com" class="text-footers" style="color: #FFFFFF; font-weight: 700; font-size: 15px;">LittleLink Custom</a>
 	</section>
 </a>
 @endif
@@ -222,7 +219,7 @@ if($url1sb == '200'  or $url2sb == '200') {
 
                   <?php // Requests newest version from server and sets it as variable
 					ini_set('user_agent', 'Mozilla/4.0 (compatible; MSIE 6.0)');
-					$json = file_get_contents("https://api.github.com/repos/julianprieber/littlelink-custom/releases/latest");
+					$json = file_get_contents("https://api.github.com/repos/arcane-technology/arcane-link/releases/latest");
 					$myObj = json_decode($json);
 				  $Vgit = $myObj->tag_name;
 
@@ -274,7 +271,7 @@ if($url1sb == '200'  or $url2sb == '200') {
 					@endif
 
 					@if(env('JOIN_BETA') === true)
-					<a style="color:tomato;" class="nav-link" href="{{ url('update') }}">You are in BETA mode! <img src="https://img.shields.io/static/v1?label=installed:&message=<?php  if(file_exists(base_path("vbeta.json"))) {echo file_get_contents(base_path("vbeta.json"));} else {echo "none";}  ?>&color=FFFFFF"> <img src="https://img.shields.io/static/v1?label=server:&message=<?php echo file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?>&color=FFFFFF"></a>
+					<a style="color:tomato;" class="nav-link" href="{{ url('update') }}">You are in BETA mode! <img src="https://img.shields.io/static/v1?label=installed:&message=<?php  if(file_exists(base_path("vbeta.json"))) {echo file_get_contents(base_path("vbeta.json"));} else {echo "none";}  ?>&color=FFFFFF"> <img src="https://img.shields.io/static/v1?label=server:&message=<?php echo file_get_contents("https://update.arcanelink-custom.com/beta/vbeta.json"); ?>&color=FFFFFF"></a>
 					@endif
 
 					@if (config('advanced-config.theme') == 'light' and $color_scheme_override != 'dark')
@@ -288,7 +285,7 @@ if($url1sb == '200'  or $url2sb == '200') {
 					<script>function ColorOverrride(){document.cookie="color_scheme_override=dark; path=/",location.reload()}var btn=document.getElementById("myBtn");btn.addEventListener("click",ColorOverrride);</script>
 					@endif
 
-                    <a class="nav-link" href="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>" target="_blank">View Page</a>
+                    <a class="nav-link" href="{{ url('') }}/@<?= Auth::user()->arcanelink_name ?>" target="_blank">View Page</a>
                   </div>
                 </li>
               </ul>
@@ -299,8 +296,8 @@ if($url1sb == '200'  or $url2sb == '200') {
 @if(config('advanced-config.disable_default_password_notice') != 'true')
 {{-- Displays a warning message if default password is still set --}}
 @php 
-$littlelink_current = Auth::user()->id;
-$userdbs = DB::table('users')->where('id', $littlelink_current)->get();
+$arcanelink_current = Auth::user()->id;
+$userdbs = DB::table('users')->where('id', $arcanelink_current)->get();
 @endphp
 
 @foreach($userdbs as $userdb)

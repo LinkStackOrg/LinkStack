@@ -9,7 +9,7 @@
         @foreach($pages as $page)
         <form action="{{ route('editPage') }}" enctype="multipart/form-data" method="post">
           @csrf
-        @if($page->littlelink_name != '')
+        @if($page->arcanelink_name != '')
           <div class="form-group col-lg-8">
             <label>Logo</label>
             <input type="file" accept="image/jpeg,image/jpg,image/png" class="form-control-file" name="image">
@@ -17,16 +17,16 @@
         @endif
           
           <div class="form-group col-lg-8">
-          @if(file_exists(base_path("img/$page->littlelink_name" . ".png" )))
-          <img src="{{ asset("img/$page->littlelink_name" . ".png") }}" style="width: 75px; height: 75px; border-radius: 50%; object-fit: cover;">
+          @if(file_exists(base_path("img/$page->arcanelink_name" . ".png" )))
+          <img src="{{ asset("img/$page->arcanelink_name" . ".png") }}" style="width: 75px; height: 75px; border-radius: 50%; object-fit: cover;">
           @else
-          <img src="{{ asset('littlelink/images/logo.svg') }}" style="width: 75px; height: 75px; object-fit: cover;">
+          <img src="{{ asset('content/images/arcanelink-logo.png') }}" style="width: 75px; height: 75px; object-fit: cover;">
           @endif
           </div>
           
           <!--<div class="form-group col-lg-8">
             <label>Path name</label>
-            @<input type="text" class="form-control" name="pageName" value="{{ $page->littlelink_name ?? '' }}">
+            @<input type="text" class="form-control" name="pageName" value="{{ $page->arcanelink_name ?? '' }}">
           </div>-->
           
           <div class="form-group col-lg-8">
@@ -39,13 +39,13 @@
 				  <div class="input-group-prepend">
 					<div class="input-group-text">{{ url('') }}/@</div>
 				  </div>
-				  <input type="text" class="form-control" name="pageName" value="{{ $page->littlelink_name ?? '' }}" required>
+				  <input type="text" class="form-control" name="pageName" value="{{ $page->arcanelink_name ?? '' }}" required>
 			  </div>
 		  </div>
           
           <div class="form-group col-lg-8">
             <label>Page Description</label>
-            <textarea class="form-control @if(env('ALLOW_USER_HTML') === true) ckeditor @endif" name="pageDescription" rows="3">{{ $page->littlelink_description ?? '' }}</textarea>
+            <textarea class="form-control @if(env('ALLOW_USER_HTML') === true) ckeditor @endif" name="pageDescription" rows="3">{{ $page->arcanelink_description ?? '' }}</textarea>
           </div>
           @endforeach
           <button type="submit" class="mt-3 ml-3 btn btn-info">Submit</button>

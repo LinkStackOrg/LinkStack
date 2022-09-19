@@ -1,11 +1,11 @@
 @extends('layouts.sidebar')
 
 @section('content')
-@if($littlelink_name == '')
+@if($arcanelink_name == '')
         <h2 class="mb-4"> 👋 Hi, stranger</h2>
 	<h5>You do not have a Page URL set, yet you can change that on the <a href="{{ url('/studio/page') }}">Page section</a></h5>
 	@else
-        <h2 class="mb-4"> 👋 Hi, @<?= $littlelink_name ?></h2>
+        <h2 class="mb-4"> 👋 Hi, @<?= $arcanelink_name ?></h2>
 		@endif
         <p>
 			Welcome to {{ config('app.name') }}!

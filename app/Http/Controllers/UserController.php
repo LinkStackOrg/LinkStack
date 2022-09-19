@@ -40,49 +40,49 @@ class UserController extends Controller
     {
         $userId = Auth::user()->id;
 
-        $littlelink_name = Auth::user()->littlelink_name;
+        $arcanelink_name = Auth::user()->arcanelink_name;
 
         $links = Link::where('user_id', $userId)->select('link')->count();
 
         $clicks = Link::where('user_id', $userId)->sum('click_number');
 
-        return view('studio/index', ['littlelink_name' => $littlelink_name, 'links' => $links, 'clicks' => $clicks]);
+        return view('studio/index', ['arcanelink_name' => $arcanelink_name, 'links' => $links, 'clicks' => $clicks]);
     }
 
-    //Show littlelink page. example => http://127.0.0.1:8000/+admin
-    public function littlelink(request $request)
+    //Show arcanelink page. example => http://127.0.0.1:8000/+admin
+    public function arcanelink(request $request)
     {
-        $littlelink_name = $request->littlelink;
-        $id = User::select('id')->where('littlelink_name', $littlelink_name)->value('id');
+        $arcanelink_name = $request->arcanelink;
+        $id = User::select('id')->where('arcanelink_name', $arcanelink_name)->value('id');
 
         if (empty($id)) {
             return abort(404);
         }
      
-        $userinfo = User::select('name', 'littlelink_name', 'littlelink_description', 'theme')->where('id', $id)->first();
-        $information = User::select('name', 'littlelink_name', 'littlelink_description', 'theme')->where('id', $id)->get();
+        $userinfo = User::select('name', 'arcanelink_name', 'arcanelink_description', 'theme')->where('id', $id)->first();
+        $information = User::select('name', 'arcanelink_name', 'arcanelink_description', 'theme')->where('id', $id)->get();
         
         $links = DB::table('links')->join('buttons', 'buttons.id', '=', 'links.button_id')->select('links.link', 'links.id', 'links.button_id', 'links.title', 'links.custom_css', 'links.custom_icon', 'buttons.name')->where('user_id', $id)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->get();
 
-        return view('littlelink', ['userinfo' => $userinfo, 'information' => $information, 'links' => $links, 'littlelink_name' => $littlelink_name]);
+        return view('arcanelink', ['userinfo' => $userinfo, 'information' => $information, 'links' => $links, 'arcanelink_name' => $arcanelink_name]);
     }
 
-    //Show littlelink page as home page if set in config
-    public function littlelinkhome(request $request)
+    //Show arcanelink page as home page if set in config
+    public function arcanelinkhome(request $request)
     {
-        $littlelink_name = env('HOME_URL');
-        $id = User::select('id')->where('littlelink_name', $littlelink_name)->value('id');
+        $arcanelink_name = env('HOME_URL');
+        $id = User::select('id')->where('arcanelink_name', $arcanelink_name)->value('id');
 
         if (empty($id)) {
             return abort(404);
         }
         
-        $userinfo = User::select('name', 'littlelink_name', 'littlelink_description', 'theme')->where('id', $id)->first();
-        $information = User::select('name', 'littlelink_name', 'littlelink_description', 'theme')->where('id', $id)->get();
+        $userinfo = User::select('name', 'arcanelink_name', 'arcanelink_description', 'theme')->where('id', $id)->first();
+        $information = User::select('name', 'arcanelink_name', 'arcanelink_description', 'theme')->where('id', $id)->get();
         
         $links = DB::table('links')->join('buttons', 'buttons.id', '=', 'links.button_id')->select('links.link', 'links.id', 'links.button_id', 'links.title', 'links.custom_css', 'links.custom_icon', 'buttons.name')->where('user_id', $id)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->get();
 
-        return view('littlelink', ['userinfo' => $userinfo, 'information' => $information, 'links' => $links, 'littlelink_name' => $littlelink_name]);
+        return view('arcanelink', ['userinfo' => $userinfo, 'information' => $information, 'links' => $links, 'arcanelink_name' => $arcanelink_name]);
     }
 
     //Show buttons for add link
@@ -252,7 +252,7 @@ class UserController extends Controller
         return back();
     }
 
-    //Raise link on the littlelink page
+    //Raise link on the arcanelink page
     public function upLink(request $request)
     {
         $linkId = $request->id;
@@ -351,30 +351,30 @@ class UserController extends Controller
         return Redirect('#result');
     }
 
-    //Show littlelinke page for edit
+    //Show arcanelinke page for edit
     public function showPage(request $request)
     {
         $userId = Auth::user()->id;
 
-        $data['pages'] = User::where('id', $userId)->select('littlelink_name', 'littlelink_description')->get();
+        $data['pages'] = User::where('id', $userId)->select('arcanelink_name', 'arcanelink_description')->get();
 
         return view('/studio/page', $data);
     }
 
-    //Save littlelink page (name, description, logo)
+    //Save arcanelink page (name, description, logo)
     public function editPage(request $request)
     {
         $userId = Auth::user()->id;
-        $littlelink_name = Auth::user()->littlelink_name;
+        $arcanelink_name = Auth::user()->arcanelink_name;
 
         $profilePhoto = $request->file('image');
         $pageName = $request->pageName;
         $pageDescription = $request->pageDescription;
         
-        User::where('id', $userId)->update(['littlelink_name' => $pageName, 'littlelink_description' => $pageDescription]);
+        User::where('id', $userId)->update(['arcanelink_name' => $pageName, 'arcanelink_description' => $pageDescription]);
 
         if(!empty($profilePhoto)){
-        $profilePhoto->move(base_path('/img'), $littlelink_name . ".png");
+        $profilePhoto->move(base_path('/img'), $arcanelink_name . ".png");
         }
 
         return Redirect('/studio/page');
@@ -385,7 +385,7 @@ class UserController extends Controller
     {
         $userId = Auth::user()->id;
 
-        $data['pages'] = User::where('id', $userId)->select('littlelink_name', 'theme')->get();
+        $data['pages'] = User::where('id', $userId)->select('arcanelink_name', 'theme')->get();
 
         return view('/studio/theme', $data);
     }
@@ -480,19 +480,19 @@ if($request->name != '' ) {
     //Show user theme credit page
     public function theme(request $request)
     {
-        $littlelink_name = $request->littlelink;
-        $id = User::select('id')->where('littlelink_name', $littlelink_name)->value('id');
+        $arcanelink_name = $request->arcanelink;
+        $id = User::select('id')->where('arcanelink_name', $arcanelink_name)->value('id');
 
         if (empty($id)) {
             return abort(404);
         }
      
-        $userinfo = User::select('name', 'littlelink_name', 'littlelink_description', 'theme')->where('id', $id)->first();
-        $information = User::select('name', 'littlelink_name', 'littlelink_description', 'theme')->where('id', $id)->get();
+        $userinfo = User::select('name', 'arcanelink_name', 'arcanelink_description', 'theme')->where('id', $id)->first();
+        $information = User::select('name', 'arcanelink_name', 'arcanelink_description', 'theme')->where('id', $id)->get();
         
         $links = DB::table('links')->join('buttons', 'buttons.id', '=', 'links.button_id')->select('links.link', 'links.id', 'links.button_id', 'links.title', 'links.custom_css', 'links.custom_icon', 'buttons.name')->where('user_id', $id)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->get();
 
-        return view('components/theme', ['userinfo' => $userinfo, 'information' => $information, 'links' => $links, 'littlelink_name' => $littlelink_name]);
+        return view('components/theme', ['userinfo' => $userinfo, 'information' => $information, 'links' => $links, 'arcanelink_name' => $arcanelink_name]);
     }
 
 }

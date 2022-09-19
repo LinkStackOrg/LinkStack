@@ -141,7 +141,7 @@ var button_css = {
 <link rel="stylesheet" href="./styles/jquery.gradientPicker.css" type="text/css" />
 <link rel="stylesheet" href="./styles/colorpicker_1.css" type="text/css" />
 <link rel="stylesheet" type="text/css" href="./themes/blackboard.css">
-<link rel="stylesheet" href="{{ asset('littlelink/css/animations.css') }}">
+<link rel="stylesheet" href="{{ asset('content/css/animations.css') }}">
 <link rel="stylesheet" type="text/css" href="./css/style.css">
 
 	<script src="./js/rainbow.js"></script>
@@ -213,7 +213,7 @@ var button_css = {
 
 <section id="preview">
 @if($buttonId == 1)
-<center><div id="sample" style="--delay: 1s; border-radius:8px !important; max-width: 400px; width: 80%; class="button-entrance"><div class="button-demo button hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/') . 'custom' }}.svg">{{ $title }}</div></div></center>
+<center><div id="sample" style="--delay: 1s; border-radius:8px !important; max-width: 400px; width: 80%; class="button-entrance"><div class="button-demo button hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon" src="{{ asset('\/content/icons\/') . 'custom' }}.svg">{{ $title }}</div></div></center>
 @else
 <center><div id="sample" style="--delay: 1s; border-radius:8px !important; max-width: 400px; width: 80%; class="button-entrance"><div class="button-demo button hvr-grow hvr-icon-wobble-vertical"><img class="wicon hvr-icon" src="https://icons.duckduckgo.com/ip3/{{strp($link)}}.ico">{{ $title }}</div></div></center>
 @endif

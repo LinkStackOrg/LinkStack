@@ -24,7 +24,7 @@ class AdminController extends Controller
     public function index()
     {
         $userId = Auth::user()->id;
-        $littlelink_name = Auth::user()->littlelink_name;
+        $arcanelink_name = Auth::user()->arcanelink_name;
         $links = Link::where('user_id', $userId)->select('link')->count();
         $clicks = Link::where('user_id', $userId)->sum('click_number');
        
@@ -32,7 +32,7 @@ class AdminController extends Controller
         $siteLinks = Link::count();
         $siteClicks = Link::sum('click_number');
 
-        return view('panel/index', ['littlelink_name' => $littlelink_name, 'links' => $links, 'clicks' => $clicks, 'siteLinks' => $siteLinks, 'siteClicks' => $siteClicks, 'userNumber' => $userNumber]);
+        return view('panel/index', ['arcanelink_name' => $arcanelink_name, 'links' => $links, 'clicks' => $clicks, 'siteLinks' => $siteLinks, 'siteClicks' => $siteClicks, 'userNumber' => $userNumber]);
     }
 
     //Get users by type
@@ -42,19 +42,19 @@ class AdminController extends Controller
 
         switch($usersType){
             case 'all':
-                $data['users'] = User::select('id', 'name', 'email', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
+                $data['users'] = User::select('id', 'name', 'email', 'arcanelink_name', 'role', 'block', 'email_verified_at')->get();
                 return view('panel/users', $data);
                 break;
             case 'user':
-                $data['users'] = User::where('role', 'email', 'user')->select('id', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
+                $data['users'] = User::where('role', 'email', 'user')->select('id', 'name', 'arcanelink_name', 'role', 'block', 'email_verified_at')->get();
                 return view('panel/users', $data);
                 break;
             case 'vip':
-                $data['users'] = User::where('role', 'email', 'vip')->select('id', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
+                $data['users'] = User::where('role', 'email', 'vip')->select('id', 'name', 'arcanelink_name', 'role', 'block', 'email_verified_at')->get();
                 return view('panel/users', $data);
                 break;     
             case 'admin':
-                $data['users'] = User::where('role', 'email', 'admin')->select('id', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
+                $data['users'] = User::where('role', 'email', 'admin')->select('id', 'name', 'arcanelink_name', 'role', 'block', 'email_verified_at')->get();
                 return view('panel/users', $data);
                 break;
             }
@@ -185,7 +185,7 @@ class AdminController extends Controller
             'name' => '',
             'email' => '',
             'password' => '',
-            'littlelink_name' => '',
+            'arcanelink_name' => '',
         ]);
     
         $id = $request->id;
@@ -193,17 +193,17 @@ class AdminController extends Controller
         $email = $request->email;
         $password = Hash::make($request->password);
         $profilePhoto = $request->file('image');
-        $littlelink_name = $request->littlelink_name;
-        $littlelink_description = $request->littlelink_description;
+        $arcanelink_name = $request->arcanelink_name;
+        $arcanelink_description = $request->arcanelink_description;
         $role = $request->role;
         
         if($request->password == '' ) {
-        User::where('id', $id)->update(['name' => $name, 'email' => $email, 'littlelink_name' => $littlelink_name, 'littlelink_description' => $littlelink_description, 'role' => $role]);
+        User::where('id', $id)->update(['name' => $name, 'email' => $email, 'arcanelink_name' => $arcanelink_name, 'arcanelink_description' => $arcanelink_description, 'role' => $role]);
           } else {
-        User::where('id', $id)->update(['name' => $name, 'email' => $email, 'password' => $password, 'littlelink_name' => $littlelink_name, 'littlelink_description' => $littlelink_description, 'role' => $role]);
+        User::where('id', $id)->update(['name' => $name, 'email' => $email, 'password' => $password, 'arcanelink_name' => $arcanelink_name, 'arcanelink_description' => $arcanelink_description, 'role' => $role]);
         }
         if(!empty($profilePhoto)){
-        $profilePhoto->move(base_path('/img'), $littlelink_name . ".png");
+        $profilePhoto->move(base_path('/img'), $arcanelink_name . ".png");
         }
 
         return redirect('panel/users/all');
@@ -245,7 +245,7 @@ class AdminController extends Controller
         Page::first()->update(['home_message' => $message]);
 
         if(!empty($logo)){
-            $logo->move(base_path('/littlelink/images/'), "avatar.png");
+            $logo->move(base_path('/arcanelink/images/'), "avatar.png");
             }
 
         return back();

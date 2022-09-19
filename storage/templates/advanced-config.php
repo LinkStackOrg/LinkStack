@@ -9,7 +9,7 @@ $analytics =
 | Analytics
 |--------------------------------------------------------------------------
 |
-| Add external analytics services to your LittleLink Custom instance by adding them below.
+| Add external analytics services to your Arcane Link instance by adding them below.
 | Everything you enter below will be added to the <head> tag of every page.
 | Formatting in plain HTML is expected.
 |
@@ -31,7 +31,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Will only be active if "CUSTOM_META_TAGS" is set to "true" in the config.
-    | These tags will only be applied to the home page or if a LittleLink page 
+    | These tags will only be applied to the home page or if a arcanelink page 
     | is set as the homepage in the config (for example: HOME_URL="admin").
     | 
     | Empty entries will be ignored.
@@ -39,8 +39,8 @@ return [
     */
 
     'lang'            => 'en', // Sets <html lang="en">
-    'title'           => '', // Overrides the default meta page title. Leave empty to use your LittleLink page title as the title.
-    'description'     => '', // Overrides the default meta page description. Leave empty to use your LittleLink page description as the description.
+    'title'           => '', // Overrides the default meta page title. Leave empty to use your arcanelink page title as the title.
+    'description'     => '', // Overrides the default meta page description. Leave empty to use your arcanelink page description as the description.
     'robots'          => 'index,follow',
     'viewport'        => 'width=device-width, initial-scale=1',
     'canonical_url'   => '', // Tells search engines to index "https://example.com/"  instead of "https://example.com/@admin",  for example.
@@ -67,11 +67,11 @@ return [
     'theme' => '', // Either "dark" or "light".
 
 
-    // Overwrites default page title after the LittleLink name on LittleLink pages.
-    // Example: "admin 🔗 LittleLink Custom"
+    // Overwrites default page title after the arcanelink name on arcanelink pages.
+    // Example: "admin 🔗 Arcane Link"
     //                 ⤌------------------⤍
     //                 ⬑ What you can change with this setting.
-    'littlelink_title' => '',
+    'arcanelink_title' => '',
 
 
     // Either "true", "false" or "auth". 
@@ -101,9 +101,9 @@ return [
     // If 'true' the Home Page will be disabled entirely.
     // You will still be able to login on the login page etc.
     'disable_home_page' => 'false', // Either 'true', 'false' or 'redirect'.
-    'redirect_home_page' => 'https://littlelink-custom.com', // Only active if value above is set to 'redirect'.
+    'redirect_home_page' => 'https://arcanelink-custom.com', // Only active if value above is set to 'redirect'.
 
-    // The URL prefix is the symbol that comes before a LittleLink URL.
+    // The URL prefix is the symbol that comes before a arcanelink URL.
     // For example the '@' in 'example.com/@admin'.
     // If empty no prefix is required. Use with caution.
     'custom_url_prefix' => '+', // The '@' prefix will always work regardless of this setting.
@@ -126,7 +126,7 @@ return [
     'display_link_privacy' => 'true',
     'display_link_contact' => 'true',
 
-    // Enter a custom home link (for example, 'https://littlelink-custom.com').
+    // Enter a custom home link (for example, 'https://arcanel.ink').
     'custom_link_home' => '', // Leave empty to use default value.
     // Changes the text on the "Home" link.
     'custom_text_home' => 'Home', // Leave empty to use default value.
@@ -206,21 +206,21 @@ return [
     'buttons' => array(
       array(
         'button' => 'github',
-        'link' => 'https://github.com/JulianPrieber/littlelink-custom',
+        'link' => 'https://github.com/Arcane-Technology/arcane-link',
         'title' => '',
         'icon' => '',
         'custom_css' => ''
       ),
       array(
           'button' => 'custom',
-          'link' => 'https://littlelink-custom.com',
+          'link' => 'https://arcanel.ink',
           'title' => 'Project Website',
           'icon' => 'llc',
           'custom_css' => 'color:#ffffff; background-image:linear-gradient(76deg, #f70fff 0%, #11d4de 100%);'),
       array(
         'button' => 'custom',
-        'link' => 'https://littlelink-custom.com/sponsor',
-        'title' => 'Help us out',
+        'link' => 'https://donate.stripe.com/bIYdUzelK0bB0eY144',
+        'title' => 'Donate',
         'icon' => 'fa-hand-holding-heart',
         'custom_css' => 'color:#ffffff; background-image:radial-gradient(circle, #00d2ff 0%, #3a7bd5 95%);'
       ),

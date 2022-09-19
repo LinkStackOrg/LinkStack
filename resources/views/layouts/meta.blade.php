@@ -1,5 +1,5 @@
 @if(config('advanced-config.description') != '')<meta name="description" content="{{ config('advanced-config.description') }}">
-@elseif(Route::currentRouteName() != 'home')<meta name="description" content="{{ $userinfo->littlelink_description }}">
+@elseif(Route::currentRouteName() != 'home')<meta name="description" content="{{ $userinfo->arcanelink_description }}">
 @else<meta name="description" content="{{ $cleaner_input }}">@endif
 
 @if(config('advanced-config.author') != '')<meta name="author" content="{{ config('advanced-config.author') }}">

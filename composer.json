@@ -1,7 +1,7 @@
 {
-    "name": "julianprieber/littlelink-custom",
+    "name": "arcane-technology/arcanelink",
     "type": "project",
-    "description": "LittleLink Custom is a highly customizable link sharing platform",
+    "description": "Arcane Link is a highly customizable link sharing platform",
     "keywords": ["link"],
     "license": "GPL-3.0-or-later",
     "require": {
@@ -13,7 +13,8 @@
         "guzzlehttp/guzzle": "^7.4",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "spatie/laravel-backup": "^6.16"
+        "spatie/laravel-backup": "^6.16",
+        "doctrine/dbal": "^3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

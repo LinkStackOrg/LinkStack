@@ -8,19 +8,19 @@
   <title>{{ config('app.name') }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="//fonts.bunny.net/css?family=Open+Sans:400,600,800&display=swap" rel="stylesheet">
-  <style>@font-face{font-family:'ll';src:url({{ asset('littlelink/fonts/littlelink-custom.otf') }}) format("opentype")}</style>
-  <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
-  @if(file_exists(base_path("littlelink/images/avatar.png" )))
-  <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
+  <style>@font-face{font-family:'ll';src:url({{ asset('content/fonts/arcanelink-custom.otf') }}) format("opentype")}</style>
+  <link rel="stylesheet" href="{{ asset('content/css/normalize.css') }}">
+  <link rel="stylesheet" href="{{ asset('content/css/brands.css') }}">
+  <link rel="stylesheet" href="{{ asset('content/css/hover-min.css') }}">
+  <link rel="stylesheet" href="{{ asset('content/css/animate.css') }}">
+  @if(file_exists(base_path("arcanelink/images/avatar.png" )))
+  <link rel="icon" type="image/png" href="{{ asset('content/images/avatar.png') }}">
   @else
-  <link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
+  <link rel="icon" type="image/png" href="{{ asset('content/images/arcanelink-logo.png') }}">
   @endif
 
   <!-- begin dark mode detection -->
-	<script src="{{ asset('littlelink/js/js.cookie.min.js') }}"></script>
+	<script src="{{ asset('content/js/js.cookie.min.js') }}"></script>
 	<script>
 		// code to set the `color_scheme` cookie
 		var $color_scheme = Cookies.get("color_scheme");
@@ -49,13 +49,13 @@
 			 $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
 		@if ($color_scheme == 'dark' and config('advanced-config.theme') != 'light' and $color_scheme_override != 'light' or $color_scheme_override == 'dark')
 					<!-- switch the two <link> Tags below to default to dark mode if cookie detection fails -->
-					<link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
+					<link rel="stylesheet" href="{{ asset('content/css/skeleton-dark.css') }}">
 		@elseif (config('advanced-config.theme') == 'dark')
-					<link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
+					<link rel="stylesheet" href="{{ asset('content/css/skeleton-dark.css') }}">
 		@elseif (config('advanced-config.theme') == 'light')
-					<link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
+					<link rel="stylesheet" href="{{ asset('content/css/skeleton-light.css') }}">
 		@else
-					<link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
+					<link rel="stylesheet" href="{{ asset('content/css/skeleton-light.css') }}">
 		@endif
   <!-- end dark mode detection -->
 
@@ -70,12 +70,11 @@
 
       <div class="column" style="margin-top: 10%">
         <!-- Your Image Here -->
-        @if(file_exists(base_path("littlelink/images/avatar.png" )))
-        <img src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
+        @if(file_exists(base_path("arcanelink/images/avatar.png" )))
+        <img src="{{ asset('content/images/avatar.png') }}" srcset="{{ asset('content/images/avatar@2x.png 2x') }}" width="100px" height="100px">
         @else
         <div class="logo-container fadein">
-           <img class="rotate" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="width:150px; height:150px;">
-           <div class="logo-centered">l</div>
+           <img class="rotate" src="{{ asset('content/images/arcanelink-logo.png') }}" alt="Logo" style="width:150px; height:150px;">
         </div>
         @endif
 

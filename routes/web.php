@@ -29,14 +29,14 @@ if(file_exists(base_path('storage/app/ISINSTALLED'))){
 // Disables routes if in Maintenance Mode
 if(env('MAINTENANCE_MODE') != 'true' and !file_exists(base_path("storage/MAINTENANCE"))){
 
-//Changes the homepage to a LittleLink Custom profile if set in the config
+//Changes the homepage to a arcanelink Custom profile if set in the config
 if(config('advanced-config.custom_home_url') != '') {
   $custom_home_page_url = config('advanced-config.custom_home_url');
 } else {
   $custom_home_page_url = "/home";
 }
 if(env('HOME_URL') != '') {
-  Route::get('/', [UserController::class, 'littlelinkhome'])->name('littlelink');
+  Route::get('/', [UserController::class, 'arcanelinkhome'])->name('arcanelink');
   if(config('advanced-config.disable_home_page') == 'redirect') {
     Route::get($custom_home_page_url, function () {return redirect(config('advanced-config.redirect_home_page'));});
   }elseif(config('advanced-config.disable_home_page') != 'true') {
@@ -61,10 +61,10 @@ Route::get('/panel/diagnose', function () {
 //Public route
 $custom_prefix = config('advanced-config.custom_url_prefix');
 Route::get('/going/{id?}/{link?}', [UserController::class, 'clickNumber'])->where('link', '.*')->name('clickNumber');
-Route::get('/' . $custom_prefix . '{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
-Route::get('/@{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
+Route::get('/' . $custom_prefix . '{arcanelink}', [UserController::class, 'arcanelink'])->name('arcanelink');
+Route::get('/@{arcanelink}', [UserController::class, 'arcanelink'])->name('arcanelink');
 Route::get('/pages/{name}', [AdminController::class, 'pages'])->name('pages');
-Route::get('/theme/@{littlelink}', [UserController::class, 'theme'])->name('theme');
+Route::get('/theme/@{arcanelink}', [UserController::class, 'theme'])->name('theme');
 
 //User route
 Route::group([
