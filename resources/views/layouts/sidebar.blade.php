@@ -151,14 +151,19 @@ if($url1sb == '200'  or $url2sb == '200') {
              @endif
              
 	          <li>
-            <li class="active">
-              <a href="{{ url('/studio/add-link') }}">Add Link</a>
+				 <li class="active">
+				     <a href="{{ url('/panel/index') }}">Dashboard</a>
+				 </li>
+				 <li>
+
+            <li class="">
+              <a href="{{ url('/studio/add-link') }}">Add a Link</a>
 	          </li>
             <li>
-              <a href="{{ url('/studio/links') }}">Links</a>
+              <a href="{{ url('/studio/links') }}">My Links</a>
 	          </li>
             <li>
-              <a href="{{ url('/studio/page') }}">Page</a>
+              <a href="{{ url('/studio/page') }}">Edit Page</a>
 	          </li>
 			  <li>
               <a href="{{ url('/studio/theme') }}">Themes</a>
@@ -204,10 +209,10 @@ if($url1sb == '200'  or $url2sb == '200') {
               <i class="bi bi-list"></i>
               <span class="sr-only">Toggle Menu</span>
             </button>
-            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            {{-- <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="bi bi-list"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            </button> --}}
+            <div class="" id="navbarSupportedContent">
               <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
                   <div class="row">
