@@ -22,4 +22,25 @@
 </div>
 <br><br><br>
 @endif
+
+@if(env('DISPLAY_FEEDBACK_FORM'))
+ <script src="https://form.jotform.com/static/feedback2.js" type="text/javascript">
+     new JotformFeedback({
+         formId: "222616492282154"
+         , buttonText: "Feedback"
+         , base: "https://form.jotform.com/"
+         , background: "#F59202"
+         , fontColor: "#FFFFFF"
+         , buttonSide: "right"
+         , buttonAlign: "center"
+         , type: 0
+         , width: 700
+         , height: 500
+         , isCardForm: false
+     });
+
+ </script>
+ @endif
+ 
+
 </div>
