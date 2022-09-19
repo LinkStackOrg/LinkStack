@@ -197,6 +197,9 @@ class ButtonSeeder extends Seeder
             [
             'name' => 'trello'
             ],
+            [
+            'name' => 'colorstreet'
+            ],
 
         ];
 
