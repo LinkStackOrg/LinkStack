@@ -39,7 +39,7 @@
 		}
 	</script>
 		<?php // loads dark mode CSS if dark mode detected
-		     $color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : false; 
+		     $color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : false;
 			 $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
 		@if ($color_scheme == 'dark' and config('advanced-config.theme') != 'light' and $color_scheme_override != 'light' or $color_scheme_override == 'dark')
 					<!-- switch the two <link> Tags below to default to dark mode if cookie detection fails -->
@@ -67,7 +67,7 @@ function has_sslsb( $domain ) {
 	if ( $ssl_check ) { fclose( $ssl_check ); }
 	return $res;
   }
-  
+
   // Changes probed URL to HTTP if no valid SSL certificate is present, otherwise an error would be thrown
   if (has_sslsb($serversb)) {
 	$actual_linksb = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -79,9 +79,9 @@ function getUrlSatusCodesb($urlsb, $timeoutsb = 3)
  {
  $chsb = curl_init();
  $optssb = array(CURLOPT_RETURNTRANSFER => true, // do not output to browser
- CURLOPT_URL => $urlsb, 
+ CURLOPT_URL => $urlsb,
  CURLOPT_NOBODY => true, // do a HEAD request only
- CURLOPT_TIMEOUT => $timeoutsb); 
+ CURLOPT_TIMEOUT => $timeoutsb);
  curl_setopt_array($chsb, $optssb);
  curl_exec($chsb);
  $status = curl_getinfo($chsb, CURLINFO_HTTP_CODE);
@@ -127,6 +127,7 @@ if($url1sb == '200'  or $url2sb == '200') {
           <img class="img logo" type="image/png" src="{{ asset('content/images/arcanelink-logo.png') }}" style="width:100px;">
           @endif
           </a>
+          <p class="text-center text-lg font-bold font text-gray-300">{{ env('APP_NAME')}}</p>
           <ul class="list-unstyled components mb-5">
 
             @if(auth()->user()->role == 'admin')
@@ -147,9 +148,9 @@ if($url1sb == '200'  or $url2sb == '200') {
                     <a href="{{ url('panel/site') }}">Site</a>
                 </li>
 	            </ul>
-	          </li>           
+	          </li>
              @endif
-             
+
 	          <li>
 				 <li class="active">
 				     <a href="{{ url('/panel/index') }}">Dashboard</a>
@@ -257,10 +258,10 @@ if($url1sb == '200'  or $url2sb == '200') {
                 @if(file_exists(base_path("version.json")) and $ServerExists == 'true')
 
                   <?php // Requests newest version from server and sets it as variable
-                  $Vgit = file_get_contents("https://julianprieber.github.io/littlelink-custom/version.json"); 
+                  $Vgit = file_get_contents("https://julianprieber.github.io/littlelink-custom/version.json");
 
 				       // Requests current version from the local version file and sets it as variable
-                  $Vlocal = file_get_contents(base_path("version.json")); 
+                  $Vlocal = file_get_contents(base_path("version.json"));
 					?>
 
 					<! –– If user has role admin AND newest GitHub release version is higher than the local one an update notice will be displayed ––>
@@ -300,7 +301,7 @@ if($url1sb == '200'  or $url2sb == '200') {
 
 @if(config('advanced-config.disable_default_password_notice') != 'true')
 {{-- Displays a warning message if default password is still set --}}
-@php 
+@php
 $arcanelink_current = Auth::user()->id;
 $userdbs = DB::table('users')->where('id', $arcanelink_current)->get();
 @endphp
@@ -314,7 +315,7 @@ $userdbs = DB::table('users')->where('id', $arcanelink_current)->get();
             </div>
         </nav>
 	@endif
-	
+
 @endforeach
 @endif
 
@@ -340,7 +341,7 @@ $userdbs = DB::table('users')->where('id', $arcanelink_current)->get();
 			setcookie("HideEvent",$_COOKIE['ID'] = "0", time()+60*60*24*5, "/");
 			    header('Location: ' . url('/panel/index'));
 					exit();
-					} 
+					}
 		?>
 		@if(auth()->user()->role == 'admin' and strtotime(date("d-m-Y")) < strtotime($EventJson['enddate']))
 			@if(isset($_COOKIE['HideEvent']) and $_COOKIE['HideEvent'] != $EventJson['id'])
@@ -354,7 +355,7 @@ $userdbs = DB::table('users')->where('id', $arcanelink_current)->get();
         setcookie("HideEvent",$_COOKIE['ID'] = $EventJson['id'], time()+60*60*24*5, "/");
         header('Location: ' . url('/panel/index'));
           exit();
-            } 
+            }
             ?>
             </div>
 		</nav>

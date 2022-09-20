@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\SocialLoginController;
 
 
 /*
@@ -97,6 +98,11 @@ Route::post('/studio/profile', [UserController::class, 'editProfile'])->name('ed
 });
 
 }
+
+//Social login route
+Route::get('/social-auth/{provider}/callback', [SocialLoginController::class, 'providerCallback']);
+Route::get('/social-auth/{provider}', [SocialLoginController::class, 'redirectToProvider'])->name('social.redirect');
+
 
 //Admin route
 Route::group([

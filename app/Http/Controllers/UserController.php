@@ -35,7 +35,7 @@ function stringEndsWith($haystack,$needle,$case=true) {
 class UserController extends Controller
 {
 
-    //Statistics of the number of clicks and links 
+    //Statistics of the number of clicks and links
     public function index()
     {
         $userId = Auth::user()->id;
@@ -58,10 +58,10 @@ class UserController extends Controller
         if (empty($id)) {
             return abort(404);
         }
-     
-        $userinfo = User::select('name', 'arcanelink_name', 'arcanelink_description', 'theme')->where('id', $id)->first();
-        $information = User::select('name', 'arcanelink_name', 'arcanelink_description', 'theme')->where('id', $id)->get();
-        
+
+        $userinfo = User::select('name', 'arcanelink_name', 'arcanelink_description', 'image', 'theme')->where('id', $id)->first();
+        $information = User::select('name', 'arcanelink_name', 'arcanelink_description', 'image', 'theme')->where('id', $id)->get();
+
         $links = DB::table('links')->join('buttons', 'buttons.id', '=', 'links.button_id')->select('links.link', 'links.id', 'links.button_id', 'links.title', 'links.custom_css', 'links.custom_icon', 'buttons.name')->where('user_id', $id)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->get();
 
         return view('arcanelink', ['userinfo' => $userinfo, 'information' => $information, 'links' => $links, 'arcanelink_name' => $arcanelink_name]);
@@ -70,16 +70,17 @@ class UserController extends Controller
     //Show arcanelink page as home page if set in config
     public function arcanelinkhome(request $request)
     {
+
         $arcanelink_name = env('HOME_URL');
         $id = User::select('id')->where('arcanelink_name', $arcanelink_name)->value('id');
 
         if (empty($id)) {
             return abort(404);
         }
-        
-        $userinfo = User::select('name', 'arcanelink_name', 'arcanelink_description', 'theme')->where('id', $id)->first();
-        $information = User::select('name', 'arcanelink_name', 'arcanelink_description', 'theme')->where('id', $id)->get();
-        
+
+        $userinfo = User::select('name', 'arcanelink_name', 'arcanelink_description', 'image', 'theme')->where('id', $id)->first();
+        $information = User::select('name', 'arcanelink_name', 'arcanelink_description', 'image', 'theme')->where('id', $id)->get();
+
         $links = DB::table('links')->join('buttons', 'buttons.id', '=', 'links.button_id')->select('links.link', 'links.id', 'links.button_id', 'links.title', 'links.custom_css', 'links.custom_icon', 'buttons.name')->where('user_id', $id)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->get();
 
         return view('arcanelink', ['userinfo' => $userinfo, 'information' => $information, 'links' => $links, 'arcanelink_name' => $arcanelink_name]);
@@ -190,7 +191,7 @@ class UserController extends Controller
         {
             return abort(404);
         }
-        
+
         if(!empty($query)) {
         	$qs = [];
         	foreach($query as $qk => $qv) { $qs[] = $qk .'='. $qv; }
@@ -201,13 +202,13 @@ class UserController extends Controller
 
         return redirect()->away($link);
     }
-    
+
     //Show link, click number, up link in links page
     public function showLinks()
     {
         $userId = Auth::user()->id;
         $data['pagePage'] = 10;
-        
+
         $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link', 'links.button_id')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(10);
         return view('studio/links', $data);
     }
@@ -217,7 +218,7 @@ class UserController extends Controller
     {
         $userId = Auth::user()->id;
         $data['pagePage'] = 20;
-        
+
         $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link', 'links.button_id')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(20);
         return view('studio/links', $data);
     }
@@ -227,7 +228,7 @@ class UserController extends Controller
     {
         $userId = Auth::user()->id;
         $data['pagePage'] = 30;
-        
+
         $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link', 'links.button_id')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(30);
         return view('studio/links', $data);
     }
@@ -237,7 +238,7 @@ class UserController extends Controller
     {
         $userId = Auth::user()->id;
         $data['pagePage'] = 0;
-        
+
         $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link', 'links.button_id')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(10000000000);
         return view('studio/links', $data);
     }
@@ -248,7 +249,7 @@ class UserController extends Controller
         $linkId = $request->id;
 
         Link::where('id', $linkId)->delete();
-        
+
         return back();
     }
 
@@ -280,9 +281,9 @@ class UserController extends Controller
         $custom_css = Link::where('id', $linkId)->value('custom_css');
         $buttonId = Link::where('id', $linkId)->value('button_id');
         $buttonName = Button::where('id', $buttonId)->value('name');
-        
+
         $buttons = Button::select('id', 'name')->orderBy('name', 'asc')->get();
-       
+
         return view('studio/edit-link', ['custom_css' => $custom_css, 'buttonId' => $buttonId, 'buttons' => $buttons, 'link' => $link, 'title' => $title, 'order' => $order, 'id' => $linkId , 'buttonName' => $buttonName]);
 
     }
@@ -300,7 +301,7 @@ class UserController extends Controller
         $buttonId = Link::where('id', $linkId)->value('button_id');
 
         $buttons = Button::select('id', 'name')->get();
-       
+
         return view('studio/button-editor', ['custom_icon' => $custom_icon, 'custom_css' => $custom_css, 'buttonId' => $buttonId, 'buttons' => $buttons, 'link' => $link, 'title' => $title, 'order' => $order, 'id' => $linkId]);
 
     }
@@ -356,7 +357,7 @@ class UserController extends Controller
     {
         $userId = Auth::user()->id;
 
-        $data['pages'] = User::where('id', $userId)->select('arcanelink_name', 'arcanelink_description')->get();
+        $data['pages'] = User::where('id', $userId)->select('arcanelink_name', 'arcanelink_description', 'image')->get();
 
         return view('/studio/page', $data);
     }
@@ -370,7 +371,7 @@ class UserController extends Controller
         $profilePhoto = $request->file('image');
         $pageName = $request->pageName;
         $pageDescription = $request->pageDescription;
-        
+
         User::where('id', $userId)->update(['arcanelink_name' => $pageName, 'arcanelink_description' => $pageDescription]);
 
         if(!empty($profilePhoto)){
@@ -402,7 +403,7 @@ class UserController extends Controller
         $zipfile = $request->file('zip');
 
         $theme = $request->theme;
-        
+
         User::where('id', $userId)->update(['theme' => $theme]);
 
         if(!empty($zipfile)){
@@ -416,7 +417,7 @@ class UserController extends Controller
         unlink(base_path() . '/themes/temp.zip');
 
         // Removes version numbers from folder.
-        
+
         $folder = base_path('themes');
         $regex = '/[0-9.-]/';
         $files = scandir($folder);
@@ -486,10 +487,10 @@ if($request->name != '' ) {
         if (empty($id)) {
             return abort(404);
         }
-     
+
         $userinfo = User::select('name', 'arcanelink_name', 'arcanelink_description', 'theme')->where('id', $id)->first();
         $information = User::select('name', 'arcanelink_name', 'arcanelink_description', 'theme')->where('id', $id)->get();
-        
+
         $links = DB::table('links')->join('buttons', 'buttons.id', '=', 'links.button_id')->select('links.link', 'links.id', 'links.button_id', 'links.title', 'links.custom_css', 'links.custom_icon', 'buttons.name')->where('user_id', $id)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->get();
 
         return view('components/theme', ['userinfo' => $userinfo, 'information' => $information, 'links' => $links, 'arcanelink_name' => $arcanelink_name]);

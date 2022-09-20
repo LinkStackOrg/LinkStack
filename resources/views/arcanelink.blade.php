@@ -168,29 +168,29 @@ return $path;}
     @endif
 
     @if($ShowShrBtn == 'true')
-    <?php 
+    <?php
 //Get browser type
 $arr_browsers = ["Opera", "Edg", "Chrome", "Safari", "Firefox", "MSIE", "Trident"];
- 
+
 $agent = $_SERVER['HTTP_USER_AGENT'];
- 
+
 $user_browser = '';
 foreach ($arr_browsers as $browser) {
     if (strpos($agent, $browser) !== false) {
         $user_browser = $browser;
         break;
-    }   
+    }
 }
-  
+
 switch ($user_browser) {
     case 'MSIE':
         $user_browser = 'Internet Explorer';
         break;
-  
+
     case 'Trident':
         $user_browser = 'Internet Explorer';
         break;
-  
+
     case 'Edg':
         $user_browser = 'Microsoft Edge';
         break;
@@ -214,7 +214,7 @@ function get_operating_system() {
     } elseif (preg_match('/webos/i', $u_agent)) {
         $operating_system = 'mobile';
     }
-    
+
     return $operating_system;
 }
 ?>
@@ -242,12 +242,15 @@ function get_operating_system() {
         <div class="row">
             <div class="column" style="margin-top: 5%">
                 <!-- Your Image Here -->
+
                 @if(file_exists(base_path("img/$arcanelink_name" . ".png" )))
-                <img alt="avatar" class="rounded-avatar fadein" src="{{ asset("img/$arcanelink_name" . ".png") }}" width="128px" height="128px" style="object-fit: cover;">
+                    <img alt="avatar" class="rounded-avatar fadein" src="{{ asset("img/$arcanelink_name" . ".png") }}" width="128px" height="128px" style="object-fit: cover;">
+                @elseif(!empty($userinfo->image))
+                    <img alt="avatar" class="rounded-avatar fadein" src="{{ $userinfo->image }}" srcset="{{ asset('content/images/avatar@2x.png 2x') }}" width="128px" height="128px" style="object-fit: cover;">
                 @elseif(file_exists(base_path("content/images/avatar.png" )))
-                <img alt="avatar" class="rounded-avatar fadein" src="{{ asset('content/images/avatar.png') }}" srcset="{{ asset('content/images/avatar@2x.png 2x') }}" width="128px" height="128px" style="object-fit: cover;">
+                    <img alt="avatar" class="rounded-avatar fadein" src="{{ asset('content/images/avatar.png') }}" srcset="{{ asset('content/images/avatar@2x.png 2x') }}" width="128px" height="128px" style="object-fit: cover;">
                 @else
-                <img alt="avatar" class="rounded-avatar fadein" src="{{ asset('content/images/arcanelink-logo.png') }}" srcset="{{ asset('content/images/avatar@2x.png 2x') }}" width="128px" height="128px" style="object-fit: cover;">
+                    <img alt="avatar" class="rounded-avatar fadein" src="{{ asset('content/images/arcanelink-logo.png') }}" srcset="{{ asset('content/images/avatar@2x.png 2x') }}" width="128px" height="128px" style="object-fit: cover;">
                 @endif
 
                 <!-- Your Name -->
@@ -263,10 +266,10 @@ function get_operating_system() {
                 <?php function strp($urlStrp){return str_replace(array('http://', 'https://'), '', $urlStrp);} ?>
                 <?php $initial=1; // <-- Effectively sets the initial loading time of the buttons. This value should be left at 1. ?>
                 @foreach($links as $link)
-                  @php $linkName = str_replace('default ','',$link->name) @endphp
+                @php $linkName = str_replace('default ','',$link->name) @endphp
 
                 @if($link->button_id === 0)
-                  <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-title button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" @if(theme('open_links_in_same_tab') !="true" )target="_blank" @endif>{{ $link->title }}</a></div>
+                <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-title button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" @if(theme('open_links_in_same_tab') !="true" )target="_blank" @endif>{{ $link->title }}</a></div>
                 @elseif($link->name === "phone")
                 <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-default button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ $link->link }}"><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == " true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/phone{{theme('custom_icon_extension')}} @else{{ asset('\/content/icons\/')}}phone.svg @endif"></i>{{ $link->title }}</a></div>
                 @elseif($link->name === "custom" and $link->custom_css === "" or $link->custom_css === "NULL" or (theme('allow_custom_buttons') == "false" and $link->name === "custom"))
@@ -280,7 +283,7 @@ function get_operating_system() {
                 @elseif($link->name === "custom_website" and $link->custom_css != "")
                 <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $link->custom_css }}" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" @if(theme('open_links_in_same_tab') !="true" )target="_blank" @endif><img alt="button-icon" class="icon hvr-icon" src="https://icons.duckduckgo.com/ip3/{{strp($link->link)}}.ico">{{ $link->title }}</a></div>
                 @elseif($link->name === "space")
-                <?php 
+                <?php
           if (is_numeric($link->title) and $link->title < 10)
           echo str_repeat("<br>",$link->title);
           elseif (is_numeric($link->title) and $link->title >= 10)
@@ -291,7 +294,7 @@ function get_operating_system() {
                 @elseif($link->name === "heading")
                 <h2>{{ $link->title }}</h2>
                 @else
-            
+
                 <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" @if(theme('open_links_in_same_tab') !="true" )target="_blank" @endif><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == " true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/{{$linkName}}{{theme('custom_icon_extension')}} @else{{ asset('\/content/icons\/') . $linkName }}.svg @endif">{{ ucfirst($link->title) }}</a></div>
                 @endif
                 @endforeach

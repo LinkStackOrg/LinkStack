@@ -24,7 +24,7 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
-        
+
   <!-- begin dark mode detection -->
 	<script src="{{ asset('/js/js.cookie.min.js') }}"></script>
 	<script>
@@ -51,11 +51,11 @@
 		}
 	</script>
 		<?php // loads dark mode CSS if dark mode detected
-		     $color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : false; 
+		     $color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : false;
 			 $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
 		@if ($color_scheme == 'dark' and config('advanced-config.theme') != 'light' and $color_scheme_override != 'light' or $color_scheme_override == 'dark' or config('advanced-config.theme') == 'dark')
-		<link rel="stylesheet" href="{{ asset('css/app-dark.css') }}">
-		@endif
+				<link rel="stylesheet" href="{{ asset('css/app-dark.css') }}">
+        @endif
   <!-- end dark mode detection -->
     </head>
     <body>

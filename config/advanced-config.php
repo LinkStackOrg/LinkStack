@@ -2,7 +2,7 @@
 
 
 
-$analytics = 
+$analytics =
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +31,9 @@ return [
     |--------------------------------------------------------------------------
     |
     | Will only be active if "CUSTOM_META_TAGS" is set to "true" in the config.
-    | These tags will only be applied to the home page or if a Arcane Link page 
+    | These tags will only be applied to the home page or if a Arcane Link page
     | is set as the homepage in the config (for example: HOME_URL="admin").
-    | 
+    |
     | Empty entries will be ignored.
     |
     */
@@ -64,7 +64,7 @@ return [
 
 
     // Overwrites default theme regardless of preference defined by the operating system.
-    'theme' => '', // Either "dark" or "light".
+    'theme' => 'light', // Either "dark" or "light".
 
 
     // Overwrites default page title after the arcanelink name on arcanelink pages.
@@ -74,11 +74,11 @@ return [
     'arcanelink_title' => '',
 
 
-    // Either "true", "false" or "auth". 
+    // Either "true", "false" or "auth".
     // If "auth" is selected, the share button will only be shown to users on their own page.
     'display_share_button' => 'true',
 
-    
+
     // Do not change here!
     'analytics' => $analytics, // Set on top of page.
 
@@ -130,18 +130,18 @@ return [
     'custom_link_home' => '', // Leave empty to use default value.
     // Changes the text on the "Home" link.
     'custom_text_home' => 'Home', // Leave empty to use default value.
-    
+
     /*
     |--------------------------------------------------------------------------
     | Home Page settings
     |--------------------------------------------------------------------------
     |
     | To change footer text on the Home Page, set the setting 'footer' to your preference.
-    | 
+    |
     | The footer text is the towards the bottom of the Home Page that reads: "and X other buttons ..."
-    | 
+    |
     | Depending on the amount of buttons on your Home Page, you might want to change this text.
-    | 
+    |
     | 'default' -> Uses default text.
     | 'alt'  ->  Displays an alternative version based on the Button Editor.
     | 'custom'  ->  Displays your custom text defined with 'custom_footer_text'.
@@ -169,9 +169,9 @@ return [
     |
     | Here you can configure your own buttons for the Home Page.
     | You can add or remove as many buttons as you like.
-    | 
+    |
     | The syntax of the custom buttons is as follows:
-    | 
+    |
     |       array(
     |         'button' => '',
     |         'link' => '',
@@ -179,23 +179,23 @@ return [
     |         'icon' => '',
     |         'custom_css' => ''
     |       ),
-    | 
+    |
     | In the 'button' field, you have to enter the button name (i.e. 'twitter', 'github', 'custom'...).
     | You can find a list of all available buttons below.
-    | 
+    |
     | In the 'link' field, you can enter your desired link you may leave this field empty for a display only, non-functional button.
-    | 
-    | 
-    | 
+    |
+    |
+    |
     | The input fields below only apply to buttons such as 'custom' and 'custom_website' but must always be included even if only empty.
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    | 
+    |
     | In the 'title' field, changes the text on a button, such as 'custom' and 'custom_website'.
-    | 
-    | In the 'icon' field, uses the same syntax as the Button Editor on the Admin Panel. 
+    |
+    | In the 'icon' field, uses the same syntax as the Button Editor on the Admin Panel.
     | This allows you to add your own icons to 'custom' buttons. You can find a list of available icons on llc.bio/fa.
-    | 
-    | In the 'custom_css' field, here you can enter custom CSS to change the color of your button. 
+    |
+    | In the 'custom_css' field, here you can enter custom CSS to change the color of your button.
     | If you don't feel comfortable working with CSS,
     | you can copy and paste the CSS from the 'Custom CSS' field of the Button Editor on the Admin Panel.
     |
