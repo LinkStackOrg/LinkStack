@@ -62,7 +62,7 @@ var copyToClipboard = (function () {
 
 copyToClipboard.handleCopyIconClick();
 
-$('#share-share-button').on('click', () => {
+document.querySelector('#share-share-button').addEventListener('click', () => {
   if (navigator.share) {
     navigator.share({
         title: '',
