@@ -27,8 +27,8 @@
 </p>
 
 <p align="center">
-  <a href="https://littlelink-custom.com/blog"><img src="https://raw.githubusercontent.com/LittleLink-Custom/.github/main/profile/img/read_blog.png" alt="Blog" width="250" ></a><a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
-  <a href="https://demo.littlelink-custom.com"><img src="https://raw.githubusercontent.com/LittleLink-Custom/.github/main/profile/img/live_demo.png" alt="Live Demo" width="250" ></a>
+  <a href="https://littlelink-custom.com/blog"><img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/badges/read_blog.png" alt="Blog" width="250" ></a><a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+  <a href="https://demo.littlelink-custom.com"><img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/badges/live_demo.png" alt="Live Demo" width="250" ></a>
 </p>
 
 <p align="center">
@@ -50,7 +50,7 @@
 ---
 
 <p align="center">
-  <a href="https://github.com/JulianPrieber/littlelink-custom/releases/latest/download/littlelink-custom.zip"><img src="https://raw.githubusercontent.com/LittleLink-Custom/.github/main/profile/img/download_latest.png" alt="Download latest" width="280" ></a>
+  <a href="https://github.com/JulianPrieber/littlelink-custom/releases/latest/download/littlelink-custom.zip"><img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/badges/download_latest.png" alt="Download latest" width="280" ></a>
     <br><br>
 	<a href="https://github.com/JulianPrieber/littlelink-custom/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/JulianPrieber/LittleLink-Custom?label=Latest%20release"></a>
 	<br>
@@ -62,7 +62,7 @@
 <br>
 
 <p align="center">
-  <a href="https://github.com/JulianPrieber/llc-docker#readme"><img src="https://raw.githubusercontent.com/LittleLink-Custom/.github/main/profile/img/docker_version.png" alt="Download latest" width="220" ></a>
+  <a href="https://github.com/JulianPrieber/llc-docker#readme"><img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/badges/docker_version.png" alt="Download latest" width="220" ></a>
   <br>
   <a href="https://hub.docker.com/r/julianprieber/littlelink-custom"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/julianprieber/littlelink-custom?label=Docker%20pulls&logo=docker"></a>
 </p>
@@ -107,7 +107,7 @@ Feel free to register your account and try out all the features of LittleLink Cu
 
 <br>
 <p align="center">
-  <a href="https://demo.littlelink-custom.com/"><img src="https://raw.githubusercontent.com/LittleLink-Custom/.github/main/profile/img/live_demo.png" alt="Live Demo" width="350" ></a>
+  <a href="https://demo.littlelink-custom.com/"><img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/badges/live_demo.png" alt="Live Demo" width="350" ></a>
 </p>
 	    
 ## Features
@@ -140,13 +140,13 @@ Feel free to register your account and try out all the features of LittleLink Cu
 <br></br>
 <h3 align="center">All LittleLink Custom pages automatically apply the Dark Mode Theme if your preferred theme setting in your browser or operating system is set to dark.</h3>
 <p align="center">
-<img height="650" src="https://i.imgur.com/vHyAO4V.png">
+<img height="650" src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/marketing/dark_mode.png">
 </p>
 	    
 <br></br>
 <h3 align="center">Lightweight CSS animations</h3>
 <p align="center">
-<img height="450" src="https://i.imgur.com/OL0sf89.gif">
+<img height="450" src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/marketing/css_animations.gif">
 </p>
 
 
@@ -190,7 +190,7 @@ Now click on Choose file and select your downloaded theme zip file. Now click on
 If you know a bit about CSS, consider making your own theme and adding it to the public directory.
 Everything is documented in the dedicated GitHub repository.
 
-[github.com/JulianPrieber/llc-themes/tree/main/contributing](https://github.com/JulianPrieber/llc-themes/tree/main/contributing )
+[github.com/JulianPrieber/llc-themes/tree/main/contributing](https://github.com/JulianPrieber/llc-themes/tree/main/contributing)
 
 <br>
 
@@ -203,21 +203,21 @@ Everything is documented in the dedicated GitHub repository.
 
 <h4 align="center">Create custom background colors and gradients with as many colors you want.</h4>
 <p align="center">
-  <img src="https://i.imgur.com/fX0y0IY.png" width="450" >
+  <img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/marketing/colors_gradients.png" width="450" >
 </p>
 
 <br>
 
 <h4 align="center">Add custom icons with Font Awesome</h4>
 <p align="center">
-  <img src="https://i.imgur.com/PvFCjON.png" width="450" >
+  <img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/marketing/icons_font_awesome.png" width="450" >
 </p>
 
 <br>
 
 <h4 align="center">Get a live preview of your edits.</h4>
 <p align="center">
-  <img src="https://i.imgur.com/Otue6Hl.png" width="450" >
+  <img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/marketing/live_preview.png" width="450" >
 </p>
 
 <br>
@@ -227,7 +227,7 @@ Everything is documented in the dedicated GitHub repository.
 <h4 align="center">This updater allows users to update their installation with just one click.</h4>
 
 <p align="center">
-  <a href="https://i.imgur.com/OzdUVbU.png"><img src="https://i.imgur.com/OzdUVbU.png" width="600" ></a>
+  <img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/marketing/updater.png" width="600" >
 </p>
 
 ## Installation
@@ -257,7 +257,7 @@ For more configuration options, refer to the [documentation](https://littlelink-
 ## Docker
 
 <p align="center">
-    <a href="https://github.com/JulianPrieber/llc-docker"><img width="450" src="https://i.imgur.com/gPc22dn.png"></a>
+    <a href="https://github.com/JulianPrieber/llc-docker"><img width="450" src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/marketing/docker_edition.png"></a>
 </p>
 
 The official docker version of [LittleLink Custom](https://github.com/JulianPrieber/littlelink-custom). This docker image is a simple to set up solution, containing everything you need to run LittleLink Custom.
@@ -304,7 +304,7 @@ If you switched your database to MySQL, your database will not be included in th
 <br>
 
 <p align="center">
-  <a href="https://discord.littlelink-custom.com"><img src="https://i.imgur.com/92ceyuH.png" alt="Join the Discord" width="600" ></a>
+  <a href="https://discord.littlelink-custom.com"><img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/marketing/discord.png" alt="Join the Discord" width="600" ></a>
 </p>
 
 <br>
