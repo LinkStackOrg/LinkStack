@@ -210,5 +210,7 @@ exit(); ?>
       
 @endif
 
+@if("8" > phpversion()) <br><br><a style="background-color:tomato;color:#fff;border-radius:5px;" class="nav-link" href="{{ url('/studio/profile') }}" target=""><i class="bi bi-exclamation-circle-fill"></i> <strong>You are using an outdated version of PHP! Official support for this version will end soon.</strong></a> @endif
 </div>
+
 @endpush
