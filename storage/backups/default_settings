@@ -69,13 +69,13 @@ SESSION_DRIVER=file
 SESSION_LIFETIME=120
 
 #Updater Settings=Changes settings regarding the built-in updater.
-#=JOIN_BETA either true or false. Learn more about this setting at llc.bio/beta.
+#=JOIN_BETA either true or false. Learn more about this setting at llc.ovh/beta.
 JOIN_BETA=false
 #=SKIP_UPDATE_BACKUP either true or false. Skips backup before updating. Use at your own risk.
 SKIP_UPDATE_BACKUP=false
 
 #=CUSTOM_META_TAGS either true or false. Used to enable setting in advanced config file (config/advanced-config.php).
-#=You can read more about this config at https://llc.bio/advanced-config.
+#=You can read more about this config at https://llc.ovh/advanced-config.
 CUSTOM_META_TAGS=false
 
 #=FORCE_HTTPS either true or false. Used to redirect any request to HTTPS. 

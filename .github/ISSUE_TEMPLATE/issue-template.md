@@ -13,4 +13,4 @@ Platform: `Ubuntu 22.04 LTS`
 Server type: `NGINX/Apache2 ...`
 PHP version: `8.1`
 
-[//]: # (Please make sure you have read the system requirements at https://llc.bio/req before submitting your issue.)
+[//]: # (Please make sure you have read the system requirements at https://llc.ovh/req before submitting your issue.)

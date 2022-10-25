@@ -344,7 +344,7 @@ LittleLink Admin is in itself a fork of [LittleLink](https://github.com/sethcott
 <br>
 
 ## Supporters
-You can support LittleLink Custom [here](https://littlelink-custom.com/sponsor). If you choose to support LittleLink Custom, you will get exclusive rewards such as access to a private LittleLink Custom instance hosted by us at [llc.bio](https://llc.bio) for free.
+You can support LittleLink Custom [here](https://littlelink-custom.com/sponsor). If you choose to support LittleLink Custom, you will get exclusive rewards such as access to a private LittleLink Custom instance hosted by us at [llc.ovh](https://llc.ovh) for free.
 
 
 **💖 Thank you:**
