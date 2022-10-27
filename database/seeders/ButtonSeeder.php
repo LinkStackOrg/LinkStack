@@ -23,11 +23,55 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'custom_website'
             ],
-			
+            			
+            [
+            'name' => 'website'
+            ],
+
+            [
+            'name' => 'phone'
+            ],
+
+            [
+            'name' => 'littlelink-custom'
+            ],
+
+            [
+            'name' => 'heading'
+            ],
+                
+            [
+            'name' => 'space'
+            ],
+
+            [
+            'name' => 'all-inkl'
+            ],
+
+            [
+            'name' => 'amazon'
+            ],
+
+            [
+            'name' => 'appstore'
+            ],
+
+            [
+            'name' => 'apple-music'
+            ],
+    
+            [
+            'name' => 'apple-podcasts'
+            ],
+
             [
 			'name' => 'bandcamp'
             ],
 			
+            [
+            'name' => 'briar'
+            ],
+            
             [
 			'name' => 'buy me a coffee'
             ],
@@ -35,7 +79,22 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'cashapp'
             ],
-			
+
+            [
+            'name' => 'castopod'
+            ],
+
+            [
+            'name' => 'codepen'
+            ],
+    
+            [
+            'name' => 'codeberg'
+            ],
+
+            [
+            'name' => 'cryptpad'
+            ],
 
             [
 			'name' => 'default email'
@@ -44,17 +103,53 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'default email_alt'
             ],
+
+            [
+            'name' => 'dev-to'
+            ],
+            
+            [
+            'name' => 'deezer'
+            ],
 			
             [
 			'name' => 'discord'
+            ],
+            
+            [
+            'name' => 'epic-games'
+            ],
+            
+            [
+            'name' => 'etsy'
             ],
 			
             [
 			'name' => 'facebook'
             ],
+            			
+            [
+            'name' => 'messenger'
+            ],
 			
             [
 			'name' => 'figma'
+            ],
+            
+            [
+            'name' => 'firefox'
+            ],
+            
+            [
+            'name' => 'flickr'
+            ],
+            
+            [
+            'name' => 'funkwhale'
+            ],
+            
+            [
+            'name' => 'f-droid'
             ],
 			
             [
@@ -69,17 +164,48 @@ class ButtonSeeder extends Seeder
 			'name' => 'goodreads'
             ],
 			
-
             [
 			'name' => 'instagram'
             ],
+            
+            [
+            'name' => 'itchio'
+            ],
+
+            [
+            'name' => 'humble-bundle'
+            ],
 			
             [
+            'name' => 'kickstarter'
+            ],
+
+            [
 			'name' => 'kit'
+            ],
+
+            [
+            'name' => 'ko-fi'
+            ],
+
+            [
+            'name' => 'lemmy'
+            ],
+            
+            [
+            'name' => 'letterboxd'
+            ],
+            
+            [
+            'name' => 'liberapay'
             ],
 			
             [
 			'name' => 'linkedin'
+            ],
+
+            [
+            'name' => 'matrix'
             ],
 			
             [
@@ -89,9 +215,25 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'medium'
             ],
-			
+
             [
-			'name' => 'messenger'
+            'name' => 'misskey'
+            ],
+            
+            [
+            'name' => 'notion'
+            ],
+
+            [
+            'name' => 'odysee'
+            ],
+
+            [
+            'name' => 'openstreetmap'
+            ],
+
+            [
+            'name' => 'owncast'
             ],
 			
             [
@@ -101,13 +243,41 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'paypal'
             ],
-                
+
             [
-			'name' => 'pinterest'
+            'name' => 'peertube'
+            ],
+
+            [
+            'name' => 'pinterest'
+            ],
+
+            [
+            'name' => 'pixelfed'
+            ],
+
+            [
+            'name' => 'piwigo'
+            ],
+                        
+            [
+            'name' => 'playstore'
+            ],
+
+            [
+            'name' => 'plemora'
+            ],
+
+            [
+            'name' => 'producthunt'
             ],
 			
             [
 			'name' => 'reddit'
+            ],
+            
+            [
+            'name' => 'session'
             ],
 			
             [
@@ -133,13 +303,25 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'steam'
             ],
+            
+            [
+            'name' => 'strava'
+            ],
 			
             [
 			'name' => 'telegram'
             ],
+
+            [
+            'name' => 'threema'
+            ],
 			
             [
 			'name' => 'tiktok'
+            ],
+
+            [
+            'name' => 'trello'
             ],
 			
             [
@@ -153,6 +335,22 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'twitter'
             ],
+
+            [
+            'name' => 'unity'
+            ],
+            
+            [
+            'name' => 'unraid'
+            ],
+
+            [
+            'name' => 'untappd'
+            ],
+            
+            [
+            'name' => 'upptime'
+            ],
 			
             [
 			'name' => 'venmo'
@@ -161,9 +359,9 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'vimeo'
             ],
-			
+
             [
-			'name' => 'website'
+            'name' => 'vrchat'
             ],
 			
             [
@@ -181,23 +379,11 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'youtube'
             ],
-			
-            [
-			'name' => 'heading'
-            ],
-			
-            [
-			'name' => 'space'
-            ],
-			
-            [
-            'name' => 'phone'
-            ],
 
             [
-            'name' => 'trello'
+            'name' => 'youtube-music'
             ],
-
+    
         ];
 
          Button::insert($buttons);
