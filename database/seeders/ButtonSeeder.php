@@ -45,10 +45,6 @@ class ButtonSeeder extends Seeder
             ],
 
             [
-            'name' => 'all-inkl'
-            ],
-
-            [
             'name' => 'amazon'
             ],
 
