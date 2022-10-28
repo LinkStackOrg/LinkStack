@@ -95,7 +95,11 @@ return $path;}
   <meta name="designer" href="{{ url('') . "/theme/@" . $littlelink_name}}" content="{{ url('') . "/theme/@" . $littlelink_name}}">
 
   <link rel="stylesheet" href="themes/{{$info->theme}}/share.button.css">
+  @if(theme('use_default_buttons') == "true")
+  <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
+  @else
   <link rel="stylesheet" href="themes/{{$info->theme}}/brands.css">
+  @endif
   <link rel="stylesheet" href="themes/{{$info->theme}}/skeleton-auto.css">
 @if(file_exists(base_path('themes/' . $info->theme . '/animations.css')))
   <link rel="stylesheet" href="<?php echo asset('themes/' . $info->theme . '/animations.css') ?>">
