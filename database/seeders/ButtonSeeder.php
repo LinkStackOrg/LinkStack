@@ -11,6 +11,8 @@ class ButtonSeeder extends Seeder
     /**
      * Run the database seeds.
      *
+     * ALWAYS ADD NEW BUTTONS TO THE END OF THE FILE!
+     * 
      * @return void
      */
     public function run()
@@ -23,51 +25,11 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'custom_website'
             ],
-            			
-            [
-            'name' => 'website'
-            ],
-
-            [
-            'name' => 'phone'
-            ],
-
-            [
-            'name' => 'littlelink-custom'
-            ],
-
-            [
-            'name' => 'heading'
-            ],
-                
-            [
-            'name' => 'space'
-            ],
-
-            [
-            'name' => 'amazon'
-            ],
-
-            [
-            'name' => 'appstore'
-            ],
-
-            [
-            'name' => 'apple-music'
-            ],
-    
-            [
-            'name' => 'apple-podcasts'
-            ],
-
+			
             [
 			'name' => 'bandcamp'
             ],
 			
-            [
-            'name' => 'briar'
-            ],
-            
             [
 			'name' => 'buy me a coffee'
             ],
@@ -75,22 +37,7 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'cashapp'
             ],
-
-            [
-            'name' => 'castopod'
-            ],
-
-            [
-            'name' => 'codepen'
-            ],
-    
-            [
-            'name' => 'codeberg'
-            ],
-
-            [
-            'name' => 'cryptpad'
-            ],
+			
 
             [
 			'name' => 'default email'
@@ -99,53 +46,17 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'default email_alt'
             ],
-
-            [
-            'name' => 'dev-to'
-            ],
-            
-            [
-            'name' => 'deezer'
-            ],
 			
             [
 			'name' => 'discord'
-            ],
-            
-            [
-            'name' => 'epic-games'
-            ],
-            
-            [
-            'name' => 'etsy'
             ],
 			
             [
 			'name' => 'facebook'
             ],
-            			
-            [
-            'name' => 'messenger'
-            ],
 			
             [
 			'name' => 'figma'
-            ],
-            
-            [
-            'name' => 'firefox'
-            ],
-            
-            [
-            'name' => 'flickr'
-            ],
-            
-            [
-            'name' => 'funkwhale'
-            ],
-            
-            [
-            'name' => 'f-droid'
             ],
 			
             [
@@ -160,48 +71,17 @@ class ButtonSeeder extends Seeder
 			'name' => 'goodreads'
             ],
 			
+
             [
 			'name' => 'instagram'
             ],
-            
-            [
-            'name' => 'itchio'
-            ],
-
-            [
-            'name' => 'humble-bundle'
-            ],
 			
             [
-            'name' => 'kickstarter'
-            ],
-
-            [
 			'name' => 'kit'
-            ],
-
-            [
-            'name' => 'ko-fi'
-            ],
-
-            [
-            'name' => 'lemmy'
-            ],
-            
-            [
-            'name' => 'letterboxd'
-            ],
-            
-            [
-            'name' => 'liberapay'
             ],
 			
             [
 			'name' => 'linkedin'
-            ],
-
-            [
-            'name' => 'matrix'
             ],
 			
             [
@@ -211,25 +91,9 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'medium'
             ],
-
+			
             [
-            'name' => 'misskey'
-            ],
-            
-            [
-            'name' => 'notion'
-            ],
-
-            [
-            'name' => 'odysee'
-            ],
-
-            [
-            'name' => 'openstreetmap'
-            ],
-
-            [
-            'name' => 'owncast'
+			'name' => 'messenger'
             ],
 			
             [
@@ -239,41 +103,13 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'paypal'
             ],
-
+                
             [
-            'name' => 'peertube'
-            ],
-
-            [
-            'name' => 'pinterest'
-            ],
-
-            [
-            'name' => 'pixelfed'
-            ],
-
-            [
-            'name' => 'piwigo'
-            ],
-                        
-            [
-            'name' => 'playstore'
-            ],
-
-            [
-            'name' => 'plemora'
-            ],
-
-            [
-            'name' => 'producthunt'
+			'name' => 'pinterest'
             ],
 			
             [
 			'name' => 'reddit'
-            ],
-            
-            [
-            'name' => 'session'
             ],
 			
             [
@@ -299,25 +135,13 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'steam'
             ],
-            
-            [
-            'name' => 'strava'
-            ],
 			
             [
 			'name' => 'telegram'
             ],
-
-            [
-            'name' => 'threema'
-            ],
 			
             [
 			'name' => 'tiktok'
-            ],
-
-            [
-            'name' => 'trello'
             ],
 			
             [
@@ -331,22 +155,6 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'twitter'
             ],
-
-            [
-            'name' => 'unity'
-            ],
-            
-            [
-            'name' => 'unraid'
-            ],
-
-            [
-            'name' => 'untappd'
-            ],
-            
-            [
-            'name' => 'upptime'
-            ],
 			
             [
 			'name' => 'venmo'
@@ -355,9 +163,9 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'vimeo'
             ],
-
+			
             [
-            'name' => 'vrchat'
+			'name' => 'website'
             ],
 			
             [
@@ -375,11 +183,207 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'youtube'
             ],
+			
+            [
+			'name' => 'heading'
+            ],
+			
+            [
+			'name' => 'space'
+            ],
+			
+            [
+            'name' => 'phone'
+            ],
 
+            [
+            'name' => 'trello'
+            ],
+
+            [
+            'name' => 'littlelink-custom'
+            ],
+                        
+            [
+            'name' => 'space'
+            ],
+            
+            [
+            'name' => 'amazon'
+            ],
+            
+            [
+            'name' => 'appstore'
+            ],
+            
+            [
+            'name' => 'apple-music'
+            ],
+        
+            [
+            'name' => 'apple-podcasts'
+            ],
+            
+            [
+            'name' => 'briar'
+            ],
+            
+            [        
+            'name' => 'castopod'
+            ],
+            
+            [
+            'name' => 'codepen'
+            ],
+        
+            [
+            'name' => 'codeberg'
+            ],
+            
+            [
+            'name' => 'cryptpad'
+            ],
+            
+            [
+            'name' => 'dev-to'
+            ],
+            
+            [
+            'name' => 'deezer'
+            ],
+        
+            [
+            'name' => 'epic-games'
+            ],
+            
+            [
+            'name' => 'etsy'
+            ],
+        
+            [
+            'name' => 'firefox'
+            ],
+            
+            [
+            'name' => 'flickr'
+            ],
+            
+            [
+            'name' => 'funkwhale'
+            ],
+            
+            [
+            'name' => 'f-droid'
+            ],
+            
+            [
+            'name' => 'itchio'
+            ],
+            
+            [
+            'name' => 'humble-bundle'
+            ],
+                        
+            [
+            'name' => 'kickstarter'
+            ],
+            
+            [
+            'name' => 'ko-fi'
+            ],
+            
+            [
+            'name' => 'lemmy'
+            ],
+            
+            [
+            'name' => 'letterboxd'
+            ],
+            
+            [
+            'name' => 'liberapay'
+            ],
+            
+            [
+            'name' => 'matrix'
+            ],
+    
+            [
+            'name' => 'misskey'
+            ],
+            
+            [
+            'name' => 'notion'
+            ],
+            
+            [
+            'name' => 'odysee'
+            ],
+            
+            [
+            'name' => 'openstreetmap'
+            ],
+            
+            [
+            'name' => 'owncast'
+            ],
+            
+            [
+            'name' => 'peertube'
+            ],
+            
+            [
+            'name' => 'pixelfed'
+            ],
+            
+            [
+            'name' => 'piwigo'
+            ],
+                        
+            [
+            'name' => 'playstore'
+            ],
+            
+            [
+            'name' => 'plemora'
+            ],
+
+            [
+            'name' => 'producthunt'
+            ],
+            
+            [
+            'name' => 'session'
+            ],
+            
+            [
+            'name' => 'strava'
+            ],
+            
+            [
+            'name' => 'unity'
+            ],
+            
+            [
+            'name' => 'unraid'
+            ],
+            
+            [
+            'name' => 'untappd'
+            ],
+            
+            [
+            'name' => 'upptime'
+            ],
+    
+            [
+            'name' => 'vrchat'
+            ],
+            
             [
             'name' => 'youtube-music'
             ],
-    
+
         ];
 
          Button::insert($buttons);
