@@ -533,6 +533,9 @@ button:hover,
 .button.button-lemmy {
   color: #000000;
   background-color: #FFFFFF;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
 }
 .button.button-lemmy:hover,
 .button.button-lemmy:focus {
@@ -573,6 +576,9 @@ button:hover,
 .button.button-matrix {
   color: #000000;
   background-color: #FFFFFF;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
 }
 .button.button-matrix:hover,
 .button.button-matrix:focus {
@@ -615,7 +621,10 @@ button:hover,
   border-style: solid;
   border-color: #000000;
   border-width: 2px;
-  background-color: #ffffff;
+  background-color: #FFFFFF;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
 }
 .button.button-notion:hover,
 .button.button-notion:focus {
@@ -655,6 +664,9 @@ button:hover,
 .button.button-owncast {
   color: #000000;
   background-color: #FFFFFF;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
 }
 .button.button-owncast:hover,
 .button.button-owncast:focus {
@@ -915,6 +927,9 @@ button:hover,
 .button.button-unity {
   color: #000000;
   background-color: #FFFFFF;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
 }
 .button.button-unity:hover,
 .button.button-unity:focus {
@@ -978,7 +993,7 @@ button:hover,
 /* VRChat */
 .button.button-vrchat {
   color: #000000;
-  background-color: #ffffff;
+  background-color: #FFFFFF;
   border: 2px solid black;
 }
 .button.button-vrchat:hover,
