@@ -38,7 +38,6 @@ class ButtonSeeder extends Seeder
 			'name' => 'cashapp'
             ],
 			
-
             [
 			'name' => 'default email'
             ],
@@ -384,6 +383,10 @@ class ButtonSeeder extends Seeder
             'name' => 'youtube-music'
             ],
 
+            [
+            'name' => 'all-inkl'
+            ],
+    
         ];
 
          Button::insert($buttons);

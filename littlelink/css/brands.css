@@ -143,6 +143,19 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* ALL-INKL */
+.button.button-all-inkl {
+  color: #000000;
+  background-color: #FFFFFF;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+}
+.button.button-all-inkl:hover,
+.button.button-all-inkl:focus {
+  filter: brightness(90%);
+}
+
 /* Amazon */
 .button.button-amazon {
   color: #ffffff;
