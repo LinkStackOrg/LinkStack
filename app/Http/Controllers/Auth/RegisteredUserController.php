@@ -9,6 +9,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class RegisteredUserController extends Controller
 {
@@ -38,14 +39,29 @@ class RegisteredUserController extends Controller
             'password' => 'required|string|confirmed|min:8',
         ]);
 
-        Auth::login($user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => 'user',
-            'block' => 'no',
+        $name = $request->input('name');
 
-        ]));
+        if(DB::table('users')->where('littlelink_name', $request->name)->exists())
+        {
+            Auth::login($user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role' => 'user',
+                'block' => 'no',
+            ]));
+        } else {
+            Auth::login($user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'littlelink_name' => $request->name,
+                'password' => Hash::make($request->password),
+                'role' => 'user',
+                'block' => 'no',
+            ]));
+        }
+
+
 
         event(new Registered($user));
 

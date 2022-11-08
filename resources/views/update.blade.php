@@ -4,7 +4,7 @@
 <div class="container">
 
 <?php // Requests newest version from server and sets it as variable
-			   		$Vgit = file_get_contents("https://version.littlelink-custom.com/");
+			   		$Vgit = file_get_contents("https://julianprieber.github.io/littlelink-custom/version.json");
 
 				       // Requests current version from the local version file and sets it as variable
                   $Vlocal = file_get_contents(base_path("version.json"));
@@ -210,7 +210,5 @@ exit(); ?>
       
 @endif
 
-@if("8" > phpversion()) <br><br><a style="background-color:tomato;color:#fff;border-radius:5px;" class="nav-link" href="{{ url('/studio/profile') }}" target=""><i class="bi bi-exclamation-circle-fill"></i> <strong>You are using an outdated version of PHP! Official support for this version will end soon.</strong></a> @endif
 </div>
-
 @endpush

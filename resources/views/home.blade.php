@@ -88,6 +88,46 @@ return $path;}
                                                         {{-- custom font for logo text --}}
   <style>@font-face{font-family:'ll';src:url({{ asset('littlelink/fonts/littlelink-custom.otf') }}) format("opentype")}</style>
 
+<style>
+
+.reg {
+    background-color: #0085FF;
+    border: 1px solid transparent;
+}
+.reg a {
+ color: #fff;
+}
+
+.log {
+  background-color: #fefefe;
+  border: 1px solid #000;
+}
+.log a {
+ color: #333;
+}
+
+.btns {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-left: 0.75rem;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    -o-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+</style>
+
 </head>
 <body>
 
@@ -127,14 +167,14 @@ foreach($pages as $page)
     <div class="sign" style="margin-top: 30px; text-align: right;">
             @if (Route::has('login'))
                     @auth
-                        <a href="{{ route('studioIndex') }}" class="underline spacing">Studio</a>
+                        <div class="fadein btns log"><a href="{{ route('studioIndex') }}" class="underline spacing">Studio</a></div>
                     @else
-                        <a href="{{ route('login') }}" class="underline spacing">Log in</a>
+                        <div class="fadein btns log"><a href="{{ route('login') }}" class="underline spacing">Log in</a></div>
 
                         @if (Route::has('register') and $page->register == 'true')
-                            <a href="{{ route('register') }}" class="underline spacing">Register</a>
+                            <div class="fadein btns reg"><a href="{{ route('register') }}" class="underline spacing">Register</a></div>
                         @elseif (env('REGISTER_OVERRIDE') === true)
-                            <a href="{{ route('register') }}" class="underline spacing">Register</a>
+                            <div class="fadein btns reg"><a href="{{ route('register') }}" class="underline spacing">Register</a></div>
                         @endif
                     @endauth
               @endif

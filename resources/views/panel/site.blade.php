@@ -4,7 +4,9 @@
 
 <script src="{{ asset('resources/ckeditor/ckeditor.js') }}"></script>
 
-      <h2 class="mb-4"><i class="bi bi-person"> Site</i></h2>
+<section class="shadow text-gray-400">
+      <h2 class="mb-4 card-header"><i class="bi bi-person"> Site</i></h2>
+              <div class="card-body p-0 p-md-3">
         
         <form action="{{ route('editSite') }}" enctype="multipart/form-data" method="post">
         @csrf
@@ -18,5 +20,8 @@
           </div>
           <button type="submit" class="mt-3 ml-3 btn btn-info">Submit</button>
         </form>
+
+          </div>
+</section>
 
 @endsection

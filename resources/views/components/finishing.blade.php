@@ -19,6 +19,9 @@
             if(EnvEditor::keyExists('ENABLE_THEME_UPDATER')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('ENABLE_THEME_UPDATER', 'true');}
 
+            if(EnvEditor::keyExists('ENABLE_SOCIAL_LOGIN')){ /* Do nothing if key already exists */ 
+            } else {EnvEditor::addKey('ENABLE_SOCIAL_LOGIN', 'false');}
+
             if (!config()->has('advanced-config.expand_panel_admin_menu_permanently') and !config()->has('disable_default_password_notice')) {
             
             function getStringBetween($string, $start, $end) {

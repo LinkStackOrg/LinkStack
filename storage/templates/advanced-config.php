@@ -105,7 +105,7 @@ return [
 
     // The URL prefix is the symbol that comes before a LittleLink URL.
     // For example the '@' in 'example.com/@admin'.
-    // If empty no prefix is required.
+    // If empty no prefix is required. Use with caution.
     'custom_url_prefix' => '+', // The '@' prefix will always work regardless of this setting.
 
 

@@ -6,6 +6,8 @@
 
 @include('layouts.analytics')
 
+<base href="{{url()->current()}}" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
@@ -109,9 +111,67 @@ if($url1sb == '200'  or $url2sb == '200') {
     @endif
 
 	@stack('sidebar-stylesheets')
+
+<style>
+.segmented-button {
+  display: flex;
+  margin-right: 0.75rem;
+  margin-top: 0.1rem;
+}
+
+.segmented-button .dropdown-button {
+  padding: 0 1rem;
+  margin-left: 1px;
+}
+
+.btn-seg, .btn-seg-large {
+    text-decoration: none;
+    color: #fff;
+    background-color: #f8b739;
+    text-align: center;
+    letter-spacing: .5px;
+    transition: .2s ease-out;
+    cursor: pointer;
+}
+
+.btn-seg:hover {
+    color: #fff;
+}
+
+.btn-seg, .btn-seg-large, .btn-seg-floating, .btn-seg-large, .btn-seg-flat {
+    outline: 0;
+}
+
+.btn-seg, .btn-seg-large, .btn-seg-flat {
+    border: none;
+    border-radius: 0.25rem;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 2rem;
+    text-transform: uppercase;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.z-depth-1, nav, .card-panel, .card, .toast, .btn-seg, .btn-seg-large, .btn-seg-floating, .dropdown-content, .collapsible, .side-nav {
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%), 0 3px 1px -2px rgb(0 0 0 / 20%);
+}
+</style>
+
+{{-- Couldn't get this fixed so I did this: --}}
+@if (request()->route()->getName() == 'env-editor.index')
+<style>
+.btn-seg-ico {
+  position: relative;
+  top: 10px;
+  left: 1px;
+}
+</style>
+@endif
+
   </head>
   <body>
-
 		<div class="wrapper d-flex align-items-stretch">
 			<nav id="sidebar">
 				<div class="p-4 pt-5">
@@ -138,13 +198,13 @@ if($url1sb == '200'  or $url2sb == '200') {
                     <a href="{{ url('env-editor') }}">Config</a>
                 </li>
                 <li>
-                    <a href="{{ url('panel/users/all') }}">Users</a>
+                    <a href="{{ url('panel/users/all') }}">Manage Users</a>
                 </li>
                 <li>
-                    <a href="{{ url('panel/pages') }}">Pages</a>
+                    <a href="{{ url('panel/pages') }}">Footer Pages</a>
                 </li>
                 <li>
-                    <a href="{{ url('panel/site') }}">Site</a>
+                    <a href="{{ url('panel/site') }}">Home Page</a>
                 </li>
 	            </ul>
 	          </li>           
@@ -152,19 +212,19 @@ if($url1sb == '200'  or $url2sb == '200') {
              
 	          <li>
             <li class="active">
-              <a href="{{ url('/studio/add-link') }}">Add Link</a>
+              <a href="{{ url('/studio/add-link') }}">Add Page Item</a>
 	          </li>
             <li>
-              <a href="{{ url('/studio/links') }}">Links</a>
+              <a href="{{ url('/studio/links') }}">Your Links</a>
 	          </li>
             <li>
-              <a href="{{ url('/studio/page') }}">Page</a>
+              <a href="{{ url('/studio/page') }}">Your Page</a>
 	          </li>
 			  <li>
-              <a href="{{ url('/studio/theme') }}">Themes</a>
+              <a href="{{ url('/studio/theme') }}">Your Themes</a>
 	          </li>
             <li>
-              <a href="{{ url('/studio/profile') }}">Profile</a>
+              <a href="{{ url('/studio/profile') }}">Account Settings</a>
 	          </li>
             <form action="{{ route('logout') }}" method="post">
              <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -236,29 +296,95 @@ if($url1sb == '200'  or $url2sb == '200') {
 					@endif
 				@endif
 	@elseif(env('NOTIFY_UPDATES') == 'true' or env('NOTIFY_UPDATES') === 'major' or env('NOTIFY_UPDATES') === 'all')
+	<?php // Checks if URL exists
+					try {
+					function URL_exists(string $urlsb): bool
+					{
+						return str_contains(get_headers($urlsb)[0], "200 OK");
+					}
+					         // Sets $ServerExists to true if URL exists
+						if (URL_exists("https://julianprieber.github.io/littlelink-custom/version.json")){
+							$ServerExists = "true";
+						}
+						} catch (exception $e) {
+							$ServerExists = "false";
+						}
+						?>
 
                 <! –– Checks if file version.json exists AND if version.json exists on server to continue (without this PHP will throw ErrorException ) ––>
-                @if(file_exists(base_path("version.json")))
+                @if(file_exists(base_path("version.json")) and $ServerExists == 'true')
 
                   <?php // Requests newest version from server and sets it as variable
-
-                  try{
-                  $Vgit = file_get_contents("https://version.littlelink-custom.com/"); 
+                  $Vgit = file_get_contents("https://julianprieber.github.io/littlelink-custom/version.json"); 
 
 				       // Requests current version from the local version file and sets it as variable
                   $Vlocal = file_get_contents(base_path("version.json")); 
-                  }
-
-                  catch (Exception $e){
-                  $Vgit = "0"; 
-                  $Vlocal = "0"; 
-				  }
-
 					?>
 
 					<! –– If user has role admin AND newest GitHub release version is higher than the local one an update notice will be displayed ––>
 					@if(auth()->user()->role == 'admin' and $Vgit > $Vlocal)
-					<a style="color:#007bff" class="nav-link" href="{{ url('update') }}" title="Click here to learn more about how to update">An update is available</a>
+					<button class="update-notification"><a class="update-link nav-link" href="{{ url('update') }}" title="Click here to learn more about how to update">Update</a></button>
+					<?php
+					$version1 = $Vlocal;
+					$version2 = $Vgit;
+					
+					$version1_steps = explode(".", $version1);
+					$version2_steps = explode(".", $version2);
+					$count = 0;
+					
+					// first digit
+					if ($version2_steps[0] - $version1_steps[0] == 1) {
+					  $count += 10;
+					}
+					
+					// second digit
+					if ($version2_steps[1] - $version1_steps[1] == 1) {
+					  $count += 10;
+					}
+					
+					for ($i = 2; $i < count($version1_steps); $i++) {
+					  $count += $version2_steps[$i] - $version1_steps[$i];
+					}
+					
+					$count = abs($count);
+					?>
+					<style>
+					:root {
+						@if($count < 4)
+						  --bg-color: rgba(63, 144, 90, 0.2);
+						  --bo-color: rgb(63, 144, 90);
+						@elseif($count > 3 and $count < 6)
+						  --bg-color: rgb(213, 184, 95, 0.2);
+						  --bo-color: rgba(213, 183, 95);
+						@else
+						  --bg-color: rgb(255, 99, 71, 0.2);
+						  --bo-color: rgb(255, 99, 71);
+						@endif
+						}
+					.update-link{
+					  color: var(--bo-color) !important;
+					}
+					.update-notification{
+					  display: inline-block;
+					  margin-bottom: 0;
+					  font-size: 14px;
+					  height: 2.5rem;
+					  line-height: 1rem;
+					  width: auto;
+					  font-weight: 500;
+					  text-align: center;
+					  white-space: nowrap;
+					  vertical-align: middle;
+					  cursor: pointer;
+					  -webkit-user-select: none;
+					  -moz-user-select: none;
+					  -ms-user-select: none;
+					  user-select: none;
+					  background-color: var(--bg-color);
+					  border: 1px solid var(--bo-color);
+					  border-radius: 25px;
+					}
+					</style>
 					@endif
 				@endif
 	@endif
@@ -283,7 +409,23 @@ if($url1sb == '200'  or $url2sb == '200') {
 					<script>function ColorOverrride(){document.cookie="color_scheme_override=dark; path=/",location.reload()}var btn=document.getElementById("myBtn");btn.addEventListener("click",ColorOverrride);</script>
 					@endif
 
-                    <a class="nav-link" href="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>" target="_blank">View Page</a>
+					<div class="segmented-button">
+						<a style="font-weight: 130%" href="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>" target="_blank" class="btn-seg">View Page</a>
+						<a onclick="copyText('{{ url('') }}/@<?= Auth::user()->littlelink_name ?>')" style="color:#fff" class="btn-seg dropdown-button"><i class="btn-seg-ico bi bi-share-fill"></i></a>
+					</div>
+					<div id='dropdown1' class='dropdown-content'>
+					</div>				
+					<script>
+					function copyText(text) {
+					var dummy = document.createElement("textarea");
+ 					 document.body.appendChild(dummy);
+ 					 dummy.value = text;
+ 					 dummy.select();
+ 					 document.execCommand("copy");
+ 					 document.body.removeChild(dummy);
+					 alert('URL has been copied to your clipboard!')
+					}
+					</script>
                   </div>
                 </li>
               </ul>
@@ -301,7 +443,7 @@ $userdbs = DB::table('users')->where('id', $littlelink_current)->get();
 @foreach($userdbs as $userdb)
 
 	@if(Hash::check('12345678', $userdb->password))
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="shadow navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
 <a style="background-color:tomato;color:#fff;border-radius:5px;" class="nav-link" href="{{ url('/studio/profile') }}" target=""><i class="bi bi-exclamation-circle-fill"></i> <strong>You are still using the default password! Click here to change this.</strong></a>
             </div>
@@ -312,10 +454,22 @@ $userdbs = DB::table('users')->where('id', $littlelink_current)->get();
 @endif
 
       <! –– #### begin event detection #### ––>
-	@if(env('NOTIFY_EVENTS') === true)
+		<?php
+			try {
+				function URL_event_exists(string $urlsb): bool
+				{
+				return str_contains(get_headers($urlsb)[0], "200 OK");
+					}
+						if (URL_event_exists("https://julianprieber.github.io/littlelink-custom-events/event.json")){
+							$EventServerExists = "true";
+						}
+							} catch (exception $e) {
+								$EventServerExists = "false";
+							}
+						?>
+	@if(env('NOTIFY_EVENTS') === true and $EventServerExists == 'true')
         <?php
-                  try{
-        $GetEventJson = file_get_contents("https://event.littlelink-custom.com/");
+        $GetEventJson = file_get_contents("https://julianprieber.github.io/littlelink-custom-events/event.json");
 		$EventJson = json_decode($GetEventJson, true);
 		if(isset($_COOKIE['HideEvent']) == NULL) {
 			setcookie("HideEvent",$_COOKIE['ID'] = "0", time()+60*60*24*5, "/");
@@ -350,7 +504,6 @@ if(localStorage.getItem("firstTime")==null){
 }
 </script>
 			@endif
-<?php } catch (Exception $e){} ?>
 @endif
       <! –– #### end event detection #### ––>
               @yield('content')
