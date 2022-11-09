@@ -85,7 +85,7 @@
                             <a href="{{ route('editLink', $link->id ) }}" class="hvr-grow mr-2"><i class='bi bi-pencil'></i> Edit</a>
 
                             @if(env('ENABLE_BUTTON_EDITOR') === true)
-                                @if($link->id == '1' or $link->id == '2')
+                                @if($link->button_id == '1' or $link->button_id == '2')
                                     <a href="{{ route('editCSS', $link->id ) }}" class="mr-2 hvr-grow text-success">Customize</a>
                                 @endif
                             @endif
