@@ -18,7 +18,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-@if(env('ENABLE_SOCIAL_LOGIN') === 'true')
+@if(env('ENABLE_SOCIAL_LOGIN') == 'true')
         <p class="mb-4 text-center">Login with</p>
 
         <div class="flex flex-nowrap  justify-center mb-3">
