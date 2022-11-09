@@ -331,7 +331,20 @@ class PageSeeder extends Seeder
 ',
 
                 'contact' => '
-<p><strong>Please send your inquires to</strong> <a href="mailto:info@littlelink-custom.com">info@littlelink-custom.com</a></p>
+<p><strong><a href="https://littlelink-custom.com/">LittleLink Custom</a></strong> is a free, open source&nbsp;link&nbsp;sharing platform. We depend on community feedback to steadily improve this project.</p>
+
+<p><strong>Feel free to send us your feedback!</strong></p>
+
+<ul>
+	<li>Join our <a href="https://discord.littlelink-custom.com/">community Discord</a></li>
+	<li>Join the <a href="https://github.com/JulianPrieber/littlelink-custom/discussions">discussion forum</a></li>
+	<li>Request a feature and add it to the <a href="https://github.com/JulianPrieber/littlelink-custom/discussions/49">to-do list</a></li>
+	<li>Write us an <a href="mailto:info@littlelink-custom.com?subject=Inquiry%20about%20LittleLink%20Custom">email</a></li>
+</ul>
+
+<p>If you&#39;re having any trouble or encountered a bug, feel free to <a href="https://github.com/JulianPrieber/littlelink-custom/issues">open an issue on GitHub</a>.</p>
+
+<p>&nbsp;</p>
 ',
 
                 'home_message' => '
