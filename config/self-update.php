@@ -6,7 +6,7 @@ declare(strict_types=1);
 if (env('JOIN_BETA') == true) {
     $userver = 'https://beta.littlelink-custom.com/';
 } else {
-    $userver = 'https://update.littlelink-custom.com/';
+    $userver = 'https://updates.littlelink-custom.com/';
 }
 
 return [
