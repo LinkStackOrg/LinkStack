@@ -64,6 +64,7 @@
             <p>&nbsp;</p>
             ';
             Page::first()->update(['contact' => $contact]);
+            }
 
             /* Updates button database entries */ 
             Schema::disableForeignKeyConstraints();
