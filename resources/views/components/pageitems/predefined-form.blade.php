@@ -3,8 +3,9 @@
 <select name='button' class='form-control'>
 
     @foreach ($buttons as $b)
+        @if(!in_array($b["name"], ["custom_website", "custom"]))
         <option class='button button-{{$b["name"]}}' value='{{$b["name"]}}' {{ $b["selected"] == true ? "selected" : ""}}>{{$b["title"]}}</option>
-
+        @endif
     @endforeach
 </select>
 
