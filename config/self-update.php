@@ -92,7 +92,6 @@ return [
         'storage/framework',
         'storage/logs',
         'storage/self-update',
-        'vendor',
     ],
 
     /*
