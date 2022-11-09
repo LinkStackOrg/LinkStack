@@ -4,7 +4,7 @@
 <div class="container">
 
 <?php // Requests newest version from server and sets it as variable
-			   		$Vgit = file_get_contents("https://version.littlelink-custom.com/");
+			   		$Vgit = file_get_contents("https://julianprieber.github.io/littlelink-custom/version.json");
 
 				       // Requests current version from the local version file and sets it as variable
                   $Vlocal = file_get_contents(base_path("version.json"));
@@ -42,7 +42,7 @@
         @endif
         <br><div class="row">
             @if(env('SKIP_UPDATE_BACKUP') == true)
-            &ensp;<a class="btn" href="{{url()->current()}}/?updating"><button><i class="fa-solid fa-user-gear btn"></i> Update automatically</button></a>&ensp;
+            &ensp;<a class="btn" href="{{url()->current()}}/?preparing"><button><i class="fa-solid fa-user-gear btn"></i> Update automatically</button></a>&ensp;
             @else
             &ensp;<a class="btn" href="{{url()->current()}}/?backup"><button><i class="fa-solid fa-user-gear btn"></i> Update automatically</button></a>&ensp;
             @endif
@@ -61,7 +61,7 @@
         </div>
         <h1 class="loadingtxt">Updating</h1>
         @Push('updater-head')
-         <meta http-equiv="refresh" content="2; URL={{url()->current()}}/?updating-windows-bat" />
+         <meta http-equiv="refresh" content="2; URL={{url()->current()}}/?preparing" />
         @endpush
 @endif
 
@@ -121,8 +121,33 @@ Artisan::call('backup:run', ['--only-files' => true]);
 $tst = base_path('backups/');
 file_put_contents($tst.'CANUPDATE', '');
 $URL = Route::current()->getName();   
-header("Location: ".$URL."?updating");
+header("Location: ".$URL."?preparing");
 exit(); ?>
+@endif
+
+@if($_SERVER['QUERY_STRING'] === 'preparing')
+<?php //preparing update ?>
+        <div class="logo-container fadein">
+           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
+           <div class="logo-centered">l</div>
+        </div>
+        <h1 class="loadingtxt">Preparing update</h1>
+        
+        <?php // Get update preperation script from GitHub
+        try {
+        $file = file_get_contents('https://raw.githubusercontent.com/JulianPrieber/littlelink-custom/main/resources/views/components/pre-update.blade.php');
+        $newfile = base_path('resources/views/components/pre-update.blade.php');
+        file_put_contents($newfile, $file);
+        } catch (exception $e) {}
+        ?>
+        
+        @include('components.pre-update')
+        
+   @if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
+        <meta http-equiv="refresh" content="2; URL={{url()->current()}}/?updating-windows-bat" />
+   @else
+        <?php echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "?updating\" />" ?>
+   @endif
 @endif
 
 @if($_SERVER['QUERY_STRING'] === 'updating' and (file_exists(base_path("backups/CANUPDATE")) or env('SKIP_UPDATE_BACKUP') == true))
@@ -211,6 +236,6 @@ exit(); ?>
 @endif
 
 @if("8" > phpversion()) <br><br><a style="background-color:tomato;color:#fff;border-radius:5px;" class="nav-link" href="{{ url('/studio/profile') }}" target=""><i class="bi bi-exclamation-circle-fill"></i> <strong>You are using an outdated version of PHP! Official support for this version will end soon.</strong></a> @endif
-</div>
 
+</div>
 @endpush
