@@ -22,9 +22,12 @@
             if(EnvEditor::keyExists('ENABLE_SOCIAL_LOGIN')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('ENABLE_SOCIAL_LOGIN', 'false');}
 
-            if(file_get_contents(base_path("version.json")) >= '2.9.1' and file_get_contents(base_path("version.json")) <= '3.0.0'){
+            if(EnvEditor::keyExists('USE_THEME_PREVIEW_IFRAME')){ /* Do nothing if key already exists */ 
+            } else {EnvEditor::addKey('USE_THEME_PREVIEW_IFRAME', 'false');}
+
+            if(trim(file_get_contents(base_path("version.json"))) >= '2.9.1' and trim(file_get_contents(base_path("version.json"))) <= '3.0.0'){
                 Schema::disableForeignKeyConstraints();
-                Artisan::call('db:seed --force');
+                Artisan::call('migrate');
                 Schema::enableForeignKeyConstraints();
             }
 
