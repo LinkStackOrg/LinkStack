@@ -4,7 +4,7 @@
 <div class="container">
 
 <?php // Requests newest version from server and sets it as variable
-			   		$Vgit = file_get_contents("https://julianprieber.github.io/littlelink-custom/version.json");
+			   		$Vgit = file_get_contents("https://version.littlelink-custom.com/");
 
 				       // Requests current version from the local version file and sets it as variable
                   $Vlocal = file_get_contents(base_path("version.json"));
