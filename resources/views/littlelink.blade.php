@@ -95,7 +95,11 @@ return $path;}
   <meta name="designer" href="{{ url('') . "/theme/@" . $littlelink_name}}" content="{{ url('') . "/theme/@" . $littlelink_name}}">
 
   <link rel="stylesheet" href="themes/{{$info->theme}}/share.button.css">
+  @if(theme('use_default_buttons') == "true")
+  <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
+  @else
   <link rel="stylesheet" href="themes/{{$info->theme}}/brands.css">
+  @endif
   <link rel="stylesheet" href="themes/{{$info->theme}}/skeleton-auto.css">
 @if(file_exists(base_path('themes/' . $info->theme . '/animations.css')))
   <link rel="stylesheet" href="<?php echo asset('themes/' . $info->theme . '/animations.css') ?>">
@@ -286,7 +290,8 @@ function get_operating_system() {
          @elseif($link->name === "heading")
          <h2>{{ $link->title }}</h2>
          @else
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/{{$linkName}}{{theme('custom_icon_extension')}} @else{{ asset('\/littlelink/icons\/') . $linkName }}.svg @endif">{{ $link->title }}</a></div>
+         <?php include base_path('config/button-names.php'); $newLinkName = $linkName; $isNewName = "false"; foreach($buttonNames as $key => $value) { if($newLinkName == $key) { $newLinkName = $value; $isNewName = "true"; } } ?>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . '/' . $link->link}}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/{{$linkName}}{{theme('custom_icon_extension')}} @else{{ asset('\/littlelink/icons\/') . $linkName }}.svg @endif">@if($isNewName == "true"){{ $newLinkName }}@else{{ ucfirst($newLinkName) }}@endif</a></div>
          @endif
         @endforeach
 

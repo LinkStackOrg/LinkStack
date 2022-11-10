@@ -296,29 +296,23 @@ if($url1sb == '200'  or $url2sb == '200') {
 					@endif
 				@endif
 	@elseif(env('NOTIFY_UPDATES') == 'true' or env('NOTIFY_UPDATES') === 'major' or env('NOTIFY_UPDATES') === 'all')
-	<?php // Checks if URL exists
-					try {
-					function URL_exists(string $urlsb): bool
-					{
-						return str_contains(get_headers($urlsb)[0], "200 OK");
-					}
-					         // Sets $ServerExists to true if URL exists
-						if (URL_exists("https://julianprieber.github.io/littlelink-custom/version.json")){
-							$ServerExists = "true";
-						}
-						} catch (exception $e) {
-							$ServerExists = "false";
-						}
-						?>
 
                 <! –– Checks if file version.json exists AND if version.json exists on server to continue (without this PHP will throw ErrorException ) ––>
-                @if(file_exists(base_path("version.json")) and $ServerExists == 'true')
+                @if(file_exists(base_path("version.json")))
 
                   <?php // Requests newest version from server and sets it as variable
-                  $Vgit = file_get_contents("https://julianprieber.github.io/littlelink-custom/version.json"); 
+
+                  try{
+                  $Vgit = file_get_contents("https://version.littlelink-custom.com/"); 
 
 				       // Requests current version from the local version file and sets it as variable
-                  $Vlocal = file_get_contents(base_path("version.json")); 
+                  $Vlocal = file_get_contents(base_path("version.json"));
+                  }
+
+                  catch (Exception $e){
+                  $Vgit = "0"; 
+                  $Vlocal = "0"; 
+				  }
 					?>
 
 					<! –– If user has role admin AND newest GitHub release version is higher than the local one an update notice will be displayed ––>
@@ -454,22 +448,10 @@ $userdbs = DB::table('users')->where('id', $littlelink_current)->get();
 @endif
 
       <! –– #### begin event detection #### ––>
-		<?php
-			try {
-				function URL_event_exists(string $urlsb): bool
-				{
-				return str_contains(get_headers($urlsb)[0], "200 OK");
-					}
-						if (URL_event_exists("https://julianprieber.github.io/littlelink-custom-events/event.json")){
-							$EventServerExists = "true";
-						}
-							} catch (exception $e) {
-								$EventServerExists = "false";
-							}
-						?>
-	@if(env('NOTIFY_EVENTS') === true and $EventServerExists == 'true')
+	@if(env('NOTIFY_EVENTS') === true)
         <?php
-        $GetEventJson = file_get_contents("https://julianprieber.github.io/littlelink-custom-events/event.json");
+        try{
+        $GetEventJson = file_get_contents("https://event.littlelink-custom.com/");
 		$EventJson = json_decode($GetEventJson, true);
 		if(isset($_COOKIE['HideEvent']) == NULL) {
 			setcookie("HideEvent",$_COOKIE['ID'] = "0", time()+60*60*24*5, "/");
@@ -504,6 +486,7 @@ if(localStorage.getItem("firstTime")==null){
 }
 </script>
 			@endif
+<?php } catch (Exception $e){} ?>
 @endif
       <! –– #### end event detection #### ––>
               @yield('content')
