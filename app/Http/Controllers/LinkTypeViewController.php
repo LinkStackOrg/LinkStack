@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Route;
 
 use Illuminate\Http\Request;
 
@@ -25,13 +26,14 @@ class LinkTypeViewController extends Controller
         $data['params'] = '';
         $data['link_title'] = '';
         $data['link_url'] = '';
+        $data['button_id'] = 0;
 
         if ($linkId) {
             $link = Link::find($linkId);
             $data['params'] = json_decode($link['type_params']);
             $data['link_title'] = $link->title;
             $data['link_url'] = $link->link;
-            $data['button_id'] = $link->button_id;
+            if (Route::currentRouteName() != 'showButtons') {$data['button_id'] = $link->button_id;}
         }
 
         if (!empty($linkType) && $linkType->typename === 'predefined') {
