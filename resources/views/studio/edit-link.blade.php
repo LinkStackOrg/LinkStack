@@ -32,7 +32,7 @@
 
 
                     </div>
-                    <input type='hidden' name='linktype_id' value='1'>
+                    <input type='hidden' name='linktype_id' value='{{$linkTypeID}}'>
 
                 </div>
             </div>
