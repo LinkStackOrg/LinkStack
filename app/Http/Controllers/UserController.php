@@ -526,7 +526,8 @@ class UserController extends Controller
 
         $profilePhoto = $request->file('image');
         $pageName = $request->pageName;
-        $pageDescription = $request->pageDescription;
+        $pageDescription = strip_tags($request->pageDescription,'<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
+        $pageDescription = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $pageDescription);
         $name = $request->Name;
 
         User::where('id', $userId)->update(['littlelink_name' => $pageName, 'littlelink_description' => $pageDescription, 'name' => $name]);
