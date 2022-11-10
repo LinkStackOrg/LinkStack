@@ -16,9 +16,8 @@ DISPLAY_CREDIT=true
 HOME_URL=
 
 #ALLOW_USER_HTML=Changes if users are able to use custom HTML in their descriptions. Allows for more customized texts.
-#=Either true or false. USE WITH CAUTION! If true, this enables users to use custom code, including JavaScript. 
-#=It is recommended to only turn this option on if you trust your users or only use this instance for yourself.
-ALLOW_USER_HTML=false
+#=Either true or false.
+ALLOW_USER_HTML=true
 
 #App Settings=Changes settings regarding your LittleLink Custom installation. You probably only want to change the App Name setting.
 #=App_Name changes  the displayed name for the App in the title, for example.
