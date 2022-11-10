@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Cohensive\OEmbed\Facades\OEmbed;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Route;
 
 use Auth;
 use DB;
@@ -121,6 +122,23 @@ class UserController extends Controller
         $data['LinkData'] = $linkData;
         $data['LinkID'] = $id;
         $data['title'] = "link";
+        $data['linkTypeID'] = "1";
+
+        if (Route::currentRouteName() != 'showButtons') {
+            $links = DB::table('links')->where('id', $id)->first();
+
+            $bid = $links->button_id;
+    
+            if($bid == 1 or $bid == 2){
+                $data['linkTypeID'] = "1";
+            } elseif ($bid == 42) {
+                $data['linkTypeID'] = "3";
+            } elseif ($bid == 43) {
+                $data['linkTypeID'] = "4";
+            } else {
+                $data['linkTypeID'] = "2";
+            }
+        }
 
         foreach ($data['LinkTypes']->toArray() as $key => $val) {
             if ($val['typename'] === $linkData['typename']) {
