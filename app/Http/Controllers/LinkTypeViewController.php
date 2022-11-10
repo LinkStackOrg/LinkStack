@@ -31,6 +31,7 @@ class LinkTypeViewController extends Controller
             $data['params'] = json_decode($link['type_params']);
             $data['link_title'] = $link->title;
             $data['link_url'] = $link->link;
+            $data['button_id'] = $link->button_id;
         }
 
         if (!empty($linkType) && $linkType->typename === 'predefined') {
