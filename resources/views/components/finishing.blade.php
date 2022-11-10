@@ -31,6 +31,10 @@
                 Schema::enableForeignKeyConstraints();
             }
 
+            if(trim(file_get_contents(base_path("version.json"))) >= '2.9.1' and trim(file_get_contents(base_path("version.json"))) <= '3.0.0'){
+                 if(EnvEditor::keyExists('ALLOW_USER_HTML')){DotenvEditor::setKey('ALLOW_USER_HTML', 'true');}
+            }
+
             if (!config()->has('advanced-config.expand_panel_admin_menu_permanently') and !config()->has('disable_default_password_notice')) {
             
             function getStringBetween($string, $start, $end) {
