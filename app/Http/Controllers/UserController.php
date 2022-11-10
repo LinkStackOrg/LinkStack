@@ -121,14 +121,15 @@ class UserController extends Controller
         $data['LinkTypes'] = LinkType::get();
         $data['LinkData'] = $linkData;
         $data['LinkID'] = $id;
-        $data['title'] = "link";
         $data['linkTypeID'] = "1";
+        $data['title'] = "Custom Link";
 
         if (Route::currentRouteName() != 'showButtons') {
             $links = DB::table('links')->where('id', $id)->first();
 
             $bid = $links->button_id;
-    
+
+
             if($bid == 1 or $bid == 2){
                 $data['linkTypeID'] = "1";
             } elseif ($bid == 42) {
@@ -138,6 +139,8 @@ class UserController extends Controller
             } else {
                 $data['linkTypeID'] = "2";
             }
+
+            $data['title'] = LinkType::where('id', $data['linkTypeID'])->value('title');
         }
 
         foreach ($data['LinkTypes']->toArray() as $key => $val) {

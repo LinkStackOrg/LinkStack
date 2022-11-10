@@ -15,7 +15,7 @@
             <div class="form-group col-lg-8 flex justify-around">
                 <label class='font-weight-bold'>Link Type: </label>
                 <div class="btn-group shadow m-2">
-                    <button type="button" id='btnLinkType' class="border-0 p-1" title='Click to change link type' data-toggle="modal" data-target="#SelectLinkType">link</button>
+                    <button type="button" id='btnLinkType' class="border-0 p-1" title='Click to change link type' data-toggle="modal" data-target="#SelectLinkType">{{$title}}</button>
 
 
 
