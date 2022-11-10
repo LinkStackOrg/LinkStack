@@ -58,7 +58,7 @@ class LinkType extends Migration
 
         DB::table($this->TableName)->updateOrInsert([
             'typename' => 'link',
-            'title' => 'Website Link',
+            'title' => 'Custom Link',
             'icon' => 'bi bi-link',
             'description' => 'Create a Custom Button that goes to any website. ',
             'params' => '[{
