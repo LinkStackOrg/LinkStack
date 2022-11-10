@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://littlelink-custom.com/"><img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/banners/png/banner_wide_transparent.png" alt="LittleLink Custom"></a>
+  <a href="https://littlelink-custom.com/"><a href="https://littlelink-custom.com/"><img src="https://i.imgur.com/IR3NPXB.png" alt="LittleLink Custom"></a></a>
 </h1>
 
 <h4 align="center">The plug-and-play approach to LittleLink, with advanced features. <br> <i> The open-source alternative to LinkTree and similar. </i></h4>
