@@ -2,7 +2,9 @@
 
 @section('content')
 
-        <h2 class="mb-4"><i class="bi bi-link-45deg"> Links</i></h2>
+<section class="shadow text-gray-400">
+        <h2 class="mb-4 card-header"><i class="bi bi-link-45deg"> Links</i></h2>
+        <div class="card-body p-0 p-md-3">
 
         <div style="overflow-y: auto;">
         <table class="table table-bordered">
@@ -33,4 +35,6 @@
 
 <a class="btn btn-primary" href="{{ url('/panel/users/all') }}">⬅ Back</a>
 
+          </div>
+</section>
 @endsection

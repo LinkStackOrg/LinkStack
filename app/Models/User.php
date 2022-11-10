@@ -19,7 +19,13 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
+        'image',
         'password',
+        'provider',
+        'provider_id',
+        'email_verified_at',
+        'littlelink_name',
+
     ];
 
     /**
@@ -40,4 +46,13 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function visits()
+    {
+        return visits($this)->relation();
+    }
+    public function socialAccounts()
+    {
+        return $this->hasMany(socialAccount::class);
+    }
 }

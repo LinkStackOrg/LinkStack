@@ -156,7 +156,9 @@ var button_css = {
   <script src="https://kit.fontawesome.com/c4a5e06183.js" crossorigin="anonymous"></script>
 
 <div>
-<h2 class="mb-4"><i class="bi bi-pen"> Button Editor</i>
+<section class="shadow text-gray-400">
+<h2 class="mb-4 card-header"><i class="bi bi-pen"> Button Editor</i></h2>
+        <div class="card-body p-0 p-md-3">
 
 <br><br><a class="btn btn-primary" href="{{ url('/studio/links') }}">⬅ Back</a>
 
@@ -336,5 +338,7 @@ NULL
 
 <a class="btn btn-primary" href="{{ url('/studio/links') }}">⬅ Back</a>
 
+          </div>
+</section>
 @endsection
 @endif
