@@ -215,11 +215,42 @@ class UserController extends Controller
 
         if ($OrigLink) {
             //EDITING EXISTING
-            $OrigLink->update([
-                'link' => $LinkURL,
-                'title' => $LinkTitle,
-                'button_id' => $button?->id,
-            ]);
+
+            $isCustomWebsite = $customParams['GetSiteIcon'] ?? null;
+            $SpacerHeight = $customParams['height'] ?? null;
+
+                if($linkType->typename == "link" and $isCustomWebsite == "1"){
+                    $OrigLink->update([
+                        'link' => $LinkURL,
+                        'title' => $LinkTitle,
+                        'button_id' => "2",
+                    ]);
+                }elseif($linkType->typename == "link"){
+                    $OrigLink->update([
+                        'link' => $LinkURL,
+                        'title' => $LinkTitle,
+                        'button_id' => "1",
+                    ]);
+                }elseif($linkType->typename == "spacer"){
+                    $OrigLink->update([
+                        'link' => $LinkURL,
+                        'title' => $LinkTitle,
+                        'button_id' => "43",
+                    ]);
+                }elseif($linkType->typename == "heading"){
+                    $OrigLink->update([
+                        'link' => $LinkURL,
+                        'title' => $LinkTitle,
+                        'button_id' => "42",
+                    ]);
+                }else{
+                    $OrigLink->update([
+                        'link' => $LinkURL,
+                        'title' => $LinkTitle,
+                        'button_id' => $button?->id,
+                    ]);
+                }
+                
             $message .="updated";
         } else {
             // ADDING NEW
