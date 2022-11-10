@@ -465,8 +465,8 @@ class UserController extends Controller
     public function editPage(request $request)
     {
         $request->validate([
-            'littlelink_name' => 'required|string|max:255|unique:users',
-            'name' => 'required|string|max:255|unique:users',
+            'littlelink_name' => 'string|max:255|unique:users',
+            'name' => 'string|max:255|unique:users',
         ]);
 
         $userId = Auth::user()->id;
