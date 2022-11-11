@@ -15,7 +15,7 @@
 
         <!-- Section: Design Block -->
         <section class="mb-3 text-gray-800 text-center shadow p-4 w-full">
-            <div class='font-weight-bold text-left'>Visitor analytics:</div>
+            <div class='font-weight-bold text-left'>User stats:</div>
             <div class="d-flex flex-wrap justify-content-around">
 
                 <div class="p-2">
