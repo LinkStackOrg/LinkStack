@@ -20,17 +20,17 @@
 
                 <div class="p-2">
                     <h3 class="text-primary"><strong><i class="bi bi-share-fill"> {{ $siteLinks }} </i></strong></h3>
-                    <span class="text-muted">All links</span>
+                    <span class="text-muted">Total links</span>
                 </div>
 
                 <div class="p-2">
                     <h3 class="text-primary"><strong><i class="bi bi-eye-fill"> {{ $siteClicks }} </i></strong></h3>
-                    <span class="text-muted">All clicks</span>
+                    <span class="text-muted">Total clicks</span>
                 </div>
 
                 <div class="p-2">
                     <h3 class="text-primary"><strong><i class="bi bi bi-person-fill"> {{ $userNumber }}</i></strong></h3>
-                    <span class="text-muted">All users</span>
+                    <span class="text-muted">Total users</span>
                 </div>
 
             </div>
