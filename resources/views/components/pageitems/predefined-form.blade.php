@@ -1,9 +1,10 @@
 <label for='button' class='form-label'>Select a predefined site</label>
+<?php use App\Models\Button; $button = Button::find($button_id); if(isset($button->name)){$buttonName = $button->name;}else{$buttonName = 0;} ?>
 
 <select name='button' class='form-control'>
-
+        @if($buttonName != 0)<option value='{{$buttonName}}'>{{ucfirst($buttonName)}}</option>@endif
     @foreach ($buttons as $b)
-        @if(!in_array($b["name"], ["custom_website", "custom"]))
+        @if(!in_array($b["name"], ["custom_website", "custom", $buttonName]))
         <option class='button button-{{$b["name"]}}' value='{{$b["name"]}}' {{ $b["selected"] == true ? "selected" : ""}}>{{$b["title"]}}</option>
         @endif
     @endforeach
