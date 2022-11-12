@@ -70,6 +70,11 @@
                             alert("Something went wrong! Please, Try again.")
                         }
                     });
+                    
+                    setTimeout(function(){
+                        document.getElementById('frPreview1').src += '';
+                        document.getElementById('frPreview2').src += '';
+                    }, 300);
                 }
             }
         });
