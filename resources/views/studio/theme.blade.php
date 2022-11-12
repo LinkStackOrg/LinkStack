@@ -44,7 +44,7 @@
             @if(env('USE_THEME_PREVIEW_IFRAME') === false or $page->littlelink_name == '')
             <center><img style="width:95%;max-width:700px;argin-left:1rem!important;" src="@if(file_exists(base_path() . '/themes/' . $page->theme . '/preview.png')){{url('/themes/' . $page->theme . '/preview.png')}}@elseif($page->theme === 'default' or empty($page->theme)){{url('/littlelink/images/themes/default.png')}}@else{{url('/littlelink/images/themes/no-preview.png')}}@endif"></img></center>
              @else
-            <iframe allowtransparency="true" id="frPreview" style="background: #FFFFFF;height:400px;" class='w-100' src="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>">Your browser isn't compatible</iframe>
+            <iframe frameborder="0" allowtransparency="true" id="frPreview" style="background: #FFFFFF;height:400px;" class='w-100' src="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>">Your browser isn't compatible</iframe>
             @endif
 
 
