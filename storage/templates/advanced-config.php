@@ -44,7 +44,7 @@ return [
     'robots'          => 'index,follow',
     'viewport'        => 'width=device-width, initial-scale=1',
     'canonical_url'   => '', // Tells search engines to index "https://example.com/"  instead of "https://example.com/@admin",  for example.
-    'twitter_creator' => '', // Twitter @username. For example: "@elonmusk".
+    'twitter_creator' => '', // Twitter @username.
     'author'          => '', // Your name.
 
 
