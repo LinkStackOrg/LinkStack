@@ -12,7 +12,24 @@
 @php setcookie("LinkCount", "all", time()+60*60*24*5, "/"); @endphp
 @endif
 
-<section class=' shadow text-gray-400'>
+@push('sidebar-stylesheets')
+<style>
+@media only screen and (max-width: 1500px) {
+  .pre-side{display:none!important;}
+  .pre-left{width:100%!important;}
+  .pre-bottom{display:block!important;}
+}
+
+@media only screen and (min-width: 1500px) {
+  .pre-left{width:70%!important;}
+  .pre-right{width:30%!important;}
+  .pre-bottom{display:none!important;}
+}
+</style>
+@endpush
+
+<div class="row">
+<section class='pre-left shadow text-gray-400'>
     <h3 class="card-header"><i class="bi bi-link-45deg">My Links</i>
             <a class="btn btn-primary float-right" href="{{ url('/studio/add-link') }}">Add new <span class='d-none d-md-inline'>item</span></a>
 
@@ -118,5 +135,21 @@
 
     <a class="btn btn-primary" href="{{ url('/studio/add-link') }}">Add new item</a>
     </div>
+</section>
+
+<section class='pre-right shadow text-gray-400 pre-side'>
+    <h3 class="card-header"><i class="bi bi-window-fullscreen" style="font-style:normal!important;"> Preview:</i></h3>
+        <div class='card-body p-0 p-md-3'>
+                <center><iframe allowtransparency="true" id="frPreview" style=" border-radius:0.25rem !important; background: #FFFFFF; min-height:600px; height:100%; max-width:500px !important;" class='w-100' src="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>">Your browser isn't compatible</iframe></center>
+         </div>
+</section>
+</div>
+
+<br>
+<section style="width:100%!important;" class='pre-bottom shadow text-gray-400 pre-side'>
+    <h3 class="card-header"><i class="bi bi-window-fullscreen" style="font-style:normal!important;"> Preview:</i></h3>
+        <div class='card-body p-0 p-md-3'>
+                <center><iframe allowtransparency="true" id="frPreview" style=" border-radius:0.25rem !important; background: #FFFFFF; min-height:600px; height:100%; width:100% !important;" class='w-100' src="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>">Your browser isn't compatible</iframe></center>
+         </div>
 </section>
 @endsection
