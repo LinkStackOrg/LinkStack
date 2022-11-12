@@ -140,7 +140,7 @@
 <section class='pre-right shadow text-gray-400 pre-side'>
     <h3 class="card-header"><i class="bi bi-window-fullscreen" style="font-style:normal!important;"> Preview:</i></h3>
         <div class='card-body p-0 p-md-3'>
-                <center><iframe allowtransparency="true" id="frPreview" style=" border-radius:0.25rem !important; background: #FFFFFF; min-height:600px; height:100%; max-width:500px !important;" class='w-100' src="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>">Your browser isn't compatible</iframe></center>
+                <center><iframe allowtransparency="true" id="frPreview1" style=" border-radius:0.25rem !important; background: #FFFFFF; min-height:600px; height:100%; max-width:500px !important;" class='w-100' src="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>">Your browser isn't compatible</iframe></center>
          </div>
 </section>
 </div>
@@ -149,7 +149,7 @@
 <section style="width:100%!important;" class='pre-bottom shadow text-gray-400 pre-side'>
     <h3 class="card-header"><i class="bi bi-window-fullscreen" style="font-style:normal!important;"> Preview:</i></h3>
         <div class='card-body p-0 p-md-3'>
-                <center><iframe allowtransparency="true" id="frPreview" style=" border-radius:0.25rem !important; background: #FFFFFF; min-height:600px; height:100%; width:100% !important;" class='w-100' src="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>">Your browser isn't compatible</iframe></center>
+                <center><iframe allowtransparency="true" id="frPreview2" style=" border-radius:0.25rem !important; background: #FFFFFF; min-height:600px; height:100%; width:100% !important;" class='w-100' src="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>">Your browser isn't compatible</iframe></center>
          </div>
 </section>
 @endsection
