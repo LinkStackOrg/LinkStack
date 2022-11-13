@@ -2,6 +2,8 @@
 
 @section('content')
 
+<?php use App\Models\Button; ?>
+
 @if(Request::is('studio/links/10'))
 @php setcookie("LinkCount", "10", time()+60*60*24*5, "/"); @endphp
 @elseif(Request::is('studio/links/20'))
@@ -61,15 +63,18 @@
                     <div class='row h-100'>
                         <div class='col-12 p-2' title="{{ $link->title }}">
                             <span class='h6'>
-                                @if($link->typename == 'predefined')
-                                <span class='button button-{{$link->params['button']}} p-0' style='max-width: 25px; max-height: 25px; line-height: 0; cursor: none;'>
-
-                                <img alt="button-icon" height="15" class="m-1 " src="{{ asset('\/littlelink/icons\/') . $link->params['button'] }}.svg ">
-                                </span>
-
+                                <?php $button = Button::find($link->button_id); if(isset($button->name)){$buttonName = $button->name;}else{$buttonName = 0;} ?>
+                                @if($button->name == "custom_website")
+                                <?php function strp($urlStrp){return str_replace(array('http://', 'https://'), '', $urlStrp);} ?>
+                                <span style="border: 1px solid #d0d4d7 !important;border-radius:5px;background-color:#6c757d;width:25px!important;height:25px!important;display: flex;"><img style="margin-top:3px;margin-left:4px;margin-right:4px;max-width:15px;max-height:15px;" alt="button-icon" class="icon hvr-icon" src="https://icons.duckduckgo.com/ip3/{{strp($link->link)}}.ico"></span>
+                                @elseif($button->name == "space")
+                                <span style="border: 1px solid #d0d4d7 !important;border-radius:5px;background-color:#6c757d;width:25px!important;height:25px!important;"><i style="margin-left:2.83px;margin-right:-1px;color:#fff;" class='bi bi-distribute-vertical'>&nbsp;</i></span>
+                                @elseif($button->name == "heading")
+                                <span style="border: 1px solid #d0d4d7 !important;border-radius:5px;background-color:#6c757d;width:25px!important;height:25px!important;"><i style="margin-left:2.83px;margin-right:-1px;color:#fff;" class='bi bi-card-heading'>&nbsp;</i></span>
+                                @elseif($button->name == "buy me a coffee")
+                                <span style="border: 1px solid #d0d4d7 !important;border-radius:5px;background-color:#6c757d;width:25px!important;height:25px!important;"><img style="margin-left:6px!important;margin-right:6px!important;" alt="button-icon" height="15" class="m-1 " src="{{ asset('\/littlelink/icons\/') . "coffee" }}.svg "></span>
                                 @else
-                                    {{-- Change later!!!! fa-external-link --}}
-                                    <i class="fa-external-link" title="{{$link->title}}"></i>
+                                <span style="border: 1px solid #d0d4d7 !important;border-radius:5px;background-color:#6c757d;width:25px!important;height:25px!important;"><img style="max-width:15px !important;" alt="button-icon" height="15" class="m-1 " src="{{ asset('\/littlelink/icons\/') . $buttonName }}.svg "></span>
                                 @endif
 
                                 {{$link->title}}</span>
