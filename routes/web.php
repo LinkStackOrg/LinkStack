@@ -63,7 +63,8 @@ Route::get('/panel/diagnose', function () {
 //Public route
 $custom_prefix = config('advanced-config.custom_url_prefix');
 Route::get('/going/{id?}/{link?}', [UserController::class, 'clickNumber'])->where('link', '.*')->name('clickNumber');
-Route::get('/' . $custom_prefix . '{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
+if (!str_contains(url()->full(), '@') and !in_array(url()->full(), [url('login'), url('register'), url('update'),  url('update?error='), url('update?success='), url('update?finishing='), url('update?updating='), url('update?backups='), url('update?backup='), url('update?updating-windows='), url('update?preparing='), url('updating'), url('backup')])) {
+Route::get('/' . $custom_prefix . '{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');}
 Route::get('/@{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
 Route::get('/pages/{name}', [AdminController::class, 'pages'])->name('pages');
 Route::get('/theme/@{littlelink}', [UserController::class, 'theme'])->name('theme');
