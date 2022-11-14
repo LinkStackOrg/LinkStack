@@ -16,5 +16,5 @@
 
 <label for='link' class='form-label'>URL</label>
 <input type='url' name='link' value='{{$link_url}}' class='form-control' required />
-<span class='small text-muted'>Enter the URL for to your profile page</span>
+<span class='small text-muted'>Enter the link URL</span>
 
