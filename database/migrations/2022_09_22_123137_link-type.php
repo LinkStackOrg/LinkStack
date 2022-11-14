@@ -57,10 +57,17 @@ class LinkType extends Migration
     public function SeedLinkTypes() {
 
         DB::table($this->TableName)->updateOrInsert([
+            'typename' => 'predefined',
+            'title' => 'Predefined Site',
+            'icon' => 'bi bi-boxes',
+            'description' => 'Select from a list of predefined websites and have your link automatically styled using that sites brand colors and icon.'
+        ]);
+
+        DB::table($this->TableName)->updateOrInsert([
             'typename' => 'link',
             'title' => 'Custom Link',
             'icon' => 'bi bi-link',
-            'description' => 'Create a Custom Button that goes to any website. ',
+            'description' => 'Create a Custom Link that goes to any website. Customize the button styling and icon, or use the favicon from the website as the button icon.',
             'params' => '[{
                 "tag": "input",
                 "id": "link_title",
@@ -84,13 +91,6 @@ class LinkType extends Migration
                 "required": "required"
             }
             ]'
-        ]);
-
-        DB::table($this->TableName)->updateOrInsert([
-            'typename' => 'predefined',
-            'title' => 'Predefined Site',
-            'icon' => 'bi bi-boxes',
-            'description' => 'Select from a list of predefined websites and have your link automatically styled using that sites brand colors and icon.'
         ]);
 
         DB::table($this->TableName)->updateOrInsert([
