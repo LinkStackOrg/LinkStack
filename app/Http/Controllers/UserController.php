@@ -122,7 +122,7 @@ class UserController extends Controller
         $data['LinkData'] = $linkData;
         $data['LinkID'] = $id;
         $data['linkTypeID'] = "1";
-        $data['title'] = "Custom Link";
+        $data['title'] = "Predefined Site";
 
         if (Route::currentRouteName() != 'showButtons') {
             $links = DB::table('links')->where('id', $id)->first();
