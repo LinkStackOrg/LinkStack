@@ -129,7 +129,6 @@ class UserController extends Controller
 
             $bid = $links->button_id;
 
-
             if($bid == 1 or $bid == 2){
                 $data['linkTypeID'] = "1";
             } elseif ($bid == 42) {
@@ -149,7 +148,7 @@ class UserController extends Controller
                 break;
             }
         }
-
+        
         return view('studio/edit-link', $data);
     }
 
@@ -234,7 +233,7 @@ class UserController extends Controller
                 }elseif($linkType->typename == "spacer"){
                     $OrigLink->update([
                         'link' => $LinkURL,
-                        'title' => $LinkTitle,
+                        'title' => $customParams['height'] ?? null,
                         'button_id' => "43",
                     ]);
                 }elseif($linkType->typename == "heading"){
