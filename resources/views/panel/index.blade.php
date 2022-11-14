@@ -41,7 +41,7 @@
 
                 <div class='p-2 h6'><i class="bi bi-link"> Links: {{ $links }} </i></span></div>
 
-                <div class='p-2 h6'><i class="bi bi-eye"> Click: {{ $clicks }} </i></span></div>
+                <div class='p-2 h6'><i class="bi bi-eye"> Clicks: {{ $clicks }} </i></span></div>
             </div>
         </section>
 
