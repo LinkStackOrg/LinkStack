@@ -82,7 +82,7 @@ The 'Heading' button will be replaced with a sub-heading, where the title define
                     </div>
                     <div class="col">
                         <div class="card-body">
-                            <h5 class="card-title mb-0">{{$lt['title']}}</h5>
+                            <h5 style="color:#000!important;" class="card-title mb-0">{{$lt['title']}}</h5>
                             <p class="card-text text-muted">{{$lt['description']}}</p>
                         </div>
                     </div>
@@ -98,8 +98,6 @@ The 'Heading' button will be replaced with a sub-heading, where the title define
     </x-slot>
 
 </x-modal>
-
-
 
 @endsection
 
