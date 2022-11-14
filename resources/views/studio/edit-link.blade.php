@@ -13,9 +13,9 @@
             <input type='hidden' name='linkid' value="{{ $LinkID }}" />
 
             <div class="form-group col-lg-8 flex justify-around">
-                <label class='font-weight-bold'>Link Type: </label>
+                <label class='font-weight-bold'>Blocks: </label>
                 <div class="btn-group shadow m-2">
-                    <button type="button" id='btnLinkType' class="border-0 p-1" title='Click to change link type' data-toggle="modal" data-target="#SelectLinkType">{{$title}}</button>
+                    <button type="button" id='btnLinkType' class="border-0 p-1" title='Click to change link blocks' data-toggle="modal" data-target="#SelectLinkType">{{$title}}</button>
 
 
 
@@ -67,7 +67,8 @@ The 'Heading' button will be replaced with a sub-heading, where the title define
 
 
 <!-- Modal -->
-<x-modal title="Select Link Type" id="SelectLinkType">
+<style>.modal-title{color:#000!important;}</style>
+<x-modal title="Select Block" id="SelectLinkType">
 
     <div class="d-flex flex-row  flex-wrap p-3">
 
