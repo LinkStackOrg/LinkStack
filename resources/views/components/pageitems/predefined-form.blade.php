@@ -12,7 +12,7 @@
 
 <label for='title' class='form-label'>Custom Title</label>
 <input type='text' name='title' value='{{$link_title}}' class='form-control' />
-<span class='small text-muted'>Leave blank for default title</span>
+<span class='small text-muted'>Leave blank for default title</span><br>
 
 <label for='link' class='form-label'>URL</label>
 <input type='url' name='link' value='{{$link_url}}' class='form-control' required />
