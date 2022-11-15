@@ -23,7 +23,7 @@
             } else {EnvEditor::addKey('ENABLE_SOCIAL_LOGIN', 'false');}
 
             if(EnvEditor::keyExists('USE_THEME_PREVIEW_IFRAME')){ /* Do nothing if key already exists */ 
-            } else {EnvEditor::addKey('USE_THEME_PREVIEW_IFRAME', 'false');}
+            } else {EnvEditor::addKey('USE_THEME_PREVIEW_IFRAME', 'true');}
 
             if(trim(file_get_contents(base_path("version.json"))) >= '2.9.1' and trim(file_get_contents(base_path("version.json"))) <= '3.0.0'){
                 Schema::disableForeignKeyConstraints();
