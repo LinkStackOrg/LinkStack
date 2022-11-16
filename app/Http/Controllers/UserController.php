@@ -130,13 +130,13 @@ class UserController extends Controller
             $bid = $links->button_id;
 
             if($bid == 1 or $bid == 2){
-                $data['linkTypeID'] = "1";
+                $data['linkTypeID'] = "2";
             } elseif ($bid == 42) {
                 $data['linkTypeID'] = "3";
             } elseif ($bid == 43) {
                 $data['linkTypeID'] = "4";
             } else {
-                $data['linkTypeID'] = "2";
+                $data['linkTypeID'] = "1";
             }
 
             $data['title'] = LinkType::where('id', $data['linkTypeID'])->value('title');
