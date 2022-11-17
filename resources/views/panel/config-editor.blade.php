@@ -36,6 +36,13 @@
 	height: 100px;
 	padding: 20px;
 	border-radius: 5px;
+	-webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+.option:hover, .option:focus, .option:active {
+  -webkit-transform: scale(1.01);
+  transform: scale(1.01);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 .opt-img{
 	font-size: 4rem;
