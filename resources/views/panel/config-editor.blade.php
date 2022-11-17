@@ -39,9 +39,12 @@
 	-webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
 }
+.option h3{
+	color:white!important;
+}
 .option:hover, .option:focus, .option:active {
-  -webkit-transform: scale(1.01);
-  transform: scale(1.01);
+  -webkit-transform: scale(1.005);
+  transform: scale(1.005);
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 .opt-img{
