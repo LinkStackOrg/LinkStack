@@ -301,7 +301,7 @@ class AdminController extends Controller
 
         file_put_contents('.env', $config);
 
-        return Redirect('/panel/config');
+        return Redirect('/panel/config?alternative-config');
     }
 
     //Shows config file editor page
