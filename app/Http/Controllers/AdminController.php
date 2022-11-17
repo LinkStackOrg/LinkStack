@@ -480,7 +480,7 @@ class AdminController extends Controller
         $value = $request->value;
 
         if($type === "toggle"){
-            if($request->toggle != ''){$value = "auth";}else{$value = "false";}
+            if($request->toggle != ''){$value = "true";}else{$value = "false";}
             if(EnvEditor::keyExists($entry)){EnvEditor::editKey($entry, $value);}
         } elseif($type === "toggle2") {
             if($request->toggle != ''){$value = "verified";}else{$value = "auth";}
