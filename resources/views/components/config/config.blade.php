@@ -214,7 +214,7 @@ function text($key){
 	<h5 style="margin-top:50px">'; foreach($configNames as $obj){if($obj->value == $key){echo $obj->title;}}; echo '</h5>
     <p class="text-muted">'; foreach($configNames as $obj){if($obj->value == $key){echo $obj->description;}}; echo '</p>
     <div class="input-group">
-    <input type="text" class="form-control" name="value" value="'.$configValue.'" required>';  echo '
+    <input type="text" style="border-radius:.25rem;max-width:600px" class="form-control" name="value" value="'.$configValue.'" required>';  echo '
     <input type="hidden" name="_token" value="'.csrf_token().'">
 	<button style="position:relative;bottom:17px;" type="submit" class="mt-3 ml-3 btn btn-info">Apply</button>
     </div></div>
