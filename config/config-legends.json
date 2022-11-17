@@ -130,7 +130,7 @@
         
     {"value": "SKIP_UPDATE_BACKUP",
     "title": "Skip update backups",
-    "description": "Skips backups when updating. This option is recommended to be enabled at all times, <br>but it may cause errors in some configurations."
+    "description": "Skips backups when updating. This option is recommended to be disabled at all times, <br>but it may cause errors in some configurations."
     },
         
     {"value": "CUSTOM_META_TAGS",
