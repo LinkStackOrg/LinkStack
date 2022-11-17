@@ -291,7 +291,7 @@ class AdminController extends Controller
 
         file_put_contents('config/advanced-config.php', $AdvancedConfig);
 
-        return view('/panel/config');
+        return redirect('/panel/config#2');
     }
 
     //Saves .env config
