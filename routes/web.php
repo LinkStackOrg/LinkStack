@@ -137,6 +137,8 @@ Route::group([
     Route::post('/panel/theme', [AdminController::class, 'deleteTheme'])->name('deleteTheme');
     Route::get('/panel/theme', [AdminController::class, 'showThemes'])->name('showThemes');
     Route::get('/update/theme', [AdminController::class, 'updateThemes'])->name('updateThemes');
+    Route::get('/panel/config', [AdminController::class, 'showConfig'])->name('showConfig');
+    Route::post('/panel/config', [AdminController::class, 'editConfig'])->name('editConfig');
     Route::get('/update', function () {return view('update', []);});
     Route::get('/backup', function () {return view('backup', []);});
 

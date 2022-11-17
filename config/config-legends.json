@@ -1,0 +1,165 @@
+[
+    {"value": "REGISTER_AUTH",
+    "title": "Enable email verification",
+    "description": "First description"
+    },
+    
+    {"value": "NOTIFY_EVENTS",
+    "title": "Notify on events",
+    "description": "First description"
+    },
+	
+    {"value": "NOTIFY_UPDATES",
+    "title": "Notify on updates",
+    "description": "Second description"
+    },
+    
+    {"value": "DISPLAY_FOOTER",
+    "title": "Show footer",
+    "description": "Third description"
+    },
+    
+    {"value": "DISPLAY_CREDIT",
+    "title": "Show credit",
+    "description": "Fourth description"
+    },
+    
+    {"value": "HOME_URL",
+    "title": "Set user page as Home Page",
+    "description": "Fifth description"
+    },
+    
+    {"value": "ALLOW_USER_HTML",
+    "title": "Allow extended syntax in user's descriptions",
+    "description": "Fifth description"
+    },
+	
+    {"value": "APP_NAME",
+    "title": "Application title",
+    "description": "A change will logout every user"
+    },
+    
+    {"value": "APP_KEY",
+    "title": "APP_KEY",
+    "description": "Sixth description"
+    },
+	
+    {"value": "APP_URL",
+    "title": "APP_URL",
+    "description": "Sixth description"
+    },
+	
+    {"value": "ENABLE_BUTTON_EDITOR",
+    "title": "Enable Button Editor",
+    "description": "Sixth description"
+    },
+    
+    {"value": "APP_DEBUG",
+    "title": "App debug",
+    "description": "Sixth description"
+    },
+	
+    {"value": "APP_ENV",
+    "title": "APP_ENV",
+    "description": "Sixth description"
+    },
+	
+    {"value": "LOG_CHANNEL",
+    "title": "LOG_CHANNEL",
+    "description": "Sixth description"
+    },
+	
+    {"value": "LOG_LEVEL",
+    "title": "LOG_LEVEL",
+    "description": "Sixth description"
+    },
+	
+    {"value": "MAINTENANCE_MODE",
+    "title": "Enable Maintenance Mode",
+    "description": "Seventh description"
+    },
+    
+
+
+	
+	{"value": "MAIL_MAILER",
+    "title": "MAIL_MAILER",
+    "description": "Eighth description"
+    },
+	
+	{"value": "MAIL_HOST",
+    "title": "MAIL_HOST",
+    "description": "Eighth description"
+    },
+	
+	{"value": "MAIL_PORT",
+    "title": "MAIL_PORT",
+    "description": "Eighth description"
+    },
+	
+	{"value": "MAIL_USERNAME",
+    "title": "MAIL_USERNAME",
+    "description": "Eighth description"
+    },
+	
+	{"value": "MAIL_PASSWORD",
+    "title": "MAIL_PASSWORD",
+    "description": "Eighth description"
+    },
+	
+	{"value": "MAIL_ENCRYPTION",
+    "title": "MAIL_ENCRYPTION",
+    "description": "Eighth description"
+    },
+	
+	{"value": "MAIL_FROM_ADDRESS",
+    "title": "MAIL_FROM_ADDRESS",
+    "description": "Eighth description"
+    },
+	
+	
+	
+	
+	
+	
+	
+    {"value": "JOIN_BETA",
+    "title": "Join the Beta",
+    "description": "Eighth description"
+    },
+        
+    {"value": "SKIP_UPDATE_BACKUP",
+    "title": "Skip update backups",
+    "description": "Eighth description"
+    },
+        
+    {"value": "CUSTOM_META_TAGS",
+    "title": "Enable custom meta tags",
+    "description": "Eighth description"
+    },
+        
+    {"value": "FORCE_HTTPS",
+    "title": "Force HTTPS",
+    "description": "Eighth description"
+    },
+        
+    {"value": "ALLOW_CUSTOM_CODE_IN_THEMES",
+    "title": "Allow custom code in themes",
+    "description": "Eighth description"
+    },
+        
+    {"value": "ENABLE_THEME_UPDATER",
+    "title": "Enable Theme Updater",
+    "description": "Eighth description"
+    },
+        
+    {"value": "ENABLE_SOCIAL_LOGIN",
+    "title": "Enable social login",
+    "description": "Eighth description"
+    },
+    
+    {"value": "USE_THEME_PREVIEW_IFRAME",
+    "title": "Use iframe as theme preview",
+    "description": "Eighth description"
+    }
+    ]

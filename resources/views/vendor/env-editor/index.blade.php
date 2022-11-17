@@ -7,8 +7,8 @@
     {{trans('env-editor::env-editor.menuTitle')}}
 @endpush
 
-
 @section('content')
+
     <div id="env-editor">
         <div id="env-alerts"></div>
 
@@ -22,25 +22,10 @@
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#upload-env" role="tab">{{__($translatePrefix.'views.tabTitles.upload')}}</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/panel/advanced-config') }}" role="tab">Advanced Config ⤻</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/panel/diagnose') }}" role="tab">Diagnosis ⤻</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/panel/phpinfo') }}" role="tab">PHP Info ⤻</a>
-            </li>
             <li class="nav-item ml-auto">
                 <env-editor-config-actions></env-editor-config-actions>
             </li>
         </ul>
-
-	@if(env('NOTIFY_EVENTS') === false)
-<br><br>
-<a style="color:#ffbb39; font-weight:300; font-size:120%;">You currently have Event Notifications disabled. To get notified about polls, possible security vulnerabilities or important news, change the setting <code>NOTIFY_EVENTS</code> below to <code>true</code>. If you enable this and an event is happening, a small text will pop up on your Admin Panel which will only be visible for admins.</a>
-	@endif
-<?php if(strpos($_SERVER['SERVER_SOFTWARE'], 'nginx') !== false)echo "<br><br><p style=\"color:tomato; font-weight:300; font-size:120%;\">You appear to be using NGINX. Some features of the Config Editor do not work on NGINX based servers. You can use the alternative Config Editor <a href=" . url()->current() . "/../../panel/env>here</a>.</p>"; ?>
 
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active p-3" id="current-env" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -52,12 +37,11 @@
             <div class="tab-pane fade p-3" id="upload-env" role="tabpanel" aria-labelledby="nav-contact-tab">
                 <env-file-upload></env-file-upload>
             </div>
-            <p style="color:#fff; font-weight:500; font-size:100%; position:relative; bottom:25px;">You can disable or enable registration <a href="{{ url('panel/pages') }}">here</a>.</p>
         </div>
 
         <env-keys-modal ref="keysModal"></env-keys-modal>
     </div>
-<p style="color:#fff; font-weight:500; font-size:160%;">Use the <a href="{{url()->current()}}/../panel/env">Alternative Config Editor ⤻</a></p>
+
 
 
 
@@ -126,5 +110,3 @@
         })
     </script>
 @endpush
-
-@extends('layouts.sidebar')

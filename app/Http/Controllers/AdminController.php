@@ -8,6 +8,14 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\File;
 
+use GeoSot\EnvEditor\Controllers\EnvController;
+use GeoSot\EnvEditor\Exceptions\EnvException;
+use GeoSot\EnvEditor\Helpers\EnvFileContentManager;
+use GeoSot\EnvEditor\Helpers\EnvFilesManager;
+use GeoSot\EnvEditor\Helpers\EnvKeysManager;
+use GeoSot\EnvEditor\Facades\EnvEditor;
+use GeoSot\EnvEditor\ServiceProvider;
+
 use Auth;
 use Exception;
 use ZipArchive;
@@ -289,11 +297,11 @@ class AdminController extends Controller
     //Saves .env config
     public function editENV(request $request)
     {
-        $AdvancedConfig = $request->AdvancedConfig;
+        $config = $request->altConfig;
 
-        file_put_contents('.env', $AdvancedConfig);
+        file_put_contents('.env', $config);
 
-        return view('/panel/config');
+        return Redirect('/panel/config');
     }
 
     //Shows config file editor page
@@ -458,6 +466,64 @@ class AdminController extends Controller
     }
 
     //Shows config file editor page
+    public function showConfig(request $request)
+    {
+        return view('/panel/config-editor');
+    }
+
+    //Shows config file editor page
+    public function editConfig(request $request)
+    {
+
+        $type = $request->type;
+        $entry = $request->entry;
+        $value = $request->value;
+
+        if($type === "toggle"){
+            if($request->toggle != ''){$value = "auth";}else{$value = "false";}
+            if(EnvEditor::keyExists($entry)){EnvEditor::editKey($entry, $value);}
+        } elseif($type === "toggle2") {
+            if($request->toggle != ''){$value = "verified";}else{$value = "auth";}
+            if(EnvEditor::keyExists($entry)){EnvEditor::editKey($entry, $value);}
+        } elseif($type === "text") {
+            if(EnvEditor::keyExists($entry)){EnvEditor::editKey($entry, '"' . $value . '"');}
+        } elseif($type === "debug") {
+            if($request->toggle != ''){
+                if(EnvEditor::keyExists('APP_DEBUG')){EnvEditor::editKey('APP_DEBUG', 'true');}
+                if(EnvEditor::keyExists('APP_ENV')){EnvEditor::editKey('APP_ENV', 'local');}
+                if(EnvEditor::keyExists('LOG_LEVEL')){EnvEditor::editKey('LOG_LEVEL', 'debug');}
+            } else {
+                if(EnvEditor::keyExists('APP_DEBUG')){EnvEditor::editKey('APP_DEBUG', 'false');}
+                if(EnvEditor::keyExists('APP_ENV')){EnvEditor::editKey('APP_ENV', 'production');}
+                if(EnvEditor::keyExists('LOG_LEVEL')){EnvEditor::editKey('LOG_LEVEL', 'error');}
+            }
+        } elseif($type === "register") {
+            if($request->toggle != ''){$register = "true";}else{$register = "false";}
+            Page::first()->update(['register' => $register]);
+        } elseif($type === "smtp") {
+            if($request->toggle != ''){$value = "built-in";}else{$value = "smtp";}
+            if(EnvEditor::keyExists('MAIL_MAILER')){EnvEditor::editKey('MAIL_MAILER', $value);}
+
+            if(EnvEditor::keyExists('MAIL_HOST')){EnvEditor::editKey('MAIL_HOST', $request->MAIL_HOST);}
+            if(EnvEditor::keyExists('MAIL_PORT')){EnvEditor::editKey('MAIL_PORT', $request->MAIL_PORT);}
+            if(EnvEditor::keyExists('MAIL_USERNAME')){EnvEditor::editKey('MAIL_USERNAME', $request->MAIL_USERNAME);}
+            if(EnvEditor::keyExists('MAIL_PASSWORD')){EnvEditor::editKey('MAIL_PASSWORD', $request->MAIL_PASSWORD);}
+            if(EnvEditor::keyExists('MAIL_ENCRYPTION')){EnvEditor::editKey('MAIL_ENCRYPTION', $request->MAIL_ENCRYPTION);}
+            if(EnvEditor::keyExists('MAIL_FROM_ADDRESS')){EnvEditor::editKey('MAIL_FROM_ADDRESS', $request->MAIL_FROM_ADDRESS);}
+        } elseif($type === "homeurl") {
+            if($request->value == 'default'){$value = "";}else{$value = '"' . $request->value . '"';}
+            if(EnvEditor::keyExists($entry)){EnvEditor::editKey($entry, $value);}
+        } else {
+            if(EnvEditor::keyExists($entry)){EnvEditor::editKey($entry, $value);}
+        }
+
+
+
+
+        return Redirect('/panel/config');
+    }
+    
+    //Shows theme editor page
     public function showThemes(request $request)
     {
         return view('/panel/theme');

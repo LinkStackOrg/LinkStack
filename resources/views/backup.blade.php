@@ -55,7 +55,7 @@ exit(); ?>
         <h4 class="">The backup was successful, you can now return to the Admin Panel or see all your backups.</h4>
         <br><div class="row">
         &ensp;<a class="btn" href="{{ route('studioIndex') }}"><button><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
-        &ensp;<a class="btn" href="{{ route('showBackups') }}"><button><i class="fa-solid fa-box-archive"></i> All Backups</button></a>&ensp;
+        &ensp;<a class="btn" href="{{ url('panel/config#4') }}"><button><i class="fa-solid fa-box-archive"></i> All Backups</button></a>&ensp;
         </div>
 @endif
 
