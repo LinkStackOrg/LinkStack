@@ -31,7 +31,7 @@
     
     {"value": "ALLOW_USER_HTML",
     "title": "Allow extended syntax in user's descriptions",
-    "description": "This enables users to use special formatting like headings and links in their page description. This is generally considered save."
+    "description": "This enables users to use special formatting like headings and links in their page description.<br>This is generally considered save."
     },
 	
     {"value": "APP_NAME",
@@ -125,12 +125,12 @@
 	
     {"value": "JOIN_BETA",
     "title": "Join the Beta Program",
-    "description": "Enables the use of beta versions when updating. Read more at: s.llc.ovh/b."
+    "description": "Enables the use of beta versions when updating. Read more about this <a href='https://s.llc.ovh/b'>here</a>."
     },
         
     {"value": "SKIP_UPDATE_BACKUP",
     "title": "Skip update backups",
-    "description": "Skips backups when updating. This option is recommended to be enabled at all times, but it may cause errors in some configurations."
+    "description": "Skips backups when updating. This option is recommended to be enabled at all times, <br>but it may cause errors in some configurations."
     },
         
     {"value": "CUSTOM_META_TAGS",
@@ -140,12 +140,12 @@
         
     {"value": "FORCE_HTTPS",
     "title": "Force HTTPS",
-    "description": "Redirects all pages to https. When using http or when running behind a reverse proxy, this option will break your app."
+    "description": "Redirects all pages to https. When using http or when running behind a reverse proxy, <br>this option will break your app."
     },
         
     {"value": "ALLOW_CUSTOM_CODE_IN_THEMES",
     "title": "Allow custom code in themes",
-    "description": "Allows use of custom code in themes. If you use themes from unknown sources, this may pose a security risk."
+    "description": "Allows use of custom code in themes. If you use themes from unknown sources, <br>this may pose a security risk."
     },
         
     {"value": "ENABLE_THEME_UPDATER",
@@ -155,7 +155,7 @@
         
     {"value": "ENABLE_SOCIAL_LOGIN",
     "title": "Enable social login",
-    "description": "Enables social login. This option requires further setup. Read more at: s.llc.ovh/social-login."
+    "description": "Enables social login. This option requires further setup. Read more about this <a href='https://s.llc.ovh/social-login'>here</a>."
     },
     
     {"value": "USE_THEME_PREVIEW_IFRAME",
