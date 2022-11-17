@@ -127,6 +127,7 @@
 </div>
 @elseif($_SERVER['QUERY_STRING'] == 'alternative-config')
 @include('components.config.alternative-config')
+@include('components.config.back-button')
 @endif
 
 
