@@ -339,6 +339,7 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 </div></div>
 <input type="hidden" name="_token" value="{{csrf_token()}}">
 <div style="max-width: 600px; padding-left: 20px;">
+<br><h5>Custom SMTP server:</h5>
 <label style="margin-top:15px">Host</label>
 <input type="text" class="form-control" name="MAIL_HOST" value="{{EnvEditor::getKey('MAIL_HOST')}}" />
 <label style="margin-top:15px">Port</label>
