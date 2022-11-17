@@ -233,7 +233,7 @@ function text($key){
 <input value="register" name="type" style="display:none;" type="text" required>
 <input value="register" name="entry" style="display:none;" type="text" required>
 <h5 style="margin-top:50px">Enable registration</h5>
-<p class="text-muted">Sets wheter or not users are able to register on your application.</p>
+<p class="text-muted">Determines whether users can register for your application.</p>
 <div class="input-group">
 <div class="row toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle" <?php if(Page::pluck('register') == '["false"]'){echo '/>';}else{echo 'checked>';} ?> <label for="'.$key.'" class="label txt-label">Enable</label></div>
 </div></div>
