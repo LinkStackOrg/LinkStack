@@ -236,7 +236,7 @@ function text($key){
 <p class="text-muted">Sets wheter or not users are able to register on your application.</p>
 <div class="input-group">
 <div class="row toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle" <?php if(Page::pluck('register') == '["false"]'){echo '/>';}else{echo 'checked>';} ?> <label for="'.$key.'" class="label txt-label">Enable</label></div>
-</div></div>required
+</div></div>
 <input type="hidden" name="_token" value="{{csrf_token()}}">
 <script type="text/javascript">document.getElementById("register-form").addEventListener("change", function() { this.submit(); });</script>
 </form>
