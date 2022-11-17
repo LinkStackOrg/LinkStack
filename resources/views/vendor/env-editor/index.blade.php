@@ -7,8 +7,8 @@
     {{trans('env-editor::env-editor.menuTitle')}}
 @endpush
 
-@section('content')
 
+@section('content')
     <div id="env-editor">
         <div id="env-alerts"></div>
 
@@ -110,3 +110,5 @@
         })
     </script>
 @endpush
+
+@extends('layouts.sidebar')
