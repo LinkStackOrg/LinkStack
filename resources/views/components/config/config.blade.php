@@ -353,7 +353,7 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 <label style="margin-top:15px">From adress</label>
 <input type="text" class="form-control" name="MAIL_FROM_ADDRESS" value="{{EnvEditor::getKey('MAIL_FROM_ADDRESS')}}" />
 </div>
-<button type="submit" class="mt-3 ml-3 btn btn-info">Apply chnanges</button>
+<button type="submit" class="mt-3 ml-3 btn btn-info">Apply changes</button>
 </form>
 {{-- end SMTP settings --}}
 
