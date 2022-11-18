@@ -27,3 +27,8 @@ var editor = ace.edit("editor");
 editor.setTheme("ace/theme/xcode");
 editor.getSession().setMode("ace/mode/javascript");
 </script>
+<script>
+editor.getSession().on('change', function(e) {
+$('textarea[name=AdvancedConfig]').val(editor.getSession().getValue());
+});
+</script>
