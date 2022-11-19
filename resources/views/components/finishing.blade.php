@@ -25,15 +25,11 @@
             if(EnvEditor::keyExists('USE_THEME_PREVIEW_IFRAME')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('USE_THEME_PREVIEW_IFRAME', 'true');}
 
-            if(trim(file_get_contents(base_path("version.json"))) >= '2.9.1' and trim(file_get_contents(base_path("version.json"))) <= '3.0.0'){
-                Schema::disableForeignKeyConstraints();
-                Artisan::call('migrate');
-                Schema::enableForeignKeyConstraints();
-            }
 
-            if(trim(file_get_contents(base_path("version.json"))) >= '2.9.1' and trim(file_get_contents(base_path("version.json"))) <= '3.0.0'){
-                 if(EnvEditor::keyExists('ALLOW_USER_HTML')){EnvEditor::editKey('ALLOW_USER_HTML', 'true');}
-            }
+            // Adds database entries
+            Schema::disableForeignKeyConstraints();
+            Artisan::call('migrate');
+            Schema::enableForeignKeyConstraints();
 
             if (!config()->has('advanced-config.expand_panel_admin_menu_permanently') and !config()->has('disable_default_password_notice')) {
             
