@@ -385,7 +385,7 @@ if($url1sb == '200'  or $url2sb == '200') {
             <! –– #### end update detection #### ––>
 
 					@if(auth()->user()->role == 'admin' and $compromised === "true")
-					<a style="color:tomato;" class="nav-link" href="{{ url('panel/diagnose') }}" title="Your security is at risk. Some files can be accessed by everyone. Immediate action is required! Click this message to learn more.">Your security is at risk!</a>
+					<a style="color:tomato;" class="nav-link" href="{{ url('panel/config#5') }}" title="Your security is at risk. Some files can be accessed by everyone. Immediate action is required! Click this message to learn more.">Your security is at risk!</a>
 					@endif
 
 					@if(env('JOIN_BETA') === true)
