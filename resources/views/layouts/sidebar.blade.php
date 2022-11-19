@@ -182,7 +182,7 @@ if($url1sb == '200'  or $url2sb == '200') {
         @endif
 
         @if(file_exists(base_path("littlelink/images/avatar.png" )))
-          <img class="img logo" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" style="width: 150px;>
+          <img class="img logo" src="{{ asset('littlelink/images/avatar.png') }}" style="width:150px;height:auto;">
           @else
           <img class="img logo" type="image/svg+xml" src="{{ asset('littlelink/images/logo.svg') }}" style="width:100px;">
           @endif

@@ -71,7 +71,7 @@
       <div class="column" style="margin-top: 10%">
         <!-- Your Image Here -->
         @if(file_exists(base_path("littlelink/images/avatar.png" )))
-        <img src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="100px" height="100px">
+        <img src="{{ asset('littlelink/images/avatar.png') }}" width="auto" height="100px">
         @else
         <div class="logo-container fadein">
            <img class="rotate" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="width:150px; height:150px;">

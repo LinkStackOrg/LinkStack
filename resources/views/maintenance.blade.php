@@ -81,7 +81,7 @@ body {
       <div class="column">
         <!-- Your Image Here -->
         @if(file_exists(base_path("littlelink/images/avatar.png" )))
-        <img alt="avatar" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="200px" height="200px">
+        <img alt="avatar" src="{{ asset('littlelink/images/avatar.png') }}" width="auto" height="200px">
         @else
         <div class="logo-container">
            <img src="{{ asset('littlelink/images/logo.svg') }}" alt="Logo" style="width:200px; height:200px;">

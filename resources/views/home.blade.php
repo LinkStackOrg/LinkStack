@@ -182,7 +182,7 @@ foreach($pages as $page)
       <div class="column" style="margin-top: 15%">
         <!-- Your Image Here -->
         @if(file_exists(base_path("littlelink/images/avatar.png" )))
-        <img alt="avatar" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="128px" height="128px">
+        <img alt="avatar" src="{{ asset('littlelink/images/avatar.png') }}" width="auto" height="128px">
         @else
         <div class="logo-container fadein">
            <img class="rotate" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="width:150px; height:150px;">
