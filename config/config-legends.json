@@ -161,5 +161,10 @@
     {"value": "USE_THEME_PREVIEW_IFRAME",
     "title": "Use iframe as theme preview",
     "description": "Determines if an internal iframe should be used as the preview for them theme page."
+    },
+
+    {"value": "FORCE_ROUTE_HTTPS",
+    "title": "Redirect all pages to HTTPS",
+    "description": "This option will break your setup when using a reverse proxy."
     }
     ]

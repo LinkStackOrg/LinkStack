@@ -326,6 +326,9 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 {{toggle('ENABLE_SOCIAL_LOGIN')}}
 
 
+{{toggle('FORCE_ROUTE_HTTPS')}}
+
+
 {{-- start SMTP settings --}}
 <h2 class="ch2">SMTP</h2>
 <form id="smtp-form" action="{{route('editConfig')}}" enctype="multipart/form-data" method="post">
