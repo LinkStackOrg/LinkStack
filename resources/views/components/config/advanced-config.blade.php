@@ -26,6 +26,7 @@ Home Page, links, titles, Google Analytics and meta tags.</p>
 var editor = ace.edit("editor");
 editor.setTheme("ace/theme/xcode");
 editor.getSession().setMode("ace/mode/javascript");
+editor.session.setUseWorker(false);
 </script>
 <script>
 editor.getSession().on('change', function(e) {
