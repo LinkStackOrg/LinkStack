@@ -139,8 +139,8 @@
     },
         
     {"value": "FORCE_HTTPS",
-    "title": "Force HTTPS",
-    "description": "Redirects all pages to https. When using http or when running behind a reverse proxy, <br>this option will break your app."
+    "title": "Force links HTTPS",
+    "description": "Makes all links utilize HTTPS by default. It is advised to enable this option if you are using a reverse proxy."
     },
         
     {"value": "ALLOW_CUSTOM_CODE_IN_THEMES",
