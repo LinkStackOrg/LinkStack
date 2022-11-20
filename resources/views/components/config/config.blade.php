@@ -311,7 +311,24 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 <h2 class="ch2">Advanced</h2>
 
 
-{{toggle('MAINTENANCE_MODE')}}
+{{-- start MAINTENANCE_MODE --}}
+<form id="MAINTENANCE_MODE-form" action="{{route('editConfig')}}" enctype="multipart/form-data" method="post">
+<div class="form-group col-lg-8">
+<input value="maintenance" name="type" style="display:none;" type="text" required>
+<input value="MAINTENANCE_MODE" name="entry" style="display:none;" type="text" required>
+<h5 style="margin-top:50px">Enable Maintenance Mode</h5>
+<p class="text-muted">Displays a maintenance message on all public pages. This will disable the login pages.</p>
+<div class="input-group">
+<div class="row toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="MAINTENANCE_MODE" <?php if(EnvEditor::getKey('MAINTENANCE_MODE') == 'true' or file_exists(base_path("storage/MAINTENANCE"))){echo 'checked>';}else{echo '/>';} ?><label for="MAINTENANCE_MODE" class="label txt-label">Enable</label></div>
+</div></div>
+<input type="hidden" name="_token" value="{{csrf_token()}}">
+<script type="text/javascript">
+document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", function() { 
+    this.submit(); 
+});
+</script>
+</form>
+{{-- end MAINTENANCE_MODE --}}
 
 
 {{toggle('JOIN_BETA')}}

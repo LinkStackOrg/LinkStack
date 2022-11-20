@@ -513,6 +513,10 @@ class AdminController extends Controller
         } elseif($type === "homeurl") {
             if($request->value == 'default'){$value = "";}else{$value = '"' . $request->value . '"';}
             if(EnvEditor::keyExists($entry)){EnvEditor::editKey($entry, $value);}
+        } elseif($type === "maintenance") {
+            if($request->toggle != ''){$value = "true";}else{$value = "false";}
+            if(file_exists(base_path("storage/MAINTENANCE"))){unlink(base_path("storage/MAINTENANCE"));}
+            if(EnvEditor::keyExists($entry)){EnvEditor::editKey($entry, $value);}
         } else {
             if(EnvEditor::keyExists($entry)){EnvEditor::editKey($entry, $value);}
         }
