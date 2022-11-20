@@ -101,6 +101,72 @@
   transform: scale(1.1);
 }
 </style>
+<style>
+#button-top {
+  display: inline-block;
+  background-color: #275EFE;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 5px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+#button-top::after {
+  content: "\f077";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 50px;
+  color: #fff;
+}
+#button-top:hover {
+  cursor: pointer;
+  -webkit-filter: brightness(90%);
+}
+#button-top:active {
+  background-color: #555;
+}
+#button-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Styles for the content section */
+
+.content {
+  width: 77%;
+  margin: 50px auto;
+  font-family: 'Merriweather', serif;
+  font-size: 17px;
+  color: #6c767a;
+  line-height: 1.9;
+}
+@media (min-width: 500px) {
+  .content {
+    width: 43%;
+  }
+  #button-top {
+    margin: 30px;
+  }
+}
+.content h1 {
+  margin-bottom: -10px;
+  color: #03a9f4;
+  line-height: 1.5;
+}
+.content h3 {
+  font-style: italic;
+  color: #96a2a7;
+}
+</style>
 
 <div class="option"><a href="?alternative-config">
 <div class="row"><i class="bi bi-pencil-square opt-img"></i><div>
@@ -178,11 +244,14 @@
 
 </div>
 </div>
+
+<!-- Back to top button -->
+<a id="button-top"></a>
+
 @elseif($_SERVER['QUERY_STRING'] == 'alternative-config')
 @include('components.config.alternative-config')
 @include('components.config.back-button')
 @endif
-
 
 @push("sidebar-scripts")
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -203,6 +272,23 @@ $("ul.nav-tabs > li > a").on("shown.bs.tab", function(e) {
 var hash = window.location.hash;
 $('#myTab a[href="' + hash + '"]').tab('show');
 </script>
+<script>
+var btn = $('#button-top');
+
+$(window).scroll(function() {
+  if ($(window).scrollTop() > 300) {
+    btn.addClass('show');
+  } else {
+    btn.removeClass('show');
+  }
+});
+
+btn.on('click', function(e) {
+  e.preventDefault();
+  $('html, body').animate({scrollTop:250}, '300');
+});
+</script>
 @endpush
+
 
 @endsection
