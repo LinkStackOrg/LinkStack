@@ -285,7 +285,7 @@ $(window).scroll(function() {
 
 btn.on('click', function(e) {
   e.preventDefault();
-  $('html, body').animate({scrollTop:250}, '300');
+  $('html, body').animate({scrollTop:280}, '300');
 });
 </script>
 @endpush
