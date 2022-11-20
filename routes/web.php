@@ -73,7 +73,7 @@ Route::get('/theme/@{littlelink}', [UserController::class, 'theme'])->name('them
 Route::group([
     'middleware' => env('REGISTER_AUTH'),
 ], function () {
-if(env('FORCE_HTTPS') == 'true'){URL::forceScheme('https');}
+if(env('FORCE_ROUTE_HTTPS') == 'true'){URL::forceScheme('https');}
 if(isset($_COOKIE['LinkCount'])){if($_COOKIE['LinkCount'] == '20'){$LinkPage = 'showLinks20';}elseif($_COOKIE['LinkCount'] == '30'){$LinkPage = 'showLinks30';}elseif($_COOKIE['LinkCount'] == 'all'){$LinkPage = 'showLinksAll';} else {$LinkPage = 'showLinks';}} else {$LinkPage = 'showLinks';} //Shows correct link number
 Route::get('/studio/index', [UserController::class, 'index'])->name('studioIndex');
 Route::get('/studio/add-link', [UserController::class, 'AddUpdateLink'])->name('showButtons');
@@ -112,7 +112,7 @@ Route::get('/social-auth/{provider}', [SocialLoginController::class, 'redirectTo
 Route::group([
     'middleware' => 'admin',
 ], function () {
-    if(env('FORCE_HTTPS') == 'true'){URL::forceScheme('https');}
+    if(env('FORCE_ROUTE_HTTPS') == 'true'){URL::forceScheme('https');}
     Route::get('/panel/index', [AdminController::class, 'index'])->name('panelIndex');
     Route::get('/panel/users/{type}', [AdminController::class, 'users'])->name('showUsers');
     Route::post('/panel/users/{name?}', [AdminController::class, 'searchUser'])->name('searchUser');
