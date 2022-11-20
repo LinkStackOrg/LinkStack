@@ -146,7 +146,7 @@ exit(); ?>
    @if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
         <meta http-equiv="refresh" content="2; URL={{url()->current()}}/?updating-windows-bat" />
    @else
-        <?php echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "?updating\" />" ?>
+        <?php echo "<meta http-equiv=\"refresh\" content=\"1; " . url()->current() . "?updating\" />" ?>
    @endif
 @endif
 
