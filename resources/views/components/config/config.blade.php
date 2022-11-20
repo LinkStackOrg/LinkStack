@@ -224,7 +224,7 @@ function text($key){
 ?>
 
 
-<h2 class="ch2">Application</h2>
+<a name="Application"><h2 class="ch2">Application</h2></a>
 
 
 {{-- start register --}}
@@ -276,7 +276,7 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 {{text('APP_NAME')}}
 
 
-<h2 class="ch2">Panel settings</h2>
+<a name="Panel-settings"><h2 class="ch2">Panel settings</h2></a>
 
 {{toggle('NOTIFY_EVENTS')}}
 
@@ -296,7 +296,7 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 {{toggle('USE_THEME_PREVIEW_IFRAME')}}
 
 
-<h2 class="ch2">Security</h2>
+<a name="Security"><h2 class="ch2">Security</h2></a>
 
 
 {{toggle('ALLOW_USER_HTML')}}
@@ -308,7 +308,7 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 {{toggle('ENABLE_THEME_UPDATER')}}
 
 
-<h2 class="ch2">Advanced</h2>
+<a name="Advanced"><h2 class="ch2">Advanced</h2></a>
 
 
 {{-- start MAINTENANCE_MODE --}}
@@ -347,7 +347,7 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 
 
 {{-- start SMTP settings --}}
-<h2 class="ch2">SMTP</h2>
+<a name="SMTP"><h2 class="ch2">SMTP</h2></a>
 <form id="smtp-form" action="{{route('editConfig')}}" enctype="multipart/form-data" method="post">
 <div class="form-group col-lg-8">
 <input value="smtp" name="type" style="display:none;" type="text" required>
@@ -379,7 +379,7 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 
 
 {{-- start debug settings --}}
-<h2 class="ch2">Debug</h2>
+<a name="Debug"><h2 class="ch2">Debug</h2></a>
 <form id="debug-form" action="{{route('editConfig')}}" enctype="multipart/form-data" method="post">
 <div class="form-group col-lg-8">
 <input value="debug" name="type" style="display:none;" type="text" required>

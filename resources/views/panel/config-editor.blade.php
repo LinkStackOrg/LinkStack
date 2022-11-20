@@ -33,7 +33,8 @@
 .option{
 	background-color: #343a40;
 	color: rgba(255, 255, 255, 0.8) !important;
-	height: 100px;
+	min-height: 100px;
+	overflow: hidden;
 	padding: 20px;
 	border-radius: 5px;
 	-webkit-transition-duration: 0.3s;
@@ -59,6 +60,46 @@
 	bottom: 10px;
 	position: relative;
 }
+
+.legend{
+	background-color: #343a40;
+	color: rgba(255, 255, 255, 0.8) !important;
+	min-height: 65px;
+	overflow: hidden;
+	padding: 10px 10px;
+	padding-left: 30px;
+	padding-right: 30px;
+	border-radius: 5px;
+	-webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+.legend h3{
+	color:white!important;
+}
+.legend:hover, .legend:focus, .legend:active {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+.legendl {
+  padding: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  min-width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #31363b;
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  color: white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+.legendl:hover, .legendl:focus, .legendl:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
 </style>
 
 <div class="option"><a href="?alternative-config">
@@ -74,7 +115,19 @@
 <div class="option"><a href="{{ url('panel/phpinfo') }}">
 <div class="row"><i class="bi bi-filetype-php opt-img"></i><div>
 <h3 class="">PHP info</h3><p class="text-muted opt-txt">Display debuggin infromation about your PHP setup</p>
-</div></div></a></div><br>
+</div></div></a></div><br><br>
+
+<h3>Jump directly to:</h3>
+<div class="legend">
+<div class="row">
+<a href="#Application"><div class="legendl">Application</div></a>
+<a href="#Panel-settings"><div class="legendl">Panel settings</div></a>
+<a href="#Security"><div class="legendl">Security</div></a>
+<a href="#Advanced"><div class="legendl">Advanced</div></a>
+<a href="#SMTP"><div class="legendl">SMTP</div></a>
+<a href="#Debug"><div class="legendl">Debug</div></a>
+<div>
+</div></div></div>
 
 @include('components.config.config')
 
