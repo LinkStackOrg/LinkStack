@@ -25,6 +25,9 @@
             if(EnvEditor::keyExists('USE_THEME_PREVIEW_IFRAME')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('USE_THEME_PREVIEW_IFRAME', 'true');}
 
+            if(EnvEditor::keyExists('FORCE_ROUTE_HTTPS')){ /* Do nothing if key already exists */ 
+            } else {EnvEditor::addKey('FORCE_ROUTE_HTTPS', 'false');}
+
 
             // Adds database entries
             Schema::disableForeignKeyConstraints();
