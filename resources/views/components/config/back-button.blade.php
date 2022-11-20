@@ -5,6 +5,7 @@
 	right:105px;
 	display:table;
 	visibility: hidden;
+	z-index: 2000;
 }
 
 .label-text{
@@ -14,6 +15,7 @@
 	vertical-align:middle;
 	padding:10px;
 	border-radius:3px;
+	z-index: 2000;
 }
 
 .label-arrow{
@@ -21,6 +23,7 @@
 	vertical-align:middle;
 	color:#333;
 	opacity:0.5;
+	z-index: 2000;
 }
 
 .float{
@@ -34,6 +37,7 @@
 	border-radius:50px;
 	text-align:center;
 	box-shadow: 2px 2px 3px #111;
+	z-index: 2000;
 }
 .float:hover{
 	color: white;
@@ -43,12 +47,14 @@
 .my-float{
 	font-size:35px;
 	margin-top:15px;
+	z-index: 2000;
 }
 
 a.float + div.label-container {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.5s ease;
+  z-index: 2000;
 }
 
 a.float:hover + div.label-container{
