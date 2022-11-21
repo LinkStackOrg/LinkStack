@@ -235,7 +235,7 @@ function text($key){
 <h5 style="margin-top:50px">Enable registration</h5>
 <p class="text-muted">Determines whether users can register for your application.</p>
 <div class="input-group">
-<div class="row toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle" <?php if(Page::pluck('register') == '["false"]'){echo '/>';}else{echo 'checked>';} ?> <label for="'.$key.'" class="label txt-label">Enable</label></div>
+<div class="row toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle-register" <?php if(Page::pluck('register') == '["false"]'){echo '/>';}else{echo 'checked>';} ?> <label for="toggle-register" class="label txt-label">Enable</label></div>
 </div></div>
 <input type="hidden" name="_token" value="{{csrf_token()}}">
 <script type="text/javascript">document.getElementById("register-form").addEventListener("change", function() { this.submit(); });</script>
@@ -355,7 +355,7 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 <h5 style="margin-top:50px">Use built in SMTP server</h5>
 <p class="text-muted">Uses SMTP server provided by LittleLink Custom. Might not be 100% reliable. Some errors may occur.</p>
 <div class="input-group">
-<div class="row toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle" <?php if(EnvEditor::getKey('MAIL_MAILER') != 'built-in'){echo '/>';}else{echo 'checked>';} ?> <label for="'.$key.'" class="label txt-label">Enable</label></div>
+<div class="row toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle-smtp" <?php if(EnvEditor::getKey('MAIL_MAILER') != 'built-in'){echo '/>';}else{echo 'checked>';} ?> <label for="toggle-smtp" class="label txt-label">Enable</label></div>
 </div></div>
 <input type="hidden" name="_token" value="{{csrf_token()}}">
 <div style="max-width: 600px; padding-left: 20px;">
@@ -387,7 +387,7 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 <h5 style="margin-top:50px">Debug mode</h5>
 <p class="text-muted">Should be disabled in a production environment. Usefull for debuggin during setup.</p>
 <div class="input-group">
-<div class="row toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle" <?php if(EnvEditor::getKey('APP_DEBUG') == 'false'){echo '/>';}else{echo 'checked>';} ?> <label for="'.$key.'" class="label txt-label">Enable</label></div>
+<div class="row toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle-debug" <?php if(EnvEditor::getKey('APP_DEBUG') == 'false'){echo '/>';}else{echo 'checked>';} ?> <label for="toggle-debug" class="label txt-label">Enable</label></div>
 </div></div>
 <input type="hidden" name="_token" value="{{csrf_token()}}">
 <script type="text/javascript">document.getElementById("debug-form").addEventListener("change", function() { this.submit(); });</script>
