@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\LinkTypeViewController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\InstallerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +22,24 @@ use App\Http\Controllers\PagesController;
 
 // Prevents section below from being run by 'composer update'
 if(file_exists(base_path('storage/app/ISINSTALLED'))){
- // generates new APP KEY if no one is set
- if(EnvEditor::getKey('APP_KEY')==''){Artisan::call('key:generate');}
+  // generates new APP KEY if no one is set
+  if(EnvEditor::getKey('APP_KEY')==''){Artisan::call('key:generate');}
+ 
+  // copies template meta config if none is present
+  if(!file_exists(base_path("config/advanced-config.php"))){copy(base_path('storage/templates/advanced-config.php'), base_path('config/advanced-config.php'));}
+ }
 
- // copies template meta config if none is present
- if(!file_exists(base_path("config/advanced-config.php"))){copy(base_path('storage/templates/advanced-config.php'), base_path('config/advanced-config.php'));}
-}
+ // Installer
+if(file_exists(base_path('INSTALLING'))){
+
+  Route::get('/', [InstallerController::class, 'showInstaller'])->name('showInstaller');
+  Route::post('/create-admin', [InstallerController::class, 'createAdmin'])->name('createAdmin');
+  Route::post('/db', [InstallerController::class, 'db'])->name('db');
+  Route::post('/mysql', [InstallerController::class, 'mysql'])->name('mysql');
+  Route::post('/options', [InstallerController::class, 'options'])->name('options');
+  Route::get('/mysql-test', [InstallerController::class, 'mysqlTest'])->name('mysqlTest');
+
+}else{
 
 // Disables routes if in Maintenance Mode
 if(env('MAINTENANCE_MODE') != 'true' and !file_exists(base_path("storage/MAINTENANCE"))){
@@ -187,6 +200,8 @@ if(env('MAINTENANCE_MODE') == 'true' or file_exists(base_path("storage/MAINTENAN
 Route::get('/{any}', function () {
   return view('maintenance');
   })->where('any', '.*');
+}
+
 }
 
 require __DIR__.'/auth.php';
