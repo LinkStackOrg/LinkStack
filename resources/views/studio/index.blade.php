@@ -13,7 +13,7 @@
         </p>
 
 
-        <!-- Section: Design Block -->
+        {{-- <!-- Section: Design Block -->
         <section class="mb-3 text-gray-800 text-center shadow p-4 w-full">
             <div class='font-weight-bold text-left'>Visitor analytics:</div>
             <div class="d-flex flex-wrap justify-content-around">
@@ -51,7 +51,7 @@
                 </div>
 
             </div>
-        </section>
+        </section> --}}
 
 
 
