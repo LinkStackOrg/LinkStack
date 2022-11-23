@@ -188,10 +188,22 @@
 </select>
 
 <label>Set your page as Home Page</label>
-<select style="max-width:300px" class="form-control" name="page">
+<select id="select" style="max-width:300px" class="form-control" name="page">
 <option>No</option>
 <option>Yes</option>
 </select>
+<style>.hidden{visibility:visible!important;}</style>
+<span class="" id="hidden" style="visibility:hidden;display:flex;margin-top:-22px;margin-bottom:10px;color:#6c757d;font-size:90%;">This will move the Home Page to /home</span>
+<script src="{{ asset('studio/external-dependencies/jquery-3.4.1.min.js') }}"></script>
+<script>
+$("#select").change(function(){
+    if($(this).val() == "Yes") {
+       $('#hidden').addClass('hidden');
+    } else {
+       $('#hidden').removeClass('hidden');
+    }
+});
+</script>
 
 <label>App Name:</label>
 <input style="max-width:275px;" class="form-control" value="LittleLink Custom" name="app" type="text" required>
