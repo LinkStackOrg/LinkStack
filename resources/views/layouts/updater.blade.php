@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
   <script src="{{ asset('studio/external-dependencies/fontawesome.js') }}" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="{{ asset('studio/external-dependencies/fontawesome.css') }}" integrity="sha384-fZCoUih8XsaUZnNDOiLqnby1tMJ0sE7oBbNk2Xxf5x8Z4SvNQ9j83vFMa/erbVrV" crossorigin="anonymous"/>
+<link rel="stylesheet" href="{{ asset('studio/external-dependencies/fontawesome.css') }}" integrity="sha384-twcuYPV86B3vvpwNhWJuaLdUSLF9+ttgM2A6M870UYXrOsxKfER2MKox5cirApyA" crossorigin="anonymous"/>
   @if(file_exists(base_path("littlelink/images/avatar.png" )))
   <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
   @else
