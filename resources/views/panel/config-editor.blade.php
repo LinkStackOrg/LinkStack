@@ -234,7 +234,7 @@
 
 <div class="tab-pane" id="5">
 <section class="shadow text-gray-400">
-<h2 class="mb-4 card-header"><i class="bi bi-braces-asterisk"> Debugging information</i></h2>
+<h2 class="mb-4 card-header"><i class="bi bi-braces-asterisk"> Debugging information</i> <span class="text-muted" style="font-size:60%;vertical-align: middle;">v{{file_get_contents(base_path("version.json"))}}</span></h2>
 <div class="card-body p-0 p-md-3">
 @include('components.config.diagnose')
 </div>
