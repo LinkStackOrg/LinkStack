@@ -50,6 +50,8 @@ class InstallerController extends Controller
 
         $email = $request->email;
         $password = $request->password;
+        $handle = $request->handle;
+        $name = $request->name;
 
 
         if(DB::table('users')->count() == '0'){
@@ -59,11 +61,11 @@ class InstallerController extends Controller
         Schema::enableForeignKeyConstraints();
 
         $user = User::create([
-            'name' => 'Admin',
+            'name' => $name,
             'email' => $email,
             'email_verified_at' => '0001-01-01 00:00:00',
             'password' => Hash::make($password),
-            'littlelink_name' => 'admin',
+            'littlelink_name' => $handle,
             'littlelink_description' => 'admin page',
             'block' => 'no',
         ]);

@@ -148,6 +148,13 @@
 <input style="max-width:275px;" class="form-control" placeholder="admin@admin.com" name="email" type="email" required>
 <label>Admin password:</label>
 <input style="max-width:275px;" class="form-control" placeholder="12345678" name="password" type="password" required>
+<label>Handle:</label>
+<div class="input-group">
+<div class="input-group-prepend"><div class="input-group-text">@</div></div>
+<input style="max-width:237px; padding-left:50px;" class="form-control" name="handle" type="text" />
+</div>
+<label>Name:</label>
+<input style="max-width:275px;" class="form-control" name="name" type="text" />
 <div class="input-group">
 </div></div><br>
 <input type="hidden" name="_token" value="{{csrf_token()}}">

@@ -186,6 +186,46 @@ button:hover {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
+.input-group {
+    position: relative;
+    display: --webkit-box;
+    display: --ms-flexbox;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+    z-index: 200000;
+}
+.input-group-text {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0.375rem 1rem;
+    margin-bottom: -52px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    text-align: center;
+    dark-space: nowrap;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    z-index: 200000;
+}
+.input-group-prepend {
+    margin-right: -1px;
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    z-index: 200000;
+}
 .glass-container{
     display: block;
     padding: 10px;

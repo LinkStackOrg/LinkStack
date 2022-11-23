@@ -75,7 +75,7 @@ return $path;}
 
   <!-- Custom icons font-awesome -->
   <script src="{{ asset('studio/external-dependencies/fontawesome.js') }}" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="{{ asset('studio/external-dependencies/fontawesome.css') }}"/>
+<link rel="stylesheet" href="{{ asset('studio/external-dependencies/fontawesome.css') }}" />
 
   <link href="//fonts.bunny.net/css?family=Open+Sans:400,600,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
