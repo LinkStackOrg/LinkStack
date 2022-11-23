@@ -12,7 +12,7 @@
 
   <title>LittleLink Custom setup</title>
   <link href="//fonts.bunny.net/css?family=Open+Sans:400,600,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="{{ asset('studio/external-dependencies/bootstrap-icons.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">

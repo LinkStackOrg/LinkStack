@@ -153,7 +153,7 @@ var button_css = {
 	<script src="./js/jquery.gradientPicker.js"></script>
   <!-- end button editor -->
 @endpush
-  <script src="https://kit.fontawesome.com/c4a5e06183.js" crossorigin="anonymous"></script>
+  <script src="{{ asset('studio/external-dependencies/fontawesome.js') }}" crossorigin="anonymous"></script>
 
 <div>
 <section class="shadow text-gray-400">

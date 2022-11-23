@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
 
     <link href="//fonts.bunny.net/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="{{ asset('studio/external-dependencies/bootstrap-icons.css') }}">
   <!-- begin dark mode detection -->
 	<script src="{{ asset('littlelink/js/js.cookie.min.js') }}"></script>
 	<script>

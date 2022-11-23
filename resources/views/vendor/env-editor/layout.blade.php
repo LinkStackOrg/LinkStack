@@ -12,7 +12,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
     <link rel="stylesheet"
-          href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          href="{{ asset('studio/external-dependencies/fontawesome.css') }}"
           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
           crossorigin="anonymous"/>
 
@@ -21,11 +21,11 @@
 <body>
 
 <span class="javascripts">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    <script src="{{ asset('studio/external-dependencies/jquery.slim.min.js') }}"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
             crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+    <script src="{{ asset('studio/external-dependencies/vue.js') }}"></script>
+    <script src="{{ asset('studio/external-dependencies/bootstrap.bundle.min.js') }}"
             integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
             crossorigin="anonymous"></script>
 

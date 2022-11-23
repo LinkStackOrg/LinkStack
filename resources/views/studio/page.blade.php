@@ -79,7 +79,7 @@
 </form>
 
 @if(env('ALLOW_USER_HTML') === true)
-<script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
+<script src="{{ asset('studio/external-dependencies/ckeditor.js') }}"></script>
 <script>
     ClassicEditor
         .create(document.querySelector('.ckeditor'), {

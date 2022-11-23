@@ -21,7 +21,7 @@ Home Page, links, titles, Google Analytics and meta tags.</p>
         </form>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ asset('studio/external-dependencies/ace.js') }}" type="text/javascript" charset="utf-8"></script>
 <script>
 var editor = ace.edit("editor");
 editor.setTheme("ace/theme/xcode");
