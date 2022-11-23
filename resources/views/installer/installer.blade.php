@@ -13,7 +13,7 @@
         <h1>Setup LittleLink Custom</h1>
         <p class="inst-txt">
         <div class="left-txt glass-container">
-        Welcome to the setup for LittleLink Custom<br><br>
+        Welcome to the setup for LittleLink Custom!<br><br>
         <b>This setup will:</b><br>
         1. Check the server dependencies<br>
         2. Setup the database<br>
