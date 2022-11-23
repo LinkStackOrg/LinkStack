@@ -230,13 +230,13 @@
                       }
 
                     if ($themeVe == "error") {
-                    echo '<img style="scale:0.9" src="https://img.shields.io/static/v1?label=&message=Error!&color=red">';
+                    echo '<img style="scale:0.9" src="https://img.llc.ovh/static/v1?label=&message=Error!&color=red">';
                     } elseif ($hasSource == false) {
-                    echo '<a href="https://littlelink-custom.com/themes.php" target="_blank"><img style="scale:0.9" src="https://img.shields.io/static/v1?label=&message=Update manually&color=red"></a>';
+                    echo '<a href="https://littlelink-custom.com/themes.php" target="_blank"><img style="scale:0.9" src="https://img.llc.ovh/static/v1?label=&message=Update manually&color=red"></a>';
                     } elseif($updateAv == true) {
-                    echo '<img style="scale:0.9" src="https://img.shields.io/static/v1?label=&message=Update available&color=yellow">';
+                    echo '<img style="scale:0.9" src="https://img.llc.ovh/static/v1?label=&message=Update available&color=yellow">';
                     } else {
-                    echo '<img style="scale:0.9" src="https://img.shields.io/static/v1?label=&message=Up to date&color=green">';
+                    echo '<img style="scale:0.9" src="https://img.llc.ovh/static/v1?label=&message=Up to date&color=green">';
                     }
                     echo '</center></th>';
                     echo '<th>' . $verNr . '</th>';
@@ -255,7 +255,7 @@
 </details>
 
 <?php
-try{ if($GLOBALS['updateAv'] == true) echo '<img style="padding-left:40px; padding-top:15px; scale: 1.5;" src="https://img.shields.io/static/v1?label=&message=A theme needs updating&color=brightgreen">';
+try{ if($GLOBALS['updateAv'] == true) echo '<img style="padding-left:40px; padding-top:15px; scale: 1.5;" src="https://img.llc.ovh/static/v1?label=&message=A theme needs updating&color=brightgreen">';
 }catch(Exception $ex){}
 ?>
 

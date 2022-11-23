@@ -389,7 +389,7 @@ if($url1sb == '200'  or $url2sb == '200') {
 					@endif
 
 					@if(env('JOIN_BETA') === true)
-					<a style="color:tomato;" class="nav-link" href="{{ url('update') }}">You are in BETA mode! <img src="https://img.shields.io/static/v1?label=installed:&message=<?php  if(file_exists(base_path("vbeta.json"))) {echo file_get_contents(base_path("vbeta.json"));} else {echo "none";}  ?>&color=FFFFFF"> <img src="https://img.shields.io/static/v1?label=server:&message=<?php echo file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?>&color=FFFFFF"></a>
+					<a style="color:tomato;" class="nav-link" href="{{ url('update') }}">You are in BETA mode! <img src="https://img.llc.ovh/static/v1?label=installed:&message=<?php  if(file_exists(base_path("vbeta.json"))) {echo file_get_contents(base_path("vbeta.json"));} else {echo "none";}  ?>&color=FFFFFF"> <img src="https://img.llc.ovh/static/v1?label=server:&message=<?php echo file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?>&color=FFFFFF"></a>
 					@endif
 
 					@if (config('advanced-config.theme') == 'light' and $color_scheme_override != 'dark')
