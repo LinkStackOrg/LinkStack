@@ -192,8 +192,8 @@
 <option>No</option>
 <option>Yes</option>
 </select>
-<style>.hidden{visibility:visible!important;}</style>
-<span class="" id="hidden" style="visibility:hidden;display:flex;margin-top:-22px;margin-bottom:10px;color:#6c757d;font-size:90%;">This will move the Home Page to /home</span>
+<style>.hidden{display:flex!important;}</style>
+<span class="" id="hidden" style="display:none;margin-top:-22px;margin-bottom:10px;color:#6c757d;font-size:90%;">This will move the Home Page to /home</span>
 <script src="{{ asset('studio/external-dependencies/jquery-3.4.1.min.js') }}"></script>
 <script>
 $("#select").change(function(){
