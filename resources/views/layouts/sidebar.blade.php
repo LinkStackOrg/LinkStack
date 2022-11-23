@@ -392,6 +392,7 @@ if($url1sb == '200'  or $url2sb == '200') {
 					<a style="color:tomato;" class="nav-link" href="{{ url('update') }}">You are in BETA mode! <img src="https://img.llc.ovh/static/v1?label=installed:&message=<?php  if(file_exists(base_path("vbeta.json"))) {echo file_get_contents(base_path("vbeta.json"));} else {echo "none";}  ?>&color=FFFFFF"> <img src="https://img.llc.ovh/static/v1?label=server:&message=<?php echo file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?>&color=FFFFFF"></a>
 					@endif
 
+					@if(Route::currentRouteName() === "showConfig")<style>input[type=checkbox]{margin-left: -24px !important;}</style>@endif
 					@if (config('advanced-config.theme') == 'light' and $color_scheme_override != 'dark')
 					<div id="myBtn" class="toggle"><span>🌙</span><input type="checkbox" id="toggle-switch" checked/><label for="toggle-switch"></label><span>☀️</span></div>
 					<script>function ColorOverrride(){document.cookie="color_scheme_override=dark; path=/",location.reload()}var btn=document.getElementById("myBtn");btn.addEventListener("click",ColorOverrride);</script>
