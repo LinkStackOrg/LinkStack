@@ -429,6 +429,6 @@ try{ if($GLOBALS['updateAv'] == true) echo '<img style="padding-left:40px; paddi
 
 @endforeach
 
-<script src="https://code.{{ asset('studio/external-dependencies/jquery-1.12.4.min.js') }}/jquery-1.12.4.min.js"></script>
+<script src="{{ asset('studio/external-dependencies/jquery-1.12.4.min.js') }}"></script>
 <script type="text/javascript">$("iframe").load(function() { $("iframe").contents().find("a").each(function(index) { $(this).on("click", function(event) { event.preventDefault(); event.stopPropagation(); }); }); });</script>
 @endsection
