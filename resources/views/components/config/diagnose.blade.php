@@ -100,3 +100,25 @@ $url2 = getUrlSatusCode($actual_link . '/../../database/database.sqlite');
           </tr>
         </tbody>
         </table>
+
+        <br><h3 class="mb-4">Dependencies</h3>
+        <p>Required PHP modules.</p>
+
+<style>#dp{width:10%!important;text-align:center;}</style>
+        <table class="table table-bordered">
+        <style>.bi-x-lg{color:tomato}</style>
+        <tr><td>BCMath PHP Extension</td><td id="dp">@if(extension_loaded('bcmath'))✔️@else❌@endif</td></tr>
+        <tr><td>Ctype PHP Extension</td><td id="dp">@if(extension_loaded('Ctype'))✔️@else❌@endif</td></tr>
+        <tr><td>cURL PHP Extension</td><td id="dp">@if(extension_loaded('cURL'))✔️@else❌@endif</td></tr>
+        <tr><td>DOM PHP Extension</td><td id="dp">@if(extension_loaded('DOM'))✔️@else❌@endif</td></tr>
+        <tr><td>Fileinfo PHP Extension</td><td id="dp">@if(extension_loaded('Fileinfo'))✔️@else❌@endif</td></tr>
+        <tr><td>JSON PHP Extension</td><td id="dp">@if(extension_loaded('JSON'))✔️@else❌@endif</td></tr>
+        <tr><td>Mbstring PHP Extension</td><td id="dp">@if(extension_loaded('Mbstring'))✔️@else❌@endif</td></tr>
+        <tr><td>OpenSSL PHP Extension</td><td id="dp">@if(extension_loaded('OpenSSL'))✔️@else❌@endif</td></tr>
+        <tr><td>PCRE PHP Extension</td><td id="dp">@if(extension_loaded('PCRE'))✔️@else❌@endif</td></tr>
+        <tr><td>PDO PHP Extension</td><td id="dp">@if(extension_loaded('PDO'))✔️@else❌@endif</td></tr>
+        <tr><td>Tokenizer PHP Extension</td><td id="dp">@if(extension_loaded('Tokenizer'))✔️@else❌@endif</td></tr>
+        <tr><td>XML PHP Extension</td><td id="dp">@if(extension_loaded('XML'))✔️@else❌@endif</td></tr>
+        <tr><td>SQLite PHP Extension</td><td id="dp">@if(extension_loaded('PDO_SQLite'))✔️@else❌@endif</td></tr>
+        <tr><td>MySQL PHP Extension</td><td id="dp">@if(extension_loaded('PDO_MySQL'))✔️@else❌@endif</td></tr>
+        </table>
