@@ -34,6 +34,7 @@
 
 <?php function strp($urlStrp){return str_replace(array('http://', 'https://'), '', $urlStrp);} ?>
 
+<div style="text-align: right;"><a href="{{ url('/studio/links') }}/10">10</a> | <a href="{{ url('/studio/links') }}/20">20</a> | <a href="{{ url('/studio/links') }}/30">30</a> | <a href="{{ url('/studio/links') }}/all">all</a></div>
 <div class="row">
 <section class='pre-left shadow text-gray-400'>
     <h3 class="card-header"><i class="bi bi-link-45deg">My Links</i>
@@ -163,4 +164,5 @@
 
 <script src="{{ asset('studio/external-dependencies/jquery-1.12.4.min.js') }}"></script>
 <script type="text/javascript">$("iframe").load(function() { $("iframe").contents().find("a").each(function(index) { $(this).on("click", function(event) { event.preventDefault(); event.stopPropagation(); }); }); });</script>
+
 @endsection
