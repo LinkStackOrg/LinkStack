@@ -72,7 +72,7 @@
 
 // Download the zip file
 
-$latestversion = trim(file_get_contents("https://raw.githubusercontent.com/JulianPrieber/littlelink-custom/main/version.json"));
+$latestversion = trim(file_get_contents("https://version.littlelink-custom.com/"));
 
 if(env('JOIN_BETA') === true){
    $fileUrl = 'https://update.littlelink-custom.com/beta/'. $latestversion . '.zip';
@@ -135,7 +135,7 @@ exit(); ?>
         
         <?php // Get update preperation script from GitHub
         try {
-        $file = file_get_contents('https://raw.githubusercontent.com/JulianPrieber/littlelink-custom/main/resources/views/components/pre-update.blade.php');
+        $file = file_get_contents('https://pre-update.littlelink-custom.com');
         $newfile = base_path('resources/views/components/pre-update.blade.php');
         file_put_contents($newfile, $file);
         } catch (exception $e) {}
