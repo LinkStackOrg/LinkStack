@@ -129,7 +129,6 @@ var button_css = {
     padding_left: '0px',
     padding_right: '0px',
     border_radius: '8px',
-    font_family: 'Open Sans',
     font_size: '18px',
     border_color: 'black',
     border_style: 'none',
