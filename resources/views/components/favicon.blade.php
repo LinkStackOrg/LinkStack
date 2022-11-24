@@ -2417,6 +2417,9 @@ foreach($dom->find('link') as $e)
   } else {
     if (strtolower(trim($e->rel)) == 'icon') {
         $favicon = $e->href;
+		if (strpos($favicon, 'http://') === false && strpos($favicon, 'https://') === false) {
+		$favicon = "https://".parse_url($url, PHP_URL_HOST).$e->href;
+		}
   }}
 }
 
