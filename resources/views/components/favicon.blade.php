@@ -2361,7 +2361,11 @@ $urlICO = $url . "/favicon.ico";
 $urlICO = str_replace("//favicon.ico","/favicon.ico",$urlICO);
 
 $dom = new simple_html_dom();
-$dom->load(file_get_contents($url));
+
+$opts = array('http'=>array('header' => "User-Agent:Mozilla/4.0 (compatible; MSIE 6.0)")); 
+$context = stream_context_create($opts);
+
+$dom->load(file_get_contents($url,false,$context));
 $favicon = url('littlelink/icons/website.svg');
 
 
