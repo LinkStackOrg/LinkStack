@@ -2356,12 +2356,13 @@ class simple_html_dom
 
 <?php
 function getFavIcon($url) {
+try {
 $urlICO = $url . "/favicon.ico";
 $urlICO = str_replace("//favicon.ico","/favicon.ico",$urlICO);
 
 $dom = new simple_html_dom();
 $dom->load(file_get_contents($url));
-$favicon = '';
+$favicon = url('littlelink/icons/website.svg');
 
 
 if(!function_exists('get_headers'))
@@ -2420,7 +2421,7 @@ foreach($dom->find('link') as $e)
 }
 
 }
-
+} catch (exception $e) {$favicon = url('littlelink/icons/website.svg');}
 return $favicon;
 }
 
