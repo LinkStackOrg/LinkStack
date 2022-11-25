@@ -334,21 +334,9 @@ class UserController extends Controller
     //Count the number of clicks and redirect to link
     public function clickNumber(request $request)
     {
-        $link = $request->link;
-        $query = $request->query();
         $linkId = $request->id;
-
-        if (empty($link && $linkId)) {
-            return abort(404);
-        }
-
-        if (!empty($query)) {
-            $qs = [];
-            foreach ($query as $qk => $qv) {
-                $qs[] = $qk . '=' . $qv;
-            }
-            $link = $link . '?' . implode('&', $qs);
-        }
+        $link = Link::find($linkId);
+        $link = $link->link;
 
         Link::where('id', $linkId)->increment('click_number', 1);
 
