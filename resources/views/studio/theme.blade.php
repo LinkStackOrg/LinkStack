@@ -20,8 +20,24 @@
                 <?php if ($handle = opendir('themes')) {
              while (false !== ($entry = readdir($handle))) {
                 if ($entry != "." && $entry != "..") {
-                    echo '<option >'; print_r($entry); echo '</option>'; }}} ?>
-                <option selected>default</option>
+                    if(file_exists(base_path('themes') . '/' . $entry . '/readme.md')){
+                    $text = file_get_contents(base_path('themes') . '/' . $entry . '/readme.md');
+                    $pattern = '/Theme Name:.*/';
+                    preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
+                    if(sizeof($matches) > 0) {
+                    $themeName = substr($matches[0][0],12);
+                    }
+                  }
+                    if($page->theme != $entry){echo '<option value="'; print_r($entry); echo '">'; echo $themeName; echo '</option>'; }}}} ?>
+                    <?php 
+                    if($page->theme != "default"){
+                    if(file_exists(base_path('themes') . '/' . $page->theme . '/readme.md')){
+                    $text = file_get_contents(base_path('themes') . '/' . $page->theme . '/readme.md');
+                    $pattern = '/Theme Name:.*/';
+                    preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
+                    $themeName = substr($matches[0][0],12);}
+                    echo '<option value="'.$page->theme.'" selected>'.$themeName.'</option>';} ?>
+                    <?php echo '<option value="default"'; if($page->theme == "default"){echo 'selected';} echo '>Default</option>'; ?>
             </select>
         </div>
         <div class="col">
