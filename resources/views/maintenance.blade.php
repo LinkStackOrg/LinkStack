@@ -21,7 +21,7 @@
   <script src="{{ asset('studio/external-dependencies/fontawesome.js') }}" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="{{ asset('studio/external-dependencies/fontawesome.css') }}" />
 
-  <link href="//fonts.bunny.net/css?family=Open+Sans:400,600,800&display=swap" rel="stylesheet">
+  @include('layouts.fonts') 
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
   @if(file_exists(base_path("littlelink/images/avatar.png" )))

@@ -11,7 +11,7 @@
 @stack('installer-head')
 
   <title>LittleLink Custom setup</title>
-  <link href="//fonts.bunny.net/css?family=Open+Sans:400,600,800&display=swap" rel="stylesheet">
+  @include('layouts.fonts') 
   <link rel="stylesheet" href="{{ asset('studio/external-dependencies/bootstrap-icons.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
