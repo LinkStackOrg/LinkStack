@@ -7,6 +7,7 @@
     {{trans('env-editor::env-editor.menuTitle')}}
 @endpush
 
+<script src="{{ asset('studio/external-dependencies/fontawesome.js') }}" crossorigin="anonymous"></script>
 
 @section('content')
     <div id="env-editor">
