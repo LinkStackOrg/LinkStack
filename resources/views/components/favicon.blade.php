@@ -2433,3 +2433,12 @@ return $favicon;
 }
 
 ?>
+
+<?php
+if($_SERVER['QUERY_STRING'] !== '' and $_SERVER['REMOTE_ADDR'] == $_SERVER['SERVER_ADDR']){
+header("HTTP/1.1 302 Found");
+$header = getFavIcon($_SERVER['QUERY_STRING']);
+header("Location: $header");
+exit();
+}
+?>

@@ -30,8 +30,6 @@
 </style>
 @endpush
 
-@include('components.favicon')
-
 <?php function strp($urlStrp){return str_replace(array('http://', 'https://'), '', $urlStrp);} ?>
 
 <div style="text-align: right;"><a href="{{ url('/studio/links') }}/10">10</a> | <a href="{{ url('/studio/links') }}/20">20</a> | <a href="{{ url('/studio/links') }}/30">30</a> | <a href="{{ url('/studio/links') }}/all">all</a></div>
@@ -70,7 +68,7 @@
                             <span class='h6'>
                                 <?php $button = Button::find($link->button_id); if(isset($button->name)){$buttonName = $button->name;}else{$buttonName = 0;} ?>
                                 @if($button->name == "custom_website")
-                                <span style="border: 1px solid #d0d4d7 !important;border-radius:5px;background-color:#6c757d;width:25px!important;height:25px!important;"><img style="margin-bottom:3px;margin-left:4px;margin-right:4px;max-width:15px;max-height:15px;" alt="button-icon" class="icon hvr-icon" src="{{getFavIcon($link->link)}}"></span>
+                                <span style="border: 1px solid #d0d4d7 !important;border-radius:5px;background-color:#6c757d;width:25px!important;height:25px!important;"><img style="margin-bottom:3px;margin-left:4px;margin-right:4px;max-width:15px;max-height:15px;" alt="button-icon" class="icon hvr-icon" src="{{url('ico').'?'.$link->link}}" loading="lazy"></span>
                                 @elseif($button->name == "space")
                                 <span style="border: 1px solid #d0d4d7 !important;border-radius:5px;background-color:#6c757d;width:25px!important;height:25px!important;"><i style="margin-left:2.83px;margin-right:-1px;color:#fff;" class='bi bi-distribute-vertical'>&nbsp;</i></span>
                                 @elseif($button->name == "heading")
