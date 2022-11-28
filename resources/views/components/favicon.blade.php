@@ -1,4 +1,3 @@
-<?php use App\Models\Link; ?>
 <?php
 /**
  * Website: http://sourceforge.net/projects/simplehtmldom/
@@ -2435,16 +2434,11 @@ return $favicon;
 
 ?>
 
-
 <?php
-if($_SERVER['QUERY_STRING'] !== ''){
-try{
-$link = Link::find($_SERVER['QUERY_STRING']);
-$link = $link->link;
+if($_SERVER['QUERY_STRING'] !== '' and $_SERVER['REMOTE_ADDR'] == $_SERVER['SERVER_ADDR']){
 header("HTTP/1.1 302 Found");
-$header = getFavIcon($link);
+$header = getFavIcon($_SERVER['QUERY_STRING']);
 header("Location: $header");
 exit();
-} catch (exception $e) {exit();}
 }
 ?>
