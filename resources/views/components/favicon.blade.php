@@ -1,3 +1,4 @@
+<?php use App\Models\Link; ?>
 <?php
 /**
  * Website: http://sourceforge.net/projects/simplehtmldom/
@@ -2355,7 +2356,9 @@ class simple_html_dom
 
 
 <?php
-function getFavIcon($url) {
+function getFavIcon($id) {
+$link = Link::find($id);
+$url = $link->link;
 try {
 $urlICO = $url . "/favicon.ico";
 $urlICO = str_replace("//favicon.ico","/favicon.ico",$urlICO);
@@ -2429,16 +2432,17 @@ foreach($dom->find('link') as $e)
 
 }
 } catch (exception $e) {$favicon = url('littlelink/icons/website.svg');}
+
+
+try{
+$header = $favicon;
+$extension = pathinfo($header, PATHINFO_EXTENSION);
+if(!file_exists(base_path("studio/favicon/icons")."/".$id.".".$extension)){
+	if($id.".".$extension !== ".".$id){file_put_contents(base_path("studio/favicon/icons")."/".$id.".".$extension, file_get_contents($header));}
+}
+} catch (exception $e) {exit();}
+
 return $favicon;
 }
 
-?>
-
-<?php
-if($_SERVER['QUERY_STRING'] !== '' and $_SERVER['REMOTE_ADDR'] == $_SERVER['SERVER_ADDR']){
-header("HTTP/1.1 302 Found");
-$header = getFavIcon($_SERVER['QUERY_STRING']);
-header("Location: $header");
-exit();
-}
 ?>
