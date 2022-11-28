@@ -122,7 +122,9 @@
 
                             @endif
 
-                            <a href="{{ route('deleteLink', $link->id ) }}" onclick="return confirm('Are you sure you want to delete `{{$link->title}}` ?')" class="float-right hvr-grow  p-1 text-danger"><i class='bi bi-trash'></i></a>
+                            <a href="{{ route('deleteLink', $link->id ) }}" title="Delete" onclick="return confirm('Are you sure you want to delete `{{$link->title}}` ?')" class="float-right hvr-grow  p-1 text-danger"><i class='bi bi-trash'></i></a>
+
+                            <a href="{{ route('clearIcon', $link->id ) }}" title="Clear icon cache" class="float-right hvr-grow p-1 text-primary"><i style="-webkit-text-stroke:1px;padding-right:5px;" class="bi bi-arrow-repeat"></i></a>
 
 
 

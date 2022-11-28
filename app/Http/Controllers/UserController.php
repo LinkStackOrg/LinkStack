@@ -402,6 +402,23 @@ class UserController extends Controller
         return redirect('/studio/links');
     }
 
+    //Delete icon
+    public function clearIcon(request $request)
+    {
+        $linkId = $request->id;
+
+        $directory = base_path("studio/favicon/icons");
+        $files = scandir($directory);
+        foreach($files as $file) {
+        if (strpos($file, $linkId.".") !== false) {
+        $pathinfo = pathinfo($file, PATHINFO_EXTENSION);}}
+        if (isset($pathinfo)) {
+        try{File::delete(base_path("studio/favicon/icons")."/".$linkId.".".$pathinfo);} catch (exception $e) {}
+        }
+
+        return redirect('/studio/links');
+    }
+
     //Raise link on the littlelink page
     public function upLink(request $request)
     {

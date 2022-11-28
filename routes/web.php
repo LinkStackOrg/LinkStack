@@ -101,6 +101,7 @@ Route::get('/studio/links/all', [UserController::class, 'showLinksAll'])->name('
 Route::get('/studio/theme', [UserController::class, 'showTheme'])->name('showTheme');
 Route::post('/studio/theme', [UserController::class, 'editTheme'])->name('editTheme');
 Route::get('/deleteLink/{id}', [UserController::class, 'deleteLink'])->name('deleteLink');
+Route::get('/clearIcon/{id}', [UserController::class, 'clearIcon'])->name('clearIcon');
 Route::get('/upLink/{up}/{id}', [UserController::class, 'upLink'])->name('upLink');
 Route::post('/studio/edit-link/{id}', [UserController::class, 'editLink'])->name('editLink');
 Route::get('/studio/button-editor/{id}', [UserController::class, 'showCSS'])->name('showCSS');
