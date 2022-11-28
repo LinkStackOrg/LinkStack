@@ -125,18 +125,18 @@ $(document).ready(function() {
 
 // Many of these values cannot be changed by the UI editor, so they are set to zero here. These values might get used in the future.
 var button_css = {
-    padding_top: '0px',
-    padding_bottom: '0px',
-    color: 'black',
-    background_image: 'none',
-    padding_left: '0px',
-    padding_right: '0px',
+    padding_top: 'inherit',
+    padding_bottom: 'inherit',
+    color: 'inherit',
+    background_image: 'inherit',
+    padding_left: 'inherit',
+    padding_right: 'inherit',
     border_radius: '8px',
     font_family: 'inherit',
-    font_size: '18px',
-    border_color: 'black',
-    border_style: 'none',
-    border_width: '0px'
+    font_size: 'inherit',
+    border_color: 'inherit',
+    border_style: 'inherit',
+    border_width: 'inherit'
 };
 </script>
 
