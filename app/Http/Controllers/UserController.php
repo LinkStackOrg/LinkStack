@@ -390,7 +390,16 @@ class UserController extends Controller
 
         Link::where('id', $linkId)->delete();
 
-        return back()->with('success', 'Link Deleted');
+        $directory = base_path("studio/favicon/icons");
+        $files = scandir($directory);
+        foreach($files as $file) {
+        if (strpos($file, $linkId.".") !== false) {
+        $pathinfo = pathinfo($file, PATHINFO_EXTENSION);}}
+        if (isset($pathinfo)) {
+        try{File::delete(base_path("studio/favicon/icons")."/".$linkId.".".$pathinfo);} catch (exception $e) {}
+        }
+
+        return redirect('/studio/links');
     }
 
     //Raise link on the littlelink page

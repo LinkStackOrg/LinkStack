@@ -1,6 +1,9 @@
 @if(env('ENABLE_BUTTON_EDITOR') === true)
 @extends('layouts.sidebar')
 
+@include('components.favicon')
+@include('components.favicon-extension')
+
 @section('content')
 @push('sidebar-scripts')
 <?php function strp($urlStrp){return str_replace(array('http://', 'https://'), '', $urlStrp);} ?>
@@ -216,7 +219,7 @@ var button_css = {
 @if($buttonId == 1)
 <center><div id="sample" style="--delay: 1s; border-radius:8px !important; max-width: 400px; width: 80%; class="button-entrance"><div class="button-demo button hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/') . 'custom' }}.svg">{{ $title }}</div></div></center>
 @else
-<center><div id="sample" style="--delay: 1s; border-radius:8px !important; max-width: 400px; width: 80%; class="button-entrance"><div class="button-demo button hvr-grow hvr-icon-wobble-vertical"><img class="wicon hvr-icon" src="{{asset('studio/favicon/favicon.gif')}}" onload="this.src='{{url('ico').'?'.$id}}'" loading="lazy">{{ $title }}</div></div></center>
+<center><div id="sample" style="--delay: 1s; border-radius:8px !important; max-width: 400px; width: 80%; class="button-entrance"><div class="button-demo button hvr-grow hvr-icon-wobble-vertical"><img class="wicon hvr-icon" src="@if(file_exists(base_path("studio/favicon/icons/").localIcon($id))){{url('studio/favicon/icons/'.localIcon($id))}}@else{{getFavIcon($id)}}@endif">{{ $title }}</div></div></center>
 @endif
 
 </section>
@@ -255,9 +258,9 @@ NULL
       @if($custom_css === "" or $custom_css === "NULL" and $buttonId == 1)
         <center><div style="--delay: 1s" class="button-entrance"><div class="button-demo button-custom button hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon fa {{$custom_icon}}">{{ $title }}</div></div></center>
         @elseif($custom_css === "" or $custom_css === "NULL" and $buttonId == 2)
-        <center><div style="--delay: 1s" class="button-entrance"><div class="button-custom_website button hvr-grow hvr-icon-wobble-vertical"><img class="wicon hvr-icon" src="{{asset('studio/favicon/favicon.gif')}}" onload="this.src='{{url('ico').'?'.$id}}'" loading="lazy">{{ $title }}</div></div></center>
+        <center><div style="--delay: 1s" class="button-entrance"><div class="button-custom_website button hvr-grow hvr-icon-wobble-vertical"><img class="wicon hvr-icon" src="@if(file_exists(base_path("studio/favicon/icons/").localIcon($id))){{url('studio/favicon/icons/'.localIcon($id))}}@else{{getFavIcon($id)}}@endif">{{ $title }}</div></div></center>
         @elseif($custom_css != "" and $buttonId == 2)
-        <center><div style="--delay: 1s" class="button-entrance"><div style="{{ $custom_css }}" class="button-custom_website button hvr-grow hvr-icon-wobble-vertical"><img class="wicon hvr-icon" src="{{asset('studio/favicon/favicon.gif')}}" onload="this.src='{{url('ico').'?'.$id}}'" loading="lazy">{{ $title }}</div></div></center>
+        <center><div style="--delay: 1s" class="button-entrance"><div style="{{ $custom_css }}" class="button-custom_website button hvr-grow hvr-icon-wobble-vertical"><img class="wicon hvr-icon" src="@if(file_exists(base_path("studio/favicon/icons/").localIcon($id))){{url('studio/favicon/icons/'.localIcon($id))}}@else{{getFavIcon($id)}}@endif">{{ $title }}</div></div></center>
         @else
         <center><div style="--delay: 1s" class="button-entrance"><div style="{{ $custom_css }}" class="button-demo hvr-grow hvr-icon-wobble-vertical"><i style="color: {{$custom_icon}}" class="icon hvr-icon fa {{$custom_icon}}"></i>{{ $title }}</div></div></center>
       @endif

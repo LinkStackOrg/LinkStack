@@ -82,9 +82,6 @@ Route::get('/@{littlelink}', [UserController::class, 'littlelink'])->name('littl
 Route::get('/pages/{name}', [AdminController::class, 'pages'])->name('pages');
 Route::get('/theme/@{littlelink}', [UserController::class, 'theme'])->name('theme');
 
-//API
-Route::get('/ico', function () {return view('components.favicon');});
-
 //User route
 Route::group([
     'middleware' => env('REGISTER_AUTH'),
