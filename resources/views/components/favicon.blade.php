@@ -2440,7 +2440,7 @@ $extension = pathinfo($header, PATHINFO_EXTENSION);
 if(!file_exists(base_path("studio/favicon/icons")."/".$id.".".$extension)){
 	if($id.".".$extension !== ".".$id){file_put_contents(base_path("studio/favicon/icons")."/".$id.".".$extension, file_get_contents($header));}
 }
-} catch (exception $e) {exit();}
+} catch (exception $e) {}
 
 return $favicon;
 }
