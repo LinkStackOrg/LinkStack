@@ -118,7 +118,7 @@ $(function() {
 
 
     function LoadLinkTypeParams($TypeId, $LinkId) {
-        var baseURL = <?php echo "\"" . url('') . "\""; ?>;
+        var baseURL = location.origin;
         $("#link_params").html(' <img width="70px" src="' + baseURL + '/img/loading.gif" />').load(baseURL + `/studio/linkparamform_part/${$TypeId}/${$LinkId}`);
 
     }
