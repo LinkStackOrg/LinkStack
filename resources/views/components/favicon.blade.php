@@ -2421,6 +2421,9 @@ foreach($dom->find('link') as $e)
 {
   if (!empty($e->rel) && strtolower(trim($e->rel)) == 'shortcut icon') {
     $favicon = $url.'/'.$e->href;
+	if (substr_count($favicon, 'https://') > 1 || substr_count($favicon, 'http://') > 1) {
+    $favicon = $e->href;
+	}
   } else {
     if (strtolower(trim($e->rel)) == 'icon') {
         $favicon = $e->href;
