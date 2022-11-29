@@ -80,8 +80,8 @@ return $path;}
   @include('layouts.fonts') 
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
-  @if(file_exists(base_path("littlelink/images/avatar.png" )))
-  <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
+  @if(file_exists(base_path("littlelink/images/").findFile('favicon')))
+  <link rel="icon" type="image/png" href="{{ asset('littlelink/images/'.findFile('favicon')) }}">
   @else
   <link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
   @endif
@@ -247,8 +247,8 @@ function get_operating_system() {
         <!-- Your Image Here -->
           @if(file_exists(base_path("img/$littlelink_name" . ".png" )))
           <img alt="avatar" class="rounded-avatar fadein" src="{{ asset("img/$littlelink_name" . ".png") }}" width="128px" height="128px" style="object-fit: cover;">
-          @elseif(file_exists(base_path("littlelink/images/avatar.png" )))
-          <img alt="avatar" class="rounded-avatar fadein" src="{{ asset('littlelink/images/avatar.png') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="128px" height="128px" style="object-fit: cover;">
+          @elseif(file_exists(base_path("littlelink/images/").findFile('avatar')))
+          <img alt="avatar" class="rounded-avatar fadein" src="{{ asset('littlelink/images/'.findFile('avatar')) }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="128px" height="128px" style="object-fit: cover;">
           @else
           <img alt="avatar" class="rounded-avatar fadein" src="{{ asset('littlelink/images/logo.svg') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="128px" height="128px" style="object-fit: cover;">
           @endif

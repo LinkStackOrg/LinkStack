@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-		@if(file_exists(base_path("littlelink/images/avatar.png" )))
-		<link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
+		@if(file_exists(base_path("littlelink/images/").findFile('favicon')))
+		<link rel="icon" type="image/png" href="{{ asset('littlelink/images/'.findFile('favicon')) }}">
 		@else
 		<link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
 		@endif

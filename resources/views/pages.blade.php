@@ -13,8 +13,8 @@
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/hover-min.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
-  @if(file_exists(base_path("littlelink/images/avatar.png" )))
-  <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
+  @if(file_exists(base_path("littlelink/images/").findFile('favicon')))
+  <link rel="icon" type="image/png" href="{{ asset('littlelink/images/'.findFile('favicon')) }}">
   @else
   <link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
   @endif
@@ -70,8 +70,8 @@
 
       <div class="column" style="margin-top: 10%">
         <!-- Your Image Here -->
-        @if(file_exists(base_path("littlelink/images/avatar.png" )))
-        <img src="{{ asset('littlelink/images/avatar.png') }}" width="auto" height="100px">
+        @if(file_exists(base_path("littlelink/images/").findFile('avatar')))
+        <img src="{{ asset('littlelink/images/'.findFile('avatar')) }}" width="auto" height="100px">
         @else
         <div class="logo-container fadein">
            <img class="rotate" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="width:150px; height:150px;">

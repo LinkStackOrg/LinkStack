@@ -24,8 +24,8 @@
   @include('layouts.fonts') 
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
-  @if(file_exists(base_path("littlelink/images/avatar.png" )))
-  <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
+  @if(file_exists(base_path("littlelink/images/").findFile('favicon')))
+  <link rel="icon" type="image/png" href="{{ asset('littlelink/images/'.findFile('favicon')) }}">
   @else
   <link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
   @endif
@@ -80,8 +80,8 @@ body {
 <div class="containerr" style="">
       <div class="column">
         <!-- Your Image Here -->
-        @if(file_exists(base_path("littlelink/images/avatar.png" )))
-        <img alt="avatar" src="{{ asset('littlelink/images/avatar.png') }}" width="auto" height="200px">
+        @if(file_exists(base_path("littlelink/images/").findFile('avatar')))
+        <img alt="avatar" src="{{ asset('littlelink/images/'.findFile('avatar')) }}" width="auto" height="200px">
         @else
         <div class="logo-container">
            <img src="{{ asset('littlelink/images/logo.svg') }}" alt="Logo" style="width:200px; height:200px;">

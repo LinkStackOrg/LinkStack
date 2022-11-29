@@ -248,13 +248,37 @@ class AdminController extends Controller
     {
         $message = $request->message;
         $logo = $request->file('image');
+        $icon = $request->file('icon');
 
         Page::first()->update(['home_message' => $message]);
 
         if (!empty($logo)) {
-            $logo->move(base_path('/littlelink/images/'), "avatar.png");
+            // Delete existing image
+            $directory = base_path('/littlelink/images/');
+            $files = scandir($directory);
+            $pathinfo = "error.error";
+            foreach($files as $file) {
+            if (strpos($file, "avatar".'.') !== false) {
+            $pathinfo = "avatar". "." . pathinfo($file, PATHINFO_EXTENSION);
+            }}
+            if(file_exists(base_path('/littlelink/images/').$pathinfo)){File::delete(base_path('/littlelink/images/').$pathinfo);}
+
+            $logo->move(base_path('/littlelink/images/'), "avatar.".$request->file('image')->extension());
         }
 
+        if (!empty($icon)) {
+            // Delete existing image
+            $directory = base_path('/littlelink/images/');
+            $files = scandir($directory);
+            $pathinfo = "error.error";
+            foreach($files as $file) {
+            if (strpos($file, "favicon".'.') !== false) {
+            $pathinfo = "favicon". "." . pathinfo($file, PATHINFO_EXTENSION);
+            }}
+            if(file_exists(base_path('/littlelink/images/').$pathinfo)){File::delete(base_path('/littlelink/images/').$pathinfo);}
+
+            $icon->move(base_path('/littlelink/images/'), "favicon.".$request->file('icon')->extension());
+        }
         return back();
     }
 

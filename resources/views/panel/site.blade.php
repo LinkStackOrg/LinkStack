@@ -15,6 +15,10 @@
             <input type="file" class="form-control-file" name="image">
           </div>
           <div class="form-group col-lg-8">
+            <label>Favicon</label>
+            <input type="file" class="form-control-file" name="icon">
+          </div>
+          <div class="form-group col-lg-8">
             <h3>Home message</h3>
             <textarea class="form-control ckeditor" name="message" rows="3">{{ $home_message }}</textarea>
           </div>
