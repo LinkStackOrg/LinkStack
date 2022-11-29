@@ -233,24 +233,19 @@ Everything is documented in the dedicated GitHub repository.
 ## Installation
 
 ### Downloading and installing steps:
-* **[Download](https://github.com/JulianPrieber/littlelink-custom/releases)** the latest release of LittleLink Custom and simply place the folder 'littlelink-custom' in the root directory of your website.
+* **[Download](https://github.com/JulianPrieber/littlelink-custom/releases)** the latest release of LittleLink Custom and simply place the folder 'littlelink-custom' or the contents of this folder in the root directory of your website.
 
 ### That's it! No coding no command line setup just plug and play.
 
 <br>	
 
-#### You can now log in to the Admin Panel with the credentials:
--   **email:** `admin@admin.com`
--   **password:** `12345678`
+#### Go through the first setup page:
 
+When accessing your instance for the first time, you will be greeted by the first setup page.
 
-### Optional configuration:
-Optionally, you can change the app name in your ".env" file in the root directory of your LittleLink Custom installation. At the moment this is set to
-APP_NAME="LittleLink Custom" you can change "LittleLink Custom" to what ever you like. This setting defines the page title and welcome message.
-
-Additionally, the littlelink-custom directory can be renamed to anything you see fit, further customizing your personal LittleLink Custom install.
-
-For more configuration options, refer to the [documentation](https://littlelink-custom.com/docs/d/configuration-getting-started/).
+<p align="center">
+<img width="650" src="https://user-images.githubusercontent.com/60265788/204514743-5da1ae4e-4fb0-45e4-bbf3-183595c08d99.png">
+</p>
 
 <br>
 
