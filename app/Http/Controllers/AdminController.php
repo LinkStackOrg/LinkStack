@@ -243,7 +243,7 @@ class AdminController extends Controller
         return view('panel/site', $message);
     }
 
-    //Save home message and logo
+    //Save home message, logo and favicon
     public function editSite(request $request)
     {
         $message = $request->message;
@@ -279,6 +279,38 @@ class AdminController extends Controller
 
             $icon->move(base_path('/littlelink/images/'), "favicon.".$request->file('icon')->extension());
         }
+        return back();
+    }
+
+    //Delete avatar
+    public function delAvatar()
+    {
+            // Delete existing image
+            $directory = base_path('/littlelink/images/');
+            $files = scandir($directory);
+            $pathinfo = "error.error";
+            foreach($files as $file) {
+            if (strpos($file, "avatar".'.') !== false) {
+            $pathinfo = "avatar". "." . pathinfo($file, PATHINFO_EXTENSION);
+            }}
+            if(file_exists(base_path('/littlelink/images/').$pathinfo)){File::delete(base_path('/littlelink/images/').$pathinfo);}
+        
+        return back();
+    }
+
+    //Delete favicon
+    public function delFavicon()
+    {
+            // Delete existing image
+            $directory = base_path('/littlelink/images/');
+            $files = scandir($directory);
+            $pathinfo = "error.error";
+            foreach($files as $file) {
+            if (strpos($file, "favicon".'.') !== false) {
+            $pathinfo = "favicon". "." . pathinfo($file, PATHINFO_EXTENSION);
+            }}
+            if(file_exists(base_path('/littlelink/images/').$pathinfo)){File::delete(base_path('/littlelink/images/').$pathinfo);}
+
         return back();
     }
 
