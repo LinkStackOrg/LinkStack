@@ -56,29 +56,7 @@ $url2 = getUrlSatusCode($actual_link . '/../../database/database.sqlite');
         <a href="https://docs.littlelink-custom.com/d/installation-requirements/" target="_blank"><h4 style="color:tomato;">Your security is at risk. Some files can be accessed by everyone. Immediate action is required! <br> Click this message to learn more.</h4></a>
         @endif
 
-        <h3 class="mb-4">Write access</h3>
-        <p>Here, you can easily verify if important system files can be written to. This is important for every function to work properly. Entries marked with a '✔️' work as expected, entries marked with a '❌' do not.</p>
-
-        <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th scope="col" style="width: 90%;">File</th>
-            <th title="You can hover over entries to learn more about their current status" style="cursor: help;" scope="col">Hover for more</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-          <td title="">{{ base_path(".env") }}</td>
-          <?php if ($wrt1 > 0) {echo "$wtrue";} else {echo "$wfalse";} ?>
-          </tr>
-          <tr>
-            <td title="">{{ base_path("database/database.sqlite") }}</td>
-            <?php if ($wrt2 > 0) {echo "$wtrue";} else {echo "$wfalse";} ?>
-          </tr>
-        </tbody>
-        </table>
-
-        <br><h3 class="mb-4">Security</h3>
+        <h3 class="mb-4">Security</h3>
         <p>Here, you can easily verify if critical system files can be accessed externally. It is important that these files cannot be accessed, otherwise user data like passwords could get leaked. Entries marked with a '✔️' cannot be accessed externally, entries marked with a '❗' can be accessed by anyone and require immediate action to protect your data.</p>
 
         <table class="table table-bordered">
@@ -97,6 +75,28 @@ $url2 = getUrlSatusCode($actual_link . '/../../database/database.sqlite');
           <tr>
             <td title="">{{ url('/database/database.sqlite') }}</td>
             <?php if($url2 == '200'){echo "$utrue";} elseif($url2 == '0'){echo "$unull";} else{echo "$ufalse";} ?>
+          </tr>
+        </tbody>
+        </table>
+
+        <br><h3 class="mb-4">Write access</h3>
+        <p>Here, you can easily verify if important system files can be written to. This is important for every function to work properly. Entries marked with a '✔️' work as expected, entries marked with a '❌' do not.</p>
+
+        <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 90%;">File</th>
+            <th title="You can hover over entries to learn more about their current status" style="cursor: help;" scope="col">Hover for more</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          <td title="">{{ base_path(".env") }}</td>
+          <?php if ($wrt1 > 0) {echo "$wtrue";} else {echo "$wfalse";} ?>
+          </tr>
+          <tr>
+            <td title="">{{ base_path("database/database.sqlite") }}</td>
+            <?php if ($wrt2 > 0) {echo "$wtrue";} else {echo "$wfalse";} ?>
           </tr>
         </tbody>
         </table>
