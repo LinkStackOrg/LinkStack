@@ -1,4 +1,5 @@
 <x-guest-layout>
+@include('layouts.lang')
 
     <x-auth-card>
         <x-slot name="logo">

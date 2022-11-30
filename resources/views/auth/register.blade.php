@@ -7,6 +7,7 @@ foreach($pages as $page)
 ?>
 
 <x-guest-layout>
+@include('layouts.lang')
     <x-auth-card>
         <x-slot name="logo">
             <a href="{{ url('') }}">
