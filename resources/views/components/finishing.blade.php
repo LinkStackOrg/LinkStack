@@ -28,12 +28,6 @@
             if(EnvEditor::keyExists('FORCE_ROUTE_HTTPS')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('FORCE_ROUTE_HTTPS', 'false');}
 
-
-            // Adds database entries
-            Schema::disableForeignKeyConstraints();
-            Artisan::call('migrate');
-            Schema::enableForeignKeyConstraints();
-
             if (!config()->has('advanced-config.expand_panel_admin_menu_permanently') and !config()->has('disable_default_password_notice')) {
             
             function getStringBetween($string, $start, $end) {
@@ -86,6 +80,10 @@
             DB::table('buttons')->delete();
             DB::table('buttons')->truncate();
             try {Artisan::call('db:seed --class="ButtonSeeder" --force');} catch (exception $e) {}
+
+            DB::table('link_types')->delete();
+            DB::table('link_types')->truncate();
+            try {Artisan::call('migrate');} catch (exception $e) {}
             Schema::enableForeignKeyConstraints();
 
         echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "?success\" />"; 
