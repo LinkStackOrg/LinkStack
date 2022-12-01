@@ -76,14 +76,12 @@
             }
 
             /* Updates button database entries */ 
+            Artisan::call('migrate');
+            Artisan::call('migrate:refresh --path=database/migrations/2022_09_22_123137_link-type.php');
             Schema::disableForeignKeyConstraints();
             DB::table('buttons')->delete();
             DB::table('buttons')->truncate();
             try {Artisan::call('db:seed --class="ButtonSeeder" --force');} catch (exception $e) {}
-
-            DB::table('link_types')->delete();
-            DB::table('link_types')->truncate();
-            try {Artisan::call('migrate');} catch (exception $e) {}
             Schema::enableForeignKeyConstraints();
 
         echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "?success\" />"; 
