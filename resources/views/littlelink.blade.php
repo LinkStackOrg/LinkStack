@@ -125,7 +125,7 @@ return $path;}
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-auto.css') }}">
   @endif
 @endif
-<style>.container{word-break:break-all;}</style>
+<style>.container{word-break: break-word;}</style>
 </head>
 <body>
 
