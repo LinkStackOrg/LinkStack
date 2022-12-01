@@ -125,6 +125,7 @@ return $path;}
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-auto.css') }}">
   @endif
 @endif
+<style>.container{word-break:break-all;}</style>
 </head>
 <body>
 
@@ -257,7 +258,7 @@ function get_operating_system() {
         <h1 class="fadein">{{ $info->name }}</h1>
 
         <!-- Short Bio -->
-        <center><p style="width: 50%; min-width: 300px;" class="fadein">@if(env('ALLOW_USER_HTML') === true){!! $info->littlelink_description !!}@else{{ $info->littlelink_description }}@endif</p></center>
+        <center><p style="width:50%;min-width:300px;" class="fadein">@if(env('ALLOW_USER_HTML') === true){!! $info->littlelink_description !!}@else{{ $info->littlelink_description }}@endif</p></center>
         
         @endforeach		
         <!-- Buttons -->
@@ -292,6 +293,8 @@ function get_operating_system() {
           ?>
          @elseif($link->name === "heading")
          <h2>{{ $link->title }}</h2>
+         @elseif($link->name === "text")
+         <span style="">@if(env('ALLOW_USER_HTML') === true){!! $link->title !!}@else{{ $link->title }}@endif</span>
          @else
          <?php include base_path('config/button-names.php'); $newLinkName = $linkName; $isNewName = "false"; foreach($buttonNames as $key => $value) { if($newLinkName == $key) { $newLinkName = $value; $isNewName = "true"; } } ?>
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/{{$linkName}}{{theme('custom_icon_extension')}} @else{{ asset('\/littlelink/icons\/') . $linkName }}.svg @endif">@if($isNewName == "true"){{ $newLinkName }}@else{{ ucfirst($newLinkName) }}@endif</a></div>

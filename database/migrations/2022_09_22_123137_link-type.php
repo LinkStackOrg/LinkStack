@@ -165,22 +165,22 @@ class LinkType extends Migration
 // ]'
 //         ]);
 
-        // DB::table($this->TableName)->updateOrInsert([
-        //     'typename' => 'text',
-        //     'title' => 'Text',
-        //     'icon' => 'bi bi-fonts',
-        //     'description' => 'Add static text to your page that is not clickable.',
-        //     'params' => '[{
-        //         "tag": "textarea",
-        //         "id": "static-text",
-        //         "for": "static_text",
-        //         "label": "Text",
-        //         "name": "static_text",
-        //         "class": "form-control"
-        //     }
-        //     ]'
+        DB::table($this->TableName)->updateOrInsert([
+            'typename' => 'text',
+            'title' => 'Text',
+            'icon' => 'bi bi-fonts',
+            'description' => 'Add static text to your page that is not clickable.',
+            'params' => '[{
+                "tag": "textarea",
+                "id": "static-text",
+                "for": "static_text",
+                "label": "Text",
+                "name": "static_text",
+                "class": "form-control"
+            }
+            ]'
 
-        // ]);
+        ]);
     }
 
 }

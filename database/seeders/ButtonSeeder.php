@@ -387,6 +387,10 @@ class ButtonSeeder extends Seeder
             'name' => 'all-inkl'
             ],
     
+            [
+            'name' => 'text'
+            ],
+
         ];
 
          Button::insert($buttons);

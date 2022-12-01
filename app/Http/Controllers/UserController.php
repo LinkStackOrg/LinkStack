@@ -135,6 +135,8 @@ class UserController extends Controller
                 $data['linkTypeID'] = "3";
             } elseif ($bid == 43) {
                 $data['linkTypeID'] = "4";
+            } elseif ($bid == 93) {
+                $data['linkTypeID'] = "5";
             } else {
                 $data['linkTypeID'] = "1";
             }
@@ -242,6 +244,11 @@ class UserController extends Controller
                         'title' => $LinkTitle,
                         'button_id' => "42",
                     ]);
+                }elseif($linkType->typename == "text"){
+                    $OrigLink->update([
+                        'button_id' => "93",
+                        'title' => $request->text,
+                    ]);
                 }else{
                     $OrigLink->update([
                         'link' => $LinkURL,
@@ -273,6 +280,9 @@ class UserController extends Controller
                 $links->button_id = "43";
             }elseif($linkType->typename == "heading"){
                 $links->button_id = "42";
+            }elseif($linkType->typename == "text"){
+                $links->button_id = "93";
+                $links->title = $request->text;
             }else{
                 $links->button_id = $button?->id;
             }

@@ -1,3 +1,3 @@
 
-<div class='button-text'> {{$params->text}}</div>
+<div class='button-text'> {{$link_title}}</div>
 
