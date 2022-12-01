@@ -1,4 +1,7 @@
         <?php 
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
          //run before finishing:
             if(EnvEditor::keyExists('JOIN_BETA')){ /* Do nothing if key already exists */ 
@@ -77,12 +80,27 @@
 
             /* Updates button database entries */ 
             Artisan::call('migrate');
-            Artisan::call('migrate:refresh --path=database/migrations/2022_09_22_123137_link-type.php');
             Schema::disableForeignKeyConstraints();
             DB::table('buttons')->delete();
             DB::table('buttons')->truncate();
             try {Artisan::call('db:seed --class="ButtonSeeder" --force');} catch (exception $e) {}
             Schema::enableForeignKeyConstraints();
+
+        DB::table('link_types')->updateOrInsert([
+            'typename' => 'text',
+            'title' => 'Text',
+            'icon' => 'bi bi-fonts',
+            'description' => 'Add static text to your page that is not clickable.',
+            'params' => '[{
+                "tag": "textarea",
+                "id": "static-text",
+                "for": "static_text",
+                "label": "Text",
+                "name": "static_text",
+                "class": "form-control"
+            }
+            ]'
+        ]);
 
         echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "?success\" />"; 
         ?>
