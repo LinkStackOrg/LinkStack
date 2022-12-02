@@ -140,4 +140,11 @@ class InstallerController extends Controller
         return redirect(url(''));
     }
 
+    public function skip()
+    {
+        if(file_exists(base_path("INSTALLING"))){unlink(base_path("INSTALLING"));}
+
+        return redirect(url(''));
+    }
+
 }
