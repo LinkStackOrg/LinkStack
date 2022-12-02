@@ -6,7 +6,13 @@
 
 @if($_SERVER['QUERY_STRING'] === '')
 {{-- Landing page --}}
-        
+
+@if(!DB::table('users')->get()->isEmpty())
+    @php
+    if(file_exists(base_path("INSTALLING"))){unlink(base_path("INSTALLING"));}
+    header("Refresh:0");
+    @endphp
+@else
         <div class="logo-container fadein">
            <img class="logo-img" src="{{ asset('littlelink/images/logo.svg') }}" alt="Logo">
         </div>
@@ -19,10 +25,9 @@
         2. Setup the database<br>
         3. Create the admin user<br>
         4. Configure the app<br>
-        </div></p>
-        <div class="row">
+        </div></p>  
         &ensp;<a class="btn" href="{{url('?2')}}"><button>Next</button></a>&ensp;
-        </div>
+@endif
       
 @endif
 

@@ -39,6 +39,14 @@ if(file_exists(base_path('INSTALLING'))){
   Route::post('/options', [InstallerController::class, 'options'])->name('options');
   Route::get('/mysql-test', [InstallerController::class, 'mysqlTest'])->name('mysqlTest');
 
+  Route::get('{any}', function() {
+    if(!DB::table('users')->get()->isEmpty()){
+    if(file_exists(base_path("INSTALLING"))){unlink(base_path("INSTALLING"));header("Refresh:0");}
+    } else {
+      return redirect(url(''));
+    }
+  })->where('any', '.*');
+
 }else{
 
 // Disables routes if in Maintenance Mode
@@ -101,7 +109,6 @@ Route::get('/studio/links/all', [UserController::class, 'showLinksAll'])->name('
 Route::get('/studio/theme', [UserController::class, 'showTheme'])->name('showTheme');
 Route::post('/studio/theme', [UserController::class, 'editTheme'])->name('editTheme');
 Route::get('/deleteLink/{id}', [UserController::class, 'deleteLink'])->name('deleteLink');
-Route::get('/clearIcon/{id}', [UserController::class, 'clearIcon'])->name('clearIcon');
 Route::get('/upLink/{up}/{id}', [UserController::class, 'upLink'])->name('upLink');
 Route::post('/studio/edit-link/{id}', [UserController::class, 'editLink'])->name('editLink');
 Route::get('/studio/button-editor/{id}', [UserController::class, 'showCSS'])->name('showCSS');
@@ -146,8 +153,6 @@ Route::group([
     Route::post('/panel/env', [AdminController::class, 'editENV'])->name('editENV');
     Route::get('/panel/site', [AdminController::class, 'showSite'])->name('showSite');
     Route::post('/panel/site', [AdminController::class, 'editSite'])->name('editSite');
-    Route::get('/panel/site/delavatar', [AdminController::class, 'delAvatar'])->name('delAvatar');
-    Route::get('/panel/site/delfavicon', [AdminController::class, 'delFavicon'])->name('delFavicon');
     Route::get('/panel/phpinfo', [AdminController::class, 'phpinfo'])->name('phpinfo');
     Route::get('/panel/backups', [AdminController::class, 'showBackups'])->name('showBackups');
     Route::post('/panel/theme', [AdminController::class, 'deleteTheme'])->name('deleteTheme');
