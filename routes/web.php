@@ -38,7 +38,6 @@ if(file_exists(base_path('INSTALLING'))){
   Route::post('/mysql', [InstallerController::class, 'mysql'])->name('mysql');
   Route::post('/options', [InstallerController::class, 'options'])->name('options');
   Route::get('/mysql-test', [InstallerController::class, 'mysqlTest'])->name('mysqlTest');
-  Route::get('/skip', [InstallerController::class, 'skip'])->name('skip');
 
 }else{
 

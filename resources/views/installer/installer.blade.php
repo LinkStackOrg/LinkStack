@@ -19,12 +19,10 @@
         2. Setup the database<br>
         3. Create the admin user<br>
         4. Configure the app<br>
-        </div></p>  
-      @if(!DB::table('users')->get()->isEmpty())
-        <span>An existing installation has been detected.<br>You may skip the installation process.</span>
-        &ensp;<a style="margin-bottom:-20px;" class="btn" href="{{url('skip')}}"><button>Skip</button></a>&ensp;
-      @endif
+        </div></p>
+        <div class="row">
         &ensp;<a class="btn" href="{{url('?2')}}"><button>Next</button></a>&ensp;
+        </div>
       
 @endif
 
