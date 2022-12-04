@@ -104,8 +104,8 @@ if($url1sb == '200'  or $url2sb == '200') {
 }
  // end security check ?>
 
-    @if(file_exists(base_path("littlelink/images/").findFile('favicon')))
-    <link rel="icon" type="image/png" href="{{ asset('littlelink/images/'.findFile('favicon')) }}">
+    @if(file_exists(base_path("littlelink/images/avatar.png" )))
+    <link rel="icon" type="image/png" href="{{ asset('littlelink/images/avatar.png') }}">
     @else
     <link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
     @endif
@@ -181,8 +181,8 @@ if($url1sb == '200'  or $url2sb == '200') {
         <a href="{{ url('/panel/index') }}">
         @endif
 
-        @if(file_exists(base_path("littlelink/images/").findFile('avatar')))
-          <img class="img logo" src="{{ asset('littlelink/images/'.findFile('avatar')) }}" style="width:150px;height:auto;">
+        @if(file_exists(base_path("littlelink/images/avatar.png" )))
+          <img class="img logo" src="{{ asset('littlelink/images/avatar.png') }}" style="width:150px;height:auto;">
           @else
           <img class="img logo" type="image/svg+xml" src="{{ asset('littlelink/images/logo.svg') }}" style="width:100px;">
           @endif
