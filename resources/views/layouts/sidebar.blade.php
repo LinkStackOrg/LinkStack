@@ -389,7 +389,9 @@ if($url1sb == '200'  or $url2sb == '200') {
 					@endif
 
 					@if(env('JOIN_BETA') === true and auth()->user()->role == 'admin')
-					<a style="color:tomato;" class="nav-link" href="{{ url('update') }}">You are in BETA mode! <img src="https://img.llc.ovh/static/v1?label=installed:&message=<?php  if(file_exists(base_path("vbeta.json"))) {echo file_get_contents(base_path("vbeta.json"));} else {echo "none";}  ?>&color=FFFFFF"> <img src="https://img.llc.ovh/static/v1?label=server:&message=<?php echo file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?>&color=FFFFFF"></a>
+					<style>.beta-mobile {display: none;margin: 0 auto;font-size:200%;padding-left: 15px;margin-right: -15px;position: relative;bottom: 3px;}@media only screen and (max-width: 1300px) {.beta {display: none;}.beta-mobile {display: inline-block !important;}}</style>
+					<a style="color:tomato;" class="nav-link beta" href="{{ url('update') }}">You are in BETA mode! <img src="https://img.llc.ovh/static/v1?label=installed:&message=<?php  if(file_exists(base_path("vbeta.json"))) {echo file_get_contents(base_path("vbeta.json"));} else {echo "none";}  ?>&color=FFFFFF"> <img src="https://img.llc.ovh/static/v1?label=server:&message=<?php echo file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?>&color=FFFFFF"></a>
+					<a style="color:tomato;" class="beta-mobile" href="{{ url('update') }}"><i class="bi bi-file-code-fill"></i></a>
 					@endif
 
 					@if(Route::currentRouteName() === "showConfig")<style>#toggle-switch{margin-left: -24px !important;}</style>@endif
