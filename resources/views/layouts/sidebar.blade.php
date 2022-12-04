@@ -317,7 +317,7 @@ if($url1sb == '200'  or $url2sb == '200') {
 
 					<! –– If user has role admin AND newest GitHub release version is higher than the local one an update notice will be displayed ––>
 					@if(auth()->user()->role == 'admin' and $Vgit > $Vlocal)
-					<button class="update-notification"><a class="update-link nav-link" href="{{ url('update') }}" title="Click here to learn more about how to update">Update</a></button>
+					<button style="margin-left:5px;" class="update-notification"><a class="update-link nav-link" href="{{ url('update') }}" title="Click here to learn more about how to update">Update</a></button>
 					<?php
 					$version1 = $Vlocal;
 					$version2 = $Vgit;
