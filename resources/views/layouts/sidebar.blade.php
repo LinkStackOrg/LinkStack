@@ -388,7 +388,7 @@ if($url1sb == '200'  or $url2sb == '200') {
 					<a style="color:tomato;" class="nav-link" href="{{ url('panel/config#5') }}" title="Your security is at risk. Some files can be accessed by everyone. Immediate action is required! Click this message to learn more.">Your security is at risk!</a>
 					@endif
 
-					@if(env('JOIN_BETA') === true)
+					@if(env('JOIN_BETA') === true and auth()->user()->role == 'admin')
 					<a style="color:tomato;" class="nav-link" href="{{ url('update') }}">You are in BETA mode! <img src="https://img.llc.ovh/static/v1?label=installed:&message=<?php  if(file_exists(base_path("vbeta.json"))) {echo file_get_contents(base_path("vbeta.json"));} else {echo "none";}  ?>&color=FFFFFF"> <img src="https://img.llc.ovh/static/v1?label=server:&message=<?php echo file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?>&color=FFFFFF"></a>
 					@endif
 
