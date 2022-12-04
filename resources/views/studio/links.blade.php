@@ -22,7 +22,7 @@
   .pre-bottom{display:block!important;}
 }
 
-@media only screen and (min-width: 1500px) {
+@media only screen and (min-width: 1501px) {
   .pre-left{width:70%!important;}
   .pre-right{width:30%!important;}
   .pre-bottom{display:none!important;}
