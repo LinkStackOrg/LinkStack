@@ -265,13 +265,12 @@ function get_operating_system() {
         <p style="width:50%;min-width:300px;" class="fadein">@if(env('ALLOW_USER_HTML') === true){!! $info->littlelink_description !!}@else{{ $info->littlelink_description }}@endif</p>
         
         <!-- Icons -->
-        @php $icons = DB::table('links')->where('user_id', 1)->where('button_id', 94)->get(); @endphp
+        @php $icons = DB::table('links')->where('user_id', $userinfo->id)->where('button_id', 94)->get(); @endphp
         <div class="row fadein social-icon-div">
         @foreach($icons as $icon)
         <a class="social-hover social-link" href="{{$icon->link}}"><i class="social-icon fa-brands fa-{{$icon->title}}"></i></a>
         @endforeach
         </div>
-
 
 
         @endforeach		
