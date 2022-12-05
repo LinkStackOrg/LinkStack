@@ -138,6 +138,13 @@ a:hover {
   padding: 0 10px;
 }
 
+  @media (prefers-color-scheme: dark) {
+  .social-icon{color:#fff;}
+  }
+  @media (prefers-color-scheme: light) {
+    .social-icon{color:#222;}
+  }
+
 /* Code
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 code {

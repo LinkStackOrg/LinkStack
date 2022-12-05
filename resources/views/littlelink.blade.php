@@ -115,12 +115,16 @@ return $path;}
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
   @if ($color_scheme_override == 'dark')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
+  <style>.social-icon{color:#fff;}</style>
   @elseif ($color_scheme_override == 'light')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
+  <style>.social-icon{color:#222;}</style>
   @elseif (config('advanced-config.theme') == 'dark')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
+  <style>.social-icon{color:#fff;}</style>
   @elseif (config('advanced-config.theme') == 'light')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
+  <style>.social-icon{color:#222;}</style>
   @else
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-auto.css') }}">
   @endif
@@ -261,11 +265,10 @@ function get_operating_system() {
         <p style="width:50%;min-width:300px;" class="fadein">@if(env('ALLOW_USER_HTML') === true){!! $info->littlelink_description !!}@else{{ $info->littlelink_description }}@endif</p>
         
         <!-- Icons -->
-        <style>.social-icon{font-size:32px;padding:10px;padding-bottom:30px;color:#fff;}</style>
         @php $icons = DB::table('links')->where('user_id', 1)->where('button_id', 94)->get(); @endphp
-        <div class="row fadein">
+        <div class="row fadein social-icon-div">
         @foreach($icons as $icon)
-        <a href="{{$icon->link}}"><i class="social-icon fa-brands fa-{{$icon->title}}"></i></a>
+        <a class="social-hover social-link" href="{{$icon->link}}"><i class="social-icon fa-brands fa-{{$icon->title}}"></i></a>
         @endforeach
         </div>
 

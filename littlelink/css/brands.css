@@ -23,6 +23,7 @@
 ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 - Rounded user avatars
+- Social icons
 - Buttons
 - Brand Styles
 
@@ -37,6 +38,16 @@
   border-radius: 50%;
 }
 
+/* Social icon
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.social-icon {
+  font-size: 32px;
+  padding: 10px;
+}
+.social-icon-div {
+  padding-bottom: 30px;
+}
 
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
