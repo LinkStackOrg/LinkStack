@@ -698,4 +698,70 @@ class UserController extends Controller
 
         return redirect('/');
     }
+
+    //Edit/save page icons
+    public function editIcons(request $request)
+    {
+
+        function searchIcon($icon)
+        {
+            $iconId = DB::table('links')
+            ->where('user_id', Auth::id())
+            ->where('title', $icon)
+            ->where('button_id', 94)
+            ->value('id');
+        
+        if (is_null($iconId)){
+            return false;
+        } else {
+            return $iconId;
+        }
+        }
+
+        function addIcon($icon, $link){
+        $links = new Link;
+        $links->user_id = Auth::id();
+        $links->button_id = '94';
+        $links->link = $link;
+        $links->title = $icon;
+        $links->save();
+    }
+
+        function updateIcon($icon, $link){
+        Link::where('id', searchIcon($icon))->update([
+            'button_id' => 94,
+            'link' => $link,
+            'title' => $icon
+        ]);
+    }
+
+    function saveIcon($icon, $link){
+    if(isset($link)){
+        if(searchIcon($icon) != NULL){
+            updateIcon($icon, $link);
+        }else{
+            addIcon($icon, $link);}
+    }   
+}
+
+
+
+
+    saveIcon('mastodon', $request->mastodon);
+
+    saveIcon('instagram', $request->instagram);
+
+    saveIcon('twitter', $request->twitter);
+
+    saveIcon('github', $request->github);
+
+    saveIcon('linkedin', $request->linkedin);
+
+
+
+
+        return Redirect('studio/links#icons');
+
+    }
+
 }

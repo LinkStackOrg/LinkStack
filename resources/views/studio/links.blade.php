@@ -15,6 +15,8 @@
 @endif
 
 @push('sidebar-stylesheets')
+<script src="{{ asset('studio/external-dependencies/fontawesome.js') }}" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{{ asset('studio/external-dependencies/fontawesome.css') }}" />
 <style>
 @media only screen and (max-width: 1500px) {
   .pre-side{display:none!important;}
@@ -28,6 +30,7 @@
   .pre-bottom{display:none!important;}
 }
 </style>
+<style>.delete{position:relative; color:transparent; background-color:tomato; border-radius:5px; left:5px; padding:5px 12px; cursor: pointer;}.delete:hover{color:transparent;background-color:#f13d1d;}html,body{max-width:100%;overflow-x:hidden;}</style>
 @endpush
 
 @include('components.favicon')
@@ -55,6 +58,8 @@
 
         <div id="links-table-body" data-page="{{request('page', 1)}}" data-per-page="{{$pagePage ? $pagePage : 0}}">
             @foreach($links as $link)
+            @php $button = Button::find($link->button_id); if(isset($button->name)){$buttonName = $button->name;}else{$buttonName = 0;} @endphp
+            @if($button->name !== 'icon')
             <div class='row h-100  pb-0  mb-2 border rounded hvr-glow ' data-id="{{$link->id}}">
 
 
@@ -63,13 +68,11 @@
                 </div>
 
 
-
                 <div class='col border-left h-100'>
 
                     <div class='row h-100'>
                         <div class='col-12 p-2' style="max-width:300px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;" title="{{ $link->title }}">
                             <span class='h6'>
-                                <?php $button = Button::find($link->button_id); if(isset($button->name)){$buttonName = $button->name;}else{$buttonName = 0;} ?>
                                 @if($button->name == "custom_website")
                                 <span style="border: 1px solid #d0d4d7 !important;border-radius:5px;background-color:#6c757d;width:25px!important;height:25px!important;"><img style="margin-bottom:3px;margin-left:4px;margin-right:4px;max-width:15px;max-height:15px;" alt="button-icon" class="icon hvr-icon" src="@if(file_exists(base_path("studio/favicon/icons/").localIcon($link->id))){{url('studio/favicon/icons/'.localIcon($link->id))}}@else{{getFavIcon($link->id)}}@endif"></span>
                                 @elseif($button->name == "space")
@@ -134,6 +137,7 @@
                     </div>
                 </div>
             </div>
+            @endif
             @endforeach
         </div>
 
@@ -160,12 +164,72 @@
 </div>
 
 <br>
-<section style="width:100%!important;" class='pre-bottom shadow text-gray-400 pre-side'>
+<section style="margin-left:-15px;margin-right:-15px;" style="width:100%!important;" class='pre-bottom shadow text-gray-400 pre-side'>
     <h3 class="card-header"><i class="bi bi-window-fullscreen" style="font-style:normal!important;"> Preview:</i></h3>
         <div class='card-body p-0 p-md-3'>
                 <center><iframe allowtransparency="true" id="frPreview2" style=" border-radius:0.25rem !important; background: #FFFFFF; min-height:600px; height:100%; width:100% !important;" class='w-100' src="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>">Your browser isn't compatible</iframe></center>
          </div>
+</section><br>
+
+<section style="margin-left:-15px;margin-right:-15px;" class='shadow text-gray-400'>
+<a name="icons"></a>
+<h3 class="mb-4 card-header"><i class="fa-solid fa-icons"></i> Page Icons</i></h3>
+<div class="card-body p-0 p-md-3">
+
+<form action="{{ route('editIcons') }}" enctype="multipart/form-data" method="post">
+    @csrf
+    <div class="form-group col-lg-8">
+
+            @php
+            function iconLink($icon){
+            $iconLink = DB::table('links')
+            ->where('user_id', Auth::id())
+            ->where('title', $icon)
+            ->where('button_id', 94)
+            ->value('link');
+              if (is_null($iconLink)){
+                   return false;
+              } else {
+                    return $iconLink;}}
+            function searchIcon($icon)
+        {$iconId = DB::table('links')
+            ->where('user_id', Auth::id())
+            ->where('title', $icon)
+            ->where('button_id', 94)
+            ->value('id');
+        if(is_null($iconId)){return false;}else{return $iconId;}}
+
+        function icon($name, $label){ echo '
+        <label>'.$label.'</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa-brands fa-'.$name.'"></i></div>
+            </div>
+            <input type="url" class="form-control" name="'.$name.'" value="'.iconLink($name).'" >';
+            if(searchIcon($name) != NULL){echo '<a href="'. route("deleteLink", searchIcon($name) ) .'" class="delete"><i style="color:#fff" class="bi bi-trash-fill"></i></a>';}
+        echo '</div><br>';}
+            @endphp
+        <style>input{border-top-right-radius: 0.25rem!important; border-bottom-right-radius: 0.25rem!important;}</style>
+
+
+    {!!icon('mastodon', 'Mastodon')!!}
+
+    {!!icon('instagram', 'Instagram')!!}
+
+    {!!icon('twitter', 'Twitter')!!}
+
+    {!!icon('github', 'GitHub')!!}
+
+    {!!icon('linkedin', 'LinkedIn')!!}
+
+
+    <button type="submit" class="mt-3 ml-3 btn btn-info">Save links</button>
+</form>
+
+
+</div>
 </section>
+
 
 <script src="{{ asset('studio/external-dependencies/jquery-1.12.4.min.js') }}"></script>
 <script type="text/javascript">$("iframe").load(function() { $("iframe").contents().find("a").each(function(index) { $(this).on("click", function(event) { event.preventDefault(); event.stopPropagation(); }); }); });</script>

@@ -258,15 +258,27 @@ function get_operating_system() {
         <h1 class="fadein">{{ $info->name }}</h1>
 
         <!-- Short Bio -->
-        <center><p style="width:50%;min-width:300px;" class="fadein">@if(env('ALLOW_USER_HTML') === true){!! $info->littlelink_description !!}@else{{ $info->littlelink_description }}@endif</p></center>
+        <p style="width:50%;min-width:300px;" class="fadein">@if(env('ALLOW_USER_HTML') === true){!! $info->littlelink_description !!}@else{{ $info->littlelink_description }}@endif</p>
         
+        <!-- Icons -->
+        <style>.social-icon{font-size:32px;padding:10px;padding-bottom:30px;color:#fff;}</style>
+        @php $icons = DB::table('links')->where('user_id', 1)->where('button_id', 94)->get(); @endphp
+        <div class="row fadein">
+        @foreach($icons as $icon)
+        <a href="{{$icon->link}}"><i class="social-icon fa-brands fa-{{$icon->title}}"></i></a>
+        @endforeach
+        </div>
+
+
+
         @endforeach		
         <!-- Buttons -->
 <?php function strp($urlStrp){return str_replace(array('http://', 'https://'), '', $urlStrp);} ?>
 <?php $initial=1; // <-- Effectively sets the initial loading time of the buttons. This value should be left at 1. ?>
         @foreach($links as $link)
          @php $linkName = str_replace('default ','',$link->name) @endphp
-         @if($link->button_id === 0)
+         @if($link->name === "icon")
+         @elseif($link->button_id === 0)
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-title button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif >{{ $link->title }}</a></div>
          @elseif($link->name === "phone")
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-default button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ $link->link }}"><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/phone{{theme('custom_icon_extension')}} @else{{ asset('\/littlelink/icons\/')}}phone.svg @endif"></i>{{ $link->title }}</a></div>
