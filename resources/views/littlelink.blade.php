@@ -268,7 +268,7 @@ function get_operating_system() {
         @php $icons = DB::table('links')->where('user_id', $userinfo->id)->where('button_id', 94)->get(); @endphp
         <div class="row fadein social-icon-div">
         @foreach($icons as $icon)
-        <a class="social-hover social-link" href="{{$icon->link}}"><i class="social-icon fa-brands fa-{{$icon->title}}"></i></a>
+        <a class="social-hover social-link" href="{{ route('clickNumber') . '/' . $icon->id }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif><i class="social-icon fa-brands fa-{{$icon->title}}"></i></a>
         @endforeach
         </div>
 

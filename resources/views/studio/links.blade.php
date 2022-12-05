@@ -187,9 +187,14 @@
             ->where('button_id', 94)
             ->value('id');
         if(is_null($iconId)){return false;}else{return $iconId;}}
+            function iconclicks($icon){
+            $iconClicks = searchIcon($icon);
+            $iconClicks = DB::table('links')->where('id', $iconClicks)->value('click_number');
+              if (is_null($iconClicks)){return 0;}
+              else {return $iconClicks;}}
 
         function icon($name, $label){ echo '
-        <label>'.$label.'</label>
+        <label>'.$label.'</label><span style="font-size:90%;font-style:italic;">&emsp; Clicks: '.iconclicks($name).'</span>
         <div class="input-group">
             <div class="input-group-prepend">
                 <div class="input-group-text"><i class="fa-brands fa-'.$name.'"></i></div>
