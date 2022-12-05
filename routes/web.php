@@ -102,10 +102,6 @@ Route::post('/studio/edit-link', [UserController::class, 'saveLink'])->name('add
 Route::get('/studio/edit-link/{id}', [UserController::class, 'AddUpdateLink'])->name('showLink');
 Route::post('/studio/sort-link', [UserController::class, 'sortLinks'])->name('sortLinks');
 Route::get('/studio/links', [UserController::class, $LinkPage])->name($LinkPage);
-Route::get('/studio/links/10', [UserController::class, 'showLinks'])->name('showLinks');
-Route::get('/studio/links/20', [UserController::class, 'showLinks20'])->name('showLinks20');
-Route::get('/studio/links/30', [UserController::class, 'showLinks30'])->name('showLinks30');
-Route::get('/studio/links/all', [UserController::class, 'showLinksAll'])->name('showLinksAll');
 Route::get('/studio/theme', [UserController::class, 'showTheme'])->name('showTheme');
 Route::post('/studio/theme', [UserController::class, 'editTheme'])->name('editTheme');
 Route::get('/deleteLink/{id}', [UserController::class, 'deleteLink'])->name('deleteLink');

@@ -359,37 +359,7 @@ class UserController extends Controller
         $userId = Auth::user()->id;
         $data['pagePage'] = 10;
         
-        $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link', 'links.button_id')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(10);
-        return view('studio/links', $data);
-    }
-
-    //Show link, 20
-    public function showLinks20()
-    {
-        $userId = Auth::user()->id;
-        $data['pagePage'] = 20;
-        
-        $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link', 'links.button_id')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(20);
-        return view('studio/links', $data);
-    }
-
-    //Show link, 30
-    public function showLinks30()
-    {
-        $userId = Auth::user()->id;
-        $data['pagePage'] = 30;
-        
-        $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link', 'links.button_id')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(30);
-        return view('studio/links', $data);
-    }
-
-    //Show link, all
-    public function showLinksAll()
-    {
-        $userId = Auth::user()->id;
-        $data['pagePage'] = 0;
-        
-        $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link', 'links.button_id')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(10000000000);
+        $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link', 'links.button_id')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(99999);
         return view('studio/links', $data);
     }
 
@@ -756,6 +726,22 @@ class UserController extends Controller
     saveIcon('github', $request->github);
 
     saveIcon('linkedin', $request->linkedin);
+
+    saveIcon('tiktok', $request->tiktok);
+
+    saveIcon('discord', $request->discord);
+
+    saveIcon('youtube', $request->youtube);
+
+    saveIcon('snapchat', $request->snapchat);
+
+    saveIcon('reddit', $request->reddit);
+
+    saveIcon('pinterest', $request->pinterest);
+
+    saveIcon('telegram', $request->telegram);
+
+    saveIcon('whatsapp', $request->whatsapp);
 
 
 

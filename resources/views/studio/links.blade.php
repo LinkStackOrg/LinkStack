@@ -4,16 +4,6 @@
 
 <?php use App\Models\Button; ?>
 
-@if(Request::is('studio/links/10'))
-@php setcookie("LinkCount", "10", time()+60*60*24*5, "/"); @endphp
-@elseif(Request::is('studio/links/20'))
-@php setcookie("LinkCount", "20", time()+60*60*24*5, "/"); @endphp
-@elseif(Request::is('studio/links/30'))
-@php setcookie("LinkCount", "30", time()+60*60*24*5, "/"); @endphp
-@elseif(Request::is('studio/links/all'))
-@php setcookie("LinkCount", "all", time()+60*60*24*5, "/"); @endphp
-@endif
-
 @push('sidebar-stylesheets')
 <script src="{{ asset('studio/external-dependencies/fontawesome.js') }}" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="{{ asset('studio/external-dependencies/fontawesome.css') }}" />
@@ -38,7 +28,6 @@
 
 <?php function strp($urlStrp){return str_replace(array('http://', 'https://'), '', $urlStrp);} ?>
 
-<div style="text-align: right;"><a href="{{ url('/studio/links') }}/10">10</a> | <a href="{{ url('/studio/links') }}/20">20</a> | <a href="{{ url('/studio/links') }}/30">30</a> | <a href="{{ url('/studio/links') }}/all">all</a></div>
 <div class="row">
 <section class='pre-left shadow text-gray-400'>
     <h3 class="card-header"><i class="bi bi-link-45deg">My Links</i>
@@ -221,6 +210,22 @@
     {!!icon('github', 'GitHub')!!}
 
     {!!icon('linkedin', 'LinkedIn')!!}
+
+    {!!icon('tiktok', 'TikTok')!!}
+
+    {!!icon('discord', 'Discord')!!}
+
+    {!!icon('youtube', 'YouTube')!!}
+
+    {!!icon('snapchat', 'Snapchat')!!}
+
+    {!!icon('reddit', 'reddit')!!}
+
+    {!!icon('pinterest', 'Pinterest')!!}
+
+    {!!icon('telegram', 'Telegram')!!}
+
+    {!!icon('whatsapp', 'WhatsApp')!!}
 
 
     <button type="submit" class="mt-3 ml-3 btn btn-info">Save links</button>
