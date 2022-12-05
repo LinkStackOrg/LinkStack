@@ -689,11 +689,14 @@ class UserController extends Controller
         }
 
         function addIcon($icon, $link){
+        $userId = Auth::user()->id;
         $links = new Link;
-        $links->user_id = Auth::id();
-        $links->button_id = '94';
         $links->link = $link;
+        $links->user_id = $userId;
         $links->title = $icon;
+        $links->button_id = '94';
+        $links->save();
+        $links->order = ($links->id - 1);
         $links->save();
     }
 
