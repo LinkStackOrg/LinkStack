@@ -224,7 +224,7 @@
 
     {!!icon('snapchat', 'Snapchat')!!}
 
-    {!!icon('reddit', 'reddit')!!}
+    {!!icon('reddit', 'Reddit')!!}
 
     {!!icon('pinterest', 'Pinterest')!!}
 
