@@ -1,5 +1,16 @@
 @extends('layouts.sidebar')
 
+@php
+function findFiles($name){
+            $directory = base_path('/littlelink/images/');
+            $files = scandir($directory);
+            $pathinfo = "error.error";
+            foreach($files as $file) {
+            if (strpos($file, $name.'.') !== false) {
+            $pathinfo = $name. "." . pathinfo($file, PATHINFO_EXTENSION);}}
+            return $pathinfo;}
+@endphp
+
 @section('content')
 
 <section class="shadow text-gray-400">
@@ -30,8 +41,8 @@
           <div class="form-group col-lg-8">
           @if(file_exists(base_path("img/$user->littlelink_name" . ".png" )))
           <img src="{{ asset("img/$user->littlelink_name" . ".png") }}" srcset="{{ asset("img/$user->littlelink_name" . "@2x.png 2x") }}" width="128px" height="128px" style="object-fit: cover;">
-          @elseif(file_exists(base_path("littlelink/images/").findFile('avatar')))
-          <img class="rounded-avatar" src="{{ asset('littlelink/images/'.findFile('avatar')) }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="128px" height="128px" style="object-fit: cover;">
+          @elseif(file_exists(base_path("littlelink/images/").findFiles('avatar')))
+          <img class="rounded-avatar" src="{{ asset('littlelink/images/'.findFiles('avatar')) }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="128px" height="128px" style="object-fit: cover;">
           @else
           <img src="{{ asset('littlelink/images/logo.svg') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="128px" height="128px" style="object-fit: cover;">
           @endif

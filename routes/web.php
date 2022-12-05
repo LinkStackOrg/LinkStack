@@ -118,6 +118,7 @@ Route::get('/studio/no_page_name', [UserController::class, 'showPage'])->name('s
 Route::post('/studio/page', [UserController::class, 'editPage'])->name('editPage');
 Route::get('/studio/profile', [UserController::class, 'showProfile'])->name('showProfile');
 Route::post('/studio/profile', [UserController::class, 'editProfile'])->name('editProfile');
+Route::post('/edit-icons', [UserController::class, 'editIcons'])->name('editIcons');
 Route::get('/studio/delete-user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser')->middleware('verified');
 Route::get('/studio/linkparamform_part/{typeid}/{linkid}', [LinkTypeViewController::class, 'getParamForm'])->name('linkparamform.part');
 });
