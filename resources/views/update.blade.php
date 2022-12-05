@@ -179,6 +179,15 @@ exit(); ?>
 
 @if($_SERVER['QUERY_STRING'] === 'finishing')
 <?php //finishing up update ?>
+<?php 
+$debug = NULL;
+if(EnvEditor::getKey('APP_DEBUG') == 'false'){
+   if(EnvEditor::keyExists('APP_DEBUG')){EnvEditor::editKey('APP_DEBUG', 'true');}
+   if(EnvEditor::keyExists('APP_ENV')){EnvEditor::editKey('APP_ENV', 'local');}
+   if(EnvEditor::keyExists('LOG_LEVEL')){EnvEditor::editKey('LOG_LEVEL', 'debug');}
+   $debug = true;
+}
+?>
         <div class="logo-container fadein">
            <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
            <div class="logo-centered">l</div>
@@ -188,6 +197,13 @@ exit(); ?>
         @include('components.finishing')
         
         <?php if(file_exists(base_path("storage/MAINTENANCE"))){unlink(base_path("storage/MAINTENANCE"));} ?>
+<?php 
+if($debug === true){
+   if(EnvEditor::keyExists('APP_DEBUG')){EnvEditor::editKey('APP_DEBUG', 'false');}
+   if(EnvEditor::keyExists('APP_ENV')){EnvEditor::editKey('APP_ENV', 'production');}
+   if(EnvEditor::keyExists('LOG_LEVEL')){EnvEditor::editKey('LOG_LEVEL', 'error');}
+}
+?>
 @endif
 
 @if($_SERVER['QUERY_STRING'] === 'success')
