@@ -228,9 +228,9 @@
 
     {!!icon('pinterest', 'Pinterest')!!}
 
-    {!!icon('telegram', 'Telegram')!!}
+    {{-- {!!icon('telegram', 'Telegram')!!}
 
-    {!!icon('whatsapp', 'WhatsApp')!!}
+    {!!icon('whatsapp', 'WhatsApp')!!} --}}
 
 
     <button type="submit" class="mt-3 ml-3 btn btn-info">Save links</button>
