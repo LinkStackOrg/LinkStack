@@ -79,13 +79,14 @@ use Illuminate\Support\Facades\Schema;
             }
 
             /* Updates button database entries */ 
-            Artisan::call('migrate');
             Schema::disableForeignKeyConstraints();
-            DB::table('buttons')->delete();
-            DB::table('buttons')->truncate();
+            try {Artisan::call('migrate');} catch (exception $e) {}
+            try {DB::table('buttons')->delete();} catch (exception $e) {}
+            try {DB::table('buttons')->truncate();} catch (exception $e) {}
             try {Artisan::call('db:seed --class="ButtonSeeder" --force');} catch (exception $e) {}
             Schema::enableForeignKeyConstraints();
 
+    try {
         DB::table('link_types')->updateOrInsert([
             'typename' => 'text',
             'title' => 'Text',
@@ -101,6 +102,7 @@ use Illuminate\Support\Facades\Schema;
             }
             ]'
         ]);
+    } catch (exception $e) {}
 
         echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "?success\" />"; 
         ?>
