@@ -28,7 +28,7 @@
                     $themeName = substr($matches[0][0],12);
                     }
                   }
-                    if($page->theme != $entry){echo '<option value="'; print_r($entry); echo '">'; echo $themeName; echo '</option>'; }}}} ?>
+                    if($page->theme != $entry and isset($themeName)){echo '<option value="'; print_r($entry); echo '">'; echo $themeName; echo '</option>'; }}}} ?>
                     <?php 
                     if($page->theme != "default" and $page->theme != ""){
                     if(file_exists(base_path('themes') . '/' . $page->theme . '/readme.md')){
@@ -200,6 +200,7 @@
                   }
 
                     $themeVe = NULL;
+                    if(!isset($verNr)){$verNr = "error";};
 
                 if ($entry != "." && $entry != "..") {
                     echo '<tr>';
