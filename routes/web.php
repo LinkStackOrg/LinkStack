@@ -115,6 +115,7 @@ Route::post('/studio/page', [UserController::class, 'editPage'])->name('editPage
 Route::get('/studio/profile', [UserController::class, 'showProfile'])->name('showProfile');
 Route::post('/studio/profile', [UserController::class, 'editProfile'])->name('editProfile');
 Route::post('/edit-icons', [UserController::class, 'editIcons'])->name('editIcons');
+Route::get('/clearIcon/{id}', [UserController::class, 'clearIcon'])->name('clearIcon');
 Route::get('/studio/delete-user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser')->middleware('verified');
 Route::get('/studio/linkparamform_part/{typeid}/{linkid}', [LinkTypeViewController::class, 'getParamForm'])->name('linkparamform.part');
 });
@@ -136,7 +137,6 @@ Route::group([
     Route::post('/panel/users/{name?}', [AdminController::class, 'searchUser'])->name('searchUser');
     Route::get('/panel/links/{id}', [AdminController::class, 'showLinksUser'])->name('showLinksUser');
     Route::get('/panel/deleteLink/{id}', [AdminController::class, 'deleteLinkUser'])->name('deleteLinkUser');
-    Route::get('/clearIcon/{id}', [UserController::class, 'clearIcon'])->name('clearIcon');
     Route::get('/panel/users/block/{block}/{id}', [AdminController::class, 'blockUser'])->name('blockUser');
     Route::get('/panel/users/verify/-{verify}/{id}', [AdminController::class, 'verifyUser'])->name('verifyUser');
     Route::get('/panel/edit-user/{id}', [AdminController::class, 'showUser'])->name('showUser');
