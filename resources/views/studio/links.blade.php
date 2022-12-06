@@ -2,7 +2,15 @@
 
 @section('content')
 
-<?php use App\Models\Button; ?>
+<?php use App\Models\Button; 
+
+// Check if the LinkCount cookie is set
+if (isset($_COOKIE['LinkCount'])) {
+  // Set the expiration time of the cookie to one hour in the past
+  setcookie('LinkCount', '', time() - 3600);
+}
+
+?>
 
 @push('sidebar-stylesheets')
 <script src="{{ asset('studio/external-dependencies/fontawesome.js') }}" crossorigin="anonymous"></script>
