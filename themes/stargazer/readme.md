@@ -2,7 +2,7 @@
 Find more themes: https://github.com/JulianPrieber/llc-themes
                                                                                                                                                                          
 *	Theme Name: Stargazer
-*	Theme Version: 1.2
+*	Theme Version: 1.5
 *	Theme Date: 2022-09-01
 *	Theme Author: JulianPrieber
 *	Theme Author URI: https://github.com/JulianPrieber
