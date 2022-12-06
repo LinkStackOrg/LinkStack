@@ -36,7 +36,7 @@
                     $pattern = '/Theme Name:.*/';
                     preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
                     $themeName = substr($matches[0][0],12);}
-                    echo '<option value="'.$page->theme.'" selected>'.$themeName.'</option>';} ?>
+                    if(isset($themeName)){echo '<option value="'.$page->theme.'" selected>'.$themeName.'</option>';}} ?>
                     <?php echo '<option value="default"'; if($page->theme == "default" or $page->theme == ""){echo 'selected';} echo '>Default</option>'; ?>
             </select>
         </div>
