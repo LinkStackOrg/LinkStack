@@ -2412,8 +2412,21 @@ if(!function_exists('get_headers'))
 }
 
 $headers = get_headers($urlICO, 1);
+$headersImage = get_headers($urlICO);
 
-if ($headers[0] == 'HTTP/1.1 200 OK' or $headers[0] == 'HTTP/1.1 301 Moved Permanently') {
+foreach ($headersImage as $header) {
+  if (stripos($header, 'Content-Type:') === 0) {
+    if (stripos($header, 'image/') !== false) {
+      $isIco = true;
+    } else {
+      $isIco = false;
+    }
+    break;
+  }
+}
+
+
+if (($headers[0] == 'HTTP/1.1 200 OK' or $headers[0] == 'HTTP/1.1 301 Moved Permanently') and $isIco === true) {
     $favicon = $urlICO;
 } else {
 
@@ -2444,6 +2457,8 @@ if(!file_exists(base_path("studio/favicon/icons")."/".$id.".".$extension)){
 	if($id.".".$extension !== ".".$id){file_put_contents(base_path("studio/favicon/icons")."/".$id.".".$extension, file_get_contents($header,false,$context));}
 }
 } catch (exception $e) {}
+
+$favicon = preg_replace('/([^:])(\/{2,})/', '$1/', $favicon);
 
 return $favicon;
 }
