@@ -385,7 +385,7 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 <input value="debug" name="type" style="display:none;" type="text" required>
 <input value="debug" name="entry" style="display:none;" type="text" required>
 <h5 style="margin-top:50px">Debug mode</h5>
-<p class="text-muted">Should be disabled in a production environment. Usefull for debuggin during setup.</p>
+<p class="text-muted">Should be disabled in a production environment. Usefull for debugging during setup.</p>
 <div class="input-group">
 <div class="row toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle-debug" <?php if(EnvEditor::getKey('APP_DEBUG') == 'false'){echo '/>';}else{echo 'checked>';} ?> <label for="toggle-debug" class="label txt-label">Enable</label></div>
 </div></div>
