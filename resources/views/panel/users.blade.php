@@ -27,7 +27,7 @@
         <a href="{{ url('') }}/panel/users/vip">Vip</a> - 
         <a href="{{ url('') }}/panel/users/admin">Admin</a> 
 
-        <div class="row"><div class="col-12"><div style="table-responsive">
+        <div class="row"><div class="col-12"><div class="table-responsive">
         <table class="table table-bordered">
           <thead>
             <tr>
