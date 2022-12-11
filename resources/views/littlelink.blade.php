@@ -49,7 +49,7 @@ return $path;}
   <!-- This shows a preview for title, description and avatar image of users profiles if shared on social media sites -->
 
     <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="{{ url('') }}/@littlelink_name">
+    <meta property="og:url" content="{{ url('') }}/{{ "@" . $littlelink_name }}">
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ $userinfo->name }}">
     <meta property="og:description" content="{{ $userinfo->littlelink_description }}">
@@ -61,8 +61,8 @@ return $path;}
     
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="{{ url('') }}/@littlelink_name">
-    <meta property="twitter:url" content="{{ url('') }}/@littlelink_name">
+    <meta property="twitter:domain" content="{{ url('') }}/{{ "@" . $littlelink_name }}">
+    <meta property="twitter:url" content="{{ url('') }}/{{ "@" . $littlelink_name }}">
     <meta name="twitter:title" content="{{ $userinfo->littlelink_name }}">
     <meta name="twitter:description" content="{{ $userinfo->littlelink_description }}">
     @if(file_exists(base_path("img/$littlelink_name" . ".png" )))
