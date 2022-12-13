@@ -1,3 +1,4 @@
+html {scroll-behavior: smooth;}
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -197,9 +198,9 @@ button:focus {
   outline: 5px auto -webkit-focus-ring-color; }
 
 .buttonLogout{
-border:none; 
-background:none; 
-color: #e8e7e7; 
+border:none;
+background:none;
+color: #e8e7e7;
 margin-top: 9px;
 padding: 0;
 font: inherit;
@@ -3393,16 +3394,18 @@ input[type="button"].btn-block {
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem; }
     .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
-      border-color: #e9ecef #e9ecef rgba(0,0,0,.15); }
+        color: #f8b739;
+        background-color: #212529;
+        border-color: rgba(0,0,0,.15) rgba(0,0,0,.15) transparent;}
     .nav-tabs .nav-link.disabled {
       color: #6c757d;
       background-color: transparent;
       border-color: transparent; }
   .nav-tabs .nav-link.active,
   .nav-tabs .nav-item.show .nav-link {
-    color: #495057;
-    background-color: #fff;
-    border-color: rgba(0,0,0,.15) rgba(0,0,0,.15) #fff; }
+    color: #f8b739;
+    background-color: #484848;
+    border-color: rgba(106, 106, 106, 0.15) rgba(0,0,0,.15) #133;}
   .nav-tabs .dropdown-menu {
     margin-top: -1px;
     border-top-left-radius: 0;
@@ -3435,7 +3438,6 @@ input[type="button"].btn-block {
 
 .tab-content > .active {
   display: block; }
-
 .navbar {
   position: relative;
   display: -webkit-box;
