@@ -187,45 +187,42 @@ if($url1sb == '200'  or $url2sb == '200') {
           <img class="img logo" type="image/svg+xml" src="{{ asset('littlelink/images/logo.svg') }}" style="width:100px;">
           @endif
           </a>
-          <ul class="list-unstyled components mb-5">
-
             @if(auth()->user()->role == 'admin')
             <ul class="list-unstyled components mb-5">
-            <li class="active">
+              <li class="active">
 	            <a @if(config('advanced-config.expand_panel_admin_menu_permanently') != 'true') href="#adminSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" @endif>Admin</a>
 	            <ul class="@if(config('advanced-config.expand_panel_admin_menu_permanently') != 'true') collapse @endif list-unstyled" id="adminSubmenu">
-                <li>
+                  <li class="{{ Request::segment(2) == 'config' ? 'active' : ''}}">
                     <a href="{{ url('panel/config') }}">Config</a>
-                </li>
-                <li>
+                  </li>
+                <li class="{{ Request::segment(2) == 'users' ? 'active' : ''}}">
                     <a href="{{ url('panel/users/all') }}">Manage Users</a>
-                </li>
-                <li>
+                  </li>
+                  <li class="{{ Request::segment(2) == 'pages' ? 'active' : ''}}">
                     <a href="{{ url('panel/pages') }}">Footer Pages</a>
-                </li>
-                <li>
+                  </li>
+                  <li class="{{ Request::segment(2) == 'site' ? 'active' : ''}}">
                     <a href="{{ url('panel/site') }}">Home Page</a>
-                </li>
+                  </li>
 	            </ul>
-	          </li>           
+	          </li>
              @endif
-             
-	          <li>
-            <li class="active">
+
+            <li class="{{ Request::segment(2) == 'add-link' ? 'active' : ''}}">
               <a href="{{ url('/studio/add-link') }}">Add Page Item</a>
-	          </li>
-            <li>
+	        </li>
+            <li class="{{ Request::segment(2) == 'links' ? 'active' : ''}}">
               <a href="{{ url('/studio/links') }}">Your Links</a>
-	          </li>
-            <li>
+	        </li>
+            <li class="{{ Request::segment(2) == 'page' ? 'active' : ''}}">
               <a href="{{ url('/studio/page') }}">Your Page</a>
-	          </li>
-			  <li>
+	        </li>
+            <li class="{{ Request::segment(2) == 'theme' ? 'active' : ''}}">
               <a href="{{ url('/studio/theme') }}">Your Themes</a>
-	          </li>
-            <li>
+	        </li>
+            <li class="{{ Request::segment(2) == 'profile' ? 'active' : ''}}">
               <a href="{{ url('/studio/profile') }}">Account Settings</a>
-	          </li>
+	        </li>
             <form action="{{ route('logout') }}" method="post">
              <input type="hidden" name="_token" value="{{ csrf_token() }}">
              <button type="submit" class="buttonLogout">Logout</button>
