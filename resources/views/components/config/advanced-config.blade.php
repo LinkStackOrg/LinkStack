@@ -1,11 +1,11 @@
-          <p>Allows editing the frontend of your site. Amongst other things, this file allows customization of:<br> 
+          <p>Allows editing the frontend of your site. Amongst other things, this file allows customization of:<br>
 Home Page, links, titles, Google Analytics and meta tags.</p>
         <form action="{{ route('editAC') }}" method="post">
           @csrf
           <div class="form-group">
             <label>Advanced Configuration file.</label>
             <textarea style="width:100%;display:none;" class="form-control" name="AdvancedConfig" rows="280">{{ file_get_contents('config/advanced-config.php') }}</textarea>
-            <div id="editor" style="width:100%; height:<?php echo count(file('config/advanced-config.php')) * 24 + 15;?>px;" class="form-control" name="AdvancedConfig" rows="280">{{ file_get_contents('config/advanced-config.php') }}</div>
+            <div id="editor" style="width:100%; height:<?php echo count(file('config/advanced-config.php')) * 24 + 15;?>px; background-color:transparent !important;" class="form-control border-1 border-light" name="AdvancedConfig" rows="280">{{ file_get_contents('config/advanced-config.php') }}</div>
           </div>
           <button type="submit" class="mt-3 ml-3 btn btn-info">Save</button>
           <a class="mt-3 ml-3 btn btn-primary confirmation" href="{{url('/panel/advanced-config?restore-defaults')}}">Restore defaults</a>
@@ -24,7 +24,13 @@ Home Page, links, titles, Google Analytics and meta tags.</p>
 <script src="{{ asset('studio/external-dependencies/ace.js') }}" type="text/javascript" charset="utf-8"></script>
 <script>
 var editor = ace.edit("editor");
-editor.setTheme("ace/theme/xcode");
+//if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+if(!$('#toggle-switch').is(':checked')){
+    // dark mode
+    editor.setTheme("ace/theme/tomorrow_night");
+} else {
+    editor.setTheme("ace/theme/xcode");
+}
 editor.getSession().setMode("ace/mode/javascript");
 editor.session.setUseWorker(false);
 </script>
