@@ -188,25 +188,24 @@ if($url1sb == '200'  or $url2sb == '200') {
           @endif
           </a>
             @if(auth()->user()->role == 'admin')
-            <ul class="list-unstyled components mb-5">
-              <li class="active">
-	            <a @if(config('advanced-config.expand_panel_admin_menu_permanently') != 'true') href="#adminSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" @endif>Admin</a>
-	            <ul class="@if(config('advanced-config.expand_panel_admin_menu_permanently') != 'true') collapse @endif list-unstyled" id="adminSubmenu">
-                  <li class="{{ Request::segment(2) == 'config' ? 'active' : ''}}">
-                    <a href="{{ url('panel/config') }}">Config</a>
-                  </li>
+            <li class="active">
+	          <a href="#adminSubmenu" data-toggle="collapse" @if(Request::segment(1) == 'panel' ) class="dropdown-toggle" aria-expanded="true" @else class="dropdown-toggle collapsed" aria-expanded="false"  @endif>Admin</a>
+	          <ul class="collapse list-unstyled @if(Request::segment(1) == 'panel' ) show @endif " id="adminSubmenu">
+                <li class="{{ Request::segment(2) == 'config' ? 'active' : ''}}">
+                  <a href="{{ url('panel/config') }}">Config</a>
+                </li>
                 <li class="{{ Request::segment(2) == 'users' ? 'active' : ''}}">
-                    <a href="{{ url('panel/users/all') }}">Manage Users</a>
-                  </li>
-                  <li class="{{ Request::segment(2) == 'pages' ? 'active' : ''}}">
-                    <a href="{{ url('panel/pages') }}">Footer Pages</a>
-                  </li>
-                  <li class="{{ Request::segment(2) == 'site' ? 'active' : ''}}">
-                    <a href="{{ url('panel/site') }}">Home Page</a>
-                  </li>
-	            </ul>
-	          </li>
-             @endif
+                  <a href="{{ url('panel/users/all') }}">Manage Users</a>
+                </li>
+                <li class="{{ Request::segment(2) == 'pages' ? 'active' : ''}}">
+                  <a href="{{ url('panel/pages') }}">Footer Pages</a>
+                </li>
+                <li class="{{ Request::segment(2) == 'site' ? 'active' : ''}}">
+                  <a href="{{ url('panel/site') }}">Home Page</a>
+                </li>
+              </ul>
+            </li>
+            @endif
 
             <li class="{{ Request::segment(2) == 'add-link' ? 'active' : ''}}">
               <a href="{{ url('/studio/add-link') }}">Add Page Item</a>
