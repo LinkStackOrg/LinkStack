@@ -187,6 +187,7 @@ if($url1sb == '200'  or $url2sb == '200') {
           <img class="img logo" type="image/svg+xml" src="{{ asset('littlelink/images/logo.svg') }}" style="width:100px;">
           @endif
           </a>
+          <ul class="list-unstyled">
             @if(auth()->user()->role == 'admin')
             <li class="active">
 	          <a href="#adminSubmenu" data-toggle="collapse" @if(Request::segment(1) == 'panel' ) class="dropdown-toggle" aria-expanded="true" @else class="dropdown-toggle collapsed" aria-expanded="false"  @endif>Admin</a>
