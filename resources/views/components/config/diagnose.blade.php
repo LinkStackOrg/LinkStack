@@ -2,11 +2,11 @@
 <?php
 use Illuminate\Support\Facades\Http;
 
-$wtrue = "<td style=\"text-align: center; cursor: help;\" title=\"Everything is working as expected!\">✔️</td>";
-$wfalse = "<td style=\"text-align: center; cursor: help;\" title=\"This file cannot be written to. This may impede proper operation.\">❌</td>";
+$wtrue = "<td style=\"text-align: center; cursor: help;\" title=\"Everything is working as expected!\"><i class='bi bi-check-lg'></i></td>";
+$wfalse = "<td style=\"text-align: center; cursor: help;\" title=\"This file cannot be written to. This may impede proper operation.\"><i class='bi bi-x'></i></td>";
 
-$utrue = "<td style=\"text-align: center; cursor: help;\" title=\"Your security is at risk. This file can be accessed by everyone. Immediate action is required!\">❗</td>";
-$ufalse = "<td style=\"text-align: center; cursor: help;\" title=\"Everything is working as expected!\">✔️</td>";
+$utrue = "<td style=\"text-align: center; cursor: help;\" title=\"Your security is at risk. This file can be accessed by everyone. Immediate action is required!\"><i class='bi bi-exclamation-lg'></i></td>";
+$ufalse = "<td style=\"text-align: center; cursor: help;\" title=\"Everything is working as expected!\"><i class='bi bi-check-lg'></i></td>";
 $unull = "<td style=\"text-align: center; cursor: help;\" title=\"Something went wrong. This might be normal if you're running behind a proxy or docker container.\">➖</td>";
 
 
@@ -57,7 +57,7 @@ $url2 = getUrlSatusCode($actual_link . '/../../database/database.sqlite');
         @endif
 
         <h3 class="mb-4">Security</h3>
-        <p>Here, you can easily verify if critical system files can be accessed externally. It is important that these files cannot be accessed, otherwise user data like passwords could get leaked. Entries marked with a '✔️' cannot be accessed externally, entries marked with a '❗' can be accessed by anyone and require immediate action to protect your data.</p>
+        <p>Here, you can easily verify if critical system files can be accessed externally. It is important that these files cannot be accessed, otherwise user data like passwords could get leaked. Entries marked with a '<i class='bi bi-check-lg'></i>' cannot be accessed externally, entries marked with a '<i class='bi bi-exclamation-lg'></i>' can be accessed by anyone and require immediate action to protect your data.</p>
 
         <table class="table table-bordered">
         <thead>
@@ -80,7 +80,7 @@ $url2 = getUrlSatusCode($actual_link . '/../../database/database.sqlite');
         </table>
 
         <br><h3 class="mb-4">Write access</h3>
-        <p>Here, you can easily verify if important system files can be written to. This is important for every function to work properly. Entries marked with a '✔️' work as expected, entries marked with a '❌' do not.</p>
+        <p>Here, you can easily verify if important system files can be written to. This is important for every function to work properly. Entries marked with a '<i class='bi bi-check-lg'></i>' work as expected, entries marked with a '<i class='bi bi-x'></i>' do not.</p>
 
         <table class="table table-bordered">
         <thead>
@@ -107,18 +107,18 @@ $url2 = getUrlSatusCode($actual_link . '/../../database/database.sqlite');
 <style>#dp{width:10%!important;text-align:center;}</style>
         <table class="table table-bordered">
         <style>.bi-x-lg{color:tomato}</style>
-        <tr><td>BCMath PHP Extension</td><td id="dp">@if(extension_loaded('bcmath'))✔️@else❌@endif</td></tr>
-        <tr><td>Ctype PHP Extension</td><td id="dp">@if(extension_loaded('Ctype'))✔️@else❌@endif</td></tr>
-        <tr><td>cURL PHP Extension</td><td id="dp">@if(extension_loaded('cURL'))✔️@else❌@endif</td></tr>
-        <tr><td>DOM PHP Extension</td><td id="dp">@if(extension_loaded('DOM'))✔️@else❌@endif</td></tr>
-        <tr><td>Fileinfo PHP Extension</td><td id="dp">@if(extension_loaded('Fileinfo'))✔️@else❌@endif</td></tr>
-        <tr><td>JSON PHP Extension</td><td id="dp">@if(extension_loaded('JSON'))✔️@else❌@endif</td></tr>
-        <tr><td>Mbstring PHP Extension</td><td id="dp">@if(extension_loaded('Mbstring'))✔️@else❌@endif</td></tr>
-        <tr><td>OpenSSL PHP Extension</td><td id="dp">@if(extension_loaded('OpenSSL'))✔️@else❌@endif</td></tr>
-        <tr><td>PCRE PHP Extension</td><td id="dp">@if(extension_loaded('PCRE'))✔️@else❌@endif</td></tr>
-        <tr><td>PDO PHP Extension</td><td id="dp">@if(extension_loaded('PDO'))✔️@else❌@endif</td></tr>
-        <tr><td>Tokenizer PHP Extension</td><td id="dp">@if(extension_loaded('Tokenizer'))✔️@else❌@endif</td></tr>
-        <tr><td>XML PHP Extension</td><td id="dp">@if(extension_loaded('XML'))✔️@else❌@endif</td></tr>
-        <tr><td>SQLite PHP Extension</td><td id="dp">@if(extension_loaded('PDO_SQLite'))✔️@else❌@endif</td></tr>
-        <tr><td>MySQL PHP Extension</td><td id="dp">@if(extension_loaded('PDO_MySQL'))✔️@else❌@endif</td></tr>
+        <tr><td>BCMath PHP Extension</td><td id="dp">@if(extension_loaded('bcmath'))<i class='bi bi-check-lg'></i>@else<i class='bi bi-x'></i>@endif</td></tr>
+        <tr><td>Ctype PHP Extension</td><td id="dp">@if(extension_loaded('Ctype'))<i class='bi bi-check-lg'></i>@else<i class='bi bi-x'></i>@endif</td></tr>
+        <tr><td>cURL PHP Extension</td><td id="dp">@if(extension_loaded('cURL'))<i class='bi bi-check-lg'></i>@else<i class='bi bi-x'></i>@endif</td></tr>
+        <tr><td>DOM PHP Extension</td><td id="dp">@if(extension_loaded('DOM'))<i class='bi bi-check-lg'></i>@else<i class='bi bi-x'></i>@endif</td></tr>
+        <tr><td>Fileinfo PHP Extension</td><td id="dp">@if(extension_loaded('Fileinfo'))<i class='bi bi-check-lg'></i>@else<i class='bi bi-x'></i>@endif</td></tr>
+        <tr><td>JSON PHP Extension</td><td id="dp">@if(extension_loaded('JSON'))<i class='bi bi-check-lg'></i>@else<i class='bi bi-x'></i>@endif</td></tr>
+        <tr><td>Mbstring PHP Extension</td><td id="dp">@if(extension_loaded('Mbstring'))<i class='bi bi-check-lg'></i>@else<i class='bi bi-x'></i>@endif</td></tr>
+        <tr><td>OpenSSL PHP Extension</td><td id="dp">@if(extension_loaded('OpenSSL'))<i class='bi bi-check-lg'></i>@else<i class='bi bi-x'></i>@endif</td></tr>
+        <tr><td>PCRE PHP Extension</td><td id="dp">@if(extension_loaded('PCRE'))<i class='bi bi-check-lg'></i>@else<i class='bi bi-x'></i>@endif</td></tr>
+        <tr><td>PDO PHP Extension</td><td id="dp">@if(extension_loaded('PDO'))<i class='bi bi-check-lg'></i>@else<i class='bi bi-x'></i>@endif</td></tr>
+        <tr><td>Tokenizer PHP Extension</td><td id="dp">@if(extension_loaded('Tokenizer'))<i class='bi bi-check-lg'></i>@else<i class='bi bi-x'></i>@endif</td></tr>
+        <tr><td>XML PHP Extension</td><td id="dp">@if(extension_loaded('XML'))<i class='bi bi-check-lg'></i>@else<i class='bi bi-x'></i>@endif</td></tr>
+        <tr><td>SQLite PHP Extension</td><td id="dp">@if(extension_loaded('PDO_SQLite'))<i class='bi bi-check-lg'></i>@else<i class='bi bi-x'></i>@endif</td></tr>
+        <tr><td>MySQL PHP Extension</td><td id="dp">@if(extension_loaded('PDO_MySQL'))<i class='bi bi-check-lg'></i>@else<i class='bi bi-x'></i>@endif</td></tr>
         </table>
