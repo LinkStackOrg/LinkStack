@@ -30,6 +30,9 @@
         "phpunit/phpunit": "^9.3.3"
     },
     "autoload": {
+        "files": [
+            "app/Functions/findfile.php"
+        ],
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
