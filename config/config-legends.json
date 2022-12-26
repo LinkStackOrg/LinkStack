@@ -31,7 +31,7 @@
     
     {"value": "ALLOW_USER_HTML",
     "title": "Allow extended syntax in user's descriptions",
-    "description": "This enables users to use special formatting like headings and links in their page description.<br>This is generally considered save."
+    "description": "This enables users to use special formatting like headings and links in their page description.<br>This is generally considered safe."
     },
 	
     {"value": "APP_NAME",
