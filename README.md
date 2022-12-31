@@ -348,6 +348,9 @@ You can support LittleLink Custom [here](https://littlelink-custom.com/sponsor).
 - [Jascha Urbach](https://github.com/jaschaurbach)
 - [LeoColman](https://github.com/LeoColman)
 - [Eric Chung](https://github.com/erickchung)
+- [Daltz](https://github.com/Daltz)
+- [Jan Klomp](https://github.com/escuco)
+- [AnhDOS](https://github.com/AnhDOS)
 
 - [Add Your Name](https://littlelink-custom.com/sponsor)
 
