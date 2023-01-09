@@ -31,6 +31,19 @@ use Illuminate\Support\Facades\Schema;
             if(EnvEditor::keyExists('FORCE_ROUTE_HTTPS')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('FORCE_ROUTE_HTTPS', 'false');}
 
+
+            // Footer page customization
+            if(EnvEditor::keyExists('DISPLAY_FOOTER_HOME')){} else {EnvEditor::addKey('DISPLAY_FOOTER_HOME', 'true');}
+            if(EnvEditor::keyExists('DISPLAY_FOOTER_TERMS')){} else {EnvEditor::addKey('DISPLAY_FOOTER_TERMS', 'true');}
+            if(EnvEditor::keyExists('DISPLAY_FOOTER_PRIVACY')){} else {EnvEditor::addKey('DISPLAY_FOOTER_PRIVACY', 'true');}
+            if(EnvEditor::keyExists('DISPLAY_FOOTER_CONTACT')){} else {EnvEditor::addKey('DISPLAY_FOOTER_CONTACT', 'true');}
+            if(EnvEditor::keyExists('TITLE_FOOTER_HOME')){} else {EnvEditor::addKey('TITLE_FOOTER_HOME', 'Home');}
+            if(EnvEditor::keyExists('TITLE_FOOTER_TERMS')){} else {EnvEditor::addKey('TITLE_FOOTER_TERMS', 'Terms');}
+            if(EnvEditor::keyExists('TITLE_FOOTER_PRIVACY')){} else {EnvEditor::addKey('TITLE_FOOTER_PRIVACY', 'Privacy');}
+            if(EnvEditor::keyExists('TITLE_FOOTER_CONTACT')){} else {EnvEditor::addKey('TITLE_FOOTER_CONTACT', 'Contact');}
+            if(EnvEditor::keyExists('HOME_FOOTER_LINK')){} else {EnvEditor::addKey('HOME_FOOTER_LINK', '');}
+
+
             if (!config()->has('advanced-config.expand_panel_admin_menu_permanently') and !config()->has('disable_default_password_notice')) {
             
             function getStringBetween($string, $start, $end) {
