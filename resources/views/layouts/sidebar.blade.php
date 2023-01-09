@@ -232,11 +232,11 @@ if($url1sb == '200'  or $url2sb == '200') {
 		@if(env('DISPLAY_FOOTER') === true)
 	        	<p>
 			    Copyright &copy; @php echo date('Y'); @endphp {{ config('app.name') }}<i class="icon-heart" aria-hidden="true"></i> </br>
-	@php if(config('advanced-config.display_link_home') != 'false' and config('advanced-config.display_link_terms') != 'false' and config('advanced-config.display_link_privacy') != 'false' and config('advanced-config.display_link_contact') != 'false'){$dot=" . "; } else {$dot="&ensp;";} @endphp
-    @if(config('advanced-config.display_link_home') != 'false')<a class="footer-hover spacing" @if(config('advanced-config.custom_link_home') != '')href="{{ config('advanced-config.custom_link_home') }}"@else href="{{ url('') }}/"@endif> @if(config('advanced-config.custom_text_home') != ''){{config('advanced-config.custom_text_home')}}@else Home @endif</a>{!!$dot!!}@endif
-    @if(config('advanced-config.display_link_terms') != 'false')<a class="footer-hover spacing" href="{{ url('') }}/pages/terms">Terms</a>{!!$dot!!}@endif
-    @if(config('advanced-config.display_link_privacy') != 'false')<a class="footer-hover spacing" href="{{ url('') }}/pages/privacy">Privacy</a>{!!$dot!!}@endif
-    @if(config('advanced-config.display_link_contact') != 'false')<a class="footer-hover spacing" href="{{ url('') }}/pages/contact">Contact</a>@endif
+	@php if(env('DISPLAY_FOOTER_HOME') != false and env('DISPLAY_FOOTER_TERMS') != false and env('DISPLAY_FOOTER_PRIVACY') != false and env('DISPLAY_FOOTER_CONTACT') != false){$dot=" . "; } else {$dot="&ensp;";} @endphp
+    @if(env('DISPLAY_FOOTER_HOME') === true)<a class="footer-hover spacing" href="@if(str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK')) === "" ){{ url('') }}@else{{ str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK')) }}@endif">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_HOME'))}}</a>{!!$dot!!}@endif
+    @if(env('DISPLAY_FOOTER_TERMS') === true)<a class="footer-hover spacing" href="{{ url('') }}/pages/terms">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_TERMS'))}}</a>{!!$dot!!}@endif
+    @if(env('DISPLAY_FOOTER_PRIVACY') === true)<a class="footer-hover spacing" href="{{ url('') }}/pages/privacy">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_PRIVACY'))}}</a>{!!$dot!!}@endif
+    @if(env('DISPLAY_FOOTER_CONTACT') === true)<a class="footer-hover spacing" href="{{ url('') }}/pages/contact">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_CONTACT'))}}</a>@endif
             </p>
 			@endif
 @if(env('DISPLAY_CREDIT') === true)

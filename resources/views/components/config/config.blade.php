@@ -378,6 +378,40 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 {{-- end SMTP settings --}}
 
 
+{{-- start footer settings --}}
+<a name="Footer"><h2 class="ch2">Footer links</h2></a>
+
+{{toggle('DISPLAY_FOOTER_HOME')}}
+{{text('TITLE_FOOTER_HOME')}}
+
+@php
+    $configNames = json_decode(file_get_contents(base_path('config/config-legends.json')));
+    $configValue = str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK'));
+@endphp
+    <form id="HOME_FOOTER_LINK-form" action="{{route('editConfig')}}" enctype="multipart/form-data" method="post">
+    <div class="form-group col-lg-8">
+    <input value="text" name="type" style="display:none;" type="text" required>
+    <input value="HOME_FOOTER_LINK" name="entry" style="display:none;" type="text" required>
+	<h5 style="margin-top:50px">@php foreach($configNames as $obj){if($obj->value == 'HOME_FOOTER_LINK'){echo $obj->title;}}; @endphp</h5>
+    <p class="text-muted">@php foreach($configNames as $obj){if($obj->value == 'HOME_FOOTER_LINK'){echo $obj->description;}}; @endphp</p>
+    <div class="input-group">
+    <input type="url" style="border-radius:.25rem;max-width:600px" class="form-control" name="value" value="{{$configValue}}">
+    <input type="hidden" name="_token" value="{{csrf_token()}}">
+	<button style="position:relative;bottom:17px;" type="submit" class="mt-3 ml-3 btn btn-info">Apply</button>
+    </div></div>
+    </form>
+
+{{toggle('DISPLAY_FOOTER_TERMS')}}
+{{text('TITLE_FOOTER_TERMS')}}
+
+{{toggle('DISPLAY_FOOTER_PRIVACY')}}
+{{text('TITLE_FOOTER_PRIVACY')}}
+
+{{toggle('DISPLAY_FOOTER_CONTACT')}}
+{{text('TITLE_FOOTER_CONTACT')}}
+{{-- end footer settings --}}
+
+
 {{-- start debug settings --}}
 <a name="Debug"><h2 class="ch2">Debug</h2></a>
 <form id="debug-form" action="{{route('editConfig')}}" enctype="multipart/form-data" method="post">

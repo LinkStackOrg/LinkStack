@@ -182,6 +182,7 @@
     <a href="#Security"><div class="legendl">Security</div></a>
     <a href="#Advanced"><div class="legendl">Advanced</div></a>
     <a href="#SMTP"><div class="legendl">SMTP</div></a>
+    <a href="#Footer"><div class="legendl">Footer links</div></a>
     <a href="#Debug"><div class="legendl">Debug</div></a>
     <div>
     </div></div></div>
@@ -279,6 +280,7 @@ btn.on('click', function(e) {
   $('html, body').animate({scrollTop:280}, '300');
 });
 </script>
+<script src="{{ asset('studio/external-dependencies/bootstrap.min.js') }}"></script>
 @endpush
 
 

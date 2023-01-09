@@ -166,5 +166,51 @@
     {"value": "FORCE_ROUTE_HTTPS",
     "title": "Redirect all pages to HTTPS",
     "description": "This option will break your setup when using a reverse proxy."
+    },
+
+
+    {"value": "DISPLAY_FOOTER_HOME",
+    "title": "Home footer link",
+    "description": "Enable Home footer link."
+    },
+
+    {"value": "DISPLAY_FOOTER_TERMS",
+    "title": "Terms footer link",
+    "description": "Enable Terms footer link."
+    },
+
+    {"value": "DISPLAY_FOOTER_PRIVACY",
+    "title": "Privacy footer link",
+    "description": "Enable Privacy link."
+    },
+
+    {"value": "DISPLAY_FOOTER_CONTACT",
+    "title": "Contact footer link",
+    "description": "Enable Contact link."
+    },
+
+    {"value": "TITLE_FOOTER_HOME",
+    "title": "<div style=\"margin-top:-40px\"></div>",
+    "description": "Title of home footer link."
+    },
+
+    {"value": "TITLE_FOOTER_TERMS",
+    "title": "<div style=\"margin-top:-40px\"></div>",
+    "description": "Title of terms footer link."
+    },
+
+    {"value": "TITLE_FOOTER_PRIVACY",
+    "title": "<div style=\"margin-top:-40px\"></div>",
+    "description": "Title of privacy link."
+    },
+
+    {"value": "TITLE_FOOTER_CONTACT",
+    "title": "<div style=\"margin-top:-40px\"></div>",
+    "description": "Title of contact link."
+    },
+
+    {"value": "HOME_FOOTER_LINK",
+    "title": "<div style=\"margin-top:-40px\">Home footer link URL</div>",
+    "description": "Enter any URL to redirect your home link URL.<br>Leave empty to use the default link."
     }
     ]

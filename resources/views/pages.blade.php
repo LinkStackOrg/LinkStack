@@ -80,7 +80,7 @@
         @endif
 
         <div class="jumbotron" style="margin-top: 10%">
-          <h1 class="display-4">{{ $name }}</h1>
+          <h1 class="display-4">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_'.strtoupper($name)))}}</h1>
           <hr class="my-4">
           <p>
             <?php echo $data['page']->$name; ?>
