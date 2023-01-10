@@ -22,6 +22,11 @@
     <h2 class="mb-4 card-header"><i class="bi bi-link-45deg"> Config</i></h2>
     <div class="card-body p-0 p-md-3">
 
+<style>
+/* Temporary fix for the unintended scrolling bug when applying settings */
+html {scroll-behavior: unset !important;}
+</style>
+
     <style>
     .option{
     	background-color: #343a40;
