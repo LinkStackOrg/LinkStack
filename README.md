@@ -351,6 +351,7 @@ You can support LittleLink Custom [here](https://littlelink-custom.com/sponsor).
 - [Daltz](https://github.com/Daltz)
 - [Jan Klomp](https://github.com/escuco)
 - [AnhDOS](https://github.com/AnhDOS)
+- [MrSpuddy](https://github.com/MrSpuddy)
 
 - [Add Your Name](https://littlelink-custom.com/sponsor)
 
