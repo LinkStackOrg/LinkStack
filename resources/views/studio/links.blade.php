@@ -220,6 +220,8 @@ if (isset($_COOKIE['LinkCount'])) {
 
     {!!icon('twitter', 'Twitter')!!}
 
+    {!!icon('facebook', 'Facebook')!!}
+
     {!!icon('github', 'GitHub')!!}
 
     {!!icon('linkedin', 'LinkedIn')!!}
@@ -234,7 +236,7 @@ if (isset($_COOKIE['LinkCount'])) {
 
     {!!icon('reddit', 'Reddit')!!}
 
-    {!!icon('pinterest', 'Pinterest')!!}
+    {!!icon('pinterest', 'Pinterest')!!}´
 
     {{-- {!!icon('telegram', 'Telegram')!!}
 

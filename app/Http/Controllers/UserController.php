@@ -726,6 +726,8 @@ class UserController extends Controller
 
     saveIcon('twitter', $request->twitter);
 
+    saveIcon('facebook', $request->facebook);
+
     saveIcon('github', $request->github);
 
     saveIcon('linkedin', $request->linkedin);
