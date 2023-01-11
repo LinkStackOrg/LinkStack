@@ -284,12 +284,6 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 {{toggle('NOTIFY_UPDATES')}}
 
 
-{{toggle('DISPLAY_FOOTER')}}
-
-
-{{toggle('DISPLAY_CREDIT')}}
-
-
 {{toggle('ENABLE_BUTTON_EDITOR')}}
 
 
@@ -380,6 +374,10 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 
 {{-- start footer settings --}}
 <a name="Footer"><h2 class="ch2">Footer links</h2></a>
+
+{{toggle('DISPLAY_FOOTER')}}
+
+{{toggle('DISPLAY_CREDIT')}}
 
 {{toggle('DISPLAY_FOOTER_HOME')}}
 {{text('TITLE_FOOTER_HOME')}}
