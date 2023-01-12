@@ -107,29 +107,6 @@ return [
     // For example the '@' in 'example.com/@admin'.
     // If empty no prefix is required.
     'custom_url_prefix' => '+', // The '@' prefix will always work regardless of this setting.
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Footer links
-    |--------------------------------------------------------------------------
-    |
-    | Footer links are the links that are displayed on the bottom of your page, reading: "Home, Terms, Privacy, Contact".
-    | You can toggle each individual link on or off. 
-    | You can also set a custom URL for the "Home" link.
-    |
-    */
-
-    // Either "true" or "false".
-    'display_link_home' => 'true',
-    'display_link_terms' => 'true',
-    'display_link_privacy' => 'true',
-    'display_link_contact' => 'true',
-
-    // Enter a custom home link (for example, 'https://littlelink-custom.com').
-    'custom_link_home' => '', // Leave empty to use default value.
-    // Changes the text on the "Home" link.
-    'custom_text_home' => 'Home', // Leave empty to use default value.
     
     /*
     |--------------------------------------------------------------------------
@@ -283,9 +260,6 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-
-    // Expands admin menu on the Admin Panel Sidebar permanently
-    'expand_panel_admin_menu_permanently' => 'false', // Either "true" or "false".
 
     // Should only be used in a local testing environment
     'disable_default_password_notice' => 'false', // Either "true" or "false".
