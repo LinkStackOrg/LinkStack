@@ -80,17 +80,22 @@
 ---
 
 ## Function    
-**LittleLink Custom provides** you with **a website similar to** [Linktree](https://linktr.ee/). Many **social media platforms only allow you to add one link**, with this you can simply **link to your LittleLink Custom page** and have **all the links you want** displayed on one site. You can share all your links to your social media platform or important links to **easy accessible and hosted on your own web-server** or web-hosting provider. On this website, other users can register and create their own links, you can access other user via the Admin Panel.
+**LittleLink Custom offers** a unique solution for managing and sharing links online. Our platform provides **a website similar to** [Linktree](https://linktr.ee/), allowing users to **overcome the limitation of only being able to add one link on social media platforms**. By **linking to your LittleLink Custom page**, users can easily **access all the links they need** in one convenient location.
+
+Our platform allows users to **host their links on their own web-server or web-hosting provider**, ensuring easy accessibility and control over their online presence. Additionally, **other users can register and create their own links**, making it an ideal solution for businesses and organizations looking to manage multiple links.
+
+Our platform also includes an **Admin Panel**, enabling users to easily **access other user's links**, making it an ideal solution for businesses and organizations looking to manage multiple links. Overall, LittleLink Custom provides an efficient and user-friendly solution for streamlining online presence.
+
 
 
 <br>
 	    
 ## About
-**LittleLink Custom** is a fork of [LittleLink Admin](https://github.com/latuminggi/littlelink-admin) with a **set goal** of making the admin panel **easier to use and setup**, for inexperienced and first-time user's, with the addition of **many custom features** themed around customization for the individual users, LittleLink pages.
+**LittleLink Custom** is a fork of [LittleLink Admin](https://github.com/latuminggi/littlelink-admin) with a **set goal** of making the admin panel **easier to use and setup** for inexperienced and first-time users, with the addition of **many custom features** themed around customization for the individual users' LittleLink pages.
 
-**LittleLink Custom** was made for the purpose of making LittleLink as well as LittleLink Admin **easier to use and setup**, by people who have never coded before nor have extensive web hosting knowledge. This project is set up in a way that you can **just drag and drop** the LittleLink Custom **directory onto** your web host's **root directory** without ever having to touch the source code or deal with pesky terminal commands.
+**LittleLink Custom** was developed to simplify the usage and setup of LittleLink and LittleLink Admin for individuals who have minimal coding experience or limited knowledge of web hosting. This project is designed in a way that allows for **drag and drop** implementation of the LittleLink Custom **directory onto** your web host's **root directory**, eliminating the need for source code manipulation or dealing with complex terminal commands.
 
-In addition to an easier setup process, this fork adds **many custom features** for an improved and more feature rich user experience. All UI pages feature a **dark mode**, which automatically applies if your operating system's or browser theme is set to dark. LittleLink Custom adds light unobtrusive **CSS animations** for an esthetically pleasing **responsive design**. Many small changes like this have been implemented that add up to a substantial feature set that **sets LittleLink Custom apart from other forks**.
+In addition to a user-friendly setup process, this fork offers **numerous custom features** that enhance the user experience, including a **dark mode** that automatically applies based on your operating system's or browser theme settings, and light unobtrusive **CSS animations** for an aesthetically pleasing **responsive design**. These and other small changes, when combined, provide a substantial feature set that **differentiates LittleLink Custom from other forks**.
 	    
 <br>
 	    
@@ -101,11 +106,7 @@ This is a full-fledged demo of the website, complete with login and register fun
 Feel free to register your account and try out all the features of LittleLink Custom.
 
 <br>
-</br>
 
-> *Please take into account that performance on this page might not represent optimal performance achievable with LittleLink Custom due to compromises regarding our web hosting budget.*
-
-<br>
 <p align="center">
   <a href="https://demo.littlelink-custom.com/"><img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/badges/live_demo.png" alt="Live Demo" width="350" ></a>
 </p>
