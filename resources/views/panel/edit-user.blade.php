@@ -28,8 +28,8 @@
           </div>
           
           <div class="form-group col-lg-8">
-          @if(file_exists(base_path("img/$user->littlelink_name" . ".png" )))
-          <img src="{{ asset("img/$user->littlelink_name" . ".png") }}" srcset="{{ asset("img/$user->littlelink_name" . "@2x.png 2x") }}" width="128px" height="128px" style="object-fit: cover;">
+          @if(file_exists(base_path("img/" . $user->id . ".png")))
+          <img src="{{ asset("img/" . $user->id . ".png") }}" srcset="{{ asset("img/$user->littlelink_name" . "@2x.png 2x") }}" width="128px" height="128px" style="object-fit: cover;">
           @elseif(file_exists(base_path("littlelink/images/").findFile('avatar')))
           <img class="rounded-avatar" src="{{ asset('littlelink/images/'.findFile('avatar')) }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="128px" height="128px" style="object-fit: cover;">
           @else

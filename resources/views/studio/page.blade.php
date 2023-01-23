@@ -32,8 +32,8 @@
     @endif
 
     <div class="form-group col-lg-8">
-        @if(file_exists(base_path("img/$page->littlelink_name" . ".png" )))
-        <img src="{{ asset("img/$page->littlelink_name" . ".png") }}" style="width: 75px; height: 75px; border-radius: 50%; object-fit: cover;">
+        @if(file_exists(base_path("img/" . Auth::user()->id . ".png")))
+        <img src="{{ asset("img/" . Auth::user()->id . ".png") }}" style="width: 75px; height: 75px; border-radius: 50%; object-fit: cover;">
         @else
         @if(!empty($page->image))
         <img src="{{ $page->image }}" style="width: 75px; height: 75px; object-fit: cover;">
@@ -58,7 +58,7 @@
             <div class="input-group-prepend">
                 <div class="input-group-text">{{ url('') }}/@</div>
             </div>
-            <input type="text" class="form-control" name="pageName" value="{{ $page->littlelink_name ?? '' }}" required>
+            <input type="text" class="form-control" name="littlelink_name" value="{{ $page->littlelink_name ?? '' }}" required>
         </div>
 
          <label style="margin-top:15px">Display name</label>
@@ -66,7 +66,7 @@
             {{-- <div class="input-group-prepend">
                 <div class="input-group-text">Name:</div>
             </div> --}}
-            <input type="text" class="form-control" name="Name" value="{{ $page->name }}" required>
+            <input type="text" class="form-control" name="name" value="{{ $page->name }}" required>
         </div>
     </div>
 
