@@ -510,18 +510,18 @@ class UserController extends Controller
     public function editPage(request $request)
     {
         $request->validate([
-            'littlelink_name' => 'string|max:255|unique:users',
-            'name' => 'string|max:255|unique:users',
+            'littlelink_name' => 'max:255|string|isunique:users',
+            'name' => 'max:255|string',
         ]);
 
         $userId = Auth::user()->id;
         $littlelink_name = Auth::user()->littlelink_name;
 
         $profilePhoto = $request->file('image');
-        $pageName = $request->pageName;
+        $pageName = $request->littlelink_name;
         $pageDescription = strip_tags($request->pageDescription,'<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
         $pageDescription = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $pageDescription);
-        $name = $request->Name;
+        $name = $request->name;
 
         User::where('id', $userId)->update(['littlelink_name' => $pageName, 'littlelink_description' => $pageDescription, 'name' => $name]);
 
