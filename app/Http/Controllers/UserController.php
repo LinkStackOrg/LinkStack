@@ -669,6 +669,19 @@ class UserController extends Controller
         return redirect('/');
     }
 
+    //Delete profile picture
+    public function delProfilePicture()
+    {
+        $user_id = Auth::user()->id;
+        $path = base_path('img/' . $user_id . '.png');
+        
+        if (File::exists($path)) {
+            File::delete($path);
+        }
+
+        return back();
+    }
+
     //Edit/save page icons
     public function editIcons(request $request)
     {

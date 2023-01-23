@@ -26,7 +26,7 @@
     @csrf
     @if($page->littlelink_name != '')
     <div class="form-group col-lg-8">
-        <label>Logo</label>
+        <label>Logo</label>@if(file_exists(base_path("img/" . Auth::user()->id . ".png")))<a title="Remove icon" class="hvr-grow p-1 text-danger" style="padding-left:5px;" href="{{ route('delProfilePicture') }}"><i class="bi bi-trash-fill"></i></a>@endif
         <input type="file" accept="image/jpeg,image/jpg,image/png" class="form-control-file" name="image">
     </div>
     @endif
@@ -58,7 +58,7 @@
             <div class="input-group-prepend">
                 <div class="input-group-text">{{ url('') }}/@</div>
             </div>
-            <input type="text" class="form-control" name="pageName" value="{{ $page->littlelink_name ?? '' }}" required>
+            <input type="text" class="form-control" name="littlelink_name" value="{{ $page->littlelink_name ?? '' }}" required>
         </div>
 
          <label style="margin-top:15px">Display name</label>
@@ -66,7 +66,7 @@
             {{-- <div class="input-group-prepend">
                 <div class="input-group-text">Name:</div>
             </div> --}}
-            <input type="text" class="form-control" name="Name" value="{{ $page->name }}" required>
+            <input type="text" class="form-control" name="name" value="{{ $page->name }}" required>
         </div>
     </div>
 
