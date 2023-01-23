@@ -510,8 +510,8 @@ class UserController extends Controller
     public function editPage(request $request)
     {
         $request->validate([
-            'littlelink_name' => 'max:255|string|isunique:users',
-            'name' => 'max:255|string',
+            'littlelink_name' => 'sometimes|max:255|string|isunique:users,id,'.Auth::id(),
+            'name' => 'sometimes|max:255|string',
         ]);
 
         $userId = Auth::user()->id;
@@ -525,7 +525,7 @@ class UserController extends Controller
 
         User::where('id', $userId)->update(['littlelink_name' => $pageName, 'littlelink_description' => $pageDescription, 'name' => $name]);
 
-        if (!empty($profilePhoto)) {
+        if ($request->hasFile('image')) {
             $profilePhoto->move(base_path('/img'), $littlelink_name . ".png");
         }
 
