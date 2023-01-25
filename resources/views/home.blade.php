@@ -198,7 +198,7 @@ foreach($pages as $page)
 
         <!-- Short Bio -->
         <div class="mt-5 fadein">
-		      <?php echo $message->home_message; ?>
+        <center><?php echo $message->home_message; ?></center>
         </div>
         
 
@@ -241,7 +241,7 @@ foreach($pages as $page)
 @endif
         </br></br>
 
-      <div class="fadein">
+        <center><div class="fadein">
         @if(config('advanced-config.home_footer') == 'custom')
         <p><?php $year = date("Y"); echo strtr(config('advanced-config.custom_home_footer_text'), array('{year}' => $year)); ?></p>
         @elseif(config('advanced-config.home_footer') == 'alt')
@@ -250,7 +250,7 @@ foreach($pages as $page)
         @else
         <p>and {{ $countButton - 3 }} other buttons ...</p>
         @endif
-      </div>
+      </div></center>
 
         <hr class="my-4" style="display:none">
 
