@@ -7,11 +7,11 @@
 
 <div id="exTab2" class="">
     <ul id="myTab" class="nav nav-tabs">
-    	<li class="nav-item"><a class="nav-link active" href="#home1" data-toggle="tab" id="home-tab">Config</a></li>
-    	<li class="nav-item"><a class="nav-link" href="#advanced2" data-toggle="tab" id="advanced-tab">Advanced Config</a></li>
-    	<li class="nav-item"><a class="nav-link" href="#backup3" data-toggle="tab" id="backup-tab">Take Backup</a></li>
-    	<li class="nav-item"><a class="nav-link" href="#backups4" data-toggle="tab" id="backups4-tab">All Backups</a></li>
-    	<li class="nav-item"><a class="nav-link" href="#diagnose5" data-toggle="tab" id="diagnose5-tab">Diagnosis</a></li>
+    	<li class="nav-item"><a class="nav-link active" href="#1" data-toggle="tab" id="home-tab">Config</a></li>
+    	<li class="nav-item"><a class="nav-link" href="#2" data-toggle="tab" id="advanced-tab">Advanced Config</a></li>
+    	<li class="nav-item"><a class="nav-link" href="#3" data-toggle="tab" id="backup-tab">Take Backup</a></li>
+    	<li class="nav-item"><a class="nav-link" href="#4" data-toggle="tab" id="backups4-tab">All Backups</a></li>
+    	<li class="nav-item"><a class="nav-link" href="#5" data-toggle="tab" id="diagnose5-tab">Diagnosis</a></li>
     </ul>
 
 <div class="tab-content ">
@@ -199,7 +199,7 @@ html {scroll-behavior: unset !important;}
 </div>
 
 
-<div class="tab-pane" role="tabpanel" aria-labelledby="advanced-tab" id="advanced2">
+<div class="tab-pane" role="tabpanel" aria-labelledby="advanced-tab" id="2">
     <section class="shadow text-gray-400">
     <h2 class="mb-4 card-header"><i class="bi bi-pencil-square"> Advanced config</i></h2>
     <div class="card-body p-0 p-md-3">
@@ -209,7 +209,7 @@ html {scroll-behavior: unset !important;}
 </div>
 
 
-<div class="tab-pane" role="tabpanel" aria-labelledby="backup-tab" id="backup3">
+<div class="tab-pane" role="tabpanel" aria-labelledby="backup-tab" id="3">
     <section class="shadow text-gray-400">
     <h2 class="mb-4 card-header"><i class="bi bi-link-45deg"> Backup</i></h2>
     <div class="card-body p-0 p-md-3">
@@ -219,7 +219,7 @@ html {scroll-behavior: unset !important;}
 </div>
 
 
-<div class="tab-pane" role="tabpanel" aria-labelledby="backups4-tab" id="backups4">
+<div class="tab-pane" role="tabpanel" aria-labelledby="backups4-tab" id="4">
     <section class="shadow text-gray-400">
     <h2 class="mb-4 card-header"><i class="bi bi-link-45deg"> Backups</i></h2>
     <div class="card-body p-0 p-md-3">
@@ -229,7 +229,7 @@ html {scroll-behavior: unset !important;}
 </div>
 
 
-<div class="tab-pane" role="tabpanel" aria-labelledby="diagnose5-tab" id="diagnose5">
+<div class="tab-pane" role="tabpanel" aria-labelledby="diagnose5-tab" id="5">
     <section class="shadow text-gray-400">
     <h2 class="mb-4 card-header"><i class="bi bi-braces-asterisk"> Debugging information</i> <span class="text-muted" style="font-size:60%;vertical-align: middle;">v{{file_get_contents(base_path("version.json"))}}</span></h2>
     <div class="card-body p-0 p-md-3">
