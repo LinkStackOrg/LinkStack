@@ -17,7 +17,7 @@
 <div class="tab-content ">
 
 
-<div class="tab-pane fade show active" role="tabpanel" aria-labelledby="home-tab" id="home1">
+<div class="tab-pane fade show active" role="tabpanel" aria-labelledby="home-tab" id="1">
     <section class="shadow text-gray-400">
     <h2 class="mb-4 card-header"><i class="bi bi-link-45deg"> Config</i></h2>
     <div class="card-body p-0 p-md-3">
