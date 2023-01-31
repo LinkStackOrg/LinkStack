@@ -156,10 +156,10 @@
 <label>Handle:</label>
 <div class="input-group">
 <div class="input-group-prepend"><div class="input-group-text">@</div></div>
-<input style="max-width:237px; padding-left:50px;" class="form-control" name="handle" type="text" />
+<input style="max-width:237px; padding-left:50px;" class="form-control" name="handle" type="text" required>
 </div>
 <label>Name:</label>
-<input style="max-width:275px;" class="form-control" name="name" type="text" />
+<input style="max-width:275px;" class="form-control" name="name" type="text" required>
 <div class="input-group">
 </div></div><br>
 <input type="hidden" name="_token" value="{{csrf_token()}}">
