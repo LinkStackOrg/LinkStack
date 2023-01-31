@@ -4,7 +4,7 @@
 <div class="container">
 
 <?php // Requests newest version from server and sets it as variable
-			   		$Vgit = file_get_contents("https://version.littlelink-custom.com/");
+			   		$Vgit = external_file_get_contents("https://version.littlelink-custom.com/");
 
 				       // Requests current version from the local version file and sets it as variable
                   $Vlocal = file_get_contents(base_path("version.json"));
@@ -21,7 +21,7 @@
         <h1>Updater</h1>
         @if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
         @if(env('JOIN_BETA') === true)
-        <p><?php echo "latest beta version= " . file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?></p>
+        <p><?php echo "latest beta version= " . external_file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?></p>
         <p><?php  if(file_exists(base_path("vbeta.json"))) {echo "Installed beta version= " . file_get_contents(base_path("vbeta.json"));} else {echo "Installed beta version= none";}  ?></p>
         <p><?php  if($Vgit > $Vlocal) {echo "You need to update to the latest mainline release";} else {echo "You're running the latest mainline release";}  ?></p>
         @else
@@ -34,7 +34,7 @@
         </div>
         @else
         @if(env('JOIN_BETA') === true)
-        <p><?php echo "latest beta version= " . file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?></p>
+        <p><?php echo "latest beta version= " . external_file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?></p>
         <p><?php  if(file_exists(base_path("vbeta.json"))) {echo "Installed beta version= " . file_get_contents(base_path("vbeta.json"));} else {echo "Installed beta version= none";}  ?></p>
         <p><?php  if($Vgit > $Vlocal) {echo "You need to update to the latest mainline release";} else {echo "You're running the latest mainline release";}  ?></p>
         @else
@@ -72,7 +72,7 @@
 
 // Download the zip file
 
-$latestversion = trim(file_get_contents("https://version.littlelink-custom.com/"));
+$latestversion = trim(external_file_get_contents("https://version.littlelink-custom.com/"));
 
 if(env('JOIN_BETA') === true){
    $fileUrl = 'https://update.littlelink-custom.com/beta/'. $latestversion . '.zip';
@@ -135,7 +135,7 @@ exit(); ?>
         
         <?php // Get update preperation script from GitHub
         try {
-        $file = file_get_contents('https://pre-update.littlelink-custom.com');
+        $file = external_file_get_contents('https://pre-update.littlelink-custom.com');
         $newfile = base_path('resources/views/components/pre-update.blade.php');
         file_put_contents($newfile, $file);
         } catch (exception $e) {}
@@ -215,7 +215,7 @@ if($debug === true){
         </div>
         <h1>Success!</h1>
         @if(env('JOIN_BETA') === true)
-        <p><?php echo "latest beta version= " . file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?></p>
+        <p><?php echo "latest beta version= " . external_file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?></p>
         <p><?php  if(file_exists(base_path("vbeta.json"))) {echo "Installed beta version= " . file_get_contents(base_path("vbeta.json"));} else {echo "Installed beta version= none";}  ?></p>
         <p><?php  if($Vgit > $Vlocal) {echo "You need to update to the latest mainline release";} else {echo "You're running the latest mainline release";}  ?></p>
         @else

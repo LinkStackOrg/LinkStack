@@ -279,7 +279,7 @@ if($url1sb == '200'  or $url2sb == '200') {
 
                   <?php // Requests newest version from server and sets it as variable
 					ini_set('user_agent', 'Mozilla/4.0 (compatible; MSIE 6.0)');
-					$json = file_get_contents("https://api.github.com/repos/julianprieber/littlelink-custom/releases/latest");
+					$json = external_file_get_contents("https://api.github.com/repos/julianprieber/littlelink-custom/releases/latest");
 					$myObj = json_decode($json);
 				  $Vgit = $myObj->tag_name;
 
@@ -300,7 +300,7 @@ if($url1sb == '200'  or $url2sb == '200') {
                   <?php // Requests newest version from server and sets it as variable
 
                   try{
-                  $Vgit = file_get_contents("https://version.littlelink-custom.com/"); 
+                  $Vgit = external_file_get_contents("https://version.littlelink-custom.com/"); 
 
 				       // Requests current version from the local version file and sets it as variable
                   $Vlocal = file_get_contents(base_path("version.json"));
@@ -387,7 +387,7 @@ if($url1sb == '200'  or $url2sb == '200') {
 
 					@if(env('JOIN_BETA') === true and auth()->user()->role == 'admin')
 					<style>.beta-mobile {display: none;margin: 0 auto;font-size:200%;padding-left: 15px;margin-right: -15px;position: relative;bottom: 3px;}@media only screen and (max-width: 1300px) {.beta {display: none;}.beta-mobile {display: inline-block !important;}}</style>
-					<a style="color:tomato;" class="nav-link beta" href="{{ url('update') }}">You are in BETA mode! <img src="https://img.llc.ovh/static/v1?label=installed:&message=<?php  if(file_exists(base_path("vbeta.json"))) {echo file_get_contents(base_path("vbeta.json"));} else {echo "none";}  ?>&color=FFFFFF"> <img src="https://img.llc.ovh/static/v1?label=server:&message=<?php echo file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?>&color=FFFFFF"></a>
+					<a style="color:tomato;" class="nav-link beta" href="{{ url('update') }}">You are in BETA mode! <img src="https://img.llc.ovh/static/v1?label=installed:&message=<?php  if(file_exists(base_path("vbeta.json"))) {echo file_get_contents(base_path("vbeta.json"));} else {echo "none";}  ?>&color=FFFFFF"> <img src="https://img.llc.ovh/static/v1?label=server:&message=<?php echo external_file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?>&color=FFFFFF"></a>
 					<a style="color:tomato;" class="beta-mobile" href="{{ url('update') }}"><i class="bi bi-file-code-fill"></i></a>
 					@endif
 
@@ -451,7 +451,7 @@ $userdbs = DB::table('users')->where('id', $littlelink_current)->get();
 	@if(env('NOTIFY_EVENTS') === true)
         <?php
         try{
-        $GetEventJson = file_get_contents("https://event.littlelink-custom.com/");
+        $GetEventJson = external_file_get_contents("https://event.littlelink-custom.com/");
 		$EventJson = json_decode($GetEventJson, true);
 		if(isset($_COOKIE['HideEvent']) == NULL) {
 			setcookie("HideEvent",$_COOKIE['ID'] = "0", time()+60*60*24*5, "/");
