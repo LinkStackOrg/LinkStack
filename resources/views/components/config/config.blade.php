@@ -304,6 +304,7 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 
 <a name="Advanced"><h2 class="ch2">Advanced</h2></a>
 
+{{toggle('JOIN_BETA')}}
 
 {{-- start MAINTENANCE_MODE --}}
 <form id="MAINTENANCE_MODE-form" action="{{route('editConfig')}}" enctype="multipart/form-data" method="post">
@@ -323,9 +324,6 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 </script>
 </form>
 {{-- end MAINTENANCE_MODE --}}
-
-
-{{toggle('JOIN_BETA')}}
 
 
 {{toggle('SKIP_UPDATE_BACKUP')}}
