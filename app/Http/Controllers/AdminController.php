@@ -315,16 +315,27 @@ class AdminController extends Controller
     }
 
     //View any of the pages: contact, terms, privacy
-    public function pages(request $request)
+    public function pages(Request $request)
     {
         $name = $request->name;
-
+    
+        $enabledPages = [
+            'contact' => env('DISPLAY_FOOTER_CONTACT', false),
+            'terms' => env('DISPLAY_FOOTER_TERMS', false),
+            'privacy' => env('DISPLAY_FOOTER_PRIVACY', false),
+            // Add other pages here as needed
+        ];
+    
+        if (!array_key_exists($name, $enabledPages) || !$enabledPages[$name]) {
+            return abort(404);
+        }
+    
         try {
             $data['page'] = Page::select($name)->first();
         } catch (Exception $e) {
             return abort(404);
         }
-
+    
         return view('pages', ['data' => $data, 'name' => $name]);
     }
 
