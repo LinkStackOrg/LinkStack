@@ -210,7 +210,7 @@ class AdminController extends Controller
             User::where('id', $id)->update(['name' => $name, 'email' => $email, 'password' => $password, 'littlelink_name' => $littlelink_name, 'littlelink_description' => $littlelink_description, 'role' => $role]);
         }
         if (!empty($profilePhoto)) {
-            $profilePhoto->move(base_path('/img'), $littlelink_name . ".png");
+            $profilePhoto->move(base_path('/img'), $id . ".png");
         }
 
         return redirect('panel/users/all');
