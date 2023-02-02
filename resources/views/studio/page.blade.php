@@ -32,8 +32,8 @@
     @endif
 
     <div class="form-group col-lg-8">
-        @if(file_exists(base_path("img/$page->littlelink_name" . ".png" )))
-        <img src="{{ asset("img/$page->littlelink_name" . ".png") }}" style="width: 75px; height: 75px; border-radius: 50%; object-fit: cover;">
+        @if(file_exists(base_path("img/" . Auth::user()->id . ".png")))
+        <img src="{{ asset("img/" . Auth::user()->id . ".png") }}" style="width: 75px; height: 75px; border-radius: 50%; object-fit: cover;">
         @else
         @if(!empty($page->image))
         <img src="{{ $page->image }}" style="width: 75px; height: 75px; object-fit: cover;">
