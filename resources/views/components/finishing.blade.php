@@ -1,7 +1,9 @@
-        <?php 
+<?php 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
          //run before finishing:
             if(EnvEditor::keyExists('JOIN_BETA')){ /* Do nothing if key already exists */ 
@@ -116,6 +118,24 @@ use Illuminate\Support\Facades\Schema;
             ]'
         ]);
     } catch (exception $e) {}
+
+
+    // Changes saved profile images from littlelink_name to IDs.
+    // This runs every time the updater runs.
+    // Not sure if this will cause any issues.
+    // If it works, I won't touch it.
+    try {
+    $users = DB::table('users')->get();
+    foreach ($users as $user) {
+        $oldName = $user->littlelink_name . '.png';
+        $newName = $user->id . '.png';
+        $oldPath = base_path('img/' . $oldName);
+        $newPath = base_path('img/' . $newName);
+    
+        if (File::exists($oldPath)) {
+            File::move($oldPath, $newPath);
+        }}} catch (exception $e) {}
+
 
         echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "?success\" />"; 
         ?>
