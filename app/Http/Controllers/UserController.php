@@ -673,7 +673,6 @@ class UserController extends Controller
     public function delProfilePicture()
     {
         $user_id = Auth::user()->id;
-        $user_id = User::find($user_id)->littlelink_name; // remove when switching to IDs
         $path = base_path('img/' . $user_id . '.png');
         
         if (File::exists($path)) {
