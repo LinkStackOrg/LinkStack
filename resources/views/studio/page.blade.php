@@ -26,7 +26,7 @@
     @csrf
     @if($page->littlelink_name != '')
     <div class="form-group col-lg-8">
-        <label>Logo</label>@if(file_exists(base_path("img/" . $page->littlelink_name . ".png")))<a title="Remove icon" class="hvr-grow p-1 text-danger" style="padding-left:5px;" href="{{ route('delProfilePicture') }}"><i class="bi bi-trash-fill"></i></a>@endif
+        <label>Logo</label>@if(file_exists(base_path("img/" . Auth::user()->id . ".png")))<a title="Remove icon" class="hvr-grow p-1 text-danger" style="padding-left:5px;" href="{{ route('delProfilePicture') }}"><i class="bi bi-trash-fill"></i></a>@endif
         <input type="file" accept="image/jpeg,image/jpg,image/png" class="form-control-file" name="image">
     </div>
     @endif
