@@ -39,7 +39,6 @@
 <a href="https://discord.littlelink-custom.com"><img alt="Discord online user count" src="https://img.llc.ovh/discord/955765706111193118?color=4A55CC&label=Discord&logo=Discord&style=flat"></a>
 <br>
 <a href="https://mstdn.social/@littlelink_custom"><img alt="Mastodon Follow" src="https://img.llc.ovh/mastodon/follow/109003317067542220?domain=http%3A%2F%2Fmstdn.social&style=social"></a>
-<a href="https://twitter.com/ll_custom"><img alt="Twitter Follow" src="https://img.llc.ovh/twitter/follow/ll_custom?style=social"></a>
 </p>
 <p align="center">
 <a href="https://github.com/sponsors/julianprieber"><img alt="GitHub spomsors" src="https://img.llc.ovh/github/sponsors/JulianPrieber?color=BF4B8A&logo=githubsponsors&style=flat&label=Sponsor%20us%20on%20Github"></a>
