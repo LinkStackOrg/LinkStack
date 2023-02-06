@@ -2,6 +2,12 @@
 @include('layouts.lang')
 <head>
   <meta charset="utf-8">
+  @php
+  $title = \Route::currentRouteName();
+  $title = str_replace('pages', '', $title);
+  $title = env('TITLE_FOOTER_'.strtoupper($title));
+  @endphp
+  <title>{{$title}} - {{env('APP_NAME')}}</title>
 
 @include('layouts.analytics')
 
