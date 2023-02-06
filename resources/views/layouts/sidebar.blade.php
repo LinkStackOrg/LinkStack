@@ -234,9 +234,9 @@ if($url1sb == '200'  or $url2sb == '200') {
 			    Copyright &copy; @php echo date('Y'); @endphp {{ config('app.name') }}<i class="icon-heart" aria-hidden="true"></i> </br>
 	@php if(env('DISPLAY_FOOTER_HOME') != false and env('DISPLAY_FOOTER_TERMS') != false and env('DISPLAY_FOOTER_PRIVACY') != false and env('DISPLAY_FOOTER_CONTACT') != false){$dot=" . "; } else {$dot="&ensp;";} @endphp
     @if(env('DISPLAY_FOOTER_HOME') === true)<a class="footer-hover spacing" href="@if(str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK')) === "" ){{ url('') }}@else{{ str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK')) }}@endif">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_HOME'))}}</a>{!!$dot!!}@endif
-    @if(env('DISPLAY_FOOTER_TERMS') === true)<a class="footer-hover spacing" href="{{ url('') }}/pages/terms">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_TERMS'))}}</a>{!!$dot!!}@endif
-    @if(env('DISPLAY_FOOTER_PRIVACY') === true)<a class="footer-hover spacing" href="{{ url('') }}/pages/privacy">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_PRIVACY'))}}</a>{!!$dot!!}@endif
-    @if(env('DISPLAY_FOOTER_CONTACT') === true)<a class="footer-hover spacing" href="{{ url('') }}/pages/contact">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_CONTACT'))}}</a>@endif
+    @if(env('DISPLAY_FOOTER_TERMS') === true)<a class="footer-hover spacing" href="{{ url('') }}/pages/{{ strtolower(env('TITLE_FOOTER_TERMS')) }}">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_TERMS'))}}</a>{!!$dot!!}@endif
+    @if(env('DISPLAY_FOOTER_PRIVACY') === true)<a class="footer-hover spacing" href="{{ url('') }}/pages/{{ strtolower(env('TITLE_FOOTER_PRIVACY')) }}">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_PRIVACY'))}}</a>{!!$dot!!}@endif
+    @if(env('DISPLAY_FOOTER_CONTACT') === true)<a class="footer-hover spacing" href="{{ url('') }}/pages/{{ strtolower(env('TITLE_FOOTER_CONTACT')) }}">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_CONTACT'))}}</a>@endif
             </p>
 			@endif
 @if(env('DISPLAY_CREDIT') === true)

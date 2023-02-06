@@ -88,7 +88,9 @@ Route::get('/going/{id?}', [UserController::class, 'clickNumber'])->where('link'
 if (!str_contains(url()->full(), '@') and !in_array(url()->full(), [url('login'), url('register'), url('update'),  url('update?error='), url('update?success='), url('update?finishing='), url('update?updating='), url('update?backups='), url('update?backup='), url('update?updating-windows='), url('update?preparing='), url('updating'), url('backup')])) {
 Route::get('/' . $custom_prefix . '{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');}
 Route::get('/@{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
-Route::get('/pages/{name}', [AdminController::class, 'pages'])->name('pages');
+Route::get('/pages/'.strtolower(env('TITLE_FOOTER_TERMS')), [AdminController::class, 'pagesTerms'])->name('pagesTerms');
+Route::get('/pages/'.strtolower(env('TITLE_FOOTER_PRIVACY')), [AdminController::class, 'pagesPrivacy'])->name('pagesPrivacy');
+Route::get('/pages/'.strtolower(env('TITLE_FOOTER_CONTACT')), [AdminController::class, 'pagesContact'])->name('pagesContact');
 Route::get('/theme/@{littlelink}', [UserController::class, 'theme'])->name('theme');
 
 //User route
