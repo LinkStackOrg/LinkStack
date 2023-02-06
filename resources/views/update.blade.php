@@ -204,6 +204,8 @@ if($debug === true){
    if(EnvEditor::keyExists('LOG_LEVEL')){EnvEditor::editKey('LOG_LEVEL', 'error');}
 }
 ?>
+
+<?php echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "?success\" />"; ?>
 @endif
 
 @if($_SERVER['QUERY_STRING'] === 'success')

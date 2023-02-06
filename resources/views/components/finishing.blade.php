@@ -136,6 +136,4 @@ use Illuminate\Support\Facades\File;
             File::move($oldPath, $newPath);
         }}} catch (exception $e) {}
 
-
-        echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "?success\" />"; 
         ?>
