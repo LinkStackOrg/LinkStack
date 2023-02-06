@@ -2,12 +2,7 @@
 @include('layouts.lang')
 <head>
   <meta charset="utf-8">
-  @php
-  $title = \Route::currentRouteName();
-  $title = str_replace('pages', '', $title);
-  $title = env('TITLE_FOOTER_'.strtoupper($title));
-  @endphp
-  <title>{{$title}} - {{env('APP_NAME')}}</title>
+  <title>{{env('TITLE_FOOTER_'.strtoupper($name))}} - {{env('APP_NAME')}}</title>
 
 @include('layouts.analytics')
 
@@ -86,7 +81,7 @@
         @endif
 
         <div class="jumbotron" style="margin-top: 10%">
-          <h1 class="display-4">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_'.strtoupper($name)))}}</h1>
+          <h1 class="display-4">{{env('TITLE_FOOTER_'.strtoupper($name))}}</h1>
           <hr class="my-4">
           <p>
             <?php echo $data['page']->$name; ?>
