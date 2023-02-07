@@ -259,7 +259,7 @@ function get_operating_system() {
           @endif
 
         <!-- Your Name -->
-        <h1 class="fadein">{{ $info->name }}</h1>
+        <h1 class="fadein">{{ $info->name }}@if($userinfo->role == 'vip' or $userinfo->role == 'admin') <img alt="verified" class="fadein" style="width: 25px; margin: -4px;" src="{{ asset('littlelink/images/verify.svg') }}"> @endif</h1>
 
         <!-- Short Bio -->
         <div class="fadein"><center><p style="width:50%;min-width:300px;" class="fadein">@if(env('ALLOW_USER_HTML') === true){!! $info->littlelink_description !!}@else{{ $info->littlelink_description }}@endif</p></center></div>
