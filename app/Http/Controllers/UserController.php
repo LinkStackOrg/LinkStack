@@ -761,6 +761,8 @@ class UserController extends Controller
 
     saveIcon('whatsapp', $request->whatsapp);
 
+    saveIcon('twitch', $request->whatsapp);
+
 
 
 

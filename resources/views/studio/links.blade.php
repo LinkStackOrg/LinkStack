@@ -224,6 +224,8 @@ if (isset($_COOKIE['LinkCount'])) {
 
     {!!icon('github', 'GitHub')!!}
 
+    {!!icon('twitch', 'Twitch')!!}
+
     {!!icon('linkedin', 'LinkedIn')!!}
 
     {!!icon('tiktok', 'TikTok')!!}
