@@ -5,6 +5,8 @@
         width: 24px;
         height: 24px;
         margin-left: -5px;
+        display: inline-block;
+        vertical-align: middle;
       }
     </style>
   </defs>
