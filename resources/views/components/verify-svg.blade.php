@@ -2,8 +2,7 @@
   <defs>
     <style>
       .badge{
-        width: 24px;
-        height: 24px;
+        height: 0.6em;
         margin: 5px;
         display: inline-block;
         vertical-align: middle;
