@@ -259,7 +259,7 @@ function get_operating_system() {
           @endif
 
         <!-- Your Name -->
-        <h1 class="fadein">{{ $info->name }}@if($userinfo->role == 'vip' or $userinfo->role == 'admin')@include('components.verify-svg')@endif</h1>
+        <h1 class="fadein">{{ $info->name }}@if(($userinfo->role == 'vip' or $userinfo->role == 'admin') and theme('disable_verification_badge') != "true")@include('components.verify-svg')@endif</h1>
 
         <!-- Short Bio -->
         <div class="fadein"><center><p style="width:50%;min-width:300px;" class="fadein">@if(env('ALLOW_USER_HTML') === true){!! $info->littlelink_description !!}@else{{ $info->littlelink_description }}@endif</p></center></div>
