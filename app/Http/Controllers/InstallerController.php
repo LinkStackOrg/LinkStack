@@ -55,8 +55,8 @@ class InstallerController extends Controller
 
         $file = base_path('INSTALLERLOCK');
         if (!file_exists($file)) {
-            $handle = fopen($file, 'w') or die('Cannot create file:  '.$file);
-            fclose($handle);
+            $handleFile = fopen($file, 'w') or die('Cannot create file:  '.$file);
+            fclose($handleFile);
         }
 
         if(DB::table('users')->count() == '0'){
