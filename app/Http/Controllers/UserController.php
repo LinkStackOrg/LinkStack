@@ -532,6 +532,22 @@ class UserController extends Controller
         return Redirect('/studio/page');
     }
 
+    //Upload custom theme background image
+    public function themeBackground(request $request)
+    {
+
+        $userId = Auth::user()->id;
+        $littlelink_name = Auth::user()->littlelink_name;
+
+        $customBackground = $request->file('image');
+
+        if ($request->hasFile('image')) {
+            $customBackground->move(base_path('/img/background-img'), $userId . ".png");
+        }
+
+        return Redirect('/studio/theme');
+    }
+
     //Show custom theme
     public function showTheme(request $request)
     {

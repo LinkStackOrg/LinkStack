@@ -44,6 +44,13 @@ return $path;}
   <meta name="author" content="{{ $userinfo->name }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 @endif
+@if(file_exists(base_path('/img/background-img/'.$userinfo->id.'.png')))
+<style>
+  body {
+    background-image: url('{{url('/img/background-img/'.$userinfo->id.'.png')}}') !important;
+  }
+</style>
+@endif
   
 <!--#### BEGIN Meta Tags social media preview images  ####-->
   <!-- This shows a preview for title, description and avatar image of users profiles if shared on social media sites -->
