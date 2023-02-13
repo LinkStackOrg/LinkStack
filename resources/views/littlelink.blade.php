@@ -44,10 +44,22 @@ return $path;}
   <meta name="author" content="{{ $userinfo->name }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 @endif
-@if(file_exists(base_path('/img/background-img/'.findBackground($userinfo->id))))
+
+@php
+$customBackgroundFile = findBackground($userinfo->id);
+$customBackgroundPath = base_path('/img/background-img/'.$customBackgroundFile);
+$customBackgroundURL = url('/img/background-img/'.$customBackgroundFile);
+$customBackgroundExists = file_exists($customBackgroundPath);
+if($customBackgroundExists == true){
+  $customBackgroundBrightness = analyzeImageBrightness($customBackgroundFile);
+    } else {
+ $customBackgroundBrightness == false;}
+@endphp
+
+@if($customBackgroundExists == true)
 <style>
   body {
-    background-image: url('{{url('/img/background-img/'.findBackground($userinfo->id))}}') !important;
+    background-image: url('{{$customBackgroundURL}}') !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
     background-position: center !important;
@@ -123,7 +135,13 @@ return $path;}
   <link rel="stylesheet" href="{{ asset('littlelink/css/share.button.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/animations.css') }}">
   <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
-  @if ($color_scheme_override == 'dark')
+  @if ($customBackgroundExists == true and $customBackgroundBrightness == 'dark')
+  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
+  <style>.social-icon{color:#fff;}</style>
+  @elseif ($customBackgroundExists == true and $customBackgroundBrightness == 'light')
+  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
+  <style>.social-icon{color:#222;}</style>
+  @elseif ($color_scheme_override == 'dark')
   <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
   <style>.social-icon{color:#fff;}</style>
   @elseif ($color_scheme_override == 'light')
