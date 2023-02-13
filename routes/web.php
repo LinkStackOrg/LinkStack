@@ -42,7 +42,7 @@ if(file_exists(base_path('INSTALLING'))){
 
   Route::get('{any}', function() {
     if(!DB::table('users')->get()->isEmpty()){
-    if(file_exists(base_path("INSTALLING"))){unlink(base_path("INSTALLING"));header("Refresh:0");}
+    if(file_exists(base_path("INSTALLING")) and !file_exists(base_path('INSTALLERLOCK'))){unlink(base_path("INSTALLING"));header("Refresh:0");}
     } else {
       return redirect(url(''));
     }

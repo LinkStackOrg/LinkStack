@@ -53,6 +53,11 @@ class InstallerController extends Controller
         $handle = $request->handle;
         $name = $request->name;
 
+        $file = base_path('INSTALLERLOCK');
+        if (!file_exists($file)) {
+            $handle = fopen($file, 'w') or die('Cannot create file:  '.$file);
+            fclose($handle);
+        }
 
         if(DB::table('users')->count() == '0'){
         Schema::disableForeignKeyConstraints();
@@ -136,6 +141,12 @@ class InstallerController extends Controller
         if(EnvEditor::keyExists('APP_NAME')){EnvEditor::editKey('APP_NAME', '"' . $request->app . '"');}
 
         if(file_exists(base_path("INSTALLING"))){unlink(base_path("INSTALLING"));}
+
+        $file = base_path('INSTALLERLOCK');
+        if (file_exists($file)) {
+            unlink($file) or die('Cannot delete file: '.$file);
+            sleep(1);
+        }
 
         return redirect(url(''));
     }
