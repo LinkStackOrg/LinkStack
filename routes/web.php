@@ -116,6 +116,7 @@ Route::get('/studio/page', [UserController::class, 'showPage'])->name('showPage'
 Route::get('/studio/no_page_name', [UserController::class, 'showPage'])->name('showPage');
 Route::post('/studio/page', [UserController::class, 'editPage'])->name('editPage');
 Route::post('/studio/background', [UserController::class, 'themeBackground'])->name('themeBackground');
+Route::get('/studio/rem-background', [UserController::class, 'removeBackground'])->name('removeBackground');
 Route::get('/studio/profile', [UserController::class, 'showProfile'])->name('showProfile');
 Route::post('/studio/profile', [UserController::class, 'editProfile'])->name('editProfile');
 Route::post('/edit-icons', [UserController::class, 'editIcons'])->name('editIcons');

@@ -290,7 +290,8 @@ try{ if($GLOBALS['updateAv'] == true) echo '<img style="padding-left:40px; paddi
     </div>
     <div class="form-group col-lg-8">
         @if(!file_exists(base_path('/img/background-img/'.findBackground(Auth::user()->id))))<p><i>No image selected</i></p>@endif
-        <img style="width:95%;max-width:400px;argin-left:1rem!important;border-radius:5px;" src="@if(file_exists(base_path('/img/background-img/'.findBackground(Auth::user()->id)))){{url('/img/background-img/'.findBackground(Auth::user()->id))}}@else{{url('/littlelink/images/themes/no-preview.png')}}@endif"><br><br>
+        <img style="width:95%;max-width:400px;argin-left:1rem!important;border-radius:5px;" src="@if(file_exists(base_path('/img/background-img/'.findBackground(Auth::user()->id)))){{url('/img/background-img/'.findBackground(Auth::user()->id))}}@else{{url('/littlelink/images/themes/no-preview.png')}}@endif">
+        <br><button class="mt-3 ml-3 btn btn-primary" style="background-color:tomato!important;border-color:tomato!important;transform: scale(.9);" title="Delete background image"><a href="{{ url('/studio/rem-background') }}" style="color:#FFFFFF;"><i class="bi bi-trash-fill"></i> Remove background</a></button><br><br>
         <label>Upload background image</label>
         <input type="file" accept="image/jpeg,image/jpg,image/png" class="form-control-file" name="image">
     </div>

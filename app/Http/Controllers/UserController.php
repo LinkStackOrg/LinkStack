@@ -558,6 +558,33 @@ class UserController extends Controller
         return Redirect('/studio/theme');
     }
 
+    //Delete custom background image
+    public function removeBackground()
+    {
+
+        function findBackground($name){
+            $directory = base_path('/img/background-img/');
+            $files = scandir($directory);
+            $pathinfo = "error.error";
+            foreach($files as $file) {
+            if (strpos($file, $name.'.') !== false) {
+            $pathinfo = $name. "." . pathinfo($file, PATHINFO_EXTENSION);
+            }}
+            return $pathinfo;
+        }
+
+        $user_id = Auth::user()->id;
+        $path = findBackground($user_id);
+        $path = base_path('/img/background-img/'.$path);
+        
+        if (File::exists($path)) {
+            File::delete($path);
+        }
+
+        return back();
+    }
+
+
     //Show custom theme
     public function showTheme(request $request)
     {
