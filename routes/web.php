@@ -30,7 +30,7 @@ if(file_exists(base_path('storage/app/ISINSTALLED'))){
  }
 
  // Installer
-if(file_exists(base_path('INSTALLING'))){
+if(file_exists(base_path('INSTALLING')) or file_exists(base_path('INSTALLERLOCK'))){
 
   Route::get('/', [InstallerController::class, 'showInstaller'])->name('showInstaller');
   Route::post('/create-admin', [InstallerController::class, 'createAdmin'])->name('createAdmin');
