@@ -60,8 +60,9 @@ if($customBackgroundExists == true){
 <style>
   body {
     background-image: url('{{$customBackgroundURL}}') !important;
-    background-repeat: no-repeat !important;
     background-size: cover !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
     background-position: center !important;
   }
 </style>
