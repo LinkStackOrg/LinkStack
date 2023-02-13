@@ -276,6 +276,9 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 {{text('APP_NAME')}}
 
 
+{{toggle('HIDE_VERIFICATION_CHECKMARK')}}
+
+
 <a name="Panel-settings"><h2 class="ch2">Panel settings</h2></a>
 
 {{toggle('NOTIFY_EVENTS')}}

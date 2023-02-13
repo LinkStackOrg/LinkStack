@@ -212,5 +212,11 @@
     {"value": "HOME_FOOTER_LINK",
     "title": "<div style=\"margin-top:-40px\">Home footer link URL</div>",
     "description": "Enter any URL to redirect your home link URL.<br>Leave empty to use the default link."
+    },
+
+
+    {"value": "HIDE_VERIFICATION_CHECKMARK",
+    "title": "Hide verification checkmark",
+    "description": "Hides verification badge displayed on admin and VIP pages."
     }
     ]
