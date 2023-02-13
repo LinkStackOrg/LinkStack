@@ -44,10 +44,13 @@ return $path;}
   <meta name="author" content="{{ $userinfo->name }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 @endif
-@if(file_exists(base_path('/img/background-img/'.$userinfo->id.'.png')))
+@if(file_exists(base_path('/img/background-img/'.findBackground($userinfo->id))))
 <style>
   body {
-    background-image: url('{{url('/img/background-img/'.$userinfo->id.'.png')}}') !important;
+    background-image: url('{{url('/img/background-img/'.findBackground($userinfo->id))}}') !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;
   }
 </style>
 @endif

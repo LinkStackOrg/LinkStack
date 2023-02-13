@@ -289,8 +289,8 @@ try{ if($GLOBALS['updateAv'] == true) echo '<img style="padding-left:40px; paddi
         <br>
     </div>
     <div class="form-group col-lg-8">
-        @if(!file_exists(base_path('/img/background-img/'.Auth::user()->id.'.png')))<p><i>No image selected</i></p>@endif
-        <img style="width:95%;max-width:400px;argin-left:1rem!important;border-radius:5px;" src="@if(file_exists(base_path('/img/background-img/'.Auth::user()->id.'.png'))){{url('/img/background-img/'.Auth::user()->id.'.png')}}@else{{url('/littlelink/images/themes/no-preview.png')}}@endif"><br><br>
+        @if(!file_exists(base_path('/img/background-img/'.findBackground(Auth::user()->id))))<p><i>No image selected</i></p>@endif
+        <img style="width:95%;max-width:400px;argin-left:1rem!important;border-radius:5px;" src="@if(file_exists(base_path('/img/background-img/'.findBackground(Auth::user()->id)))){{url('/img/background-img/'.findBackground(Auth::user()->id))}}@else{{url('/littlelink/images/themes/no-preview.png')}}@endif"><br><br>
         <label>Upload background image</label>
         <input type="file" accept="image/jpeg,image/jpg,image/png" class="form-control-file" name="image">
     </div>

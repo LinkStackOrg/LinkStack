@@ -541,8 +541,18 @@ class UserController extends Controller
 
         $customBackground = $request->file('image');
 
-        if ($request->hasFile('image')) {
-            $customBackground->move(base_path('/img/background-img'), $userId . ".png");
+        if (!empty($customBackground)) {
+            // Delete existing image
+            $directory = base_path('/img/background-img/');
+            $files = scandir($directory);
+            $pathinfo = "error.error";
+            foreach($files as $file) {
+            if (strpos($file, $userId.'.') !== false) {
+            $pathinfo = $userId. "." . pathinfo($file, PATHINFO_EXTENSION);
+            }}
+            if(file_exists(base_path('/img/background-img/').$pathinfo)){File::delete(base_path('/img/background-img/').$pathinfo);}
+
+            $customBackground->move(base_path('/img/background-img/'), $userId.".".$request->file('image')->extension());
         }
 
         return Redirect('/studio/theme');
