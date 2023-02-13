@@ -33,6 +33,9 @@ use Illuminate\Support\Facades\File;
             if(EnvEditor::keyExists('FORCE_ROUTE_HTTPS')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('FORCE_ROUTE_HTTPS', 'false');}
 
+            if(EnvEditor::keyExists('HIDE_VERIFICATION_CHECKMARK')){ /* Do nothing if key already exists */ 
+            } else {EnvEditor::addKey('HIDE_VERIFICATION_CHECKMARK', 'false');}
+
 
             // Footer page customization
             if(EnvEditor::keyExists('DISPLAY_FOOTER_HOME')){} else {EnvEditor::addKey('DISPLAY_FOOTER_HOME', 'true');}
