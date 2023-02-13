@@ -53,7 +53,7 @@ $customBackgroundExists = file_exists($customBackgroundPath);
 if($customBackgroundExists == true){
   $customBackgroundBrightness = analyzeImageBrightness($customBackgroundFile);
     } else {
- $customBackgroundBrightness == false;}
+ $customBackgroundBrightness = false;}
 @endphp
 
 @if($customBackgroundExists == true)
