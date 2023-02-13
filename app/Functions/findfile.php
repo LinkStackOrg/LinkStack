@@ -29,8 +29,7 @@ function analyzeImageBrightness($file) {
     // Get image information using getimagesize
     $imageInfo = getimagesize($file);
     if (!$imageInfo) {
-      echo "Error: Unable to get image information.\n";
-      exit();
+      return 'dark';
     }
   
     // Get the image type
@@ -46,8 +45,7 @@ function analyzeImageBrightness($file) {
         $img = imagecreatefrompng($file);
         break;
       default:
-        echo "Error: Unsupported image type.\n";
-        exit();
+        return 'dark';
     }
   
     // Get image dimensions
