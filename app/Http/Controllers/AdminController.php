@@ -67,15 +67,21 @@ public function users(Request $request)
     return view('panel/users', $data);
 }
 
-
-
     //Search user by name
-    public function searchUser(request $request)
+    public function searchUser(Request $request)
     {
-        $name = $request->name;
-        $data['users'] = User::where('name', $name)->select('id', 'name', 'role', 'block')->get();
+        $searchTerm = $request->search;
+        $data['users'] = User::where('name', 'like', "%{$searchTerm}%")
+                              ->orWhere('email', 'like', "%{$searchTerm}%")
+                              ->orWhere('littlelink_name', 'like', "%{$searchTerm}%")
+                            //   ->orWhere('role', 'like', "%{$searchTerm}%")
+                            //   ->orWhere('block', 'like', "%{$searchTerm}%")
+                            //   ->orWhere('email_verified_at', 'like', "%{$searchTerm}%")
+                              ->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')
+                              ->get();
         return view('panel/users', $data);
     }
+    
 
     //Block user
     public function blockUser(request $request)
