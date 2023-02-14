@@ -43,30 +43,31 @@ class AdminController extends Controller
         return view('panel/index', ['littlelink_name' => $littlelink_name, 'links' => $links, 'clicks' => $clicks, 'siteLinks' => $siteLinks, 'siteClicks' => $siteClicks, 'userNumber' => $userNumber]);
     }
 
-    //Get users by type
-    public function users(request $request)
-    {
-        $usersType = $request->type;
+// Get users by type
+public function users(Request $request)
+{
+    $usersType = $request->type;
 
-        switch ($usersType) {
-            case 'all':
-                $data['users'] = User::select('id', 'name', 'email', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
-                return view('panel/users', $data);
-                break;
-            case 'user':
-                $data['users'] = User::where('role', 'email', 'user')->select('id', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
-                return view('panel/users', $data);
-                break;
-            case 'vip':
-                $data['users'] = User::where('role', 'email', 'vip')->select('id', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
-                return view('panel/users', $data);
-                break;
-            case 'admin':
-                $data['users'] = User::where('role', 'email', 'admin')->select('id', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
-                return view('panel/users', $data);
-                break;
-        }
+    switch ($usersType) {
+        case 'all':
+            $users = User::select('id', 'name', 'email', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
+            break;
+        case 'user':
+            $users = User::where('role', 'user')->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
+            break;
+        case 'vip':
+            $users = User::where('role', 'vip')->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
+            break;
+        case 'admin':
+            $users = User::where('role', 'admin')->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
+            break;
     }
+
+    $data['users'] = $users;
+    return view('panel/users', $data);
+}
+
+
 
     //Search user by name
     public function searchUser(request $request)
