@@ -36,6 +36,9 @@ use Illuminate\Support\Facades\File;
             if(EnvEditor::keyExists('HIDE_VERIFICATION_CHECKMARK')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('HIDE_VERIFICATION_CHECKMARK', 'false');}
 
+            if(EnvEditor::keyExists('ALLOW_CUSTOM_BACKGROUNDS')){ /* Do nothing if key already exists */ 
+            } else {EnvEditor::addKey('ALLOW_CUSTOM_BACKGROUNDS', 'true');}
+
 
             // Footer page customization
             if(EnvEditor::keyExists('DISPLAY_FOOTER_HOME')){} else {EnvEditor::addKey('DISPLAY_FOOTER_HOME', 'true');}

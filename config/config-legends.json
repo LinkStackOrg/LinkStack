@@ -214,6 +214,10 @@
     "description": "Enter any URL to redirect your home link URL.<br>Leave empty to use the default link."
     },
 
+    {"value": "ALLOW_CUSTOM_BACKGROUNDS",
+    "title": "Allow custom backgrounds",
+    "description": "Allow users to upload custom background images for their pages."
+    },
 
     {"value": "HIDE_VERIFICATION_CHECKMARK",
     "title": "Hide verification checkmark",

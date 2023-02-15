@@ -293,6 +293,10 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 {{toggle('USE_THEME_PREVIEW_IFRAME')}}
 
 
+{{toggle('ALLOW_CUSTOM_BACKGROUNDS')}}
+
+
+
 <a name="Security"><h2 class="ch2">Security</h2></a>
 
 
