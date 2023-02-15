@@ -45,6 +45,7 @@ return $path;}
   <meta name="viewport" content="width=device-width, initial-scale=1">
 @endif
 
+@if(theme('allow_custom_background') != "false")
 @php
 $customBackgroundFile = findBackground($userinfo->id);
 $customBackgroundPath = base_path('/img/background-img/'.$customBackgroundFile);
@@ -66,6 +67,7 @@ if($customBackgroundExists == true){
     background-position: center !important;
   }
 </style>
+@endif
 @endif
   
 <!--#### BEGIN Meta Tags social media preview images  ####-->
