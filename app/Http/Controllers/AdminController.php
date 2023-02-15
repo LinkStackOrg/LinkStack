@@ -220,6 +220,7 @@ public function users(Request $request)
         $littlelink_name = $request->littlelink_name;
         $littlelink_description = $request->littlelink_description;
         $role = $request->role;
+        $customBackground = $request->file('background');
 
         if ($request->password == '') {
             User::where('id', $id)->update(['name' => $name, 'email' => $email, 'littlelink_name' => $littlelink_name, 'littlelink_description' => $littlelink_description, 'role' => $role]);
@@ -228,7 +229,19 @@ public function users(Request $request)
         }
         if (!empty($profilePhoto)) {
             $profilePhoto->move(base_path('/img'), $id . ".png");
-        }
+        } 
+        if (!empty($customBackground)) {
+            $directory = base_path('/img/background-img/');
+            $files = scandir($directory);
+            $pathinfo = "error.error";
+            foreach($files as $file) {
+            if (strpos($file, $id.'.') !== false) {
+            $pathinfo = $id. "." . pathinfo($file, PATHINFO_EXTENSION);
+            }}
+            if(file_exists(base_path('/img/background-img/').$pathinfo)){File::delete(base_path('/img/background-img/').$pathinfo);}
+    
+            $customBackground->move(base_path('/img/background-img/'), $id.".".$request->file('background')->extension());
+        } 
 
         return redirect('panel/users/all');
     }
