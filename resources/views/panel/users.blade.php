@@ -49,8 +49,8 @@
           <tbody>
           @foreach($users as $user)
           <?php
-          $dateString = $user->created_at;
-          $date = date('d.m.Y', strtotime($dateString));
+          $date = date('d.m.Y', strtotime($user->created_at));
+          if(!isset($user->created_at)){$date = "NULL";}
           ?>
             <tr>
               <td data-id>{{ $user->id }}</td>
