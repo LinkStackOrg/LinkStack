@@ -39,6 +39,15 @@
           @if($_SERVER['QUERY_STRING'] === 'delete' and File::exists(base_path('img/' . $user->id . '.png')))@php File::delete(base_path('img/' . $user->id . '.png')); header("Location: ".url()->current()); die(); @endphp @endif
           </div>
           
+          <div class="form-group col-lg-8">
+            <label>Custom background</label><br>
+              @if(!file_exists(base_path('/img/background-img/'.findBackground($user->id))))<p><i>No image selected</i></p>@endif
+              <img style="width:95%;max-width:400px;argin-left:1rem!important;border-radius:5px;" src="@if(file_exists(base_path('/img/background-img/'.findBackground($user->id)))){{url('/img/background-img/'.findBackground($user->id))}}@else{{url('/littlelink/images/themes/no-preview.png')}}@endif">
+              @if(file_exists(base_path('/img/background-img/'.findBackground($user->id))))<br><a title="Remove icon" class="hvr-grow p-1 text-danger" style="padding-left:5px;" href="?deleteB"><i class="bi bi-trash-fill"></i> Delete</a>@endif
+              @if($_SERVER['QUERY_STRING'] === 'deleteB' and File::exists(base_path('/img/background-img/'.findBackground($user->id))))@php File::delete(base_path('/img/background-img/'.findBackground($user->id))); header("Location: ".url()->current()); die(); @endphp @endif
+              <br>
+          </div>
+
           <!--<div class="form-group col-lg-8">
             <label>Littlelink name </label>
             <input type="text" class="form-control" name="littlelink_name" value="{{ $user->id }}">
