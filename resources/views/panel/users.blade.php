@@ -56,7 +56,7 @@
               <td data-id>{{ $user->id }}</td>
               <td class="shorten" title="{{ $user->name }}" data-name> {{ $user->name }} </td>
               <td class="shorten" title="{{ $user->email }}" data-email> {{ $user->email }} </td>
-              <td class="shorten" data-page>@if(isset($user->littlelink_name))<a href="{{ url('') }}/@<?= $user->littlelink_name ?>" target="_blank" class="text-info"><i class="bi bi-box-arrow-up-right"></i>&nbsp; {{ $user->littlelink_name }} </a>@else N/A @endif</td>
+              <td class="shorten" title="{{ $user->littlelink_name }}" data-page>@if(isset($user->littlelink_name))<a href="{{ url('') }}/@<?= $user->littlelink_name ?>" target="_blank" class="text-info"><i class="bi bi-box-arrow-up-right"></i>&nbsp; {{ $user->littlelink_name }} </a>@else N/A @endif</td>
               <td data-role>{{ $user->role }}</td>
               <td data-links>{{$user->links}}</td>
               <td data-clicks>{{$user->clicks}}</td>
