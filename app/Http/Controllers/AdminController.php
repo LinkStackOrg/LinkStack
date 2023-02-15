@@ -50,22 +50,32 @@ public function users(Request $request)
 
     switch ($usersType) {
         case 'all':
-            $users = User::select('id', 'name', 'email', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
+            $users = User::select('id', 'name', 'email', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at')->get();
             break;
         case 'user':
-            $users = User::where('role', 'user')->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
+            $users = User::where('role', 'user')->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at')->get();
             break;
         case 'vip':
-            $users = User::where('role', 'vip')->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
+            $users = User::where('role', 'vip')->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at')->get();
             break;
         case 'admin':
-            $users = User::where('role', 'admin')->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')->get();
+            $users = User::where('role', 'admin')->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at')->get();
             break;
     }
 
     $data['users'] = $users;
+
+    // Loop through each user to get their click count and link count
+    foreach ($users as $user) {
+        $clicks = Link::where('user_id', $user->id)->sum('click_number');
+        $links = Link::where('user_id', $user->id)->select('link')->count();
+        $user->clicks = $clicks;
+        $user->links = $links;
+    }
+
     return view('panel/users', $data);
 }
+
 
     //Search user by name
     public function searchUser(Request $request)
