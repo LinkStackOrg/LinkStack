@@ -17,6 +17,7 @@ use App\Models\User;
 use App\Models\Button;
 use App\Models\Link;
 use App\Models\LinkType;
+use App\Models\UserData;
 
 
 //Function tests if string starts with certain string (used to test for illegal strings)
@@ -542,7 +543,6 @@ class UserController extends Controller
         $customBackground = $request->file('image');
 
         if (!empty($customBackground)) {
-            // Delete existing image
             $directory = base_path('/img/background-img/');
             $files = scandir($directory);
             $pathinfo = "error.error";
