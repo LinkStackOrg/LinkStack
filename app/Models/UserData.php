@@ -14,10 +14,10 @@ class UserData extends Model
         $userData = self::where('id', $userId)->first();
 
         if (!$userData) {
-            return;
+            return "null";
         }
 
-        $data = json_decode($userData->image, true);
+        $data = json_decode($userData->image, true) ?? [];
         $data[$key] = $value;
 
         $userData->image = json_encode($data);
@@ -29,10 +29,10 @@ class UserData extends Model
         $userData = self::where('id', $userId)->first();
     
         if (!$userData || !$userData->image) {
-            return null;
+            return "null";
         }
     
-        $data = json_decode($userData->image, true);
+        $data = json_decode($userData->image, true) ?? [];
     
         return isset($data[$key]) ? $data[$key] : null;
     }
@@ -42,10 +42,10 @@ class UserData extends Model
         $userData = self::where('id', $userId)->first();
     
         if (!$userData || !$userData->image) {
-            return;
+            return "null";
         }
     
-        $data = json_decode($userData->image, true);
+        $data = json_decode($userData->image, true) ?? [];
     
         if (isset($data[$key])) {
             unset($data[$key]);
