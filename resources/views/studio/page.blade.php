@@ -35,11 +35,7 @@
         @if(file_exists(base_path("img/" . Auth::user()->id . ".png")))
         <img src="{{ asset("img/" . Auth::user()->id . ".png") }}" style="width: 75px; height: 75px; border-radius: 50%; object-fit: cover;">
         @else
-        @if(!empty($page->image))
-        <img src="{{ $page->image }}" style="width: 75px; height: 75px; object-fit: cover;">
-        @else
         <img src="{{ asset('littlelink/images/logo.svg') }}" style="width: 75px; height: 75px; object-fit: cover;">
-        @endif
         @endif
     </div>
 
