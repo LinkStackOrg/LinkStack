@@ -50,16 +50,16 @@ public function users(Request $request)
 
     switch ($usersType) {
         case 'all':
-            $users = User::select('id', 'name', 'email', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at')->get();
+            $users = User::select('id', 'name', 'email', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at', 'updated_at')->get();
             break;
         case 'user':
-            $users = User::where('role', 'user')->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at')->get();
+            $users = User::where('role', 'user')->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at', 'updated_at')->get();
             break;
         case 'vip':
-            $users = User::where('role', 'vip')->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at')->get();
+            $users = User::where('role', 'vip')->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at', 'updated_at')->get();
             break;
         case 'admin':
-            $users = User::where('role', 'admin')->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at')->get();
+            $users = User::where('role', 'admin')->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at', 'updated_at')->get();
             break;
     }
 

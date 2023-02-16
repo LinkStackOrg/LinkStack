@@ -39,6 +39,7 @@
               <th id="cs" scope="col" data-sort="links" data-order="asc">Total links</th>
               <th id="cs" scope="col" data-sort="clicks" data-order="asc">Total clicks</th>
               <th id="cs" scope="col" data-sort="created" data-order="asc">Created at</th>
+              <th id="cs" scope="col" data-sort="last" data-order="asc">Last seen</th>
               <th data-sortable="false">Edit</th>
               <th data-sortable="false">Links</th>
               @if(env('REGISTER_AUTH') !== 'auth')<th id="cs" style="width:15%" scope="col">E-Mail Verified</th>@endif
@@ -48,10 +49,29 @@
           </thead>
           <tbody>
           @foreach($users as $user)
-          <?php
-          $date = date('d.m.Y', strtotime($user->created_at));
+          @php
+          $dateFormat = 'd/m/Y';
+
+          $date = date($dateFormat, strtotime($user->created_at));
           if(!isset($user->created_at)){$date = "NULL";}
-          ?>
+
+          $lastSeen = $user->updated_at;
+          $lastSeenDate = date($dateFormat, strtotime($lastSeen));
+          $timezone = new DateTimeZone(date_default_timezone_get()); 
+          $datetime = new DateTime($lastSeen, $timezone);
+          $now = new DateTime(null, $timezone);
+          $interval = $now->diff($datetime);
+          $daysAgo = $interval->days." days ago";
+          if($interval->days == 1) $daysAgo = "1 day ago";
+          if($interval->days == 0) $daysAgo = "Today";
+          if ($interval->days >= 365) {
+          $yearsAgo = floor($interval->days / 365);
+          if ($yearsAgo == 1) {
+              $daysAgo = "1 year ago";
+          } else {
+              $daysAgo = "$yearsAgo years ago";
+          }}
+          @endphp
             <tr>
               <td data-id>{{ $user->id }}</td>
               <td class="shorten" title="{{ $user->name }}" data-name> {{ $user->name }} </td>
@@ -61,6 +81,7 @@
               <td data-links>{{$user->links}}</td>
               <td data-clicks>{{$user->clicks}}</td>
               <td data-created>{{$date}}</td>
+              <td class="shorten" data-last title="{{ $lastSeenDate }}">{{$daysAgo}}</td>
               <td><a href="{{ route('editUser', $user->id ) }}">Edit</a></td>
               <td><a href="{{ route('showLinksUser', $user->id ) }}" class="text-primary">View</a></td>
               @if(env('REGISTER_AUTH') !== 'auth')

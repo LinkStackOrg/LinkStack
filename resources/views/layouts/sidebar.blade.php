@@ -4,6 +4,14 @@
   	<title>Studio ⚙️ {{ config('app.name') }}</title>
     <meta charset="utf-8">
 
+@php
+// Update the 'updated_at' timestamp for the currently authenticated user
+if (auth()->check()) {
+    $user = auth()->user();
+    $user->touch();
+}
+@endphp
+	
 @include('layouts.analytics')
 
 <base href="{{url()->current()}}" />
