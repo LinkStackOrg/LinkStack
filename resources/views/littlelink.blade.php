@@ -1,3 +1,5 @@
+<?php use App\Models\UserData; ?>
+
 <!DOCTYPE html>
 @include('layouts.lang')
 <head>
@@ -290,7 +292,7 @@ function get_operating_system() {
           @endif
 
         <!-- Your Name -->
-        <h1 class="fadein">{{ $info->name }}@if(($userinfo->role == 'vip' or $userinfo->role == 'admin') and theme('disable_verification_badge') != "true" and env('HIDE_VERIFICATION_CHECKMARK') != true)<span title="Verified user">@include('components.verify-svg')@endif</span></h1>
+        <h1 class="fadein">{{ $info->name }}@if(($userinfo->role == 'vip' or $userinfo->role == 'admin') and theme('disable_verification_badge') != "true" and env('HIDE_VERIFICATION_CHECKMARK') != true and UserData::getData($userinfo->id, 'checkmark') != false)<span title="Verified user">@include('components.verify-svg')@endif</span></h1>
 
         <!-- Short Bio -->
         <div class="fadein"><center><p style="width:50%;min-width:300px;" class="fadein">@if(env('ALLOW_USER_HTML') === true){!! $info->littlelink_description !!}@else{{ $info->littlelink_description }}@endif</p></center></div>
@@ -299,7 +301,7 @@ function get_operating_system() {
         @php $icons = DB::table('links')->where('user_id', $userinfo->id)->where('button_id', 94)->get(); @endphp
         <div class="row fadein social-icon-div">
         @foreach($icons as $icon)
-        <a class="social-hover social-link" href="{{ route('clickNumber') . '/' . $icon->id . "?" . $icon->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif><i class="social-icon fa-brands fa-{{$icon->title}}"></i></a>
+        <a class="social-hover social-link" href="{{ route('clickNumber') . '/' . $icon->id. "?" . $icon->link}}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif><i class="social-icon fa-brands fa-{{$icon->title}}"></i></a>
         @endforeach
         </div>
 

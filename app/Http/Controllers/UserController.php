@@ -523,11 +523,18 @@ class UserController extends Controller
         $pageDescription = strip_tags($request->pageDescription,'<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
         $pageDescription = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $pageDescription);
         $name = $request->name;
+        $checkmark = $request->checkmark;
 
         User::where('id', $userId)->update(['littlelink_name' => $pageName, 'littlelink_description' => $pageDescription, 'name' => $name]);
 
         if ($request->hasFile('image')) {
             $profilePhoto->move(base_path('/img'), $userId . ".png");
+        }
+
+        if($checkmark == "on"){
+            UserData::saveData($userId, 'checkmark', true);
+        } else {
+            UserData::saveData($userId, 'checkmark', false);
         }
 
         return Redirect('/studio/page');
