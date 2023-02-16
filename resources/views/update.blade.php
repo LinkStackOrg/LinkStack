@@ -38,6 +38,7 @@
         <p><?php  if(file_exists(base_path("vbeta.json"))) {echo "Installed beta version= " . file_get_contents(base_path("vbeta.json"));} else {echo "Installed beta version= none";}  ?></p>
         <p><?php  if($Vgit > $Vlocal) {echo "You need to update to the latest mainline release";} else {echo "You're running the latest mainline release";}  ?></p>
         @else
+        <a target="_blank" href="https://github.com/JulianPrieber/littlelink-custom/releases"><code style="color:#222;transform:scale(.9);">{{$Vlocal}} -> {{$Vgit}}</code></a>
         <h4 class="">You can update your installation automatically or download the update and install it manually:</h4>
         @endif
         <br><div class="row">
