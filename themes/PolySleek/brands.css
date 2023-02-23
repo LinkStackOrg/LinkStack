@@ -1,0 +1,107 @@
+
+/* Table of contents
+––––––––––––––––––––––––––––––––––––––––––––––––––
+
+- Rounded user avatars
+- Buttons
+- Brand Styles
+
+*/
+
+
+/* Rounded avatars
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Disable this if you don't want rounded avatars for users */
+.rounded-avatar {
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 0px 3px var(--button-background-color); 
+  box-shadow: 0px 0px 0px 3px var(--button-background-color);
+  background-color: var(--button-background-color) !important;
+  width: var(--image-width);
+  height: var(--image-height);
+}
+
+@-webkit-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-moz-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-o-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@keyframes rainbow { 
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+
+
+.social-icon {
+  font-size: 32px;
+  padding: 10px;
+}
+.social-icon-div {
+  padding-bottom: 30px;
+}
+.social-icon{color:#fff;}
+
+/* Buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1em;
+  color: var(--button-text-color);
+  min-height: 58px;
+  line-height: 58px;
+  cursor: pointer;
+
+  color: var(--button-text-color);
+  background-color: var(--button-background-color);
+  width: 100%;
+  max-width: 600px;
+  border-radius: 14px;
+  margin-bottom: 20px !important;
+  font-weight: 500;
+  letter-spacing: 0.3rem;
+}
+
+.button {
+  display: inline-block;
+  transition-duration: 0.3s;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(3, 218, 198, 30%);
+}
+.button:hover {
+  box-shadow: 0 0 6px rgba(3, 218, 198, 30%);
+}
+
+/* Brand Icons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.icon {
+  right: 10px;
+  bottom: 2px;
+  position: relative;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+svg {
+  color: white !important;
+}
