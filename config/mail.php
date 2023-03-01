@@ -60,21 +60,21 @@ return [
     | password recovery and registration purposes involving
     | users personal LittleLink Custom or LittleLink Admin pages.
     | Users of this service must abide by our Terms and Conditions
-    | found at https://llc-mail.tru.io/.
+    | found at https://littlelink-custom.com/mail.
     |
     */
 
         'built-in' => [
             'transport' => 'smtp',
-            'host' => 'llc-mail.tru.io',
+            'host' => 'mail.llc.ovh',
             'port' => '587',
             'encryption' => 'tls',
-            'username' => 'littlelink-custom@llc-mail.tru.io',
-            'password' => 'fTwsn=eNB4',
+            'username' => 'littlelink-custom@mail.llc.ovh',
+            'password' => 'd9nte>Bg35',
             'timeout' => null,
             'auth_mode' => null,
         'from' => [
-			'address' => 'littlelink-custom@llc-mail.tru.io',
+			'address' => 'littlelink-custom@mail.llc.ovh',
 			'name' => env('MAIL_FROM_NAME'),
 			],
         ],
