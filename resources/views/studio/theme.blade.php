@@ -277,6 +277,7 @@ try{ if($GLOBALS['updateAv'] == true) echo '<img style="padding-left:40px; paddi
 ?>
 
 @endif
+@endif
 
 @if(env('ALLOW_CUSTOM_BACKGROUNDS') == true)
 <br><br><br>
@@ -303,6 +304,7 @@ try{ if($GLOBALS['updateAv'] == true) echo '<img style="padding-left:40px; paddi
 </form>
 @endif
 
+@if(auth()->user()->role == 'admin')
 <br><br><br>
 <form action="{{ route('editTheme') }}" enctype="multipart/form-data" method="post">
     @csrf
