@@ -93,17 +93,13 @@ return $path;}
 .reg {
     background-color: #0085FF;
     border: 1px solid transparent;
-}
-.reg a {
- color: #fff;
+    color: #fff !important;
 }
 
 .log {
   background-color: #fefefe;
   border: 1px solid #000;
-}
-.log a {
- color: #333;
+  color: #333 !important;
 }
 
 .btns {
@@ -170,14 +166,14 @@ foreach($pages as $page)
     <div class="sign" style="margin-top: 30px; text-align: right;">
             @if (Route::has('login'))
                     @auth
-                        <div class="fadein btns log"><a href="{{ route('studioIndex') }}" class="underline spacing">Studio</a></div>
+                    <a href="{{ route('studioIndex') }}" class="underline spacing"><div class="fadein btns log">Studio</div></a>
                     @else
-                        <div class="fadein btns log"><a href="{{ route('login') }}" class="underline spacing">Log in</a></div>
+                    <a href="{{ route('login') }}" class="fadein btns log"><div class="underline spacing">Log in</div></a>
 
                         @if (Route::has('register') and $page->register == 'true')
-                            <div class="fadein btns reg"><a href="{{ route('register') }}" class="underline spacing">Register</a></div>
+                        <a href="{{ route('register') }}" class="fadein btns reg"><div class="underline spacing">Register</div></a>
                         @elseif (env('REGISTER_OVERRIDE') === true)
-                            <div class="fadein btns reg"><a href="{{ route('register') }}" class="underline spacing">Register</a></div>
+                        <a href="{{ route('register') }}" class="fadein btns reg"><div class="underline spacing">Register</div></a>
                         @endif
                     @endauth
               @endif
