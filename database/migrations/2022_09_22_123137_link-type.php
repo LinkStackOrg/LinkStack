@@ -97,7 +97,7 @@ class LinkType extends Migration
             'typename' => 'heading',
             'title' => 'Heading',
             'icon' => 'bi bi-card-heading',
-            'description' => 'Use headings to organize your links and separate them into groups',
+            'description' => 'Use headings to organize your links and separate them into groups.',
             'params' => '[{
                 "tag": "input",
                 "id": "heading-text",
@@ -113,7 +113,7 @@ class LinkType extends Migration
             'typename' => 'spacer',
             'title' => 'Spacer',
             'icon' => 'bi bi-distribute-vertical',
-            'description' => 'Add blank space to your list of links. You can choose how big. ',
+            'description' => 'Add blank space to your list of links. You can choose how tall.',
             'params' => '[
     {
         "tag": "input",
@@ -181,6 +181,21 @@ class LinkType extends Migration
             ]'
 
         ]);
+
+        DB::table($this->TableName)->updateOrInsert([
+            'typename' => 'email',
+            'title' => 'E-Mail address',
+            'icon' => 'bi bi-envelope-fill',
+            'description' => 'Add an email that opens a system dialog to compose a new email.'
+        ]);
+
+        DB::table($this->TableName)->updateOrInsert([
+            'typename' => 'telephone',
+            'title' => 'Telephone number',
+            'icon' => 'bi bi-telephone-fill',
+            'description' => 'Add a telephone number that opens a system dialog to initiate a phone call.'
+        ]);
+
     }
 
 }

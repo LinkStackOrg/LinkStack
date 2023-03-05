@@ -116,6 +116,8 @@ class UserController extends Controller
 
         if ($id !== 0) {
             $linkData = Link::find($id);
+        } elseif ($id == 0) {
+            $linkData = new Link(['typename' => 'link', 'id'=>'0']);
         } else {
             $linkData = new Link(['typename' => 'link', 'id'=>'0']);
         }
@@ -138,6 +140,10 @@ class UserController extends Controller
                 $data['linkTypeID'] = "4";
             } elseif ($bid == 93) {
                 $data['linkTypeID'] = "5";
+            } elseif ($bid == 6 or $bid == 7) {
+                $data['linkTypeID'] = "6";
+            } elseif ($bid == 44) {
+                $data['linkTypeID'] = "7";
             } else {
                 $data['linkTypeID'] = "1";
             }
@@ -158,18 +164,6 @@ class UserController extends Controller
     //Save add link
     public function saveLink(request $request)
     {
-        //     if ($request->button == 'heading' or $request->button == 'space')
-        //         $request->validate([
-        //             'link' => '',
-        //             'title' => '',
-        //             'button' => 'required'
-        //         ]);
-        // else
-        //     $request->validate([
-        //         'link' => 'required',
-        //         'title' => '',
-        //         'button' => 'required'
-        //     ]);
 
         $linkType = LinkType::find($request->linktype_id);
         $LinkTitle = ($request->link_text ?? $request->link_title) ?? $request->title;
@@ -177,19 +171,6 @@ class UserController extends Controller
 
 
         $OrigLink = Link::find($request->linkid);
-
-
-        // if (stringStartsWith($LinkURL, 'http://') == 'true' or stringStartsWith($LinkURL, 'https://') == 'true')
-        //     $link1 = $LinkURL;
-        // elseif (!empty($LinkURL))
-        //     $link1 = 'https://' . $LinkURL;
-
-        // if (stringEndsWith($LinkURL, '/') == 'true')
-        //     $link = rtrim($link1, "/ ");
-        // else
-        //     $link = $link1;
-
-
 
         $customParams = [];
         foreach ($request->all() as $key => $param) {
@@ -250,6 +231,20 @@ class UserController extends Controller
                         'button_id' => "93",
                         'title' => $request->text,
                     ]);
+                }elseif($linkType->typename == "email"){
+                    $LinkURL = "mailto:".$LinkURL;
+                    $OrigLink->update([
+                        'link' => $LinkURL,
+                        'button_id' => $button?->id,
+                        'title' => $LinkTitle,
+                    ]);
+                }elseif($linkType->typename == "telephone"){
+                    $LinkURL = "tel:".$LinkURL;
+                    $OrigLink->update([
+                        'link' => $LinkURL,
+                        'button_id' => $button?->id,
+                        'title' => $LinkTitle,
+                    ]);
                 }else{
                     $OrigLink->update([
                         'link' => $LinkURL,
@@ -259,6 +254,7 @@ class UserController extends Controller
                 }
                 
             $message .="updated";
+
         } else {
             // ADDING NEW
 
@@ -284,11 +280,16 @@ class UserController extends Controller
             }elseif($linkType->typename == "text"){
                 $links->button_id = "93";
                 $links->title = $request->text;
+            }elseif($linkType->typename == "email"){
+                $links->link = "mailto:".$links->link;
+                $links->button_id = $button?->id;
+            }elseif($linkType->typename == "telephone"){
+                $links->link = "tel:".$links->link;
+                $links->button_id = $button?->id;
             }else{
                 $links->button_id = $button?->id;
             }
-            // $links->type_params = json_encode($customParams);
-            // $links->typename = $linkType->typename;
+
             $links->save();
 
             $links->order = ($links->id - 1);
@@ -298,8 +299,6 @@ class UserController extends Controller
 
         return Redirect('studio/links')
             ->with('success', $message);
-
-            // echo $customParams['GetSiteIcon'];
 
     }
 
@@ -467,7 +466,7 @@ class UserController extends Controller
         if (stringEndsWith($request->link, '/') == 'true')
             $link = rtrim($link1, "/ ");
         else
-            $link = $link1;
+        $link = $link1;
         $title = $request->title;
         $order = $request->order;
         $button = $request->button;

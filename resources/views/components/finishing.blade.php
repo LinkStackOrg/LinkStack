@@ -123,6 +123,20 @@ use Illuminate\Support\Facades\File;
             }
             ]'
         ]);
+
+        DB::table('link_types')->updateOrInsert([
+            'typename' => 'email',
+            'title' => 'E-Mail address',
+            'icon' => 'bi bi-envelope-fill',
+            'description' => 'Add an email that opens a system dialog to compose a new email.'
+        ]);
+
+        DB::table('link_types')->updateOrInsert([
+            'typename' => 'telephone',
+            'title' => 'Telephone number',
+            'icon' => 'bi bi-telephone-fill',
+            'description' => 'Add a telephone number that opens a system dialog to initiate a phone call.'
+        ]);
     } catch (exception $e) {}
 
 
