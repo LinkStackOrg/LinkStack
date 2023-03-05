@@ -311,7 +311,7 @@ function get_operating_system() {
 <?php function strp($urlStrp){return str_replace(array('http://', 'https://'), '', $urlStrp);} ?>
 <?php $initial=1; // <-- Effectively sets the initial loading time of the buttons. This value should be left at 1. ?>
         @foreach($links as $link)
-         @php $linkName = str_replace('default ','',$link->title) @endphp
+         @php $linkName = str_replace('default ','',$link->name) @endphp
          @if($link->name === "icon")
          @elseif($link->button_id === 0)
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-title button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif >{{ $link->title }}</a></div>
@@ -343,8 +343,13 @@ function get_operating_system() {
          @elseif($link->name === "text")
          <div class="fadein"><span style="">@if(env('ALLOW_USER_HTML') === true){!! $link->title !!}@else{{ $link->title }}@endif</span></div>
          @else
+<<<<<<< HEAD
          <?php include base_path('config/button-names.php'); $newLinkName = $linkName; $isNewName = "false"; foreach($buttonNames as $key => $value) { if($newLinkName == $key) { $newLinkName = $value; $isNewName = "true"; }} if($link->name == "default email"){$link->name = "email";} if($link->name == "default email_alt"){$link->name = "email_alt";} ?>
          <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/{{$link->name}}{{theme('custom_icon_extension')}} @else{{ asset('\/littlelink/icons\/') . $link->name }}.svg @endif">@if($isNewName == "true"){{ $newLinkName }}@else{{ $newLinkName }}@endif</a></div>
+=======
+         <?php include base_path('config/button-names.php'); $newLinkName = $linkName; $isNewName = "false"; foreach($buttonNames as $key => $value) { if($newLinkName == $key) { $newLinkName = $value; $isNewName = "true"; } } ?>
+         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/{{$linkName}}{{theme('custom_icon_extension')}} @else{{ asset('\/littlelink/icons\/') . $linkName }}.svg @endif">@if($isNewName == "true"){{ $newLinkName }}@else{{ ucfirst($newLinkName) }}@endif</a></div>
+>>>>>>> parent of cc7c03d (Fixed custom title bug)
          @endif
         @endforeach
 
