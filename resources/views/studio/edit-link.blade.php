@@ -72,7 +72,14 @@ The 'Heading' button will be replaced with a sub-heading, where the title define
 
     <div class="d-flex flex-row  flex-wrap p-3">
 
-        @foreach ( $LinkTypes as $lt )
+        @php
+          $custom_order = [1, 2, 6, 7, 3, 4, 5,];
+           $sorted = $LinkTypes->sortBy(function ($item) use ($custom_order) {
+                return array_search($item['id'], $custom_order);
+         });
+        @endphp
+
+        @foreach ($sorted as $lt)
         <a href="#" data-typeid='{{$lt['id']}}' data-typename='{{$lt['title']}}'' class="hvr-grow m-2 w-100 d-block doSelectLinkType">
 
 
