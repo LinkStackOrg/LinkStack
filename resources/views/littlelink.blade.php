@@ -102,11 +102,11 @@ if($customBackgroundExists == true){
 
   <!-- Custom icons font-awesome -->
   <script>{!! file_get_contents(base_path("studio/external-dependencies/fontawesome.js")) !!}</script>
-  <style>{!! file_get_contents(base_path("studio/external-dependencies/fontawesome.css")) !!}</style>  
+  <style>{!! file_get_contents(base_path("studio/external-dependencies/fontawesome.css")) !!}</style>
 
   @include('layouts.fonts') 
-  <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
+  <style>{!! file_get_contents(base_path("littlelink/css/normalize.css")) !!}</style>
+  <style>{!! file_get_contents(base_path("littlelink/css/animate.css")) !!}</style>
   @if(file_exists(base_path("littlelink/images/").findFile('favicon')))
   <link rel="icon" type="image/png" href="{{ asset('littlelink/images/'.findFile('favicon')) }}">
   @else
@@ -121,15 +121,15 @@ if($customBackgroundExists == true){
   <!-- Theme details: -->
   <meta name="designer" href="{{ url('') . "/theme/@" . $littlelink_name}}" content="{{ url('') . "/theme/@" . $littlelink_name}}">
 
-  <link rel="stylesheet" href="themes/{{$info->theme}}/share.button.css">
+  <style>{!! file_get_contents(base_path("themes/$info->theme/share.button.css")) !!}</style>
   @if(theme('use_default_buttons') == "true")
-  <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
+  <style>{!! file_get_contents(base_path("littlelink/css/brands.css")) !!}</style>
   @else
-  <link rel="stylesheet" href="themes/{{$info->theme}}/brands.css">
+  <style>{!! file_get_contents(base_path("themes/{{$info->theme}}/brands.css")) !!}</style>
   @endif
-  <link rel="stylesheet" href="themes/{{$info->theme}}/skeleton-auto.css">
+  <style>{!! file_get_contents(base_path("themes/{{$info->theme}}/skeleton-auto.css")) !!}</style>
 @if(file_exists(base_path('themes/' . $info->theme . '/animations.css')))
-  <link rel="stylesheet" href="<?php echo asset('themes/' . $info->theme . '/animations.css') ?>">
+  <style>{!! file_get_contents(base_path("themes/' . $info->theme . '/animations.css")) !!}</style>
 @else
   <link rel="stylesheet" href="{{ asset('littlelink/css/animations.css') }}">
 @endif
@@ -137,29 +137,29 @@ if($customBackgroundExists == true){
 @else
   <?php // override dark/light mode if override cookie is set
   $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
-  <link rel="stylesheet" href="{{ asset('littlelink/css/share.button.css') }}">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/animations.css') }}">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
+  <style>{!! file_get_contents(base_path("littlelink/css/share.button.css")) !!}</style>
+  <style>{!! file_get_contents(base_path("littlelink/css/animations.css")) !!}</style>
+  <style>{!! file_get_contents(base_path("littlelink/css/brands.css")) !!}</style>
   @if ($customBackgroundExists == true and $customBackgroundBrightness == 'dark')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
+  <style>{!! file_get_contents(base_path("littlelink/css/skeleton-dark.css")) !!}</style>
   <style>.social-icon{color:#fff;}</style>
   @elseif ($customBackgroundExists == true and $customBackgroundBrightness == 'light')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
+  <style>{!! file_get_contents(base_path("littlelink/css/skeleton-light.css")) !!}</style>
   <style>.social-icon{color:#222;}</style>
   @elseif ($color_scheme_override == 'dark')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
+  <style>{!! file_get_contents(base_path("littlelink/css/skeleton-dark.css")) !!}</style>
   <style>.social-icon{color:#fff;}</style>
   @elseif ($color_scheme_override == 'light')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
+  <style>{!! file_get_contents(base_path("littlelink/css/skeleton-light.css")) !!}</style>
   <style>.social-icon{color:#222;}</style>
   @elseif (config('advanced-config.theme') == 'dark')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
+  <style>{!! file_get_contents(base_path("littlelink/css/skeleton-dark.css")) !!}</style>
   <style>.social-icon{color:#fff;}</style>
   @elseif (config('advanced-config.theme') == 'light')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
+  <style>{!! file_get_contents(base_path("littlelink/css/skeleton-light.css")) !!}</style>
   <style>.social-icon{color:#222;}</style>
   @else
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-auto.css') }}">
+  <style>{!! file_get_contents(base_path("littlelink/css/skeleton-auto.css")) !!}</style>
   @endif
 @endif
 <style>.container{word-break: break-word;}</style>
@@ -265,7 +265,7 @@ function get_operating_system() {
 ?>
 
 @if($user_browser === 'Chrome' or get_operating_system() == 'mobile')
-<script src="{{ asset('littlelink/js/jquery.min.js') }}"></script>
+<script>{!! file_get_contents(base_path("littlelink/js/jquery.min.js")) !!}</script>
 <div align="right" class="sharediv"><div><span class="sharebutton button-hover icon-hover" id='share-share-button'><i style="color: black;" class="fa-solid fa-share sharebutton-img share-icon hvr-icon"></i><span class="sharebutton-mb">Share</span></span></div></div>
 <span class="copy-icon" role="button">
 </span>
@@ -274,7 +274,7 @@ function get_operating_system() {
 <div onclick="alert('URL has been copied to your clipboard!')" align="right" class="sharediv"><div><a class="sharebutton button-hover icon-hover"><i style="color: black;" class="fa-solid fa-share sharebutton-img share-icon hvr-icon"></i><span class="sharebutton-mb">Share</span></a></div></div>
 </span>
 @endif
-<script  src="{{ asset('littlelink/js/share.button.js') }}"></script>
+<script>{!! file_get_contents(base_path("littlelink/js/share.button.js")) !!}</script>
 
 @endif
 <?php ////end share button//// ?>
