@@ -87,7 +87,124 @@
 
 @if(auth()->user()->role == 'admin')
 @if(env('ENABLE_THEME_UPDATER') == 'true')
-<div id="ajax-container" style="height: 123px;"></div>
+
+<style>
+    details {
+        width: 65%;
+        margin-left: 15px;
+
+            {
+                {
+                -- max-width: calc(100% - 20rem);
+                --
+            }
+        }
+
+        position: relative;
+        border: 1px solid #78909C;
+        border-radius: 6px;
+        background-color: #ECEFF1;
+        color: #263238;
+        transition: background-color .15s;
+
+        > :last-child {
+            margin-bottom: 1rem;
+        }
+
+        &::before {
+            width: 100%;
+            height: 100%;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: inherit;
+            opacity: .15;
+            box-shadow: 0 .25em .5em #263238;
+            pointer-events: none;
+            transition: opacity .2s;
+            z-index: -1;
+        }
+
+        &[open] {
+            background-color: #FFF;
+
+            &::before {
+                opacity: .6;
+            }
+        }
+    }
+
+    summary {
+        padding: 0.375rem 0.75rem;
+        width: 100%;
+        display: block;
+        position: relative;
+        font-size: 1.33em;
+        font-weight: bold;
+        cursor: pointer;
+
+        &::before,
+        &::after {
+            width: .75em;
+            height: 2px;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            content: '';
+            background-color: currentColor;
+            text-align: right;
+            transform: translateY(-50%);
+            transition: transform .2s ease-in-out;
+        }
+
+        &::after {
+            transform: translateY(-50%) rotate(90deg);
+
+            [open] & {
+                transform: translateY(-50%) rotate(180deg);
+            }
+        }
+
+        &::-webkit-details-marker {
+            display: none;
+        }
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+
+    .updatespin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: upspin 1s linear infinite;
+  height: 20px;
+  width: 20px;
+}
+
+
+
+    @keyframes upspin {
+        100% {
+            transform: rotate(360deg)
+        }
+    }
+
+</style>
+
+<div id="ajax-container">
+
+    <br><br><br>
+    <details>
+        <summary><span id="updateicon" class="updatespin"><i class="bi bi-nut-fill"></i></span> Theme updater </summary>
+        </div>
+    </details>
+
+</div>
 <div id="my-lazy-element"></div>
 @endif
 @endif
