@@ -102,7 +102,7 @@ if($customBackgroundExists == true){
 
   <!-- Custom icons font-awesome -->
   <script>{!! file_get_contents(base_path("studio/external-dependencies/fontawesome.js")) !!}</script>
-  <style>{!! file_get_contents(base_path("studio/external-dependencies/fontawesome.css")) !!}</style>
+  <style>{!! str_replace('../', 'studio/', file_get_contents(base_path("studio/external-dependencies/fontawesome.css"))) !!}</style>
 
   @include('layouts.fonts') 
   <style>{!! file_get_contents(base_path("littlelink/css/normalize.css")) !!}</style>
