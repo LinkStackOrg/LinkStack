@@ -125,10 +125,10 @@ if($customBackgroundExists == true){
   @if(theme('use_default_buttons') == "true")
   <style>{!! file_get_contents(base_path("littlelink/css/brands.css")) !!}</style>
   @else
-  <style>{!! file_get_contents(base_path("themes/{{$info->theme}}/brands.css")) !!}</style>
+  <style>{!! file_get_contents(base_path("themes/$info->theme/brands.css")) !!}</style>
   @endif
-  <style>{!! file_get_contents(base_path("themes/{{$info->theme}}/skeleton-auto.css")) !!}</style>
-@if(file_exists(base_path('themes/' . $info->theme . '/animations.css')))
+  <style>{!! file_get_contents(base_path("themes/$info->theme/skeleton-auto.css")) !!}</style>
+@if(file_exists(base_path('themes/$info->theme/animations.css')))
   <style>{!! file_get_contents(base_path("themes/' . $info->theme . '/animations.css")) !!}</style>
 @else
   <link rel="stylesheet" href="{{ asset('littlelink/css/animations.css') }}">
@@ -330,14 +330,7 @@ function get_operating_system() {
         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button button-hover icon-hover" rel="me noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/{{$linkName}}{{theme('custom_icon_extension')}} @else{{ asset('\/littlelink/icons\/') . "mastodon" }}.svg @endif">{{ $link->title }}</a></div>
             @break
                @case('space')
-               @php
-               $title = $link->title;
-               if (is_numeric($title)) {
-                   echo str_repeat("<br>", $title < 10 ? $title : 10);
-               } else {
-                   echo "<br><br><br>";
-               }
-           @endphp
+               @php $title = $link->title; if (is_numeric($title)) { echo str_repeat("<br>", $title < 10 ? $title : 10); } else { echo "<br><br><br>"; } @endphp
             @break
         @case('heading')
         <div class="fadein"><h2>{{ $link->title }}</h2></div>
@@ -346,22 +339,22 @@ function get_operating_system() {
         <div class="fadein"><span style="">@if(env('ALLOW_USER_HTML') === true){!! $link->title !!}@else{{ $link->title }}@endif</span></div>
             @break
         @case('custom')
-            @if($link->custom_css != "")
-            <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><i style="color: {{$link->custom_icon}}" class="icon hvr-icon fa {{$link->custom_icon}}"></i>{{ $link->title }}</a></div>
-                @break
-            @elseif($link->custom_css === "" || $link->custom_css === "NULL" || (theme('allow_custom_buttons') == "false" && $link->name === "custom"))
-            <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $link->custom_css }}" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><i style="color: {{$link->custom_icon}}" class="icon hvr-icon fa {{$link->custom_icon}}"></i>{{ $link->title }}</a></div>
-                @break
+          @if($link->custom_css === "" or $link->custom_css === "NULL" or (theme('allow_custom_buttons') == "false" and $link->name === "custom"))
+           <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><i style="color: {{$link->custom_icon}}" class="icon hvr-icon fa {{$link->custom_icon}}"></i>{{ $link->title }}</a></div>
+              @break
+           @elseif($link->custom_css != "")
+           <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $link->custom_css }}" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><i style="color: {{$link->custom_icon}}" class="icon hvr-icon fa {{$link->custom_icon}}"></i>{{ $link->title }}</a></div>
+              @break
             @endif
         @case('custom_website')
-            @if($link->custom_css != "")
-            <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-custom_website button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(file_exists(base_path("studio/favicon/icons/").localIcon($link->id))){{url('studio/favicon/icons/'.localIcon($link->id))}}@else{{getFavIcon($link->id)}}@endif">{{ $link->title }}</a></div>
-                @break
-            @elseif($link->custom_css === "" || $link->custom_css === "NULL" || (theme('allow_custom_buttons') == "false" && $link->name === "custom"))
+           @if($link->name === "custom_website"and $link->custom_css === "" or $link->custom_css === "NULL" or (theme('allow_custom_buttons') == "false" and $link->name === "custom"))
+             <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-custom_website button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(file_exists(base_path("studio/favicon/icons/").localIcon($link->id))){{url('studio/favicon/icons/'.localIcon($link->id))}}@else{{getFavIcon($link->id)}}@endif">{{ $link->title }}</a></div>
+               @break
+           @elseif($link->name === "custom_website" and $link->custom_css != "")
             <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $link->custom_css }}" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(file_exists(base_path("studio/favicon/icons/").localIcon($link->id))){{url('studio/favicon/icons/'.localIcon($link->id))}}@else{{getFavIcon($link->id)}}@endif">{{ $link->title }}</a></div>
-                @break
-            @endif
-        @default
+             @break
+           @endif
+           @default
         <?php include base_path('config/button-names.php'); $newLinkName = $linkName; $isNewName = "false"; foreach($buttonNames as $key => $value) { if($newLinkName == $key) { $newLinkName = $value; $isNewName = "true"; }} ?>
         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $linkName }} button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/{{$link->name}}{{theme('custom_icon_extension')}} @else{{ asset('\/littlelink/icons\/') . $link->name }}.svg @endif">@if($isNewName == "true"){{ ucfirst($newLinkName) }}@else{{ ucfirst($newLinkName) }}@endif</a></div>
     @endswitch
