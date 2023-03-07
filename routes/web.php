@@ -166,6 +166,7 @@ Route::group([
     Route::get('/update/theme', [AdminController::class, 'updateThemes'])->name('updateThemes');
     Route::get('/panel/config', [AdminController::class, 'showConfig'])->name('showConfig');
     Route::post('/panel/config', [AdminController::class, 'editConfig'])->name('editConfig');
+    Route::get('/theme-updater', function () {return view('studio/theme-updater', []);});
     Route::get('/update', function () {return view('update', []);});
     Route::get('/backup', function () {return view('backup', []);});
 
