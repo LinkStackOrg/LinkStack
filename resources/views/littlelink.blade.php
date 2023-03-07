@@ -101,8 +101,8 @@ if($customBackgroundExists == true){
 <!--#### END Meta Tags social media preview images  ####-->
 
   <!-- Custom icons font-awesome -->
-  <script src="{{ asset('studio/external-dependencies/fontawesome.js') }}" crossorigin="anonymous" defer></script>
-  <link rel="stylesheet" href="{{ asset('studio/external-dependencies/fontawesome.css') }}" defer>
+  <script>{!! file_get_contents(base_path("studio/external-dependencies/fontawesome.js")) !!}</script>
+  <style>{!! file_get_contents(base_path("studio/external-dependencies/fontawesome.css")) !!}</style>  
 
   @include('layouts.fonts') 
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
