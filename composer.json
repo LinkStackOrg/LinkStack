@@ -6,7 +6,7 @@
     "license": "GPL-3.0-or-later",
     "require": {
         "php": "^7.3|^8.0",
-        "codedge/laravel-selfupdater": "^3.4",
+        "codedge/laravel-selfupdater": "^3.7",
         "awssat/laravel-visits": "^4.0",
         "doctrine/dbal": "^3.0",
         "fideloper/proxy": "^4.4",
