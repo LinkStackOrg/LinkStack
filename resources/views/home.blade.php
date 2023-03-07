@@ -43,8 +43,8 @@ return $path;}
   @endif
 
   <!-- Custom icons font-awesome -->
-  <script src="{{ asset('studio/external-dependencies/fontawesome.js') }}" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="{{ asset('studio/external-dependencies/fontawesome.css') }}" />
+  <script>{!! file_get_contents(base_path("studio/external-dependencies/fontawesome.js")) !!}</script>
+  <style>{!! str_replace('../', 'studio/', file_get_contents(base_path("studio/external-dependencies/fontawesome.css"))) !!}</style>
 
   @include('layouts.fonts') 
   <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
