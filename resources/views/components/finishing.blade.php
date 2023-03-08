@@ -146,27 +146,10 @@ use Illuminate\Support\Facades\File;
     } catch (exception $e) {}
 
 // Remove unique constrain from user names
-class UpdateNameColumnInUsersTable extends Migration
-{
-    public function up()
-    {
-        try {
-            Schema::table('users', function (Blueprint $table) {
-                $table->dropUnique('users_name_unique');
-                $table->string('name')->unique(false)->change();
-            });
-        } catch (\Throwable $th) {}
-    }
-
-    public function down()
-    {
-        try {
-            Schema::table('users', function (Blueprint $table) {
-                $table->string('name')->unique()->change();
-            });
-        } catch (\Throwable $th) {}
-    }
-}
+try {
+    $affected_rows = DB::delete(DB::raw("DELETE FROM users WHERE id NOT IN (SELECT MIN(id) FROM users GROUP BY name)"));
+    $message = "Duplicate rows removed successfully. $affected_rows rows were affected.";
+} catch (\Exception $e) {}
 
     // Changes saved profile images from littlelink_name to IDs.
     // This runs every time the updater runs.
