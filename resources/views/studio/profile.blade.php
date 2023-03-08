@@ -32,6 +32,21 @@
         </form>
 @endif
 
+<br><br><form  action="{{ route('editProfile') }}" method="post">
+  @csrf
+    <div class="form-group col-lg-8">
+      <h4>Password</h4>
+      <input type="password" name="password" class="form-control" placeholder="At least 8 characters" required>
+    </div>
+    <button type="Change " class="mt-3 ml-3 btn btn-info">Change password</button>
+  </form>
+
+  @csrf
+    <br><br><div class="form-group col-lg-8">
+      <h4>Role</h4>
+      <input type="text" class="form-control" value="{{ strtoupper($profile->role) }}" readonly>
+    </div>
+
 @if(env('ALLOW_USER_EXPORT') != false)
 <br><br><br>
 <div class="form-group col-lg-8">
