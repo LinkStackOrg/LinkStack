@@ -11,6 +11,17 @@ function findFile($name){
     return $pathinfo;
 }
 
+function findAvatar($name){
+  $directory = base_path('/img');
+  $files = scandir($directory);
+  $pathinfo = "error.error";
+  foreach($files as $file) {
+  if (strpos($file, $name.'.') !== false) {
+  $pathinfo = "/img/" . $name. "." . pathinfo($file, PATHINFO_EXTENSION);
+  }}
+  return $pathinfo;
+}
+
 function findBackground($name){
     $directory = base_path('/img/background-img/');
     $files = scandir($directory);
