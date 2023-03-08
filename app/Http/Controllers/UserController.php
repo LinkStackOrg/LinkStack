@@ -741,6 +741,113 @@ class UserController extends Controller
         return back();
     }
 
+    //Export user links
+    public function exportLinks(request $request)
+    {
+        $userId = Auth::id();
+        $user = User::find($userId);
+        $links = Link::where('user_id', $userId)->get();
+        
+        if (!$user) {
+            // handle the case where the user is null
+            return response()->json(['message' => 'User not found'], 404);
+        }
+
+        $userData['links'] = $links->toArray();
+
+        $fileName = 'links.json';
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Content-Disposition' => 'attachment; filename="'.$fileName.'"',
+        ];
+        return response()->json($userData, 200, $headers);
+
+        return back();
+    }
+
+    //Export all user data
+    public function exportAll(request $request)
+    {
+        $userId = Auth::id();
+        $user = User::find($userId);
+        $links = Link::where('user_id', $userId)->get();
+        
+        if (!$user) {
+            // handle the case where the user is null
+            return response()->json(['message' => 'User not found'], 404);
+        }
+
+        $userData = $user->toArray();
+        $userData['links'] = $links->toArray();
+
+        $fileName = 'user_data.json';
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Content-Disposition' => 'attachment; filename="'.$fileName.'"',
+        ];
+        return response()->json($userData, 200, $headers);
+
+        return back();
+    }
+
+//Import user data from file
+public function importData(Request $request)
+{
+    try {
+        // Get the JSON data from the uploaded file
+        if (!$request->hasFile('import') || !$request->file('import')->isValid()) {
+            throw new \Exception('File not uploaded or is faulty');
+        }
+        $file = $request->file('import');
+        $jsonString = $file->get();
+        $userData = json_decode($jsonString, true);
+
+        // Update the authenticated user's profile data if defined in the JSON file
+        $user = auth()->user();
+        if (isset($userData['name'])) {
+            $user->name = $userData['name'];
+        }
+        if (isset($userData['littlelink_name'])) {
+            $user->littlelink_name = $userData['littlelink_name'];
+        }
+        if (isset($userData['littlelink_description'])) {
+            $user->littlelink_description = $userData['littlelink_description'];
+        }
+        if (isset($userData['image'])) {
+            $user->image = $userData['image'];
+        }
+        $user->save();
+
+        // Delete all links for the authenticated user
+        Link::where('user_id', $user->id)->delete();
+
+        // Loop through each link in $userData and create a new link for the user
+        foreach ($userData['links'] as $linkData) {
+            $newLink = new Link();
+
+            // Copy over the link data from $linkData to $newLink
+            $newLink->button_id = $linkData['button_id'];
+            $newLink->link = $linkData['link'];
+            $newLink->title = $linkData['title'];
+            $newLink->order = $linkData['order'];
+            $newLink->click_number = $linkData['click_number'];
+            $newLink->up_link = $linkData['up_link'];
+            $newLink->custom_css = $linkData['custom_css'];
+            $newLink->custom_icon = $linkData['custom_icon'];
+
+            // Set the user ID to the current user's ID
+            $newLink->user_id = $user->id;
+
+            // Save the new link to the database
+            $newLink->save();
+        }
+
+        return redirect('studio/profile')->with('success', 'Profile updated successfully!');
+    } catch (\Exception $e) {
+        return redirect('studio/profile')->with('error', 'An error occurred while updating your profile.');
+    }
+}
+
     //Edit/save page icons
     public function editIcons(request $request)
     {

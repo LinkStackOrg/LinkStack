@@ -123,6 +123,9 @@ Route::post('/edit-icons', [UserController::class, 'editIcons'])->name('editIcon
 Route::get('/clearIcon/{id}', [UserController::class, 'clearIcon'])->name('clearIcon');
 Route::get('/studio/page/delprofilepicture', [UserController::class, 'delProfilePicture'])->name('delProfilePicture');
 Route::get('/studio/delete-user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser')->middleware('verified');
+Route::get('/export-links', [UserController::class, 'exportLinks'])->name('exportLinks');
+Route::get('/export-all', [UserController::class, 'exportAll'])->name('exportAll');
+Route::post('/import-data', [UserController::class, 'importData'])->name('importData');
 Route::get('/studio/linkparamform_part/{typeid}/{linkid}', [LinkTypeViewController::class, 'getParamForm'])->name('linkparamform.part');
 });
 
