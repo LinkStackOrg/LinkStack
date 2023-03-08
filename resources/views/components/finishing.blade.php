@@ -39,6 +39,12 @@ use Illuminate\Support\Facades\File;
             if(EnvEditor::keyExists('ALLOW_CUSTOM_BACKGROUNDS')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('ALLOW_CUSTOM_BACKGROUNDS', 'true');}
 
+            if(EnvEditor::keyExists('ALLOW_USER_IMPORT')){ /* Do nothing if key already exists */ 
+            } else {EnvEditor::addKey('ALLOW_USER_IMPORT', 'true');}
+
+            if(EnvEditor::keyExists('ALLOW_USER_EXPORT')){ /* Do nothing if key already exists */ 
+            } else {EnvEditor::addKey('ALLOW_USER_EXPORT', 'true');}
+
 
             // Footer page customization
             if(EnvEditor::keyExists('DISPLAY_FOOTER_HOME')){} else {EnvEditor::addKey('DISPLAY_FOOTER_HOME', 'true');}

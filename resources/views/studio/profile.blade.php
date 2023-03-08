@@ -32,8 +32,8 @@
         </form>
 @endif
 
+@if(env('ALLOW_USER_EXPORT') != false)
 <br><br><br>
-
 <div class="form-group col-lg-8">
 <h4>Export user data</h4>
 <label>Export your user data to transfer to a different instance.</label>
@@ -41,7 +41,9 @@
 <button class="mt-3 ml-3 btn btn-outline-secondary"><a href="{{ route('exportAll') }}" style="color:#fff;"><i class="bi bi-layer-backward"></i> Export all data</a></button>
 <button class="mt-3 ml-3 btn btn-outline-secondary"><a href="{{ route('exportLinks') }}" style="color:#fff;"><i class="bi bi-layer-backward"></i> Export links only</a></button>
 </div></div>
+@endif
 
+@if(env('ALLOW_USER_IMPORT') != false)
 <form action="{{ route('importData') }}" enctype="multipart/form-data" method="post">
   @csrf
   <div class="form-group col-lg-8"><br><br><br>
@@ -52,6 +54,7 @@
 
   <button type="submit" class="mt-3 ml-3 btn btn-info" onclick="return confirm('Are you sure you want to import this file? This action will replace all your current data, including links!')">Import</button>
 </form>
+@endif
 
 <br>
 

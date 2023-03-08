@@ -219,6 +219,16 @@
     "description": "Allow users to upload custom background images for their pages."
     },
 
+    {"value": "ALLOW_USER_IMPORT",
+    "title": "Allow users to import profiles from other instances",
+    "description": "Allows users to import their profile and links from an external file."
+    },
+
+    {"value": "ALLOW_USER_EXPORT",
+    "title": "Allow users to export their profile",
+    "description": "Allows users to export their own links and profile."
+    },
+
     {"value": "HIDE_VERIFICATION_CHECKMARK",
     "title": "Hide verification checkmark",
     "description": "Hides verification badge displayed on admin and VIP pages."

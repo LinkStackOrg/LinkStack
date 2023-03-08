@@ -296,7 +296,6 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 {{toggle('ALLOW_CUSTOM_BACKGROUNDS')}}
 
 
-
 <a name="Security"><h2 class="ch2">Security</h2></a>
 
 
@@ -307,6 +306,13 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 
 
 {{toggle('ENABLE_THEME_UPDATER')}}
+
+
+{{toggle('ALLOW_USER_EXPORT')}}
+
+
+{{toggle('ALLOW_USER_IMPORT')}}
+
 
 
 <a name="Advanced"><h2 class="ch2">Advanced</h2></a>
