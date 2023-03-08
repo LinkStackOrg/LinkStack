@@ -145,6 +145,28 @@ use Illuminate\Support\Facades\File;
         ]);
     } catch (exception $e) {}
 
+// Remove unique constrain from user names
+class UpdateNameColumnInUsersTable extends Migration
+{
+    public function up()
+    {
+        try {
+            Schema::table('users', function (Blueprint $table) {
+                $table->dropUnique('users_name_unique');
+                $table->string('name')->unique(false)->change();
+            });
+        } catch (\Throwable $th) {}
+    }
+
+    public function down()
+    {
+        try {
+            Schema::table('users', function (Blueprint $table) {
+                $table->string('name')->unique()->change();
+            });
+        } catch (\Throwable $th) {}
+    }
+}
 
     // Changes saved profile images from littlelink_name to IDs.
     // This runs every time the updater runs.
