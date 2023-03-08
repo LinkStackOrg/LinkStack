@@ -145,12 +145,6 @@ use Illuminate\Support\Facades\File;
         ]);
     } catch (exception $e) {}
 
-// Remove unique constrain from user names
-try {
-    $affected_rows = DB::delete(DB::raw("DELETE FROM users WHERE id NOT IN (SELECT MIN(id) FROM users GROUP BY name)"));
-    $message = "Duplicate rows removed successfully. $affected_rows rows were affected.";
-} catch (\Exception $e) {}
-
     // Changes saved profile images from littlelink_name to IDs.
     // This runs every time the updater runs.
     // Not sure if this will cause any issues.
