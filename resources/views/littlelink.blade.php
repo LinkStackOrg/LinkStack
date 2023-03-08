@@ -295,7 +295,8 @@ function get_operating_system() {
         <h1 class="fadein">{{ $info->name }}@if(($userinfo->role == 'vip' or $userinfo->role == 'admin') and theme('disable_verification_badge') != "true" and env('HIDE_VERIFICATION_CHECKMARK') != true and UserData::getData($userinfo->id, 'checkmark') != false)<span title="Verified user">@include('components.verify-svg')@endif</span></h1>
 
         <!-- Short Bio -->
-        <div class="fadein"><center><p style="width:50%;min-width:300px;" class="fadein">@if(env('ALLOW_USER_HTML') === true){!! $info->littlelink_description !!}@else{{ $info->littlelink_description }}@endif</p></center></div>
+        <style>.description-parent * {margin-bottom: 1em;}.description-parent {padding-bottom: 30px;}</style>
+        <center><div class="fadein description-parent"><p class="fadein">@if(env('ALLOW_USER_HTML') === true){!! $info->littlelink_description !!}@else{{ $info->littlelink_description }}@endif</p></div></center>
         
         <!-- Icons -->
         @php $icons = DB::table('links')->where('user_id', $userinfo->id)->where('button_id', 94)->get(); @endphp
