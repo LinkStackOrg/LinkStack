@@ -755,7 +755,9 @@ class UserController extends Controller
 
         $userData['links'] = $links->toArray();
 
-        $fileName = 'links.json';
+        $domain = $_SERVER['HTTP_HOST'];
+        $date = date('Y-m-d_H-i-s');
+        $fileName = "links-$domain-$date.json";
         $headers = [
             'Content-Type' => 'application/json',
             'Content-Disposition' => 'attachment; filename="'.$fileName.'"',
@@ -780,7 +782,9 @@ class UserController extends Controller
         $userData = $user->toArray();
         $userData['links'] = $links->toArray();
 
-        $fileName = 'user_data.json';
+        $domain = $_SERVER['HTTP_HOST'];
+        $date = date('Y-m-d_H-i-s');
+        $fileName = "user_data-$domain-$date.json";
         $headers = [
             'Content-Type' => 'application/json',
             'Content-Disposition' => 'attachment; filename="'.$fileName.'"',
