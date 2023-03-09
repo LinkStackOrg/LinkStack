@@ -267,10 +267,10 @@ function get_operating_system() {
 @if($user_browser === 'Chrome' or get_operating_system() == 'mobile')
 <script>{!! file_get_contents(base_path("littlelink/js/jquery.min.js")) !!}</script>
 <div align="right" class="sharediv"><div><span class="sharebutton button-hover icon-hover" id='share-share-button'><i style="color: black;" class="fa-solid fa-share sharebutton-img share-icon hvr-icon"></i><span class="sharebutton-mb">Share</span></span></div></div>
-<span class="copy-icon" role="button">
+<span class="copy-icon" role="button" aria-label="Share this page">
 </span>
 @else
-<span class="copy-icon" role="button">
+<span class="copy-icon" role="button" aria-label="Share this page">
 <div onclick="alert('URL has been copied to your clipboard!')" align="right" class="sharediv"><div><a class="sharebutton button-hover icon-hover"><i style="color: black;" class="fa-solid fa-share sharebutton-img share-icon hvr-icon"></i><span class="sharebutton-mb">Share</span></a></div></div>
 </span>
 @endif
@@ -300,7 +300,7 @@ function get_operating_system() {
         @php $icons = DB::table('links')->where('user_id', $userinfo->id)->where('button_id', 94)->get(); @endphp
         <div class="row fadein social-icon-div">
         @foreach($icons as $icon)
-        <a class="social-hover social-link" href="{{ route('clickNumber') . '/' . $icon->id. "?" . $icon->link}}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif><i class="social-icon fa-brands fa-{{$icon->title}}"></i></a>
+        <a class="social-hover social-link" href="{{ route('clickNumber') . '/' . $icon->id. "?" . $icon->link}}" title="{{ucfirst($icon->title)}}" aria-label="{{ucfirst($icon->title)}}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif><i class="social-icon fa-brands fa-{{$icon->title}}"></i></a>
         @endforeach
         </div>
 
