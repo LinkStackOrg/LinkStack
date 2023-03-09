@@ -14,12 +14,16 @@ class UpdateColumnsToTextType extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->text('littlelink_description')->change();
+            $table->text('littlelink_description')->nullable()->change();
         });
-        
+
         Schema::table('links', function (Blueprint $table) {
-            $table->text('title')->change();
+            $table->text('title')->nullable()->change();
         });
+
+        // Set the new character limit to 1000 for both columns
+        DB::statement('ALTER TABLE users MODIFY COLUMN littlelink_description TEXT(1000)');
+        DB::statement('ALTER TABLE links MODIFY COLUMN title TEXT(1000)');
     }
 
     /**
@@ -30,11 +34,15 @@ class UpdateColumnsToTextType extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('littlelink_description', 255)->change();
+            $table->string('littlelink_description', 255)->nullable()->change();
         });
 
         Schema::table('links', function (Blueprint $table) {
-            $table->string('title', 255)->change();
+            $table->string('title', 255)->nullable()->change();
         });
+
+        // Revert the character limit to 255 for both columns
+        DB::statement('ALTER TABLE users MODIFY COLUMN littlelink_description VARCHAR(255)');
+        DB::statement('ALTER TABLE links MODIFY COLUMN title VARCHAR(255)');
     }
 }
