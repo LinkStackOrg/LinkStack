@@ -35,7 +35,9 @@
 @endif
 
 @if($_SERVER['QUERY_STRING'] === 'backups')
-<?php Artisan::call('backup:clean');
+<?php 
+try {Artisan::call('backup:clean');}
+catch (exception $e) {}
 Artisan::call('backup:run', ['--only-files' => true]);
 $tst = base_path('backups/');
 file_put_contents($tst.'CANUPDATE', '');
