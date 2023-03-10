@@ -221,10 +221,6 @@ class ButtonSeeder extends Seeder
             [
             'name' => 'apple-podcasts'
             ],
-
-            [
-            'name' => 'bookwyrm'
-            ],
             
             [
             'name' => 'briar'
@@ -395,7 +391,11 @@ class ButtonSeeder extends Seeder
             ],
 
             [
-                'name' => 'icon'
+            'name' => 'icon'
+            ],
+
+            [
+            'name' => 'bookwyrm'
             ],
 
         ];
