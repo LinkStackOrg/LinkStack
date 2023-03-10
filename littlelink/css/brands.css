@@ -225,6 +225,19 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* BookWyrm */
+.button.button-bookwyrm {
+  color: #000000;
+  background-color: #ffffff;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+}
+.button.button-bookwyrm:hover,
+.button.button-bookwyrm:focus {
+  filter: brightness(90%);
+}
+
 /* Briar */
 .button.button-briar {
   color: #FFFFFF;

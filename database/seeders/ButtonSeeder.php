@@ -69,7 +69,6 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'goodreads'
             ],
-			
 
             [
 			'name' => 'instagram'
@@ -221,6 +220,10 @@ class ButtonSeeder extends Seeder
         
             [
             'name' => 'apple-podcasts'
+            ],
+
+            [
+            'name' => 'bookwyrm'
             ],
             
             [
