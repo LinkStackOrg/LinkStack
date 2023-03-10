@@ -284,9 +284,9 @@ function get_operating_system() {
       <div class="column" style="margin-top: 5%">
         <!-- Your Image Here -->
           @if(file_exists(base_path(findAvatar($userinfo->id))))
-          <img alt="avatar" class="rounded-avatar fadein" src="{{ url(findAvatar($userinfo->id)) }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="128px" height="128px" style="object-fit: cover;">
+          <img alt="avatar" class="rounded-avatar fadein" src="{{ url(findAvatar($userinfo->id)) }}" width="128px" height="128px" style="object-fit: cover;">
           @else
-          <img alt="avatar" class="rounded-avatar fadein" src="{{ asset('littlelink/images/logo.svg') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="128px" height="128px" style="object-fit: cover;">
+          <img alt="avatar" class="rounded-avatar fadein" src="{{ asset('littlelink/images/logo.svg') }}" width="128px" height="128px" style="object-fit: cover;">
           @endif
 
         <!-- Your Name -->
