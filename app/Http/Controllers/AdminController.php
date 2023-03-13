@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 
 use GeoSot\EnvEditor\Controllers\EnvController;
 use GeoSot\EnvEditor\Exceptions\EnvException;
@@ -92,6 +93,23 @@ public function users(Request $request)
         return view('panel/users', $data);
     }
     
+// Send test mail
+public function SendTestMail(Request $request)
+{
+    try {
+        $userId = auth()->id();
+        $user = User::findOrFail($userId);
+        
+        Mail::send('auth.test', ['user' => $user], function ($message) use ($user) {
+            $message->to($user->email)
+                    ->subject('Test Email');
+        });
+        
+        return redirect()->route('showConfig')->with('success', 'Test email sent successfully!');
+    } catch (\Exception $e) {
+        return redirect()->route('showConfig')->with('fail', 'Failed to send test email. Please try again later.');
+    }
+}
 
     //Block user
     public function blockUser(request $request)

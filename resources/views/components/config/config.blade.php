@@ -380,6 +380,20 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 </div>
 <button type="submit" class="mt-3 ml-3 btn btn-info">Apply changes</button>
 </form>
+
+<div class="form-group col-lg-8">
+  <br><br><h5>Test E-Mail setup:</h5>
+  @if (session('success'))
+  <div class="alert alert-success">
+      {{ session('success') }}
+  </div>
+@elseif (session('fail'))
+  <div class="alert alert-danger">
+      {{ session('fail') }}
+  </div>
+@endif
+</div>
+<a href="{{route('SendTestMail')}}"><button class="mt-3 ml-3 btn btn-outline-secondary">Send Test E-Mail</button></a>
 {{-- end SMTP settings --}}
 
 
