@@ -165,17 +165,17 @@ foreach($pages as $page)
     <div class="row">
     <div class="sign" style="margin-top: 30px; text-align: right;">
             @if (Route::has('login'))
-                    @auth
-                    <a href="{{ route('studioIndex') }}" class="underline spacing"><div class="fadein btns log">Studio</div></a>
-                    @else
-                    <a href="{{ route('login') }}" class="fadein btns log"><div class="underline spacing">Log in</div></a>
-
-                        @if (Route::has('register') and $page->register == 'true')
-                        <a href="{{ route('register') }}" class="fadein btns reg"><div class="underline spacing">Register</div></a>
-                        @elseif (env('REGISTER_OVERRIDE') === true)
-                        <a href="{{ route('register') }}" class="fadein btns reg"><div class="underline spacing">Register</div></a>
-                        @endif
-                    @endauth
+            @auth
+            <a href="{{ route('studioIndex') }}" class="underline spacing"><div class="fadein btns log">Studio</div></a>
+        @else
+            @if (Route::has('login'))
+                <a href="{{ route('login') }}" class="fadein btns log"><div class="underline spacing">Log in</div></a>
+            @endif
+        
+            @if ((Route::has('register') && $page->register == 'true') || env('REGISTER_OVERRIDE') === true)
+                <a href="{{ route('register') }}" class="fadein btns reg"><div class="underline spacing">Register</div></a>
+            @endif
+        @endauth        
               @endif
     </div>
       <div class="column" style="margin-top: 15%">
