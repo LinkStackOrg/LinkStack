@@ -107,7 +107,7 @@ public function SendTestMail(Request $request)
         
         return redirect()->route('showConfig')->with('success', 'Test email sent successfully!');
     } catch (\Exception $e) {
-        return redirect()->route('showConfig')->with('fail', 'Failed to send test email. Please try again later.');
+        return redirect()->route('showConfig')->with('fail', 'Failed to send test email.');
     }
 }
 
