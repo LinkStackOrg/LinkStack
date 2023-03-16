@@ -29,11 +29,11 @@
           
           <div class="form-group col-lg-8">
           @if(file_exists(base_path("img/" . $user->id . ".png")))
-          <img src="{{ asset("img/" . $user->id . ".png") }}" srcset="{{ asset("img/$user->id" . "@2x.png 2x") }}" width="128px" height="128px" style="object-fit: cover;">
+          <img src="{{ asset("img/" . $user->id . ".png") }}" img/$user->id" . "@2x.png 2x") }}" width="128px" height="128px" style="object-fit: cover;">
           @elseif(file_exists(base_path("littlelink/images/").findFile('avatar')))
-          <img class="rounded-avatar" src="{{ asset('littlelink/images/'.findFile('avatar')) }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="128px" height="128px" style="object-fit: cover;">
+          <img class="rounded-avatar" src="{{ asset('littlelink/images/'.findFile('avatar')) }}"  width="128px" height="128px" style="object-fit: cover;">
           @else
-          <img src="{{ asset('littlelink/images/logo.svg') }}" srcset="{{ asset('littlelink/images/avatar@2x.png 2x') }}" width="128px" height="128px" style="object-fit: cover;">
+          <img src="{{ asset('littlelink/images/logo.svg') }}"  width="128px" height="128px" style="object-fit: cover;">
           @endif
           @if(file_exists(base_path("img/" . $user->id . ".png")))<br><a title="Remove icon" class="hvr-grow p-1 text-danger" style="padding-left:5px;" href="?delete"><i class="bi bi-trash-fill"></i> Delete</a>@endif
           @if($_SERVER['QUERY_STRING'] === 'delete' and File::exists(base_path('img/' . $user->id . '.png')))@php File::delete(base_path('img/' . $user->id . '.png')); header("Location: ".url()->current()); die(); @endphp @endif
