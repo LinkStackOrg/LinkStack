@@ -121,15 +121,15 @@ if($customBackgroundExists == true){
   <!-- Theme details: -->
   <meta name="designer" href="{{ url('') . "/theme/@" . $littlelink_name}}" content="{{ url('') . "/theme/@" . $littlelink_name}}">
 
-  <style>{!! file_get_contents(base_path("themes/$info->theme/share.button.css")) !!}</style>
+  <link rel="stylesheet" href="themes/{{$info->theme}}/share.button.css">
   @if(theme('use_default_buttons') == "true")
-  <style>{!! file_get_contents(base_path("littlelink/css/brands.css")) !!}</style>
+  <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
   @else
-  <style>{!! file_get_contents(base_path("themes/$info->theme/brands.css")) !!}</style>
+  <link rel="stylesheet" href="themes/{{$info->theme}}/brands.css">
   @endif
-  <style>{!! file_get_contents(base_path("themes/$info->theme/skeleton-auto.css")) !!}</style>
-@if(file_exists(base_path('themes/$info->theme/animations.css')))
-  <style>{!! file_get_contents(base_path("themes/' . $info->theme . '/animations.css")) !!}</style>
+  <link rel="stylesheet" href="themes/{{$info->theme}}/skeleton-auto.css">
+@if(file_exists(base_path('themes/' . $info->theme . '/animations.css')))
+  <link rel="stylesheet" href="<?php echo asset('themes/' . $info->theme . '/animations.css') ?>">
 @else
   <link rel="stylesheet" href="{{ asset('littlelink/css/animations.css') }}">
 @endif
@@ -137,29 +137,29 @@ if($customBackgroundExists == true){
 @else
   <?php // override dark/light mode if override cookie is set
   $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
-  <style>{!! file_get_contents(base_path("littlelink/css/share.button.css")) !!}</style>
-  <style>{!! file_get_contents(base_path("littlelink/css/animations.css")) !!}</style>
-  <style>{!! file_get_contents(base_path("littlelink/css/brands.css")) !!}</style>
+  <link rel="stylesheet" href="{{ asset('littlelink/css/share.button.css') }}">
+  <link rel="stylesheet" href="{{ asset('littlelink/css/animations.css') }}">
+  <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
   @if ($customBackgroundExists == true and $customBackgroundBrightness == 'dark')
-  <style>{!! file_get_contents(base_path("littlelink/css/skeleton-dark.css")) !!}</style>
+  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
   <style>.social-icon{color:#fff;}</style>
   @elseif ($customBackgroundExists == true and $customBackgroundBrightness == 'light')
-  <style>{!! file_get_contents(base_path("littlelink/css/skeleton-light.css")) !!}</style>
+  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
   <style>.social-icon{color:#222;}</style>
   @elseif ($color_scheme_override == 'dark')
-  <style>{!! file_get_contents(base_path("littlelink/css/skeleton-dark.css")) !!}</style>
+  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
   <style>.social-icon{color:#fff;}</style>
   @elseif ($color_scheme_override == 'light')
-  <style>{!! file_get_contents(base_path("littlelink/css/skeleton-light.css")) !!}</style>
+  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
   <style>.social-icon{color:#222;}</style>
   @elseif (config('advanced-config.theme') == 'dark')
-  <style>{!! file_get_contents(base_path("littlelink/css/skeleton-dark.css")) !!}</style>
+  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
   <style>.social-icon{color:#fff;}</style>
   @elseif (config('advanced-config.theme') == 'light')
-  <style>{!! file_get_contents(base_path("littlelink/css/skeleton-light.css")) !!}</style>
+  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
   <style>.social-icon{color:#222;}</style>
   @else
-  <style>{!! file_get_contents(base_path("littlelink/css/skeleton-auto.css")) !!}</style>
+  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-auto.css') }}">
   @endif
 @endif
 <style>.container{word-break: break-word;}</style>
