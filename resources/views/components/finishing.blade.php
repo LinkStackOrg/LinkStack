@@ -107,10 +107,20 @@ use Illuminate\Support\Facades\File;
 
             /* Updates button database entries */ 
             Schema::disableForeignKeyConstraints();
-            try {Artisan::call('migrate');} catch (exception $e) {}
-            try {DB::table('buttons')->delete();} catch (exception $e) {}
-            try {DB::table('buttons')->truncate();} catch (exception $e) {}
-            try {Artisan::call('db:seed --class="ButtonSeeder" --force');} catch (exception $e) {}
+            
+            // Run migrations
+            Schema::dropIfExists('buttons');
+            Schema::create('buttons', function (Blueprint $table) {
+                // Define table columns here
+            });
+                
+            // Clear button table
+            DB::table('buttons')->truncate();
+            
+            // Seed button table
+            $seeder = new ButtonSeeder();
+            $seeder->run();
+            
             Schema::enableForeignKeyConstraints();
 
     try {
