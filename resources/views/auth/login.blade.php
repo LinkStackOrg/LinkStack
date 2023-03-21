@@ -1,3 +1,11 @@
+<?php
+$pages = DB::table('pages')->get();
+foreach($pages as $page)
+{
+	//Gets value from database
+}
+?>
+
 <x-guest-layout>
 @include('layouts.lang')
 
