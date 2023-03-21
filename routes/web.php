@@ -60,7 +60,7 @@ if(config('advanced-config.custom_home_url') != '') {
   $custom_home_page_url = "/home";
 }
 if(env('HOME_URL') != '') {
-  Route::get('/', [UserController::class, 'littlelink'])->name('littlelink');
+  Route::get('/', [UserController::class, 'littlelinkhome'])->name('littlelink');
   if(config('advanced-config.disable_home_page') == 'redirect') {
     Route::get($custom_home_page_url, function () {return redirect(config('advanced-config.redirect_home_page'));});
   }elseif(config('advanced-config.disable_home_page') != 'true') {
