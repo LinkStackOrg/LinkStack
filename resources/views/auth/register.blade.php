@@ -113,6 +113,8 @@ foreach($pages as $page)
                 </x-button>
             </div>
         </form>
-		  @endif
+        @else
+        <br><br><center><h3>Registration is disabled by the administrator</h3></center><br>
+        @endif
     </x-auth-card>
 </x-guest-layout>
