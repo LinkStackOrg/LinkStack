@@ -107,7 +107,7 @@ use Illuminate\Support\Facades\File;
 
             /* Updates button database entries */ 
             Schema::disableForeignKeyConstraints();
-            try {Artisan::call('migrate');} catch (exception $e) {}
+            try {Artisan::call('migrate', ['--force' => true]);} catch (exception $e) {}
             try {DB::table('buttons')->delete();} catch (exception $e) {}
             try {DB::table('buttons')->truncate();} catch (exception $e) {}
             try {Artisan::call('db:seed --class="ButtonSeeder" --force');} catch (exception $e) {}
