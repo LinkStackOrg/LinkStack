@@ -398,6 +398,10 @@ class ButtonSeeder extends Seeder
             'name' => 'bookwyrm'
             ],
 
+            [
+            'name' => 'vcard'
+            ],
+
         ];
 
          Button::insert($buttons);

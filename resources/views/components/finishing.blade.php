@@ -143,6 +143,13 @@ use Illuminate\Support\Facades\File;
             'icon' => 'bi bi-telephone-fill',
             'description' => 'Add a telephone number that opens a system dialog to initiate a phone call.'
         ]);
+
+        DB::table('link_types')->updateOrInsert([
+            'typename' => 'vcard',
+            'title' => 'Vcard',
+            'icon' => 'bi bi-person-square',
+            'description' => 'Create or upload an electronic business card.'
+        ]);
     } catch (exception $e) {}
 
     // Changes saved profile images from littlelink_name to IDs.

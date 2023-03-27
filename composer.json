@@ -6,18 +6,19 @@
     "license": "GPL-3.0-or-later",
     "require": {
         "php": "^7.3|^8.0",
-        "codedge/laravel-selfupdater": "^3.6",
         "awssat/laravel-visits": "^4.0",
+        "codedge/laravel-selfupdater": "^3.6",
+        "cohensive/oembed": "^0.16",
         "doctrine/dbal": "^3.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^3.0",
         "geo-sot/laravel-env-editor": "^2.0",
         "guzzlehttp/guzzle": "^7.4",
+        "jeroendesloovere/vcard": "^1.7",
         "laravel/framework": "^9.52.4",
         "laravel/socialite": "^5.5",
         "laravel/tinker": "^2.5",
-        "spatie/laravel-backup": "^8.17",
-        "cohensive/oembed": "^0.16"
+        "spatie/laravel-backup": "^8.17"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^1.0",

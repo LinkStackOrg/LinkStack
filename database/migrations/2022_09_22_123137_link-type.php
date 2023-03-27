@@ -196,6 +196,13 @@ class LinkType extends Migration
             'description' => 'Add a telephone number that opens a system dialog to initiate a phone call.'
         ]);
 
+        DB::table($this->TableName)->updateOrInsert([
+            'typename' => 'vcard',
+            'title' => 'Vcard',
+            'icon' => 'bi bi-person-square',
+            'description' => 'Create or upload an electronic business card.'
+        ]);
+
     }
 
 }

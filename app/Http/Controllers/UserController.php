@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Cohensive\OEmbed\Facades\OEmbed;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Route;
+use JeroenDesloovere\VCard\VCard;
 
 use Auth;
 use DB;
@@ -144,6 +145,8 @@ class UserController extends Controller
                 $data['linkTypeID'] = "6";
             } elseif ($bid == 44) {
                 $data['linkTypeID'] = "7";
+            } elseif ($bid == 96) {
+                $data['linkTypeID'] = "8";
             } else {
                 $data['linkTypeID'] = "1";
             }
@@ -245,6 +248,69 @@ class UserController extends Controller
                         'button_id' => $button?->id,
                         'title' => $LinkTitle,
                     ]);
+                }elseif($linkType->typename == "vcard"){
+
+                    $prefix = $request->input('prefix');
+                    $firstName = $request->input('first_name');
+                    $middleName = $request->input('middle_name');
+                    $lastName = $request->input('last_name');
+                    $suffix = $request->input('suffix');
+                    $nickname = $request->input('nickname');
+                    $organization = $request->input('organization');
+                    $title = $request->input('title');
+                    $role = $request->input('role');
+                    $workUrl = $request->input('work_url');
+                    $email = $request->input('email');
+                    $workEmail = $request->input('work_email');
+                    $homePhone = $request->input('home_phone');
+                    $workPhone = $request->input('work_phone');
+                    $cellPhone = $request->input('cell_phone');
+                    $homeAddressLabel = $request->input('home_address_label');
+                    $homeAddressStreet = $request->input('home_address_street');
+                    $homeAddressCity = $request->input('home_address_city');
+                    $homeAddressState = $request->input('home_address_state');
+                    $homeAddressZip = $request->input('home_address_zip');
+                    $homeAddressCountry = $request->input('home_address_country');
+                    $workAddressLabel = $request->input('work_address_label');
+                    $workAddressStreet = $request->input('work_address_street');
+                    $workAddressCity = $request->input('work_address_city');
+                    $workAddressState = $request->input('work_address_state');
+                    $workAddressZip = $request->input('work_address_zip');
+                    $workAddressCountry = $request->input('work_address_country');
+    
+                    // Create a new vCard instance
+                    $vCard = new VCard();
+                    
+                    // Set the personal information
+                    $vCard->addName($lastName, $firstName, $middleName, $prefix, $suffix);
+                    $vCard->addRole($role);
+                    
+                    // Set the organization information
+                    $vCard->addCompany($organization);
+                    $vCard->addJobtitle($title);
+                    $vCard->addUrl($workUrl);
+                    
+                    // Set the phone numbers
+                    $vCard->addPhoneNumber($homePhone, 'HOME');
+                    $vCard->addPhoneNumber($workPhone, 'WORK');
+                    $vCard->addPhoneNumber($cellPhone, 'CELL');
+                    
+                    // Set the email addresses
+                    $vCard->addEmail($email, 'HOME');
+                    $vCard->addEmail($workEmail, 'WORK');
+                    
+                    // Set the addresses
+                    $vCard->addAddress($homeAddressStreet, null, null, $homeAddressCity, $homeAddressState, $homeAddressZip, $homeAddressCountry, 'HOME', $homeAddressLabel);
+                    $vCard->addAddress($workAddressStreet, null, null, $workAddressCity, $workAddressState, $workAddressZip, $workAddressCountry, 'WORK', $workAddressLabel);
+                    
+                    // Generate the vCard file content
+                    $LinkURL = $vCard->getOutput();           
+
+                    $OrigLink->update([
+                        'link' => $LinkURL,
+                        'button_id' => 96,
+                        'title' => $LinkTitle,
+                    ]);
                 }else{
                     $OrigLink->update([
                         'link' => $LinkURL,
@@ -286,6 +352,65 @@ class UserController extends Controller
             }elseif($linkType->typename == "telephone"){
                 $links->link = "tel:".$links->link;
                 $links->button_id = $button?->id;
+            }elseif($linkType->typename == "vcard"){
+
+                $prefix = $request->input('prefix');
+                $firstName = $request->input('first_name');
+                $middleName = $request->input('middle_name');
+                $lastName = $request->input('last_name');
+                $suffix = $request->input('suffix');
+                $nickname = $request->input('nickname');
+                $organization = $request->input('organization');
+                $title = $request->input('title');
+                $role = $request->input('role');
+                $workUrl = $request->input('work_url');
+                $email = $request->input('email');
+                $workEmail = $request->input('work_email');
+                $homePhone = $request->input('home_phone');
+                $workPhone = $request->input('work_phone');
+                $cellPhone = $request->input('cell_phone');
+                $homeAddressLabel = $request->input('home_address_label');
+                $homeAddressStreet = $request->input('home_address_street');
+                $homeAddressCity = $request->input('home_address_city');
+                $homeAddressState = $request->input('home_address_state');
+                $homeAddressZip = $request->input('home_address_zip');
+                $homeAddressCountry = $request->input('home_address_country');
+                $workAddressLabel = $request->input('work_address_label');
+                $workAddressStreet = $request->input('work_address_street');
+                $workAddressCity = $request->input('work_address_city');
+                $workAddressState = $request->input('work_address_state');
+                $workAddressZip = $request->input('work_address_zip');
+                $workAddressCountry = $request->input('work_address_country');
+
+                // Create a new vCard instance
+                $vCard = new VCard();
+                
+                // Set the personal information
+                $vCard->addName($lastName, $firstName, $middleName, $prefix, $suffix);
+                $vCard->addRole($role);
+                
+                // Set the organization information
+                $vCard->addCompany($organization);
+                $vCard->addJobtitle($title);
+                $vCard->addUrl($workUrl);
+                
+                // Set the phone numbers
+                $vCard->addPhoneNumber($homePhone, 'HOME');
+                $vCard->addPhoneNumber($workPhone, 'WORK');
+                $vCard->addPhoneNumber($cellPhone, 'CELL');
+                
+                // Set the email addresses
+                $vCard->addEmail($email, 'HOME');
+                $vCard->addEmail($workEmail, 'WORK');
+                
+                // Set the addresses
+                $vCard->addAddress($homeAddressStreet, null, null, $homeAddressCity, $homeAddressState, $homeAddressZip, $homeAddressCountry, 'HOME', $homeAddressLabel);
+                $vCard->addAddress($workAddressStreet, null, null, $workAddressCity, $workAddressState, $workAddressZip, $workAddressCountry, 'WORK', $workAddressLabel);
+                
+                // Generate the vCard file content
+                $links->link = $vCard->getOutput();
+
+                $links->button_id = 96;
             }else{
                 $links->button_id = $button?->id;
             }
@@ -351,6 +476,28 @@ class UserController extends Controller
         Link::where('id', $linkId)->increment('click_number', 1);
 
         return redirect()->away($link);
+    }
+
+    //Download Vcard
+    public function vcard(Request $request)
+    {
+        $linkId = $request->id;
+        $link = Link::findOrFail($linkId); // find the link with the given ID or throw an exception
+        $buttonValue = $link->button_value;
+        $content = $link->content;
+
+        Link::where('id', $linkId)->increment('click_number', 1);
+
+        // build the vCard string
+        $vCard = "BEGIN:VCARD\r\nVERSION:3.0\r\n";
+        $vCard .= "FN:$buttonValue\r\n";
+        $vCard .= "NOTE:$content\r\n";
+        $vCard .= "END:VCARD\r\n";
+
+        // return the vCard content as a downloadable response
+        return response($vCard)
+            ->header('Content-Type', 'text/vcard')
+            ->header('Content-Disposition', 'attachment; filename=vcard.vcf');
     }
 
     //Show link, click number, up link in links page

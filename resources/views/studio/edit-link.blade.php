@@ -73,7 +73,7 @@ The 'Heading' button will be replaced with a sub-heading, where the title define
     <div class="d-flex flex-row  flex-wrap p-3">
 
         @php
-          $custom_order = [1, 2, 6, 7, 3, 4, 5,];
+          $custom_order = [1, 2, 8, 6, 7, 3, 4, 5,];
            $sorted = $LinkTypes->sortBy(function ($item) use ($custom_order) {
                 return array_search($item['id'], $custom_order);
          });
