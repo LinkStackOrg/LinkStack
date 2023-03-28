@@ -362,7 +362,7 @@ class UserController extends Controller
                 $suffix = $request->input('suffix');
                 $nickname = $request->input('nickname');
                 $organization = $request->input('organization');
-                $title = $request->input('title');
+                $vtitle = $request->input('vtitle');
                 $role = $request->input('role');
                 $workUrl = $request->input('work_url');
                 $email = $request->input('email');
@@ -392,7 +392,7 @@ class UserController extends Controller
                 
                 // Set the organization information
                 $vCard->addCompany($organization);
-                $vCard->addJobtitle($title);
+                $vCard->addJobtitle($vtitle);
                 $vCard->addUrl($workUrl);
                 
                 // Set the phone numbers
