@@ -3,10 +3,9 @@
 <select style="display:none" name="button" class="form-control"><option class="button button-default email" value="vcard">Vcard</option></select>
 
 @php
-// Decode the JSON string to a PHP object
+try {
 $data = json_decode($link_url);
 
-// Assign the values to the variables
 $prefix = $data->prefix;
 $firstName = $data->first_name;
 $middleName = $data->middle_name;
@@ -34,7 +33,8 @@ $workAddressCity = $data->work_address_city;
 $workAddressState = $data->work_address_state;
 $workAddressZip = $data->work_address_zip;
 $workAddressCountry = $data->work_address_country;
-
+}
+catch (exception $e) {}
 @endphp
 
 <label for='title' class='form-label'>Custom Title</label>
