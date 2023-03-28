@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Cohensive\OEmbed\Facades\OEmbed;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Response;
 use JeroenDesloovere\VCard\VCard;
 
 use Auth;
@@ -479,25 +480,21 @@ class UserController extends Controller
     }
 
     //Download Vcard
-    public function vcard(Request $request)
+    public function vcard(request $request)
     {
         $linkId = $request->id;
-        $link = Link::findOrFail($linkId); // find the link with the given ID or throw an exception
-        $buttonValue = $link->button_value;
-        $content = $link->content;
 
-        Link::where('id', $linkId)->increment('click_number', 1);
+        // Find the link with the specified ID
+        $link = Link::findOrFail($linkId);
 
-        // build the vCard string
-        $vCard = "BEGIN:VCARD\r\nVERSION:3.0\r\n";
-        $vCard .= "FN:$buttonValue\r\n";
-        $vCard .= "NOTE:$content\r\n";
-        $vCard .= "END:VCARD\r\n";
+        // Set the response headers to indicate that a VCard file should be downloaded
+        $headers = [
+            'Content-Type' => 'text/vcard',
+            'Content-Disposition' => 'attachment; filename="vcard.vcf"',
+        ];
 
-        // return the vCard content as a downloadable response
-        return response($vCard)
-            ->header('Content-Type', 'text/vcard')
-            ->header('Content-Disposition', 'attachment; filename=vcard.vcf');
+        // Return the link's content as a downloadable file
+        return Response::make($link->link, 200, $headers);
     }
 
     //Show link, click number, up link in links page
