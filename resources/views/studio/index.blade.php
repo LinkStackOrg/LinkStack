@@ -77,7 +77,7 @@
                 @php  $i++; @endphp
                 <ol class='list-group list-group-flush bg-transparent'>
 
-                @if($link->name !== "phone" && $link->name !== 'heading')
+                @if($link->name !== "phone" && $link->name !== 'heading' && $link->button_id !== 96)
                 <li class="list-group-item bg-transparent">
                   {{ $i }}.)  {{$link->title}} -- <span class='text-primary' title='Click Count'>{{$link->click_number}}  </span> <br />
 
