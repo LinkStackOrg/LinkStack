@@ -310,7 +310,7 @@ function get_operating_system() {
         @php $initial = 1; @endphp
 
 @foreach($links as $link)
-    @php $linkName = str_replace('default ','',strtolower($link->title)) @endphp
+    @php $linkName = str_replace('default ','',$link->title) @endphp
     @switch($link->name)
         @case('icon')
             @break
