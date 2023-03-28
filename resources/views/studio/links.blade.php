@@ -90,7 +90,7 @@ if (isset($_COOKIE['LinkCount'])) {
                             @if(!empty($link->link) and $button->name != "vcard")
                             <br /><a  title='{{$link->link}}' href="{{ $link->link}}" target="_blank" class="ml-4 text-muted small">{{Str::limit($link->link, 75 )}}</a>
                             @elseif(!empty($link->link) and $button->name == "vcard")
-                            <br /><a href="{{ url('vcard/'.$link->id) }}" target="_blank" class="ml-4 text-muted small">Download</a>
+                            <br /><a href="{{ url('vcard/'.$link->id) }}" target="_blank" class="ml-4 small">Download</a>
 
                             @endif
 

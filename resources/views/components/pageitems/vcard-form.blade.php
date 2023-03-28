@@ -2,48 +2,52 @@
 
 <select style="display:none" name="button" class="form-control"><option class="button button-default email" value="vcard">Vcard</option></select>
 
-{{-- @php
-$vcard = new VCard($link_url);
+@php
+// Decode the JSON string to a PHP object
+$data = json_decode($link_url);
 
-$prefix = $vcard->getPrefix();
-$firstName = $vcard->getFirstName();
-$middleName = $vcard->getMiddleName();
-$lastName = $vcard->getLastName();
-$suffix = $vcard->getSuffix();
-$organization = $vcard->getOrganization();
-$title = $vcard->getTitle();
-$role = $vcard->getRole();
-$workUrl = $vcard->getUrl();
-$email = $vcard->getEmail();
-$workEmail = $vcard->getWorkEmail();
-$homePhone = $vcard->getHomePhone();
-$workPhone = $vcard->getWorkPhone();
-$cellPhone = $vcard->getCellPhone();
-$homeAddressLabel = $vcard->getHomeAddressLabel();
-$homeAddressStreet = $vcard->getHomeAddressStreet();
-$homeAddressCity = $vcard->getHomeAddressCity();
-$homeAddressState = $vcard->getHomeAddressRegion();
-$homeAddressZip = $vcard->getHomeAddressPostalCode();
-$homeAddressCountry = $vcard->getHomeAddressCountry();
-$workAddressLabel = $vcard->getWorkAddressLabel();
-$workAddressStreet = $vcard->getWorkAddressStreet();
-$workAddressCity = $vcard->getWorkAddressCity();
-$workAddressState = $vcard->getWorkAddressRegion();
-$workAddressZip = $vcard->getWorkAddressPostalCode();
-$workAddressCountry = $vcard->getWorkAddressCountry();
-@endphp --}}
+// Assign the values to the variables
+$prefix = $data->prefix;
+$firstName = $data->first_name;
+$middleName = $data->middle_name;
+$lastName = $data->last_name;
+$suffix = $data->suffix;
+$nickname = $data->nickname;
+$organization = $data->organization;
+$vtitle = $data->vtitle;
+$role = $data->role;
+$workUrl = $data->work_url;
+$email = $data->email;
+$workEmail = $data->work_email;
+$homePhone = $data->home_phone;
+$workPhone = $data->work_phone;
+$cellPhone = $data->cell_phone;
+$homeAddressLabel = $data->home_address_label;
+$homeAddressStreet = $data->home_address_street;
+$homeAddressCity = $data->home_address_city;
+$homeAddressState = $data->home_address_state;
+$homeAddressZip = $data->home_address_zip;
+$homeAddressCountry = $data->home_address_country;
+$workAddressLabel = $data->work_address_label;
+$workAddressStreet = $data->work_address_street;
+$workAddressCity = $data->work_address_city;
+$workAddressState = $data->work_address_state;
+$workAddressZip = $data->work_address_zip;
+$workAddressCountry = $data->work_address_country;
+
+@endphp
 
 <label for='title' class='form-label'>Custom Title</label>
 <input type='text' name='link_title' value='{{ $link_title }}' class='form-control' />
 <span class='small text-muted'>Leave blank for default title</span><br>
-{{$link_url}}
-<br><h5>Upload existing file</h5>
+
+{{-- <br><h5>Upload existing file</h5>
 <div class="form-group col-lg-8">
     <label>Vcard</label>
     <input type="file" accept="text/vcard" class="form-control-file" name="vcard">
-</div>
+</div> --}}
 
-<br><h4>Name</h4>
+<br><br><h4>Name</h4>
 <label for='prefix' class='form-label'>Prefix</label>
 <input type='text' name='prefix' value='{{$prefix ?? ''}}' class='form-control'/>
 <br>

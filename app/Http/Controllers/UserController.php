@@ -258,7 +258,7 @@ class UserController extends Controller
                     $suffix = $request->input('suffix');
                     $nickname = $request->input('nickname');
                     $organization = $request->input('organization');
-                    $title = $request->input('title');
+                    $vtitle = $request->input('vtitle');
                     $role = $request->input('role');
                     $workUrl = $request->input('work_url');
                     $email = $request->input('email');
@@ -279,33 +279,42 @@ class UserController extends Controller
                     $workAddressZip = $request->input('work_address_zip');
                     $workAddressCountry = $request->input('work_address_country');
     
-                    // Create a new vCard instance
-                    $vCard = new VCard();
+                    // Create an array with all the input fields
+                    $data = [
+                        'prefix' => $request->input('prefix'),
+                        'first_name' => $request->input('first_name'),
+                        'middle_name' => $request->input('middle_name'),
+                        'last_name' => $request->input('last_name'),
+                        'suffix' => $request->input('suffix'),
+                        'nickname' => $request->input('nickname'),
+                        'organization' => $request->input('organization'),
+                        'vtitle' => $request->input('vtitle'),
+                        'role' => $request->input('role'),
+                        'work_url' => $request->input('work_url'),
+                        'email' => $request->input('email'),
+                        'work_email' => $request->input('work_email'),
+                        'home_phone' => $request->input('home_phone'),
+                        'work_phone' => $request->input('work_phone'),
+                        'cell_phone' => $request->input('cell_phone'),
+                        'home_address_label' => $request->input('home_address_label'),
+                        'home_address_street' => $request->input('home_address_street'),
+                        'home_address_city' => $request->input('home_address_city'),
+                        'home_address_state' => $request->input('home_address_state'),
+                        'home_address_zip' => $request->input('home_address_zip'),
+                        'home_address_country' => $request->input('home_address_country'),
+                        'work_address_label' => $request->input('work_address_label'),
+                        'work_address_street' => $request->input('work_address_street'),
+                        'work_address_city' => $request->input('work_address_city'),
+                        'work_address_state' => $request->input('work_address_state'),
+                        'work_address_zip' => $request->input('work_address_zip'),
+                        'work_address_country' => $request->input('work_address_country'),
+                    ];
                     
-                    // Set the personal information
-                    $vCard->addName($lastName, $firstName, $middleName, $prefix, $suffix);
-                    $vCard->addRole($role);
+                    // Convert the array to JSON format
+                    $json = json_encode($data);
                     
-                    // Set the organization information
-                    $vCard->addCompany($organization);
-                    $vCard->addJobtitle($title);
-                    $vCard->addUrl($workUrl);
-                    
-                    // Set the phone numbers
-                    $vCard->addPhoneNumber($homePhone, 'HOME');
-                    $vCard->addPhoneNumber($workPhone, 'WORK');
-                    $vCard->addPhoneNumber($cellPhone, 'CELL');
-                    
-                    // Set the email addresses
-                    $vCard->addEmail($email, 'HOME');
-                    $vCard->addEmail($workEmail, 'WORK');
-                    
-                    // Set the addresses
-                    $vCard->addAddress($homeAddressStreet, null, null, $homeAddressCity, $homeAddressState, $homeAddressZip, $homeAddressCountry, 'HOME', $homeAddressLabel);
-                    $vCard->addAddress($workAddressStreet, null, null, $workAddressCity, $workAddressState, $workAddressZip, $workAddressCountry, 'WORK', $workAddressLabel);
-                    
-                    // Generate the vCard file content
-                    $LinkURL = $vCard->getOutput();           
+                    // Set the JSON as the variable $links->link, or null if the JSON is empty
+                    $LinkURL = $json ? $json : null;        
 
                     $OrigLink->update([
                         'link' => $LinkURL,
@@ -383,33 +392,42 @@ class UserController extends Controller
                 $workAddressZip = $request->input('work_address_zip');
                 $workAddressCountry = $request->input('work_address_country');
 
-                // Create a new vCard instance
-                $vCard = new VCard();
+                // Create an array with all the input fields
+                $data = [
+                    'prefix' => $request->input('prefix'),
+                    'first_name' => $request->input('first_name'),
+                    'middle_name' => $request->input('middle_name'),
+                    'last_name' => $request->input('last_name'),
+                    'suffix' => $request->input('suffix'),
+                    'nickname' => $request->input('nickname'),
+                    'organization' => $request->input('organization'),
+                    'vtitle' => $request->input('vtitle'),
+                    'role' => $request->input('role'),
+                    'work_url' => $request->input('work_url'),
+                    'email' => $request->input('email'),
+                    'work_email' => $request->input('work_email'),
+                    'home_phone' => $request->input('home_phone'),
+                    'work_phone' => $request->input('work_phone'),
+                    'cell_phone' => $request->input('cell_phone'),
+                    'home_address_label' => $request->input('home_address_label'),
+                    'home_address_street' => $request->input('home_address_street'),
+                    'home_address_city' => $request->input('home_address_city'),
+                    'home_address_state' => $request->input('home_address_state'),
+                    'home_address_zip' => $request->input('home_address_zip'),
+                    'home_address_country' => $request->input('home_address_country'),
+                    'work_address_label' => $request->input('work_address_label'),
+                    'work_address_street' => $request->input('work_address_street'),
+                    'work_address_city' => $request->input('work_address_city'),
+                    'work_address_state' => $request->input('work_address_state'),
+                    'work_address_zip' => $request->input('work_address_zip'),
+                    'work_address_country' => $request->input('work_address_country'),
+                ];
                 
-                // Set the personal information
-                $vCard->addName($lastName, $firstName, $middleName, $prefix, $suffix);
-                $vCard->addRole($role);
+                // Convert the array to JSON format
+                $json = json_encode($data);
                 
-                // Set the organization information
-                $vCard->addCompany($organization);
-                $vCard->addJobtitle($vtitle);
-                $vCard->addUrl($workUrl);
-                
-                // Set the phone numbers
-                $vCard->addPhoneNumber($homePhone, 'HOME');
-                $vCard->addPhoneNumber($workPhone, 'WORK');
-                $vCard->addPhoneNumber($cellPhone, 'CELL');
-                
-                // Set the email addresses
-                $vCard->addEmail($email, 'HOME');
-                $vCard->addEmail($workEmail, 'WORK');
-                
-                // Set the addresses
-                $vCard->addAddress($homeAddressStreet, null, null, $homeAddressCity, $homeAddressState, $homeAddressZip, $homeAddressCountry, 'HOME', $homeAddressLabel);
-                $vCard->addAddress($workAddressStreet, null, null, $workAddressCity, $workAddressState, $workAddressZip, $workAddressCountry, 'WORK', $workAddressLabel);
-                
-                // Generate the vCard file content
-                $links->link = $vCard->getOutput();
+                // Set the JSON as the variable $links->link, or null if the JSON is empty
+                $links->link = $json ? $json : null;               
 
                 $links->button_id = 96;
             }else{
@@ -487,14 +505,38 @@ class UserController extends Controller
         // Find the link with the specified ID
         $link = Link::findOrFail($linkId);
 
-        // Set the response headers to indicate that a VCard file should be downloaded
-        $headers = [
-            'Content-Type' => 'text/vcard',
-            'Content-Disposition' => 'attachment; filename="vcard.vcf"',
-        ];
+        $json = $link->link;
 
-        // Return the link's content as a downloadable file
-        return Response::make($link->link, 200, $headers);
+        // Decode the JSON to a PHP array
+        $data = json_decode($json, true);
+        
+        // Create a new vCard object
+        $vcard = new VCard();
+        
+        // Set the vCard properties from the $data array
+        $vcard->addName($data['last_name'], $data['first_name'], $data['middle_name'], $data['prefix'], $data['suffix']);
+        $vcard->addCompany($data['organization']);
+        $vcard->addJobtitle($data['vtitle']);
+        $vcard->addRole($data['role']);
+        $vcard->addEmail($data['email']);
+        $vcard->addPhoneNumber($data['home_phone'], 'HOME');
+        $vcard->addPhoneNumber($data['work_phone'], 'WORK');
+        $vcard->addPhoneNumber($data['cell_phone'], 'CELL');
+        $vcard->addAddress($data['home_address_street'], '', $data['home_address_city'], $data['home_address_state'], $data['home_address_zip'], $data['home_address_country'], 'HOME');
+        $vcard->addAddress($data['work_address_street'], '', $data['work_address_city'], $data['work_address_state'], $data['work_address_zip'], $data['work_address_country'], 'WORK');
+        
+        // Generate the vCard file contents
+        $file_contents = $vcard->getOutput();
+        
+        // Set the file headers for download
+        $headers = [
+            'Content-Type' => 'text/x-vcard',
+            'Content-Disposition' => 'attachment; filename="contact.vcf"'
+        ];
+        
+        // Return the file download response
+        return response()->make($file_contents, 200, $headers);
+
     }
 
     //Show link, click number, up link in links page
