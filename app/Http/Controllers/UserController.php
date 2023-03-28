@@ -534,6 +534,8 @@ class UserController extends Controller
             'Content-Disposition' => 'attachment; filename="contact.vcf"'
         ];
         
+        Link::where('id', $linkId)->increment('click_number', 1);
+
         // Return the file download response
         return response()->make($file_contents, 200, $headers);
 
