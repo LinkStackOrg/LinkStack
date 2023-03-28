@@ -519,11 +519,16 @@ class UserController extends Controller
         $vcard->addJobtitle($data['vtitle']);
         $vcard->addRole($data['role']);
         $vcard->addEmail($data['email']);
+        $vcard->addEmail($data['work_email'], 'WORK');
+        $vcard->addURL($data['work_url'], 'WORK');
         $vcard->addPhoneNumber($data['home_phone'], 'HOME');
         $vcard->addPhoneNumber($data['work_phone'], 'WORK');
         $vcard->addPhoneNumber($data['cell_phone'], 'CELL');
         $vcard->addAddress($data['home_address_street'], '', $data['home_address_city'], $data['home_address_state'], $data['home_address_zip'], $data['home_address_country'], 'HOME');
         $vcard->addAddress($data['work_address_street'], '', $data['work_address_city'], $data['work_address_state'], $data['work_address_zip'], $data['work_address_country'], 'WORK');
+        
+
+        // $vcard->addPhoto(base_path('img/1.png'));
         
         // Generate the vCard file contents
         $file_contents = $vcard->getOutput();
