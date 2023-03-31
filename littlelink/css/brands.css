@@ -187,6 +187,22 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* Apple Books */
+.button.button-apple-books {
+  color: #FFFFFF;
+  background-image: linear-gradient(
+    -45deg,
+    #fa753b,
+    #feb033
+  );
+
+
+}
+.button.button-apple-books:hover,
+.button.button-apple-books:focus {
+  filter: brightness(90%);
+}
+
 /* Apple Music */
 .button.button-apple-music {
   color: #FFFFFF;
@@ -889,7 +905,7 @@ button:hover,
 .button.button-strava:focus {
   filter: brightness(90%);
 }
-  
+
 /* Telegram */
 .button.button-telegram {
   color: #FFFFFF;
