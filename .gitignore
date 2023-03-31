@@ -14,5 +14,3 @@ npm-debug.log
 yarn-error.log
 _ide_*
 .DS_Store
-.env
-config/advanced-config.php
