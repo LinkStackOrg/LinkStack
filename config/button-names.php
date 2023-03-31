@@ -4,6 +4,7 @@ $buttonNames = array(
     'littlelink-custom' => 'LittleLink Custom',
     'all-inkl' => 'ALL-INKL',
     'appstore' => 'App Store',
+    'apple-books' => 'Apple Books',
     'apple-music' => 'Apple Music',
     'apple-podcasts' => 'Apple Podcasts',
     'bookwyrm' => 'BookWyrm',
