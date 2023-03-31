@@ -406,6 +406,10 @@ class ButtonSeeder extends Seeder
             'name' => 'apple-books'
             ],
 
+            [
+            'name' => 'scribd'
+            ],
+
         ];
 
          Button::insert($buttons);

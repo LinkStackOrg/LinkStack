@@ -826,6 +826,16 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* Scribd */
+button.button-scribd{
+    color: #1F7B85;
+    background-color: #FFFFFF;
+}
+.button.button-scribd:hover,
+.button.button-scribd:focus {
+  filter: brightness(90%);
+}
+
 /* Session */
 .button.button-session {
   color: #000000;
