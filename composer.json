@@ -6,7 +6,7 @@
     "license": "GPL-3.0-or-later",
     "require": {
         "php": "^7.3|^8.0",
-        "awssat/laravel-visits": "^4.0",
+        "awssat/laravel-visits": "^5.0",
         "codedge/laravel-selfupdater": "^3.6",
         "cohensive/oembed": "^0.16",
         "doctrine/dbal": "^3.0",
