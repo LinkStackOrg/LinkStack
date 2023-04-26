@@ -1,20 +1,22 @@
-<h1 align="center">
-  <br>
-  <a href="https://littlelink-custom.com/"><a href="https://littlelink-custom.com/"><img src="https://i.imgur.com/IR3NPXB.png" alt="LittleLink Custom"></a></a>
-</h1>
-
-<h4 align="center">The plug-and-play approach to LittleLink, with advanced features. <br> <i> The open-source alternative to LinkTree and similar. </i></h4>
-
 <p align="center">
-
+  <img width="200px" src="https://linkstack.org/wp-content/uploads/2023/04/logo-animated.svg"><br>
+<picture>
+  <source media="(prefers-color-scheme: dark)" width="400px" srcset="https://i.imgur.com/d1mdtEw.png">
+  <img width="400px" src="https://i.imgur.com/pPMgaqF.png">
+</picture>
 </p>
 
+<h3 align="center"><b>Open-Source Linktree Alternative</b></h3>
+
+<h3 align="center">LinkStack is a highly customizable link sharing platform<br>with an intuitive, easy to use user interface.</h3>
+
+<br>
 
 <p align="center">
   <a href="#Function">Function</a> •
   <a href="#About">About</a> •
-  <a href="#Demo">Demo</a> •
-  <a href="#Features">Features</a> •
+  <a href="#Instances">Instances</a> •
+  <a href="#Themes">Themes</a> •
   <a href="#Installation">Installation</a> •
   <a href="#Docker">Docker Version</a> •
   <a href="#Updating">Updating</a> •
@@ -27,18 +29,9 @@
 </p>
 
 <p align="center">
-  <a href="https://littlelink-custom.com/blog"><img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/badges/read_blog.png" alt="Blog" width="250" ></a><a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
-  <a href="https://demo.littlelink-custom.com"><img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/badges/live_demo.png" alt="Live Demo" width="250" ></a>
-</p>
-
-<p align="center">
-<a href="https://github.com/JulianPrieber/littlelink-custom/stargazers"><img alt="GitHub Repo stars" src="https://img.llc.ovh/github/stars/julianprieber/littlelink-custom?label=Star%20the%20project&logo=GitHub"></a>
-<a href="https://hub.docker.com/r/julianprieber/littlelink-custom"><img alt="Docker hub stars" src="https://img.llc.ovh/docker/stars/julianprieber/littlelink-custom?&style=flat&logo=Docker&label=Docker%20hub%20stars"></img></a>
-</p>
-<p align="center">
-<a href="https://discord.littlelink-custom.com"><img alt="Discord online user count" src="https://img.llc.ovh/discord/955765706111193118?color=4A55CC&label=Discord&logo=Discord&style=flat"></a>
-<br>
-<a href="https://mstdn.social/@littlelink_custom"><img alt="Mastodon Follow" src="https://img.llc.ovh/mastodon/follow/109003317067542220?domain=http%3A%2F%2Fmstdn.social&style=social"></a>
+<a href="https://github.com/linkstackorg/linkstack/stargazers"><img alt="GitHub Repo stars" src="https://img.llc.ovh/github/stars/julianprieber/littlelink-custom?label=Star%20the%20project&logo=GitHub"></a>
+<a href="https://mstdn.social/@linkstack"><img alt="Mastodon Follow" src="https://img.llc.ovh/mastodon/follow/110147874401985724?domain=http%3A%2F%2Fmstdn.social&style=social"></a>
+<a href="https://discord.linkstack.org"><img alt="Discord online user count" src="https://img.llc.ovh/discord/955765706111193118?color=4A55CC&label=Discord&logo=Discord&style=flat"></a>
 </p>
 <p align="center">
 <a href="https://github.com/sponsors/julianprieber"><img alt="GitHub spomsors" src="https://img.llc.ovh/github/sponsors/JulianPrieber?color=BF4B8A&logo=githubsponsors&style=flat&label=Sponsor%20us%20on%20Github"></a>
@@ -49,108 +42,51 @@
 ---
 
 <p align="center">
-  <a href="https://github.com/JulianPrieber/littlelink-custom/releases/latest/download/littlelink-custom.zip"><img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/badges/download_latest.png" alt="Download latest" width="280" ></a>
-    <br><br>
-	<a href="https://github.com/JulianPrieber/littlelink-custom/releases"><img alt="GitHub release (latest by date)" src="https://img.llc.ovh/github/v/release/JulianPrieber/LittleLink-Custom?label=Latest%20release"></a>
-	<br>
-	<img alt="GitHub all releases downloads" src="https://img.llc.ovh/github/downloads/JulianPrieber/LittleLink-Custom/total?style=for-the-badge">
-	<img alt="GitHub release downloads (latest by date)" src="https://img.llc.ovh/github/downloads/JulianPrieber/LittleLink-Custom/latest/total?style=for-the-badge">
-</p>
-
-
-<br>
-
-<p align="center">
-  <a href="https://github.com/JulianPrieber/llc-docker#readme"><img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/badges/docker_version.png" alt="Download latest" width="220" ></a>
-  <br>
-  <a href="https://hub.docker.com/r/julianprieber/littlelink-custom"><img alt="Docker Pulls" src="https://img.llc.ovh/docker/pulls/julianprieber/littlelink-custom?label=Docker%20pulls&logo=docker"></a>
-</p>
-
-<br>
-
-<p align="center">
-  <a href="https://github.com/JulianPrieber/littlelink-custom/discussions/49">New features and additions</a>
-</p>
-
-<p align="center">
-  <i>Make suggestions for additional features to be added to the list.</i>
+  <a href="https://github.com/linkstackorg/linkstack/releases/latest/download/linkstack.zip"><img src="https://i.imgur.com/GZvrPEm.png" alt="Download latest" width="380" ></a>
+    <br>
+	<a href="https://github.com/linkstackorg/linkstack/releases"><img alt="GitHub release (latest by date)" src="https://img.llc.ovh/github/v/release/JulianPrieber/LittleLink-Custom?label=Latest%20release"></a>
 </p>
 
 ---
 
 ## Function    
-**LittleLink Custom offers** a unique solution for managing and sharing links online. Our platform provides **a website similar to** [Linktree](https://linktr.ee/), allowing users to **overcome the limitation of only being able to add one link on social media platforms**. By **linking to your LittleLink Custom page**, users can easily **access all the links they need** in one convenient location.
 
-Our platform allows users to **host their links on their own web-server or web-hosting provider**, ensuring easy accessibility and control over their online presence. Additionally, **other users can register and create their own links**, making it an ideal solution for businesses and organizations looking to manage multiple links.
+LinkStack: The Ultimate Link Management Solution
 
-Our platform also includes an **Admin Panel**, enabling users to easily **access other user's links**, making it an ideal solution for businesses and organizations looking to manage multiple links. Overall, LittleLink Custom provides an efficient and user-friendly solution for streamlining online presence.
+LinkStack is a unique platform that provides an efficient solution for managing and sharing links online. Our platform offers a website similar to Linktree, which allows users to overcome the limitation of only being able to add one link on social media platforms.
 
+With LinkStack, users can easily link to their own custom page and provide their followers with access to all the links they need in one convenient location. What sets LinkStack apart from other link management platforms is its flexibility, which allows users to host their links on their own web server or web hosting provider. This provides users with complete control over their online presence and ensures that their links are easily accessible.
 
+Additionally, LinkStack allows other users to register and create their own links, making it an ideal solution for businesses and organizations looking to manage multiple links. With our user-friendly Admin Panel, managing and accessing other users' links is easy.
 
 <br>
 	    
 ## About
-**LittleLink Custom** is a fork of [LittleLink Admin](https://github.com/latuminggi/littlelink-admin) with a **set goal** of making the admin panel **easier to use and setup** for inexperienced and first-time users, with the addition of **many custom features** themed around customization for the individual users' LittleLink pages.
 
-**LittleLink Custom** was developed to simplify the usage and setup of LittleLink and LittleLink Admin for individuals who have minimal coding experience or limited knowledge of web hosting. This project is designed in a way that allows for **drag and drop** implementation of the LittleLink Custom **directory onto** your web host's **root directory**, eliminating the need for source code manipulation or dealing with complex terminal commands.
+With LinkStack, our mission is to provide users with a free and privacy-focused solution for managing and sharing links online. We believe that everyone should have access to a customizable link-sharing platform without sacrificing their privacy and control over their data.
 
-In addition to a user-friendly setup process, this fork offers **numerous custom features** that enhance the user experience, including a **dark mode** that automatically applies based on your operating system's or browser theme settings, and light unobtrusive **CSS animations** for an aesthetically pleasing **responsive design**. These and other small changes, when combined, provide a substantial feature set that **differentiates LittleLink Custom from other forks**.
+To achieve this mission, we offer a self-hosted option for users who want complete control over their data without having it sold to third-party companies. Our platform can be easily implemented through a simple **drag and drop** process, eliminating the need for complex terminal commands or source code manipulation.
+
+For those who may not have the technical expertise to self-host, we also offer free instances of our platform while still prioritizing their privacy. Our platform offers many of the same features and options as commercial link-sharing platforms while maintaining the values of privacy and autonomy.
+
+Our goal is to provide a free version of a link-sharing service, similar to Linktree, while empowering users to take ownership of their data. We will never sell user data and believe in providing a trustworthy and transparent solution for managing and sharing links online.
 	    
 <br>
 	    
-## Demo	    
+## Instances
 
-<h3 align="center">Try a live demonstration of the LittleLink page and all its features</h3>
-This is a full-fledged demo of the website, complete with login and register functionality.
-Feel free to register your account and try out all the features of LittleLink Custom.
+<h3 align="center">Find the right instance for you</h3>
+
+<br>
+<p align="center">Our community instance program provides users with the opportunity to register on hosted instances and use Linkstack for free. Members of our community have generously provided their resources to host instances, allowing us to expand the reach of Linkstack and give back to the community</h3>
 
 <br>
 
 <p align="center">
-  <a href="https://demo.littlelink-custom.com/"><img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/badges/live_demo.png" alt="Live Demo" width="350" ></a>
+  <a href="https://linkstack.org/instances/"><img src="https://i.imgur.com/9F3MIyL.png" alt="Community instances" width="350" ></a>
 </p>
 	    
-## Features
-	
-|                                                 | LittleLink Custom  | LittleLink Admin¹   |LittleLink      |
-| ------------------------------------------------| :----------------: | :---------------: | :--------------: |
-| Creating a link page with more than 30 buttons  |         ✔️         |        ✔️        |        ✔️        |
-| Code free setup                                 |         ✔️         |        ✔️        |        ❌        |
-| Ordering links                                  |         ✔️         |        ✔️        |        ❌        |
-| Counting clicks                                 |         ✔️         |        ✔️        |        ❌        |
-| Managing users and pages and links              |         ✔️         |        ✔️        |        ❌        |
-| Automatic dark mode detection                   |         ✔️         |        ✖️²       |        ❌        |
-| Arrange links via drag and drop                 |         ✔️         |        ❌        |        ❌        |
-| Button hover animations                         |         ✔️         |        ❌        |        ❌        |
-| Custom link option                              |         ✔️         |        ❌        |        ❌        |
-| Social Share Preview for individual users       |         ✔️         |        ❌        |        ❌        |
-| Update notice if new version is available       |         ✔️         |        ❌        |        ❌        |
-| Built-in SMTP server                            |         ✔️         |        ❌        |        ❌        |
-| Visual HTML editor to edit text                 |         ✔️         |        ❌        |        ❌        |
-| Setup without command line                      |         ✔️         |        ❌        |        ❌        |
-| Custom Theme support                            |         ✔️         |        ❌        |        ❌        |
-| Built-in updater                                |         ✔️         |        ❌        |        ❌        |
-| Button Editor with Font Awesome support         |         ✔️         |        ❌        |        ❌        |
-| External Analytics Support                      |         ✔️         |        ❌        |        ➖        |
-| Ability to customize Home Page                  |         ✔️         |        ❌        |        ➖        |
-		    
-¹[littlelink-admin](https://github.com/latuminggi) by [latuminggi](https://github.com/latuminggi/littlelink-admin) | 
-²Not fully implemented on most pages
-
-<br></br>
-<h3 align="center">All LittleLink Custom pages automatically apply the Dark Mode Theme if your preferred theme setting in your browser or operating system is set to dark.</h3>
-<p align="center">
-<img height="650" src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/marketing/dark_mode.png">
-</p>
-	    
-<br></br>
-<h3 align="center">Lightweight CSS animations</h3>
-<p align="center">
-<img height="450" src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/marketing/css_animations.gif">
-</p>
-
-
-<br><br>
+## Themes
 
 <h3 align="center">Custom Themes</h3>
 
@@ -165,14 +101,14 @@ Contribute by designing your own themes. You can read more about contributing be
     
 <br>
 
-|![preview1](https://user-images.githubusercontent.com/60265788/169555321-0bc67664-ce3f-48e7-a4c2-9988a3079ce4.png) |![preview2](https://user-images.githubusercontent.com/60265788/169555323-8972dfe4-f46e-45f1-a3fc-1b0fc226147d.png)|
+|![preview1](https://raw.githubusercontent.com/JulianPrieber/stargazer/main/preview.png) |![preview2](https://raw.githubusercontent.com/JulianPrieber/Magic-Kingdom/main/preview.png)|
 | ------------- |-------------|
-|![preview3](https://user-images.githubusercontent.com/60265788/169555309-811ea607-b4f0-4ef5-8d99-92026995371d.png)|![preview4](https://user-images.githubusercontent.com/60265788/169555313-557428e6-a1c3-42dc-b6e4-bca72e4f570a.png)| 
+|![preview3](https://raw.githubusercontent.com/JulianPrieber/polygon/main/preview.png)|![preview4](https://raw.githubusercontent.com/JulianPrieber/PolySleek/main/preview.png)|  
 
 <br>
 
 You can find all available Themes on here:
-[littlelink-custom.com/themes](https://littlelink-custom.com/themes.php)
+[linkstack.org/themes](https://linkstack.org/themes)
 
 
 <br>
@@ -192,48 +128,10 @@ Everything is documented in the dedicated GitHub repository.
 
 [github.com/JulianPrieber/llc-themes/tree/main/contributing](https://github.com/JulianPrieber/llc-themes/tree/main/contributing)
 
-<br>
-
-
-<br><br>
-
-<h3 align="center">Infinite button combinations with the built in Button Editor</h3>
-
-<br>
-
-<h4 align="center">Create custom background colors and gradients with as many colors you want.</h4>
-<p align="center">
-  <img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/marketing/colors_gradients.png" width="450" >
-</p>
-
-<br>
-
-<h4 align="center">Add custom icons with Font Awesome</h4>
-<p align="center">
-  <img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/marketing/icons_font_awesome.png" width="450" >
-</p>
-
-<br>
-
-<h4 align="center">Get a live preview of your edits.</h4>
-<p align="center">
-  <img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/marketing/live_preview.png" width="450" >
-</p>
-
-<br>
-
-<h3 align="center">Built in updater</h3>
-
-<h4 align="center">This updater allows users to update their installation with just one click.</h4>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/marketing/updater.png" width="600" >
-</p>
-
 ## Installation
 
 ### Downloading and installing steps:
-* **[Download](https://github.com/JulianPrieber/littlelink-custom/releases)** the latest release of LittleLink Custom and simply place the folder 'littlelink-custom' or the contents of this folder in the root directory of your website.
+* **[Download](https://github.com/linkstackorg/linkstack/releases)** the latest release of LittleLink Custom and simply place the folder 'littlelink' or the contents of this folder in the root directory of your website.
 
 ### That's it! No coding no command line setup just plug and play.
 
@@ -244,7 +142,7 @@ Everything is documented in the dedicated GitHub repository.
 When accessing your instance for the first time, you will be greeted by the first setup page.
 
 <p align="center">
-<img width="650" src="https://user-images.githubusercontent.com/60265788/204514743-5da1ae4e-4fb0-45e4-bbf3-183595c08d99.png">
+<img width="650" src="https://i.imgur.com/EWGy7iH.png">
 </p>
 
 <br>
@@ -252,12 +150,17 @@ When accessing your instance for the first time, you will be greeted by the firs
 ## Docker
 
 <p align="center">
-    <a href="https://github.com/JulianPrieber/llc-docker"><img width="450" src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/marketing/docker_edition.png"></a>
+<a href="https://github.com/JulianPrieber/llc-docker">
+<picture>
+  <source media="(prefers-color-scheme: dark)" width="600px" srcset="https://i.imgur.com/tSHEDPv.png">
+  <img width="600px" src="https://i.imgur.com/0gH7UKM.png">
+</picture>
+</a>
 </p>
 
-The official docker version of [LittleLink Custom](https://github.com/JulianPrieber/littlelink-custom). This docker image is a simple to set up solution, containing everything you need to run LittleLink Custom.
+The official docker version of [LittleLink Custom](https://github.com/linkstackorg/linkstack). This docker image is a simple to set up solution, containing everything you need to run LittleLink Custom.
 
-The docker version of LittleLink Custom retains all the features and customization options of the [original version](https://github.com/JulianPrieber/littlelink-custom).
+The docker version of LittleLink Custom retains all the features and customization options of the [original version](https://github.com/linkstackorg/linkstack).
 
 This docker is based on [Alpine Linux](https://www.alpinelinux.org/), a Linux distribution designed to be small, simple and secure. The web server is running [Apache2](https://www.apache.org/), a free and open-source cross-platform web server software. The docker comes with [PHP 8.0](https://www.php.net/releases/8.0/en.php) for high compatibility and performance.
 
@@ -265,7 +168,7 @@ This docker is based on [Alpine Linux](https://www.alpinelinux.org/), a Linux di
 
 #### Pull
 
-`docker pull julianprieber/littlelink-custom`
+`docker pull linkstackorg/linkstack`
 
 #### [Learn more about the Docker version](https://github.com/JulianPrieber/llc-docker)
 
@@ -299,47 +202,20 @@ If you switched your database to MySQL, your database will not be included in th
 <br>
 
 <p align="center">
-  <a href="https://discord.littlelink-custom.com"><img src="https://raw.githubusercontent.com/LittleLink-Custom/branding/main/marketing/discord.png" alt="Join the Discord" width="600" ></a>
+  <a href="https://discord.linkstack.org"><img src="https://i.imgur.com/zRSnxjk.png" alt="Join the Discord" width="600" ></a>
 </p>
-
-<br>
-
-<br>
-
-## Fork-Structure
-> *Fork of a fork of a fork of LittleLink...*
-<br>
-
-#### LittleLink fork-tree:
-<pre>
-LittleLink
-   │
-   └── LittleLink Admin
-         │
-         └── LittleLink Admin (fork)
-               │
-               └── LittleLink Custom
-</pre>
-<br>
-LittleLink Custom is a fork of LittleLink Admin.
-
-> "LittleLink Admin is an admin panel for littlelink that provides you a website similar to [Linktree](https://linktr.ee)."
-
-LittleLink Admin is in itself a fork of [LittleLink](https://github.com/sethcottle/littlelink) 
-
-> "LittleLink is a lightweight DIY alternative to services like [Linktree](https://linktr.ee) and [many.link](https://many.link/). LittleLink was built using [Skeleton](http://getskeleton.com/), a dead simple, responsive boilerplate—we just stripped out some additional code you wouldn't need and added in branded styles for popular services."
 
 <br>
 
 ## License
 
-[![License: GPL v3](https://img.llc.ovh/badge/License-GPLv3-blue.svg)](https://raw.githubusercontent.com/JulianPrieber/littlelink-custom/main/LICENSE?token=GHSAT0AAAAAABRPYRQAPFRUGQA4A2OMFBUQYQWHZCQ)
+[![License: AGPL v3](https://img.llc.ovh/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 
 <br>
 
 ## Supporters
-You can support LittleLink Custom [here](https://littlelink-custom.com/sponsor). If you choose to support LittleLink Custom, you will get exclusive rewards such as access to a private LittleLink Custom instance hosted by us at [llc.ovh](https://llc.ovh) for free.
+You can support LittleLink Custom [here](https://linkstack.org/sponsor).
 
 
 **💖 Thank you:**
@@ -353,23 +229,7 @@ You can support LittleLink Custom [here](https://littlelink-custom.com/sponsor).
 - [AnhDOS](https://github.com/AnhDOS)
 - [MrSpuddy](https://github.com/MrSpuddy)
 
-- [Add Your Name](https://littlelink-custom.com/sponsor)
-
-<br>
-
-## Special-thanks 
-
-### special thanks to:
-* [Seth Cottle](https://github.com/sethcottle) for creating [LittleLink](https://github.com/sethcottle/littlelink) the base of all this.
-* [Khashayar Zavosh](https://github.com/khashayarzavosh) for creating [LittleLink Admin](https://github.com/khashayarzavosh/littlelink-admin), the base framework of the admin panel and many other essentials features of this project.
-* [Aprillio Latuminggi (latuminggi)](https://github.com/latuminggi) for creating the fork this fork is based on [LittleLink Admin (fork)](https://github.com/latuminggi/littlelink-admin)  
-   
-<h4 align="center">Thank you!</h4>
-
-| [![sethcottle](https://avatars.githubusercontent.com/u/1301949?v=4)](https://github.com/sethcottle) | ![khashayarzavosh](https://avatars.githubusercontent.com/u/60265643?v=4)		| ![latuminggi](https://avatars.githubusercontent.com/u/6211719?v=4)		|
-|:------------------------------------------------------------------------------------------------------------------------:	|:----------------------------------------------------------------------------------------------------:	|:----------------------------------------------------------------------------------------------------:	|
-|                                                      Seth Cottle                                                      |                                             Khashayar Zavosh                                             |                                             Aprillio Latuminggi                                             |
-|                                 **[LittleLink](https://github.com/sethcottle/littlelink)**                                |              **[LittleLink Admin](https://github.com/khashayarzavosh/littlelink-admin)**              |             **[LittleLink Admin (fork)](https://github.com/latuminggi/littlelink-admin)**             |
+- [Add Your Name](https://linkstack.org/sponsor)
 
 <br>
 
@@ -378,7 +238,7 @@ You can support LittleLink Custom [here](https://littlelink-custom.com/sponsor).
 Thank you for improving LittleLink Custom!
 
 <p>
-  <a href="https://github.com/JulianPrieber/littlelink-custom/graphs/contributors"><img src="https://update.littlelink-custom.com/components/contributors/" alt="Contributors" width="600" ></a>
+  <a href="https://github.com/linkstackorg/linkstack/graphs/contributors"><img src="https://update.littlelink-custom.com/components/contributors/" alt="Contributors" width="600" ></a>
 </p>
 
 <br>
@@ -388,20 +248,22 @@ Thank you for improving LittleLink Custom!
 Thank you for all your efforts!
 
 <p>
-  <a href="https://littlelink-custom.com/beta-tester"><img src="https://update.littlelink-custom.com/components/beta-testers/" alt="Contributors" width="600" ></a>
+  <a href="https://linkstack.org/beta-tester"><img src="https://update.littlelink-custom.com/components/beta-testers/" alt="Contributors" width="600" ></a>
 </p>
 
-[Become a beta tester](https://littlelink-custom.com/beta-tester)
+[Become a beta tester](https://linkstack.org/beta-tester)
 
 <br>
 
 ## Additional-credit
 
 - [laravel](https://github.com/laravel/laravel)
-- [panel template](https://colorlib.com/wp/bootstrap-sidebar)
-- [button animations](https://github.com/IanLunn/Hover)
+- [forked from](https://github.com/khzg/littlelink-admin)
+- [default theme](https://github.com/sethcottle/littlelink)
+- [dashboard template](https://github.com/iqonicdesignofficial/hope-ui-laravel-dashboard)
 - [general animations](https://github.com/animate-css/animate.css)
 - [config editor](https://github.com/GeoSot/Laravel-EnvEditor)
-- [text editor](https://github.com/ckeditor/ckeditor4)
+- [text editor (admin)](https://github.com/ckeditor/ckeditor4)
+- [text editor (user)](https://github.com/ckeditor/ckeditor5)
 - [updater backend](https://github.com/codedge/laravel-selfupdater)
 - [backup backend](https://github.com/spatie/laravel-backup)
