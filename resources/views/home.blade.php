@@ -161,7 +161,7 @@
     
     <div class="wrapper d-flex">
       <section class="login-content">
-        <div class="row m-0 align-items-center bg-white vh-100">
+        <div class="row m-0 align-items-center bg-white vh-100 vw-100">
           <div class="col-md-6 p-0">
             <div class="card card-transparent auth-card shadow-none d-flex mb-0">
               <div class="card-body justify-content-center text-center">
