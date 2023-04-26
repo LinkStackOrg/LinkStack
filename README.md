@@ -211,6 +211,13 @@ If you switched your database to MySQL, your database will not be included in th
 
 [![License: AGPL v3](https://img.llc.ovh/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
+As of version 4.0.0, the license for this project has been updated to the GNU Affero General Public License v3.0, which explicitly requires that any modifications made to the project must be made public. This license also requires that a copyright notice and license notice be included in any copies or derivative works of the project.
+
+Additionally, any changes made to the project must be clearly stated, and the source code for the modified version must be made available to anyone who receives the modified version. Network use of the project is also considered distribution, and as such, any network use of the project must comply with the terms of the license.
+
+Finally, any derivative works of the project must be licensed under the same license terms as the original project.
+
+[Read more here](https://www.gnu.org/licenses/agpl-3.0)
 
 <br>
 
