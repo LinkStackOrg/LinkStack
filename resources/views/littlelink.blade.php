@@ -80,8 +80,10 @@ if($customBackgroundExists == true){
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ $userinfo->name }}">
     <meta property="og:description" content="{{ $userinfo->littlelink_description }}">
-    @if(file_exists(base_path("img/$littlelink_name" . ".png" )))
-    <meta property="og:image" content="{{ asset("img/$littlelink_name" . ".png") }}">
+    @if(file_exists(base_path(findAvatar($userinfo->id))))
+    <meta property="og:image" content="{{ url(findAvatar($userinfo->id)) }}">
+    @elseif(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
+    <meta property="og:image" content="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}">
     @else
     <meta property="og:image" content="{{ asset('assets/linkstack/images/logo.svg') }}">
     @endif
@@ -92,8 +94,10 @@ if($customBackgroundExists == true){
     <meta property="twitter:url" content="{{ url('') }}/{{ "@" . $littlelink_name }}">
     <meta name="twitter:title" content="{{ $userinfo->littlelink_name }}">
     <meta name="twitter:description" content="{{ $userinfo->littlelink_description }}">
-    @if(file_exists(base_path("img/$littlelink_name" . ".png" )))
-    <meta name="twitter:image" content="{{ asset("img/$littlelink_name" . ".png") }}">
+    @if(file_exists(base_path(findAvatar($userinfo->id))))
+    <meta name="twitter:image" content="{{ url(findAvatar($userinfo->id)) }}">
+    @elseif(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
+    <meta name="twitter:image" content="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}">
     @else
     <meta name="twitter:image" content="{{ asset('assets/linkstack/images/logo.svg') }}">
     @endif
