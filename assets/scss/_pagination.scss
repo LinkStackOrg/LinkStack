@@ -1,0 +1,62 @@
+/*===== PAGINATION =====*/
+
+.pagination {
+  .page-item {
+    &:first-child .page-link,
+    &:last-child .page-link {
+      height: 51px;
+    }
+    &.active {
+      .page-link {
+        z-index: 3;
+      }
+    }
+  }
+  .page-link {
+    color: $secondary;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+.pagination-flat .page-item .page-link {
+  border: 0px;
+}
+
+.pagination-flat-rounded .page-item .page-link {
+  border-radius: 100%;
+}
+
+.pagination-seperated .page-item {
+  .page-link {
+    padding: .75rem;
+    margin: 0 0.31rem;
+    border-radius: 0;
+    @include media-breakpoint-up(md) {
+      padding: 1rem 1.25rem;
+    }
+  }
+  &:last-child .page-link {
+    margin-right: 0;
+  }
+  &:first-child .page-link {
+    margin-left: 0;
+  }
+}
+
+.pagination-seperated-rounded .page-item .page-link {
+  border-radius: 6.25rem;
+}
+
+.border-rounded {
+  .page-item:last-child .page-link {
+    border-top-right-radius: 6.25rem;
+    border-bottom-right-radius: 6.25rem;
+  }
+  .page-item:first-child .page-link {
+    margin-left: 0;
+    border-top-left-radius: 6.25rem;
+    border-bottom-left-radius: 6.25rem;
+  }
+}

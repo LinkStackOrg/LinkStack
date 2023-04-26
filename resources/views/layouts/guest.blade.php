@@ -8,10 +8,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-		@if(file_exists(base_path("littlelink/images/").findFile('favicon')))
-		<link rel="icon" type="image/png" href="{{ asset('littlelink/images/'.findFile('favicon')) }}">
+        <script src="{{asset('assets/js/detect-dark-mode.js')}}"></script>
+
+		@if(file_exists(base_path("assets/linkstack/images/").findFile('favicon')))
+		<link rel="icon" type="image/png" href="{{ asset('assets/linkstack/images/'.findFile('favicon')) }}">
 		@else
-		<link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
+		<link rel="icon" type="image/svg+xml" href="{{ asset('assets/linkstack/images/logo.svg') }}">
 		@endif
 
         <title>{{ config('app.name') }}</title>
@@ -19,14 +21,38 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+      <!-- Library / Plugin Css Build -->
+      <link rel="stylesheet" href="{{asset('assets/css/core/libs.min.css')}}" />
+      
+      <!-- Aos Animation Css -->
+      <link rel="stylesheet" href="{{asset('assets/vendor/aos/dist/aos.css')}}" />
+      
+      <!-- Hope Ui Design System Css -->
+      <link rel="stylesheet" href="{{asset('assets/css/hope-ui.min.css?v=2.0.0')}}" />
+      
+      <!-- Custom Css -->
+      <link rel="stylesheet" href="{{asset('assets/css/custom.min.css?v=2.0.0')}}" />
+      
+      <!-- Dark Css -->
+      <link rel="stylesheet" href="{{asset('assets/css/dark.min.css')}}" />
+      
+      <!-- Customizer Css -->
+            @if(file_exists(base_path("assets/dashboard-themes/dashboard.css")))
+      <link rel="stylesheet" href="{{asset('assets/dashboard-themes/dashboard.css')}}" />
+      @else
+      <link rel="stylesheet" href="{{asset('assets/css/customizer.min.css')}}" />
+      @endif
+      
+      <!-- RTL Css -->
+      <link rel="stylesheet" href="{{asset('assets/css/rtl.min.css')}}" />
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('assets/js/app.js') }}" defer></script>
+
+		<link rel="stylesheet" href="{{ asset('assets/external-dependencies/bootstrap-icons.css') }}">
         
-  <!-- begin dark mode detection -->
-	<script src="{{ asset('littlelink/js/js.cookie.min.js') }}"></script>
+  {{-- <!-- begin dark mode detection -->
+	<script src="{{ asset('assets/linkstack/js/js.cookie.min.js') }}"></script>
 	<script>
 		// code to set the `color_scheme` cookie
 		var $color_scheme = Cookies.get("color_scheme");
@@ -56,11 +82,49 @@
 		@if ($color_scheme == 'dark' and config('advanced-config.theme') != 'light' and $color_scheme_override != 'light' or $color_scheme_override == 'dark' or config('advanced-config.theme') == 'dark')
 		<link rel="stylesheet" href="{{ asset('css/app-dark.css') }}">
 		@endif
-  <!-- end dark mode detection -->
+  <!-- end dark mode detection --> --}}
     </head>
     <body>
-        <div class="font-sans text-gray-900 antialiased">
+
             {{ $slot }}
-        </div>
+
     </body>
+
+    <!-- Library Bundle Script -->
+    <script src="{{asset('assets/js/core/libs.min.js')}}"></script>
+    
+    <!-- External Library Bundle Script -->
+    <script src="{{asset('assets/js/core/external.min.js')}}"></script>
+    
+    <!-- Widgetchart Script -->
+    <script src="{{asset('assets/js/charts/widgetcharts.js')}}"></script>
+    
+    <!-- mapchart Script -->
+    <script src="{{asset('assets/js/charts/vectore-chart.js')}}"></script>
+    <script src="{{asset('assets/js/charts/dashboard.js')}}" ></script>
+    
+    <!-- fslightbox Script -->
+    <script src="{{asset('assets/js/plugins/fslightbox.js')}}"></script>
+    
+    <!-- Settings Script -->
+    <script src="{{asset('assets/js/plugins/setting.js')}}"></script>
+    
+    <!-- Slider-tab Script -->
+    <script src="{{asset('assets/js/plugins/slider-tabs.js')}}"></script>
+    
+    <!-- Form Wizard Script -->
+    <script src="{{asset('assets/js/plugins/form-wizard.js')}}"></script>
+    
+    <!-- AOS Animation Plugin-->
+    <script src="{{asset('assets/vendor/aos/dist/aos.js')}}"></script>
+    
+    <!-- App Script -->
+    <script src="{{asset('assets/js/hope-ui.js')}}" defer></script>
+    
+    <!-- Flatpickr Script -->
+    <script src="{{asset('assets/vendor/flatpickr/dist/flatpickr.min.js')}}"></script>
+    <script src="{{asset('assets/js/plugins/flatpickr.js')}}" defer></script>
+    
+    <script src="{{asset('assets/js/plugins/prism.mini.js')}}"></script>
+
 </html>

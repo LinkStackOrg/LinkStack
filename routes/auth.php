@@ -28,12 +28,24 @@ if(config('advanced-config.forgot_password_url') != '') {
     $forgot_password = "/forgot-password";
 }
 
-Route::get($register, [RegisteredUserController::class, 'create'])
-                ->middleware('guest')
-                ->name('register');
+    if(env('ALLOW_REGISTRATION') or $register !== '/register') {
+        Route::get($register, [RegisteredUserController::class, 'create'])
+            ->middleware('guest')
+            ->middleware('max.users')
+            ->name('register');
 
-Route::post($register, [RegisteredUserController::class, 'store'])
-                ->middleware('guest');
+        Route::post($register, [RegisteredUserController::class, 'store'])
+            ->middleware('guest')
+            ->middleware('max.users');
+    } else {
+        Route::get($register, function () {
+            abort(404);
+        })->name('register');
+
+        Route::post($register, function () {
+            abort(404);
+        });
+    }
 
 Route::get($login, [AuthenticatedSessionController::class, 'create'])
                 ->middleware('guest')
@@ -80,3 +92,13 @@ Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store']
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->middleware('auth')
                 ->name('logout');
+
+Route::get('/blocked', function () {
+                    $user = Auth::user();
+                    if ($user && $user->block == 'yes') {
+                        return view('auth.blocked');
+                    } else {
+                        return redirect(url('dashboard'));
+                    }
+                })->name('blocked');
+                

@@ -88,25 +88,10 @@ body {
     text-shadow:
       .25em 0 0 white,
       .5em 0 0 white;}}
-
-button {
-    border-style: none;
-    background-color: #0085ff;
-}
-button:hover {
-    background-color: #0065c1;
-    color: #FFF;
-    box-shadow: 0 10px 20px -10px rgba(0,0,0, 0.6);
-}
-
-.btn {
-    color: #FFF !important;
-}
-
 </style>
 @push('sidebar-stylesheets')
-<link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
-<style>@font-face{font-family:'ll';src:url({{ asset('littlelink/fonts/littlelink-custom.otf') }}) format("opentype")}</style>
+<link rel="stylesheet" href="{{ asset('assets/linkstack/css/animate.css') }}">
+<style>@font-face{font-family:'ll';src:url({{ asset('assets/linkstack/fonts/littlelink-custom.otf') }}) format("opentype")}</style>
 @endpush
 
 <div class="container">
@@ -114,16 +99,31 @@ button:hover {
 
 <?php //landing page ?>
         
-        <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
-        </div>
-        <h1>Backup</h1>
-        <h4 class="">You can back up your entire instance:</h4>
-        <h5 class="">The backup system won't save more than two backups at a time.</h5>
-        <br><div class="row">
-        &ensp;<a class="btn" href="{{url('backup/?backup')}}"><button style="padding:10px" class="mt-3 ml-3 btn btn-info"><i class="fa-solid fa-floppy-disk"></i> Backup Instance</button></a>&ensp;
-        &ensp;<a class="btn" data-toggle="tab" href="#4"><button style="padding:10px" class="mt-3 ml-3 btn btn-info"><i class="fa-solid fa-box-archive"></i> All Backups</button></a>&ensp;
-        </div>
+<div class="logo-container fadein">
+  <img class="logo-img" src="{{ asset('assets/linkstack/images/just-gear.svg') }}" alt="Logo">
+  <div class="logo-centered">l</div>
+</div>
+<h1 class="text-center">Backup</h1>
+<h4 class="text-center">You can back up your entire instance:</h4>
+<h5 class="text-center">The backup system won't save more than two backups at a time.</h5>
+<div class="d-flex justify-content-center">
+  <div class="row">
+    <div class="col-12 col-md-auto">
+      <a href="{{url('backup/?backup')}}">
+        <button class="btn btn-primary mt-3">
+          <i class="fa-solid fa-floppy-disk me-2"></i> Backup Instance
+        </button>
+      </a>
+    </div>
+    <div class="col-12 col-md-auto">
+      <a href="#4" data-toggle="tab">
+        <button class="btn btn-primary mt-3">
+          <i class="fa-solid fa-box-archive me-2"></i> All Backups
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+
 
 </div>

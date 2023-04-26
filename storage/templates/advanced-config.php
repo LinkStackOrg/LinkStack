@@ -101,7 +101,7 @@ return [
     // If 'true' the Home Page will be disabled entirely.
     // You will still be able to login on the login page etc.
     'disable_home_page' => 'false', // Either 'true', 'false' or 'redirect'.
-    'redirect_home_page' => 'https://littlelink-custom.com', // Only active if value above is set to 'redirect'.
+    'redirect_home_page' => 'https://linkstack.org', // Only active if value above is set to 'redirect'.
 
     // The URL prefix is the symbol that comes before a LittleLink URL.
     // For example the '@' in 'example.com/@admin'.
@@ -184,22 +184,23 @@ return [
       array(
         'button' => 'github',
         'link' => 'https://github.com/JulianPrieber/littlelink-custom',
-        'title' => '',
+        'title' => 'GitHub',
         'icon' => '',
         'custom_css' => ''
       ),
       array(
-          'button' => 'custom',
-          'link' => 'https://littlelink-custom.com',
-          'title' => 'Project Website',
-          'icon' => 'llc',
-          'custom_css' => 'color:#ffffff; background-image:linear-gradient(76deg, #f70fff 0%, #11d4de 100%);'),
+        'button' => 'linkstack',
+        'link' => 'https://linkstack.org',
+        'title' => 'Project Website',
+        'icon' => '',
+        'custom_css' => ''
+      ),
       array(
         'button' => 'custom',
-        'link' => 'https://littlelink-custom.com/sponsor',
+        'link' => 'https://linkstack.org/donate',
         'title' => 'Help us out',
         'icon' => 'fa-hand-holding-heart',
-        'custom_css' => 'color:#ffffff; background-image:radial-gradient(circle, #00d2ff 0%, #3a7bd5 95%);'
+        'custom_css' => 'color:#ffffff; background-image:radial-gradient(circle, #4b1977 0%, #2b0081 95%);'
       ),
     ),
 

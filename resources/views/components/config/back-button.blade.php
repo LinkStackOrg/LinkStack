@@ -62,7 +62,7 @@ a.float:hover + div.label-container{
   opacity: 1;
 }
 </style>
-<a href="{{url('panel/config')}}" class="float">
+<a href="{{url('admin/config')}}" class="float">
 <i class="bi bi-arrow-left-short my-float"></i>
 </a>
 <div class="label-container">

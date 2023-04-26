@@ -34,7 +34,7 @@ php artisan db:seed --class="AdminSeeder"
 php artisan db:seed --class="PageSeeder"
 php artisan db:seed --class="ButtonSeeder"
 ```
-5. Move the folder into a local web server (make sure you double-check the [requirements](https://littlelink-custom.com/docs/d/installation-requirements/)).
+5. Move the folder into a local web server (make sure you double-check the [requirements](https://linkstack.org/docs/d/installation-requirements/)).
 6. Now edit any files you want to change.
 7. Commit your changes to your forked repository.
 2. Issue that pull request!

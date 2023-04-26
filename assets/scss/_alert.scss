@@ -1,0 +1,56 @@
+/*===== ALERT =====*/
+label {
+  text-transform: capitalize;
+}
+.alert {
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: $dark;
+  &.alert-highlighted {
+    color: $white;
+    &.alert-primary {
+      background-color: $primary;
+    }
+    &.alert-secondary {
+      background-color: $secondary;
+    }
+    &.alert-success {
+      background-color: $success;
+    }
+    &.alert-danger {
+      background-color: $danger;
+    }
+    &.alert-warning {
+      background-color: $warning;
+    }
+    &.alert-info {
+      background-color: $info;
+    }
+    &.alert-light {
+      background-color: $light;
+      color: $dark;
+    }
+    &.alert-dark {
+      background-color: $dark;
+    }
+  }
+  &.alert-outlined {
+    background-color: transparent;
+    color: $dark;
+  }
+}
+
+/* Notification List */
+.notifications-list {
+  li {
+    a {
+      display: block;
+      color: $secondary;
+      font-size: 0.88rem;
+      padding: 0.625rem 1.25rem;
+    }
+    &:hover {
+      background-color: $gray-100;
+    }
+  }
+}

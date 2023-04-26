@@ -1,48 +1,85 @@
 <x-guest-layout>
     <x-auth-card>
-        <x-slot name="logo">
-            <a href="{{ url('') }}">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+        <x-slot name="logo"></a>
         </x-slot>
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('password.update') }}">
-            @csrf
-
-            <!-- Password Reset Token -->
-            <input type="hidden" name="token" value="{{ $request->route('token') }}">
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
+        <div style="max-width:480px" class="container mt-5 w-100">
+          <div class="card p-5">
+              <a href="{{ url('') }}" class="d-flex align-items-center mb-3">
+                <!--Logo start-->
+                <div class="logo-main">
+                    @if(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
+                    <div class="logo-normal">
+                      <img class="img logo" src="{{ asset('assets/linkstack/images/'.findFile('avatar')) }}" style="width:auto;height:30px;">
+                  </div>
+                  <div class="logo-mini">
+                    <img class="img logo" src="{{ asset('assets/linkstack/images/'.findFile('avatar')) }}" style="width:auto;height:30px;">
+                  </div>
+                    @else
+                    <div class="logo-normal">
+                      <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.svg') }}" width="30px" height="30px">
+                  </div>
+                  <div class="logo-mini">
+                    <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.svg') }}" width="30px" height="30px">
+                  </div>
+                    @endif
+                    </div>
+                    <!--logo End-->
+                <h4 class="logo-title ms-3">{{env('APP_NAME')}}</h4>
+              </a>
+              <h2 class="mb-2 text-center">Reset Password</h2>
+              <p class="text-center">Enter a new password</p>
+              <form method="POST" action="{{ route('password.update') }}">
+                @csrf
+            
+                <!-- Password Reset Token -->
+                <input type="hidden" name="token" value="{{ $request->route('token') }}">
+            
+                <div class="row">
+                    <!-- Email Address -->
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="email" class="form-label">{{ __('Email') }}</label>
+                            <input id="email" class="form-control" type="email" name="email" value="{{ old('email', $request->email) }}" required autofocus>
+                        </div>
+                    </div>
+            
+                    <!-- Password -->
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="password" class="form-label">{{ __('Password') }}</label>
+                            <input id="password" class="form-control" type="password" name="password" required>
+                        </div>
+                    </div>
+            
+                    <!-- Confirm Password -->
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="password_confirmation" class="form-label">{{ __('Confirm Password') }}</label>
+                            <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required>
+                        </div>
+                    </div>
+            
+                    <!-- Remember Me Checkbox -->
+                    <div class="col-lg-12 d-flex justify-content-between">
+                        <div class="form-check mb-3">
+                            <input id="remember_me" class="form-check-input" type="checkbox" name="remember">
+                            <label for="remember_me" class="form-check-label">{{ __('Remember Me') }}</label>
+                        </div>
+                        <a href="{{ route('password.request') }}">{{ __('Forgot Password?') }}</a>
+                    </div>
+            
+                    <!-- Reset Password Button -->
+                    <div class="col-lg-12 d-flex justify-content-end">
+                        <button class="btn btn-primary">{{ __('Reset Password') }}</button>
+                    </div>
+                </div>
+            </form>
             </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                    type="password"
-                                    name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Reset Password') }}
-                </x-button>
-            </div>
-        </form>
+          </div>       
+        
     </x-auth-card>
 </x-guest-layout>

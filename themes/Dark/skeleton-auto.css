@@ -1,0 +1,283 @@
+
+/* Table of contents
+––––––––––––––––––––––––––––––––––––––––––––––––––
+
+- Grid
+- Base Styles
+- Background
+- Typography
+- Links
+- Code
+- Spacing
+- Utilities
+- Misc
+- Credit footer
+
+*/
+
+
+@import url('https://fonts.bunny.net/css?family=Roboto:400,700&display=swap');
+
+
+/* Grid
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto;
+    box-sizing: border-box; }
+  .column {
+    position: center;
+    width: 100%;
+    float: center;
+    box-sizing: border-box; }
+  
+  /* For devices larger than 400px */
+  @media (min-width: 400px) {
+    .container {
+      width: 85%;
+      padding: 0; }
+  }
+  
+  /* For devices larger than 550px */
+  @media (min-width: 550px) {
+    .container {
+      width: 80%; }
+    .column,
+    .columns {
+      margin-left: 0; }
+    .column:first-child,
+    .columns:first-child {
+      margin-left: 0; }
+  
+  }
+  
+  
+  /* Base Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  /* NOTE
+  html is set to 62.5% so that all the REM measurements throughout Skeleton
+  are based on 10px sizing. So basically 1.5rem = 15px :) */
+
+  html {
+    font-size: 100%; }
+
+/* From the :root element you can easily change the colors of the design, its size and so on. */
+:root {
+
+  /* You can change the font family in the whole design here. (You need to add the font family to the codes.) */
+  --font-family: 'Inter', sans-serif;
+
+  /* You can change the font size here, is proportional to all texts. */
+  --font-size: 16px;
+
+  /* You can change the background color by typing the color code. (If you do not enter a background-image image, the background-color will be active.) */
+  --background-color: #000;
+  --background-image: url('https://raw.githubusercontent.com/JulianPrieber/Dark/main/wallpaper.png');
+
+  /* You can change the frame thickness and color of the picture by typing the number of pixels and the color code. */
+  --image-border-color: #1f232e;
+  --image-border-px: 3px;
+
+  /* You can change the width and size of the picture by typing the number of pixels. */
+  --image-width: 140px;
+  --image-height: 140px;
+
+  /* You can change the colors of the title and description section by typing the color codes. */
+  --title-color: #fff;
+  --description-color: #fff;
+
+  /* You can change the colors of social media icons by changing the color code. */
+  --svg-color: #fff;
+
+  /* You can change the background, text color and active color of the menu by changing the color codes. */
+  --menu-background-color: #1f232e;
+  --menu-text-color: #fff;
+  --menu-active-text-color: #8ecae6;
+
+  /* You can change the button's background, text color and active color by changing the color codes. */
+  --button-background-color: #1f232e;
+  --button-text-color: #fff;
+  --button-text-hover-color: #8ecae6;
+
+  /* You can change the background, text color and active color of the text field by changing the color codes. */
+  --textarea-background-color: #1f232e;
+  --textarea-text-color: #fff;
+  --textarea-link-text-color: #8ecae6;
+
+  /* You can change the background, text color and active color of the footer area by changing the color codes. */
+  --footer-background-color: #1f232e;
+  --footer-text-color: #fff;
+  --footer-link-text-color: #8ecae6;
+}
+
+  /* Background
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+  body {
+    min-height: 100vh;
+    font-family: var(--font-family) !important;
+    background-color: var(--background-color);
+    background-image: var(--background-image);
+    color: var(--title-color);
+    background-position: center;
+    background-repeat: no-repeat;
+    font-size: var(--font-size);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  
+  /* Animation */
+  @keyframes transitionAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes animate {
+    0% {
+      background-position: -500%;
+    }
+    100% {
+      background-position: 500%;
+    }
+}
+
+@keyframes animStar {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-2000px);
+    }
+}
+  
+  /* Typography
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  h1 {
+    color: var(--title-color);
+    font-size: 1.9em;
+    font-weight: var(--font-weight);
+  }
+  
+  p {
+    color: var(--description-color);
+    font-size: 1.2em;
+    font-weight: var(--font-weight);
+    margin-bottom: 10px;
+  }
+  
+  
+  /* Links
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  a {
+    color: #ffffff; 
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--button-text-hover-color); }
+  
+  .spacing {
+    padding: 0 10px;
+    padding-top: 50px;
+  }
+  
+  /* Code
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  code {
+    padding: .2rem .5rem;
+    margin: 0 .2rem;
+    font-size: 90%;
+    white-space: nowrap;
+    background: #F1F1F1;
+    border: 1px solid #E1E1E1;
+    border-radius: 4px; }
+  pre > code {
+    display: block;
+    padding: 1rem 1.5rem;
+    white-space: pre; }
+  
+  /* Spacing
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  button,
+  .button {
+    margin-bottom: 1rem;
+    display: block !important; }
+  input,
+  textarea,
+  select,
+  fieldset {
+    margin-bottom: 1.5rem; }
+  pre,
+  blockquote,
+  dl,
+  figure,
+  p,
+  ol {
+    margin-bottom: 2.5rem; }
+  
+  
+  /* Utilities
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .u-full-width {
+    width: 100%;
+    box-sizing: border-box; }
+  .u-max-full-width {
+    max-width: 100%;
+    box-sizing: border-box; }
+  .u-pull-right {
+    float: right; }
+  .u-pull-left {
+    float: left; }
+  
+  
+  /* Misc
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  hr {
+    margin-top: 3rem;
+    margin-bottom: 3.5rem;
+    border-width: 0;
+    border-top: 1px solid #E1E1E1; }
+  
+
+  /* ===== Hidden Scrollbar ===== */
+  * {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */ }
+  *::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */ }
+  
+    
+/* Credit footer
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* Styling for credit footer text */
+.credit-txt {
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.credit-icon {
+  display: none;
+  right: 5px;
+}
+.credit-footer {
+  position: relative;
+  right: 15px;
+}
+
+/* Switches text color for credit footer for dark/light mode */
+
+ .credit-txt-clr{
+     color: #FFF !important;
+}
+
+

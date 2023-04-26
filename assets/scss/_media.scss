@@ -1,0 +1,216 @@
+/* Media Small */
+.media-message {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+
+  img {
+    width: 40px;
+  }
+
+  .status {
+    position: absolute;
+    bottom: 0;
+    right: 0px;
+    width: 12px;
+    height: 12px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+
+    &.active,
+    &.away {
+      border-color: $white;
+    }
+
+    &.active {
+      background-color: $success;
+    }
+
+    &.away {
+      background-color: $warning;
+    }
+  }
+
+  .title {
+    color: $dark;
+    font-size: 0.9375rem;
+    margin-bottom: 0;
+  }
+
+  .last-msg {
+    width: 180px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 0;
+    color: $secondary;
+
+    @include media-breakpoint-up(md) {
+      width: 550px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: 125px;
+    }
+
+    @include media-breakpoint-up(xl) {
+      width: 220px;
+    }
+  }
+
+  .date {
+    text-align: right;
+    font-size: 12px;
+    color: $secondary;
+  }
+
+  &:hover {
+    background-color: rgba($gray-200, .5);
+    text-decoration: none;
+  }
+
+  &.media-active {
+    background-color: $primary;
+
+    .title,
+    .last-msg,
+    .date {
+      color: $white;
+    }
+
+  }
+
+  &.event-active {
+    background-color: rgba($gray-200, .5);
+  }
+}
+
+.media-notification {
+  .last-msg {
+    width: 200px;
+  }
+}
+
+.media-chat {
+  margin-bottom: 1.5rem;
+
+  .content {
+    background-color: rgba($gray-200, .5);
+    padding: .5rem 1.25rem;
+    border-radius: $border-radius;
+    margin-bottom: 1.25rem;
+  }
+
+  .heading-title {
+    a {
+      color: $dark;
+
+      &:hover {
+        color: $primary;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .title {
+    color: $primary;
+    font-size: 1rem;
+  }
+
+  .message {
+    background-color: rgba($gray-200, .5);
+    padding: .5rem 1.25rem;
+    border-radius: $border-radius;
+    margin-bottom: .25rem;
+    color: $dark;
+  }
+
+  .date-time {
+    font-size: 10px;
+    padding-left: 1.25rem;
+  }
+
+  .media-body {
+    flex: unset;
+  }
+
+  &.media-left {
+    img {
+      width: 50px;
+    }
+
+  }
+
+  &.media-right {
+    text-align: right;
+    justify-content: flex-end;
+
+    img {
+      width: 40px;
+    }
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &.media-chat-header {
+    border-bottom: 1px solid $border-color;
+    border-top: 1px solid $border-color;
+    padding: 1.125rem 1.5rem;
+
+    @include media-breakpoint-up(lg) {
+      border-top: 0;
+    }
+
+    img {
+      width: 60px;
+    }
+
+    .dropdown-toggle {
+      color: $secondary;
+      text-transform: uppercase;
+
+      &.icon-burger-mini {
+        font-size: 1.5rem;
+
+        &:after {
+          display: none;
+        }
+
+        position: relative;
+
+        &:before {
+          font-family: $font-family-icon;
+          content: "\F1D9";
+        }
+      }
+    }
+
+    .dropdown-menu {
+      padding-top: .5rem;
+      padding-bottom: .5rem;
+      box-shadow: 0px 5px 18px 0px rgba(229, 233, 242, 0.5);
+      min-width: auto;
+
+      .dropdown-item {
+        padding: 0.3125rem 1.25rem;
+
+        a {
+          font-size: 0.875rem;
+          color: $secondary;
+          text-transform: capitalize;
+        }
+
+        &:hover {
+          background-color: transparent;
+
+          a {
+            color: $primary;
+          }
+        }
+      }
+    }
+  }
+}

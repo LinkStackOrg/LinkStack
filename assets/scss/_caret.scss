@@ -1,0 +1,12 @@
+/* ===== CARET =====*/
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.125rem;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}

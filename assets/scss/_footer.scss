@@ -1,0 +1,25 @@
+/*===== FOOTER =====*/
+.main-footer {
+  background: $white;
+  padding: 0.9375rem;
+  color: #444444;
+  border-top: 1px solid $border-color;
+}
+
+.copyright {
+  padding-left: 1.25rem;
+  padding-top: 1.9rem;
+  padding-bottom: 1.9rem;
+  @include media-breakpoint-up(lg) {
+    padding-left: 2.69rem;
+  }
+  @include media-breakpoint-up(xl) {
+    padding-left: 3.44rem;
+  }
+  @include media-breakpoint-up(xxl) {
+    padding-left: 6.25rem;
+  }
+  p {
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,79 @@
+/*===== CHART =====*/
+
+.world-data-chart {
+  padding-left: 1.88rem;
+  padding-right: 1.88rem;
+  &.border-bottom {
+    @include media-breakpoint-up(xl) {
+      border-bottom: 0 !important;
+      border-right: 1px solid $border-color;
+    }
+  }
+}
+
+#linechart {
+  @include media-breakpoint-up(xl) {
+    min-height: 280px;
+  }
+}
+
+#doChart {
+  @include media-breakpoint-up(xl) {
+    min-height: 210px;
+  }
+}
+
+#polar,
+#radar {
+  min-height: 200px;
+  @include media-breakpoint-up(md) {
+    min-height: 230px;
+  }
+  @include media-breakpoint-up(xl) {
+    min-height: 270px;
+    min-width: 100%;
+  }
+}
+
+[polar-data-height] {
+  height: 455px;
+}
+
+[radar-data-height] {
+  height: 408px;
+}
+
+#currentUser {
+  @include media-breakpoint-up(xl) {
+    min-height: 283px;
+    height: 283px !important;
+  }
+}
+
+#activity {
+  @include media-breakpoint-up(xl) {
+    min-height: 280px;
+  }
+}
+
+#deviceChart {
+  min-height: 200px;
+  @include media-breakpoint-up(md) {
+    min-height: 230px;
+  }
+}
+
+/* Coutom Lenged*/
+
+.customLegend li {
+  display: inline-block;
+  margin-right: 1.56rem;
+  margin-top: 1.88rem;
+  span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 0.312rem;
+    border-radius: 1.56rem;
+  }
+}

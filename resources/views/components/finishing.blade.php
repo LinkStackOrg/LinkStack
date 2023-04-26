@@ -4,6 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use App\Models\Page;
 
          //run before finishing:
             if(EnvEditor::keyExists('JOIN_BETA')){ /* Do nothing if key already exists */ 
@@ -45,6 +46,28 @@ use Illuminate\Support\Facades\File;
             if(EnvEditor::keyExists('ALLOW_USER_EXPORT')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('ALLOW_USER_EXPORT', 'true');}
 
+            if(EnvEditor::keyExists('SUPPORTED_DOMAINS')){ /* Do nothing if key already exists */ 
+            } else {EnvEditor::addKey('SUPPORTED_DOMAINS', '');}
+
+            if(EnvEditor::keyExists('MANUAL_USER_VERIFICATION')){ /* Do nothing if key already exists */ 
+            } else {EnvEditor::addKey('MANUAL_USER_VERIFICATION', 'false');}
+
+            if(env('APP_NAME') == 'LittleLink Custom' or env('APP_NAME') == 'LittleLink') {
+                EnvEditor::editKey('APP_NAME', 'LinkStack');
+            }
+
+            if (EnvEditor::keyExists('ALLOW_REGISTRATION')) { /* Do nothing if key already exists */ 
+            } else {
+                $pagedb = DB::table('pages')->select('register')->first();
+                if ($pagedb->register) {
+                    EnvEditor::addKey('ALLOW_REGISTRATION', 'true');
+                } else {
+                    EnvEditor::addKey('ALLOW_REGISTRATION', 'false');
+                }
+                try {
+                    DB::table('pages')->update(['register' => null]);
+                } catch (Exception $e) {}
+            }
 
             // Footer page customization
             if(EnvEditor::keyExists('DISPLAY_FOOTER_HOME')){} else {EnvEditor::addKey('DISPLAY_FOOTER_HOME', 'true');}
@@ -57,37 +80,13 @@ use Illuminate\Support\Facades\File;
             if(EnvEditor::keyExists('TITLE_FOOTER_CONTACT')){} else {EnvEditor::addKey('TITLE_FOOTER_CONTACT', 'Contact');}
             if(EnvEditor::keyExists('HOME_FOOTER_LINK')){} else {EnvEditor::addKey('HOME_FOOTER_LINK', '');}
 
-
-            if (!config()->has('advanced-config.expand_panel_admin_menu_permanently') and !config()->has('disable_default_password_notice')) {
-            
-            function getStringBetween($string, $start, $end) {
-                $lastStartIndex = strrpos($string, $start);
-                $lastEndIndex = strrpos($string, $end);
-            
-                $substringStartIndex = $lastStartIndex + strlen($start);
-                $substringSize = $lastStartIndex - $lastEndIndex - 1;
-            
-                return substr($string, $substringStartIndex, $substringSize);
-            }
-            
-            $subject = file_get_contents('config/advanced-config.php');
-            $search = ")";
-            $replace = "),";
-            
-            file_put_contents('config/advanced-config.php', str_replace('),,', '),', strrev(implode(strrev($replace), explode(strrev($search), strrev($subject), 2)))));
-            
-            $replace = "];";
-                file_put_contents('config/advanced-config.php', str_replace($replace, file_get_contents('storage/templates/advanced-config-update-1.php'), file_get_contents('config/advanced-config.php')));
-            }
-
             if(EnvEditor::keyExists('FORCE_HTTPS')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('FORCE_HTTPS', 'false');}
 
-            use App\Models\Page;
             $data['page'] = Page::select('contact')->first();
             if (strpos($data['page']->contact, 'info@littlelink-custom.com') !== false) {
             $contact = '
-            <p><strong><a href="https://littlelink-custom.com/">LittleLink Custom</a></strong> is a free, open source&nbsp;link&nbsp;sharing platform. We depend on community feedback to steadily improve this project.</p>
+            <p><strong><a href="https://linkstack.org/">LittleLink Custom</a></strong> is a free, open source&nbsp;link&nbsp;sharing platform. We depend on community feedback to steadily improve this project.</p>
             
             <p><strong>Feel free to send us your feedback!</strong></p>
             

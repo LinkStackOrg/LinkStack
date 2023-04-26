@@ -7,17 +7,14 @@
 		@if(env('DISPLAY_FOOTER_CONTACT') === true)<a class="footer-hover spacing" href="{{ url('') }}/pages/{{ strtolower(env('TITLE_FOOTER_CONTACT')) }}">{{env('TITLE_FOOTER_CONTACT')}}</a>@endif
 	@endif
 	</div>
-	
+
 	@if(env('DISPLAY_CREDIT') === true)
-	<div class="credit-footer"><a style="text-decoration: none;" class="spacing" href="https://littlelink-custom.com" target="_blank" title="Learn more">
-		<section class="credit-hover hvr-grow fadein">
-			<div class="parent-footer credit-icon" >
-				<img id="footer_spin" class="footer_spin image-footer1 generic" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="LittleLink Custom"></img>
-				<img class="image-footer2" src="{{ asset('littlelink/images/just-ll.svg') }}" alt="LittleLink Custom"></img>
-			</div>
-	
-			<a href="https://littlelink-custom.com" target="_blank" title="Learn more" class="credit-txt credit-txt-clr credit-text">Powered by LittleLink Custom</a>
-		</section>
+	{{-- Removed class spacing --}}
+	<div class="credit-footer"><a style="text-decoration: none;" class="" href="https://linkstack.org" target="_blank" title="Learn more about LinkStack">
+		<div style="vertical-align: middle;display: inline-block;" class="credit-hover hvr-grow fadein">
+			{{-- <img class="credit-icon image-footer1 generic" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="LinkStack"> --}}
+			<a href="https://linkstack.org" target="_blank" title="Learn more" class="credit-txt credit-txt-clr credit-text">Powered by LinkStack</a>
+		</div>
 	</a></div><br><br><br>
 	@endif
 	</div>

@@ -1,0 +1,118 @@
+/*===== TODO LIST ======*/
+.todo-single-item {
+  margin-bottom: 2.19em;
+  position: relative;
+  .task-content {
+    white-space: nowrap;
+    line-height: normal;
+    span {
+      margin-left: 1rem;
+    }
+  }
+  > span {
+    margin-left: 2rem;
+    position: relative;
+    display: inline-block;
+    color: $black;
+  }
+  > span.badge {
+    color: $white;
+    @include transition(all 0.3s ease-in);
+    display: inline-table;
+  }
+  &.alert {
+    padding: 0;
+    font-weight: inherit;
+    font-size: inherit;
+  }
+}
+.todo-single-item i.mdi {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #d4d5db;
+  border-radius: 50%;
+  margin-right: 0.38rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  line-height: 1.3rem;
+  position: absolute;
+  left: 0;
+  @include transition(all 0.3s ease-in);
+  &:hover {
+    border-color: rgba($success, .5);
+    background-color: rgba($success, .2);
+    cursor: pointer;
+  }
+}
+.todo-input {
+  display: none;
+  input {
+    margin-top: -0.31rem;
+    border: none;
+    font-size: 0.98rem;
+    padding:  0.312rem 0.625rem;
+    &:active,
+    &:focus {
+      box-shadow: 0px 2px 8px rgba($dark, 0.2);
+    }
+  }
+}
+.todo-single-item.finished {
+  > span {
+    color: #8a909d;
+    text-decoration: line-through;
+  }
+  > span.badge {
+    text-decoration: none;
+    background-color: #cfd0d8;
+    color: #8a909d;
+  }
+  i.mdi {
+    background-color: transparent;
+    border-color: #d4d5db;
+    &:after {
+      content: "\f12c";
+      font-size: .75rem;
+      color: $success;
+      font-family: $font-family-icon;
+      font-weight: bold;
+    }
+  }
+
+  .task-content {
+    span.badge {
+      text-decoration: none;
+      background-color: #cfd0d8;
+      color: #8a909d;
+    }
+  }
+}
+
+.remove-task {
+  transition: all .3s;
+  fill: #cfd0d8;
+  cursor: pointer;
+  &:hover {
+    fill: rgba($danger, .7);
+  }
+}
+
+.todo-form {
+  i.mdi {
+    border-color: transparent;
+    font-size: 20px;
+    width: auto;
+    height: auto;
+    margin-right: 0;
+    position: absolute;
+    right: 0;
+    @include media-breakpoint-up(lg) {
+      font-size: 25px;
+    }
+    &:hover {
+      border-color: transparent;
+      background-color: transparent;
+    }
+  }
+}

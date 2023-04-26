@@ -20,6 +20,7 @@ use GeoSot\EnvEditor\ServiceProvider;
 use Auth;
 use Exception;
 use ZipArchive;
+use Carbon\Carbon;
 
 use App\Models\User;
 use App\Models\Admin;
@@ -41,7 +42,34 @@ class AdminController extends Controller
         $siteLinks = Link::count();
         $siteClicks = Link::sum('click_number');
 
-        return view('panel/index', ['littlelink_name' => $littlelink_name, 'links' => $links, 'clicks' => $clicks, 'siteLinks' => $siteLinks, 'siteClicks' => $siteClicks, 'userNumber' => $userNumber]);
+        $users = User::select('id', 'name', 'email', 'created_at', 'updated_at')->get();
+        $lastMonthCount = $users->where('created_at', '>=', Carbon::now()->subDays(30))->count();
+        $lastWeekCount = $users->where('created_at', '>=', Carbon::now()->subDays(7))->count();
+        $last24HrsCount = $users->where('created_at', '>=', Carbon::now()->subHours(24))->count();
+        $updatedLast30DaysCount = $users->where('updated_at', '>=', Carbon::now()->subDays(30))->count();
+        $updatedLast7DaysCount = $users->where('updated_at', '>=', Carbon::now()->subDays(7))->count();
+        $updatedLast24HrsCount = $users->where('updated_at', '>=', Carbon::now()->subHours(24))->count();
+
+        $links = Link::where('user_id', $userId)->select('link')->count();
+        $clicks = Link::where('user_id', $userId)->sum('click_number');
+        $topLinks = Link::where('user_id', $userId)->orderby('click_number', 'desc')
+            ->whereNotNull('link')->where('link', '<>', '')
+            ->take(5)->get();
+
+        $pageStats = [
+            'visitors' => [
+                'all' => visits('App\Models\User', $littlelink_name)->count(),
+                'day' => visits('App\Models\User', $littlelink_name)->period('day')->count(),
+                'week' => visits('App\Models\User', $littlelink_name)->period('week')->count(),
+                'month' => visits('App\Models\User', $littlelink_name)->period('month')->count(),
+                'year' => visits('App\Models\User', $littlelink_name)->period('year')->count(),
+            ],
+            'os' => visits('App\Models\User', $littlelink_name)->operatingSystems(),
+            'referers' => visits('App\Models\User', $littlelink_name)->refs(),
+            'countries' => visits('App\Models\User', $littlelink_name)->countries(),
+        ];
+
+        return view('panel/index', ['lastMonthCount' => $lastMonthCount,'lastWeekCount' => $lastWeekCount,'last24HrsCount' => $last24HrsCount,'updatedLast30DaysCount' => $updatedLast30DaysCount,'updatedLast7DaysCount' => $updatedLast7DaysCount,'updatedLast24HrsCount' => $updatedLast24HrsCount,'toplinks' => $topLinks, 'links' => $links, 'clicks' => $clicks, 'pageStats' => $pageStats, 'littlelink_name' => $littlelink_name, 'links' => $links, 'clicks' => $clicks, 'siteLinks' => $siteLinks, 'siteClicks' => $siteClicks, 'userNumber' => $userNumber]);
     }
 
 // Get users by type
@@ -88,7 +116,7 @@ public function users(Request $request)
                             //   ->orWhere('role', 'like', "%{$searchTerm}%")
                             //   ->orWhere('block', 'like', "%{$searchTerm}%")
                             //   ->orWhere('email_verified_at', 'like', "%{$searchTerm}%")
-                              ->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at')
+                              ->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at', 'updated_at')
                               ->get();
         return view('panel/users', $data);
     }
@@ -246,22 +274,22 @@ public function SendTestMail(Request $request)
             User::where('id', $id)->update(['name' => $name, 'email' => $email, 'password' => $password, 'littlelink_name' => $littlelink_name, 'littlelink_description' => $littlelink_description, 'role' => $role]);
         }
         if (!empty($profilePhoto)) {
-            $profilePhoto->move(base_path('/img'), $id . ".png");
+            $profilePhoto->move(base_path('assets/img'), $id . ".png");
         } 
         if (!empty($customBackground)) {
-            $directory = base_path('/img/background-img/');
+            $directory = base_path('assets/img/background-img/');
             $files = scandir($directory);
             $pathinfo = "error.error";
             foreach($files as $file) {
             if (strpos($file, $id.'.') !== false) {
             $pathinfo = $id. "." . pathinfo($file, PATHINFO_EXTENSION);
             }}
-            if(file_exists(base_path('/img/background-img/').$pathinfo)){File::delete(base_path('/img/background-img/').$pathinfo);}
+            if(file_exists(base_path('assets/img/background-img/').$pathinfo)){File::delete(base_path('assets/img/background-img/').$pathinfo);}
     
-            $customBackground->move(base_path('/img/background-img/'), $id.".".$request->file('background')->extension());
+            $customBackground->move(base_path('assets/img/background-img/'), $id.".".$request->file('background')->extension());
         } 
 
-        return redirect('panel/users/all');
+        return redirect('admin/users/all');
     }
 
     //Show site pages to edit
@@ -302,30 +330,30 @@ public function SendTestMail(Request $request)
 
         if (!empty($logo)) {
             // Delete existing image
-            $directory = base_path('/littlelink/images/');
+            $directory = base_path('/assets/linkstack/images/');
             $files = scandir($directory);
             $pathinfo = "error.error";
             foreach($files as $file) {
             if (strpos($file, "avatar".'.') !== false) {
             $pathinfo = "avatar". "." . pathinfo($file, PATHINFO_EXTENSION);
             }}
-            if(file_exists(base_path('/littlelink/images/').$pathinfo)){File::delete(base_path('/littlelink/images/').$pathinfo);}
+            if(file_exists(base_path('/assets/linkstack/images/').$pathinfo)){File::delete(base_path('/assets/linkstack/images/').$pathinfo);}
 
-            $logo->move(base_path('/littlelink/images/'), "avatar.".$request->file('image')->extension());
+            $logo->move(base_path('/assets/linkstack/images/'), "avatar.".$request->file('image')->extension());
         }
 
         if (!empty($icon)) {
             // Delete existing image
-            $directory = base_path('/littlelink/images/');
+            $directory = base_path('/assets/linkstack/images/');
             $files = scandir($directory);
             $pathinfo = "error.error";
             foreach($files as $file) {
             if (strpos($file, "favicon".'.') !== false) {
             $pathinfo = "favicon". "." . pathinfo($file, PATHINFO_EXTENSION);
             }}
-            if(file_exists(base_path('/littlelink/images/').$pathinfo)){File::delete(base_path('/littlelink/images/').$pathinfo);}
+            if(file_exists(base_path('/assets/linkstack/images/').$pathinfo)){File::delete(base_path('/assets/linkstack/images/').$pathinfo);}
 
-            $icon->move(base_path('/littlelink/images/'), "favicon.".$request->file('icon')->extension());
+            $icon->move(base_path('/assets/linkstack/images/'), "favicon.".$request->file('icon')->extension());
         }
         return back();
     }
@@ -334,14 +362,14 @@ public function SendTestMail(Request $request)
     public function delAvatar()
     {
             // Delete existing image
-            $directory = base_path('/littlelink/images/');
+            $directory = base_path('/assets/linkstack/images/');
             $files = scandir($directory);
             $pathinfo = "error.error";
             foreach($files as $file) {
             if (strpos($file, "avatar".'.') !== false) {
             $pathinfo = "avatar". "." . pathinfo($file, PATHINFO_EXTENSION);
             }}
-            if(file_exists(base_path('/littlelink/images/').$pathinfo)){File::delete(base_path('/littlelink/images/').$pathinfo);}
+            if(file_exists(base_path('/assets/linkstack/images/').$pathinfo)){File::delete(base_path('/assets/linkstack/images/').$pathinfo);}
         
         return back();
     }
@@ -350,14 +378,14 @@ public function SendTestMail(Request $request)
     public function delFavicon()
     {
             // Delete existing image
-            $directory = base_path('/littlelink/images/');
+            $directory = base_path('/assets/linkstack/images/');
             $files = scandir($directory);
             $pathinfo = "error.error";
             foreach($files as $file) {
             if (strpos($file, "favicon".'.') !== false) {
             $pathinfo = "favicon". "." . pathinfo($file, PATHINFO_EXTENSION);
             }}
-            if(file_exists(base_path('/littlelink/images/').$pathinfo)){File::delete(base_path('/littlelink/images/').$pathinfo);}
+            if(file_exists(base_path('/assets/linkstack/images/').$pathinfo)){File::delete(base_path('/assets/linkstack/images/').$pathinfo);}
 
         return back();
     }
@@ -423,7 +451,7 @@ public function SendTestMail(Request $request)
 
         file_put_contents('config/advanced-config.php', $AdvancedConfig);
 
-        return redirect('/panel/config#2');
+        return redirect('/admin/config#2');
     }
 
     //Saves .env config
@@ -433,7 +461,7 @@ public function SendTestMail(Request $request)
 
         file_put_contents('.env', $config);
 
-        return Redirect('/panel/config?alternative-config');
+        return Redirect('/admin/config?alternative-config');
     }
 
     //Shows config file editor page
@@ -497,7 +525,7 @@ public function SendTestMail(Request $request)
 
             removeFolder($folderName);
 
-            return Redirect('/panel/theme');
+            return Redirect('/admin/theme');
         }
     }
 
@@ -656,7 +684,7 @@ public function SendTestMail(Request $request)
 
 
 
-        return Redirect('/panel/config');
+        return Redirect('/admin/config');
     }
     
     //Shows theme editor page

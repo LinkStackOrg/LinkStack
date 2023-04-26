@@ -1,7 +1,7 @@
 <?php
 
 function findFile($name){
-    $directory = base_path('/littlelink/images/');
+    $directory = base_path('/assets/linkstack/images/');
     $files = scandir($directory);
     $pathinfo = "error.error";
     foreach($files as $file) {
@@ -12,18 +12,18 @@ function findFile($name){
 }
 
 function findAvatar($name){
-  $directory = base_path('/img');
+  $directory = base_path('assets/img');
   $files = scandir($directory);
   $pathinfo = "error.error";
   foreach($files as $file) {
   if (strpos($file, $name.'.') !== false) {
-  $pathinfo = "/img/" . $name. "." . pathinfo($file, PATHINFO_EXTENSION);
+  $pathinfo = "assets/img/" . $name. "." . pathinfo($file, PATHINFO_EXTENSION);
   }}
   return $pathinfo;
 }
 
 function findBackground($name){
-    $directory = base_path('/img/background-img/');
+    $directory = base_path('assets/img/background-img/');
     $files = scandir($directory);
     $pathinfo = "error.error";
     foreach($files as $file) {
@@ -35,7 +35,7 @@ function findBackground($name){
 
 function analyzeImageBrightness($file) {
 
-    $file = base_path('/img/background-img/'.$file);
+    $file = base_path('assets/img/background-img/'.$file);
   
     // Get image information using getimagesize
     $imageInfo = getimagesize($file);
@@ -85,3 +85,14 @@ function analyzeImageBrightness($file) {
     }
   }
   
+  function infoIcon($tip) {
+    echo '
+      <div class="d-flex justify-content-center align-items-center">
+        <a data-bs-toggle="tooltip" data-bs-placement="bottom" title="' . $tip . '">
+          <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.67 1.99927H16.34C19.73 1.99927 22 4.37927 22 7.91927V16.0903C22 19.6203 19.73 21.9993 16.34 21.9993H7.67C4.28 21.9993 2 19.6203 2 16.0903V7.91927C2 4.37927 4.28 1.99927 7.67 1.99927ZM11.99 9.06027C11.52 9.06027 11.13 8.66927 11.13 8.19027C11.13 7.70027 11.52 7.31027 12.01 7.31027C12.49 7.31027 12.88 7.70027 12.88 8.19027C12.88 8.66927 12.49 9.06027 11.99 9.06027ZM12.87 15.7803C12.87 16.2603 12.48 16.6503 11.99 16.6503C11.51 16.6503 11.12 16.2603 11.12 15.7803V11.3603C11.12 10.8793 11.51 10.4803 11.99 10.4803C12.48 10.4803 12.87 10.8793 12.87 11.3603V15.7803Z" fill="currentColor"></path>
+          </svg>
+        </a>
+      </div>
+    ';
+  }

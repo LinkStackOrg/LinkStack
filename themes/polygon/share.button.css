@@ -1,0 +1,111 @@
+.share-icon {
+  padding: 0px 8px 3.5px 0px;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  -webkit-filter: invert(100%);
+  -moz-filter: invert(100%);
+  filter: invert(100%);
+}
+
+.sharediv {
+  position:relative; 
+  top: 30px; 
+  right: 30px; 
+  padding-bottom: 40px;
+}
+
+.toastdiv {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.toastbox {
+  width: 280px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-radius: 4px;
+  position: fixed;
+  top: 105%;
+  -webkit-transition: transform 0.3s linear;
+  transition: transform 0.3s linear;
+  z-index: 2;
+  text-align: center;
+}
+.toastbox.toast-tox--active {
+  -webkit-transform: translateY(-150px);
+  transform: translateY(-150px);
+}
+
+  .sharebutton,
+  sharebutton {
+    display: inline-block;
+    text-decoration: none;
+    height: 48px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
+    width: 48px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: 0.1px;
+    white-space: wrap;
+    border: solid var(--accentColor) 2px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #ffffff; 
+    background-color: transparent;
+   }
+   
+@media screen and (min-width: 600px) {
+  .sharebutton,
+  sharebutton {
+    display: inline-block;
+    text-decoration: none;
+    height: 48px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
+    width: 150px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: 0.1px;
+    white-space: wrap;
+    border: solid var(--accentColor) 2px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #ffffff; 
+    background-color: transparent;
+   }
+   .sharebutton-img {
+    position: relative;
+    left: 3px;
+    margin-left: auto;
+    margin-right: auto;
+   }
+}
+sharebutton:hover,
+.sharebutton:hover {
+  color: #000000;
+  background-color: #FFF; 
+}
+.sharebutton:hover .share-icon {
+  filter: none !important;
+}
+
+  @media screen and (max-width: 600px) {
+    .sharebutton-mb {
+     display: none;
+    }
+    .sharebutton-img {
+      position: relative;
+      left: 3px;
+      margin-left: auto;
+      margin-right: auto;
+     }
+   }

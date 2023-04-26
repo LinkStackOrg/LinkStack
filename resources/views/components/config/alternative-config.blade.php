@@ -13,7 +13,7 @@
           <button type="submit" class="mt-3 ml-3 btn btn-info">Save</button>
         </form>
 
-<script src="{{ asset('studio/external-dependencies/ace.js') }}" type="text/javascript" charset="utf-8"></script>
+<script src="{{ asset('assets/external-dependencies/ace.js') }}" type="text/javascript" charset="utf-8"></script>
 <script>
 var editor = ace.edit("editor2");
 editor.setTheme("ace/theme/xcode");

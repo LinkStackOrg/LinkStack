@@ -50,8 +50,8 @@ return $path;}
 @if(theme('allow_custom_background') != "false")
 @php
 $customBackgroundFile = findBackground($userinfo->id);
-$customBackgroundPath = base_path('/img/background-img/'.$customBackgroundFile);
-$customBackgroundURL = url('/img/background-img/'.$customBackgroundFile);
+$customBackgroundPath = base_path('assets/img/background-img/'.$customBackgroundFile);
+$customBackgroundURL = url('assets/img/background-img/'.$customBackgroundFile);
 $customBackgroundExists = file_exists($customBackgroundPath);
 if($customBackgroundExists == true){
   $customBackgroundBrightness = analyzeImageBrightness($customBackgroundFile);
@@ -83,7 +83,7 @@ if($customBackgroundExists == true){
     @if(file_exists(base_path("img/$littlelink_name" . ".png" )))
     <meta property="og:image" content="{{ asset("img/$littlelink_name" . ".png") }}">
     @else
-    <meta property="og:image" content="{{ asset('littlelink/images/logo.svg') }}">
+    <meta property="og:image" content="{{ asset('assets/linkstack/images/logo.svg') }}">
     @endif
     
     <!-- Twitter Meta Tags -->
@@ -95,22 +95,22 @@ if($customBackgroundExists == true){
     @if(file_exists(base_path("img/$littlelink_name" . ".png" )))
     <meta name="twitter:image" content="{{ asset("img/$littlelink_name" . ".png") }}">
     @else
-    <meta name="twitter:image" content="{{ asset('littlelink/images/logo.svg') }}">
+    <meta name="twitter:image" content="{{ asset('assets/linkstack/images/logo.svg') }}">
     @endif
 
 <!--#### END Meta Tags social media preview images  ####-->
 
   <!-- Custom icons font-awesome -->
-  <script>{!! file_get_contents(base_path("studio/external-dependencies/fontawesome.js")) !!}</script>
-  <style>{!! str_replace('../', 'studio/', file_get_contents(base_path("studio/external-dependencies/fontawesome.css"))) !!}</style>
+  <script>{!! file_get_contents(base_path("assets/external-dependencies/fontawesome.js")) !!}</script>
+  <style>{!! str_replace('../', 'studio/', file_get_contents(base_path("assets/external-dependencies/fontawesome.css"))) !!}</style>
 
   @include('layouts.fonts') 
-  <style>{!! file_get_contents(base_path("littlelink/css/normalize.css")) !!}</style>
-  <style>{!! file_get_contents(base_path("littlelink/css/animate.css")) !!}</style>
-  @if(file_exists(base_path("littlelink/images/").findFile('favicon')))
-  <link rel="icon" type="image/png" href="{{ asset('littlelink/images/'.findFile('favicon')) }}">
+  <style>{!! file_get_contents(base_path("assets/linkstack/css/normalize.css")) !!}</style>
+  <style>{!! file_get_contents(base_path("assets/linkstack/css/animate.css")) !!}</style>
+  @if(file_exists(base_path("assets/linkstack/images/").findFile('favicon')))
+  <link rel="icon" type="image/png" href="{{ asset('assets/linkstack/images/'.findFile('favicon')) }}">
   @else
-  <link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
+  <link rel="icon" type="image/svg+xml" href="{{ asset('assets/linkstack/images/logo.svg') }}">
   @endif
 
 @foreach($information as $info)
@@ -123,7 +123,7 @@ if($customBackgroundExists == true){
 
   <link rel="stylesheet" href="themes/{{$info->theme}}/share.button.css">
   @if(theme('use_default_buttons') == "true")
-  <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/linkstack/css/brands.css') }}">
   @else
   <link rel="stylesheet" href="themes/{{$info->theme}}/brands.css">
   @endif
@@ -131,36 +131,14 @@ if($customBackgroundExists == true){
 @if(file_exists(base_path('themes/' . $info->theme . '/animations.css')))
   <link rel="stylesheet" href="<?php echo asset('themes/' . $info->theme . '/animations.css') ?>">
 @else
-  <link rel="stylesheet" href="{{ asset('littlelink/css/animations.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/linkstack/css/animations.css') }}">
 @endif
 
 @else
-  <?php // override dark/light mode if override cookie is set
-  $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
-  <link rel="stylesheet" href="{{ asset('littlelink/css/share.button.css') }}">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/animations.css') }}">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
-  @if ($customBackgroundExists == true and $customBackgroundBrightness == 'dark')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
-  <style>.social-icon{color:#fff;}</style>
-  @elseif ($customBackgroundExists == true and $customBackgroundBrightness == 'light')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
-  <style>.social-icon{color:#222;}</style>
-  @elseif ($color_scheme_override == 'dark')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
-  <style>.social-icon{color:#fff;}</style>
-  @elseif ($color_scheme_override == 'light')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
-  <style>.social-icon{color:#222;}</style>
-  @elseif (config('advanced-config.theme') == 'dark')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
-  <style>.social-icon{color:#fff;}</style>
-  @elseif (config('advanced-config.theme') == 'light')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
-  <style>.social-icon{color:#222;}</style>
-  @else
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-auto.css') }}">
-  @endif
+  <link rel="stylesheet" href="{{ asset('assets/linkstack/css/share.button.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/linkstack/css/animations.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/linkstack/css/brands.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/linkstack/css/skeleton-auto.css') }}">
 @endif
 <style>.container{word-break: break-word;}</style>
 </head>
@@ -212,7 +190,7 @@ if($customBackgroundExists == true){
 <?php $ShowShrBtn = 'true'; ?>
 @endif
 
-@if($ShowShrBtn == 'true')
+@if($ShowShrBtn == 'true' and UserData::getData($userinfo->id, 'disable-sharebtn') != "true")
 <?php 
 //Get browser type
 $arr_browsers = ["Opera", "Edg", "Chrome", "Safari", "Firefox", "MSIE", "Trident"];
@@ -265,7 +243,7 @@ function get_operating_system() {
 ?>
 
 @if($user_browser === 'Chrome' or get_operating_system() == 'mobile')
-<script>{!! file_get_contents(base_path("littlelink/js/jquery.min.js")) !!}</script>
+<script>{!! file_get_contents(base_path("assets/linkstack/js/jquery.min.js")) !!}</script>
 <div align="right" class="sharediv"><div><span class="sharebutton button-hover icon-hover" id='share-share-button'><i style="color: black;" class="fa-solid fa-share sharebutton-img share-icon hvr-icon"></i><span class="sharebutton-mb">Share</span></span></div></div>
 <span class="copy-icon" role="button" aria-label="Share this page">
 </span>
@@ -274,7 +252,7 @@ function get_operating_system() {
 <div onclick="alert('URL has been copied to your clipboard!')" align="right" class="sharediv"><div><a class="sharebutton button-hover icon-hover"><i style="color: black;" class="fa-solid fa-share sharebutton-img share-icon hvr-icon"></i><span class="sharebutton-mb">Share</span></a></div></div>
 </span>
 @endif
-<script>{!! file_get_contents(base_path("littlelink/js/share.button.js")) !!}</script>
+<script>{!! file_get_contents(base_path("assets/linkstack/js/share.button.js")) !!}</script>
 
 @endif
 <?php ////end share button//// ?>
@@ -284,9 +262,11 @@ function get_operating_system() {
       <div class="column" style="margin-top: 5%">
         <!-- Your Image Here -->
           @if(file_exists(base_path(findAvatar($userinfo->id))))
-          <img alt="avatar" class="rounded-avatar fadein" src="{{ url(findAvatar($userinfo->id)) }}" height="128px" style="width:auto;min-width:128px;object-fit: cover;">
+          <img alt="avatar" class="rounded-avatar fadein" src="{{ url(findAvatar($userinfo->id)) }}" height="128px" width="128px" style="object-fit: cover;">
+          @elseif(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
+          <img alt="avatar" class="fadein" src="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}" height="128px" width="128px" style="object-fit: cover;">
           @else
-          <img alt="avatar" class="rounded-avatar fadein" src="{{ asset('littlelink/images/logo.svg') }}" width="128px" height="128px" style="object-fit: cover;">
+          <img alt="avatar" class="fadein" src="{{ asset('assets/linkstack/images/logo.svg') }}" height="128px" style="width:auto;min-width:128px;object-fit: cover;">
           @endif
 
         <!-- Your Name -->
@@ -315,17 +295,17 @@ function get_operating_system() {
         @case('icon')
             @break
         @case('phone')
-        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-default button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}"><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/phone{{theme('custom_icon_extension')}} @else{{ asset('\/littlelink/icons\/')}}phone.svg @endif"></i>{{ $link->title }}</a></div>
+        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-default button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}"><img alt="{{ $link->name }}" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/phone{{theme('custom_icon_extension')}} @else{{ asset('\/assets/linkstack/icons\/')}}phone.svg @endif"></i>{{ $link->title }}</a></div>
             @break
         @case('default email')
         @case('default email_alt')
-        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-default button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}"><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/email{{theme('custom_icon_extension')}} @else{{ asset('\/littlelink/icons\/')}}email.svg @endif"></i>{{ $link->title }}</a></div>
+        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-default button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}"><img alt="email" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/email{{theme('custom_icon_extension')}} @else{{ asset('\/assets/linkstack/icons\/')}}email.svg @endif"></i>{{ $link->title }}</a></div>
             @break
         @case('buy me a coffee')
-        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-coffee button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/coffee{{theme('custom_icon_extension')}} @else{{ asset('\/littlelink/icons\/')}}coffee.svg @endif">Buy me a Coffee</a></div>
+        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-coffee button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="{{ $link->name }}" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/coffee{{theme('custom_icon_extension')}} @else{{ asset('\/assets/linkstack/icons\/')}}coffee.svg @endif">Buy me a Coffee</a></div>
             @break
         @case('mastodon')
-        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button button-hover icon-hover" rel="me noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/{{$linkName}}{{theme('custom_icon_extension')}} @else{{ asset('\/littlelink/icons\/') . "mastodon" }}.svg @endif">{{ $link->title }}</a></div>
+        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button button-hover icon-hover" rel="me noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="{{ $link->name }}" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/{{$linkName}}{{theme('custom_icon_extension')}} @else{{ asset('\/assets/linkstack/icons\/') . "mastodon" }}.svg @endif">{{ $link->title }}</a></div>
             @break
                @case('space')
                @php $title = $link->title; if (is_numeric($title)) { echo str_repeat("<br>", $title < 10 ? $title : 10); } else { echo "<br><br><br>"; } @endphp
@@ -337,7 +317,7 @@ function get_operating_system() {
         <div class="fadein"><span style="">@if(env('ALLOW_USER_HTML') === true){!! $link->title !!}@else{{ $link->title }}@endif</span></div>
             @break
         @case('vcard')
-            <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-default button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('vcard') . '/' . $link->id }}"><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/vcard{{theme('custom_icon_extension')}} @else{{ asset('\/littlelink/icons\/')}}vcard.svg @endif"></i>{{ $link->title }}</a></div>
+            <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-default button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('vcard') . '/' . $link->id }}"><img alt="{{ $link->name }}" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/vcard{{theme('custom_icon_extension')}} @else{{ asset('\/assets/linkstack/icons\/')}}vcard.svg @endif"></i>{{ $link->title }}</a></div>
                 @break
         @case('custom')
           @if($link->custom_css === "" or $link->custom_css === "NULL" or (theme('allow_custom_buttons') == "false"))
@@ -349,15 +329,15 @@ function get_operating_system() {
             @endif
         @case('custom_website')
            @if($link->custom_css === "" or $link->custom_css === "NULL" or (theme('allow_custom_buttons') == "false"))
-             <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-custom_website button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(file_exists(base_path("studio/favicon/icons/").localIcon($link->id))){{url('studio/favicon/icons/'.localIcon($link->id))}}@else{{getFavIcon($link->id)}}@endif">{{ $link->title }}</a></div>
+             <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-custom_website button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="{{ $link->name }}" class="icon hvr-icon" src="@if(file_exists(base_path("assets/favicon/icons/").localIcon($link->id))){{url('assets/favicon/icons/'.localIcon($link->id))}}@else{{getFavIcon($link->id)}}@endif">{{ $link->title }}</a></div>
                @break
            @elseif($link->custom_css != "")
-            <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $link->custom_css }}" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(file_exists(base_path("studio/favicon/icons/").localIcon($link->id))){{url('studio/favicon/icons/'.localIcon($link->id))}}@else{{getFavIcon($link->id)}}@endif">{{ $link->title }}</a></div>
+            <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $link->custom_css }}" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="{{ $link->name }}" class="icon hvr-icon" src="@if(file_exists(base_path("assets/favicon/icons/").localIcon($link->id))){{url('assets/favicon/icons/'.localIcon($link->id))}}@else{{getFavIcon($link->id)}}@endif">{{ $link->title }}</a></div>
              @break
            @endif
            @default
         <?php include base_path('config/button-names.php'); $newLinkName = $linkName; $isNewName = "false"; foreach($buttonNames as $key => $value) { if($newLinkName == $key) { $newLinkName = $value; $isNewName = "true"; }} ?>
-        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/{{$link->name}}{{theme('custom_icon_extension')}} @else{{ asset('\/littlelink/icons\/') . $link->name }}.svg @endif">@if($isNewName == "true"){{ ucfirst($newLinkName) }}@else{{ ucfirst($newLinkName) }}@endif</a></div>
+        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="{{ $link->name }}" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/{{$link->name}}{{theme('custom_icon_extension')}} @else{{ asset('\/assets/linkstack/icons\/') . $link->name }}.svg @endif">@if($isNewName == "true"){{ ucfirst($newLinkName) }}@else{{ ucfirst($newLinkName) }}@endif</a></div>
     @endswitch
 @endforeach
 

@@ -129,8 +129,11 @@ class InstallerController extends Controller
         $user = User::find(1);
         $llName = $user->littlelink_name;
 
-        if($request->register == 'Yes'){$register = "true";}else{$register = "false";}
-        Page::first()->update(['register' => $register]);
+        if($request->register == 'Yes'){ 
+            if(EnvEditor::keyExists('ALLOW_REGISTRATION')){EnvEditor::editKey('ALLOW_REGISTRATION', 'true');}else{EnvEditor::addKey('ALLOW_REGISTRATION', 'true');}
+        } else {
+            if(EnvEditor::keyExists('ALLOW_REGISTRATION')){EnvEditor::editKey('ALLOW_REGISTRATION', 'false');}else{EnvEditor::addKey('ALLOW_REGISTRATION', 'false');}
+        }
 
         if($request->verify == 'Yes'){$value = "verified";}else{$value = "auth";}
         if(EnvEditor::keyExists('REGISTER_AUTH')){EnvEditor::editKey('REGISTER_AUTH', $value);}

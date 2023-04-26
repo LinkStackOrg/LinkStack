@@ -1,0 +1,71 @@
+
+/* Table of contents
+––––––––––––––––––––––––––––––––––––––––––––––––––
+
+- Rounded user avatars
+- Buttons
+- Brand Styles
+
+*/
+
+
+/* Rounded avatars
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Disable this if you don't want rounded avatars for users 
+.rounded-avatar {
+  border-radius: 50%;
+}
+*/
+
+.social-icon {
+  font-size:24px;
+  padding: 5px;
+}
+.social-icon-div {
+  padding-bottom: 25px;
+}
+.social-icon{color:#fff;}
+
+/* Buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.button,
+button {
+  border: 2px solid #000;
+  webkit-box-shadow: inset -2px -4px #0006, inset 2px 2px #FFF7;
+  box-shadow: inset -2px -4px #0006, inset 2px 2px #FFF7;
+  background: #999 url('https://i48.servimg.com/u/f48/18/06/99/75/bgbtn10.png');
+  background-size: cover;
+  background-position: center;
+  color: #DDD;
+  text-align: center;
+  font-size: 20px;
+  cursor: context-menu;
+  image-rendering: pixelated;
+  max-width: 400px;
+  margin-bottom: 10px;
+  min-width: 90%;
+  padding: 10px;
+ }
+button:hover,
+.button:hover {
+  background-color: rgba(100, 100, 255, .45);
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+  color: #FFF;
+  border: 2px solid rgb(255, 255, 255);
+}
+
+
+/* Brand Icons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.icon {
+  padding: 0px 8px 3.5px 0px;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+}
+

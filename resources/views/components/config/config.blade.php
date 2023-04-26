@@ -3,11 +3,11 @@
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
   input[type=checkbox],
 input[type=radio] {
-    --active: #275EFE;
+    --active: var(--bs-primary);
     --active-inner: #fff;
-    --focus: 2px rgba(39, 94, 254, .3);
+    --focus: 2px var(--bs-primary);
     --border: #BBC1E1;
-    --border-hover: #275EFE;
+    --border-hover: var(--bs-primary);
     --background: #fff;
     --disabled: #F6F8FF;
     --disabled-inner: #E1E6F9;
@@ -158,12 +158,12 @@ function toggle($key){
 	echo '
     <form id="'.$key.'-form" action="'.route('editConfig').'" enctype="multipart/form-data" method="post">
 	<div class="form-group col-lg-8">
-	<input value="toggle" name="type" style="display:none;" type="text" required>
-	<input value="'.$key.'" name="entry" style="display:none;" type="text" required>
+	<input value="toggle" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
+	<input value="'.$key.'" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
 	<h5 style="margin-top:50px">'; foreach($configNames as $obj){if($obj->value == $key){echo $obj->title;}}; echo '</h5>
     <p class="text-muted">'; foreach($configNames as $obj){if($obj->value == $key){echo $obj->description;}}; echo '</p>
 	<div class="input-group">
-	<div class="row toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="'.$key.'"'; if(EnvEditor::getKey($key) == 'false'){echo '/>';}else{echo 'checked>';} echo '<label for="'.$key.'" class="label txt-label">Enable</label></div>
+	<div class="mb-3 form-check form-switch toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="'.$key.'"'; if(EnvEditor::getKey($key) == 'false'){echo '/>';}else{echo 'checked>';} echo '<label for="'.$key.'" class="form-check-label">Enable</label></div>
 	</div></div>
     <input type="hidden" name="_token" value="'.csrf_token().'">
     <script type="text/javascript">
@@ -183,12 +183,12 @@ function toggle2($key){
 	echo '
     <form id="'.$key.'-form" action="'.route('editConfig').'" enctype="multipart/form-data" method="post">
 	<div class="form-group col-lg-8">
-	<input value="toggle2" name="type" style="display:none;" type="text" required>
-	<input value="'.$key.'" name="entry" style="display:none;" type="text" required>
+	<input value="toggle2" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
+	<input value="'.$key.'" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
 	<h5 style="margin-top:50px">'; foreach($configNames as $obj){if($obj->value == $key){echo $obj->title;}}; echo '</h5>
     <p class="text-muted">'; foreach($configNames as $obj){if($obj->value == $key){echo $obj->description;}}; echo '</p>
 	<div class="input-group">
-	<div class="row toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="'.$key.'"'; if(EnvEditor::getKey($key) == 'auth'){echo '/>';}else{echo 'checked>';} echo '<label for="'.$key.'" class="label txt-label">Enable</label></div>
+	<div class="mb-3 form-check form-switch toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="'.$key.'"'; if(EnvEditor::getKey($key) == 'auth'){echo '/>';}else{echo 'checked>';} echo '<label for="'.$key.'" class="form-check-label">Enable</label></div>
 	</div></div>
     <input type="hidden" name="_token" value="'.csrf_token().'">
     <script type="text/javascript">
@@ -209,14 +209,14 @@ function text($key){
 	echo '
     <form id="'.$key.'-form" action="'.route('editConfig').'" enctype="multipart/form-data" method="post">
     <div class="form-group col-lg-8">
-    <input value="text" name="type" style="display:none;" type="text" required>
-    <input value="'.$key.'" name="entry" style="display:none;" type="text" required>
+    <input value="text" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
+    <input value="'.$key.'" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
 	<h5 style="margin-top:50px">'; foreach($configNames as $obj){if($obj->value == $key){echo $obj->title;}}; echo '</h5>
     <p class="text-muted">'; foreach($configNames as $obj){if($obj->value == $key){echo $obj->description;}}; echo '</p>
     <div class="input-group">
-    <input type="text" style="border-radius:.25rem;max-width:600px" class="form-control" name="value" value="'.$configValue.'" required>';  echo '
+    <input type="text" class="form-control form-control-lg" style="border-radius:.25rem;max-width:600px" class="form-control" name="value" value="'.$configValue.'" required>';  echo '
     <input type="hidden" name="_token" value="'.csrf_token().'">
-	<button style="position:relative;bottom:17px;" type="submit" class="mt-3 ml-3 btn btn-info">Apply</button>
+	<button  type="submit" class="btn btn-primary">Apply</button>
     </div></div>
     </form>
 	';
@@ -226,32 +226,23 @@ function text($key){
 
 <a name="Application"><h2 class="ch2">Application</h2></a>
 
-
-{{-- start register --}}
-<form id="register-form" action="{{route('editConfig')}}" enctype="multipart/form-data" method="post">
-<div class="form-group col-lg-8">
-<input value="register" name="type" style="display:none;" type="text" required>
-<input value="register" name="entry" style="display:none;" type="text" required>
-<h5 style="margin-top:50px">Enable registration</h5>
-<p class="text-muted">Determines whether users can register for your application.</p>
-<div class="input-group">
-<div class="row toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle-register" <?php if(Page::pluck('register') == '["false"]'){echo '/>';}else{echo 'checked>';} ?> <label for="toggle-register" class="label txt-label">Enable</label></div>
-</div></div>
-<input type="hidden" name="_token" value="{{csrf_token()}}">
-<script type="text/javascript">document.getElementById("register-form").addEventListener("change", function() { this.submit(); });</script>
-</form>
-{{-- end register --}}
+@if(!config('linkstack.single_user_mode'))
+{{toggle('ALLOW_REGISTRATION')}}
 
 
 {{toggle2('REGISTER_AUTH')}}
+
+
+{{toggle('MANUAL_USER_VERIFICATION')}}
+@endif
 
 
 {{-- start home url --}}
 <?php $configValue2 = str_replace('"', "", EnvEditor::getKey('HOME_URL')); ?>
 <form id="home-url-form" action="{{route('editConfig')}}" enctype="multipart/form-data" method="post">
 <div class="form-group col-lg-8">
-<input value="homeurl" name="type" style="display:none;" type="text" required>
-<input value="HOME_URL" name="entry" style="display:none;" type="text" required>
+<input value="homeurl" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
+<input value="HOME_URL" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
 <h5 style="margin-top:50px">Set user page as Home Page</h5>
 <p class="text-muted">Set a user page as the home page. This will move the previous home page to example.com/home.</p>
 <div class="input-group">
@@ -322,12 +313,12 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 {{-- start MAINTENANCE_MODE --}}
 <form id="MAINTENANCE_MODE-form" action="{{route('editConfig')}}" enctype="multipart/form-data" method="post">
 <div class="form-group col-lg-8">
-<input value="maintenance" name="type" style="display:none;" type="text" required>
-<input value="MAINTENANCE_MODE" name="entry" style="display:none;" type="text" required>
+<input value="maintenance" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
+<input value="MAINTENANCE_MODE" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
 <h5 style="margin-top:50px">Enable Maintenance Mode</h5>
 <p class="text-muted">Displays a maintenance message on all public pages. This will disable the login pages.</p>
 <div class="input-group">
-<div class="row toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="MAINTENANCE_MODE" <?php if(EnvEditor::getKey('MAINTENANCE_MODE') == 'true' or file_exists(base_path("storage/MAINTENANCE"))){echo 'checked>';}else{echo '/>';} ?><label for="MAINTENANCE_MODE" class="label txt-label">Enable</label></div>
+<div class="mb-3 form-check form-switch toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="MAINTENANCE_MODE" <?php if(EnvEditor::getKey('MAINTENANCE_MODE') == 'true' or file_exists(base_path("storage/MAINTENANCE"))){echo 'checked>';}else{echo '/>';} ?><label for="MAINTENANCE_MODE" class="form-check-label">Enable</label></div>
 </div></div>
 <input type="hidden" name="_token" value="{{csrf_token()}}">
 <script type="text/javascript">
@@ -345,7 +336,9 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 {{toggle('CUSTOM_META_TAGS')}}
 
 
+@if(!config('linkstack.single_user_mode'))
 {{toggle('ENABLE_SOCIAL_LOGIN')}}
+@endif
 
 
 {{toggle('FORCE_ROUTE_HTTPS')}}
@@ -355,30 +348,30 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 <a name="SMTP"><h2 class="ch2">SMTP</h2></a>
 <form id="smtp-form" action="{{route('editConfig')}}" enctype="multipart/form-data" method="post">
 <div class="form-group col-lg-8">
-<input value="smtp" name="type" style="display:none;" type="text" required>
-<input value="smtp" name="entry" style="display:none;" type="text" required>
+<input value="smtp" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
+<input value="smtp" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
 <h5 style="margin-top:50px">Use built in SMTP server</h5>
 <p class="text-muted">Uses SMTP server provided by LittleLink Custom. Might not be 100% reliable. Some errors may occur.</p>
 <div class="input-group">
-<div class="row toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle-smtp" <?php if(EnvEditor::getKey('MAIL_MAILER') != 'built-in'){echo '/>';}else{echo 'checked>';} ?> <label for="toggle-smtp" class="label txt-label">Enable</label></div>
+<div class="mb-3 form-check form-switch toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle-smtp" <?php if(EnvEditor::getKey('MAIL_MAILER') != 'built-in'){echo '/>';}else{echo 'checked>';} ?> <label for="toggle-smtp" class="form-check-label">Enable</label></div>
 </div></div>
 <input type="hidden" name="_token" value="{{csrf_token()}}">
 <div style="max-width: 600px; padding-left: 20px;">
 <br><h5>Custom SMTP server:</h5>
 <label style="margin-top:15px">Host</label>
-<input type="text" class="form-control" name="MAIL_HOST" value="{{EnvEditor::getKey('MAIL_HOST')}}" />
+<input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_HOST" value="{{EnvEditor::getKey('MAIL_HOST')}}" />
 <label style="margin-top:15px">Port</label>
-<input type="text" class="form-control" name="MAIL_PORT" value="{{EnvEditor::getKey('MAIL_PORT')}}" />
+<input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_PORT" value="{{EnvEditor::getKey('MAIL_PORT')}}" />
 <label style="margin-top:15px">Username</label>
-<input type="text" class="form-control" name="MAIL_USERNAME" value="{{EnvEditor::getKey('MAIL_USERNAME')}}" />
+<input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_USERNAME" value="{{EnvEditor::getKey('MAIL_USERNAME')}}" />
 <label style="margin-top:15px">Password</label>
 <input type="password" class="form-control" name="MAIL_PASSWORD" value="{{EnvEditor::getKey('MAIL_PASSWORD')}}" />
 <label style="margin-top:15px">Encryption type</label>
-<input type="text" class="form-control" name="MAIL_ENCRYPTION" value="{{EnvEditor::getKey('MAIL_ENCRYPTION')}}" />
+<input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_ENCRYPTION" value="{{EnvEditor::getKey('MAIL_ENCRYPTION')}}" />
 <label style="margin-top:15px">From adress</label>
-<input type="text" class="form-control" name="MAIL_FROM_ADDRESS" value="{{EnvEditor::getKey('MAIL_FROM_ADDRESS')}}" />
+<input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_FROM_ADDRESS" value="{{EnvEditor::getKey('MAIL_FROM_ADDRESS')}}" />
+<button type="submit" class="btn btn-primary mt-4">Apply changes</button>
 </div>
-<button type="submit" class="mt-3 ml-3 btn btn-info">Apply changes</button>
 </form>
 
 <div class="form-group col-lg-8">
@@ -393,7 +386,7 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
   </div>
 @endif
 </div>
-<a href="{{route('SendTestMail')}}"><button class="mt-3 ml-3 btn btn-outline-secondary">Send Test E-Mail</button></a>
+<a href="{{route('SendTestMail')}}"><button class="btn btn-gray">Send Test E-Mail</button></a>
 {{-- end SMTP settings --}}
 
 
@@ -413,14 +406,14 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 @endphp
     <form id="HOME_FOOTER_LINK-form" action="{{route('editConfig')}}" enctype="multipart/form-data" method="post">
     <div class="form-group col-lg-8">
-    <input value="text" name="type" style="display:none;" type="text" required>
-    <input value="HOME_FOOTER_LINK" name="entry" style="display:none;" type="text" required>
+    <input value="text" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
+    <input value="HOME_FOOTER_LINK" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
 	<h5 style="margin-top:50px">@php foreach($configNames as $obj){if($obj->value == 'HOME_FOOTER_LINK'){echo $obj->title;}}; @endphp</h5>
     <p class="text-muted">@php foreach($configNames as $obj){if($obj->value == 'HOME_FOOTER_LINK'){echo $obj->description;}}; @endphp</p>
     <div class="input-group">
     <input type="url" style="border-radius:.25rem;max-width:600px" class="form-control" name="value" value="{{$configValue}}">
     <input type="hidden" name="_token" value="{{csrf_token()}}">
-	<button style="position:relative;bottom:17px;" type="submit" class="mt-3 ml-3 btn btn-info">Apply</button>
+	<button  type="submit" class="btn btn-primary">Apply</button>
     </div></div>
     </form>
 
@@ -439,12 +432,12 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 <a name="Debug"><h2 class="ch2">Debug</h2></a>
 <form id="debug-form" action="{{route('editConfig')}}" enctype="multipart/form-data" method="post">
 <div class="form-group col-lg-8">
-<input value="debug" name="type" style="display:none;" type="text" required>
-<input value="debug" name="entry" style="display:none;" type="text" required>
+<input value="debug" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
+<input value="debug" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
 <h5 style="margin-top:50px">Debug mode</h5>
 <p class="text-muted">Should be disabled in a production environment. Useful for debugging during setup.</p>
 <div class="input-group">
-<div class="row toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle-debug" <?php if(EnvEditor::getKey('APP_DEBUG') == 'false'){echo '/>';}else{echo 'checked>';} ?> <label for="toggle-debug" class="label txt-label">Enable</label></div>
+<div class="mb-3 form-check form-switch toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle-debug" <?php if(EnvEditor::getKey('APP_DEBUG') == 'false'){echo '/>';}else{echo 'checked>';} ?> <label for="toggle-debug" class="form-check-label">Enable</label></div>
 </div></div>
 <input type="hidden" name="_token" value="{{csrf_token()}}">
 <script type="text/javascript">document.getElementById("debug-form").addEventListener("change", function() { this.submit(); });</script>
@@ -453,7 +446,7 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 
 <br><br><br><br><br>
 
-<script src="{{ asset('studio/external-dependencies/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ asset('assets/external-dependencies/jquery-3.4.1.min.js') }}"></script>
 
 <script type="text/javascript">
 $(document).ready(function () {

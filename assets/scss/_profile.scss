@@ -1,0 +1,21 @@
+/*===== PROFILE =====*/
+.profile-content-right {
+  @include media-breakpoint-up(lg) {
+    border-top: 0px;
+    border-left: 1px solid $border-color;
+  }
+  .nav-style-border.nav-tabs .nav-link {
+    padding: 0 0 0.94rem;
+  }
+}
+.profile-timeline-media {
+  .media-body {
+    > span {
+      font-size: 0.81rem;
+    }
+    >p {
+      line-height: 1.6;
+      padding-top: 2rem;
+    }
+  }
+}

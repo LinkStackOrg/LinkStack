@@ -1,0 +1,53 @@
+
+/* Table of contents
+––––––––––––––––––––––––––––––––––––––––––––––––––
+
+- Rounded user avatars
+- Buttons
+- Brand Styles
+
+*/
+
+
+/* Rounded avatars
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Disable this if you don't want rounded avatars for users */
+.rounded-avatar {
+  border-radius: 50%;
+}
+
+.social-icon {
+  font-size: 32px;
+  padding: 10px;
+}
+.social-icon-div {
+  padding-bottom: 30px;
+}
+.social-icon{color:#fff;}
+
+/* Buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+button:hover,
+.button:focus {
+  color: #333;
+  border-color: #888;
+  outline: 0; }
+.button.button-primary {
+  color: #FFF;}
+.button.button-primary:hover,
+.button.button-primary:focus {
+  color: #FFF;} 
+
+
+/* Brand Icons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.icon {
+  padding: 0px 8px 3.5px 0px;
+  vertical-align: middle;
+  width: 30px !important;
+  height: auto;
+  filter: saturate(.8);
+}

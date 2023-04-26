@@ -1,7 +1,7 @@
 <?php
 
 function localIcon($id) {
-  $directory = base_path("studio/favicon/icons");
+  $directory = base_path("assets/favicon/icons");
   $files = scandir($directory);
   $pathinfo = "error.error";
   foreach($files as $file) {

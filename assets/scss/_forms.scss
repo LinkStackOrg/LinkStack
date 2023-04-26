@@ -1,0 +1,294 @@
+/*===== FORMS =====*/
+.form-control:focus{
+  box-shadow: none;
+}
+.form-group, .input-group {
+  margin-bottom: 1.25rem;
+  label {
+    color: $dark;
+    font-size: 0.98rem;
+  }
+  .form-control {
+    font-size: 0.98rem;
+    padding: .5rem 1.06rem;
+    border-color: $border-color;    
+  }
+  .form-control.input-lg {
+    font-size: 1.06rem;
+    padding: 0.9375rem 1.06rem;
+  }
+  .form-control.input-sm {
+    font-size: 0.8125rem;
+    padding: .38rem 1.06rem;
+  }
+}
+.form-pill .form-group .form-control {
+  border-radius: 100px;
+}
+.horizontal-form .form-check {
+  padding-left: 0;
+  label {
+    font-weight: 400;
+    font-size: 0.875rem;
+  }
+}
+
+/* Form components - checkbox and radios */
+.control {
+  display: block;
+  position: relative;
+  padding-left: 1.56rem;
+  color: $dark;
+  margin-bottom: 0.9375rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.control-indicator {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background: #e1e2e5;
+  border: 1px solid #ccc;
+  border-radius: 0.125rem;
+}
+.control-radio .control-indicator {
+  border-radius: 50%;
+}
+.control input:disabled ~ .control-indicator {
+  background: #e1e2e5;
+  opacity: 0.6;
+  pointer-events: none;
+  border: 1px solid #ccc;
+}
+.control-indicator:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+.control input:checked ~ .control-indicator:after {
+  display: block;
+}
+.control-checkbox .control-indicator:after {
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 8px;
+  background: transparent!important;
+  border: solid $dark;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.control-checkbox input:disabled ~ .control-indicator:after {
+  border-color: #7b7b7b;
+}
+.control-radio .control-indicator:after {
+  left: 4px;
+  top: 4px;
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  background: $dark;
+}
+.control-radio input:disabled ~ .control-indicator:after {
+  background: #7b7b7b;
+}
+
+/* Contextual Style */
+.checkbox-primary .control-indicator,
+.radio-primary .control-indicator {
+  background: $primary;
+  border-color: $primary;
+  &::after {
+    color: $white;
+    border-color: $white;
+    background: $white;
+  }
+}
+.checkbox-warning .control-indicator,
+.radio-warning .control-indicator {
+  background: $warning;
+  border-color: $warning;
+  &::after {
+    color: $white;
+    border-color: $white;
+    background: $white;
+  }
+}
+.checkbox-danger .control-indicator,
+.radio-danger .control-indicator {
+  background: $danger;
+  border-color: $danger;
+  &::after {
+    color: $white;
+    border-color: $white;
+    background: $white;
+  }
+}
+.checkbox-success .control-indicator,
+.radio-success .control-indicator {
+  background: $success;
+  border-color: $success;
+  &::after {
+    color: $white;
+    border-color: $white;
+    background: $white;
+  }
+}
+.checkbox-info .control-indicator,
+.radio-info .control-indicator {
+  background: $info;
+  border-color: $info;
+  &::after {
+    color: $white;
+    border-color: $white;
+    background: $white;
+  }
+}
+
+/* All Outline Contextual Style */
+.control.outlined {
+  .control-indicator {
+    background: transparent !important;
+  }
+  input:disabled ~ .control-indicator {
+    background: transparent !important;
+  }
+}
+.control.outlined.checkbox-primary .control-indicator,
+.control.outlined.radio-primary .control-indicator {
+  background: transparent;
+  border-color: $primary;
+  &::after {
+    background: $primary;
+    border-color: $primary;
+    color: $white;
+  }
+}
+.control.outlined.checkbox-warning .control-indicator,
+.control.outlined.radio-warning .control-indicator {
+  background: transparent;
+  border-color: $warning;
+  &::after {
+    background: $warning;
+    border-color: $warning;
+    color: $white;
+  }
+}
+.control.outlined.checkbox-danger .control-indicator,
+.control.outlined.radio-danger .control-indicator {
+  background: transparent;
+  border-color: $danger;
+  &::after {
+    background: $danger;
+    border-color: $danger;
+    color: $white;
+  }
+}
+.control.outlined.checkbox-success .control-indicator,
+.control.outlined.radio-success .control-indicator {
+  background: transparent;
+  border-color: $success;
+  &::after {
+    background: $success;
+    border-color: $success;
+    color: $white;
+  }
+}
+.control.outlined.checkbox-info .control-indicator,
+.control.outlined.radio-info .control-indicator {
+  background: transparent;
+  border-color: $info;
+  &::after {
+    background: $info;
+    border-color: $info;
+    color: $white;
+  }
+}
+
+.custom-select {
+  width: auto;
+  margin-left: .625rem;
+}
+/* Form components- input groups */
+.input-group > .input-group-prepend,
+.input-group > .input-group-append {
+  > .input-group-text {
+    background-color: $gray-100;
+    border-color: $border-color;
+
+    &.bg-primary {
+      border-color: $primary;
+      color: $white;
+    }
+    &.bg-warning {
+      border-color: $warning;
+      color: $white;
+    }
+    &.bg-danger {
+      border-color: $danger;
+      color: $white;
+    }
+    &.bg-success {
+      border-color: $success;
+      color: $white;
+    }
+
+    .control {
+      margin-bottom: 1.25rem;
+    }
+  }
+  .form-check {
+    padding-left: 0;
+    .form-check-label {
+      margin-bottom: 0;
+    }
+    .radio-custom-label:before,
+    .checkbox-custom-label:before {
+      margin-right: 0;
+      background: $white;
+    }
+    .radio-custom:checked + .radio-custom-label:before,
+    .checkbox-custom:checked + .checkbox-custom-label:before {
+      border: 1px solid #d4d5db;
+      line-height: 1rem;
+
+    }
+    .radio-custom:checked + .radio-custom-label:before {
+      font-size: 0.5rem;
+
+    }
+  }
+}
+
+/* Form components- Validation */
+.invalid-feedback,
+.valid-feedback {
+  font-size: 90%;
+}
+
+/* Form components- Advanced */
+.select2-container--default .select2-selection--multiple {
+  border-color: $border-color;
+}
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+  border-color: rgba($primary,0.5);
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  border-color: #4c84ff;
+  background-color: rgba(76, 132, 255, 0.051);
+  color: #4c84ff;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+  color: #4c84ff;
+  padding-right: 0.31rem;
+  margin-right: 0.31rem;
+  border-right: 1px solid #4c84ff;
+}

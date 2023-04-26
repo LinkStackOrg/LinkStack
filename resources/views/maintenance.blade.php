@@ -18,36 +18,36 @@
   @endif
 
   <!-- Custom icons font-awesome -->
-  <script src="{{ asset('studio/external-dependencies/fontawesome.js') }}" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="{{ asset('studio/external-dependencies/fontawesome.css') }}" />
+  <script src="{{ asset('assets/external-dependencies/fontawesome.js') }}" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{{ asset('assets/external-dependencies/fontawesome.css') }}" />
 
   @include('layouts.fonts') 
-  <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
-  @if(file_exists(base_path("littlelink/images/").findFile('favicon')))
-  <link rel="icon" type="image/png" href="{{ asset('littlelink/images/'.findFile('favicon')) }}">
+  <link rel="stylesheet" href="{{ asset('assets/linkstack/css/normalize.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/linkstack/css/animate.css') }}">
+  @if(file_exists(base_path("assets/linkstack/images/").findFile('favicon')))
+  <link rel="icon" type="image/png" href="{{ asset('assets/linkstack/images/'.findFile('favicon')) }}">
   @else
-  <link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
+  <link rel="icon" type="image/svg+xml" href="{{ asset('assets/linkstack/images/logo.svg') }}">
   @endif
 
-  <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/animations.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/linkstack/css/brands.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/linkstack/css/animations.css') }}">
   <?php // override dark/light mode if override cookie is set
   $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
   @if ($color_scheme_override == 'dark')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/linkstack/css/skeleton-dark.css') }}">
   @elseif ($color_scheme_override == 'light')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/linkstack/css/skeleton-light.css') }}">
   @elseif (config('advanced-config.theme') == 'dark')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/linkstack/css/skeleton-dark.css') }}">
   @elseif (config('advanced-config.theme') == 'light')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/linkstack/css/skeleton-light.css') }}">
   @else
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-auto.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/linkstack/css/skeleton-auto.css') }}">
   @endif
 
                                                         {{-- custom font for logo text --}}
-  <style>@font-face{font-family:'ll';src:url({{ asset('littlelink/fonts/littlelink-custom.otf') }}) format("opentype")}</style>
+  <style>@font-face{font-family:'ll';src:url({{ asset('assets/linkstack/fonts/littlelink-custom.otf') }}) format("opentype")}</style>
 
 <style>
 html,
@@ -80,11 +80,11 @@ body {
 <div class="containerr" style="">
       <div class="column">
         <!-- Your Image Here -->
-        @if(file_exists(base_path("littlelink/images/").findFile('avatar')))
-        <img alt="avatar" src="{{ asset('littlelink/images/'.findFile('avatar')) }}" width="auto" height="200px">
+        @if(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
+        <img alt="avatar" src="{{ asset('assets/linkstack/images/'.findFile('avatar')) }}" width="auto" height="200px">
         @else
         <div class="logo-container">
-           <img src="{{ asset('littlelink/images/logo.svg') }}" alt="Logo" style="width:200px; height:200px;">
+           <img src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo" style="width:200px; height:200px;">
         </div>
         @endif
 

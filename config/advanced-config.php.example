@@ -9,7 +9,7 @@ $analytics =
 | Analytics
 |--------------------------------------------------------------------------
 |
-| Add external analytics services to your LittleLink Custom instance by adding them below.
+| Add external analytics services to your LinkStack instance by adding them below.
 | Everything you enter below will be added to the <head> tag of every page.
 | Formatting in plain HTML is expected.
 |
@@ -77,7 +77,7 @@ return [
 
     // Overwrites default theme regardless of preference defined by the operating system, unless manually overwritten by user.
     // Overwrites default page title after the LittleLink name on LittleLink pages.
-    // Example: "admin 🔗 LittleLink Custom"
+    // Example: "admin 🔗 LinkStack"
     //                 ⤌------------------⤍
     //                 ⬑ What you can change with this setting.
     'littlelink_title' => '💡 Little CustomLink',
@@ -110,7 +110,7 @@ return [
     // If 'true' the Home Page will be disabled entirely.
     // You will still be able to login on the login page etc.
     'disable_home_page' => 'false', // Either 'true', 'false' or 'redirect'.
-    'redirect_home_page' => 'https://littlelink-custom.com', // Only active if value above is set to 'redirect'.
+    'redirect_home_page' => 'https://linkstack.org', // Only active if value above is set to 'redirect'.
 
     // The URL prefix is the symbol that comes before a LittleLink URL.
     // For example the '@' in 'example.com/@admin'.
@@ -135,8 +135,8 @@ return [
     'display_link_privacy' => 'true',
     'display_link_contact' => 'true',
 
-    // Enter a custom home link (for example, 'https://littlelink-custom.com').
-    'custom_link_home' => 'https://littlelink-custom.com', // Leave empty to use default value.
+    // Enter a custom home link (for example, 'https://linkstack.org').
+    'custom_link_home' => 'https://linkstack.org', // Leave empty to use default value.
     // Changes the text on the "Home" link.
     'custom_text_home' => 'Custom Text', // Leave empty to use default value.
     
@@ -222,13 +222,13 @@ return [
       ),
       array(
           'button' => 'custom',
-          'link' => 'https://littlelink-custom.com',
+          'link' => 'https://linkstack.org',
           'title' => 'Project Website',
           'icon' => 'llc',
           'custom_css' => 'color:#ffffff; background-image:linear-gradient(76deg, #f70fff 0%, #11d4de 100%);'),
       array(
         'button' => 'custom',
-        'link' => 'https://littlelink-custom.com/sponsor',
+        'link' => 'https://linkstack.org/sponsor',
         'title' => 'Help us out',
         'icon' => 'fa-hand-holding-hand',
         'custom_css' => 'color:#ffffff; background-image:radial-gradient(circle, #00d2ff 0%, #3a7bd5 95%);'

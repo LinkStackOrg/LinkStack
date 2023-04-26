@@ -1,0 +1,30 @@
+/*===== REBOOT =====*/
+html[dir="rtl"] {
+  .sidebar li > a .caret:before {
+    content: '\f141';
+  }
+  .github-link {
+    svg {
+      transform: rotateY(180deg);
+    }
+  }
+
+  #toast-container>div {
+    position: absolute;
+    right: 0;
+    padding: 15px 15px 15px 50px;
+
+    .toast-close-button {
+      position: absolute;
+      left: auto;
+      right: 10px;
+      top: 5px;
+    }
+  }
+
+  #toast-container>.toast-success {
+    background-position: left 15px center;
+  }
+}
+
+

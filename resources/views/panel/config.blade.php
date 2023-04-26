@@ -3,7 +3,7 @@
 @if($_SERVER['QUERY_STRING'] === 'restore-defaults')
 <?php 
 copy(base_path('storage/templates/advanced-config.php'), base_path('config/advanced-config.php')); 
-echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "/../../panel/config#2\" />";
+echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "/../../admin/config#2\" />";
 ?>
 @else
 

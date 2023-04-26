@@ -2369,7 +2369,7 @@ $opts = array('http'=>array('header' => "User-Agent:Mozilla/4.0 (compatible; MSI
 $context = stream_context_create($opts);
 
 $dom->load(file_get_contents($url,false,$context));
-$favicon = url('littlelink/icons/website.svg');
+$favicon = url('assets/linkstack/icons/website.svg');
 
 
 if(!function_exists('get_headers'))
@@ -2447,14 +2447,14 @@ foreach($dom->find('link') as $e)
 }
 
 }
-} catch (exception $e) {$favicon = url('littlelink/icons/website.svg');}
+} catch (exception $e) {$favicon = url('assets/linkstack/icons/website.svg');}
 
 
 try{
 $header = $favicon;
 $extension = pathinfo($header, PATHINFO_EXTENSION);
-if(!file_exists(base_path("studio/favicon/icons")."/".$id.".".$extension)){
-	if($id.".".$extension !== ".".$id){file_put_contents(base_path("studio/favicon/icons")."/".$id.".".$extension, file_get_contents($header,false,$context));}
+if(!file_exists(base_path("assets/favicon/icons")."/".$id.".".$extension)){
+	if($id.".".$extension !== ".".$id){file_put_contents(base_path("assets/favicon/icons")."/".$id.".".$extension, file_get_contents($header,false,$context));}
 }
 } catch (exception $e) {}
 

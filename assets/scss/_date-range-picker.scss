@@ -1,0 +1,64 @@
+/*===== DATERANGEPICKER =====*/
+.daterangepicker {
+  box-shadow: 0px 5px 18px 0px rgba(229, 233, 242, 0.5);
+  .ranges {
+    ul {
+      padding-top: 0.625rem;
+      padding-bottom: 0.625rem;
+      width: auto;
+    }
+    li {
+      padding: 0.5rem 1.25rem;
+      font-size: 0.875rem;
+    }
+    li.active {
+      background-color: transparent;
+      color: $primary;
+    }
+  }
+  &:before,
+  &:after {
+    display: none;
+  }
+  .drp-buttons .btn {
+    padding: 0 1.25rem;
+  }
+  td.in-range {
+    background-color: rgba($primary, .1);
+  }
+
+  td.available:hover
+   {
+    background-color: $primary;
+    color: $white;
+  }
+
+  .ranges li:hover {
+    background-color: transparent;
+    color: $primary;
+  }
+
+}
+
+/* Ragnge Date Picker */
+.date-range-report {
+  span {
+    cursor: pointer;
+    &:after {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      margin-left: 1em;
+      content: "";
+      border-right: 5px solid transparent;
+      border-bottom: 0px;
+      border-top: 6px solid;
+      border-left: 5px solid transparent;
+      vertical-align: middle;
+    }
+  }
+}
+
+.date-range::placeholder {
+  color: #495057;
+}

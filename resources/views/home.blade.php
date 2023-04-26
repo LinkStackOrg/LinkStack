@@ -1,278 +1,275 @@
-<!DOCTYPE html>
+
+
+
+<!doctype html>
 @include('layouts.lang')
-<head>
-  <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
+    @php $GLOBALS['themeName'] = config('advanced-config.home_theme'); @endphp
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      @if(env('CUSTOM_META_TAGS') == 'true' and config('advanced-config.title') != '')
+      <title>{{ config('advanced-config.title') }}</title>
+      @else
+      <title>{{ config('app.name') }}</title>
+      @endif
+      
+<!--#### BEGIN Meta Tags social media preview images  ####-->
+  <!-- This shows a preview for title, description and avatar image of users profiles if shared on social media sites -->
 
-@php $GLOBALS['themeName'] = config('advanced-config.home_theme'); @endphp
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="{{ url('') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{env('APP_NAME')}}">
+    <meta property="og:description" content="{{ $message->home_message }}">
+    @if(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
+    <meta property="og:image" content="{{ asset('assets/linkstack/images/'.findFile('avatar')) }}">
+    @else
+    <meta property="og:image" content="{{ asset('assets/linkstack/images/logo.svg') }}">
+    @endif
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="{{ url('') }}">
+    <meta property="twitter:url" content="{{ url('') }}">
+    <meta name="twitter:title" content="{{env('APP_NAME')}}">
+    <meta name="twitter:description" content="{{ $message->home_message }}">
+    @if(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
+    <meta name="twitter:image" content="{{ asset('assets/linkstack/images/'.findFile('avatar')) }}">
+    @else
+    <meta name="twitter:image" content="{{ asset('assets/linkstack/images/logo.svg') }}">
+    @endif
 
-<?php
-// Theme Config
-function theme($key){
-$key = trim($key);
-$file = base_path('themes/' . $GLOBALS['themeName'] . '/config.php');
-  if (file_exists($file)) {
-    $config = include $file;
-  if (isset($config[$key])) {
-    return $config[$key];
-}}
-return null;}
+<!--#### END Meta Tags social media preview images  ####-->
 
-// Theme Custom Asset
-function themeAsset($path){
-$path = url('themes/' . $GLOBALS['themeName'] . '/extra/custom-assets/' . $path);
-return $path;}
-?>
+      <!-- Favicon -->
+      @if(file_exists(base_path("assets/linkstack/images/").findFile('favicon')))
+      <link rel="icon" type="image/png" href="{{ asset('assets/linkstack/images/'.findFile('favicon')) }}">
+      @else
+      <link rel="icon" type="image/svg+xml" href="{{ asset('assets/linkstack/images/logo.svg') }}">
+      @endif
+      
+      <script src="{{asset('assets/js/detect-dark-mode.js')}}"></script>
 
-@if(theme('enable_custom_code') == "true" and theme('enable_custom_head') == "true" and env('ALLOW_CUSTOM_CODE_IN_THEMES') == 'true')@include($GLOBALS['themeName'] . '.extra.custom-head')@endif
+      <!-- Library / Plugin Css Build -->
+      <link rel="stylesheet" href="{{asset('assets/css/core/libs.min.css')}}" />
+      
+      <!-- Aos Animation Css -->
+      <link rel="stylesheet" href="{{asset('assets/vendor/aos/dist/aos.css')}}" />
+      
+      <!-- Hope Ui Design System Css -->
+      <link rel="stylesheet" href="{{asset('assets/css/hope-ui.min.css?v=2.0.0')}}" />
+      
+      <!-- Custom Css -->
+      <link rel="stylesheet" href="{{asset('assets/css/custom.min.css?v=2.0.0')}}" />
+      
+      <!-- Dark Css -->
+      <link rel="stylesheet" href="{{asset('assets/css/dark.min.css')}}" />
+      
+      <!-- Customizer Css -->
+            @if(file_exists(base_path("assets/dashboard-themes/dashboard.css")))
+      <link rel="stylesheet" href="{{asset('assets/dashboard-themes/dashboard.css')}}" />
+      @else
+      <link rel="stylesheet" href="{{asset('assets/css/customizer.min.css')}}" />
+      @endif
+      
+      <!-- RTL Css -->
+      <link rel="stylesheet" href="{{asset('assets/css/rtl.min.css')}}" />
+      
+      
+  </head>
 
-@include('layouts.analytics')
+  @php
+  $pages = DB::table('pages')->get();
+  foreach($pages as $page){}
+  @endphp
 
-  @if(env('CUSTOM_META_TAGS') == 'true' and config('advanced-config.title') != '')
-  <title>{{ config('advanced-config.title') }}</title>
-  @else
-  <title>{{ config('app.name') }}</title>
-  @endif
+  <body class=" " data-bs-spy="scroll" data-bs-target="#elements-section" data-bs-offset="0" tabindex="0">
+        <!--Nav Start-->
+        <nav class="nav navbar navbar-expand-lg navbar-light iq-navbar fixed-top">
+          <div class="container-fluid navbar-inner">
+            <a href="{{ route('panelIndex') }}" class="navbar-brand">
+                
+                <!--Logo start-->
+                <div class="logo-main">
+                  @if(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
+                  <div class="logo-normal">
+                    <img class="img logo" src="{{ asset('assets/linkstack/images/'.findFile('avatar')) }}" style="width:auto;height:30px;">
+                </div>
+                <div class="logo-mini">
+                  <img class="img logo" src="{{ asset('assets/linkstack/images/'.findFile('avatar')) }}" style="width:auto;height:30px;">
+                </div>
+                  @else
+                  <div class="logo-normal">
+                    <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.svg') }}" width="30px" height="30px">
+                </div>
+                <div class="logo-mini">
+                  <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.svg') }}" width="30px" height="30px">
+                </div>
+                  @endif
+                  </div>
+                <!--logo End-->
+                
+                
+                <h4 class="logo-title">{{env('APP_NAME')}}</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon">
+                  <span class="mt-2 navbar-toggler-bar bar1"></span>
+                  <span class="navbar-toggler-bar bar2"></span>
+                  <span class="navbar-toggler-bar bar3"></span>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="mb-2 navbar-nav ms-auto align-items-center navbar-list mb-lg-0">
+                @if (Route::has('login'))
+                @auth
+                <li class="me-0 me-xl-2">
+                  <a class="btn btn-primary btn-sm d-flex gap-2 align-items-center" aria-current="page" href="{{ url('dashboard') }}">
+                    Dashboard
+                  </a>
+                </li>
+            @else
+                @if (Route::has('login'))
+                <li class="me-0 me-xl-2">
+                  <a class="btn btn-primary btn-sm d-flex gap-2 align-items-center" aria-current="page" href="{{ route('login') }}">
+                    Log in
+                  </a>
+                </li>
+                @endif
+            
+                @if ((env('ALLOW_REGISTRATION')) and !config('linkstack.single_user_mode'))
+                <li class="me-0 me-xl-2">
+                  <a class="btn btn-secondary btn-sm d-flex gap-2 align-items-center" aria-current="page" href="{{ route('register') }}">
+                    Register
+                  </a>
+                </li>
+                @endif
+            @endauth        
+                  @endif
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <!--Nav End-->
 
-  <?php $cleaner_input = strip_tags($message->home_message); ?>
+    <!-- loader Start -->
+    <div id="loading">
+      <div class="loader simple-loader">
+          <div class="loader-body"></div>
+      </div>    </div>
+    <!-- loader END -->
+    
+    <div class="wrapper d-flex">
+      <section class="login-content">
+        <div class="row m-0 align-items-center bg-white vh-100">
+          <div class="col-md-6 p-0">
+            <div class="card card-transparent auth-card shadow-none d-flex mb-0">
+              <div class="card-body justify-content-center text-center">
+    
+                @if(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
+                <img alt="avatar" src="{{ asset('assets/linkstack/images/'.findFile('avatar')) }}" width="auto" height="128px">
+                @else
+                <div class="logo-container fadein">
+                  <img src="{{ asset('assets/linkstack/images/logo-animated.svg') }}" alt="Logo" style="width:150px; height:150px;">
+                </div>
+                @endif
+    
+                <h1 class="h1 fw-bold mb-4 pt-4">{{ config('app.name') }}</h1>
 
-  @if(env('CUSTOM_META_TAGS') == 'true')
-  @include('layouts.meta') 
-  @else
-  <meta name="description" content="{{ $cleaner_input }}">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  @endif
+                <div class="lead">
+                  <?php echo $message->home_message; ?>
+                </div>
+    
+                <div class="d-flex justify-content-center align-items-center pt-4">
+                  @if (Route::has('login'))
+                  @auth
+                  <a class="btn btn-primary me-3" href="{{ url('dashboard') }}">Dashboard</a>
+              @else
+                  @if (Route::has('login'))
+                  <a class="btn btn-primary me-3" href="{{ route('login') }}">Log in</a>
+                  @endif
+              
+                  @if ((env('ALLOW_REGISTRATION')) and !config('linkstack.single_user_mode'))
+                  <a class="btn btn-secondary me-3" href="{{ route('register') }}">Register</a>
+                  @endif
+              @endauth
+                    @endif
+                </div>
 
-  <!-- Custom icons font-awesome -->
-  <script>{!! file_get_contents(base_path("studio/external-dependencies/fontawesome.js")) !!}</script>
-  <style>{!! str_replace('../', 'studio/', file_get_contents(base_path("studio/external-dependencies/fontawesome.css"))) !!}</style>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 d-md-block d-none bg-light p-0 mt-n1 vh-100 overflow-hidden">
+            <div class="d-flex align-items-center h-100">
+              <div class="card-body justify-content-center text-center">
+                <style>.iframe-container{position:relative;width:100%;max-width:370px;height:650px;}.iframe-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border-radius:30px;border:16px solid black}@media only screen and (max-width:767px){.iframe-container{max-width:375px;margin:0 auto 20px}.iframe-container:after{content:"";display:block;padding-bottom:15px}}</style>
+<center><div class="iframe-container"><iframe src="{{url('/demo-page')}}"></iframe></div></center>
+              </div>
+            </div>
+          </div>
+      </section>
+    </div>    
+    
+          <!-- Footer Section Start -->
+          <footer class="footer fixed-bottom">
+            <div class="footer-body">
+                <ul class="left-panel list-inline mb-0 p-0">
+                  @if(env('DISPLAY_FOOTER') === true)
+                    @if(env('DISPLAY_FOOTER_HOME') === true)<li class="list-inline-item"><a class="list-inline-item" href="@if(str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK')) === "" ){{ url('') }}@else{{ str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK')) }}@endif">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_HOME'))}}</a></li>@endif
+                    @if(env('DISPLAY_FOOTER_TERMS') === true)<li class="list-inline-item"><a class="list-inline-item" href="{{ url('') }}/pages/{{ strtolower(env('TITLE_FOOTER_TERMS')) }}">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_TERMS'))}}</a></li>@endif
+                    @if(env('DISPLAY_FOOTER_PRIVACY') === true)<li class="list-inline-item"><a class="list-inline-item" href="{{ url('') }}/pages/{{ strtolower(env('TITLE_FOOTER_PRIVACY')) }}">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_PRIVACY'))}}</a></li>@endif
+                    @if(env('DISPLAY_FOOTER_CONTACT') === true)<li class="list-inline-item"><a class="list-inline-item" href="{{ url('') }}/pages/{{ strtolower(env('TITLE_FOOTER_CONTACT')) }}">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_CONTACT'))}}</a></li>@endif
+                  @endif
+                </ul>
+                <div class="right-panel">
+                  Copyright &copy; @php echo date('Y'); @endphp {{ config('app.name') }}
+                    <span class="">
+                      - Made with 
+                        <svg class="icon-15" width="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M15.85 2.50065C16.481 2.50065 17.111 2.58965 17.71 2.79065C21.401 3.99065 22.731 8.04065 21.62 11.5806C20.99 13.3896 19.96 15.0406 18.611 16.3896C16.68 18.2596 14.561 19.9196 12.28 21.3496L12.03 21.5006L11.77 21.3396C9.48102 19.9196 7.35002 18.2596 5.40102 16.3796C4.06102 15.0306 3.03002 13.3896 2.39002 11.5806C1.26002 8.04065 2.59002 3.99065 6.32102 2.76965C6.61102 2.66965 6.91002 2.59965 7.21002 2.56065H7.33002C7.61102 2.51965 7.89002 2.50065 8.17002 2.50065H8.28002C8.91002 2.51965 9.52002 2.62965 10.111 2.83065H10.17C10.21 2.84965 10.24 2.87065 10.26 2.88965C10.481 2.96065 10.69 3.04065 10.89 3.15065L11.27 3.32065C11.3618 3.36962 11.4649 3.44445 11.554 3.50912C11.6104 3.55009 11.6612 3.58699 11.7 3.61065C11.7163 3.62028 11.7329 3.62996 11.7496 3.63972C11.8354 3.68977 11.9247 3.74191 12 3.79965C13.111 2.95065 14.46 2.49065 15.85 2.50065ZM18.51 9.70065C18.92 9.68965 19.27 9.36065 19.3 8.93965V8.82065C19.33 7.41965 18.481 6.15065 17.19 5.66065C16.78 5.51965 16.33 5.74065 16.18 6.16065C16.04 6.58065 16.26 7.04065 16.68 7.18965C17.321 7.42965 17.75 8.06065 17.75 8.75965V8.79065C17.731 9.01965 17.8 9.24065 17.94 9.41065C18.08 9.58065 18.29 9.67965 18.51 9.70065Z" fill="currentColor"></path>
+                        </svg>
+                    </span> by <a href="https://linkstack.org/" target="_blank">LinkStack</a>.
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Section End -->
 
-  @include('layouts.fonts') 
-  <link rel="stylesheet" href="{{ asset('littlelink/css/normalize.css') }}">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/animate.css') }}">
-  @if(file_exists(base_path("littlelink/images/").findFile('favicon')))
-  <link rel="icon" type="image/png" href="{{ asset('littlelink/images/'.findFile('favicon')) }}">
-  @else
-  <link rel="icon" type="image/svg+xml" href="{{ asset('littlelink/images/logo.svg') }}">
-  @endif
-
-@if(config('advanced-config.home_theme') != '' and config('advanced-config.home_theme') != 'default')
-
-  <!-- LittleLink Custom Theme: "{{config('advanced-config.home_theme')}}" -->
-
-  <link rel="stylesheet" href="themes/{{config('advanced-config.home_theme')}}/brands.css">
-  <link rel="stylesheet" href="themes/{{config('advanced-config.home_theme')}}/skeleton-auto.css">
-@if(file_exists(base_path('themes/' . config('advanced-config.home_theme') . '/animations.css')))
-  <link rel="stylesheet" href="<?php echo asset('themes/' . config('advanced-config.home_theme') . '/animations.css') ?>">
-@else
-  <link rel="stylesheet" href="{{ asset('littlelink/css/animations.css') }}">
-@endif
-
-@else
-  <link rel="stylesheet" href="{{ asset('littlelink/css/brands.css') }}">
-  <link rel="stylesheet" href="{{ asset('littlelink/css/animations.css') }}">
-  <?php // override dark/light mode if override cookie is set
-  $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
-  @if ($color_scheme_override == 'dark')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
-  @elseif ($color_scheme_override == 'light')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
-  @elseif (config('advanced-config.theme') == 'dark')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-dark.css') }}">
-  @elseif (config('advanced-config.theme') == 'light')
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-light.css') }}">
-  @else
-  <link rel="stylesheet" href="{{ asset('littlelink/css/skeleton-auto.css') }}">
-  @endif
-@endif
-
-                                                        {{-- custom font for logo text --}}
-  <style>@font-face{font-family:'ll';src:url({{ asset('littlelink/fonts/littlelink-custom.otf') }}) format("opentype")}</style>
-
-<style>
-
-.reg {
-    background-color: #0085FF;
-    border: 1px solid transparent;
-    color: #fff !important;
-}
-
-.log {
-  background-color: #fefefe;
-  border: 1px solid #000;
-  color: #333 !important;
-}
-
-.btns {
-    display: inline-block;
-    font-weight: 400;
-    text-align: center;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    margin-left: 0.75rem;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 0.25rem;
-    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-    -o-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-}
-</style>
-
-@include('components.favicon')
-@include('components.favicon-extension')
-
-</head>
-<body>
-
-@if(theme('enable_custom_code') == "true" and theme('enable_custom_body') == "true" and env('ALLOW_CUSTOM_CODE_IN_THEMES') == 'true')@include($GLOBALS['themeName'] . '.extra.custom-body')@endif
-
-@if(config('advanced-config.home_theme') != '' and config('advanced-config.home_theme') != 'default')
-    <!-- Enables parallax background animations -->
-    <div class="background-container">
-    <section class="parallax-background">
-      <div id="object1" class="object1"></div>
-      <div id="object2" class="object2"></div>
-      <div id="object3" class="object3"></div>
-      <div id="object4" class="object4"></div>
-      <div id="object5" class="object5"></div>
-      <div id="object6" class="object6"></div>
-      <div id="object7" class="object7"></div>
-      <div id="object8" class="object8"></div>
-      <div id="object9" class="object9"></div>
-      <div id="object10" class="object10"></div>
-      <div id="object11" class="object11"></div>
-      <div id="object12" class="object12"></div>
-    </section>
-    </div>
-    <!-- End of parallax background animations -->
-@endif
-
-<?php
-$pages = DB::table('pages')->get();
-foreach($pages as $page)
-{
-	//Gets value from database
-}
-?>
-
-  <div class="container">
-    <div class="row">
-    <div class="sign" style="margin-top: 30px; text-align: right;">
-            @if (Route::has('login'))
-            @auth
-            <a href="{{ route('studioIndex') }}" class="underline spacing"><div class="fadein btns log">Studio</div></a>
-        @else
-            @if (Route::has('login'))
-                <a href="{{ route('login') }}" class="fadein btns log"><div class="underline spacing">Log in</div></a>
-            @endif
-        
-            @if ((Route::has('register') && $page->register == 'true') || env('REGISTER_OVERRIDE') === true)
-                <a href="{{ route('register') }}" class="fadein btns reg"><div class="underline spacing">Register</div></a>
-            @endif
-        @endauth        
-              @endif
-    </div>
-      <div class="column" style="margin-top: 15%">
-        <!-- Your Image Here -->
-        @if(file_exists(base_path("littlelink/images/").findFile('avatar')))
-        <img alt="avatar" src="{{ asset('littlelink/images/'.findFile('avatar')) }}" width="auto" height="128px">
-        @else
-        <div class="logo-container fadein">
-           <img class="rotate" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo" style="width:150px; height:150px;">
-           <div class="logo-centered">l</div>
-        </div>
-        @endif
-
-        <!-- Your Name -->
-        <h1 class="mt-5 fadein"> {{ config('app.name') }} </h1>
-
-        <!-- Short Bio -->
-        <div class="mt-5 fadein">
-        <center><?php echo $message->home_message; ?></center>
-        </div>
-        
-
-        <!-- Buttons -->
-<?php function strp($urlStrp){return str_replace(array('http://', 'https://'), '', $urlStrp);} ?>
-<?php $initial=1; // <-- Effectively sets the initial loading time of the buttons. This value should be left at 1. ?>
-@if(config('advanced-config.use_custom_buttons') == 'true')
-        <?php $array = config('advanced-config.buttons'); ?>
-        @foreach($array as $button)
-         @php $linkName = str_replace('default ','',$button['button']) @endphp
-         @if($button['button'] === "custom" and ($button['custom_css'] === "" or $button['custom_css'] === "NULL") or (theme('allow_custom_buttons') == "false" and $button['button'] === "custom"))
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $button['button'] }} button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif >@if($button['icon'] == 'llc')<img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}llc.svg">@else<i style="color: {{$button['icon']}}" class="icon hvr-icon fa {{$button['icon']}}"></i>@endif {{ $button['title'] }}</a></div>
-         @elseif($button['button'] === "custom" and $button['custom_css'] != "")
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $button['custom_css'] }}" rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif >@if($button['icon'] == 'llc')<img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/')}}llc.svg">@else<i style="color: {{$button['icon']}}" class="icon hvr-icon fa {{$button['icon']}}"></i>@endif{{ $button['title'] }}</a></div>
-         @elseif($button['button'] === "buy me a coffee")
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-coffee button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/coffee{{theme('custom_icon_extension')}} @else{{ asset('\/littlelink/icons\/')}}coffee.svg @endif">Buy me a Coffee</a></div>
-         @elseif($button['button'] === "custom_website" and ($button['custom_css'] === "" or $button['custom_css'] === "NULL") or (theme('allow_custom_buttons') == "false" and $button['button'] === "custom_website"))
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-custom_website button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(file_exists(base_path("studio/favicon/icons/").localIcon($button['id']))){{url('studio/favicon/icons/'.localIcon($button['id']))}}@else{{getFavIcon($button['id'])}}@endif">{{ $button['title'] }}</a></div>
-         @elseif($button['button'] === "custom_website" and $button['custom_css'] != "")
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $button['custom_css'] }}" rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(file_exists(base_path("studio/favicon/icons/").localIcon($button['id']))){{url('studio/favicon/icons/'.localIcon($button['id']))}}@else{{getFavIcon($button['id'])}}@endif">{{ $button['title'] }}</a></div>
-         @elseif($button['button'] === "space")
-         <?php 
-          if (is_numeric($button['title']) and $button['title'] < 10)
-          echo str_repeat("<br>",$button['title']);
-          elseif (is_numeric($button['title']) and $button['title'] >= 10)
-          echo str_repeat("<br>",10);
-          else
-          echo "<br><br><br>"
-          ?>
-         @elseif($button['button'] === "heading")
-         <h2>{{ $button['title'] }}</h2>
-         @else
-         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $button['button'] }} button button-hover icon-hover" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/littlelink/icons\/') . $linkName }}.svg">{{ ucfirst($linkName) }}</a></div>
-         @endif
-        @endforeach
-@else
-        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-github button button-hover icon-hover"><img alt="button-icon" class="icon hvr-icon" src="{{ asset('littlelink/icons/github.svg') }}">Github</div></div>
-        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-twitter button button-hover icon-hover"><img alt="button-icon" class="icon hvr-icon" src="{{ asset('littlelink/icons/twitter.svg') }}">Twitter</div></div>
-        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-instagram button button-hover icon-hover"><img alt="button-icon" class="icon hvr-icon" src="{{ asset('littlelink/icons/instagram.svg') }}">Instagram</div></div>
-@endif
-        </br></br>
-
-        <center><div class="fadein">
-        @if(config('advanced-config.home_footer') == 'custom')
-        <p><?php $year = date("Y"); echo strtr(config('advanced-config.custom_home_footer_text'), array('{year}' => $year)); ?></p>
-        @elseif(config('advanced-config.home_footer') == 'alt')
-        <p><i style="position:relative;top:1px;" class="fa-solid fa-infinity"></i> - Button combinations</p>
-        @elseif(config('advanced-config.home_footer') == 'false')
-        @else
-        <p>and {{ $countButton - 3 }} other buttons ...</p>
-        @endif
-      </div></center>
-
-        <hr class="my-4" style="display:none">
-
-        <p style="display:none">updated pages</p>
-
-        <div class="updated" style="display:none">
-        @foreach($updatedPages as $page)
-          @if(file_exists(base_path("img/$page->littlelink_name" . ".png" )))
-          <a href="{{ url('') }}/@<?= $page->littlelink_name ?>" target="_blank">
-          <img src="{{ asset("img/$page->littlelink_name" . ".png") }}" width="50px" height="50px">
-          </a>
-          @else
-          <a href="{{ url('') }}/@<?= $page->littlelink_name ?>" target="_blank">
-          <img src="{{ asset('littlelink/images/logo.svg') }}"  width="50px" height="50px">
-          </a>
-          @endif
-        @endforeach
-        </div>
-
-        @include('layouts.footer')
-
-      </div>
-    </div>
-  </div>
-</body>
-
-@if(theme('enable_custom_code') == "true" and theme('enable_custom_body_end') == "true" and env('ALLOW_CUSTOM_CODE_IN_THEMES') == 'true')@include($GLOBALS['themeName'] . '.extra.custom-body-end')@endif
-
+    <!-- Library Bundle Script -->
+    <script src="{{asset('assets/js/core/libs.min.js')}}"></script>
+    
+    <!-- External Library Bundle Script -->
+    <script src="{{asset('assets/js/core/external.min.js')}}"></script>
+    
+    <!-- Widgetchart Script -->
+    <script src="{{asset('assets/js/charts/widgetcharts.js')}}"></script>
+    
+    <!-- mapchart Script -->
+    <script src="{{asset('assets/js/charts/vectore-chart.js')}}"></script>
+    <script src="{{asset('assets/js/charts/dashboard.js')}}" ></script>
+    
+    <!-- fslightbox Script -->
+    <script src="{{asset('assets/js/plugins/fslightbox.js')}}"></script>
+    
+    <!-- Settings Script -->
+    <script src="{{asset('assets/js/plugins/setting.js')}}"></script>
+    
+    <!-- Slider-tab Script -->
+    <script src="{{asset('assets/js/plugins/slider-tabs.js')}}"></script>
+    
+    <!-- Form Wizard Script -->
+    <script src="{{asset('assets/js/plugins/form-wizard.js')}}"></script>
+    
+    <!-- AOS Animation Plugin-->
+    <script src="{{asset('assets/vendor/aos/dist/aos.js')}}"></script>
+    
+    <!-- App Script -->
+    <script src="{{asset('assets/js/hope-ui.js')}}" defer></script>
+    
+    <!-- Flatpickr Script -->
+    <script src="{{asset('assets/vendor/flatpickr/dist/flatpickr.min.js')}}"></script>
+    <script src="{{asset('assets/js/plugins/flatpickr.js')}}" defer></script>
+    
+    <script src="{{asset('assets/js/plugins/prism.mini.js')}}"></script>
+    
+  </body>
 </html>

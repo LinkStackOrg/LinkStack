@@ -1,0 +1,82 @@
+
+/* Table of contents
+––––––––––––––––––––––––––––––––––––––––––––––––––
+
+- Rounded user avatars
+- Buttons
+- Brand Styles
+
+*/
+
+
+/* Rounded avatars
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Disable this if you don't want rounded avatars for users */
+.rounded-avatar {
+  border-radius: 50%;
+}
+
+.social-icon {
+  font-size: 32px;
+  padding: 10px;
+}
+.social-icon-div {
+  padding-bottom: 30px;
+}
+.social-icon{color:#1f365c;}
+
+/* Buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.button,
+button {
+  display: inline-block;
+  text-decoration: none;
+  height: 48px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 16px;
+  max-width: 680px;
+  width: 90%;
+  font-weight: 400;
+  line-height: 48px;
+  letter-spacing: 0.1px;
+  white-space: wrap;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #1f365c;
+  background-color: #ffffff;
+  box-shadow: 0px 6px 14px -6px rgba(24, 39, 75, 0.12), 0px 10px 32px -4px rgba(24, 39, 75, 0.1), inset 0px 0px 2px 1px rgba(24, 39, 75, 0.05);
+ }
+button:hover,
+.button:focus {
+  color: #333;
+  border-color: #888;
+  outline: 0; }
+.button.button-primary {
+  color: #FFF;
+  filter: brightness(90%) }
+.button.button-primary:hover,
+.button.button-primary:focus {
+  color: #FFF;
+  filter: brightness(90%) }
+
+  .button:hover {
+    color: #1f365c;
+  }
+
+/* Brand Icons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.icon {
+  padding: 0px 8px 3.5px 0px;
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+  filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.4));
+}
+
+svg {
+  color: #000000;
+}

@@ -15,8 +15,7 @@
 <?php //landing page ?>
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+<img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
         <h1>Updater</h1>
         @if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
@@ -57,8 +56,7 @@
 @if($_SERVER['QUERY_STRING'] === 'updating-windows' and strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
 <?php //updating on Windows ?>
         <div class="logo-container fadein">
-           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+<img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
         </div>
         <h1 class="loadingtxt">Updating</h1>
         @Push('updater-head')
@@ -110,8 +108,7 @@ echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "/?finish
 <meta http-equiv="refresh" content="2; URL={{url()->current()}}/?backups" />
 @endpush
         <div class="logo-container fadein">
-           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+<img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
         </div>
         <h1 class="loadingtxt">Creating backup</h1>
 @endif
@@ -131,8 +128,7 @@ exit(); ?>
 @if($_SERVER['QUERY_STRING'] === 'preparing')
 <?php //preparing update ?>
         <div class="logo-container fadein">
-           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+<img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
         </div>
         <h1 class="loadingtxt">Preparing update</h1>
         
@@ -156,8 +152,7 @@ exit(); ?>
 @if($_SERVER['QUERY_STRING'] === 'updating' and (file_exists(base_path("backups/CANUPDATE")) or env('SKIP_UPDATE_BACKUP') == true))
 <?php //updating... ?>
         <div class="logo-container fadein">
-           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+<img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
         </div>
         <h1 class="loadingtxt">Updating</h1>
         @Push('updater-head')
@@ -169,13 +164,12 @@ exit(); ?>
       <?php //if no new version available ?>
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+<img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
         <h1>No new version</h1>
         <h4 class="">There is no new version available</h4>
         <br><div class="row">
-        &ensp;<a class="btn" href="{{ route('studioIndex') }}"><button><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
+        &ensp;<a class="btn" href="{{ url('dashboard') }}"><button><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
         </div>
       
 @endif
@@ -192,8 +186,7 @@ if(EnvEditor::getKey('APP_DEBUG') == 'false'){
 }
 ?>
         <div class="logo-container fadein">
-           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+<img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
         </div>
         <h1 class="loadingtxt">Finishing up</h1>
         
@@ -215,8 +208,7 @@ if($debug === true){
       <?php //after successfully updating ?>
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+<img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
         <h1>Success!</h1>
         @if(env('JOIN_BETA') === true)
@@ -230,7 +222,7 @@ if($debug === true){
         <br>
         @endif
         <br><div class="row">
-        &ensp;<a class="btn" href="{{ route('studioIndex') }}"><button><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
+        &ensp;<a class="btn" href="{{ url('dashboard') }}"><button><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
 
         @if(env('JOIN_BETA') === true)
         &ensp;<a class="btn" href="{{url()->current()}}/"><button><i class="fa-solid fa-arrow-rotate-right btn"></i> Run again</button></a>&ensp;
@@ -245,13 +237,12 @@ if($debug === true){
         <?php if(file_exists(base_path("storage/MAINTENANCE"))){unlink(base_path("storage/MAINTENANCE"));} ?>
 
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+<img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
         <h1>Error</h1>
         <h4 class="">Something went wrong with the update :(</h4>
         <br><div class="row">
-        &ensp;<a class="btn" href="{{ route('studioIndex') }}"><button><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
+        &ensp;<a class="btn" href="{{ url('dashboard') }}"><button><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
         </div>
       
 @endif

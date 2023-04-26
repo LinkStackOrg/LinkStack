@@ -15,6 +15,7 @@ $buttonNames = array(
     'gitlab' => 'GitLab',
     'itchio' => 'itch.io',
     'linkedin' => 'linkedIn',
+    'linkstack' => 'LinkStack',
     'openstreetmap' => 'OpenStreetMap',
     'paypal' => 'PayPal',
     'playstore' => 'Google Play',

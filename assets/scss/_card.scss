@@ -1,0 +1,313 @@
+/*===== CARD =====*/
+
+.card {
+  .card-header {
+    h2 {
+      color: $dark;
+      margin-bottom: 0.312rem;
+      font-size: 1.25125rem;
+      line-height: 1;
+    }
+  }
+  .card-img-overlay {
+    z-index: 1;
+  }
+}
+
+.card-default {
+  margin-bottom: 1.5rem;  
+  .card-header {
+    padding-left: 1.88rem;
+    padding-right: 1.88rem;
+    padding-top: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: $white;
+    border-bottom: none;     
+    @include media-breakpoint-up(xxl) {
+      padding-left: 3.125rem;
+      padding-right: 3.125rem;
+    }
+    h2 {
+      color: $dark;
+      margin-bottom: 0;
+      font-size: 1.25125rem;
+      line-height: 1;
+    }
+  }
+  .card-header-border-bottom {
+    border-bottom: 1px solid $border-color;
+    padding-top: 28px;
+    padding-bottom: 20px;    
+    h2 {
+      margin-bottom: 0;
+    }
+  }
+  .card-body {
+    padding: 1.88rem 1.88rem;
+    @include media-breakpoint-up(xxl) {
+      padding: 3.125rem;
+    }
+    p {
+      line-height: 1.5;
+    }
+  }
+  .card-footer {
+    border-top: 1px solid $border-color;
+    padding-left: 1.88rem;
+    padding-right: 1.88rem;
+    @include media-breakpoint-up(xxl) {
+      padding-left: 3.125rem;
+      padding-right: 3.125rem;
+    }
+  }
+  &.contact{
+    a {
+      color: $secondary
+    }
+    .contact-details {
+      .small {
+        font-size: 0.875rem;
+      }
+    }
+  }
+}
+
+/*Card mini*/
+
+.card-mini {
+  border: 1px solid $border-color;
+  .card-body {
+    padding: 1.63rem;
+    h2 {
+      color: $dark;
+      font-size: 1.49625rem;
+    }
+  }
+  .chartjs-wrapper {
+    height: 100px;
+  }
+  .card-footer {
+    border-top: 1px solid $border-color;
+  }
+}
+
+/* Card Icon Info*/
+
+.card-icon-info {
+  >i {
+    color: $primary;
+    font-size: 1.56rem;
+    display: inline-block;
+  }
+  >span {
+    font-size: 0.88rem;
+    display: inline-block;
+  }
+}
+
+/* Card table border none */
+
+.card-table-border-none {
+  margin-bottom: 1.5rem;  
+  .card-header {
+    padding-left: 1.88rem;
+    padding-right: 1.88rem;
+    padding-top: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: $white;
+    border-bottom: none;     
+    @include media-breakpoint-up(xxl) {
+      padding-left: 3.125rem;
+      padding-right: 3.125rem;
+    }
+    h2 {
+      color: $dark;
+      margin-bottom: 0.312rem;
+      font-size: 1.25125rem;
+      line-height: 1;
+    }
+  }
+
+  .card-header-border-bottom {
+    background-color: $white;    
+    padding-top: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $border-color;    
+    h2 {
+      margin-bottom: 0;
+    }
+  }
+
+  .card-body {
+    padding: 1.9rem 1.88rem;
+    @include media-breakpoint-up(xxl) {
+      padding: 3.125rem 3.125rem;
+    }
+  }
+  .card-footer {
+    border-top: 1px solid $border-color;
+    padding-left: 1.88rem;
+    padding-right: 1.88rem;
+    @include media-breakpoint-up(xxl) {
+      padding-left: 3.125rem;
+      padding-right: 3.125rem;
+    }
+  }
+  tbody td,
+  thead th {
+    border: none;
+  }
+  tbody td {
+    padding: 0;
+    font-size: 0.98rem;
+    padding-top: 2.25rem;
+  }
+}
+
+/*===== ACCORDION CARD =====*/
+
+.accordion {
+  .card {
+    border: 0px;
+    margin-bottom: 0.94rem;
+  }
+  .card-header {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    .btn,
+    a {
+      display: block;
+      height: auto;
+      position: relative;
+      line-height: 1.5;
+      padding: 1.56rem;
+      width: 100%;
+      text-align: left;
+      color: $dark;
+      border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+      white-space: unset;
+      @include transition(all 0.3s 0.2s ease-in);
+      &:after {
+        position: absolute;
+        color: $secondary;
+        font-size: 0.98rem;
+        right: 25px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      &:hover,
+      &:focus {
+        text-decoration: none !important;
+      }
+    }
+    .btn[aria-expanded="false"],
+    a[aria-expanded="false"] {
+      &:after {
+        content: "\f143";
+        font-family: $font-family-icon;
+      }
+    }
+    .btn[aria-expanded="true"],
+    a[aria-expanded="true"] {
+      box-shadow: 0px 0px 19px rgba(229, 230, 235, 0.6) !important;
+      color: $primary;
+      border-bottom: 1px solid $border-color;
+      &:after {
+        content: "\f140";
+        font-family: $font-family-icon;
+        color: $primary;
+      }
+    }
+  }
+  .card-body {
+    box-shadow: 0px 7px 19px rgba(229, 230, 235, 0.6);
+  }
+}
+
+.accordion-shadow {
+  .card {
+    box-shadow: 0px 7px 19px rgba(229, 230, 235, 0.6);
+  }
+  .card-header {
+    .btn[aria-expanded="false"],
+    a[aria-expanded="false"] {
+      &:after {
+        opacity: 1;
+      }      
+    }
+    .btn[aria-expanded="true"],
+    a[aria-expanded="true"] {
+      box-shadow: none !important;
+      &:after {
+        content: "\f140";
+        font-family: $font-family-icon;
+        color: $primary;
+      }
+    }
+  }
+  .card-body {
+    box-shadow: none !important;
+  }
+}
+
+.accordion-bordered {
+  .card {
+    border: 1px solid $border-color !important;
+    border-radius: 0;
+  }
+  .card-header {
+    .btn[aria-expanded="false"],
+    a[aria-expanded="false"] {
+      &:after {
+        opacity: 1;
+      }
+    }
+    .btn[aria-expanded="true"],
+    a[aria-expanded="true"] {
+      box-shadow: none !important;
+    }
+  }
+  .card-body {
+    box-shadow: none !important;
+  }
+}
+
+.accordion-header-border-bottom {
+  .card-header {
+    border-bottom: 1px solid $border-color;
+    .btn,
+    a {
+      padding: 1.56rem 0;
+      border-bottom: none;
+      &:after {
+        right: 0;
+      }
+    }
+    .btn[aria-expanded="false"],
+    a[aria-expanded="false"] {
+      &:after {
+        opacity: 1;
+      }
+    }
+    .btn[aria-expanded="true"],
+    a[aria-expanded="true"] {
+      border-bottom: none;
+      box-shadow: none !important;
+      &:after {
+        content: "\f140";
+        font-family: $font-family-icon;
+        color: $primary;
+      }
+    }
+  }
+  .card-body {
+    padding-left: 0;
+    padding-right: 0;
+    box-shadow: none !important;
+  }
+}

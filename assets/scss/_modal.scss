@@ -1,0 +1,52 @@
+// Modal Contact
+#modal-add-contact,
+#modal-contact {
+  .modal-lg {
+    @include media-breakpoint-up(sm){
+      margin-left: auto;
+      margin-right: 10px;
+    }
+    @include media-breakpoint-up(lg) {
+      max-width: 755px;      
+    }
+    @include media-breakpoint-up(xl) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  .modal-header {
+    .btn-close-icon,
+    .btn-edit-icon,
+    .btn-dots-icon {
+      font-size: 1.125rem;
+      padding: 0 5px;
+      color: $secondary;
+    }
+
+  }
+}
+
+#modal-add-member {
+  .modal-header {
+    .btn-close-icon,
+    .btn-edit-icon,
+    .btn-dots-icon {
+      font-size: 1.125rem;
+      padding: 0 5px;
+      color: $secondary;
+    }
+  }
+  .last-msg {
+    @include media-breakpoint-up(md) {
+      width: 200px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: 125px;
+    }
+
+    @include media-breakpoint-up(xl) {
+      width: 220px;
+    }
+  }
+}

@@ -24,4 +24,16 @@ class HomeController extends Controller
         return view('home', ['message' => $message, 'countButton' => $countButton, 'updatedPages' => $updatedPages]);
     }
 
+    // Show demo page
+    public function demo(request $request)
+    {
+        $message = Page::select('home_message')->first();
+
+        $countButton = Button::count();
+
+        $updatedPages = DB::table('links')->join('users', 'users.id', '=', 'links.user_id')->select('users.littlelink_name', 'users.image', DB::raw('max(links.created_at) as created_at'))->groupBy('links.user_id')->orderBy('created_at', 'desc')->take(4)->get();
+
+        return view('demo', ['message' => $message, 'countButton' => $countButton, 'updatedPages' => $updatedPages]);
+    }
+
 }

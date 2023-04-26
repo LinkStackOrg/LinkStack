@@ -1,0 +1,18 @@
+/*===== INVOICE =====*/
+.invoice-wrapper table tbody td:first-child {
+  color: $dark;
+  font-weight: 500;
+}
+.invoice-wrapper table tbody td,
+.invoice-wrapper table thead th {
+  border: 0px;
+}
+.invoice-wrapper {
+  .table-striped tbody tr:nth-of-type(odd) {
+    background: $gray-100;
+  }
+  .btn:hover {
+    background: $primary;
+    box-shadow: 0px 10px 18px rgba(55, 103, 208, 0.2);
+  }
+}

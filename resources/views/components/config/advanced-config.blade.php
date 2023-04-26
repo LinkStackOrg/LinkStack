@@ -7,8 +7,8 @@ Home Page, links, titles, Google Analytics and meta tags.</p>
             <textarea style="width:100%;display:none;" class="form-control" name="AdvancedConfig" rows="280">{{ file_get_contents('config/advanced-config.php') }}</textarea>
             <div id="editor" style="width:100%; height:<?php echo count(file('config/advanced-config.php')) * 24 + 15;?>px; background-color:transparent !important;" class="form-control border-1 border-light" name="AdvancedConfig" rows="280">{{ file_get_contents('config/advanced-config.php') }}</div>
           </div>
-          <button type="submit" class="mt-3 ml-3 btn btn-info">Save</button>
-          <a class="mt-3 ml-3 btn btn-primary confirmation" href="{{url('/panel/advanced-config?restore-defaults')}}">Restore defaults</a>
+          <button type="submit" class="btn btn-primary">Save</button>
+          <a class="btn btn-danger confirmation" href="{{url('/panel/advanced-config?restore-defaults')}}">Restore defaults</a>
           <script type="text/javascript">
               var elems = document.getElementsByClassName('confirmation');
               var confirmIt = function (e) {
@@ -21,7 +21,7 @@ Home Page, links, titles, Google Analytics and meta tags.</p>
         </form>
 
 
-<script src="{{ asset('studio/external-dependencies/ace.js') }}" type="text/javascript" charset="utf-8"></script>
+<script src="{{ asset('assets/external-dependencies/ace.js') }}" type="text/javascript" charset="utf-8"></script>
 <script>
 var editor = ace.edit("editor");
 //if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {

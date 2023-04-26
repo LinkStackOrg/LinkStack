@@ -53,7 +53,7 @@ if(file_exists(base_path('INSTALLING')) or file_exists(base_path('INSTALLERLOCK'
 // Disables routes if in Maintenance Mode
 if(env('MAINTENANCE_MODE') != 'true' and !file_exists(base_path("storage/MAINTENANCE"))){
 
-//Changes the homepage to a littlelink Custom profile if set in the config
+//Changes the homepage to a LinkStack profile if set in the config
 if(config('advanced-config.custom_home_url') != '') {
   $custom_home_page_url = config('advanced-config.custom_home_url');
 } else {
@@ -94,13 +94,17 @@ Route::get('/pages/'.strtolower(env('TITLE_FOOTER_CONTACT')), [AdminController::
 Route::get('/theme/@{littlelink}', [UserController::class, 'theme'])->name('theme');
 Route::get('/vcard/{id?}', [UserController::class, 'vcard'])->name('vcard');
 
+Route::get('/demo-page', [App\Http\Controllers\HomeController::class, 'demo'])->name('demo');
+
+Route::middleware(['auth', 'blocked'])->group(function () {
 //User route
 Route::group([
     'middleware' => env('REGISTER_AUTH'),
 ], function () {
 if(env('FORCE_ROUTE_HTTPS') == 'true'){URL::forceScheme('https');}
 if(isset($_COOKIE['LinkCount'])){if($_COOKIE['LinkCount'] == '20'){$LinkPage = 'showLinks20';}elseif($_COOKIE['LinkCount'] == '30'){$LinkPage = 'showLinks30';}elseif($_COOKIE['LinkCount'] == 'all'){$LinkPage = 'showLinksAll';} else {$LinkPage = 'showLinks';}} else {$LinkPage = 'showLinks';} //Shows correct link number
-Route::get('/studio/index', [UserController::class, 'index'])->name('studioIndex');
+Route::get('/dashboard', [AdminController::class, 'index'])->name('panelIndex');
+Route::get('/studio/index', function(){return redirect(url('dashboard'));});
 Route::get('/studio/add-link', [UserController::class, 'AddUpdateLink'])->name('showButtons');
 Route::post('/studio/edit-link', [UserController::class, 'saveLink'])->name('addLink');
 Route::get('/studio/edit-link/{id}', [UserController::class, 'AddUpdateLink'])->name('showLink');
@@ -133,47 +137,47 @@ if(env('ALLOW_USER_IMPORT') != false){
 }
 Route::get('/studio/linkparamform_part/{typeid}/{linkid}', [LinkTypeViewController::class, 'getParamForm'])->name('linkparamform.part');
 });
-
+});
 }
 
 //Social login route
 Route::get('/social-auth/{provider}/callback', [SocialLoginController::class, 'providerCallback']);
 Route::get('/social-auth/{provider}', [SocialLoginController::class, 'redirectToProvider'])->name('social.redirect');
 
-
+Route::middleware(['auth', 'blocked'])->group(function () {
 //Admin route
 Route::group([
     'middleware' => 'admin',
 ], function () {
     if(env('FORCE_ROUTE_HTTPS') == 'true'){URL::forceScheme('https');}
-    Route::get('/panel/index', [AdminController::class, 'index'])->name('panelIndex');
-    Route::get('/panel/users/{type}', [AdminController::class, 'users'])->name('showUsers');
-    Route::post('/panel/users/{name?}', [AdminController::class, 'searchUser'])->name('searchUser');
-    Route::get('/panel/links/{id}', [AdminController::class, 'showLinksUser'])->name('showLinksUser');
-    Route::get('/panel/deleteLink/{id}', [AdminController::class, 'deleteLinkUser'])->name('deleteLinkUser');
-    Route::get('/panel/users/block/{block}/{id}', [AdminController::class, 'blockUser'])->name('blockUser');
-    Route::get('/panel/users/verify/-{verify}/{id}', [AdminController::class, 'verifyUser'])->name('verifyUser');
-    Route::get('/panel/edit-user/{id}', [AdminController::class, 'showUser'])->name('showUser');
-    Route::post('/panel/edit-user/{id}', [AdminController::class, 'editUser'])->name('editUser');
-    Route::get('/panel/new-user', [AdminController::class, 'createNewUser'])->name('createNewUser');
-    Route::get('/panel/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('deleteUser');
-    Route::get('/panel/pages', [AdminController::class, 'showSitePage'])->name('showSitePage');
-    Route::post('/panel/pages', [AdminController::class, 'editSitePage'])->name('editSitePage');
-    Route::get('/panel/advanced-config', [AdminController::class, 'showFileEditor'])->name('showFileEditor');
-    Route::post('/panel/advanced-config', [AdminController::class, 'editAC'])->name('editAC');
-    Route::get('/panel/env', [AdminController::class, 'showFileEditor'])->name('showFileEditor');
-    Route::post('/panel/env', [AdminController::class, 'editENV'])->name('editENV');
-    Route::get('/panel/site', [AdminController::class, 'showSite'])->name('showSite');
-    Route::post('/panel/site', [AdminController::class, 'editSite'])->name('editSite');
-    Route::get('/panel/site/delavatar', [AdminController::class, 'delAvatar'])->name('delAvatar');
-    Route::get('/panel/site/delfavicon', [AdminController::class, 'delFavicon'])->name('delFavicon');
-    Route::get('/panel/phpinfo', [AdminController::class, 'phpinfo'])->name('phpinfo');
-    Route::get('/panel/backups', [AdminController::class, 'showBackups'])->name('showBackups');
-    Route::post('/panel/theme', [AdminController::class, 'deleteTheme'])->name('deleteTheme');
-    Route::get('/panel/theme', [AdminController::class, 'showThemes'])->name('showThemes');
+    Route::get('/panel/index', function(){return redirect(url('dashboard'));});
+    Route::get('/admin/users/{type}', [AdminController::class, 'users'])->name('showUsers');
+    Route::post('/admin/users/{name?}', [AdminController::class, 'searchUser'])->name('searchUser');
+    Route::get('/admin/links/{id}', [AdminController::class, 'showLinksUser'])->name('showLinksUser');
+    Route::get('/admin/deleteLink/{id}', [AdminController::class, 'deleteLinkUser'])->name('deleteLinkUser');
+    Route::get('/admin/users/block/{block}/{id}', [AdminController::class, 'blockUser'])->name('blockUser');
+    Route::get('/admin/users/verify/-{verify}/{id}', [AdminController::class, 'verifyUser'])->name('verifyUser');
+    Route::get('/admin/edit-user/{id}', [AdminController::class, 'showUser'])->name('showUser');
+    Route::post('/admin/edit-user/{id}', [AdminController::class, 'editUser'])->name('editUser');
+    Route::get('/admin/new-user', [AdminController::class, 'createNewUser'])->name('createNewUser')->middleware('max.users');
+    Route::get('/admin/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('deleteUser');
+    Route::get('/admin/pages', [AdminController::class, 'showSitePage'])->name('showSitePage');
+    Route::post('/admin/pages', [AdminController::class, 'editSitePage'])->name('editSitePage');
+    Route::get('/admin/advanced-config', [AdminController::class, 'showFileEditor'])->name('showFileEditor');
+    Route::post('/admin/advanced-config', [AdminController::class, 'editAC'])->name('editAC');
+    Route::get('/admin/env', [AdminController::class, 'showFileEditor'])->name('showFileEditor');
+    Route::post('/admin/env', [AdminController::class, 'editENV'])->name('editENV');
+    Route::get('/admin/site', [AdminController::class, 'showSite'])->name('showSite');
+    Route::post('/admin/site', [AdminController::class, 'editSite'])->name('editSite');
+    Route::get('/admin/site/delavatar', [AdminController::class, 'delAvatar'])->name('delAvatar');
+    Route::get('/admin/site/delfavicon', [AdminController::class, 'delFavicon'])->name('delFavicon');
+    Route::get('/admin/phpinfo', [AdminController::class, 'phpinfo'])->name('phpinfo');
+    Route::get('/admin/backups', [AdminController::class, 'showBackups'])->name('showBackups');
+    Route::post('/admin/theme', [AdminController::class, 'deleteTheme'])->name('deleteTheme');
+    Route::get('/admin/theme', [AdminController::class, 'showThemes'])->name('showThemes');
     Route::get('/update/theme', [AdminController::class, 'updateThemes'])->name('updateThemes');
-    Route::get('/panel/config', [AdminController::class, 'showConfig'])->name('showConfig');
-    Route::post('/panel/config', [AdminController::class, 'editConfig'])->name('editConfig');
+    Route::get('/admin/config', [AdminController::class, 'showConfig'])->name('showConfig');
+    Route::post('/admin/config', [AdminController::class, 'editConfig'])->name('editConfig');
     Route::get('/send-test-email', [AdminController::class, 'SendTestMail'])->name('SendTestMail');
     Route::get('/theme-updater', function () {return view('studio/theme-updater', []);});
     Route::get('/update', function () {return view('update', []);});
@@ -185,7 +189,7 @@ Route::group([
             'linktype'=>LinkTypeController::class
         ]);
     });
-
+  
 
     Route::get('/updating', function (\Codedge\Updater\UpdaterManager $updater) {
 
@@ -218,6 +222,7 @@ Route::group([
 });
 
 }); // ENd Admin authenticated routes
+});
 
 // Displays Maintenance Mode page
 if(env('MAINTENANCE_MODE') == 'true' or file_exists(base_path("storage/MAINTENANCE"))){

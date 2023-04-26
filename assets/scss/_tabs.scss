@@ -1,0 +1,171 @@
+/*===== TABS =====*/
+.nav-tabs .nav-item {
+  .nav-link {
+    color: $dark;
+    font-weight: 500;
+    padding: .75rem 1.25rem;
+  }
+  .nav-link.active {
+    color: $primary;
+  }
+  .nav-link.disabled {
+    color: $secondary;
+    &:hover {
+      cursor:not-allowed;
+    }
+  }
+}
+.nav-pills .nav-item {
+  .nav-link {
+    color: $dark;
+    font-weight: 500;
+    padding: .75rem 1.25rem;
+  }
+  .nav-link.active {
+    color: $white;
+    background: $primary;
+  }
+  .nav-link.disabled {
+    color: $secondary;
+    &:hover {
+      cursor:not-allowed;
+    }
+  }
+}
+.tab-pane {
+  line-height: 1.8;
+}
+
+/* Custom Tab Style - Fill */
+.nav-style-fill.nav-pills {
+  border: 2px solid $border-color;
+  border-radius: .38rem;
+  overflow: hidden;
+  .nav-link {
+    border-radius: 0;
+    padding-top: .94rem;
+    padding-bottom: .94rem;
+  }
+  .nav-link.active,
+  .show>.nav-link {
+    color: $primary;
+    background-color: #f5f6fa;
+  }
+}
+
+.nav-tabs.nav-style-border {
+  padding-left: 1.9rem;
+  padding-right: 1.9rem;
+  padding-bottom: .625rem;
+  @include media-breakpoint-up(md) {
+    padding-bottom: 0;
+  }
+  @include media-breakpoint-up(xxl) {
+    padding-left: 3.12rem;
+    padding-right: 3.12rem;
+  }
+  .nav-item {
+    margin-right: .94rem;
+    @include media-breakpoint-up(md) {
+      margin-right: 2.19rem;
+    }
+    @include media-breakpoint-up(xl) {
+      margin-right: 3.12rem;
+      margin-bottom: 0;
+    }
+    @include media-breakpoint-up(xxl) {
+      margin-right: 5rem;
+    }
+
+    .nav-link {
+      padding: 0 0 1.25rem 0;
+      color: $secondary;
+      position: relative;
+      .type-name {
+        display: block;
+      }
+      &:after {
+        content: '';
+        position:  absolute;
+        bottom: 14px;
+        left: 0;
+        height:  2px;
+        background: #4c84ff;
+        width:  100%;
+        opacity: 0;
+        visibility: hidden;
+        @include transition(all 0.3s ease-in);
+        @include media-breakpoint-up(sm) {
+          bottom: -1px;
+        }
+      }
+      &.active {
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+      &:hover,
+      &.active {
+        border-color: transparent;
+        background-color: transparent;
+      }
+    }
+  }
+  .nav-item:first-child {
+    @include media-breakpoint-up(md) {
+      margin-bottom: 0.94rem;
+    }
+    @include media-breakpoint-up(lg) {
+      margin-bottom: 0;
+    }
+  }
+  .nav-item:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+/* Vertical Tabs */
+.nav-tabs.nav-stacked {
+  margin-right: 0;
+  border-bottom: 0;
+  border-right: none;
+  @include media-breakpoint-up(md) {
+    border-right: 1px solid $border-color;
+    padding-right: 0;
+  }
+}
+.nav-tabs.nav-stacked {
+  .nav-item {
+    margin: 0 !important;
+    float: none !important;
+    display: block !important;
+    .nav-link {
+      padding: 0.75rem .94rem;
+      margin-right: 0px;
+      border-right: 0px;
+      // border: 0px;
+      margin-right: -1px;
+      border-color: transparent;
+      i {
+        padding-right: 0.625rem;
+      }
+      &.active {
+        border: 1px solid $border-color;
+        @include media-breakpoint-up(md) {
+          border-right: 0px;
+          border-radius: 0;
+          border-top-left-radius: 0.38rem;
+          border-bottom-left-radius: 0.38rem;
+          &:before {
+            top: 0;
+            width: 2px;
+            height: 100%;
+            bottom: 0px;
+          }
+        }
+      }
+    }
+  }
+}

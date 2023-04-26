@@ -1,0 +1,36 @@
+/*===== CAROUSEL =====*/
+.carousel-indicators {
+  bottom: 0;
+  @include media-breakpoint-up(md) {
+    bottom: -5px
+  }
+  &.indicator-success li {
+    background-color: rgba($success, 0.2);
+    &.active {
+      background-color: rgba($success, 1);
+    }
+  }
+}
+
+.carousel-caption {
+  bottom: 40px;
+}
+
+/* Carousel Testimonial */
+.carousel-testimonial {
+  .carousel-control-next,
+  .carousel-control-prev {
+    color: red;
+  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: auto;
+    z-index: 55;
+    color: $secondary;
+  }
+  .carousel-control-prev {
+    .carousel-control-prev-icon {
+      color: $secondary;
+    }
+  }
+}

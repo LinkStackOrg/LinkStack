@@ -1,0 +1,50 @@
+
+/* Body */
+#body {
+  position: relative;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Wrapper */
+.wrapper {
+  display: flex;
+  align-items: stretch;    
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Page Wrapper */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.content-wrapper {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+/* Content */
+.content {
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 1.9rem;
+  padding-bottom: 1.9rem;
+  padding-left: 0.94rem;
+  padding-right: 0.94rem;
+  width: 100%;
+  
+  @include media-breakpoint-up(lg) {
+    padding: 1.9rem 2.5rem;
+  }
+  @include media-breakpoint-up(xl) {
+    padding: 2.5rem 3.13rem;
+  }
+  @include media-breakpoint-up(xxl) {
+    padding: 2.5rem 3.75rem;
+  }
+}

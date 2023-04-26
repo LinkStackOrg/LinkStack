@@ -1,4 +1,4 @@
-/studio/favicon/icons
+/assets/favicon/icons
 /node_modules
 /public/hot
 /public/storage
@@ -13,4 +13,3 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 _ide_*
-.DS_Store

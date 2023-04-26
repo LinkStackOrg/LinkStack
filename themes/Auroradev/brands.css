@@ -1,0 +1,438 @@
+
+/* Table of contents
+––––––––––––––––––––––––––––––––––––––––––––––––––
+
+- Rounded user avatars
+- Buttons
+- Brand Styles
+
+*/
+
+
+/* Rounded avatars
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Disable this if you don't want rounded avatars for users */
+.rounded-avatar {
+  border-radius: 50%;
+}
+
+.social-icon {
+  font-size: 32px;
+  padding: 10px;
+}
+.social-icon-div {
+  padding-bottom: 30px;
+}
+
+/* Buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.button,
+button {
+  display: inline-block;
+  text-decoration: none;
+  height: 48px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 18px;
+  width: 300px;
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: 0.1px;
+  white-space: wrap;
+  border-radius: 8px;
+  cursor: pointer;
+ }
+button:hover,
+.button:focus {
+  color: #333;
+  border-color: #888;
+  outline: 0; }
+.button.button-primary {
+  color: #FFF;
+  filter: brightness(90%) }
+.button.button-primary:hover,
+.button.button-primary:focus {
+  color: #FFF;
+  filter: brightness(90%) }
+
+
+/* Brand Icons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.icon {
+  padding: 0px 8px 3.5px 0px;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+}
+
+
+/* Brand Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Custom link button*/
+.button.button-custom {
+  color: #FFFFFF;
+  background-color: #FFFFFF;
+  background-image: linear-gradient(-135deg,#0f0c29,#302b63,#24243e) }
+.button.button-custom:hover,
+.button.button-custom:focus {
+  filter: brightness(90%) }
+
+/* Default (this is great for your own brand color!) */
+.button.button-default {
+  color: #FFFFFF;
+  background-color: #0085FF }
+.button.button-default:hover,
+.button.button-default:focus {
+  filter: brightness(90%) }
+
+/* Discord */
+.button.button-discord {
+  color: #FFFFFF;
+  background-color: #5865F2 }
+.button.button-discord:hover,
+.button.button-discord:focus {
+  filter: brightness(90%) }
+
+/* Facebook */
+.button.button-facebook {
+  color: #FFFFFF;
+  background-color: #1877f2 }
+.button.button-facebook:hover,
+.button.button-facebook:focus {
+  filter: brightness(90%) }
+
+/* Facebook Messenger */
+.button.button-messenger {
+  color: #FFFFFF;
+  background-image: linear-gradient(25deg,#0099FF, #5F5DFF,#A033FF, #C740CC, #FF5280, #FF7061) }
+.button.button-messenger:hover,
+.button.button-messenger:focus {
+  filter: brightness(90%) }
+
+/* Figma */
+.button.button-figma {
+  color: #FFFFFF;
+  background-color: #000000 }
+.button.button-figma:hover,
+.button.button-figma:focus {
+  filter: brightness(90%) }
+
+/* Github */
+.button.button-github {
+  color: #FFFFFF;
+  background-color: #000000 }
+.button.button-github:hover,
+.button.button-github:focus {
+  filter: brightness(90%) }
+
+/* Goodreads */
+.button.button-goodreads {
+  color: #333333;
+  background-color: #F3F1E6 }
+.button.button-goodreads:hover,
+.button.button-goodreads:focus {
+  filter: brightness(90%) }
+
+/* Instagram */
+.button.button-instagram {
+  color: #FFFFFF;
+  background-image: linear-gradient(-135deg,#1400c8,#b900b4,#f50000) }
+.button.button-instagram:hover,
+.button.button-instagram:focus {
+  filter: brightness(90%) }
+
+/* Kit */
+.button.button-kit {
+  color: #FFFFFF;
+  background-color: #000000 }
+.button.button-kit:hover,
+.button.button-kit:focus {
+  filter: brightness(90%) }
+
+/* LinkedIn */
+.button.button-linkedin {
+  color: #FFFFFF;
+  background-color: #2867B2 }
+.button.button-linkedin:hover,
+.button.button-linkedin:focus {
+  filter: brightness(90%) }
+
+/* Medium */
+.button.button-medium {
+  color: #FFFFFF;
+  background-color: #000000 }
+.button.button-medium:hover,
+.button.button-medium:focus {
+  filter: brightness(90%) }
+
+/* Pinterest */
+.button.button-pinterest {
+  color: #000000;
+  background-color: #FFE2EB }
+.button.button-pinterest:hover,
+.button.button-pinterest:focus {
+  filter: brightness(90%) }
+
+/* Producthunt */
+.button.button-producthunt {
+  color: #DA552F;
+  border-style: solid;
+  border-color: #DA552F;
+  border-width: 2px;
+  background-color: #FFFFFF }
+.button.button-producthunt:hover,
+.button.button-producthunt:focus {
+  filter: brightness(90%) }
+
+/* Reddit */
+.button.button-reddit {
+  color: #000000;
+  background-color: #D7DFE2 }
+.button.button-reddit:hover,
+.button.button-reddit:focus {
+  filter: brightness(90%) }
+
+/* Skoob */
+.button.button-skoob {
+  color: #FFFFFF;
+  background-color: #3189C8 }
+.button.button-skoob:hover,
+.button.button-skoob:focus {
+  filter: brightness(90%) }
+
+/* Snapchat */
+.button.button-snapchat {
+  color: #000000;
+  background-color: #fffc00 }
+.button.button-snapchat:hover,
+.button.button-snapchat:focus {
+  filter: brightness(90%) }
+
+/* SoundCloud */
+.button.button-soundcloud {
+  color: #FFFFFF;
+  background-color: #ff5500 }
+.button.button-soundcloud:hover,
+.button.button-soundcloud:focus {
+  filter: brightness(90%) }
+
+/* Spotify */
+.button.button-spotify {
+  color: #FFFFFF;
+  background-color: #000000 }
+.button.button-spotify:hover,
+.button.button-spotify:focus {
+  filter: brightness(90%) }
+
+/* Steam */
+.button.button-steam {
+  color: #FFFFFF;
+  background-color: #171a21 }
+.button.button-steam:hover,
+.button.button-steam:focus {
+  filter: brightness(90%) }
+  
+/* Telegram */
+.button.button-telegram {
+  color: #FFFFFF;
+  background-color: #3faee8 }
+.button.button-telegram:hover,
+.button.button-telegram:focus {
+  filter: brightness(90%) }
+
+/* TikTok */
+.button.button-tiktok {
+  color: #FFFFFF;
+  background-color: #000000 }
+.button.button-tiktok:hover,
+.button.button-tiktok:focus {
+  filter: brightness(90%) }
+
+/* Tumblr */
+.button.button-tumblr {
+  color: #FFFFFF;
+  background-color: #131313 }
+.button.button-tumblr:hover,
+.button.button-tumblr:focus {
+  filter: brightness(90%) }
+
+/* Twitch */
+.button.button-twitch {
+  color: #FFFFFF;
+  background-color: #9146ff }
+.button.button-twitch:hover,
+.button.button-twitch:focus {
+  filter: brightness(90%) }
+
+/* Twitter */
+.button.button-twitter {
+  color: #FFFFFF;
+  background-color: #1DA1F2 }
+.button.button-twitter:hover,
+.button.button-twitter:focus {
+  filter: brightness(90%) }
+
+/* Vimeo */
+.button.button-vimeo {
+  color: #FFFFFF;
+  background-color: #1ab7ea }
+.button.button-vimeo:hover,
+.button.button-vimeo:focus {
+  filter: brightness(90%) }
+
+/* YouTube V2 */
+.button.button-youtube {
+  color: #FFFFFF;
+  background-color:  #FF0000 }
+.button.button-youtube:hover,
+.button.button-youtube:focus {
+  filter: brightness(90%) }
+
+/* Wordpress */
+.button.button-wordpress {
+  color: #FFFFFF;
+  background-color: #21759b }
+.button.button-wordpress:hover,
+.button.button-wordpress:focus {
+  filter: brightness(90%) }
+
+/* Bandcamp */
+.button.button-bandcamp {
+  color: #ffffff;
+  background-color: #1d9fc3;
+}
+.button.button-bandcamp:hover,
+.button.button-bandcamp:focus {
+  filter: brightness(90%);
+}
+
+/* Patreon */
+.button.button-patreon {
+  color: #ffffff;
+  background-color: #ff424d;
+}
+.button.button-patreon:hover,
+.button.button-patreon:focus {
+  filter: brightness(90%);
+}
+
+/* Signal */
+.button.button-signal {
+  color: #ffffff;
+  background-color: #3a76f0;
+}
+.button.button-signal:hover,
+.button.button-signal:focus {
+  filter: brightness(90%);
+}
+
+/* Venmo */
+.button.button-venmo {
+  color: #ffffff;
+  background-color: #3d95ce;
+}
+.button.button-venmo:hover,
+.button.button-venmo:focus {
+  filter: brightness(90%);
+}
+
+/* Cash App */
+.button.button-cashapp {
+  color: #ffffff;
+  background-image: linear-gradient(to bottom, #00d64b, #00c244);
+}
+.button.button-cashapp:hover,
+.button.button-cashapp:focus {
+  filter: brightness(90%);
+}
+
+/* Gitlab */
+.button.button-gitlab {
+  color: #ffffff;
+  background-color: #6151b2;
+}
+.button.button-gitlab:hover,
+.button.button-gitlab:focus {
+  filter: brightness(90%);
+}
+
+/* Mastodon */
+.button.button-mastodon {
+  color: #ffffff;
+  background-color: #1f232b;
+}
+.button.button-mastodon:hover,
+.button.button-mastodon:focus {
+  filter: brightness(90%);
+}
+
+/* PayPal */
+.button.button-paypal {
+  color: #ffffff;
+  background-color: #003087;
+}
+.button.button-paypal:hover,
+.button.button-paypal:focus {
+  filter: brightness(90%);
+}
+
+/* WhatsApp */
+.button.button-whatsapp {
+  color: #ffffff;
+  background-color: #455a64;
+}
+.button.button-whatsapp:hover,
+.button.button-whatsapp:focus {
+  filter: brightness(90%);
+}
+
+/* Xing */
+.button.button-xing {
+  color: #ffffff;
+  background-color: #026466;
+}
+.button.button-xing:hover,
+.button.button-xing:focus {
+  filter: brightness(90%);
+}
+
+/* Buy Me a Coffee */
+.button.button-coffee {
+  color: #100a26;
+  background-color: #ffdd00;
+}
+.button.button-coffee:hover,
+.button.button-coffee:focus {
+  filter: brightness(90%);
+}
+
+/* Trello */
+.button.button-trello {
+  color: #ffffff;
+  background-color: #0079bf;
+}
+.button.button-trello:hover,
+.button.button-trello:focus {
+  filter: brightness(90%);
+}
+
+/* Website */
+.button.button-website {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+/* Custom Website */
+.button.button-custom_website {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.button.button-web:hover,
+.button.button-web:focus {
+  filter: brightness(90%);
+}

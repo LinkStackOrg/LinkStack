@@ -41,6 +41,12 @@ class RegisteredUserController extends Controller
 
         $name = $request->input('name');
 
+        if(env('MANUAL_USER_VERIFICATION') == true){
+            $block = 'yes';
+        } else {
+            $block = 'no';
+        }
+
         if(DB::table('users')->where('littlelink_name', $request->name)->exists())
         {
             Auth::login($user = User::create([
@@ -48,7 +54,6 @@ class RegisteredUserController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'role' => 'user',
-                'block' => 'no',
             ]));
         } else {
             Auth::login($user = User::create([
@@ -57,14 +62,14 @@ class RegisteredUserController extends Controller
                 'littlelink_name' => $request->name,
                 'password' => Hash::make($request->password),
                 'role' => 'user',
-                'block' => 'no',
             ]));
         }
 
-
+        $user->block = $block;
+        $user->save();
 
         event(new Registered($user));
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(url('dashboard'));
     }
 }

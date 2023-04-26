@@ -1,0 +1,9 @@
+/* Vertical Position */
+.absolute-middle {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.absolute-bottom {
+  top: auto;
+  bottom: 0;
+}

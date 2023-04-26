@@ -1,0 +1,56 @@
+.gradientPicker-preview {
+	width: 100%;
+	height: 100%;
+	border: 1px solid rgba(0,0,0,0.2);
+	/*box-sizing: border-box;
+	-moz-box-sizing: border-box;*/
+}
+
+.gradientPicker-ctrlPt {
+	width: 8px;
+	height: 8px;
+	border: 2px solid gray;
+	position: absolute;
+	display: inline-block;
+}
+
+.gradientPicker-ctrlPts {
+	position: relative;
+	height: 10px;
+	width: 100%;
+}
+
+.gradientPicker-ptConfig {
+	position: absolute;
+	width: 35px;
+	height: 40px;
+	z-index: 1;
+	margin-top: 2px;
+
+	background-color: white;
+	border-radius: 5px;
+	border: 1px solid rgba(0,0,0,0.2);
+	padding: 0 3px;
+	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.gradientPicker-close {
+	position: absolute;
+	top: -4px;
+	right: -4px;
+	/*font-size: 18px;
+	font-weight: bold;
+	color: black;
+	line-height: 20px;
+	text-shadow: 0 1px 0 white;
+	opacity: 0.2;
+	filter: alpha(opacity=20);*/
+	width: 16px;
+	height: 16px;
+}
+
+.gradientPicker-ptConfig .color-chooser {
+	float: left;
+}

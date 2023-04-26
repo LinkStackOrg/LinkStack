@@ -14,12 +14,12 @@
     @endphp
 @else
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/logo.svg') }}" alt="Logo">
+           <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
-        <h1>Setup LittleLink Custom</h1>
+        <h1>Setup LinkStack</h1>
         <p class="inst-txt">
         <div class="left-txt glass-container">
-        Welcome to the setup for LittleLink Custom!<br><br>
+        Welcome to the setup for LinkStack!<br><br>
         <b>This setup will:</b><br>
         1. Check the server dependencies<br>
         2. Setup the database<br>
@@ -35,7 +35,7 @@
 {{-- Landing page --}}
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/logo.svg') }}" alt="Logo">
+           <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
         <h1>Setup failed</h1>
         <p class="inst-txt">An error has occured. Please try again.</p>
@@ -49,7 +49,7 @@
 {{-- Landing page --}}
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/logo.svg') }}" alt="Logo">
+           <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
         <h1>Dependency check</h1>
         <p class="inst-txt">Required PHP modules:</p>
@@ -86,9 +86,9 @@
 {{-- Landing page --}}
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/logo.svg') }}" alt="Logo">
+           <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
-        <h1>Setup LittleLink Custom</h1>
+        <h1>Setup LinkStack</h1>
         <p class="inst-txt">Select a database type</p>
 <p>Under most circumstances, we recommend using SQLite.<br>MySQL requires a separate, empty MySQL database.</p><br>
 <form id="home-url-form" action="{{route('db')}}" enctype="multipart/form-data" method="post">
@@ -110,9 +110,9 @@
 {{-- Landing page --}}
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/logo.svg') }}" alt="Logo">
+           <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
-        <h1>Setup LittleLink Custom</h1>
+        <h1>Setup LinkStack</h1>
         <p class="inst-txt">MySQL</p>
 
 <form id="home-url-form" action="{{route('mysql')}}" enctype="multipart/form-data" method="post">
@@ -142,9 +142,9 @@
 {{-- Landing page --}}
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/logo.svg') }}" alt="Logo">
+           <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
-        <h1>Setup LittleLink Custom</h1>
+        <h1>Setup LinkStack</h1>
         <p class="inst-txt">Create an admin account.</p>
 
 <form id="home-url-form" action="{{route('createAdmin')}}" enctype="multipart/form-data" method="post">
@@ -172,9 +172,9 @@
 {{-- Landing page --}}
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/logo.svg') }}" alt="Logo">
+           <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
-        <h1>Setup LittleLink Custom</h1>
+        <h1>Setup LinkStack</h1>
         <p class="inst-txt">Configure your page</p>
 <form id="home-url-form" action="{{route('options')}}" enctype="multipart/form-data" method="post">
 <div class="form-group col-lg-8">
@@ -199,7 +199,7 @@
 </select>
 <style>.hidden{display:flex!important;}</style>
 <span class="" id="hidden" style="display:none;margin-top:-22px;margin-bottom:10px;color:#6c757d;font-size:90%;">This will move the Home Page to /home</span>
-<script src="{{ asset('studio/external-dependencies/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ asset('assets/external-dependencies/jquery-3.4.1.min.js') }}"></script>
 <script>
 $("#select").change(function(){
     if($(this).val() == "Yes") {
@@ -211,7 +211,7 @@ $("#select").change(function(){
 </script>
 
 <label>App Name:</label>
-<input style="max-width:275px;" class="form-control" value="LittleLink Custom" name="app" type="text" required>
+<input style="max-width:275px;" class="form-control" value="LinkStack" name="app" type="text" required>
 
 </div></div><br>
 <input type="hidden" name="_token" value="{{csrf_token()}}">

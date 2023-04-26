@@ -1,0 +1,47 @@
+/*===== REBOOT =====*/
+
+* {
+	outline: 0;
+	margin: 0;
+	padding: 0;
+}
+html, * {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul{
+	margin:0;
+	padding:0;
+	li{
+		list-style-type:none;
+	}
+}
+
+p{
+  font-weight: 400;
+  margin-bottom: 0;
+	font-size: 0.98rem;
+	line-height: 1.2;
+}
+
+::selection {
+  background-color: $primary;
+  color: $white;
+}
+button,
+a {
+  text-decoration: none;
+  @include transition(all 0.3s ease-in-out);
+  &:hover, &:focus, &:active{
+    box-shadow: none;
+    outline: none;
+    text-decoration: none;
+  }
+}
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}

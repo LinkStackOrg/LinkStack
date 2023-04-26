@@ -1,0 +1,10 @@
+/* Lada Button */
+
+.ladda-button[data-style=contract-overlay][data-loading]{
+  z-index: 10;
+  width: 45px;
+}
+
+.ladda-button[data-style=contract][data-loading]{
+  width: 45px;
+}

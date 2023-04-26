@@ -12,7 +12,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
     <link rel="stylesheet"
-          href="{{ asset('studio/external-dependencies/fontawesome.css') }}"
+          href="{{ asset('assets/external-dependencies/fontawesome.css') }}"
           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
           crossorigin="anonymous"/>
 
@@ -21,11 +21,11 @@
 <body>
 
 <span class="javascripts">
-    <script src="{{ asset('studio/external-dependencies/jquery.slim.min.js') }}"
+    <script src="{{ asset('assets/external-dependencies/jquery.slim.min.js') }}"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
             crossorigin="anonymous"></script>
-    <script src="{{ asset('studio/external-dependencies/vue.js') }}"></script>
-    <script src="{{ asset('studio/external-dependencies/bootstrap.bundle.min.js') }}"
+    <script src="{{ asset('assets/external-dependencies/vue.js') }}"></script>
+    <script src="{{ asset('assets/external-dependencies/bootstrap.bundle.min.js') }}"
             integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
             crossorigin="anonymous"></script>
 

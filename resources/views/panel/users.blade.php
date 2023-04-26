@@ -2,114 +2,163 @@
 
 @section('content')
 
-<style>#cs{cursor: pointer;}.delete{color:transparent; background-color:tomato; border-radius:5px; padding:8px 12px; cursor: pointer;}.delete:hover{color:transparent;background-color:#f13d1d;}html,body{max-width:100%;overflow-x:hidden;}.shorten{cursor:help;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;}</style>
+<style>#cs{cursor: pointer;}.delete{color:transparent; background-color:tomato; border-radius:5px; padding:8px 12px; cursor: pointer;}.delete:hover{color:transparent;background-color:#f13d1d;}html,body{max-width:100%;overflow-x:hidden;}.shorten{cursor:help;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:150px;}</style>
 
-<section class="shadow text-gray-400">
-        <h2 class="mb-4 card-header"><i class="bi bi-person"> Users</i></h2>
-        <div class="card-body p-0 p-md-3">
+<div class="conatiner-fluid content-inner mt-n5 py-0">
+  <div class="row">   
 
-        <form action="{{ route('searchUser') }}" method="post">
-        @csrf
-					<div class="row">
-						<div class="col-lg-8">
-							<div class="input-group mb-3">
-                <input type="text" name="name" placeholder="search user" class="form-control">
-								<div class="input-group-append">
-                  <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i></button>
+
+      <div class="col-lg-12">
+          <div class="card rounded">
+             <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">  
+  
+                      <section class="text-gray-400">
+                        <h2 class="mb-4 card-header"><i class="bi bi-person"> Manage Users</i></h2>
+                        <div class="card-body p-0 p-md-3">
+                
+                        <form action="{{ route('searchUser') }}" method="post">
+                        @csrf
+                          <div class="row">
+                            <div class="col-lg-8">
+                              <div class="input-group mb-3">
+                                <input type="text" name="name" placeholder="search user" class="form-control">
+                                <div class="input-group-append">
+                                  <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i></button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                        Users: 
+                        <a href="{{ url('') }}/panel/users/all">All</a> - 
+                        <a href="{{ url('') }}/panel/users/user">User</a> - 
+                        <a href="{{ url('') }}/panel/users/vip">Vip</a> - 
+                        <a href="{{ url('') }}/panel/users/admin">Admin</a> 
+                
+                        <div class="row"><div class="table-responsive">
+                          <table class="table table-stripped">
+                            <thead>
+                              <tr>
+                                <th id="cs" scope="col" data-sort="id" data-order="asc">ID</th>
+                                <th id="cs" scope="col" data-sort="name" data-order="asc">Name</th>
+                                <th id="cs" scope="col" data-sort="email" data-order="asc">E-Mail</th>
+                                <th id="cs" scope="col" data-sort="page" data-order="asc">Page</th>
+                                <th id="cs" scope="col" data-sort="role" data-order="asc">Role</th>              
+                                <th id="cs" scope="col" data-sort="links" data-order="asc">Links</th>
+                                <th id="cs" scope="col" data-sort="clicks" data-order="asc">Clicks</th>
+                                <th id="cs" scope="col" data-sort="created" data-order="asc">Created at</th>
+                                <th id="cs" scope="col" data-sort="last" data-order="asc">Last seen</th>
+                                @if(env('REGISTER_AUTH') !== 'auth')<th id="cs" scope="col">E-Mail</th>@endif
+                                <th id="cs" scope="col" data-sort="block" data-order="asc">Status</th>
+                                <th scope="col" data-sortable="false">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($users as $user)
+                            @php
+                            $dateFormat = 'd/m/Y';
+                  
+                            $date = date($dateFormat, strtotime($user->created_at));
+                            if(!isset($user->created_at)){$date = "N/A";}
+                  
+                            $lastSeen = $user->updated_at;
+                            $lastSeenDate = date($dateFormat, strtotime($lastSeen));
+                            $timezone = new DateTimeZone(date_default_timezone_get()); 
+                            $datetime = new DateTime($lastSeen, $timezone);
+                            $now = new DateTime(null, $timezone);
+                            $interval = $now->diff($datetime);
+                            $daysAgo = $interval->days." days ago";
+                            if($interval->days == 1) $daysAgo = "1 day ago";
+                            if($interval->days == 0) $daysAgo = "Today";
+                            if ($interval->days >= 365) {
+                            $yearsAgo = floor($interval->days / 365);
+                            if ($yearsAgo == 1) {
+                                $daysAgo = "1 year ago";
+                            } else {
+                                $daysAgo = "$yearsAgo years ago";
+                            }}
+                            @endphp
+                              <tr>
+                                <td data-id>{{ $user->id }}</td>
+                                <td class="shorten" title="{{ $user->name }}" data-name> {{ $user->name }} </td>
+                                <td class="shorten" title="{{ $user->email }}" data-email> {{ $user->email }} </td>
+                                <td class="shorten" title="{{ $user->littlelink_name }}" data-page>@if(isset($user->littlelink_name))<a href="{{ url('') }}/@<?= $user->littlelink_name ?>" target="_blank" class="text-info"><i class="bi bi-box-arrow-up-right"></i>&nbsp; {{ $user->littlelink_name }} </a>@else N/A @endif</td>
+                                <td data-role>{{ $user->role }}</td>
+                                <td data-links>{{$user->links}}</td>
+                                <td data-clicks>{{$user->clicks}}</td>
+                                <td data-created>{{$date}}</td>
+                                <td class="shorten" data-last title="{{ $lastSeenDate }}">{{$daysAgo}}</td>
+                                @if(env('REGISTER_AUTH') !== 'auth')
+                                <td>@if($user->find($user->id)->role == 'admin' and $user->email_verified_at != '')<center>-</center> @else
+                                <a href="{{ route('verifyUser', ['verify' => '-' . $user->email_verified_at, 'id' => $user->id] ) }}" class="text-danger">@if($user->email_verified_at == '')<span class="badge bg-danger">Pending</span>@else<span class="badge bg-success">Verified</span></a>@endif</td>
+                                @endif
+                                @endif
+                                <td>@if($user->find($user->id)->role == 'admin')<center>-</center>@else<a href="{{ route('blockUser', ['block' => $user->block, 'id' => $user->id] ) }}">@if($user->block == 'yes') <span class="badge bg-danger">Pending</span> @elseif($user->block == 'no') <span class="badge bg-success">Approved</span> @endif</a>@endif</td>
+                                <td>
+                                  @if($user->find($user->id)->role == 'admin')<center>-</center>
+                                  @else
+                                  <div class="flex align-items-center list-user-action">
+                                    <a class="btn btn-sm btn-icon btn-success" data-bs-toggle="tooltip" data-bs-placement="top" data-original-title="All links" href="{{ route('showLinksUser', $user->id ) }}" aria-label="All links" data-bs-original-title="All links">
+                                       <span class="btn-inner">   
+                                          <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="11.7669" cy="11.7666" r="8.98856" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></circle>
+                                            <path d="M18.0186 18.4851L21.5426 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                          </svg>                                                               
+                                       </span>
+                                    </a>
+                                    <a class="btn btn-sm btn-icon btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" data-original-title="Edit" href="{{ route('editUser', $user->id ) }}" aria-label="Edit" data-bs-original-title="Edit">
+                                       <span class="btn-inner">
+                                          <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                             <path d="M11.4925 2.78906H7.75349C4.67849 2.78906 2.75049 4.96606 2.75049 8.04806V16.3621C2.75049 19.4441 4.66949 21.6211 7.75349 21.6211H16.5775C19.6625 21.6211 21.5815 19.4441 21.5815 16.3621V12.3341" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M8.82812 10.921L16.3011 3.44799C17.2321 2.51799 18.7411 2.51799 19.6721 3.44799L20.8891 4.66499C21.8201 5.59599 21.8201 7.10599 20.8891 8.03599L13.3801 15.545C12.9731 15.952 12.4211 16.181 11.8451 16.181H8.09912L8.19312 12.401C8.20712 11.845 8.43412 11.315 8.82812 10.921Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                             <path d="M15.1655 4.60254L19.7315 9.16854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                          </svg>
+                                       </span>
+                                    </a>
+                                    <a class="btn btn-sm btn-icon btn-danger confirmation" data-bs-toggle="tooltip" data-bs-placement="top" data-original-title="Delete" href="{{ route('deleteUser', ['id' => $user->id] ) }}" aria-label="Delete" data-bs-original-title="Delete">
+                                       <span class="btn-inner">
+                                          <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
+                                             <path d="M19.3248 9.46826C19.3248 9.46826 18.7818 16.2033 18.4668 19.0403C18.3168 20.3953 17.4798 21.1893 16.1088 21.2143C13.4998 21.2613 10.8878 21.2643 8.27979 21.2093C6.96079 21.1823 6.13779 20.3783 5.99079 19.0473C5.67379 16.1853 5.13379 9.46826 5.13379 9.46826" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                             <path d="M20.708 6.23975H3.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                             <path d="M17.4406 6.23973C16.6556 6.23973 15.9796 5.68473 15.8256 4.91573L15.5826 3.69973C15.4326 3.13873 14.9246 2.75073 14.3456 2.75073H10.1126C9.53358 2.75073 9.02558 3.13873 8.87558 3.69973L8.63258 4.91573C8.47858 5.68473 7.80258 6.23973 7.01758 6.23973" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                          </svg>
+                                       </span>
+                                    </a>
+                                 </div>
+                                  @endif
+                                </td>
+                              </tr>
+                              @endforeach
+                            </tbody>
+                          </table>
+                        </div></div></div>
+                        <a href="{{ url('') }}/panel/new-user">+ Add new user</a>
+                
+                              <script type="text/javascript">
+                                var elems = document.getElementsByClassName('confirmation');
+                                var confirmIt = function (e) {
+                                    if (!confirm('Are you sure you want to delete this user? \nThis action cannot be undone!')) e.preventDefault();
+                                };
+                                for (var i = 0, l = elems.length; i < l; i++) {
+                                    elems[i].addEventListener('click', confirmIt, false);
+                                }
+                              </script>
+                
+                          </div>
+                </section>
+  
+                    </div>
                 </div>
-              </div>
-            </div>
+             </div>
           </div>
-        </form>
-        Users: 
-        <a href="{{ url('') }}/panel/users/all">All</a> - 
-        <a href="{{ url('') }}/panel/users/user">User</a> - 
-        <a href="{{ url('') }}/panel/users/vip">Vip</a> - 
-        <a href="{{ url('') }}/panel/users/admin">Admin</a> 
+       </div>
 
-        <div class="row"><div class="col-12"><div class="table-responsive">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th id="cs" scope="col" data-sort="id" data-order="asc">ID</th>
-              <th id="cs" scope="col" data-sort="name" data-order="asc">Name</th>
-              <th id="cs" scope="col" data-sort="email" data-order="asc">E-Mail</th>
-              <th id="cs" scope="col" data-sort="page" data-order="asc">Page</th>
-              <th id="cs" scope="col" data-sort="role" data-order="asc">Role</th>              
-              <th id="cs" scope="col" data-sort="links" data-order="asc">Total links</th>
-              <th id="cs" scope="col" data-sort="clicks" data-order="asc">Total clicks</th>
-              <th id="cs" scope="col" data-sort="created" data-order="asc">Created at</th>
-              <th id="cs" scope="col" data-sort="last" data-order="asc">Last seen</th>
-              <th data-sortable="false">Edit</th>
-              <th data-sortable="false">Links</th>
-              @if(env('REGISTER_AUTH') !== 'auth')<th id="cs" style="width:15%" scope="col">E-Mail Verified</th>@endif
-              <th id="cs" scope="col" data-sort="block" data-order="asc">Block</th>
-              <th scope="col" style="width:150px" data-sortable="false">Delete user</th>
-            </tr>
-          </thead>
-          <tbody>
-          @foreach($users as $user)
-          @php
-          $dateFormat = 'd/m/Y';
 
-          $date = date($dateFormat, strtotime($user->created_at));
-          if(!isset($user->created_at)){$date = "NULL";}
+    </div>
+  </div>
 
-          $lastSeen = $user->updated_at;
-          $lastSeenDate = date($dateFormat, strtotime($lastSeen));
-          $timezone = new DateTimeZone(date_default_timezone_get()); 
-          $datetime = new DateTime($lastSeen, $timezone);
-          $now = new DateTime(null, $timezone);
-          $interval = $now->diff($datetime);
-          $daysAgo = $interval->days." days ago";
-          if($interval->days == 1) $daysAgo = "1 day ago";
-          if($interval->days == 0) $daysAgo = "Today";
-          if ($interval->days >= 365) {
-          $yearsAgo = floor($interval->days / 365);
-          if ($yearsAgo == 1) {
-              $daysAgo = "1 year ago";
-          } else {
-              $daysAgo = "$yearsAgo years ago";
-          }}
-          @endphp
-            <tr>
-              <td data-id>{{ $user->id }}</td>
-              <td class="shorten" title="{{ $user->name }}" data-name> {{ $user->name }} </td>
-              <td class="shorten" title="{{ $user->email }}" data-email> {{ $user->email }} </td>
-              <td class="shorten" title="{{ $user->littlelink_name }}" data-page>@if(isset($user->littlelink_name))<a href="{{ url('') }}/@<?= $user->littlelink_name ?>" target="_blank" class="text-info"><i class="bi bi-box-arrow-up-right"></i>&nbsp; {{ $user->littlelink_name }} </a>@else N/A @endif</td>
-              <td data-role>{{ $user->role }}</td>
-              <td data-links>{{$user->links}}</td>
-              <td data-clicks>{{$user->clicks}}</td>
-              <td data-created>{{$date}}</td>
-              <td class="shorten" data-last title="{{ $lastSeenDate }}">{{$daysAgo}}</td>
-              <td><a href="{{ route('editUser', $user->id ) }}">Edit</a></td>
-              <td><a href="{{ route('showLinksUser', $user->id ) }}" class="text-primary">View</a></td>
-              @if(env('REGISTER_AUTH') !== 'auth')
-              <td>@if($user->find($user->id)->role == 'admin' and $user->email_verified_at != '')yes @else
-              <a href="{{ route('verifyUser', ['verify' => '-' . $user->email_verified_at, 'id' => $user->id] ) }}" class="text-danger">@if($user->email_verified_at == '')<span>no</span>@else<span style="color:#228B22">yes</span></a>@endif</td>
-              @endif
-              @endif
-              <td>@if($user->find($user->id)->role == 'admin')-@else<a href="{{ route('blockUser', ['block' => $user->block, 'id' => $user->id] ) }}" class="text-danger">{{ $user->block }}</a>@endif</td>
-              <td>@if($user->find($user->id)->role == 'admin')<center>-</center>@else<center><a href="{{ route('deleteUser', ['id' => $user->id] ) }}" class="confirmation delete"><i style="color: #fff !important" class="bi bi-trash-fill"></i><span class="hide-mobile-del"></span></a></center>@endif</td>
-            </tr>
-            @endforeach
-          </tbody>
-        </table>
-        </div></div></div>
-        <a href="{{ url('') }}/panel/new-user">+ Add new user</a>
-
-              <script type="text/javascript">
-                var elems = document.getElementsByClassName('confirmation');
-                var confirmIt = function (e) {
-                    if (!confirm('Are you sure you want to delete this user? \nThis action cannot be undone!')) e.preventDefault();
-                };
-                for (var i = 0, l = elems.length; i < l; i++) {
-                    elems[i].addEventListener('click', confirmIt, false);
-                }
-              </script>
-
-          </div>
-</section>
 <script>
 const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
 

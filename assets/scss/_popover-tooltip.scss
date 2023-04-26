@@ -1,0 +1,82 @@
+/*===== TOOLTIP =====*/
+/*Popver Tooltip*/
+.popover {
+  background-color: $white;
+}
+.popover-header {
+  background-color: transparent;
+  border-bottom: 0px;
+  padding-bottom: 0px;
+  color: $dark;
+  font-size: 1.125rem;
+}
+.popover-body {
+  color: $secondary;
+}
+
+/* Tooltip Inner */
+.tooltip-inner {
+  background-color: $white;
+  border: 1px solid #ebebeb;
+  padding: 0.56rem 1.125rem;
+  color: $dark;
+  color: $dark;
+  font-size: 0.98rem;
+  font-weight: 500;
+}
+.bs-tooltip-auto[x-placement^=top] .arrow::before, .bs-tooltip-top .arrow::before {
+  top: 0px;
+  border-top-color: $border-color;
+}
+.bs-tooltip-auto[x-placement^=right] .arrow::before, .bs-tooltip-right .arrow::before {
+  right: 0px;
+  border-right-color: $border-color;
+}
+.bs-tooltip-auto[x-placement^=bottom] .arrow::before, .bs-tooltip-bottom .arrow::before {
+  bottom: 0px;
+  border-bottom-color: $border-color;
+}
+.bs-tooltip-auto[x-placement^=left] .arrow::before, .bs-tooltip-left .arrow::before {
+  left: 0px;
+  border-left-color: $border-color;
+}
+
+.tooltip .arrow::after {
+  position: absolute;
+  content: "";
+  border-color: transparent;
+  border-style: solid;
+}
+.bs-tooltip-auto[x-placement^=top] .arrow::after, .bs-tooltip-top .arrow::after {
+  border-width: .4rem .4rem 0;
+  z-index: 0;
+  top: -1px;
+  border-top-color: #fff;
+}
+.bs-tooltip-auto[x-placement^=right] .arrow::after, .bs-tooltip-right .arrow::after {
+  border-width: .4rem .4rem .4rem 0;
+  z-index: 0;
+  right: -1px;
+  border-right-color: #fff;
+}
+.bs-tooltip-auto[x-placement^=bottom] .arrow::after, .bs-tooltip-bottom .arrow::after {
+  border-width: 0 .4rem .4rem;
+  z-index: 0;
+  bottom: -1px;
+  border-bottom-color: #fff;
+}
+.bs-tooltip-auto[x-placement^=left] .arrow::after, .bs-tooltip-left .arrow::after {
+  border-width: .4rem .4rem;
+  z-index: 0;
+  left: -1px;
+  border-left-color: #fff;
+}
+
+/* Vector Map Tooltip */
+.jvectormap-tip {
+  background-color: $white;
+  color: $secondary;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  border-radius: 0.31rem;
+}

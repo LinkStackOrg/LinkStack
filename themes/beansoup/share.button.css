@@ -1,0 +1,71 @@
+.share-icon {
+  padding: 0px 8px 3.5px 0px;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  -webkit-filter: invert(100%);
+  -moz-filter: invert(100%);
+  filter: invert(100%);
+}
+
+.sharediv {
+  position:relative; 
+  top: 30px; 
+  right: 30px; 
+  padding-bottom: 40px;
+}
+
+.sharebutton {
+  width: 150px;
+  height: 48px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 18px;
+  text-align: center;
+  font-family: 'Teko', sans-serif;
+  line-height: 48px;
+  background: linear-gradient(90deg, #00b4cc, #db091b, #d40083, #00b4cc);
+  background-size: 400%;
+  margin: auto;
+  display: inline-block;
+  color: #fff !important;
+  border-radius: 8px;
+  white-space: wrap;
+  position: relative;
+  cursor: pointer;
+
+  animation: glowing 45s linear infinite;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+.sharebutton:after {
+  content: " ";
+  position: absolute;
+  border-radius: inherit;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  top: -6px;
+  background: inherit;
+  background-size: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  filter: blur(16px);
+  animation: glowing 7s linear infinite;
+  transform: translateZ(0);
+}
+.sharebutton:hover:after {
+  opacity: 1;
+}
+
+.sharebutton-entrance {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+@keyframes glowing {
+  100% {
+    background-position: -400%;
+  }
+}

@@ -9,7 +9,7 @@
 <?php //landing page ?>
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
+           <img class="logo-img" src="{{ asset('assets/linkstack/images/just-gear.svg') }}" alt="Logo">
            <div class="logo-centered">l</div>
         </div>
         <h1>Backup</h1>
@@ -28,7 +28,7 @@
 <meta http-equiv="refresh" content="2; URL={{url()->current()}}/?backups" />
 @endpush
         <div class="logo-container fadein">
-           <img class="logo-img loading" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
+           <img class="logo-img loading" src="{{ asset('assets/linkstack/images/just-gear.svg') }}" alt="Logo">
            <div class="logo-centered">l</div>
         </div>
         <h1 class="loadingtxt">Creating backup</h1>
@@ -50,14 +50,14 @@ exit(); ?>
       <?php //after successfully updating ?>
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('littlelink/images/just-gear.svg') }}" alt="Logo">
+           <img class="logo-img" src="{{ asset('assets/linkstack/images/just-gear.svg') }}" alt="Logo">
            <div class="logo-centered">l</div>
         </div>
         <h1>Success!</h1>
         <h4 class="">The backup was successful, you can now return to the Admin Panel or see all your backups.</h4>
         <br><div class="row">
-        &ensp;<a class="btn" href="{{ route('studioIndex') }}"><button><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
-        &ensp;<a class="btn" href="{{ url('panel/config#4') }}"><button><i class="fa-solid fa-box-archive"></i> All Backups</button></a>&ensp;
+        &ensp;<a class="btn" href="{{ url('dashboard') }}"><button><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
+        &ensp;<a class="btn" href="{{ url('admin/config#4') }}"><button><i class="fa-solid fa-box-archive"></i> All Backups</button></a>&ensp;
         </div>
 @endif
 

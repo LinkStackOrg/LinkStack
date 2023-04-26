@@ -1,0 +1,105 @@
+/*===== BREDCRUMB =====*/
+.breadcrumb-wrapper {
+  margin-bottom: 30px;
+  h1 {
+    color: $dark;
+    font-size: 1.63rem;
+    font-weight: 500;
+  }
+  &.breadcrumb-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.breadcrumb {
+  // margin-bottom: 0;
+  .breadcrumb-item {
+    font-size: 0.98rem;
+    text-transform: capitalize;
+    a {
+      color: $secondary;
+      text-transform: capitalize;
+    }
+  }
+  &.breadcrumb-inverse {
+    border-color: rgb(76, 132, 255);
+    background-color: rgba(228, 237, 255,0.6);
+    .breadcrumb-item {
+      color: $primary;
+      &:before {
+        color: inherit;
+      }
+    }
+  }
+  &.breadcrumb-primary {
+    border-color: $primary;
+    background-color: $primary;
+    .breadcrumb-item, .breadcrumb-item a {
+      color: $white;
+    }
+    .breadcrumb-item:before {
+      color: $white;
+    }
+  }
+  &.breadcrumb-pink {
+    border-color: $pink;
+    background-color: $pink;
+    .breadcrumb-item, .breadcrumb-item a {
+      color: $white;
+    }
+    .breadcrumb-item:before {
+      color: $white;
+    }
+  }
+  &.breadcrumb-success {
+    border-color: $success;
+    background-color: $success;
+    .breadcrumb-item, .breadcrumb-item a {
+      color: $white;
+    }
+    .breadcrumb-item:before {
+      color: $white;
+    }
+  }
+  &.breadcrumb-danger {
+    border-color: $danger;
+    background-color: $danger;
+    .breadcrumb-item, .breadcrumb-item a {
+      color: $white;
+    }
+    .breadcrumb-item:before {
+      color: $white;
+    }
+  }
+  &.breadcrumb-warning {
+    border-color: $warning;
+    background-color: $warning;
+    .breadcrumb-item, .breadcrumb-item a {
+      color: $white;
+    }
+    .breadcrumb-item:before {
+      color: $white;
+    }
+  }
+  &.breadcrumb-info {
+    border-color: $info;
+    background-color: $info;
+    .breadcrumb-item, .breadcrumb-item a {
+      color: $white;
+    }
+    .breadcrumb-item:before {
+      color: $white;
+    }
+  }
+}
+.breadcrumb-item+.breadcrumb-item::before {
+  content: '\f763';
+  top: 10px;
+  font-size: 7px;
+  color: $secondary;
+  position: relative;
+  transform: rotate(45deg);
+  font-family: $font-family-icon;
+}

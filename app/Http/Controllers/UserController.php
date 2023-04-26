@@ -441,8 +441,13 @@ class UserController extends Controller
             $message .= "added";
         }
 
-        return Redirect('studio/links')
-            ->with('success', $message);
+            if ($request->input('param') == 'add_more') {
+                return Redirect('studio/add-link')
+                ->with('success', $message);
+            } else {
+                return Redirect('studio/links')
+                ->with('success', $message);
+            }
 
     }
 
@@ -563,13 +568,13 @@ class UserController extends Controller
 
         Link::where('id', $linkId)->delete();
 
-        $directory = base_path("studio/favicon/icons");
+        $directory = base_path("assets/favicon/icons");
         $files = scandir($directory);
         foreach($files as $file) {
         if (strpos($file, $linkId.".") !== false) {
         $pathinfo = pathinfo($file, PATHINFO_EXTENSION);}}
         if (isset($pathinfo)) {
-        try{File::delete(base_path("studio/favicon/icons")."/".$linkId.".".$pathinfo);} catch (exception $e) {}
+        try{File::delete(base_path("assets/favicon/icons")."/".$linkId.".".$pathinfo);} catch (exception $e) {}
         }
 
         return redirect('/studio/links');
@@ -580,13 +585,13 @@ class UserController extends Controller
     {
         $linkId = $request->id;
 
-        $directory = base_path("studio/favicon/icons");
+        $directory = base_path("assets/favicon/icons");
         $files = scandir($directory);
         foreach($files as $file) {
         if (strpos($file, $linkId.".") !== false) {
         $pathinfo = pathinfo($file, PATHINFO_EXTENSION);}}
         if (isset($pathinfo)) {
-        try{File::delete(base_path("studio/favicon/icons")."/".$linkId.".".$pathinfo);} catch (exception $e) {}
+        try{File::delete(base_path("assets/favicon/icons")."/".$linkId.".".$pathinfo);} catch (exception $e) {}
         }
 
         return redirect('/studio/links');
@@ -716,17 +721,24 @@ class UserController extends Controller
         $pageDescription = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $pageDescription);
         $name = $request->name;
         $checkmark = $request->checkmark;
+        $sharebtn = $request->sharebtn;
 
         User::where('id', $userId)->update(['littlelink_name' => $pageName, 'littlelink_description' => $pageDescription, 'name' => $name]);
 
         if ($request->hasFile('image')) {
-            $profilePhoto->move(base_path('/img'), $userId . ".png");
+            $profilePhoto->move(base_path('assets/img'), $userId . ".png");
         }
 
         if($checkmark == "on"){
             UserData::saveData($userId, 'checkmark', true);
         } else {
             UserData::saveData($userId, 'checkmark', false);
+        }
+
+        if($sharebtn == "on"){
+            UserData::saveData($userId, 'disable-sharebtn', false);
+        } else {
+            UserData::saveData($userId, 'disable-sharebtn', true);
         }
 
         return Redirect('/studio/page');
@@ -742,16 +754,16 @@ class UserController extends Controller
         $customBackground = $request->file('image');
 
         if (!empty($customBackground)) {
-            $directory = base_path('/img/background-img/');
+            $directory = base_path('assets/img/background-img/');
             $files = scandir($directory);
             $pathinfo = "error.error";
             foreach($files as $file) {
             if (strpos($file, $userId.'.') !== false) {
             $pathinfo = $userId. "." . pathinfo($file, PATHINFO_EXTENSION);
             }}
-            if(file_exists(base_path('/img/background-img/').$pathinfo)){File::delete(base_path('/img/background-img/').$pathinfo);}
+            if(file_exists(base_path('assets/img/background-img/').$pathinfo)){File::delete(base_path('assets/img/background-img/').$pathinfo);}
 
-            $customBackground->move(base_path('/img/background-img/'), $userId.".".$request->file('image')->extension());
+            $customBackground->move(base_path('assets/img/background-img/'), $userId.".".$request->file('image')->extension());
         }
 
         return Redirect('/studio/theme');
@@ -762,7 +774,7 @@ class UserController extends Controller
     {
 
         function findBackground($name){
-            $directory = base_path('/img/background-img/');
+            $directory = base_path('assets/img/background-img/');
             $files = scandir($directory);
             $pathinfo = "error.error";
             foreach($files as $file) {
@@ -774,7 +786,7 @@ class UserController extends Controller
 
         $user_id = Auth::user()->id;
         $path = findBackground($user_id);
-        $path = base_path('/img/background-img/'.$path);
+        $path = base_path('assets/img/background-img/'.$path);
         
         if (File::exists($path)) {
             File::delete($path);
@@ -925,7 +937,7 @@ class UserController extends Controller
     public function delProfilePicture()
     {
         $user_id = Auth::user()->id;
-        $path = base_path('img/' . $user_id . '.png');
+        $path = base_path(findAvatar($user_id));
         
         if (File::exists($path)) {
             File::delete($path);
@@ -976,7 +988,7 @@ class UserController extends Controller
         $userData['links'] = $links->toArray();
     
         function findAvatar($name){
-            $directory = base_path('/img');
+            $directory = base_path('assets/img');
             $files = scandir($directory);
             $pathinfo = "error.error";
             foreach($files as $file) {

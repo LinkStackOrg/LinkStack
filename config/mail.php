@@ -60,7 +60,7 @@ return [
     | password recovery and registration purposes involving
     | users personal LittleLink Custom or LittleLink Admin pages.
     | Users of this service must abide by our Terms and Conditions
-    | found at https://littlelink-custom.com/mail.
+    | found at https://linkstack.org/mail.
     |
     */
 

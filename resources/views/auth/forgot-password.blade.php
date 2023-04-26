@@ -1,36 +1,65 @@
+<?php
+$pages = DB::table('pages')->get();
+foreach($pages as $page)
+{
+	//Gets value from database
+}
+?>
+
 <x-guest-layout>
+@include('layouts.lang')
+
     <x-auth-card>
-        <x-slot name="logo">
-            <a href="{{ url('') }}">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+        <x-slot name="logo"></x-slot>
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-        </div>
-
+        <div class="container mt-5 w-75">
+            <div style="max-width:480px" class="container mt-5 w-100">
+              <a href="{{ url('') }}" class="d-flex align-items-center mb-3">
+                <!--Logo start-->
+                <div class="logo-main">
+                    @if(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
+                    <div class="logo-normal">
+                      <img class="img logo" src="{{ asset('assets/linkstack/images/'.findFile('avatar')) }}" style="width:auto;height:30px;">
+                  </div>
+                  <div class="logo-mini">
+                    <img class="img logo" src="{{ asset('assets/linkstack/images/'.findFile('avatar')) }}" style="width:auto;height:30px;">
+                  </div>
+                    @else
+                    <div class="logo-normal">
+                      <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.svg') }}" width="30px" height="30px">
+                  </div>
+                  <div class="logo-mini">
+                    <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.svg') }}" width="30px" height="30px">
+                  </div>
+                    @endif
+                    </div>
+                    <!--logo End-->
+                <h4 class="logo-title ms-3">{{env('APP_NAME')}}</h4>
+              </a>
+              <h2 class="mb-2 text-center">Forgot your password?</h2>
+              <p class="text-center">No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.</p>
+              <form method="POST" action="{{ route('password.email') }}" class="row">
+                @csrf
+            
         <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+        <x-auth-session-status class="mb-0 alert alert-success pb-2" role="alert" :status="session('status')" />
 
         <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        <x-auth-validation-errors class="mb-0 alert alert-success pb-2" role="alert" :errors="$errors" />
 
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <!-- Email Address -->
+                <div class="col-lg-12 form-group pb-2">
+                    <label for="email" class="form-label">Email</label>
+            
+                    <input id="email" class="form-control" type="email" name="email" :value="old('email')" placeholder=" " required autofocus />
+                </div>
+            
+                <div class="col-lg-12 d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary">{{ __('Email Password Reset Link') }}</button>
+                </div>
+            </form>
             </div>
+          </div>            
 
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-button>
-            </div>
-        </form>
     </x-auth-card>
 </x-guest-layout>

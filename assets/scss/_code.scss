@@ -1,0 +1,27 @@
+pre {
+  border-left: 4px solid $primary;
+  padding: 1.25rem 0.94rem;
+  background: rgba(0,0,0,.05);
+  border-radius: 0.19rem;
+
+  code{
+      background: transparent;
+      font-size: 1rem;
+      color: $dark;
+  }
+
+}
+
+.pre-code,
+code{
+    font-family: Menlo,Monaco,"Courier New",Courier,monospace;
+    font-size: 1rem;
+    background: rgba(0,0,0,.05);
+    padding: 0.19rem 0.625rem;
+    margin: 0 0.125rem;
+    color: $dark;
+}
+
+.pre-code {
+  padding: 1.25rem 0.94rem !important;
+}

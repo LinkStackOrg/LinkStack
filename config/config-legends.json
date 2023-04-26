@@ -4,6 +4,11 @@
     "description": "Determines if users have to verify their email when they register."
     },
     
+    {"value": "ALLOW_REGISTRATION",
+    "title": "Enable registration",
+    "description": "Determines whether users can register for your application."
+    },
+
     {"value": "NOTIFY_EVENTS",
     "title": "Notify on events",
     "description": "Displays a notification if an event is in progress."
@@ -21,7 +26,7 @@
     
     {"value": "DISPLAY_CREDIT",
     "title": "Show credit",
-    "description": "Determines whether the credit notice 'Powered by LittleLink Custom' should be displayed."
+    "description": "Determines whether the credit notice should be displayed."
     },
     
     {"value": "HOME_URL",
@@ -227,6 +232,11 @@
     {"value": "ALLOW_USER_EXPORT",
     "title": "Allow users to export their profile",
     "description": "Allows users to export their own links and profile."
+    },
+
+    {"value": "MANUAL_USER_VERIFICATION",
+    "title": "Verify users manually",
+    "description": "Determines if admins have to manually verify newly registered users."
     },
 
     {"value": "HIDE_VERIFICATION_CHECKMARK",

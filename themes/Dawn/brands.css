@@ -1,0 +1,87 @@
+
+/* Table of contents
+––––––––––––––––––––––––––––––––––––––––––––––––––
+
+- Rounded user avatars
+- Buttons
+- Brand Styles
+
+*/
+
+
+/* Rounded avatars
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Disable this if you don't want rounded avatars for users */
+.rounded-avatar {
+  border-radius: 50%;
+}
+
+.social-icon {
+  font-size: 32px;
+  padding: 10px;
+}
+.social-icon-div {
+  padding-bottom: 30px;
+}
+.social-icon{color:#fff;}
+
+/* Buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+:root {
+  --bgColor: #223344;
+  --bgColor2: #090a0f;
+  --accentColor: #FFF;
+  --font: 'Karla', sans-serif;
+  --delay: .3s; }
+
+.button {
+  position: relative;
+  background-color: transparent;
+  color: var(--accentColor);
+  border: solid var(--accentColor) 2px;
+  border-radius: 10px;
+  font-size: 1rem;
+  text-align: center;
+  display: block;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 10px; /* 17px */
+  text-decoration: none;
+  /* transition: all .25s cubic-bezier(.08, .59, .29, .99); */
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: hover) {
+  .button:hover {
+      background-color: var(--accentColor);
+      color: var(--bgColor);
+  }
+}
+
+.button:active {
+  background-color: var(--accentColor);
+  color: var(--bgColor);
+}
+
+
+/* Brand Icons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.icon {
+  padding: 0px 8px 3.5px 0px;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.button:hover .icon {
+  -webkit-filter: invert(100%) grayscale(100%);
+  -moz-filter: invert(100%) grayscale(100%);
+  filter: invert(100%) grayscale(100%);
+}

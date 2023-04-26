@@ -1,0 +1,13 @@
+/*===== BADGE =====*/
+.badge {
+  text-transform: uppercase;
+  color: $white;
+  padding-top: .75em;
+}
+
+.badge-sm {
+  padding-top: .5em;
+  padding-left: .6em;
+  padding-right: .6em;
+  font-size: 65%;
+}

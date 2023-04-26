@@ -1,0 +1,31 @@
+/* Github Icon */
+.github-link {
+  display: none;
+  @include media-breakpoint-up(md){
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    i {
+      position: absolute;
+      top: 7px;
+      right: 7px;
+      color: $white;
+      font-size: 25px;
+    }
+  }
+  svg {
+    width: 75px;
+    height: 75px;
+  }
+}
+
+.header-fixed {
+  .github-link {
+    position: fixed;
+    i {
+      position: fixed;
+    }
+  }
+}

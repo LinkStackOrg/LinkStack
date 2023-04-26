@@ -20,7 +20,7 @@ class LinkTypeController extends Controller
         $LinkTypes = LinkType::all();
 
         // load the view and pass the link types
-        return View('admin.linktype.index')
+        return View('panel.linktype.index')
             ->with('linktype', $LinkTypes);
     }
 
@@ -31,7 +31,7 @@ class LinkTypeController extends Controller
      */
     public function create()
     {
-        return View('admin.linktype.create');
+        return View('panel.linktype.create');
     }
 
     /**
@@ -82,7 +82,7 @@ class LinkTypeController extends Controller
     {
         $lt = LinkType::find($id);
         // show the edit form and pass the shark
-        return View('admin.linktype.edit', ['linktype' => $lt]);
+        return View('panel.linktype.edit', ['linktype' => $lt]);
     }
 
     /**

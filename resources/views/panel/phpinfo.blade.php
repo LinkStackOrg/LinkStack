@@ -3,7 +3,7 @@
 @if(auth()->user()->role == 'admin')
 <head>
   <!-- begin dark mode detection -->
-	<script src="{{ asset('littlelink/js/js.cookie.min.js') }}"></script>
+	<script src="{{ asset('assets/linkstack/js/js.cookie.min.js') }}"></script>
 	<script>
 		// code to set the `color_scheme` cookie
 		var $color_scheme = Cookies.get("color_scheme");
@@ -32,11 +32,11 @@
 			 $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
 		@if ($color_scheme == 'dark' and $color_scheme_override != 'light' or $color_scheme_override == 'dark')
 					<!-- switch the two <link> Tags below to default to dark mode if cookie detection fails -->
-					<link rel="stylesheet" href="{{ asset('/studio/css/bootstrap.min-dark.css') }}">
-					<link rel="stylesheet" href="{{ asset('/studio/css/style-dashboard-dark.css') }}">
+					<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min-dark.css') }}">
+					<link rel="stylesheet" href="{{ asset('assets/css/style-dashboard-dark.css') }}">
 				@else
-					<link rel="stylesheet" href="{{ asset('/studio/css/bootstrap.min.css') }}">
-					<link rel="stylesheet" href="{{ asset('/studio/css/style-dashboard.css') }}">
+					<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+					<link rel="stylesheet" href="{{ asset('assets/css/style-dashboard.css') }}">
 					@endif
 					
     <style>
@@ -81,7 +81,7 @@
 </head>
 <body>
     <div id='zPHP'>
-<div style="position: relative; top: 50px; z-index: 2;"><a href="{{ url('panel/config') }}" style="font-size: 40px;" >&nbsp; &nbsp; &nbsp; Back</a></div>
+<div style="position: relative; top: 50px; z-index: 2;"><a href="{{ url('admin/config') }}" style="font-size: 40px;" >&nbsp; &nbsp; &nbsp; Back</a></div>
 <div style="position: relative; bottom: 60px; right: 15px; z-index: 1;" align="right"><a onclick="this.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)" href="#" download="phpinfo.html"><button class="btn btn-primary">Download</button></a></div>
         <div id='presentation'>
             <h1>Information about PHP's configuration</h1>

@@ -2,103 +2,95 @@
 @if(env('ENABLE_THEME_UPDATER') == 'true')
 
 <br><br><br>
-<details>
-    <summary><i class="bi bi-caret-down-fill"></i> Theme updater </summary>
-    <div class="content" style="padding:10px;">
-        <table>
-            <tr>
-                <th style="width:85%;">Theme name:</th>
-                <th style="width: 15%;">Update status:</th>
-                <th>Version:&nbsp;</th>
-            </tr>
-            <?php
-
-            if ($handle = opendir('themes')) {
-             while (false !== ($entry = readdir($handle))) {
-
-                    if(file_exists(base_path('themes') . '/' . $entry . '/readme.md')){
-                    $text = file_get_contents(base_path('themes') . '/' . $entry . '/readme.md');
-                    $pattern = '/Theme Version:.*/';
-                    preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
-                    if(sizeof($matches) > 0) {
-                      $verNr = substr($matches[0][0],15);
-                    }
-                  }
-
-                    $themeVe = NULL;
-                    if(!isset($verNr)){$verNr = "error";};
-
-                if ($entry != "." && $entry != "..") {
-                    echo '<tr>';
-                    echo '<th>'; print_r(ucfirst($entry));
-                    echo '</th>';
-                    echo '<th><center>';
-                    if(file_exists(base_path('themes') . '/' . $entry . '/readme.md')){
-                      if(!strpos(file_get_contents(base_path('themes') . '/' . $entry . '/readme.md'), 'Source code:')){$hasSource = false;}else{
-                        $hasSource = true;
-
-                        $text = file_get_contents(base_path('themes') . '/' . $entry . '/readme.md');
-                        $pattern = '/Source code:.*/';
-                        preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
-                        $sourceURL = substr($matches[0][0],13);
-
-                        $replaced = str_replace("https://github.com/", "https://raw.githubusercontent.com/", trim($sourceURL));
-                        $replaced = $replaced . "/main/readme.md";
-
-                        if (strpos($sourceURL, 'github.com')){
-
-                        ini_set('user_agent', 'Mozilla/4.0 (compatible; MSIE 6.0)');
-                        try{
-                            $textGit = file_get_contents($replaced);
-                            $patternGit = '/Theme Version:.*/';
-                            preg_match($patternGit, $textGit, $matches, PREG_OFFSET_CAPTURE);
-                            $sourceURLGit = substr($matches[0][0],15);
-                            $Vgitt = 'v' . $sourceURLGit;
-                            $verNrv = 'v' . $verNr;
-                        }catch(Exception $ex){
-                            $themeVe = "error";
-                            $Vgitt = NULL;
-                            $verNrv = NULL;
-                        }
-
-                        if(trim($Vgitt) > trim($verNrv)){
-                          $updateAv = true;
-                          $GLOBALS['updateAv'] = true;
-                        } else {
-                          $updateAv = false;
-                        }
-                        } else {$themeVe = "error";}
-
-                        }
-                      }
-
-                    if ($themeVe == "error") {
-                    echo '<img style="scale:0.9" src="https://img.llc.ovh/static/v1?label=&message=Error!&color=red">';
-                    } elseif ($hasSource == false) {
-                    echo '<a href="https://littlelink-custom.com/themes.php" target="_blank"><img style="scale:0.9" src="https://img.llc.ovh/static/v1?label=&message=Update manually&color=red"></a>';
-                    } elseif($updateAv == true) {
-                    echo '<img style="scale:0.9" src="https://img.llc.ovh/static/v1?label=&message=Update available&color=yellow">';
-                    } else {
-                    echo '<img style="scale:0.9" src="https://img.llc.ovh/static/v1?label=&message=Up to date&color=green">';
-                    }
-                    echo '</center></th>';
-                    echo '<th>' . $verNr . '</th>';
-                    echo '</tr>';}
-                    }} ?>
-        </table>
+<div class="accordion">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="details-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#details-collapse" aria-controls="details-collapse">
+          Theme Updater
+        </button>
+      </h2>
+      <div id="details-collapse" class="accordion-collapse collapse" aria-labelledby="details-header">
+        <div class="accordion-body table-responsive">
+            <table class="table table-striped table-responsive">
+                    <tr>
+                        <th>Theme name:</th>
+                        <th>Update status:</th>
+                        <th>Version:&nbsp;</th>
+                    </tr>
+                    <?php
+                    if ($handle = opendir('themes')) {
+                     while (false !== ($entry = readdir($handle))) {
+                            if(file_exists(base_path('themes') . '/' . $entry . '/readme.md')){
+                            $text = file_get_contents(base_path('themes') . '/' . $entry . '/readme.md');
+                            $pattern = '/Theme Version:.*/';
+                            preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
+                            if(sizeof($matches) > 0) {
+                              $verNr = substr($matches[0][0],15);
+                            }
+                          }
+                            $themeVe = NULL;
+                            if(!isset($verNr)){$verNr = "error";};
+                        if ($entry != "." && $entry != "..") {
+                            echo '<tr>';
+                            echo '<th>'; print_r(ucfirst($entry));
+                            echo '</th>';
+                            echo '<th><center>';
+                            if(file_exists(base_path('themes') . '/' . $entry . '/readme.md')){
+                              if(!strpos(file_get_contents(base_path('themes') . '/' . $entry . '/readme.md'), 'Source code:')){$hasSource = false;}else{
+                                $hasSource = true;
+                                $text = file_get_contents(base_path('themes') . '/' . $entry . '/readme.md');
+                                $pattern = '/Source code:.*/';
+                                preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
+                                $sourceURL = substr($matches[0][0],13);
+                                $replaced = str_replace("https://github.com/", "https://raw.githubusercontent.com/", trim($sourceURL));
+                                $replaced = $replaced . "/main/readme.md";
+                                if (strpos($sourceURL, 'github.com')){
+                                ini_set('user_agent', 'Mozilla/4.0 (compatible; MSIE 6.0)');
+                                try{
+                                    $textGit = file_get_contents($replaced);
+                                    $patternGit = '/Theme Version:.*/';
+                                    preg_match($patternGit, $textGit, $matches, PREG_OFFSET_CAPTURE);
+                                    $sourceURLGit = substr($matches[0][0],15);
+                                    $Vgitt = 'v' . $sourceURLGit;
+                                    $verNrv = 'v' . $verNr;
+                                }catch(Exception $ex){
+                                    $themeVe = "error";
+                                    $Vgitt = NULL;
+                                    $verNrv = NULL;
+                                }
+                                if(trim($Vgitt) > trim($verNrv)){
+                                  $updateAv = true;
+                                  $GLOBALS['updateAv'] = true;
+                                } else {
+                                  $updateAv = false;
+                                }
+                                } else {$themeVe = "error";}
+                                }
+                              }
+                            if ($themeVe == "error") {
+                            echo '<span class="badge bg-danger">Error!</span>';
+                            } elseif ($hasSource == false) {
+                            echo '<a href="https://linkstack.org/themes.php" target="_blank"><span class="badge bg-danger">Update manually</span></a>';
+                            } elseif($updateAv == true) {
+                            echo '<span class="badge bg-warning">Update available</span>';
+                            } else {
+                            echo '<span class="badge bg-success">Up to date</span>';
+                            }
+                            echo '</center></th>';
+                            echo '<th>' . $verNr . '</th>';
+                            echo '</tr>';}
+                            }} ?>
+                </table>
+        </div>
+        <a href="{{ url('update/theme') }}" onclick="updateicon()" class="btn btn-gray ms-3 mb-4">
+            <span id="updateicon"><i class="bi bi-arrow-repeat"></i></span> Update all themes
+        </a>
+      </div>
     </div>
-    <a href="{{url('update/theme')}}" onclick="updateicon()" class="mt-3 ml-3 btn btn-info row"><span id="updateicon" class=""><i class="bi bi-arrow-repeat"></i></span> Update all themes</a><br><br>
-    <script>
-        function updateicon() {
-            var element = document.getElementById("updateicon");
-            element.classList.add("updatespin");
-        }
-
-    </script>
-</details>
+  </div>
 
 <?php
-try{ if($GLOBALS['updateAv'] == true) echo '<img style="padding-left:40px; padding-top:15px; scale: 1.5;" src="https://img.llc.ovh/static/v1?label=&message=A theme needs updating&color=brightgreen">';
+try{ if($GLOBALS['updateAv'] == true) echo '<p class="mt-3 ml-3 h2""><span class="badge bg-success">Update available</span></p>';
 }catch(Exception $ex){}
 ?>
 
