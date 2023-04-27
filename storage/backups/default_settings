@@ -19,11 +19,11 @@ HOME_URL=
 #=Either true or false.
 ALLOW_USER_HTML=true
 
-#App Settings=Changes settings regarding your LittleLink Custom installation. You probably only want to change the App Name setting.
+#App Settings=Changes settings regarding your LinkStack installation. You probably only want to change the App Name setting.
 #=App_Name changes  the displayed name for the App in the title, for example.
-APP_NAME="LittleLink Custom"
+APP_NAME="LinkStack"
 APP_KEY=
-#=The APP_URL should be left empty under most circumstances. This setting is not required for LittleLink Custom, and you should only change this if required for your setup.
+#=The APP_URL should be left empty under most circumstances. This setting is not required for LinkStack, and you should only change this if required for your setup.
 APP_URL=
 
 #ENABLE_BUTTON-EDITOR=Determines if the custom button editor should be enabled or not, default is true.
@@ -43,7 +43,7 @@ MAINTENANCE_MODE=false
 #Database Settings=Should be left alone. If you wish to use mysql you'd have to seed the database again.
 DB_CONNECTION=sqlite
 
-#Mail Settings=LittleLink Custom comes with a free to use built-in SMTP server for sending mail. You can leave this setting as is, if you wish to use this service please read our terms and conditions at llc-mail.tru.io. If you do not wish to use the built-in SMTP server, change the setting below
+#Mail Settings=LinkStack comes with a free to use built-in SMTP server for sending mail. You can leave this setting as is, if you wish to use this service please read our terms and conditions at llc-mail.tru.io. If you do not wish to use the built-in SMTP server, change the setting below
 #=MAIL_MAILER either smtp or built-in. Make sure to change this setting if you want to add a custom SMTP server.
 MAIL_MAILER=built-in
 MAIL_HOST=

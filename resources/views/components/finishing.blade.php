@@ -52,7 +52,7 @@ use App\Models\Page;
             if(EnvEditor::keyExists('MANUAL_USER_VERIFICATION')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('MANUAL_USER_VERIFICATION', 'false');}
 
-            if(env('APP_NAME') == 'LittleLink Custom' or env('APP_NAME') == 'LittleLink') {
+            if(env('APP_NAME') == 'LinkStack' or env('APP_NAME') == 'LittleLink') {
                 EnvEditor::editKey('APP_NAME', 'LinkStack');
             }
 
@@ -86,7 +86,7 @@ use App\Models\Page;
             $data['page'] = Page::select('contact')->first();
             if (strpos($data['page']->contact, 'info@littlelink-custom.com') !== false) {
             $contact = '
-            <p><strong><a href="https://linkstack.org/">LittleLink Custom</a></strong> is a free, open source&nbsp;link&nbsp;sharing platform. We depend on community feedback to steadily improve this project.</p>
+            <p><strong><a href="https://linkstack.org/">LinkStack</a></strong> is a free, open source&nbsp;link&nbsp;sharing platform. We depend on community feedback to steadily improve this project.</p>
             
             <p><strong>Feel free to send us your feedback!</strong></p>
             

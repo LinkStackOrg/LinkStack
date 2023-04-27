@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'LittleLink Custom'),
+    'name' => env('APP_NAME', 'LinkStack'),
 
     /*
     |--------------------------------------------------------------------------

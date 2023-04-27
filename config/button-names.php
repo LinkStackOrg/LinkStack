@@ -1,7 +1,7 @@
 <?php
 
 $buttonNames = array(
-    'littlelink-custom' => 'LittleLink Custom',
+    'littlelink-custom' => 'LinkStack',
     'all-inkl' => 'ALL-INKL',
     'appstore' => 'App Store',
     'apple-books' => 'Apple Books',

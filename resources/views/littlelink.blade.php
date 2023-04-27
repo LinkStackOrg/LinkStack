@@ -120,7 +120,7 @@ if($customBackgroundExists == true){
 @foreach($information as $info)
 @if($info->theme != '' and $info->theme != 'default')
 
-  <!-- LittleLink Custom Theme: "{{$info->theme}}" -->
+  <!-- LinkStack Theme: "{{$info->theme}}" -->
 
   <!-- Theme details: -->
   <meta name="designer" href="{{ url('') . "/theme/@" . $littlelink_name}}" content="{{ url('') . "/theme/@" . $littlelink_name}}">

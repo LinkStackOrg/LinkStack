@@ -92,7 +92,7 @@ Our goal is to provide a free version of a link-sharing service, similar to Link
 
 <br>
 <p align="center">
-Customize the look of your LittleLink Custom instance with themes. Themes allow you to change the look and feel of your site with a few clicks. Users can submit themes they created for everyone to download and use.
+Customize the look of your LinkStack instance with themes. Themes allow you to change the look and feel of your site with a few clicks. Users can submit themes they created for everyone to download and use.
 </p>
     
 <p align="center">
@@ -114,8 +114,8 @@ You can find all available Themes on here:
 <br>
 
 ### How to add themes
-#### How to add themes to your LittleLink Custom instance
-You can add your downloaded themes to your LittleLink Custom instance on the Admin Panel. Navigate to the 'Themes' tab and scroll to the bottom of the page.
+#### How to add themes to your LinkStack instance
+You can add your downloaded themes to your LinkStack instance on the Admin Panel. Navigate to the 'Themes' tab and scroll to the bottom of the page.
 
 Now click on Choose file and select your downloaded theme zip file. Now click on 'Upload theme' and you should be able to select your uploaded theme now.
 
@@ -131,7 +131,7 @@ Everything is documented in the dedicated GitHub repository.
 ## Installation
 
 ### Downloading and installing steps:
-* **[Download](https://github.com/linkstackorg/linkstack/releases)** the latest release of LittleLink Custom and simply place the folder 'littlelink' or the contents of this folder in the root directory of your website.
+* **[Download](https://github.com/linkstackorg/linkstack/releases)** the latest release of LinkStack and simply place the folder 'littlelink' or the contents of this folder in the root directory of your website.
 
 ### That's it! No coding no command line setup just plug and play.
 
@@ -158,9 +158,9 @@ When accessing your instance for the first time, you will be greeted by the firs
 </a>
 </p>
 
-The official docker version of [LittleLink Custom](https://github.com/linkstackorg/linkstack). This docker image is a simple to set up solution, containing everything you need to run LittleLink Custom.
+The official docker version of [LinkStack](https://github.com/linkstackorg/linkstack). This docker image is a simple to set up solution, containing everything you need to run LinkStack.
 
-The docker version of LittleLink Custom retains all the features and customization options of the [original version](https://github.com/linkstackorg/linkstack).
+The docker version of LinkStack retains all the features and customization options of the [original version](https://github.com/linkstackorg/linkstack).
 
 This docker is based on [Alpine Linux](https://www.alpinelinux.org/), a Linux distribution designed to be small, simple and secure. The web server is running [Apache2](https://www.apache.org/), a free and open-source cross-platform web server software. The docker comes with [PHP 8.0](https://www.php.net/releases/8.0/en.php) for high compatibility and performance.
 
@@ -222,7 +222,7 @@ Finally, any derivative works of the project must be licensed under the same lic
 <br>
 
 ## Supporters
-You can support LittleLink Custom [here](https://linkstack.org/sponsor).
+You can support LinkStack [here](https://linkstack.org/sponsor).
 
 
 **💖 Thank you:**
@@ -242,7 +242,7 @@ You can support LittleLink Custom [here](https://linkstack.org/sponsor).
 
 ### Contributors
 
-Thank you for improving LittleLink Custom!
+Thank you for improving LinkStack!
 
 <p>
   <a href="https://github.com/linkstackorg/linkstack/graphs/contributors"><img src="https://update.littlelink-custom.com/components/contributors/" alt="Contributors" width="600" ></a>

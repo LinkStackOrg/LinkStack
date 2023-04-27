@@ -9,7 +9,7 @@ $analytics =
 | Analytics
 |--------------------------------------------------------------------------
 |
-| Add external analytics services to your LittleLink Custom instance by adding them below.
+| Add external analytics services to your LinkStack instance by adding them below.
 | Everything you enter below will be added to the <head> tag of every page.
 | Formatting in plain HTML is expected.
 |
@@ -68,7 +68,7 @@ return [
 
 
     // Overwrites default page title after the LittleLink name on LittleLink pages.
-    // Example: "admin 🔗 LittleLink Custom"
+    // Example: "admin 🔗 LinkStack"
     //                 ⤌------------------⤍
     //                 ⬑ What you can change with this setting.
     'littlelink_title' => '',
