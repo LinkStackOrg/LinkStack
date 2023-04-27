@@ -32,10 +32,10 @@
                           </div>
                         </form>
                         Users: 
-                        <a href="{{ url('') }}/panel/users/all">All</a> - 
-                        <a href="{{ url('') }}/panel/users/user">User</a> - 
-                        <a href="{{ url('') }}/panel/users/vip">Vip</a> - 
-                        <a href="{{ url('') }}/panel/users/admin">Admin</a> 
+                        <a href="{{ url('') }}/admin/users/all">All</a> - 
+                        <a href="{{ url('') }}/admin/users/user">User</a> - 
+                        <a href="{{ url('') }}/admin/users/vip">Vip</a> - 
+                        <a href="{{ url('') }}/admin/users/admin">Admin</a> 
                 
                         <div class="row"><div class="table-responsive">
                           <table class="table table-stripped">
@@ -134,7 +134,7 @@
                             </tbody>
                           </table>
                         </div></div></div>
-                        <a href="{{ url('') }}/panel/new-user">+ Add new user</a>
+                        <a href="{{ url('') }}/admin/new-user">+ Add new user</a>
                 
                               <script type="text/javascript">
                                 var elems = document.getElementsByClassName('confirmation');

@@ -153,7 +153,7 @@ public function SendTestMail(Request $request)
 
         User::where('id', $id)->update(['block' => $block]);
 
-        return redirect('panel/users/all');
+        return redirect('admin/users/all');
     }
 
     //Verify or un-verify users emails
@@ -170,7 +170,7 @@ public function SendTestMail(Request $request)
 
         User::where('id', $id)->update(['email_verified_at' => $verify]);
 
-        return redirect('panel/users/all');
+        return redirect('admin/users/all');
     }
 
     //Create new user from the Admin Panel
@@ -200,7 +200,7 @@ public function SendTestMail(Request $request)
             'block' => 'no',
         ]);
 
-        return redirect('panel/edit-user/' . $user->id);
+        return redirect('admin/edit-user/' . $user->id);
     }
 
     //Delete existing user
@@ -214,7 +214,7 @@ public function SendTestMail(Request $request)
         $user->forceDelete();
         Schema::enableForeignKeyConstraints();
 
-        return redirect('panel/users/all');
+        return redirect('admin/users/all');
     }
 
     //Show user to edit
