@@ -142,7 +142,7 @@ $notifyID = Auth::user()->id;
 {{-- Notification Modals --}}
 @push('sidebar-scripts') @php
 notification('', 'modal-1', 'Your security is at risk!', '<b>Your security is at risk.</b> Some files can be accessed by everyone. Immediate action is required!<br><br>Some important files, are publicly accessible, putting your security at risk. Please take immediate action to revoke public access to these files to prevent unauthorized access to your sensitive information.<br><a href="'.url('admin/config#5').'">Learn more</a>.');
-notification('hide-star-notification', 'modal-star', 'Give us a Star on Github', 'If you\'re enjoying using Linkstack, we would greatly appreciate it if you could take a moment to give our project a star on GitHub. Your support will help us reach a wider audience and improve the quality of our app.<br>Thank you for your support!<br> <br><a href="https://github.com/JulianPrieber/littlelink-custom" target="_blank">Give us a star</a>.');
+notification('hide-star-notification', 'modal-star', 'Give us a Star on Github', 'If you\'re enjoying using Linkstack, we would greatly appreciate it if you could take a moment to give our project a star on GitHub. Your support will help us reach a wider audience and improve the quality of our app.<br>Thank you for your support!<br> <br><a href="https://github.com/linkstackorg/linkstack" target="_blank">Give us a star</a>.');
 @endphp @endpush
 
 @php 

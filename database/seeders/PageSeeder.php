@@ -337,12 +337,12 @@ class PageSeeder extends Seeder
 
 <ul>
 	<li>Join our <a href="https://discord.littlelink-custom.com/">community Discord</a></li>
-	<li>Join the <a href="https://github.com/JulianPrieber/littlelink-custom/discussions">discussion forum</a></li>
-	<li>Request a feature and add it to the <a href="https://github.com/JulianPrieber/littlelink-custom/discussions/49">to-do list</a></li>
+	<li>Join the <a href="https://github.com/linkstackorg/linkstack/discussions">discussion forum</a></li>
+	<li>Request a feature and add it to the <a href="https://github.com/linkstackorg/linkstack/discussions/49">to-do list</a></li>
 	<li>Write us an <a href="mailto:info@littlelink-custom.com?subject=Inquiry%20about%20LittleLink%20Custom">email</a></li>
 </ul>
 
-<p>If you&#39;re having any trouble or encountered a bug, feel free to <a href="https://github.com/JulianPrieber/littlelink-custom/issues">open an issue on GitHub</a>.</p>
+<p>If you&#39;re having any trouble or encountered a bug, feel free to <a href="https://github.com/linkstackorg/linkstack/issues">open an issue on GitHub</a>.</p>
 
 <p>&nbsp;</p>
 ',

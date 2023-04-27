@@ -183,7 +183,7 @@ return [
     'buttons' => array(
       array(
         'button' => 'github',
-        'link' => 'https://github.com/JulianPrieber/littlelink-custom',
+        'link' => 'https://github.com/linkstackorg/linkstack',
         'title' => 'GitHub',
         'icon' => '',
         'custom_css' => ''

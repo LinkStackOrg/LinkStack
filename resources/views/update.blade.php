@@ -37,7 +37,7 @@
         <p><?php  if(file_exists(base_path("vbeta.json"))) {echo "Installed beta version= " . file_get_contents(base_path("vbeta.json"));} else {echo "Installed beta version= none";}  ?></p>
         <p><?php  if($Vgit > $Vlocal) {echo "You need to update to the latest mainline release";} else {echo "You're running the latest mainline release";}  ?></p>
         @else
-        <a target="_blank" href="https://github.com/JulianPrieber/littlelink-custom/releases"><code style="color:#222;transform:scale(.9);">{{$Vlocal}} -> {{$Vgit}}</code></a>
+        <a target="_blank" href="https://github.com/linkstackorg/linkstack/releases"><code style="color:#222;transform:scale(.9);">{{$Vlocal}} -> {{$Vgit}}</code></a>
         <h4 class="">You can update your installation automatically or download the update and install it manually:</h4>
         @endif
         <br><div class="row">
@@ -218,7 +218,7 @@ if($debug === true){
         @else
         <h4 class="">The update was successful, you can now return to the Admin Panel.</h4>
         <style>.noteslink:hover{color:#006fd5;text-shadow:0px 6px 7px rgba(23,10,6,0.66);}</style>
-        <a class="noteslink" href="https://github.com/JulianPrieber/littlelink-custom/releases/latest" target="_blank"><i class="fa-solid fa-up-right-from-square"></i> View the release notes</a>
+        <a class="noteslink" href="https://github.com/linkstackorg/linkstack/releases/latest" target="_blank"><i class="fa-solid fa-up-right-from-square"></i> View the release notes</a>
         <br>
         @endif
         <br><div class="row">
