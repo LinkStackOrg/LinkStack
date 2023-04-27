@@ -58,7 +58,7 @@ $url2 = getUrlSatusCode($actual_link . '/../../database/database.sqlite');
         <h2 class="mb-4"><i class="bi bi-braces-asterisk"> Debugging information</i></h2>
 
         @if($url1 == '200' or $url2 == '200')
-        <a href="https://docs.littlelink-custom.com/d/installation-requirements/" target="_blank"><h4 style="color:tomato;">Your security is at risk. Some files can be accessed by everyone. Immediate action is required! <br> Click this message to learn more.</h4></a>
+        <a href="https://docs.linkstack.org/d/installation-requirements/" target="_blank"><h4 style="color:tomato;">Your security is at risk. Some files can be accessed by everyone. Immediate action is required! <br> Click this message to learn more.</h4></a>
         @endif
 
         <h3 class="mb-4">Write access</h3>

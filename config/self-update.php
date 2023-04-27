@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 
 if (env('JOIN_BETA') == true) {
-    $userver = 'https://beta.littlelink-custom.com/';
+    $userver = 'https://beta.linkstack.org/';
 } else {
-    $userver = 'https://updates.littlelink-custom.com/';
+    $userver = 'https://updates.linkstack.org/';
 }
 
 return [

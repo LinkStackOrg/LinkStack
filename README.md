@@ -245,7 +245,7 @@ You can support LinkStack [here](https://linkstack.org/sponsor).
 Thank you for improving LinkStack!
 
 <p>
-  <a href="https://github.com/linkstackorg/linkstack/graphs/contributors"><img src="https://update.littlelink-custom.com/components/contributors/" alt="Contributors" width="600" ></a>
+  <a href="https://github.com/linkstackorg/linkstack/graphs/contributors"><img src="https://update.linkstack.org/components/contributors/" alt="Contributors" width="600" ></a>
 </p>
 
 <br>
@@ -255,7 +255,7 @@ Thank you for improving LinkStack!
 Thank you for all your efforts!
 
 <p>
-  <a href="https://linkstack.org/beta-tester"><img src="https://update.littlelink-custom.com/components/beta-testers/" alt="Contributors" width="600" ></a>
+  <a href="https://linkstack.org/beta-tester"><img src="https://update.linkstack.org/components/beta-testers/" alt="Contributors" width="600" ></a>
 </p>
 
 [Become a beta tester](https://linkstack.org/beta-tester)

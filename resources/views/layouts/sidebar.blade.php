@@ -390,7 +390,7 @@ $usrhandl = Auth::user()->littlelink_name;
                                 <?php // Requests newest version from server and sets it as variable
               
                                 try{
-                                $Vgit = external_file_get_contents("https://version.littlelink-custom.com/"); 
+                                $Vgit = external_file_get_contents("https://version.linkstack.org/"); 
               
                              // Requests current version from the local version file and sets it as variable
                                 $Vlocal = file_get_contents(base_path("version.json"));
@@ -432,7 +432,7 @@ $usrhandl = Auth::user()->littlelink_name;
                                         <tbody>
                                           <tr>
                                             <td><center><span class="badge rounded-pill bg-primary"><?php  if(file_exists(base_path("vbeta.json"))) {echo file_get_contents(base_path("vbeta.json"));} else {echo "none";}  ?></span></center></td>
-                                            <td><center><span class="badge rounded-pill bg-primary"><?php echo external_file_get_contents("https://update.littlelink-custom.com/beta/vbeta.json"); ?></span></center></td>
+                                            <td><center><span class="badge rounded-pill bg-primary"><?php echo external_file_get_contents("https://update.linkstack.org/beta/vbeta.json"); ?></span></center></td>
                                           </tr>
                                         </tbody>
                                       </table>
