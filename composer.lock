@@ -4,36 +4,36 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "de306ea4b0ef30dbfc8a98fce61d3713",
+    "content-hash": "21dcf80742778807e2dd6bc32d069575",
     "packages": [
         {
             "name": "awssat/laravel-visits",
-            "version": "4.1.0",
+            "version": "5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/awssat/laravel-visits.git",
-                "reference": "60174841ee2ef1cdd1117c9b65e31aac0392172a"
+                "reference": "a334b15aceff8319c3f51d55ab84c9b49ac7dfa4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/awssat/laravel-visits/zipball/60174841ee2ef1cdd1117c9b65e31aac0392172a",
-                "reference": "60174841ee2ef1cdd1117c9b65e31aac0392172a",
+                "url": "https://api.github.com/repos/awssat/laravel-visits/zipball/a334b15aceff8319c3f51d55ab84c9b49ac7dfa4",
+                "reference": "a334b15aceff8319c3f51d55ab84c9b49ac7dfa4",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "~5.5.0 || ~5.6.0 || ~5.7.0 || ~5.8.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "illuminate/support": "~5.5.0 || ~5.6.0 || ~5.7.0 || ~5.8.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0",
                 "jaybizzle/crawler-detect": "^1.2",
-                "php": "^7.3 || ^8.0",
+                "php": "^8.0",
                 "spatie/laravel-referer": "^1.6",
                 "torann/geoip": "^1.0|^3.0"
             },
             "require-dev": {
                 "doctrine/dbal": "^2.6|^3.0",
-                "illuminate/support": "~5.5.0 || ~5.6.0 || ~5.7.0 || ~5.8.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "illuminate/support": "~5.5.0 || ~5.6.0 || ~5.7.0 || ~5.8.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0",
                 "mockery/mockery": "^1.4 || ^2.0",
-                "orchestra/testbench": "^3.5 || ^3.6 || ^3.7 || ^3.8 || ^4.0 || ^5.0 || ^6.0 || ^7.0",
+                "orchestra/testbench": "^3.5 || ^3.6 || ^3.7 || ^3.8 || ^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0",
                 "phpunit/phpunit": "^9.0",
-                "predis/predis": "^1.1"
+                "predis/predis": "^1.1|^2.1"
             },
             "suggest": {
                 "ext-redis": "Needed if you are using redis as engine data of laravel-visits",
@@ -89,9 +89,9 @@
             ],
             "support": {
                 "issues": "https://github.com/awssat/laravel-visits/issues",
-                "source": "https://github.com/awssat/laravel-visits/tree/4.1.0"
+                "source": "https://github.com/awssat/laravel-visits/tree/5.0.0"
             },
-            "time": "2022-12-03T01:59:25+00:00"
+            "time": "2023-03-02T05:46:22+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
