@@ -43,7 +43,7 @@
                                   {!! $links ?? ''->links() !!}
                             </ul>
                 
-                <a class="btn btn-primary" href="{{ url('/panel/users/all') }}"><i class="bi bi-arrow-left-short"></i> Back</a>
+                <a class="btn btn-primary" href="{{ url('/admin/users/all') }}"><i class="bi bi-arrow-left-short"></i> Back</a>
                 
                           </div>
                 </section>
