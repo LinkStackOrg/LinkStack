@@ -20,7 +20,7 @@
         <h1>Updater</h1>
         @if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
         @if(env('JOIN_BETA') === true)
-        <p><?php echo "latest beta version= " . external_file_get_contents("https://update.linkstack.org/beta/vbeta.json"); ?></p>
+        <p><?php echo "latest beta version= " . external_file_get_contents("https://beta.linkstack.org/vbeta.json"); ?></p>
         <p><?php  if(file_exists(base_path("vbeta.json"))) {echo "Installed beta version= " . file_get_contents(base_path("vbeta.json"));} else {echo "Installed beta version= none";}  ?></p>
         <p><?php  if($Vgit > $Vlocal) {echo "You need to update to the latest mainline release";} else {echo "You're running the latest mainline release";}  ?></p>
         @else
@@ -33,7 +33,7 @@
         </div>
         @else
         @if(env('JOIN_BETA') === true)
-        <p><?php echo "latest beta version= " . external_file_get_contents("https://update.linkstack.org/beta/vbeta.json"); ?></p>
+        <p><?php echo "latest beta version= " . external_file_get_contents("https://beta.linkstack.org/vbeta.json"); ?></p>
         <p><?php  if(file_exists(base_path("vbeta.json"))) {echo "Installed beta version= " . file_get_contents(base_path("vbeta.json"));} else {echo "Installed beta version= none";}  ?></p>
         <p><?php  if($Vgit > $Vlocal) {echo "You need to update to the latest mainline release";} else {echo "You're running the latest mainline release";}  ?></p>
         @else
@@ -212,7 +212,7 @@ if($debug === true){
         </div>
         <h1>Success!</h1>
         @if(env('JOIN_BETA') === true)
-        <p><?php echo "latest beta version= " . external_file_get_contents("https://update.linkstack.org/beta/vbeta.json"); ?></p>
+        <p><?php echo "latest beta version= " . external_file_get_contents("https://beta.linkstack.org/vbeta.json"); ?></p>
         <p><?php  if(file_exists(base_path("vbeta.json"))) {echo "Installed beta version= " . file_get_contents(base_path("vbeta.json"));} else {echo "Installed beta version= none";}  ?></p>
         <p><?php  if($Vgit > $Vlocal) {echo "You need to update to the latest mainline release";} else {echo "You're running the latest mainline release";}  ?></p>
         @else
