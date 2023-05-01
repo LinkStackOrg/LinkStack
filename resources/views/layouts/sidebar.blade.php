@@ -325,7 +325,7 @@ $usrhandl = Auth::user()->littlelink_name;
                       @php $sDomains = str_replace(' ', '', env('SUPPORTED_DOMAINS')); $sDomains = explode(',', $sDomains); @endphp
                         @foreach ($sDomains as $myvar)
                             <li>
-                                <a class="dropdown-item share-button" style="cursor:pointer!important;" data-share="{{'https://'.$myvar}}">
+                                <a class="dropdown-item share-button" style="cursor:pointer!important;" data-share="{{'https://'.$myvar.'/@'.Auth::user()->littlelink_name}}">
                                     <i class="bi bi-files"></i> {{ $myvar }}
                                 </a>
                             </li>
