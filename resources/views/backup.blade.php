@@ -9,7 +9,7 @@
 <?php //landing page ?>
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('assets/linkstack/images/just-gear.svg') }}" alt="Logo">
+           <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
            <div class="logo-centered">l</div>
         </div>
         <h1>Backup</h1>
@@ -28,8 +28,7 @@
 <meta http-equiv="refresh" content="2; URL={{url()->current()}}/?backups" />
 @endpush
         <div class="logo-container fadein">
-           <img class="logo-img loading" src="{{ asset('assets/linkstack/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+         <img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
         </div>
         <h1 class="loadingtxt">Creating backup</h1>
 @endif
@@ -50,8 +49,7 @@ exit(); ?>
       <?php //after successfully updating ?>
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('assets/linkstack/images/just-gear.svg') }}" alt="Logo">
-           <div class="logo-centered">l</div>
+           <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
         <h1>Success!</h1>
         <h4 class="">The backup was successful, you can now return to the Admin Panel or see all your backups.</h4>
