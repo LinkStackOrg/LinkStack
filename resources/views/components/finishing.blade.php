@@ -151,6 +151,50 @@ use App\Models\Page;
         ]);
     } catch (exception $e) {}
 
+
+ // Moves all previous images to the new path
+if (File::isDirectory(base_path('assets/img'))) {
+    $files = File::files(base_path('img'));
+    foreach ($files as $file) {
+        $filename = $file->getFilename();
+        $destination = base_path('assets/img/' . $filename);
+        if (!File::exists($destination)) {
+            if (!$file->isDir()) {
+                File::move($file, $destination);}}}}
+if (File::isDirectory(base_path('assets/img/background-img'))) {
+    $files = File::files(base_path('img/background-img'));
+    foreach ($files as $file) {
+        $filename = $file->getFilename();
+        $destination = base_path('assets/img/background-img/' . $filename);
+        if (!File::exists($destination)) {
+            if (!$file->isDir()) {
+                File::move($file, $destination);}}}}
+if (File::isDirectory(base_path('littlelink/images'))) {
+    $files = File::files(base_path('littlelink/images'));
+    foreach ($files as $file) {
+        $filename = $file->getFilename();
+        $destination = base_path('assets/linkstack/images/' . $filename);
+        if (!File::exists($destination)) {
+            if (!$file->isDir()) {
+                File::move($file, $destination);}}}}
+if (File::isDirectory(base_path('littlelink/images'))) {
+    $files = File::files(base_path('littlelink/images'));
+    foreach ($files as $file) {
+        $filename = $file->getFilename();
+        $destination = base_path('assets/linkstack/images/' . $filename);
+        if (!File::exists($destination)) {
+            if (!$file->isDir()) {
+                File::move($file, $destination);}}}}
+if (File::isDirectory(base_path('studio/favicon/icons'))) {
+    $files = File::files(base_path('studio/favicon/icons'));
+    foreach ($files as $file) {
+        $filename = $file->getFilename();
+        $destination = base_path('assets/favicon/icons/' . $filename);
+        if (!File::exists($destination)) {
+            if (!$file->isDir()) {
+                File::move($file, $destination);}}}}
+
+    
     // Changes saved profile images from littlelink_name to IDs.
     // This runs every time the updater runs.
     // Not sure if this will cause any issues.
