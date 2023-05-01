@@ -84,7 +84,7 @@ use App\Models\Page;
             } else {EnvEditor::addKey('FORCE_HTTPS', 'false');}
 
             $data['page'] = Page::select('contact')->first();
-            if (strpos($data['page']->contact, 'info@linkstack.org') !== false) {
+            if (strpos($data['page']->contact, 'info@littlelink-custom.com') !== false or strpos($data['page']->contact, 'LittleLink Custom') !== false) {
             $contact = '
             <p><strong><a href="https://linkstack.org/">LinkStack</a></strong> is a free, open source&nbsp;link&nbsp;sharing platform. We depend on community feedback to steadily improve this project.</p>
             
@@ -94,7 +94,7 @@ use App\Models\Page;
             	<li>Join our <a href="https://discord.linkstack.org/">community Discord</a></li>
             	<li>Join the <a href="https://github.com/linkstackorg/linkstack/discussions">discussion forum</a></li>
             	<li>Request a feature and add it to the <a href="https://github.com/linkstackorg/linkstack/discussions/49">to-do list</a></li>
-            	<li>Write us an <a href="mailto:info@linkstack.org?subject=Inquiry%20about%20LittleLink%20Custom">email</a></li>
+            	<li>Write us an <a href="mailto:info@linkstack.org?subject=Inquiry%20about%20LinkStack">email</a></li>
             </ul>
             
             <p>If you&#39;re having any trouble or encountered a bug, feel free to <a href="https://github.com/linkstackorg/linkstack/issues">open an issue on GitHub</a>.</p>
