@@ -339,7 +339,7 @@ class PageSeeder extends Seeder
 	<li>Join our <a href="https://discord.linkstack.org/">community Discord</a></li>
 	<li>Join the <a href="https://github.com/linkstackorg/linkstack/discussions">discussion forum</a></li>
 	<li>Request a feature and add it to the <a href="https://github.com/linkstackorg/linkstack/discussions/49">to-do list</a></li>
-	<li>Write us an <a href="mailto:info@linkstack.org?subject=Inquiry%20about%20LittleLink%20Custom">email</a></li>
+	<li>Write us an <a href="mailto:info@linkstack.org?subject=Inquiry%20about%20LinkStack">email</a></li>
 </ul>
 
 <p>If you&#39;re having any trouble or encountered a bug, feel free to <a href="https://github.com/linkstackorg/linkstack/issues">open an issue on GitHub</a>.</p>
@@ -351,7 +351,7 @@ class PageSeeder extends Seeder
 <p><strong><a href="https://linkstack.org/">LinkStack</a></strong> allows you to create a <strong>personal profile page</strong>. Many <strong>social media</strong> platforms <strong>only allow for one link</strong>. With this, you can have <strong>all the links you want</strong> clickable on one site. Set up your personal site <strong>on your own server</strong> in a few clicks.</p>
 ',
 
-                'register' => 'true',
+                'register' => null,
             ]
          ];
 
