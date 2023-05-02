@@ -321,7 +321,7 @@ $usrhandl = Auth::user()->littlelink_name;
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonSM">
                       <li><h6 class="dropdown-header">Share your profile:</h6></li>
-                      @if(env('SUPPORTED_DOMAINS') !== '')
+                      @if(env('SUPPORTED_DOMAINS') !== '' and env('SUPPORTED_DOMAINS') !== null)
                       @php $sDomains = str_replace(' ', '', env('SUPPORTED_DOMAINS')); $sDomains = explode(',', $sDomains); @endphp
                         @foreach ($sDomains as $myvar)
                             <li>
