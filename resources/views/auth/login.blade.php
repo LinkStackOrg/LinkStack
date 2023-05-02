@@ -107,9 +107,11 @@ foreach($pages as $page)
                 @else
                 <br>
                 @endif
+                @if ((env('ALLOW_REGISTRATION')) and !config('linkstack.single_user_mode'))
                 <p class="mt-3 text-center">
                   Don’t have an account? <a href="{{ route('register') }}" class="text-underline">Click here to sign up.</a>
                 </p>
+                @endif
               </form>
             </div>
           </div>          
