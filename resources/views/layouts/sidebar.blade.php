@@ -331,7 +331,7 @@ $usrhandl = Auth::user()->littlelink_name;
                             </li>
                         @endforeach         
                       @else
-                      <li><a class="dropdown-item share-button" style="cursor:pointer!important;" data-share="{{url('')}}"><i class="bi bi-files"></i> {{ str_replace(['http://', 'https://'], '', url('')) }}                      </a></li>
+                      <li><a class="dropdown-item share-button" style="cursor:pointer!important;" data-share="{{url('').'/@'.Auth::user()->littlelink_name}}"><i class="bi bi-files"></i> {{ str_replace(['http://', 'https://'], '', url('')) }}                      </a></li>
                       @endif
                       <li><hr class="dropdown-divider"></li>
                       <li><a class="dropdown-item" data-bs-toggle="modal" style="cursor:pointer!important;" data-bs-target="#staticBackdrop"><i class="bi bi-qr-code-scan"></i> QR Code</a></li>
