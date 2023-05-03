@@ -153,7 +153,7 @@ use App\Models\Page;
 
 
  // Moves all previous images to the new path
-if (is_dir(base_path('assets/img'))) {
+try{if (is_dir(base_path('assets/img'))) {
     $files = File::files(base_path('img'));
     foreach ($files as $file) {
         $filename = $file->getFilename();
@@ -161,7 +161,8 @@ if (is_dir(base_path('assets/img'))) {
         if (!File::exists($destination)) {
             if (!$file->isDir()) {
                 File::move($file, $destination);}}}}
-if (is_dir(base_path('assets/img/background-img'))) {
+            }catch(exception $e) {}
+try{if (is_dir(base_path('assets/img/background-img'))) {
     $files = File::files(base_path('img/background-img'));
     foreach ($files as $file) {
         $filename = $file->getFilename();
@@ -169,7 +170,8 @@ if (is_dir(base_path('assets/img/background-img'))) {
         if (!File::exists($destination)) {
             if (!$file->isDir()) {
                 File::move($file, $destination);}}}}
-if (is_dir(base_path('littlelink/images'))) {
+            }catch(exception $e) {}
+try{if (is_dir(base_path('littlelink/images'))) {
     $files = File::files(base_path('littlelink/images'));
     foreach ($files as $file) {
         $filename = $file->getFilename();
@@ -177,7 +179,8 @@ if (is_dir(base_path('littlelink/images'))) {
         if (!File::exists($destination)) {
             if (!$file->isDir()) {
                 File::move($file, $destination);}}}}
-if (is_dir(base_path('littlelink/images'))) {
+            }catch(exception $e) {}
+try{if (is_dir(base_path('littlelink/images'))) {
     $files = File::files(base_path('littlelink/images'));
     foreach ($files as $file) {
         $filename = $file->getFilename();
@@ -185,7 +188,8 @@ if (is_dir(base_path('littlelink/images'))) {
         if (!File::exists($destination)) {
             if (!$file->isDir()) {
                 File::move($file, $destination);}}}}
-if (is_dir(base_path('studio/favicon/icons'))) {
+            }catch(exception $e) {}
+try{if (is_dir(base_path('studio/favicon/icons'))) {
     $files = File::files(base_path('studio/favicon/icons'));
     foreach ($files as $file) {
         $filename = $file->getFilename();
@@ -193,6 +197,7 @@ if (is_dir(base_path('studio/favicon/icons'))) {
         if (!File::exists($destination)) {
             if (!$file->isDir()) {
                 File::move($file, $destination);}}}}
+            }catch(exception $e) {}
 
     
     // Changes saved profile images from littlelink_name to IDs.
