@@ -16,9 +16,10 @@ class UpdateColumnsToTextType extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->text('littlelink_description')->change();
         });
-        
+
         Schema::table('links', function (Blueprint $table) {
             $table->text('title')->change();
+            $table->text('links')->nullable();
         });
     }
 
@@ -35,6 +36,7 @@ class UpdateColumnsToTextType extends Migration
 
         Schema::table('links', function (Blueprint $table) {
             $table->string('title', 255)->change();
+            $table->dropColumn('links');
         });
     }
 }
