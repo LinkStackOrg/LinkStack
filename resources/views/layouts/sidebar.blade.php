@@ -101,7 +101,7 @@ $usrhandl = Auth::user()->littlelink_name;
                 </div>
                 <!--logo End-->
                 
-                <h4 class="logo-title">LinkStack</h4>
+                <h4 class="logo-title">{{env('APP_NAME')}}</h4>
             </a>
             <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
                 <i class="icon">
