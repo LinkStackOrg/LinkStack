@@ -19,7 +19,7 @@ class UpdateColumnsToTextType extends Migration
 
         Schema::table('links', function (Blueprint $table) {
             $table->text('title')->change();
-            $table->text('links')->change();
+            $table->text('link')->change();
         });
     }
 
@@ -36,7 +36,7 @@ class UpdateColumnsToTextType extends Migration
 
         Schema::table('links', function (Blueprint $table) {
             $table->string('title', 255)->change();
-            $table->dropColumn('links', 255)->change();
+            $table->dropColumn('link', 255)->change();
         });
     }
 }
