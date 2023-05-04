@@ -25,13 +25,16 @@ EOD;;
 
 return [
 
+// Do not change!
+'version' => '2.0',
+
     /*
     |--------------------------------------------------------------------------
     | Default source repository type
     |--------------------------------------------------------------------------
     |
     | Will only be active if "CUSTOM_META_TAGS" is set to "true" in the config.
-    | These tags will only be applied to the home page or if a LittleLink page 
+    | These tags will only be applied to the home page or if a LinkStack page 
     | is set as the homepage in the config (for example: HOME_URL="admin").
     | 
     | Empty entries will be ignored.
@@ -39,8 +42,8 @@ return [
     */
 
     'lang'            => 'en', // Sets <html lang="en">
-    'title'           => '', // Overrides the default meta page title. Leave empty to use your LittleLink page title as the title.
-    'description'     => '', // Overrides the default meta page description. Leave empty to use your LittleLink page description as the description.
+    'title'           => '', // Overrides the default meta page title. Leave empty to use your LinkStack page title as the title.
+    'description'     => '', // Overrides the default meta page description. Leave empty to use your LinkStack page description as the description.
     'robots'          => 'index,follow',
     'viewport'        => 'width=device-width, initial-scale=1',
     'canonical_url'   => '', // Tells search engines to index "https://example.com/"  instead of "https://example.com/@admin",  for example.
@@ -62,16 +65,11 @@ return [
     |
     */
 
-
-    // Overwrites default theme regardless of preference defined by the operating system.
-    'theme' => '', // Either "dark" or "light".
-
-
-    // Overwrites default page title after the LittleLink name on LittleLink pages.
+    // Overwrites default page title after the LinkStack name on LinkStack pages.
     // Example: "admin 🔗 LinkStack"
-    //                 ⤌------------------⤍
+    //                 ⤌----------⤍
     //                 ⬑ What you can change with this setting.
-    'littlelink_title' => '',
+    'linkstack_title' => '',
 
 
     // Either "true", "false" or "auth". 
@@ -103,10 +101,10 @@ return [
     'disable_home_page' => 'false', // Either 'true', 'false' or 'redirect'.
     'redirect_home_page' => 'https://linkstack.org', // Only active if value above is set to 'redirect'.
 
-    // The URL prefix is the symbol that comes before a LittleLink URL.
+    // The URL prefix is the symbol that comes before a LinkStack URL.
     // For example the '@' in 'example.com/@admin'.
     // If empty no prefix is required.
-    'custom_url_prefix' => '+', // The '@' prefix will always work regardless of this setting.
+    'custom_url_prefix' => '+',
     
     /*
     |--------------------------------------------------------------------------
@@ -135,7 +133,6 @@ return [
 
 
     // Apply a theme to your Home Page.
-    // Some themes are not compatible with the Home Page. Use at your own discretion.
     // Enter the name of a theme located in your "themes" folder (for example, 'galaxy').
     'home_theme' => 'default', // Leave empty or enter 'default' to use the default theme.
 
@@ -178,7 +175,7 @@ return [
     |
     */
 
-    'use_custom_buttons'  => 'true', // Set this to false if you wish to display the old buttons.
+    'use_custom_buttons'  => 'true', // Set this to false if you wish to display the default dummy buttons.
 
     'buttons' => array(
       array(
@@ -253,16 +250,5 @@ return [
     | 'button' => 'space'            |
     |--------------------------------|
     */
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Extra Settings
-    |--------------------------------------------------------------------------
-    |
-    */
-
-    // Should only be used in a local testing environment
-    'disable_default_password_notice' => 'false', // Either "true" or "false".
 
 ];
