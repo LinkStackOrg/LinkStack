@@ -52,7 +52,7 @@ use App\Models\Page;
             if(EnvEditor::keyExists('MANUAL_USER_VERIFICATION')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('MANUAL_USER_VERIFICATION', 'false');}
 
-            if(env('APP_NAME') == 'LinkStack' or env('APP_NAME') == 'LittleLink') {
+            if(env('APP_NAME') == 'LittleLink Custom' or env('APP_NAME') == 'LittleLink') {
                 EnvEditor::editKey('APP_NAME', 'LinkStack');
             }
 
