@@ -28,7 +28,7 @@ class PageSeeder extends Seeder
 
 <p><strong><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAAAFiS0dEAf8CLd4AAAAEZ0lGZwAAAAp8We1TAAAADGNtUFBKQ21wMDcxMgAAAAdPbbelAAAACklEQVQY02NgAAAAAgABmGNs1wAAAABJRU5ErkJggg==" style="height:1px; width:1px" /></strong><strong>2.&nbsp;INTELLECTUAL PROPERTY RIGHTS</strong></p>
 
-<p>LinkStack is licensed under the GNU General Public License v3.0. For third party licenses please refer to the full license document found <a href="https://raw.githubusercontent.com/JulianPrieber/littlelink-custom/main/LICENSE">here</a>.</p>
+<p><a href="https://linkstack.org/">LinkStack</a> is licensed under the GNU Affero General Public License v3.0.</p>
 
 <p><strong><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAAAFiS0dEAf8CLd4AAAAEZ0lGZwAAAAp8We1TAAAADGNtUFBKQ21wMDcxMgAAAAdPbbelAAAACklEQVQY02NgAAAAAgABmGNs1wAAAABJRU5ErkJggg==" style="height:1px; width:1px" /></strong><strong>3.&nbsp;USER REPRESENTATIONS</strong></p>
 
@@ -348,7 +348,7 @@ class PageSeeder extends Seeder
 ',
 
                 'home_message' => '
-<p><strong><a href="https://linkstack.org/">LinkStack</a></strong> allows you to create a <strong>personal profile page</strong>. Many <strong>social media</strong> platforms <strong>only allow for one link</strong>. With this, you can have <strong>all the links you want</strong> clickable on one site. Set up your personal site <strong>on your own server</strong> in a few clicks.</p>
+<p>Take control of your online presence with&nbsp;<a href="https://linkstack.org/"><strong>LinkStack</strong></a> the privacy-focused, open-source <strong>link management platform</strong>. Create a customizable profile page to manage <strong>all your important links in one convenient location</strong> and give your audience a seamless browsing experience.</p>
 ',
 
                 'register' => null,
