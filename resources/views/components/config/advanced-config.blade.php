@@ -8,7 +8,7 @@ Home Page, links, titles, Google Analytics and meta tags.</p>
             <div id="editor" style="width:100%; height:<?php echo count(file('config/advanced-config.php')) * 24 + 15;?>px; background-color:transparent !important;" class="form-control border-1 border-light" name="AdvancedConfig" rows="280">{{ file_get_contents('config/advanced-config.php') }}</div>
           </div>
           <button type="submit" class="btn btn-primary">Save</button>
-          <a class="btn btn-danger confirmation" href="{{url('/panel/advanced-config?restore-defaults')}}">Restore defaults</a>
+          <a class="btn btn-danger confirmation" href="{{url('/admin/advanced-config?restore-defaults')}}">Restore defaults</a>
           <script type="text/javascript">
               var elems = document.getElementsByClassName('confirmation');
               var confirmIt = function (e) {
