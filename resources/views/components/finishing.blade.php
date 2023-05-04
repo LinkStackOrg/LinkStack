@@ -104,6 +104,15 @@ use App\Models\Page;
             Page::first()->update(['contact' => $contact]);
             }
 
+
+            $data['page'] = Page::select('home_message')->first();
+            if (strpos($data['page']->home_message, 'LittleLink Custom') !== false) {
+            $home_message = '
+            <p>Take control of your online presence with&nbsp;<a href="https://linkstack.org/"><strong>LinkStack</strong></a> the privacy-focused, open-source <strong>link management platform</strong>. Create a customizable profile page to manage <strong>all your important links in one convenient location</strong> and give your audience a seamless browsing experience.</p>
+            ';
+            Page::first()->update(['home_message' => $home_message]);
+            }
+
             /* Updates button database entries */ 
             Schema::disableForeignKeyConstraints();
             try {Artisan::call('migrate', ['--force' => true]);} catch (exception $e) {}
