@@ -29,8 +29,8 @@ return $path;}
 
 @include('layouts.analytics')
 
-  @if(config('advanced-config.littlelink_title') != '' and env('HOME_URL') === '')
-  <title>{{ $userinfo->name }} {{ config('advanced-config.littlelink_title') }}</title>
+  @if(config('advanced-config.linkstack_title') != '' and env('HOME_URL') === '')
+  <title>{{ $userinfo->name }} {{ config('advanced-config.linkstack_title') }}</title>
   @elseif(env('CUSTOM_META_TAGS') == 'true' and config('advanced-config.title') != '')
   <title>{{ config('advanced-config.title') }}</title>
   @elseif(env('HOME_URL') != '')
