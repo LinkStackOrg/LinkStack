@@ -201,62 +201,54 @@ return [
       ),
     ),
 
-/*
-|--------------------------------|
-| List of Available buttons:     |
-|--------------------------------|
-| 'button' => 'custom'           |
-| 'button' => 'custom_website'   |
-| 'button' => 'github'           |
-| 'button' => 'twitter'          |
-| 'button' => 'instagram'        |
-| 'button' => 'facebook'         |
-| 'button' => 'messenger'        |
-| 'button' => 'linkedin'         |
-| 'button' => 'youtube'          |
-| 'button' => 'discord'          |
-| 'button' => 'twitch'           |
-| 'button' => 'snapchat'         |
-| 'button' => 'spotify'          |
-| 'button' => 'reddit'           |
-| 'button' => 'medium'           |
-| 'button' => 'pinterest'        |
-| 'button' => 'soundcloud'       |
-| 'button' => 'figma'            |
-| 'button' => 'kit'              |
-| 'button' => 'telegram'         |
-| 'button' => 'tumblr'           |
-| 'button' => 'steam'            |
-| 'button' => 'vimeo'            |
-| 'button' => 'wordpress'        |
-| 'button' => 'goodreads'        |
-| 'button' => 'skoob'            |
-| 'button' => 'tiktok'           |
-| 'button' => 'default email'    |
-| 'button' => 'default email_alt'|
-| 'button' => 'bandcamp'         |
-| 'button' => 'patreon'          |
-| 'button' => 'signal'           |
-| 'button' => 'venmo'            |
-| 'button' => 'cashapp'          |
-| 'button' => 'gitlab'           |
-| 'button' => 'mastodon'         |
-| 'button' => 'paypal'           |
-| 'button' => 'whatsapp'         |
-| 'button' => 'xing'             |
-| 'button' => 'buy me a coffee'  |
-| 'button' => 'website'          |
-| 'button' => 'heading'          |
-| 'button' => 'space'            |
-| 'button' => 'behance'          |
-| 'button' => 'dribbble'         |
-| 'button' => 'behance'          |
-| 'button' => 'dribbble'         |
-| 'button' => 'behance'          |
-| 'button' => 'dribbble'         |
-| 'button' => 'behance'          |
-| 'button' => 'dribbble'         |
-|--------------------------------|
-*/
+    /*
+    |--------------------------------|
+    | List of Available buttons:     |
+    |--------------------------------|
+    | 'button' => 'custom'           |
+    | 'button' => 'custom_website'   |
+    | 'button' => 'github'           |
+    | 'button' => 'twitter'          |
+    | 'button' => 'instagram'        |
+    | 'button' => 'facebook'         |
+    | 'button' => 'messenger'        |
+    | 'button' => 'linkedin'         |
+    | 'button' => 'youtube'          |
+    | 'button' => 'discord'          |
+    | 'button' => 'twitch'           |
+    | 'button' => 'snapchat'         |
+    | 'button' => 'spotify'          |
+    | 'button' => 'reddit'           |
+    | 'button' => 'medium'           |
+    | 'button' => 'pinterest'        |
+    | 'button' => 'soundcloud'       |
+    | 'button' => 'figma'            |
+    | 'button' => 'kit'              |
+    | 'button' => 'telegram'         |
+    | 'button' => 'tumblr'           |
+    | 'button' => 'steam'            |
+    | 'button' => 'vimeo'            |
+    | 'button' => 'wordpress'        |
+    | 'button' => 'goodreads'        |
+    | 'button' => 'skoob'            |
+    | 'button' => 'tiktok'           |
+    | 'button' => 'default email'    |
+    | 'button' => 'default email_alt'|
+    | 'button' => 'bandcamp'         |
+    | 'button' => 'patreon'          |
+    | 'button' => 'signal'           |
+    | 'button' => 'venmo'            |
+    | 'button' => 'cashapp'          |
+    | 'button' => 'gitlab'           |
+    | 'button' => 'mastodon'         |
+    | 'button' => 'paypal'           |
+    | 'button' => 'whatsapp'         |
+    | 'button' => 'xing'             |
+    | 'button' => 'buy me a coffee'  |
+    | 'button' => 'website'          |
+    | 'button' => 'heading'          |
+    | 'button' => 'space'            |
+    |--------------------------------|
+    */
 
 ];
