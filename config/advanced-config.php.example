@@ -39,7 +39,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Will only be active if "CUSTOM_META_TAGS" is set to "true" in the config.
-    | These tags will only be applied to the home page or if a LittleLink page 
+    | These tags will only be applied to the home page or if a LinkStack page 
     | is set as the homepage in the config (for example: HOME_URL="admin").
     | 
     | Empty entries will be ignored.
@@ -47,8 +47,8 @@ return [
     */
 
     'lang'            => 'en', // Sets <html lang="en">
-    'title'           => 'Title', // Overrides the default meta page title. Leave empty to use your LittleLink page title as the title.
-    'description'     => 'This is a description', // Overrides the default meta page description. Leave empty to use your LittleLink page description as the description.
+    'title'           => 'Title', // Overrides the default meta page title. Leave empty to use your LinkStack page title as the title.
+    'description'     => 'This is a description', // Overrides the default meta page description. Leave empty to use your LinkStack page description as the description.
     'robots'          => 'index,follow',
     'viewport'        => 'width=device-width, initial-scale=1',
     'canonical_url'   => 'https://example.com', // Tells search engines to index "https://example.com/"  instead of "https://example.com/@admin",  for example.
@@ -76,11 +76,11 @@ return [
 
 
     // Overwrites default theme regardless of preference defined by the operating system, unless manually overwritten by user.
-    // Overwrites default page title after the LittleLink name on LittleLink pages.
+    // Overwrites default page title after the LinkStack name on LinkStack pages.
     // Example: "admin 🔗 LinkStack"
     //                 ⤌------------------⤍
     //                 ⬑ What you can change with this setting.
-    'littlelink_title' => '💡 Little CustomLink',
+    'littlelink_title' => '💡 LinkStack',
 
 
     // Either "true", "false" or "auth". 
@@ -112,7 +112,7 @@ return [
     'disable_home_page' => 'false', // Either 'true', 'false' or 'redirect'.
     'redirect_home_page' => 'https://linkstack.org', // Only active if value above is set to 'redirect'.
 
-    // The URL prefix is the symbol that comes before a LittleLink URL.
+    // The URL prefix is the symbol that comes before a LinkStack URL.
     // For example the '@' in 'example.com/@admin'.
     // If empty no prefix is required. Use with caution.
     'custom_url_prefix' => '✅', // The '@' prefix will always work regardless of this setting.
