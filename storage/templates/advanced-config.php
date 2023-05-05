@@ -96,11 +96,6 @@ return [
 
     'custom_home_url' => '/home', // Only applies if you set a "HOME_URL" in the config.
 
-    // If 'true' the Home Page will be disabled entirely.
-    // You will still be able to login on the login page etc.
-    'disable_home_page' => 'false', // Either 'true', 'false' or 'redirect'.
-    'redirect_home_page' => 'https://linkstack.org', // Only active if value above is set to 'redirect'.
-
     // The URL prefix is the symbol that comes before a LinkStack URL.
     // For example the '@' in 'example.com/@admin'.
     // If empty no prefix is required.
