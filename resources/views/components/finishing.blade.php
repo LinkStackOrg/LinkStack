@@ -69,6 +69,14 @@ use App\Models\Page;
                 } catch (Exception $e) {}
             }
 
+            try {
+                $file = base_path('storage/RSTAC');
+                if (file_exists($file)) {
+                    copy(base_path('storage/templates/advanced-config.php'), base_path('config/advanced-config.php'));
+                    unlink($file);
+                }
+            } catch (Exception $e) {}
+
             // Footer page customization
             if(EnvEditor::keyExists('DISPLAY_FOOTER_HOME')){} else {EnvEditor::addKey('DISPLAY_FOOTER_HOME', 'true');}
             if(EnvEditor::keyExists('DISPLAY_FOOTER_TERMS')){} else {EnvEditor::addKey('DISPLAY_FOOTER_TERMS', 'true');}
