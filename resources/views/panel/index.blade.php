@@ -108,7 +108,7 @@
                 <div class="row">
                     <div class="col-sm-12">  
 
-
+@if(auth()->user()->role == 'admin' && !config('linkstack.single_user_mode'))
         <!-- Section: Design Block -->
         <section class="mb-3 text-gray-800 text-center p-4 w-full">
             <div class='font-weight-bold text-left h3'>Site statistics:</div><br>
@@ -138,7 +138,6 @@
           </div>
        </div>       
        
-       @if(auth()->user()->role == 'admin' && !config('linkstack.single_user_mode'))
        <div class="col-lg-12">
         <div class="card   rounded">
            <div class="card-body">
