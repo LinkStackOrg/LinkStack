@@ -130,7 +130,7 @@
 	
     {"value": "JOIN_BETA",
     "title": "Join the Beta Program",
-    "description": "Enables the use of beta versions when updating. Read more about this <a target='_blank' href='https://s.llc.ovh/b'>here</a>."
+    "description": "Enables the use of beta versions when updating. Read more about this <a target='_blank' href='https://linkstack.org/b'>here</a>."
     },
         
     {"value": "SKIP_UPDATE_BACKUP",
@@ -160,7 +160,7 @@
         
     {"value": "ENABLE_SOCIAL_LOGIN",
     "title": "Enable social login",
-    "description": "Enables social login. This option requires further setup. Read more about this <a target='_blank' href='https://s.llc.ovh/social-login'>here</a>."
+    "description": "Enables social login. This option requires further setup. Read more about this <a target='_blank' href='https://linkstack.org/social-login'>here</a>."
     },
     
     {"value": "USE_THEME_PREVIEW_IFRAME",

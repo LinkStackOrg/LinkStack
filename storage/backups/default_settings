@@ -90,7 +90,7 @@ ALLOW_CUSTOM_CODE_IN_THEMES=true
 ENABLE_THEME_UPDATER=true
 
 #Needs to be configured first.
-#Read more at: https://s.llc.ovh/social-login
+#Read more at: https://linkstack.org/social-login
 ENABLE_SOCIAL_LOGIN=false
 
 #Sets if a plain PNG or iframe should be used for the theme preview image
