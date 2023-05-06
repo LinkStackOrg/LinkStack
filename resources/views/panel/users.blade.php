@@ -95,9 +95,9 @@
                                 <a href="{{ route('verifyUser', ['verify' => '-' . $user->email_verified_at, 'id' => $user->id] ) }}" class="text-danger">@if($user->email_verified_at == '')<span class="badge bg-danger">Pending</span>@else<span class="badge bg-success">Verified</span></a>@endif</td>
                                 @endif
                                 @endif
-                                <td>@if($user->find($user->id)->role == 'admin')<center>-</center>@else<a href="{{ route('blockUser', ['block' => $user->block, 'id' => $user->id] ) }}">@if($user->block == 'yes') <span class="badge bg-danger">Pending</span> @elseif($user->block == 'no') <span class="badge bg-success">Approved</span> @endif</a>@endif</td>
+                                <td>@if($user->find($user->id)->role == 'admin' and $user->id == 1)<center>-</center>@else<a href="{{ route('blockUser', ['block' => $user->block, 'id' => $user->id] ) }}">@if($user->block == 'yes') <span class="badge bg-danger">Pending</span> @elseif($user->block == 'no') <span class="badge bg-success">Approved</span> @endif</a>@endif</td>
                                 <td>
-                                  @if($user->find($user->id)->role == 'admin')<center>-</center>
+                                  @if($user->find($user->id)->role == 'admin' and $user->id == 1)<center>-</center>
                                   @else
                                   <div class="flex align-items-center list-user-action">
                                     <a class="btn btn-sm btn-icon btn-success" data-bs-toggle="tooltip" data-bs-placement="top" data-original-title="All links" href="{{ route('showLinksUser', $user->id ) }}" aria-label="All links" data-bs-original-title="All links">
