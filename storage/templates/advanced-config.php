@@ -106,26 +106,9 @@ return [
     | Home Page settings
     |--------------------------------------------------------------------------
     |
-    | To change footer text on the Home Page, set the setting 'footer' to your preference.
-    | 
-    | The footer text is the towards the bottom of the Home Page that reads: "and X other buttons ..."
-    | 
-    | Depending on the amount of buttons on your Home Page, you might want to change this text.
-    | 
-    | 'default' -> Uses default text.
-    | 'alt'  ->  Displays an alternative version based on the Button Editor.
-    | 'custom'  ->  Displays your custom text defined with 'custom_footer_text'.
-    | 'false'  ->  Removes the footer.
+    | Empty entries will be ignored.
     |
     */
-
-    'home_footer' => 'default', // Either 'default', 'alt', 'custom' or 'false'.
-
-    // You can enter plain text or HTML into this field.
-    // You can use "{year}" as a placeholder for the current year.
-    // So "©{year}" would output "©2033" (or whatever the current year is).
-    'custom_home_footer_text' => '© Copyright {year} - All Rights Reserved',
-
 
     // Apply a theme to your Home Page.
     // Enter the name of a theme located in your "themes" folder (for example, 'galaxy').
