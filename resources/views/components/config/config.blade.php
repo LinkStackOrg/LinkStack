@@ -351,7 +351,7 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 <input value="smtp" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
 <input value="smtp" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
 <h5 style="margin-top:50px">Use built in SMTP server</h5>
-<p class="text-muted">Uses SMTP server provided by LinkStack. Might not be 100% reliable. Some errors may occur.</p>
+<p class="text-muted">Uses SMTP server provided by LinkStack. Might not be 100% reliable. Has to be disabled in order to user a custom SMTP server.<br>(Save changes with 'Apply changes' below)</p>
 <div class="input-group">
 <div class="mb-3 form-check form-switch toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle-smtp" <?php if(EnvEditor::getKey('MAIL_MAILER') != 'built-in'){echo '/>';}else{echo 'checked>';} ?> <label for="toggle-smtp" class="form-check-label">Enable</label></div>
 </div></div>
