@@ -10,63 +10,19 @@
             <div class="card-body">
                <div class="row">
                    <div class="col-sm-12">  
-  
+
                     @foreach($pages as $page)
 
                     <section class='text-gray-400'>
                     <h3 class="mb-4 card-header"><i class="bi bi-brush"> Select a theme</i></h3>
                     <div>
                     
+                        <button type="button" class="btn btn-primary mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Select theme
+                        </button>
+
                     <section class="text-gray-400"></section>
                     <div>
-                    <form action="{{ route('editTheme') }}" enctype="multipart/form-data" method="post">
-                        @csrf
-                    
-                        <div class="form-group row">
-                    
-                            <div class="col-8 col-md-4">
-                                <select id="theme-select" style="margin-left: 15px; margin-bottom: 20px;" class="form-control" name="theme" data-base-url="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>">
-                                    <?php
-                                        if ($handle = opendir('themes')) {
-                                            while (false !== ($entry = readdir($handle))) {
-                                                if ($entry != "." && $entry != "..") {
-                                                    if(file_exists(base_path('themes') . '/' . $entry . '/readme.md')){
-                                                        $text = file_get_contents(base_path('themes') . '/' . $entry . '/readme.md');
-                                                        $pattern = '/Theme Name:.*/';
-                                                        preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
-                                                        if(sizeof($matches) > 0) {
-                                                            $themeName = substr($matches[0][0],12);
-                                                        }
-                                                    }
-                                                    if($page->theme != $entry and isset($themeName)){
-                                                        echo '<option value="'.$entry.'" data-image="'.url('themes/'.$entry.'/screenshot.png').'">'.$themeName.'</option>';
-                                                    }
-                                                }
-                                            }
-                                        }
-                            
-                                        if($page->theme != "default" and $page->theme != ""){
-                                            if(file_exists(base_path('themes') . '/' . $page->theme . '/readme.md')){
-                                                $text = file_get_contents(base_path('themes') . '/' . $page->theme . '/readme.md');
-                                                $pattern = '/Theme Name:.*/';
-                                                preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
-                                                $themeName = substr($matches[0][0],12);
-                                            }
-                                            echo '<option value="'.$page->theme.'" data-image="'.url('themes/'.$page->theme.'/screenshot.png').'" selected>'.$themeName.'</option>';
-                                        }
-                            
-                                        echo '<option value="default" data-image="'.url('themes/default/screenshot.png').'"';
-                                        if($page->theme == "default" or $page->theme == ""){
-                                            echo ' selected';
-                                        }
-                                        echo '>Default</option>';
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="col">
-                                <button type="submit" class="btn btn-primary">Apply</button>
-                            </div>
-                        </div>
 
                         <div style="max-width:1000px" class="col-md-12">
                             <div class="card rounded shadow-lg bg-light aos-init aos-animate" data-aos="fade-up" data-aos-delay="800">
@@ -84,9 +40,6 @@
                               </div>
                             </div>
                           </div>
-                          
-                    </form>
-                    </details>
   
                    </div>
                </div>
@@ -213,5 +166,78 @@ $(window).on('load', function() {
 });
 </script>
 <script type="text/javascript">$("iframe").load(function() { $("iframe").contents().find("a").each(function(index) { $(this).on("click", function(event) { event.preventDefault(); event.stopPropagation(); }); }); });</script>
+
+@push('sidebar-scripts')
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Select a theme</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form action="{{ route('editTheme') }}" enctype="multipart/form-data" method="post">
+                @csrf
+                <select id="theme-select" style="display:none;" name="theme" data-base-url="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>"><option value="default" selected></option></select>
+                <div class="row">
+                                    <?php
+                                        if ($handle = opendir('themes')) {
+                                            while (false !== ($entry = readdir($handle))) {
+                                                if ($entry != "." && $entry != "..") {
+                                                    if(file_exists(base_path('themes') . '/' . $entry . '/readme.md')){
+                                                        $text = file_get_contents(base_path('themes') . '/' . $entry . '/readme.md');
+                                                        $pattern = '/Theme Name:.*/';
+                                                        preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
+                                                        if(sizeof($matches) > 0) {
+                                                            $themeName = substr($matches[0][0],12);
+                                                        }
+                                                    }
+                                                    if($page->theme != $entry and isset($themeName)){
+                                                        ?> 
+                                                        
+                                                        <div class="col-lg-3">
+                                                            <div class="card">
+                                                               <div class="card-body">
+                                                                <a style="cursor:pointer;" onclick="setTheme('{{$entry}}')">
+                                                                  <div class="d-flex justify-content-between">
+                                                                     <div>
+                                                                        <center><img class="bd-placeholder-img bd-placeholder-img-lg img-fluid" src="{{url('themes/'.$entry.'/preview.png')}}"></center>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="text-center">
+                                                                     <h2 class="counter">{{$themeName}}</h2>
+                                                                     <div>
+                                                                     </div>
+                                                                  </div>
+                                                                </a>
+                                                               </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <?php
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ?>
+                 </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+    </div>
+<script>
+      function setTheme(themeName) {
+        const selectElement = document.getElementById('theme-select');
+        selectElement.querySelector('option').value = themeName;
+        selectElement.form.submit();
+      }
+  </script>
+@endpush
 
 @endsection
