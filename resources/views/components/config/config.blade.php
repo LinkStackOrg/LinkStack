@@ -150,6 +150,9 @@ input[type=radio] + label {
 .ch2{
     padding-top: 60px;
 }
+.nav-link{
+  color: var(--bs-primary);
+}
 </style>
 
 <?php 
