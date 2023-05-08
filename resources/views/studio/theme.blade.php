@@ -181,6 +181,24 @@ $(window).on('load', function() {
                 @csrf
                 <select id="theme-select" style="display:none;" name="theme" data-base-url="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>"><option value="default" selected></option></select>
                 <div class="row">
+                    <div class="col-lg-3">
+                        <div class="card shadow-lg @if($page->theme == "" or $page->theme == "default") bg-primary @else bg-soft-primary @endif">
+                           <div class="card-body pb-0">
+                            <a style="cursor:pointer;" onclick="setTheme('default')">
+                              <div class="d-flex justify-content-between">
+                                 <div>
+                                    <img draggable="false" class="bd-placeholder-img bd-placeholder-img-lg img-fluid" src="{{url('assets/linkstack/images/themes/default.png')}}">
+                                 </div>
+                              </div>
+                              <div class="text-center">
+                                 <h2 class="m-3 @if($page->theme == "" or $page->theme == "default") text-white @else text-gray @endif"">Default Theme</h2>
+                                 <div>
+                                 </div>
+                              </div>
+                            </a>
+                           </div>
+                        </div>
+                    </div>
                                     <?php
                                         if ($handle = opendir('themes')) {
                                             while (false !== ($entry = readdir($handle))) {
@@ -193,20 +211,20 @@ $(window).on('load', function() {
                                                             $themeName = substr($matches[0][0],12);
                                                         }
                                                     }
-                                                    if($page->theme != $entry and isset($themeName)){
+                                                    if(isset($themeName)){
                                                         ?> 
                                                         
                                                         <div class="col-lg-3">
-                                                            <div class="card">
-                                                               <div class="card-body">
+                                                            <div class="card shadow-lg @if($page->theme == $entry) bg-primary @else bg-soft-primary @endif">
+                                                               <div class="card-body pb-0">
                                                                 <a style="cursor:pointer;" onclick="setTheme('{{$entry}}')">
                                                                   <div class="d-flex justify-content-between">
                                                                      <div>
-                                                                        <center><img class="bd-placeholder-img bd-placeholder-img-lg img-fluid" src="{{url('themes/'.$entry.'/preview.png')}}"></center>
+                                                                        <img draggable="false" class="bd-placeholder-img bd-placeholder-img-lg img-fluid" src="{{url('themes/'.$entry.'/preview.png')}}">
                                                                      </div>
                                                                   </div>
                                                                   <div class="text-center">
-                                                                     <h2 class="counter">{{$themeName}}</h2>
+                                                                     <h2 class="m-3 @if($page->theme == $entry) text-white @else text-gray @endif">{{$themeName}}</h2>
                                                                      <div>
                                                                      </div>
                                                                   </div>
