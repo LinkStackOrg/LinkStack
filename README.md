@@ -235,6 +235,13 @@ You can support LinkStack [here](https://linkstack.org/sponsor).
 - [Jan Klomp](https://github.com/escuco)
 - [AnhDOS](https://github.com/AnhDOS)
 - [MrSpuddy](https://github.com/MrSpuddy)
+- [Chih Wang](https://github.com/dozod-c)
+- [kigordid](https://github.com/kigordid)
+- [Ariq Naufal](https://github.com/naufdotal)
+- [Molleman-De-Coster-BV](https://github.com/Molleman-De-Coster-BV)
+- [RogueThorn](https://github.com/DunklerPhoenix)
+- [sachacalibre](https://github.com/sachacalibre)
+- [John Francis Sukamto](https://github.com/bigbadmonster17)
 
 - [Add Your Name](https://linkstack.org/sponsor)
 
