@@ -168,49 +168,25 @@ $usrhandl = Auth::user()->littlelink_name;
                         <ul class="sub-nav collapse" id="utilities-error" data-bs-parent="#sidebar-menu">
                             <li class="nav-item">
                                 <a class="nav-link {{ Request::segment(2) == 'config' ? 'active' : ''}}" href="{{ url('admin/config') }}">
-                                    <i class="icon">
-                                        <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
-                                            <g>
-                                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                            </g>
-                                        </svg>
-                                    </i>
+                                  <i class="bi bi-wrench-adjustable-circle-fill"></i>
                                     <span class="item-name">Config</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ Request::segment(2) == 'users' ? 'active' : ''}}" href="{{ url('admin/users/all') }}">
-                                    <i class="icon">
-                                        <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
-                                            <g>
-                                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                            </g>
-                                        </svg>
-                                    </i>
+                                  <i class="bi bi-people-fill"></i>
                                     <span class="item-name">Manage Users</span>
                                 </a>
                             </li>
 							<li class="nav-item">
                                 <a class="nav-link {{ Request::segment(2) == 'pages' ? 'active' : ''}}" href="{{ url('admin/pages') }}">
-                                    <i class="icon">
-                                        <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
-                                            <g>
-                                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                            </g>
-                                        </svg>
-                                    </i>
+                                  <i class="bi bi-collection-fill"></i>
                                     <span class="item-name">Footer Pages</span>
                                 </a>
                             </li>
 							<li class="nav-item">
                                 <a class="nav-link {{ Request::segment(2) == 'site' ? 'active' : ''}}" href="{{ url('admin/site') }}">
-                                    <i class="icon">
-                                        <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
-                                            <g>
-                                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                            </g>
-                                        </svg>
-                                    </i>
+                                  <i class="bi bi-palette-fill"></i>
                                     <span class="item-name">Site Customization</span>
                                 </a>
                             </li>
