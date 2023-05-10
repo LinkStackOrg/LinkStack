@@ -259,7 +259,7 @@ function get_operating_system() {
 <span class="copy-icon" tabindex="0" role="button" aria-label="Copy URL to clipboard">
 </span>
 @else
-<span class="copy-icon" tabindex="0" role="button" aria-label="Copy URL to clipboard">
+<span class="copy-icon" role="button" aria-label="Share this page">
   <div onclick="alert('URL has been copied to your clipboard!')" align="right" class="sharediv">
     <div>
       <a class="sharebutton button-hover icon-hover" tabindex="0" role="button" aria-label="Share this page">
@@ -270,6 +270,7 @@ function get_operating_system() {
   </div>
 </span>
 @endif
+
 <script>{!! file_get_contents(base_path("assets/linkstack/js/share.button.js")) !!}</script>
 
 @endif
