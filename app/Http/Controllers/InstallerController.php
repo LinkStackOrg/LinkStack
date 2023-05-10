@@ -59,6 +59,8 @@ class InstallerController extends Controller
             fclose($handleFile);
         }
 
+        try{EnvEditor::addKey('ADMIN_EMAIL', $email);}catch(Exception $e){}
+
         if(DB::table('users')->count() == '0'){
         Schema::disableForeignKeyConstraints();
         DB::table('users')->delete();
