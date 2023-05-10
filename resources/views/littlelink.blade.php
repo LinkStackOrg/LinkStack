@@ -248,12 +248,26 @@ function get_operating_system() {
 
 @if($user_browser === 'Chrome' or get_operating_system() == 'mobile')
 <script>{!! file_get_contents(base_path("assets/linkstack/js/jquery.min.js")) !!}</script>
-<div align="right" class="sharediv"><div><span class="sharebutton button-hover icon-hover" id='share-share-button'><i style="color: black;" class="fa-solid fa-share sharebutton-img share-icon hvr-icon"></i><span class="sharebutton-mb">Share</span></span></div></div>
-<span class="copy-icon" role="button" aria-label="Share this page">
+<div align="right" class="sharediv">
+  <div>
+    <span class="sharebutton button-hover icon-hover" id='share-share-button' tabindex="0" role="button" aria-label="Share this page">
+      <i style="color: black;" class="fa-solid fa-share sharebutton-img share-icon hvr-icon"></i>
+      <span class="sharebutton-mb">Share</span>
+    </span>
+  </div>
+</div>
+<span class="copy-icon" tabindex="0" role="button" aria-label="Copy URL to clipboard">
 </span>
 @else
-<span class="copy-icon" role="button" aria-label="Share this page">
-<div onclick="alert('URL has been copied to your clipboard!')" align="right" class="sharediv"><div><a class="sharebutton button-hover icon-hover"><i style="color: black;" class="fa-solid fa-share sharebutton-img share-icon hvr-icon"></i><span class="sharebutton-mb">Share</span></a></div></div>
+<span class="copy-icon" tabindex="0" role="button" aria-label="Copy URL to clipboard">
+  <div onclick="alert('URL has been copied to your clipboard!')" align="right" class="sharediv">
+    <div>
+      <a class="sharebutton button-hover icon-hover" tabindex="0" role="button" aria-label="Share this page">
+        <i style="color: black;" class="fa-solid fa-share sharebutton-img share-icon hvr-icon"></i>
+        <span class="sharebutton-mb">Share</span>
+      </a>
+    </div>
+  </div>
 </span>
 @endif
 <script>{!! file_get_contents(base_path("assets/linkstack/js/share.button.js")) !!}</script>
