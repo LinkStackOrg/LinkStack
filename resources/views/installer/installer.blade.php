@@ -62,6 +62,7 @@
         <tr><td>DOM: </td><td>@if(extension_loaded('DOM'))<i class="bi bi-check-lg"></i>@else<i class="bi bi-x-lg"></i>@endif</td></tr>
         <tr><td>Fileinfo: </td><td>@if(extension_loaded('Fileinfo'))<i class="bi bi-check-lg"></i>@else<i class="bi bi-x-lg"></i>@endif</td></tr>
         <tr><td>JSON: </td><td>@if(extension_loaded('JSON'))<i class="bi bi-check-lg"></i>@else<i class="bi bi-x-lg"></i>@endif</td></tr>
+        <tr><td>iconv: </td><td>@if(extension_loaded('iconv'))<i class="bi bi-check-lg"></i>@else<i class="bi bi-x-lg"></i>@endif</td></tr>
         <tr><td>Mbstring: </td><td>@if(extension_loaded('Mbstring'))<i class="bi bi-check-lg"></i>@else<i class="bi bi-x-lg"></i>@endif</td></tr>
         <tr><td>OpenSSL: </td><td>@if(extension_loaded('OpenSSL'))<i class="bi bi-check-lg"></i>@else<i class="bi bi-x-lg"></i>@endif</td></tr>
         <tr><td>PCRE: </td><td>@if(extension_loaded('PCRE'))<i class="bi bi-check-lg"></i>@else<i class="bi bi-x-lg"></i>@endif</td></tr>
