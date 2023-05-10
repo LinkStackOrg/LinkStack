@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class RegisteredUserController extends Controller
 {
@@ -67,6 +68,18 @@ class RegisteredUserController extends Controller
 
         $user->block = $block;
         $user->save();
+
+
+            $user = $request->name;
+            $email = $request->email;
+            
+            try {
+            Mail::send('auth.user-confirmation', ['user' => $user, 'email' => $email], function ($message) use ($user) {
+                $message->to(env('ADMIN_EMAIL'))
+                        ->subject('New user registration');
+            });
+        } catch (\Exception $e) {}
+
 
         event(new Registered($user));
 
