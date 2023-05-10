@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 $installing_file_exists = file_exists(__DIR__ . '/INSTALLING');
 
 if ($installing_file_exists) {
-    $required_extensions = array('bcmath', 'ctype', 'curl', 'dom', 'fileinfo', 'json', 'mbstring', 'openssl', 'pcre', 'pdo', 'tokenizer', 'xml');
+    $required_extensions = array('bcmath', 'ctype', 'curl', 'dom', 'fileinfo', 'json', 'mbstring', 'openssl', 'pcre', 'pdo', 'tokenizer', 'xml', 'iconv');
 
     foreach ($required_extensions as $ext) {
         if (!extension_loaded($ext)) {
