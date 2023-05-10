@@ -239,6 +239,7 @@ function text($key){
 {{toggle('MANUAL_USER_VERIFICATION')}}
 @endif
 
+{{text('ADMIN_EMAIL')}}
 
 {{-- start home url --}}
 <?php $configValue2 = str_replace('"', "", EnvEditor::getKey('HOME_URL')); ?>
@@ -399,6 +400,8 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 {{toggle('DISPLAY_FOOTER')}}
 
 {{toggle('DISPLAY_CREDIT')}}
+
+{{toggle('DISPLAY_CREDIT_FOOTER')}}
 
 {{toggle('DISPLAY_FOOTER_HOME')}}
 {{text('TITLE_FOOTER_HOME')}}

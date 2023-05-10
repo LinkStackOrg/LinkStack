@@ -25,10 +25,15 @@
     },
     
     {"value": "DISPLAY_CREDIT",
-    "title": "Show credit",
-    "description": "Determines whether the credit notice should be displayed."
+    "title": "Display credit on user pages",
+    "description": "Determines whether the credit notice should be displayed on users pages."
     },
     
+    {"value": "DISPLAY_CREDIT_FOOTER",
+    "title": "Display credit in footer",
+    "description": "Determines whether the credit notice should be displayed in the footer."
+    },
+
     {"value": "HOME_URL",
     "title": "Set user page as Home Page",
     "description": "Set user page as Home Page"
@@ -237,6 +242,11 @@
     {"value": "MANUAL_USER_VERIFICATION",
     "title": "Verify users manually",
     "description": "Determines if admins have to manually verify newly registered users."
+    },
+
+    {"value": "ADMIN_EMAIL",
+    "title": "Admin email",
+    "description": "Used to send notification emails."
     },
 
     {"value": "HIDE_VERIFICATION_CHECKMARK",
