@@ -195,62 +195,11 @@ if($customBackgroundExists == true){
 @endif
 
 @if($ShowShrBtn == 'true' and UserData::getData($userinfo->id, 'disable-sharebtn') != "true")
-<?php 
-//Get browser type
-$arr_browsers = ["Opera", "Edg", "Chrome", "Safari", "Firefox", "MSIE", "Trident"];
- 
-$agent = $_SERVER['HTTP_USER_AGENT'];
- 
-$user_browser = '';
-foreach ($arr_browsers as $browser) {
-    if (strpos($agent, $browser) !== false) {
-        $user_browser = $browser;
-        break;
-    }   
-}
-  
-switch ($user_browser) {
-    case 'MSIE':
-        $user_browser = 'Internet Explorer';
-        break;
-  
-    case 'Trident':
-        $user_browser = 'Internet Explorer';
-        break;
-  
-    case 'Edg':
-        $user_browser = 'Microsoft Edge';
-        break;
-}
 
-function get_operating_system() {
-    $u_agent = $_SERVER['HTTP_USER_AGENT'];
-    $operating_system = 'NULL';
-
-    //get operating-system type
-        if (preg_match('/iphone/i', $u_agent)) {
-        $operating_system = 'mobile';
-    } elseif (preg_match('/ipod/i', $u_agent)) {
-        $operating_system = 'mobile';
-    } elseif (preg_match('/ipad/i', $u_agent)) {
-        $operating_system = 'mobile';
-    } elseif (preg_match('/android/i', $u_agent)) {
-        $operating_system = 'mobile';
-    } elseif (preg_match('/blackberry/i', $u_agent)) {
-        $operating_system = 'mobile';
-    } elseif (preg_match('/webos/i', $u_agent)) {
-        $operating_system = 'mobile';
-    }
-    
-    return $operating_system;
-}
-?>
-
-@if($user_browser === 'Chrome' or get_operating_system() == 'mobile')
 <script>{!! file_get_contents(base_path("assets/linkstack/js/jquery.min.js")) !!}</script>
 <div align="right" class="sharediv">
   <div>
-    <span class="sharebutton button-hover icon-hover" id='share-share-button' tabindex="0" role="button" aria-label="Share this page">
+    <span class="sharebutton button-hover icon-hover share-button" data-share="{{url()->current()}}" tabindex="0" role="button" aria-label="Share this page">
       <i style="color: black;" class="fa-solid fa-share sharebutton-img share-icon hvr-icon"></i>
       <span class="sharebutton-mb">Share</span>
     </span>
@@ -258,20 +207,31 @@ function get_operating_system() {
 </div>
 <span class="copy-icon" tabindex="0" role="button" aria-label="Copy URL to clipboard">
 </span>
-@else
-<span class="copy-icon" role="button" aria-label="Share this page">
-  <div onclick="alert('URL has been copied to your clipboard!')" align="right" class="sharediv">
-    <div>
-      <a class="sharebutton button-hover icon-hover" tabindex="0" role="button" aria-label="Share this page">
-        <i style="color: black;" class="fa-solid fa-share sharebutton-img share-icon hvr-icon"></i>
-        <span class="sharebutton-mb">Share</span>
-      </a>
-    </div>
-  </div>
-</span>
-@endif
 
-<script>{!! file_get_contents(base_path("assets/linkstack/js/share.button.js")) !!}</script>
+<script>
+  const shareButtons = document.querySelectorAll('.share-button');
+  shareButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const valueToShare = button.dataset.share;
+      if (navigator.share) {
+        navigator.share({
+          title: 'Share this page',
+          url: valueToShare
+        })
+        .catch(err => console.error('Error sharing:', err));
+      } else {
+        navigator.clipboard.writeText(valueToShare)
+        .then(() => {
+          alert('URL has been copied to your clipboard!');
+        })
+        .catch(err => {
+          alert('Error copying URL:', err);
+        });
+      }
+    });
+  });
+</script>
+
 
 @endif
 <?php ////end share button//// ?>
