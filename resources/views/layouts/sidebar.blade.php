@@ -314,25 +314,6 @@ $usrhandl = Auth::user()->littlelink_name;
                     </ul>
                   </div>
                 </li>
-                {{-- <li class="nav-item dropdown">
-                    <a href="#" class="search-toggle nav-link" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="{{asset('assets/images/Flag/flag001.png')}}" class="img-fluid rounded-circle" alt="user" style="height: 30px; min-width: 30px; width: 30px;">
-                    <span class="bg-primary"></span>
-                    </a>
-                    <div class="p-0 sub-drop dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton2">
-                        <div class="m-0 border-0 shadow-none card">
-                            <div class="p-0 ">
-                                <ul class="p-0 list-group list-group-flush">
-                                    <li class="iq-sub-card list-group-item"><a class="p-0" href="#"><img src="{{asset('assets/images/Flag/flag-03.png')}}" alt="img-flaf" class="img-fluid me-2" style="width: 15px;height: 15px;min-width: 15px;"/>Spanish</a></li>
-                                    <li class="iq-sub-card list-group-item"><a class="p-0" href="#"><img src="{{asset('assets/images/Flag/flag-04.png')}}" alt="img-flaf" class="img-fluid me-2" style="width: 15px;height: 15px;min-width: 15px;"/>Italian</a></li>
-                                    <li class="iq-sub-card list-group-item"><a class="p-0" href="#"><img src="{{asset('assets/images/Flag/flag-02.png')}}" alt="img-flaf" class="img-fluid me-2" style="width: 15px;height: 15px;min-width: 15px;"/>French</a></li>
-                                    <li class="iq-sub-card list-group-item"><a class="p-0" href="#"><img src="{{asset('assets/images/Flag/flag-05.png')}}" alt="img-flaf" class="img-fluid me-2" style="width: 15px;height: 15px;min-width: 15px;"/>German</a></li>
-                                    <li class="iq-sub-card list-group-item"><a class="p-0" href="#"><img src="{{asset('assets/images/Flag/flag-06.png')}}" alt="img-flaf" class="img-fluid me-2" style="width: 15px;height: 15px;min-width: 15px;"/>Japanese</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li> --}}
 
                 <li class="nav-item dropdown">
                   <a href="#"  class="nav-link" id="notification-drop" data-bs-toggle="dropdown" >
@@ -701,23 +682,25 @@ $usrhandl = Auth::user()->littlelink_name;
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               @php
-                  $qrCodeData = url('@'.Auth::user()->littlelink_name);
+              try {
+                $qrCodeData = url('@'.Auth::user()->littlelink_name);
 
-                  $renderer = new ImageRenderer(
-                      new RendererStyle(400),
-                      new SvgImageBackEnd()
-                  );
-                  $writer = new Writer($renderer);
+                $renderer = new ImageRenderer(
+                    new RendererStyle(400),
+                    new SvgImageBackEnd()
+                );
+                $writer = new Writer($renderer);
 
-                  $svgImageData = $writer->writeString($qrCodeData);
+                $svgImageData = $writer->writeString($qrCodeData);
 
-                  $svgImageBase64 = base64_encode($svgImageData);
+                $svgImageBase64 = base64_encode($svgImageData);
 
-                  $imgSrc = 'data:image/svg+xml;base64,' . $svgImageBase64;
+                $imgSrc = 'data:image/svg+xml;base64,' . $svgImageBase64;
+              } catch(exception $e) {echo '<p class="text-center pt-5">QR code could not be generated</p>'; if(auth()->user()->role == 'admin'){echo "<p class='ps-3'>Reason: <pre class='ps-4'>".$e->getMessage()."</pre></p>";}}
               @endphp
               <div class="modal-body">
                 <div class="bd-example">
-                  <img draggable="false" src="{{$imgSrc}}" style="width:100%;height:auto;" class="bd-placeholder-img img-thumbnail">
+                  <img draggable="false" src="{{isset($imgSrc)}}" style="width:100%;height:auto;" class="bd-placeholder-img img-thumbnail">
               </div>
               </div>
               <div class="modal-footer">
