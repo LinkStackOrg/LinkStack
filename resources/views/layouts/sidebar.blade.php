@@ -700,7 +700,7 @@ $usrhandl = Auth::user()->littlelink_name;
               @endphp
               <div class="modal-body">
                 <div class="bd-example">
-                  <img draggable="false" src="{{isset($imgSrc)}}" style="width:100%;height:auto;" class="bd-placeholder-img img-thumbnail">
+                  <img draggable="false" src="@php if(isset($imgSrc)){echo $imgSrc;} @endphp" style="width:100%;height:auto;" class="bd-placeholder-img img-thumbnail">
               </div>
               </div>
               <div class="modal-footer">
