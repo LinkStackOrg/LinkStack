@@ -133,7 +133,7 @@
                         </div><br><br>
                         <div class="d-flex flex-column flex-md-row align-items-md-center">
                             <button type="submit" class="btn btn-primary me-md-3 mb-3 mb-md-0">Upload theme</button>
-                            <button class="btn btn-danger me-md-3 mb-3 mb-md-0 delete-themes" title="Delete themes"><a href="{{ url('/panel/theme') }}" class="text-white">Delete themes</a></button>
+                            <button class="btn btn-danger me-md-3 mb-3 mb-md-0 delete-themes" title="Delete themes"><a href="{{ url('/admin/theme') }}" class="text-white">Delete themes</a></button>
                             <button class="btn btn-info download-themes" title="Download more themes"><a href="https://linkstack.org/themes/" target="_blank" class="text-white">Download themes</a></button>
                           </div>
                     </form>
