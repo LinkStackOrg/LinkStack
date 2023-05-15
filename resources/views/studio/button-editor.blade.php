@@ -94,7 +94,7 @@
                   <h2 class="mb-4 card-header"><i class="bi bi-pen"> Button Editor</i></h2>
                           <div class="card-body p-0 p-md-3">
                   
-                  <br><br><a class="btn btn-primary" href="{{ url('/studio/links') }}">⬅ Back</a>
+                  <a class="btn btn-primary" href="{{ url('/studio/links') }}"><i class="bi bi-arrow-left-short"></i> Back</a><br><br>
                   
                           <h2>Custom Button</h2><br>
                   
@@ -149,9 +149,9 @@
                   
                   <section id="preview">
                   @if($buttonId == 1)
-                  <center><div id="sample" style="--delay: 1s; border-radius:8px !important; max-width: 400px; width: 80%; class="button-entrance"><div class="button-demo button hvr-grow hvr-icon-wobble-vertical"><img class="icon hvr-icon" src="{{ asset('\/assets/linkstack/icons\/') . 'custom' }}.svg">{{ $title }}</div></div></center>
+                  <center><div id="sample" style="border-radius: 8px !important; max-width: 350px; height: 48px; display: flex; align-items: center; justify-content: center;font-size: 18px;" class="button-demo button"><img class="icon hvr-icon" src="{{ asset('\/assets/linkstack/icons\/') . 'custom' }}.svg">{{ $title }}</div></center>
                   @else
-                  <center><div id="sample" style="--delay: 1s; border-radius:8px !important; max-width: 400px; width: 80%; class="button-entrance"><div class="button-demo button hvr-grow hvr-icon-wobble-vertical"><img class="wicon hvr-icon" src="@if(file_exists(base_path("assets/favicon/icons/").localIcon($id))){{url('assets/favicon/icons/'.localIcon($id))}}@else{{getFavIcon($id)}}@endif">{{ $title }}</div></div></center>
+                  <center><div id="sample" style="border-radius: 8px !important; max-width: 350px; height: 48px; display: flex; align-items: center; justify-content: center;font-size: 18px;" class="button-demo button"><img class="wicon hvr-icon" src="@if(file_exists(base_path("assets/favicon/icons/").localIcon($id))){{url('assets/favicon/icons/'.localIcon($id))}}@else{{getFavIcon($id)}}@endif">{{ $title }}</div></center>
                   @endif
                   
                   </section>
@@ -171,7 +171,7 @@
                           </div>
                   </div>
                   </details>
-                  <br><button id="code" class="mt-3 ml-3 btn btn-info">Submit</button><br>
+                  <br><button id="code" class="btn btn-primary">Save</button><br>
                         </form>
                   
                         <form action="{{ route('editCSS', $id) }}" method="post">
@@ -181,7 +181,7 @@
                   NULL
                   </textarea>
                           </div>
-                          <button type="submit" class="mt-3 ml-3 btn btn-info">Reset to default</button>
+                          <button type="submit" class="btn btn-danger">Reset to default</button>
                         </form>
                   
                   <br><br><div id="result" style="left: 1%; position: relative; background-color:#2c2d3a; border-radius: 25px; min-width:300px; max-width:950px; height:300px; box-shadow: 0 10px 20px -10px rgba(0,0,0, 0.6);">
@@ -223,7 +223,9 @@
                           <p>If the short code is a brand icon, it is important to include a 'fab' before the short code part. Again, The 'fa-...' formatting still applies here. For example, 'fab fa-github'</p>
                           <p>To apply color to your icons, you can simply write out the color name or just write the HEX value before the icon, followed by a ';'. Here it is important to put the color before the icon short code and the color code must be ended with a semicolon.<br>
                           You can find a list of available colors <a href="https://www.w3schools.com/cssref/css_colors.asp" target="_blank">here</a>.</p>
-                          <br><table class="table table-bordered">
+                          <br>
+                          <div class="table-responsive">
+                          <table class="table table-striped">
                           <thead>
                             <tr>
                               <th scope="col">Style</th>
@@ -259,18 +261,19 @@
                             </tr>
                           </tbody>
                           </table>
+                        </div>
                           </details>
                   
-                          <div class="row">
-                          <button type="submit" class="mt-3 ml-3 btn btn-info">Update icon</button>
-                          <button class="mt-3 ml-3 btn btn-info"><a href="https://fontawesome.com/search?m=free" target="_blank">See all icons</a></button>
-                          </div>
+                          <br>
+                          <button type="submit" class="btn btn-primary">Update icon</button>
+                          <a class="btn btn-primary" href="https://fontawesome.com/search?m=free" target="_blank">See all icons</a>
+                          
                         </form><br><br><br><br>
                         @endif
                   
                   </div>
                   
-                  <a class="btn btn-primary" href="{{ url('/studio/links') }}">⬅ Back</a>
+                  <a class="btn btn-primary" href="{{ url('/studio/links') }}"><i class="bi bi-arrow-left-short"></i> Back</a>
                   
                             </div>
                   </section>
