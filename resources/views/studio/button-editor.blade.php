@@ -17,137 +17,59 @@
                   @push('sidebar-scripts')
                   <?php function strp($urlStrp){return str_replace(array('http://', 'https://'), '', $urlStrp);} ?>
                     <!-- start button editor -->
-                  <script>
-                  $(document).ready(function() {
-                      $('#code').click(function() {
-                          var css_text = 'padding-top : ' + button_css.padding_top + ';' + '\npadding-bottom :' + button_css.padding_bottom + ';' + '\npadding-left :' + button_css.padding_left + ';';
-                          css_text = css_text + '\npadding-right :' + button_css.padding_right + ';' + '\ncolor :' + button_css.color + ';' + '\nbackground-image :' + button_css.background_image + ';';
-                          css_text = css_text + '\nborder-radius :' + button_css.border_radius + ';' + '\nfont-size :' + button_css.font_size + ';' + '\nfont-family :' + button_css.font_family + ';';
-                          css_text = css_text + '\nborder-color :' + button_css.border_color + ';' + '\nborder-style :' + button_css.border_style + ';' + '\nborder-width :' + button_css.border_width + ';';
+                    <script>
+                      $(document).ready(function() {
+                        $('#code').click(function() {
+                          var css_text = 'color: ' + button_css.color + ';' + '\nbackground-image: ' + button_css.background_image + ';';
                           $('#sCode').html(css_text);
                           Rainbow.color(div, function() {
-                              document.getElementById('output').appendChild(div);
-                              });
-                   
+                            document.getElementById('output').appendChild(div);
+                          });
+                      
                           $('.modal-profile').fadeIn("slow");
                           $('.modal-lightsout').fadeTo("slow", .9);
-                          });
-                   
-                      $('a.modal-close-profile, .modal-lightsout').click(function() {
+                        });
+                      
+                        $('a.modal-close-profile, .modal-lightsout').click(function() {
                           $('.modal-profile').fadeOut("slow");
                           $('.modal-lightsout').fadeOut("slow");
-                          });
-                   
-                      var $button = $("#sample");
-                      $("#ex1").gradientPicker({
+                        });
+                      
+                        var $button = $("#sample");
+                        $("#ex1").gradientPicker({
                           change: function(points, styles) {
-                              for (i = 1; i < styles.length; ++i) {
-                                  $button.css("background-image", styles[i]);
-                                  button_css.background_image = styles[i];
-                              }
+                            for (i = 1; i < styles.length; ++i) {
+                              $button.css("background-image", styles[i]);
+                              button_css.background_image = styles[i];
+                            }
                           },
                           fillDirection: "45deg",
                           controlPoints: ["white 0%", "#888888 100%"]
-                          });
-                   
-                      $('#color').ColorPicker({
+                        });
+                      
+                        $('#color').ColorPicker({
                           color: '#000000',
                           onShow: function(colpkr) {
-                              $(colpkr).fadeIn(500);
-                              return false;
+                            $(colpkr).fadeIn(500);
+                            return false;
                           },
                           onHide: function(colpkr) {
-                              $(colpkr).fadeOut(500);
-                              return false;
+                            $(colpkr).fadeOut(500);
+                            return false;
                           },
                           onChange: function(hsb, hex, rgb) {
-                              $('#color').css('background-color', '#' + hex);
-                              document.getElementById("sample").style.color = '#' + hex;
-                              button_css.color = '#' + hex;
+                            $('#color').css('background-color', '#' + hex);
+                            document.getElementById("sample").style.color = '#' + hex;
+                            button_css.color = '#' + hex;
                           }
-                          });
-                   
-                      $('#border-color').ColorPicker({
-                          color: '#000000',
-                          onShow: function(colpkr) {
-                              $(colpkr).fadeIn(500);
-                              return false;
-                          },
-                          onHide: function(colpkr) {
-                              $(colpkr).fadeOut(500);
-                              return false;
-                          },
-                          onChange: function(hsb, hex, rgb) {
-                              $('#border-color').css('background-color', '#' + hex);
-                              document.getElementById("sample").style.borderColor = '#' + hex;
-                              button_css.border_color = '#' + hex;
-                          }
-                          });
-                   
-                      document.getElementById("pdtb").onchange = $.proxy(function() {
-                          var val = document.getElementById('pdtb').value;
-                          $('#sample').css("padding-top", val + 'px');
-                          $('#sample').css("padding-bottom", val + 'px');
-                          button_css.padding_top = val + 'px';
-                          button_css.padding_bottom = val + 'px';
-                      }, document);
-                      document.getElementById("pdlr").onchange = $.proxy(function() {
-                          var val = document.getElementById('pdlr').value;
-                          $('#sample').css("padding-left", val + 'px');
-                          $('#sample').css("padding-right", val + 'px');
-                          button_css.padding_left = val + 'px';
-                          button_css.padding_right = val + 'px';
-                      }, document);
-                      document.getElementById("ftb").onchange = $.proxy(function() {
-                          var val = document.getElementById('ftb').value;
-                          $('#sample').css("font-size", val + 'px');
-                          button_css.font_size = val + 'px';
-                      }, document);
-                      document.getElementById("br").onchange = $.proxy(function() {
-                          var val = document.getElementById('br').value;
-                          $('#sample').css("border-radius", val + 'px');
-                          button_css.border_radius = val + 'px';
-                      }, document);
-                      document.getElementById("tsub").onclick = $.proxy(function() {
-                          var val = document.getElementById('text').value;
-                          $('#sample').text(val);
-                      }, document);
-                      document.getElementById("ffsub").onclick = $.proxy(function() {
-                          var font1 = document.getElementById("font-face"); // or in jQuery use: select = this;
-                          var FontFace = font1.options[font1.selectedIndex].text;
-                          document.getElementById('sample').style.fontFamily = FontFace;
-                          button_css.font_family = FontFace;
-                      }, document);
-                      document.getElementById("bssub").onclick = $.proxy(function() {
-                          var bor = document.getElementById("border-style"); // or in jQuery use: select = this;
-                          var borstyle = bor.options[bor.selectedIndex].text;
-                          document.getElementById('sample').style.borderStyle = borstyle;
-                          $('#sample').text(val);
-                          button_css.border_style = borstyle;
-                      }, document);
-                      document.getElementById("bw").onchange = $.proxy(function() {
-                          var val = document.getElementById('bw').value;
-                          $('#sample').css("border-width", val + 'px');
-                          button_css.border_width = val + 'px';
-                      }, document);
+                        });
                       });
-                  
-                  // Many of these values cannot be changed by the UI editor, so they are set to zero here. These values might get used in the future.
-                  var button_css = {
-                      padding_top: 'inherit',
-                      padding_bottom: 'inherit',
-                      color: 'inherit',
-                      background_image: 'inherit',
-                      padding_left: 'inherit',
-                      padding_right: 'inherit',
-                      border_radius: '8px',
-                      font_family: 'inherit',
-                      font_size: 'inherit',
-                      border_color: 'inherit',
-                      border_style: 'inherit',
-                      border_width: 'inherit'
-                  };
-                  </script>
+                      // Only include the necessary properties
+                      var button_css = {
+                        color: 'inherit',
+                        background_image: 'inherit'
+                      };
+                      </script>                      
                   
                   <link rel="stylesheet" type="text/css" href="{{asset('assets/button-editor/styles/button-gen.css')}}">
                   <link rel="stylesheet" href="{{asset('assets/button-editor/styles/jquery.gradientPicker.css')}}" type="text/css" />

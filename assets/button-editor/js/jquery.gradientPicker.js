@@ -27,15 +27,6 @@
 	}
 
 	var browserPrefix = "";
-	if ($.browser.mozilla) {
-		browserPrefix = "-moz-";
-	} else if ($.browser.webkit) {
-		browserPrefix = "-webkit-";
-	} else if ($.browser.opera) {
-		browserPrefix = "-o-";
-	} else if ($.browser.msie) {
-		browserPrefix = "-ms-";
-	}
 
 	function GradientSelection($el, opts) {
 		this.$el = $el;
