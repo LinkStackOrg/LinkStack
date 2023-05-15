@@ -376,7 +376,7 @@ margin-left:270px;
 	padding-bottom: 15px;
 }
 
-.menuslide a span.icon
+.menuslide a span.icon-btn
 {
 	
 	display: block;
@@ -386,7 +386,7 @@ margin-left:270px;
 	margin-top: 15px;
 }
 
-.menuslide a.grid_3 span.icon
+.menuslide a.grid_3 span.icon-btn
 {
 	margin-left: 80px;
 	margin-top: 30px;
@@ -511,7 +511,7 @@ button-demo {
 .button-demo.button-primary:focus {
   color: #FFF;
   filter: brightness(90%) }
-.icon {
+.icon-btn {
   padding: 0px 8px 3.5px 0px;
   vertical-align: middle;
   width: 20px;
