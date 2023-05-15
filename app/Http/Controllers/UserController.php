@@ -499,7 +499,10 @@ class UserController extends Controller
 
         Link::where('id', $linkId)->increment('click_number', 1);
 
-        return redirect()->away($link);
+        $response = redirect()->away($link);
+        $response->header('X-Robots-Tag', 'noindex, nofollow');
+
+        return $response;
     }
 
     //Download Vcard
