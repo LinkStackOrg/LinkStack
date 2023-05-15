@@ -6,7 +6,7 @@ declare(strict_types=1);
 if (env('JOIN_BETA') == true) {
     $userver = 'https://beta.linkstack.org/';
 } else {
-    $userver = 'https://updates.linkstack.org/';
+    $userver = 'https://update.linkstack.org/';
 }
 
 return [
