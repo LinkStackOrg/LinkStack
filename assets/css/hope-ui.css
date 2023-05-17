@@ -19867,7 +19867,7 @@ body.offcanvas-active {
 .sidebar .sidebar-toggle {
   position: absolute;
   right: -12px;
-  top: 16px;
+  top: 85px;
   cursor: pointer;
   background: var(--bs-primary);
   color: #ffffff;
