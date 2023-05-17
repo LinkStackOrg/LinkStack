@@ -19868,6 +19868,7 @@ body.offcanvas-active {
   position: absolute;
   right: -12px;
   top: 85px;
+  z-index: 2;
   cursor: pointer;
   background: var(--bs-primary);
   color: #ffffff;
