@@ -1,9 +1,9 @@
 <p align="center">
-  <img width="200px" src="https://linkstack.org/wp-content/uploads/2023/04/logo-animated.svg"><br>
-<picture>
-  <source media="(prefers-color-scheme: dark)" width="400px" srcset="https://i.imgur.com/d1mdtEw.png">
-  <img width="400px" src="https://i.imgur.com/pPMgaqF.png">
-</picture>
+  <img width="200px" src="https://raw.githubusercontent.com/LinkStackOrg/branding/main/logo/svg/logo_animated.svg"><br>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" width="400px" srcset="https://raw.githubusercontent.com/LinkStackOrg/branding/main/badges/png/website_light.png">
+    <img width="400px" src="https://raw.githubusercontent.com/LinkStackOrg/branding/main/badges/png/website_dark.png">
+  </picture>
 </p>
 
 <h3 align="center"><b>Open-Source Linktree Alternative</b></h3>
@@ -42,7 +42,7 @@
 ---
 
 <p align="center">
-  <a href="https://github.com/linkstackorg/linkstack/releases/latest/download/linkstack.zip"><img src="https://i.imgur.com/GZvrPEm.png" alt="Download latest" width="380" ></a>
+  <a href="https://github.com/linkstackorg/linkstack/releases/latest/download/linkstack.zip"><img src="https://raw.githubusercontent.com/LinkStackOrg/branding/main/badges/png/download_latest.png" alt="Download latest" width="380" ></a>
     <br>
 	<a href="https://github.com/linkstackorg/linkstack/releases"><img alt="GitHub release (latest by date)" src="https://img.llc.ovh/github/v/release/JulianPrieber/LittleLink-Custom?label=Latest%20release"></a>
 </p>
@@ -83,7 +83,7 @@ Our goal is to provide a free version of a link-sharing service, similar to Link
 <br>
 
 <p align="center">
-  <a href="https://linkstack.org/instances/"><img src="https://i.imgur.com/9F3MIyL.png" alt="Community instances" width="350" ></a>
+  <a href="https://linkstack.org/instances"><img src="https://raw.githubusercontent.com/LinkStackOrg/branding/main/badges/png/create_account.png" alt="Community instances" width="350" ></a>
 </p>
 	    
 ## Themes
@@ -101,9 +101,9 @@ Contribute by designing your own themes. You can read more about contributing be
     
 <br>
 
-|![preview1](https://raw.githubusercontent.com/JulianPrieber/stargazer/main/preview.png) |![preview2](https://raw.githubusercontent.com/JulianPrieber/Magic-Kingdom/main/preview.png)|
+|![preview1](https://raw.githubusercontent.com/LinkStackOrg/stargazer/main/preview.png) |![preview2](https://raw.githubusercontent.com/LinkStackOrg/Magic-Kingdom/main/preview.png)|
 | ------------- |-------------|
-|![preview3](https://raw.githubusercontent.com/JulianPrieber/polygon/main/preview.png)|![preview4](https://raw.githubusercontent.com/JulianPrieber/PolySleek/main/preview.png)|  
+|![preview3](https://raw.githubusercontent.com/LinkStackOrg/polygon/main/preview.png)|![preview4](https://raw.githubusercontent.com/LinkStackOrg/PolySleek/main/preview.png)|  
 
 <br>
 
@@ -126,7 +126,7 @@ Now click on Choose file and select your downloaded theme zip file. Now click on
 If you know a bit about CSS, consider making your own theme and adding it to the public directory.
 Everything is documented in the dedicated GitHub repository.
 
-[github.com/JulianPrieber/llc-themes/tree/main/contributing](https://github.com/JulianPrieber/llc-themes/tree/main/contributing)
+[github.com/LinkStackOrg/linkstack-themes/tree/main/contributing](https://github.com/LinkStackOrg/linkstack-themes/tree/main/contributing)
 
 ## Installation
 
@@ -142,7 +142,7 @@ Everything is documented in the dedicated GitHub repository.
 When accessing your instance for the first time, you will be greeted by the first setup page.
 
 <p align="center">
-<img width="650" src="https://i.imgur.com/EWGy7iH.png">
+<img width="650" src="https://raw.githubusercontent.com/LinkStackOrg/branding/main/marketing/setup_wizard.png">
 </p>
 
 <br>
@@ -150,10 +150,10 @@ When accessing your instance for the first time, you will be greeted by the firs
 ## Docker
 
 <p align="center">
-<a href="https://github.com/JulianPrieber/llc-docker">
+<a href="https://github.com/linkstackorg/linkstack-docker">
 <picture>
-  <source media="(prefers-color-scheme: dark)" width="600px" srcset="https://i.imgur.com/tSHEDPv.png">
-  <img width="600px" src="https://i.imgur.com/0gH7UKM.png">
+  <source media="(prefers-color-scheme: dark)" width="600px" srcset="https://raw.githubusercontent.com/LinkStackOrg/branding/main/marketing/docker_edition_dark.png">
+  <img width="600px" src="https://raw.githubusercontent.com/LinkStackOrg/branding/main/marketing/docker_edition_light.png">
 </picture>
 </a>
 </p>
@@ -162,7 +162,7 @@ The official docker version of [LinkStack](https://github.com/linkstackorg/links
 
 The docker version of LinkStack retains all the features and customization options of the [original version](https://github.com/linkstackorg/linkstack).
 
-This docker is based on [Alpine Linux](https://www.alpinelinux.org/), a Linux distribution designed to be small, simple and secure. The web server is running [Apache2](https://www.apache.org/), a free and open-source cross-platform web server software. The docker comes with [PHP 8.0](https://www.php.net/releases/8.0/en.php) for high compatibility and performance.
+This docker is based on [Alpine Linux](https://www.alpinelinux.org), a Linux distribution designed to be small, simple and secure. The web server is running [Apache2](https://www.apache.org), a free and open-source cross-platform web server software. The docker comes with [PHP 8.0](https://www.php.net/releases/8.0/en.php) for high compatibility and performance.
 
 #### Using the docker is as simple as pulling and deploying.
 
@@ -170,7 +170,7 @@ This docker is based on [Alpine Linux](https://www.alpinelinux.org/), a Linux di
 
 `docker pull linkstackorg/linkstack`
 
-#### [Learn more about the Docker version](https://github.com/JulianPrieber/llc-docker)
+#### [Learn more about the Docker version](https://github.com/LinkStackOrg/linkstack-docker)
 
 <br>
 
@@ -202,7 +202,7 @@ If you switched your database to MySQL, your database will not be included in th
 <br>
 
 <p align="center">
-  <a href="https://discord.linkstack.org"><img src="https://i.imgur.com/zRSnxjk.png" alt="Join the Discord" width="600" ></a>
+  <a href="https://discord.linkstack.org"><img src="https://raw.githubusercontent.com/LinkStackOrg/branding/main/marketing/discord.png" alt="Join the Discord" width="600" ></a>
 </p>
 
 <br>
@@ -252,7 +252,7 @@ You can support LinkStack [here](https://linkstack.org/sponsor).
 Thank you for improving LinkStack!
 
 <p>
-  <a href="https://github.com/linkstackorg/linkstack/graphs/contributors"><img src="https://components.linkstack.org/contributors/" alt="Contributors" width="600" ></a>
+  <a href="https://github.com/linkstackorg/linkstack/graphs/contributors"><img src="https://components.linkstack.org/contributors" alt="Contributors" width="600" ></a>
 </p>
 
 <br>
@@ -262,10 +262,18 @@ Thank you for improving LinkStack!
 Thank you for all your efforts!
 
 <p>
-  <a href="https://linkstack.org/beta-tester"><img src="https://components.linkstack.org/beta-testers/" alt="Contributors" width="600" ></a>
+  <a href="https://linkstack.org/beta-tester"><img src="https://components.linkstack.org/beta-testers" alt="Contributors" width="600" ></a>
 </p>
 
 [Become a beta tester](https://linkstack.org/beta-tester)
+
+<br>
+
+### Stargazers
+
+<a href="https://star-history.com/#LinkStackOrg/LinkStack&LinkStackOrg/linkstack-docker&LinkStackOrg/linkstack-themes&Date">
+    <img alt="Star History Chart" width="700px" src="https://api.star-history.com/svg?repos=LinkStackOrg/LinkStack,LinkStackOrg/linkstack-docker,LinkStackOrg/linkstack-themes&type=Date">
+</a>
 
 <br>
 
