@@ -372,7 +372,7 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 <input type="password" class="form-control" name="MAIL_PASSWORD" value="{{env('MAIL_PASSWORD')}}" />
 <label style="margin-top:15px">Encryption type</label>
 <input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_ENCRYPTION" value="{{env('MAIL_ENCRYPTION')}}" />
-<label style="margin-top:15px">From adress</label>
+<label style="margin-top:15px">From address</label>
 <input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_FROM_ADDRESS" value="{{env('MAIL_FROM_ADDRESS')}}" />
 <button type="submit" class="btn btn-primary mt-4">Apply changes</button>
 </div>
