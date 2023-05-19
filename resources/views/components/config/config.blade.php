@@ -357,23 +357,23 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 <h5 style="margin-top:50px">Use built in SMTP server</h5>
 <p class="text-muted">Uses SMTP server provided by LinkStack. Might not be 100% reliable. Has to be disabled in order to user a custom SMTP server.<br>(Save changes with 'Apply changes' below)</p>
 <div class="input-group">
-<div class="mb-3 form-check form-switch toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle-smtp" <?php if(EnvEditor::getKey('MAIL_MAILER') != 'built-in'){echo '/>';}else{echo 'checked>';} ?> <label for="toggle-smtp" class="form-check-label">Enable</label></div>
+<div class="mb-3 form-check form-switch toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle-smtp" <?php if(env('MAIL_MAILER') != 'built-in'){echo '/>';}else{echo 'checked>';} ?> <label for="toggle-smtp" class="form-check-label">Enable</label></div>
 </div></div>
 <input type="hidden" name="_token" value="{{csrf_token()}}">
 <div style="max-width: 600px; padding-left: 20px;">
 <br><h5>Custom SMTP server:</h5>
 <label style="margin-top:15px">Host</label>
-<input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_HOST" value="{{EnvEditor::getKey('MAIL_HOST')}}" />
+<input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_HOST" value="{{env('MAIL_HOST')}}" />
 <label style="margin-top:15px">Port</label>
-<input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_PORT" value="{{EnvEditor::getKey('MAIL_PORT')}}" />
+<input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_PORT" value="{{env('MAIL_PORT')}}" />
 <label style="margin-top:15px">Username</label>
-<input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_USERNAME" value="{{EnvEditor::getKey('MAIL_USERNAME')}}" />
+<input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_USERNAME" value="{{env('MAIL_USERNAME')}}" />
 <label style="margin-top:15px">Password</label>
-<input type="password" class="form-control" name="MAIL_PASSWORD" value="{{EnvEditor::getKey('MAIL_PASSWORD')}}" />
+<input type="password" class="form-control" name="MAIL_PASSWORD" value="{{env('MAIL_PASSWORD')}}" />
 <label style="margin-top:15px">Encryption type</label>
-<input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_ENCRYPTION" value="{{EnvEditor::getKey('MAIL_ENCRYPTION')}}" />
+<input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_ENCRYPTION" value="{{env('MAIL_ENCRYPTION')}}" />
 <label style="margin-top:15px">From adress</label>
-<input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_FROM_ADDRESS" value="{{EnvEditor::getKey('MAIL_FROM_ADDRESS')}}" />
+<input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_FROM_ADDRESS" value="{{env('MAIL_FROM_ADDRESS')}}" />
 <button type="submit" class="btn btn-primary mt-4">Apply changes</button>
 </div>
 </form>

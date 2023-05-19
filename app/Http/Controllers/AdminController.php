@@ -666,8 +666,8 @@ public function SendTestMail(Request $request)
 
             if(EnvEditor::keyExists('MAIL_HOST')){EnvEditor::editKey('MAIL_HOST', $request->MAIL_HOST);}
             if(EnvEditor::keyExists('MAIL_PORT')){EnvEditor::editKey('MAIL_PORT', $request->MAIL_PORT);}
-            if(EnvEditor::keyExists('MAIL_USERNAME')){EnvEditor::editKey('MAIL_USERNAME', $request->MAIL_USERNAME);}
-            if(EnvEditor::keyExists('MAIL_PASSWORD')){EnvEditor::editKey('MAIL_PASSWORD', $request->MAIL_PASSWORD);}
+            if(EnvEditor::keyExists('MAIL_USERNAME')){EnvEditor::editKey('MAIL_USERNAME', '"' . $request->MAIL_USERNAME . '"');}
+            if(EnvEditor::keyExists('MAIL_PASSWORD')){EnvEditor::editKey('MAIL_PASSWORD', '"' . $request->MAIL_PASSWORD . '"');}
             if(EnvEditor::keyExists('MAIL_ENCRYPTION')){EnvEditor::editKey('MAIL_ENCRYPTION', $request->MAIL_ENCRYPTION);}
             if(EnvEditor::keyExists('MAIL_FROM_ADDRESS')){EnvEditor::editKey('MAIL_FROM_ADDRESS', $request->MAIL_FROM_ADDRESS);}
         } elseif($type === "homeurl") {
