@@ -12,48 +12,6 @@
                    <div class="col-sm-12">  
 
                     <h3 class="mb-4"><i class="bi bi-menu-up"></i> Dashboard</h3>
-
-                            {{-- <!-- Section: Design Block -->
-                            <section class="mb-3 text-gray-800 text-center shadow p-4 w-full">
-                                <div class='font-weight-bold text-left'>Visitor analytics:</div>
-                                <div class="d-flex flex-wrap justify-content-around">
-                    
-                                    <div class="p-2">
-                                        <h3 class="text-primary"><strong>{{ $pageStats['visitors']['day']}}</strong></h3>
-                                        <span class="text-muted">Today</span>
-                    
-                                    </div>
-                    
-                                    <div class="p-2">
-                                        <h3 class="text-primary"><strong>{{ $pageStats['visitors']['week']}}</strong></h3>
-                                        <span class="text-muted">Week</span>
-                    
-                    
-                                    </div>
-                    
-                                    <div class="p-2">
-                                        <h3 class="text-primary"><strong>{{ $pageStats['visitors']['month']}}</strong></h3>
-                                        <span class="text-muted">Month</span>
-                    
-                    
-                                    </div>
-                                    <div class="p-2">
-                                        <h3 class="text-primary"><strong>{{ $pageStats['visitors']['year']}}</strong></h3>
-                                        <span class="text-muted">Year</span>
-                    
-                    
-                                    </div>
-                                    <div class="p-2">
-                                        <h3 class="text-primary"><strong>{{ $pageStats['visitors']['all']}}</strong></h3>
-                                        <span class="text-muted">All Time</span>
-                    
-                    
-                                    </div>
-                    
-                                </div>
-                            </section> --}}
-                    
-                    
                     
                             <section class="mb-3 text-center p-4 w-full">
                                 <div class=" d-flex">
@@ -74,6 +32,15 @@
 
                                                     <div class="bd-example" >
                                                         <ol class="list-group list-group-numbered" style="text-align: left;">
+                                                          @if($toplinks == "[]")
+                                                          <div class="container">
+                                                            <div class="row justify-content-center mt-3">
+                                                              <div class="col-6 text-center">
+                                                                <p class="p-2">You haven't added any links yet.</p>
+                                                              </div>
+                                                            </div>
+                                                          </div>                                                        
+                                                          @else
                                                           @foreach($toplinks as $link)
                                                             @php $linkName = str_replace('default ','',$link->name) @endphp
                                                             @php  $i++; @endphp
@@ -88,11 +55,9 @@
                                                               </li>
                                                             @endif
                                                           @endforeach
+                                                          @endif
                                                         </ol>
                                                       </div>
-                                                      
-
-
 
                             </section>
 
