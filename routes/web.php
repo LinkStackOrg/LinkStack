@@ -23,7 +23,7 @@ use App\Http\Controllers\InstallerController;
 // Prevents section below from being run by 'composer update'
 if(file_exists(base_path('storage/app/ISINSTALLED'))){
   // generates new APP KEY if no one is set
-  if(EnvEditor::getKey('APP_KEY')==''){Artisan::call('key:generate');}
+  if(EnvEditor::getKey('APP_KEY')==''){try{Artisan::call('key:generate');} catch (exception $e) {}}
  
   // copies template meta config if none is present
   if(!file_exists(base_path("config/advanced-config.php"))){copy(base_path('storage/templates/advanced-config.php'), base_path('config/advanced-config.php'));}
