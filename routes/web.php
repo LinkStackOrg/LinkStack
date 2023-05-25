@@ -85,8 +85,7 @@ Route::get('/panel/diagnose', function () {
 //Public route
 $custom_prefix = config('advanced-config.custom_url_prefix');
 Route::get('/going/{id?}', [UserController::class, 'clickNumber'])->where('link', '.*')->name('clickNumber');
-if (!str_contains(url()->full(), '@') and !in_array(url()->full(), [url('login'), url('register'), url('update'),  url('update?error='), url('update?success='), url('update?finishing='), url('update?updating='), url('update?backups='), url('update?backup='), url('update?updating-windows='), url('update?preparing='), url('updating'), url('backup')])) {
-Route::get('/' . $custom_prefix . '{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');}
+if($custom_prefix != ""){Route::get('/' . $custom_prefix . '{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');}}
 Route::get('/@{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
 Route::get('/pages/'.strtolower(env('TITLE_FOOTER_TERMS')), [AdminController::class, 'pagesTerms'])->name('pagesTerms');
 Route::get('/pages/'.strtolower(env('TITLE_FOOTER_PRIVACY')), [AdminController::class, 'pagesPrivacy'])->name('pagesPrivacy');
@@ -224,6 +223,11 @@ Route::group([
 }); // ENd Admin authenticated routes
 });
 
+
+  if(config('advanced-config.custom_url_prefix') == ""){
+    Route::get('/{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
+  }
+
 // Displays Maintenance Mode page
 if(env('MAINTENANCE_MODE') == 'true' or file_exists(base_path("storage/MAINTENANCE"))){
 Route::get('/{any}', function () {
@@ -231,6 +235,5 @@ Route::get('/{any}', function () {
   })->where('any', '.*');
 }
 
-}
 
 require __DIR__.'/auth.php';
