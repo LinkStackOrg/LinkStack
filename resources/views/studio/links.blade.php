@@ -68,8 +68,12 @@ if (isset($_COOKIE['LinkCount'])) {
                             
                                 <div style="overflow-y: none;" class="col col-md-7 ms-3">
                             
-                            
                                     <div id="links-table-body" data-page="{{request('page', 1)}}" data-per-page="{{$pagePage ? $pagePage : 0}}">
+                                        @if($links->total() == 0)
+                                              <div class="col-6 text-center">
+                                                <p class="mt-5">You haven't added any links yet.</p>
+                                              </div>
+                                        @else
                                         @foreach($links as $link)
                                         @php $button = Button::find($link->button_id); if(isset($button->name)){$buttonName = $button->name;}else{$buttonName = 0;} @endphp
                                         @php if($buttonName == "default email"){$buttonName = "email";} if($buttonName == "default email_alt"){$buttonName = "email_alt";} @endphp
@@ -181,6 +185,7 @@ if (isset($_COOKIE['LinkCount'])) {
                                         </div>
                                         @endif
                                         @endforeach
+                                        @endif
                                     </div>
                             
                             
