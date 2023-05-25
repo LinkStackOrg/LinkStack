@@ -489,38 +489,12 @@ public function SendTestMail(Request $request)
 
             function removeFolder($folderName)
             {
-
-                if (is_dir($folderName))
-
-                    $folderHandle = opendir($folderName);
-
-
-
-                if (!$folderHandle)
-
-                    return false;
-
-
-
-                while ($file = readdir($folderHandle)) {
-
-                    if ($file != "." && $file != "..") {
-
-                        if (!is_dir($folderName . "/" . $file))
-
-                            unlink($folderName . "/" . $file);
-
-                        else
-
-                            removeFolder($folderName . '/' . $file);
-                    }
+                if (File::exists($folderName)) {
+                    File::deleteDirectory($folderName);
+                    return true;
                 }
-
-
-
-                closedir($folderHandle);
-
-                rmdir($folderName);
+            
+                return false;
             }
 
             removeFolder($folderName);
@@ -620,7 +594,6 @@ public function SendTestMail(Request $request)
                 }
             }
         }
-
 
         return Redirect('/studio/theme');
     }
