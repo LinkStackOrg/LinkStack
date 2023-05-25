@@ -80,6 +80,9 @@ class RegisteredUserController extends Controller
             });
         } catch (\Exception $e) {}
 
+        try {
+        $request->user()->sendEmailVerificationNotification();
+        } catch (\Exception $e) {}
 
         event(new Registered($user));
 
