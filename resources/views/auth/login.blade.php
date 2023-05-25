@@ -61,8 +61,8 @@ foreach($pages as $page)
                   </div>
                   <div class="col-lg-12 d-flex justify-content-between">
                     <div class="form-check mb-3">
-                      <input type="checkbox" class="form-check-input" id="remember_me">
-                      <label class="form-check-label" name="remember" for="remember_me">Remember Me</label>
+                      <input type="checkbox" class="form-check-input" name="remember" id="remember_me">
+                      <label class="form-check-label" for="remember_me">Remember Me</label>
                     </div>
                     <a href="{{ route('password.request') }}">Forgot Password?</a>
                   </div>

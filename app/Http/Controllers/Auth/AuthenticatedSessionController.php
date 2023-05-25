@@ -33,16 +33,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        //Redirect admin and users to their panels
-        $role = Auth::user()->role;
+        return redirect('/dashboard');
 
-        if($role == 'user' || $role == 'vip'){
-           return redirect('/studio/index');
-        }elseif($role == 'admin'){
-            return redirect('/panel/index');
-        }
-
-        return back();
     }
     /**
      * Destroy an authenticated session.
