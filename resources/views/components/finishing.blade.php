@@ -1,9 +1,11 @@
 <?php 
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Migrations\Migrator;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Database\Seeders\ButtonSeeder;
 use App\Models\Page;
 
          //run before finishing:
@@ -130,10 +132,16 @@ use App\Models\Page;
 
             /* Updates button database entries */ 
             Schema::disableForeignKeyConstraints();
-            try {Artisan::call('migrate', ['--force' => true]);} catch (exception $e) {}
+            try {
+            $migrator = app('migrator');
+            $migrator->run(database_path('migrations'), ['--force' => true]);
+            } catch (exception $e) {}
             try {DB::table('buttons')->delete();} catch (exception $e) {}
             try {DB::table('buttons')->truncate();} catch (exception $e) {}
-            try {Artisan::call('db:seed --class="ButtonSeeder" --force');} catch (exception $e) {}
+            try {
+                $seeder = new ButtonSeeder();
+                $seeder->run();
+            } catch (exception $e) {}
             Schema::enableForeignKeyConstraints();
 
     try {
