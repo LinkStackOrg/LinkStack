@@ -223,11 +223,6 @@ Route::group([
 }); // ENd Admin authenticated routes
 });
 
-
-  if(config('advanced-config.custom_url_prefix') == ""){
-    Route::get('/{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
-  }
-
 // Displays Maintenance Mode page
 if(env('MAINTENANCE_MODE') == 'true' or file_exists(base_path("storage/MAINTENANCE"))){
 Route::get('/{any}', function () {
@@ -235,5 +230,8 @@ Route::get('/{any}', function () {
   })->where('any', '.*');
 }
 
-
 require __DIR__.'/auth.php';
+
+if(config('advanced-config.custom_url_prefix') == ""){
+  Route::get('/{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
+}
