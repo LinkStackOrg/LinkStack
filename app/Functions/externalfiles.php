@@ -12,7 +12,7 @@ function external_file_get_contents($url) {
     return $data;
 }
 
-function uri($path) {
-    $url = str_replace(['http://', 'https://'], '', url(''));
+function urlr($path) {
+    $url = str_replace(['http://', 'https://'], '', uri(''));
     return "//" . $url . "/" . $path;
 }
