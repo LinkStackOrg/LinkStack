@@ -1,3 +1,4 @@
+@if($_SERVER['QUERY_STRING'] === '')
 <!DOCTYPE html>
 @include('layouts.lang')
 <head>
@@ -92,6 +93,10 @@ body {
         <h1 style="font-size: 300%;"><i class="fa-solid fa-screwdriver-wrench"></i> Maintenance Mode <i class="fa-solid fa-screwdriver-wrench"></i></h1>
 		      <h2>We are performing scheduled site maintenance at this time.</h2>
           <h3>Please check back with us later.</h3>
+          @if(auth()->user()->role == 'admin')
+          <br><center><i>Admin options:</i></center>
+          <a href="{{url('dashboard')}}">Dashboard</a> | <a href="{{url('?maintenance=off')}}" onclick="return confirm('You are about to disable Maintenance Mode. Are you sure?');">Turn off</a>
+          @endif
         </div>
 
       </div>
@@ -99,3 +104,11 @@ body {
   </div>
 </body>
 </html>
+@elseif($_SERVER['QUERY_STRING'] === 'maintenance=off')
+@php
+EnvEditor::editKey('MAINTENANCE_MODE', false);
+ob_clean();
+header("Location: " . url('dashboard'));
+exit;
+@endphp
+@endif

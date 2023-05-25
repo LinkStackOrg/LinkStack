@@ -192,7 +192,7 @@ if(EnvEditor::getKey('APP_DEBUG') == 'false'){
         
         @include('components.finishing')
         
-        <?php if(file_exists(base_path("storage/MAINTENANCE"))){unlink(base_path("storage/MAINTENANCE"));} ?>
+        <?php EnvEditor::editKey('MAINTENANCE_MODE', false); ?>
 <?php 
 if($debug === true){
    if(EnvEditor::keyExists('APP_DEBUG')){EnvEditor::editKey('APP_DEBUG', 'false');}
@@ -234,7 +234,7 @@ if($debug === true){
 @if($_SERVER['QUERY_STRING'] === 'error')
       <?php //on error ?>
         
-        <?php if(file_exists(base_path("storage/MAINTENANCE"))){unlink(base_path("storage/MAINTENANCE"));} ?>
+        <?php EnvEditor::editKey('MAINTENANCE_MODE', false); ?>
 
         <div class="logo-container fadein">
 <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">

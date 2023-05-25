@@ -51,7 +51,7 @@ if(file_exists(base_path('INSTALLING')) or file_exists(base_path('INSTALLERLOCK'
 }else{
 
 // Disables routes if in Maintenance Mode
-if(env('MAINTENANCE_MODE') != 'true' and !file_exists(base_path("storage/MAINTENANCE"))){
+if(env('MAINTENANCE_MODE') != 'true'){
 
 //Changes the homepage to a LinkStack profile if set in the config
 if(config('advanced-config.custom_home_url') != '') {
@@ -195,8 +195,7 @@ Route::group([
   // Check if new version is available
   if($updater->source()->isNewVersionAvailable() and (file_exists(base_path("backups/CANUPDATE")) or env('SKIP_UPDATE_BACKUP') == true)) {
 
-      $tst = base_path('storage/');
-      file_put_contents($tst.'MAINTENANCE', '');
+    EnvEditor::editKey('MAINTENANCE_MODE', true);
 
       // Get the current installed version
       echo $updater->source()->getVersionInstalled();
