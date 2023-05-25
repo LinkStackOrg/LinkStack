@@ -20,7 +20,7 @@
     <meta property="og:url" content="{{ url('') }}">
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{env('APP_NAME')}}">
-    <meta property="og:description" content="{{ strip_tags($userinfo->littlelink_description) }}">
+    <meta property="og:description" content="{{ strip_tags($message->home_message) }}">
     @if(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
     <meta property="og:image" content="{{ asset('assets/linkstack/images/'.findFile('avatar')) }}">
     @else
@@ -32,7 +32,7 @@
     <meta property="twitter:domain" content="{{ url('') }}">
     <meta property="twitter:url" content="{{ url('') }}">
     <meta name="twitter:title" content="{{env('APP_NAME')}}">
-    <meta name="twitter:description" content="{{ strip_tags($userinfo->littlelink_description) }}">
+    <meta name="twitter:description" content="{{ strip_tags($message->home_message) }}">
     @if(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
     <meta name="twitter:image" content="{{ asset('assets/linkstack/images/'.findFile('avatar')) }}">
     @else
