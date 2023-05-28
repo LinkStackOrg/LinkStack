@@ -223,7 +223,7 @@ Route::group([
 });
 
 // Displays Maintenance Mode page
-if(env('MAINTENANCE_MODE') == 'true' or file_exists(base_path("storage/MAINTENANCE"))){
+if(env('MAINTENANCE_MODE') == 'true'){
 Route::get('/{any}', function () {
   return view('maintenance');
   })->where('any', '.*');
