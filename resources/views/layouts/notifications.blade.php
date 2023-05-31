@@ -47,24 +47,6 @@ function notificationCard($ntid, $icon, $heading, $subheading) {
 //security check, checks if config files got compromised
 if(auth()->user()->role == 'admin'){
 
-$serversb = $_SERVER['SERVER_NAME'];
-$urisb = $_SERVER['REQUEST_URI'];
-
-// Tests if a URL has a valid SSL certificate
-function has_sslsb( $domain ) {
-	$ssl_check = @fsockopen( 'ssl://' . $domain, 443, $errno, $errstr, 30 );
-	$res = !! $ssl_check;
-	if ( $ssl_check ) { fclose( $ssl_check ); }
-	return $res;
-  }
-  
-  // Changes probed URL to HTTP if no valid SSL certificate is present, otherwise an error would be thrown
-  if (has_sslsb($serversb)) {
-	$actual_linksb = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-  } else {
-	$actual_linksb = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-  }
-
 function getUrlSatusCodesb($urlsb, $timeoutsb = 3)
  {
  $chsb = curl_init();
@@ -80,8 +62,8 @@ function getUrlSatusCodesb($urlsb, $timeoutsb = 3)
  }
 
 // Files or directories to test if accessible externally
-$url1sb = getUrlSatusCodesb($actual_linksb . '/../../.env');
-$url2sb = getUrlSatusCodesb($actual_linksb . '/../../database/database.sqlite');
+$url1sb = getUrlSatusCodesb(url('.env'));
+$url2sb = getUrlSatusCodesb(url('database/database.sqlite'));
 
 // sets compromised to true if config files got compromised
 if($url1sb == '200'  or $url2sb == '200') {

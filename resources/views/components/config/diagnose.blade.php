@@ -9,25 +9,6 @@ $utrue = "<td style=\"text-align: center; cursor: help;\" title=\"Your security 
 $ufalse = "<td style=\"text-align: center; cursor: help;\" title=\"Everything is working as expected!\"><i class='bi bi-check-lg'></i></td>";
 $unull = "<td style=\"text-align: center; cursor: help;\" title=\"Something went wrong. This might be normal if you're running behind a proxy or docker container.\">➖</td>";
 
-
-$server = $_SERVER['SERVER_NAME'];
-$uri = $_SERVER['REQUEST_URI'];
-
-// Tests if a URL has a valid SSL certificate
-function has_ssl( $domain ) {
-  $ssl_check = @fsockopen( 'ssl://' . $domain, 443, $errno, $errstr, 30 );
-  $res = !! $ssl_check;
-  if ( $ssl_check ) { fclose( $ssl_check ); }
-  return $res;
-}
-
-// Changes probed URL to HTTP if no valid SSL certificate is present, otherwise an error would be thrown
-if (has_ssl($server)) {
-  $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-} else {
-  $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-}
-
 function getUrlSatusCode($url, $timeout = 3)
  {
  $ch = curl_init();
@@ -43,12 +24,12 @@ function getUrlSatusCode($url, $timeout = 3)
  }
 
 //Files or directories to test if writable
-$wrt1 = is_writable('.env');
-$wrt2 = is_writable('database/database.sqlite');
+$wrt1 = is_writable(base_path('.env'));
+$wrt2 = is_writable(base_path('database/database.sqlite'));
 
 //Files or directories to test if accessible externally
-$url1 = getUrlSatusCode($actual_link . '/../../.env');
-$url2 = getUrlSatusCode($actual_link . '/../../database/database.sqlite');
+$url1 = getUrlSatusCode(url('.env'));
+$url2 = getUrlSatusCode(url('database/database.sqlite'));
 
 ?>
 
