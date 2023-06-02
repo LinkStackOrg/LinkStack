@@ -429,11 +429,11 @@ $usrhandl = Auth::user()->littlelink_name;
                 <li class="nav-item dropdown">
                   <a class="py-0 nav-link d-flex align-items-center dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-target="#navbarDropdownIcon">
 					@if(file_exists(base_path(findAvatar(Auth::user()->id))))
-					<img src="{{ url(findAvatar(Auth::user()->id)) }}" alt="User-Profile" class="theme-color-default-img img-fluid avatar avatar-40 avatar-rounded" style="object-fit:cover;">
+					<img src="{{ url(findAvatar(Auth::user()->id)) }}" alt="User-Profile" class="img-fluid avatar avatar-40 avatar-rounded" style="object-fit:cover;">
           @elseif(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
           <img src="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}" alt="User-Profile" class="img logo" style="width:auto;height:30px;">
 					@else
-					<img src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="User-Profile" class="theme-color-default-img img-fluid avatar avatar-40 avatar-rounded">
+					<img src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="User-Profile" class="img-fluid avatar avatar-40 avatar-rounded">
 					@endif
                     <div class="caption ms-3 d-none d-md-block ">
                         <h6 class="mb-0 caption-title">{{Auth::user()->name}}</h6>
@@ -494,7 +494,7 @@ $usrhandl = Auth::user()->littlelink_name;
               </div>
               <div style="z-index:0!important;" class="iq-header-img">
                 @php if(file_exists(base_path("assets/dashboard-themes/header.png"))){$headerImage = asset('assets/dashboard-themes/header.png');}else{$headerImage = asset('assets/images/dashboard/top-header-overlay.png');} @endphp
-                  <img src="{{$headerImage}}" draggable="false" alt="header" class="theme-color-default-img img-fluid w-100 h-100 animated-scaleX">
+                  <img src="{{$headerImage}}" draggable="false" alt="header" class="img-fluid w-100 h-100 animated-scaleX">
                   <img src="{{$headerImage}}" draggable="false" alt="header" class="theme-color-purple-img img-fluid w-100 h-100 animated-scaleX">
                   <img src="{{$headerImage}}" draggable="false" alt="header" class="theme-color-blue-img img-fluid w-100 h-100 animated-scaleX">
                   <img src="{{$headerImage}}" draggable="false" alt="header" class="theme-color-green-img img-fluid w-100 h-100 animated-scaleX">
