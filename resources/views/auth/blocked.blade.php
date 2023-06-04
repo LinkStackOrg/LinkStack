@@ -27,15 +27,15 @@
                     <!--logo End-->
                 <h4 class="logo-title ms-3">{{env('APP_NAME')}}</h4>
               </a>
-              <h2 class="mb-2 text-center mt-4">Verification Status</h2>
-              <p class="text-center"><b>Your account is still pending verification</b></p>
-              <p class="text-center mb-4">Your account is currently unverified and requires manual verification by an administrator.</p>
+              <h2 class="mb-2 text-center mt-4">{{__('messages.Verification Status')}}</h2>
+              <p class="text-center"><b>{{__('messages.auth_pending')}}</b></p>
+              <p class="text-center mb-4">{{__('messages.auth_unverified')}}</p>
 
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
     
                     <button type="submit" class="btn btn-primary mt-2">
-                        {{ __('Log out') }}
+                        {{ __('messages.Log out') }}
                     </button>
                 </form>
             </div>
