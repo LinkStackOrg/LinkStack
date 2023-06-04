@@ -72,7 +72,22 @@ return [
     'Resend Verification Email' => 'Resend Verification Email+',
 
 
-    '' => '+',
+    'Dashboard' => 'Dashboard+',
+    'Total Links:' => 'Total Links:+',
+    'Link Clicks:' => 'Link Clicks:+',
+    'View/Edit Links' => 'View/Edit Links+',
+    'Top Links:' => 'Top Links:+',
+    'You haven’t added any links yet' => 'You haven’t added any links yet.+',
+    'clicks' => 'clicks+',
+    'Site statistics:' => 'Site statistics:+',
+    'Total links' => 'Total links+',
+    'Total clicks' => 'Total clicks+',
+    'Total users' => 'Total users+',
+    'Registrations:' => 'Registrations:+',
+    'Last 30 days' => 'Last 30 days+',
+    'Last 7 days' => 'Last 7 days+',
+    'Last 24 hours' => 'Last 24 hours+',
+    'Active users:' => 'Active users:+',
 
 
     '' => '+',
