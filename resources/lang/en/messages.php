@@ -72,6 +72,32 @@ return [
     'Resend Verification Email' => 'Resend Verification Email+',
 
 
+    'Hi' => 'Hi+',
+    'stranger' => 'stranger+',
+    'Welcome to' => 'Welcome to :appName!',
+    'Set a handle' => 'Set a handle+',
+    'Settings' => 'Settings+',
+    'Scheme' => 'Scheme+',
+    'Auto' => 'Auto+',
+    'Dark' => 'Dark+',
+    'Light' => 'Light+',
+    'Color Customizer' => 'Color Customizer+',
+    'Sidebar Color' => 'Sidebar Color+',
+    'Default' => 'Default+',
+    'Dark' => 'Dark+',
+    'Color' => 'Color+',
+    'Transparent' => 'Transparent+',
+    'Sidebar Types' => 'Sidebar Types+',
+    'Mini' => 'Mini+',
+    'Hover' => 'Hover+',
+    'Boxed' => 'Boxed+',
+    'Sidebar Active Style' => 'Sidebar Active Style+',
+    'Rounded One Side' => 'Rounded One Side+',
+    'Rounded All' => 'Rounded All+',
+    'Pill One Side' => 'Pill One Side+',
+    'Pill All' => 'Pill All+',
+
+
     'Home' => 'Home+',
     'Dashboard' => 'Dashboard+',
     'Add Link' => 'Add Link+',
@@ -96,7 +122,7 @@ return [
     'Scan QR Code' => 'Scan QR Code+',
     'QR code could not be generated' => 'QR code could not be generated+',
     'Reason:' => 'Reason:+',
-    
+
     'Close' => 'Close+',
     
     'All Notifications' => 'All Notifications+',
@@ -136,12 +162,12 @@ return [
     'Last 24 hours' => 'Last 24 hours+',
     'Active users:' => 'Active users:+',
 
-    'Title' => 'Title';,
-    'Link' => 'Link*';,
-    'Button' => 'Button*',
-    'custom' => 'custom';,
-    'custom_website' => 'custom_website';,
 
+    'Title' => 'Title',
+    'Link' => 'Link*',
+    'Button' => 'Button*',
+
+    
     'Config' => 'Config+',
     'Advanced Config' => 'Advanced Config+',
     'Take Backup' => 'Take Backup+',
@@ -192,9 +218,9 @@ return [
     'Link' => 'Link+',
     'Hover for more' => 'Hover for more+',
     'Write access' => 'Write access+',
-    'Write access.description.1-3' => 'Here, you can easily verify if important system files can be written to. This is important for every function to work properly. Entries marked with a+',
-    'Write access.description.2-3' => 'work as expected, entries marked with a+',
-    'Write access.description.3-3' => 'do not.+',
+    'Write access.description.1-3' => 'Here, you can easily verify if important system files can be written to. This is important for every function to work properly. Entries marked with a',
+    'Write access.description.2-3' => 'work as expected, entries marked with a',
+    'Write access.description.3-3' => 'do not.',
     'File' => 'File+',
     'Dependencies' => '+',
     'Required PHP modules' => 'Required PHP modules.+',
