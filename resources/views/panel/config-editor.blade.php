@@ -15,11 +15,11 @@
                   
                   <div id="exTab2" class="">
                       <ul id="myTab" class="nav nav-tabs">
-                        <li class="nav-item"><a class="nav-link active" href="#1" data-toggle="tab" id="home-tab">Config</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#2" data-toggle="tab" id="advanced-tab">Advanced Config</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#3" data-toggle="tab" id="backup-tab">Take Backup</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#4" data-toggle="tab" id="backups4-tab">All Backups</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#5" data-toggle="tab" id="diagnose5-tab">Diagnosis</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#1" data-toggle="tab" id="home-tab">{{__('messages.Config')}}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#2" data-toggle="tab" id="advanced-tab">{{__('messages.Advanced Config')}}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#3" data-toggle="tab" id="backup-tab">{{__('messages.Take Backup')}}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#4" data-toggle="tab" id="backups4-tab">{{__('messages.All Backups')}}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#5" data-toggle="tab" id="diagnose5-tab">{{__('messages.Diagnosis')}}</a></li>
                       </ul>
                   
                   <div class="tab-content ">
@@ -27,7 +27,7 @@
                   
                   <div class="tab-pane fade show active" role="tabpanel" style="scroll-margin-top: 1000px;" aria-labelledby="home-tab" id="1">
                       <section class="text-gray-400">
-                        <h2 class="mb-4 card-header"><i class="bi bi-pencil-square"> Config</i></h2>
+                        <h2 class="mb-4 card-header"><i class="bi bi-pencil-square"> {{__('messages.Config')}}</i></h2>
                       <div class="card-body p-0 p-md-3">
                   
                   <style>
@@ -64,8 +64,8 @@
                               <div class="d-flex align-items-center text-body">
                                 <i class="bi bi-pencil-square opt-img mr-3"></i>
                                 <div>
-                                  <h3 class="counter mb-2 text-body" style="visibility: visible;">Alternative Config Editor</h3>
-                                  <p class="mb-0">Use the Alternative Config Editor to edit the config directly</p>
+                                  <h3 class="counter mb-2 text-body" style="visibility: visible;">{{__('messages.Alternative Config Editor')}}</h3>
+                                  <p class="mb-0">{{__('messages.Use the Alternative Config Editor to edit the config directly')}}</p>
                                 </div>
                               </div>
                             </div>
@@ -77,8 +77,8 @@
                               <div class="d-flex align-items-center text-body">
                                 <i class="bi bi-filetype-php opt-img mr-3"></i>
                                 <div>
-                                  <h3 class="counter mb-2 text-body" style="visibility: visible;">PHP info</h3>
-                                  <p class="mb-0">Display debugging information about your PHP setup</p>
+                                  <h3 class="counter mb-2 text-body" style="visibility: visible;">{{__('messages.PHP info')}}</h3>
+                                  <p class="mb-0">{{__('messages.Display debugging information about your PHP setup')}}</p>
                                 </div>
                               </div>
                             </div>
@@ -90,31 +90,31 @@
                   
                   @endif
                   
-                      <label class="mb-2">Jump directly to:</label>
+                      <label class="mb-2">{{__('messages.Jump directly to:')}}</label>
                       <div class="col-md-12 col-lg-12">
                         <div class="row row-cols-1">
                           <div class="overflow-hidden d-slider1 swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
                             <ul class="p-0 m-0 mb-2 swiper-wrapper list-inline" id="swiper-wrapper-a3b63471782f110100" aria-live="polite" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
                               <li class="swiper-slide card card-slide aos-init aos-animate swiper-slide-active">
-                                <a href="#Application" class="btn btn-primary">Application</a>
+                                <a href="#Application" class="btn btn-primary">{{__('messages.Application')}}</a>
                               </li>
                               <li class="swiper-slide card card-slide aos-init aos-animate swiper-slide-next">
-                                <a href="#Panel-settings" class="btn btn-primary">Panel settings</a>
+                                <a href="#Panel-settings" class="btn btn-primary">{{__('messages.Panel settings')}}</a>
                               </li>
                               <li class="swiper-slide card card-slide aos-init aos-animate swiper-slide-next">
-                                <a href="#Security" class="btn btn-primary">Security</a>
+                                <a href="#Security" class="btn btn-primary">{{__('messages.Security')}}</a>
                               </li>
                               <li class="swiper-slide card card-slide aos-init aos-animate swiper-slide-next">
-                                <a href="#Advanced" class="btn btn-primary">Advanced</a>
+                                <a href="#Advanced" class="btn btn-primary">{{__('messages.Advanced')}}</a>
                               </li>
                               <li class="swiper-slide card card-slide aos-init aos-animate swiper-slide-next">
-                                <a href="#SMTP" class="btn btn-primary">SMTP</a>
+                                <a href="#SMTP" class="btn btn-primary">{{__('messages.SMTP')}}</a>
                               </li>
                               <li class="swiper-slide card card-slide aos-init aos-animate swiper-slide-next">
-                                <a href="#Footer" class="btn btn-primary">Footer links</a>
+                                <a href="#Footer" class="btn btn-primary">{{__('messages.Footer links')}}</a>
                               </li>
                               <li class="swiper-slide card card-slide aos-init aos-animate swiper-slide-next">
-                                <a href="#Debug" class="btn btn-primary">Debug</a>
+                                <a href="#Debug" class="btn btn-primary">{{__('messages.Debug')}}</a>
                               </li>
                             </ul>
                             <div class="swiper-button swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-a3b63471782f110100" aria-disabled="false"></div>
@@ -133,7 +133,7 @@
                   
                   <div class="tab-pane" role="tabpanel" style="scroll-margin-top: 1000px;" aria-labelledby="advanced-tab" id="2">
                       <section class="text-gray-400">
-                      <h2 class="mb-4 card-header"><i class="bi bi-pencil-square"> Advanced config</i></h2>
+                      <h2 class="mb-4 card-header"><i class="bi bi-pencil-square"> {{__('messages.Advanced Config')}}</i></h2>
                       <div class="card-body p-0 p-md-3">
                       @include('components.config.advanced-config')
                       </div>
@@ -143,7 +143,7 @@
                   
                   <div class="tab-pane" role="tabpanel" style="scroll-margin-top: 1000px;" aria-labelledby="backup-tab" id="3">
                       <section class="text-gray-400">
-                      <h2 class="mb-4 card-header"><i class="bi bi-link-45deg"> Backup</i></h2>
+                      <h2 class="mb-4 card-header"><i class="bi bi-link-45deg"> {{__('messages.Backup')}}</i></h2>
                       <div class="card-body p-0 p-md-3">
                       @include('components.config.backup')
                       </div>
@@ -153,7 +153,7 @@
                   
                   <div class="tab-pane" role="tabpanel" style="scroll-margin-top: 1000px;" aria-labelledby="backups4-tab" id="4">
                       <section class="text-gray-400">
-                      <h2 class="mb-4 card-header"><i class="bi bi-link-45deg"> Backups</i></h2>
+                      <h2 class="mb-4 card-header"><i class="bi bi-link-45deg"> {{__('messages.Backups')}}</i></h2>
                       <div class="card-body p-0 p-md-3">
                       @include('components.config.backups')
                       </div>
@@ -163,7 +163,7 @@
                   
                   <div class="tab-pane" role="tabpanel" style="scroll-margin-top: 1000px;" aria-labelledby="diagnose5-tab" id="5">
                       <section class="text-gray-400">
-                      <h2 class="mb-4 card-header"><i class="bi bi-braces-asterisk"> Debugging information</i> <span class="text-muted" style="font-size:60%;vertical-align: middle;">v{{file_get_contents(base_path("version.json"))}}</span></h2>
+                      <h2 class="mb-4 card-header"><i class="bi bi-braces-asterisk"> {{__('messages.Debugging information')}}</i> <span class="text-muted" style="font-size:60%;vertical-align: middle;">v{{file_get_contents(base_path("version.json"))}}</span></h2>
                       <div class="card-body p-0 p-md-3">
                       @include('components.config.diagnose')
                       </div>
