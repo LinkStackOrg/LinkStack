@@ -136,6 +136,12 @@ return [
     'Last 24 hours' => 'Last 24 hours+',
     'Active users:' => 'Active users:+',
 
+    'Title' => 'Title';,
+    'Link' => 'Link*';,
+    'Button' => 'Button*',
+    'custom' => 'custom';,
+    'custom_website' => 'custom_website';,
+
 
     '' => '+',
 

@@ -2,23 +2,23 @@
 
 @section('content')
 
-        <h2 class="mb-4"><i class="bi bi-plus"> Add Link</i></h2>
+        <h2 class="mb-4"><i class="bi bi-plus">{{__('messages.Add Link')}}</i></h2>
 
         <form action="{{ route('addLink') }}" method="post">
         @csrf
         <div class="form-group col-lg-8">
-          <label>Link*</label>
+          <label>{{__('messages.Link')}}</label>
           <input type="text" name="link" class="form-control" placeholder="https://example.com" required>
         </div>
         <div class="form-group col-lg-8">
-          <label>Title</label>
+          <label>{{__('messages.Title')}}</label>
           <input type="text" name="title" class="form-control" placeholder="Internal name (optional)">
         </div>
         <div class="form-group col-lg-8">
-          <label for="exampleFormControlSelect1">Button*</label>
+          <label for="exampleFormControlSelect1">{{__('messages.Button')}}</label>
           <select class="form-control" name="button">
-            <option style="background-color:#ffe8e4;"> custom </option>
-            <option style="background-color:#ffe8e4;"> custom_website </option>
+            <option style="background-color:#ffe8e4;"> {{__('messages.custom')}} </option>
+            <option style="background-color:#ffe8e4;"> {{__('messages.custom_website')}} </option>
             @foreach($buttons as $button)
             @if (!in_array($button->name, ['custom', 'custom_website', 'heading', 'space']))
             <option> {{ $button->name }} </option>
