@@ -74,7 +74,7 @@ return [
 
     'Hi' => 'Hi+',
     'stranger' => 'stranger+',
-    'Welcome to' => 'Welcome to :appName!',
+    'welcome' => 'Welcome to :appName!',
     'Set a handle' => 'Set a handle+',
     'Settings' => 'Settings+',
     'Scheme' => 'Scheme+',
