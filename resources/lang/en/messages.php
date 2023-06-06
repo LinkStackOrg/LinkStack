@@ -162,7 +162,7 @@ return [
     'Last 24 hours' => 'Last 24 hours+',
     'Active users:' => 'Active users:+',
 
-
+    ########Add Link Blade########
     'Title' => 'Title+',
     'Link' => 'Link*+',
     'Button' => 'Button*+',
@@ -176,8 +176,46 @@ return [
     'addli.description.4-5' => 'The `Space` button will be replaced with an empty space, so buttons could be visually separated into groups. Entering a number between 1-10 in the title section will change the empty space`s distance.+',
     'addli.description.5-5' => 'The `Heading` button will be replaced with a sub-heading, where the title defines the text on that heading.+',
     
+    ########Button Editor Blade########
+    'Button Editor' => 'Button Editor+',
+    'Back' => 'Back+',
+    'Custom Button' => 'Custom Button+',
+    'CSS' => 'CSS+',
+    'background' => 'background+',
+    'gradient' => 'gradient+',
+    'Show CSS' => 'Show CSS+',
+    'Custom CSS' => 'Custom CSS+',
+    'Save' => 'Save+',
+    'Reset to default' => 'Reset to default+',
+    'Result' => 'Result:+',
+    'Custom Icon' => 'Custom Icon+',
+    'Custom Alert' => 'Your custom icon`s short code does not contain the string "fa-" always use icons in the format: fa-ghost, for example.+',
+    'cb.description.1-4' => 'Custom icons can be added to buttons via Font Awesome. You can use any icon from the list below, you can access this list by clicking the `See all icons` button. Each icon on that list has a short code, which you can copy and enter in the custom icon field.+',
+    'cb.description.2-4' => 'Every icon short code consists of a prefix and main part. If the short code is not a brand icon, you can simply enter the code in the format: fa-icon-name. The `fa-...` formatting is important here. For example `fa-code`.+',
+    'cb.description.3-4' => 'If the short code is a brand icon, it is important to include a `fab` before the short code part. Again, The `fa-...` formatting still applies here. For example, `fab fa-github`+',
+    'cb.description.4-4' => 'To apply color to your icons, you can simply write out the color name or just write the HEX value before the icon, followed by a `;`. Here it is important to put the color before the icon short code and the color code must be ended with a semicolon.<br>You can find a list of available colors <a href="https://www.w3schools.com/cssref/css_colors.asp" target="_blank">here</a>.+',
+    'Style' => 'Style+',
+    'Prefix' => 'Prefix+',
+    'Icon' => 'Icon+',
+    'Short Code' => 'Short Code+',
+    'Regular' => 'Regular+',
+    'Fa-user' => 'fa-user+',
+    'Brands' => 'Brands+',
+    'Fab' => 'fab+',
+    'Fab fa-github' => 'fab fa-github+',
+    'Color' => 'Color+',
+    'Color name' => 'color_name+',
+    'Red fa' => 'red+',
+    'Fa ghost' => 'fa-ghost+',
+    'Color HEX' => 'Color HEX+',
+    'Color HEX1' => 'Color HEX+',
+    'Hex fab fa-twitter' => 'fab fa-twitter+',
+    'Update icon' => 'Update icon+',
+    'See all icons' => 'See all icons+',
 
-    
+
+
+
     'Config' => 'Config+',
     'Advanced Config' => 'Advanced Config+',
     'Take Backup' => 'Take Backup+',
