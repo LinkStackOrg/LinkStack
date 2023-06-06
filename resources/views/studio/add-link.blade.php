@@ -28,19 +28,19 @@
             <option style="background-color:#ebebeb;"> space </option>
           </select>
           <br>
-          <label>* Required fields</label><br>
+          <label>{{__('messages.Required fields')}}</label><br>
         </div>
-        <div class="row"><button type="submit" class="mt-3 ml-3 btn btn-info">Submit</button><a style="color:white;background-color:#f8b739;" class="mt-3 ml-3 btn" href="{{ url('/studio/links') }}">See all links</a></div>
+        <div class="row"><button type="submit" class="mt-3 ml-3 btn btn-info">{{__('messages.Submit')}}</button><a style="color:white;background-color:#f8b739;" class="mt-3 ml-3 btn" href="{{ url('/studio/links') }}">{{__('messages.See all links')}}</a></div>
         </form>
 
         <br><br><details>
-    <summary>More information</summary>
+    <summary>{{__('messages.More information')}}</summary>
 <pre style="color: grey;">
-The 'Custom' button allows you to add a custom link, where the text on the button is determined with the link title set above.
-The 'Custom_website' button functions similar to the Custom button, with the addition of a function that requests the favicon from the chosen URL and uses it as the button icon.
-
-The 'Space' button will be replaced with an empty space, so buttons could be visually separated into groups. Entering a number between 1-10 in the title section will change the empty space's distance.
-The 'Heading' button will be replaced with a sub-heading, where the title defines the text on that heading.
+{{__('messages.addli.description.1-5')}}
+{{__('messages.addli.description.2-5')}}
+{{__('messages.addli.description.3-5')}}
+{{__('messages.addli.description.4-5')}}
+{{__('messages.addli.description.5-5')}}
 </pre>
 </details>
 

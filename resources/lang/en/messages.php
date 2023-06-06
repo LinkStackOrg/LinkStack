@@ -163,9 +163,19 @@ return [
     'Active users:' => 'Active users:+',
 
 
-    'Title' => 'Title',
-    'Link' => 'Link*',
-    'Button' => 'Button*',
+    'Title' => 'Title+',
+    'Link' => 'Link*+',
+    'Button' => 'Button*+',
+    'Required fields' => '* Required fields+',
+    'Submit' => 'Submit+',
+    'See all links' => 'See all links+',
+    'More information' => 'More information+',
+    'addli.description.1-5' => 'The `Custom` button allows you to add a custom link, where the text on the button is determined with the link title set above.+',
+    'addli.description.2-5' => 'The `Custom_website` button functions similar to the Custom button, with the addition of a function that requests the favicon from the chosen URL and uses it as the button icon.+',
+    'addli.description.3-5' => '',
+    'addli.description.4-5' => 'The `Space` button will be replaced with an empty space, so buttons could be visually separated into groups. Entering a number between 1-10 in the title section will change the empty space`s distance.+',
+    'addli.description.5-5' => 'The `Heading` button will be replaced with a sub-heading, where the title defines the text on that heading.+',
+    
 
     
     'Config' => 'Config+',
