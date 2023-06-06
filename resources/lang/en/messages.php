@@ -214,19 +214,32 @@ return [
     'See all icons' => 'See all icons+',
 
     ########Edit Link Blade########
-    'Edit' => 'Edit+'
-    'Add' => 'Add+'
-    'Block' => 'Block+'
-    'Blocks' => 'Blocks: +'
-    'Select Block' => 'Select Block +'
-    'Toggle Dropdown' => 'Toggle Dropdown+'
-    'Cancel' => 'Cancel+'
-    'Save and Add More' => 'Save and Add More+'
+    'Edit' => 'Edit+',
+    'Add' => 'Add+',
+    'Block' => 'Block+',
+    'Blocks' => 'Blocks: +',
+    'Select Block' => 'Select Block +',
+    'Toggle Dropdown' => 'Toggle Dropdown+',
+    'Cancel' => 'Cancel+',
+    'Save and Add More' => 'Save and Add More+',
     'editlink.description.1-5' => 'The `Custom` button allows you to add a custom link, where the text on the button is determined with the link title set above.+',
     'editlink.description.2-5' => 'The `Custom_website` button functions similar to the Custom button, with the addition of a function that requests the favicon from the chosen URL and uses it as the button icon.+',
     'editlink.description.3-5' => '',
     'editlink.description.4-5' => 'The `Space` button will be replaced with an empty space, so buttons could be visually separated into groups. Entering a number between 1-10 in the title section will change the empty space`s distance.+',
     'editlink.description.5-5' => 'The `Heading` button will be replaced with a sub-heading, where the title defines the text on that heading.+',
+
+    ########Link Blade########
+    'My Links' => 'My Links+',
+    'Add new' => 'Add new+',
+    'Link' => 'link+',
+    'No Link Added' => 'You haven`t added any links yet.+',
+    'Download' => 'Download+',
+    'Clicks' => 'Clicks+',
+    'Add new link' => 'Add new link+',
+    'Preview' => ' Preview:+',
+    'No compatible browser' => 'Your browser isn`t compatible+',
+    'Page Icons' => 'Page Icons+',
+    'Save links' => 'Save links+',
 
 
     'Config' => 'Config+',

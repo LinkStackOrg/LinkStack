@@ -58,8 +58,8 @@ if (isset($_COOKIE['LinkCount'])) {
     
                         <div class="row">
                             <section class='pre-left text-gray-400'>
-                                <h3 class="card-header mb-3"><i class="bi bi-link-45deg">My Links</i>
-                                        <a class="btn btn-primary float-end" href="{{ url('/studio/add-link') }}">Add new <span class='d-none d-md-inline'>link</span></a>
+                                <h3 class="card-header mb-3"><i class="bi bi-link-45deg">{{__('messages.My Links')}}</i>
+                                        <a class="btn btn-primary float-end" href="{{ url('/studio/add-link') }}">{{__('messages.Add new ')}}<span class='d-none d-md-inline'>{{__('messages.link')}}</span></a>
                                 </h3>
                             
                                 <div>
@@ -71,7 +71,7 @@ if (isset($_COOKIE['LinkCount'])) {
                                     <div id="links-table-body" data-page="{{request('page', 1)}}" data-per-page="{{$pagePage ? $pagePage : 0}}">
                                         @if($links->total() == 0)
                                               <div class="col-6 text-center">
-                                                <p class="mt-5">You haven't added any links yet.</p>
+                                                <p class="mt-5">{{__('messages.No Link Added')}}</p>
                                               </div>
                                         @else
                                         @foreach($links as $link)
@@ -114,7 +114,7 @@ if (isset($_COOKIE['LinkCount'])) {
                                                         <a title='{{$link->link}}' href="{{ $link->link}}" target="_blank" class="d-none d-md-block ml-4 text-muted small">{{Str::limit($link->link, 75 )}}</a>
                                                         <a title='{{$link->link}}' href="{{ $link->link}}" target="_blank" class="d-md-none ml-4 text-muted small">{{Str::limit($link->link, 25 )}}</a>
                                                         @elseif(!empty($link->link) and $button->name == "vcard")
-                                                        <br><a href="{{ url('vcard/'.$link->id) }}" target="_blank" class="ml-4 small">Download</a>
+                                                        <br><a href="{{ url('vcard/'.$link->id) }}" target="_blank" class="ml-4 small">{{__('messages.Download')}}</a>
                             
                                                         @endif
                             
@@ -139,7 +139,7 @@ if (isset($_COOKIE['LinkCount'])) {
                                                     <div class='col-12 py-1 px-3 m-0 mt-2'>
                             
                                                         @if(!empty($link->link))
-                                                        <span><i class="bi bi-bar-chart-line"></i> {{ $link->click_number }} Clicks</span>
+                                                        <span><i class="bi bi-bar-chart-line"></i> {{ $link->click_number }} {{__('messages.Clicks')}}</span>
                             
                                                         @endif
 
@@ -198,29 +198,29 @@ if (isset($_COOKIE['LinkCount'])) {
                                     {!! $links ?? ''->links() !!}
                                 </ul>
                             
-                                @if(count($links) > 3)<a class="btn btn-primary" href="{{ url('/studio/add-link') }}">Add new link</a>@endif
+                                @if(count($links) > 3)<a class="btn btn-primary" href="{{ url('/studio/add-link') }}">{{__('messages.Add new link')}}</a>@endif
                                 </div>
                             </section>
                             
                             <section class='pre-right text-gray-400 pre-side'>
-                                <h3 class="card-header"><i class="bi bi-window-fullscreen" style="font-style:normal!important;"> Preview:</i></h3>
+                                <h3 class="card-header"><i class="bi bi-window-fullscreen" style="font-style:normal!important;">{{__('messages.Preview')}}</i></h3>
                                     <div class='card-body p-0 p-md-3'>
-                                            <center><iframe allowtransparency="true" id="frPreview1" style=" border-radius:0.25rem !important; background: #FFFFFF; min-height:600px; height:100%; max-width:500px !important;" class='w-100' src="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>">Your browser isn't compatible</iframe></center>
+                                            <center><iframe allowtransparency="true" id="frPreview1" style=" border-radius:0.25rem !important; background: #FFFFFF; min-height:600px; height:100%; max-width:500px !important;" class='w-100' src="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>">{{__('messages.No compatible browser')}}</iframe></center>
                                      </div>
                             </section>
                             </div>
                             
                             <br>
                             <section style="margin-left:-15px;margin-right:-15px;" style="width:100%!important;" class='pre-bottom text-gray-400 pre-side'>
-                                <h3 class="card-header"><i class="bi bi-window-fullscreen" style="font-style:normal!important;"> Preview:</i></h3>
+                                <h3 class="card-header"><i class="bi bi-window-fullscreen" style="font-style:normal!important;">{{__('messages.Preview')}}</i></h3>
                                     <div class='card-body p-0 p-md-3'>
-                                            <center><iframe allowtransparency="true" id="frPreview2" style=" border-radius:0.25rem !important; background: #FFFFFF; min-height:600px; height:100%; width:100% !important;" class='w-100' src="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>">Your browser isn't compatible</iframe></center>
+                                            <center><iframe allowtransparency="true" id="frPreview2" style=" border-radius:0.25rem !important; background: #FFFFFF; min-height:600px; height:100%; width:100% !important;" class='w-100' src="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>">{{__('messages.No compatible browser')}}</iframe></center>
                                      </div>
                             </section><br>
                             
                             <section style="margin-left:-15px;margin-right:-15px;" class='text-gray-400'>
                             <a name="icons"></a>
-                            <h3 class="mb-4 card-header"><i class="fa-solid fa-icons"></i> Page Icons</i></h3>
+                            <h3 class="mb-4 card-header"><i class="fa-solid fa-icons"></i>{{__('messages.Page Icons')}}</i></h3>
                             <div class="card-body p-0 p-md-3">
                             
                             <form action="{{ route('editIcons') }}" enctype="multipart/form-data" method="post">
@@ -297,7 +297,7 @@ if (isset($_COOKIE['LinkCount'])) {
                                 {!!icon('whatsapp', 'WhatsApp')!!} --}}
                             
                             
-                                <button type="submit" class="mt-3 ml-3 btn btn-primary">Save links</button>
+                                <button type="submit" class="mt-3 ml-3 btn btn-primary">{{__('messages.Save links')}}</button>
                             </form>
                             
                             
