@@ -241,6 +241,18 @@ return [
     'Page Icons' => 'Page Icons+',
     'Save links' => 'Save links+',
 
+    ########Page Blade########
+    'My Profile'=> 'My Profile+',
+    'Profile Picture' => 'Profile Picture+',
+    'Page URL' => 'Page URL+',
+    'Display name' => 'Display name+',
+    'Name' => 'Name:+',
+    'Page Description' => 'Page Description+',
+    'Show checkmark' => 'Show checkmark+',
+    'disableverified' => 'You are a verified user. This setting allows you to hide your checkmark on your page.+',
+    'Show share button' => 'Show share button+',
+    'disablesharebutton' => 'This setting allows you to hide the share button on your page.+',
+
 
     'Config' => 'Config+',
     'Advanced Config' => 'Advanced Config+',
