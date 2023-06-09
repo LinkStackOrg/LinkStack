@@ -253,6 +253,21 @@ return [
     'Show share button' => 'Show share button+',
     'disablesharebutton' => 'This setting allows you to hide the share button on your page.+',
 
+    ########Profile Blade########
+    'Account Settings' => 'Account Settings+',
+    'Change email' => 'Change email+',
+    'Change password' => 'Change password+',
+    'Export user data' => 'Export user data+',
+    'Export your user data' => 'Export your user data to transfer to a different instance.+',
+    'Export all data' => 'Export all data+',
+    'Export links only' => 'Export links only+',
+    'Import user data' => 'Import user data+',
+    'Import your user data' => 'Import your user data from another instance.+',
+    'Import' => 'Import+',
+    'Delete your account' => 'Delete your account+',
+    'You are about to delete' => 'You are about to delete your account!+',
+    'You are about to delete This action cannot be undone' => 'You are about to delete your account! This action cannot be undone.+',
+
 
     'Config' => 'Config+',
     'Advanced Config' => 'Advanced Config+',
