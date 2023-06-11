@@ -290,6 +290,7 @@ return [
     'SMTP' => 'SMTP+',
     'Footer links' => 'Footer links+',
     'Debug' => 'Debug+',
+    'Language' => 'Language+',
 
     'default' => 'default+',
     'Apply' => 'Apply+',
@@ -458,6 +459,8 @@ return [
     'HOME_URL.description' => 'Set a user page as the home page. This will move the previous home page to example.com/home.+',
     'MAINTENANCE_MODE.title' => 'Enable Maintenance Mode+',
     'MAINTENANCE_MODE.description' => 'Displays a maintenance message on all public pages. This will disable the login pages.+',
+    'LOCALE.title' => 'App locale+',
+    'LOCALE.description' => 'Change the language of your application+',
 
 
     '' => '+',

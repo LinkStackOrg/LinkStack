@@ -414,8 +414,8 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
     <div class="form-group col-lg-8">
     <input value="text" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
     <input value="HOME_FOOTER_LINK" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
-	<h5 style="margin-top:50px">@php foreach($configNames as $obj){if($obj->value == 'HOME_FOOTER_LINK'){echo $obj->title;}}; @endphp</h5>
-    <p class="text-muted">@php foreach($configNames as $obj){if($obj->value == 'HOME_FOOTER_LINK'){echo $obj->description;}}; @endphp</p>
+	<h5 style="margin-top:50px">@php echo __('messages.HOME_FOOTER_LINK.title'); @endphp</h5>
+    <p class="text-muted">@php echo __('messages.HOME_FOOTER_LINK.description'); @endphp</p>
     <div class="input-group">
     <input type="url" style="border-radius:.25rem;max-width:600px" class="form-control" name="value" value="{{$configValue}}">
     <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -449,6 +449,47 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 <script type="text/javascript">document.getElementById("debug-form").addEventListener("change", function() { this.submit(); });</script>
 </form>
 {{-- end debug settings --}}
+
+{{-- start language --}}
+<a name="Language"><h2 class="ch2">{{__('messages.Language')}}</h2></a>
+<?php $configValue2 = str_replace('"', "", EnvEditor::getKey('LOCALE')); ?>
+<form id="language-form" action="{{route('editConfig')}}" enctype="multipart/form-data" method="post">
+    <div class="form-group col-lg-8">
+        <input value="homeurl" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
+        <input value="LOCALE" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
+        <h5 style="margin-top:50px">{{__('messages.LOCALE.title')}}</h5>
+        <p class="text-muted">{{__('messages.LOCALE.description')}}</p>
+        <div class="input-group">
+            <select style="max-width:600px" class="form-control" name="value">
+                @if($configValue2 != '')
+                    <option>{{$configValue2}}</option>
+                @endif
+                <?php
+                try {
+                    $langFolders = array_filter(glob(base_path('resources/lang') . '/*'), 'is_dir');
+                } catch (\Exception $e) {
+                    $langFolders = [];
+                }
+
+                foreach($langFolders as $folder) {
+                    $folderName = basename($folder);
+                    if ($folderName != $configValue2) {
+                        echo '<option>' . $folderName . '</option>';
+                    }
+                }
+                ?>
+            </select>
+        </div>
+    </div>
+    <input type="hidden" name="_token" value="{{csrf_token()}}">
+    <script type="text/javascript">
+        document.getElementById("language-form").addEventListener("change", function() {
+            this.submit();
+        });
+    </script>
+</form>
+{{-- end language --}}
+
 
 <br><br><br><br><br>
 
