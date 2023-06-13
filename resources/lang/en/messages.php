@@ -527,6 +527,15 @@ return [
     'Finish setup' => 'Finish setup+',
 
 
+    ########Maintenance Page########
+    'Maintenance Mode' => 'Maintenance Mode+',
+    'We are performing scheduled site maintenance at this time' => 'We are performing scheduled site maintenance at this time.+',
+    'Please check back with us later' => 'Please check back with us later.+',
+    'Admin options:' => 'Admin options:+',
+    'Turn off' => 'Turn off+',
+    'Warn.Disable.Maintenance' => 'You are about to disable Maintenance Mode. Are you sure?+',
+
+
     '' => '+',
 
 ];
