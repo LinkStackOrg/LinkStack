@@ -319,7 +319,7 @@ class Translate extends Command
 
     public function handle()
     {
-        $locales = ['de', 'es']; 
+        $locales = config('app.supported_locales'); 
         $sourceLocale = 'en'; 
 
         foreach ($locales as $locale) {
