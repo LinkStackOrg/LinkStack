@@ -116,6 +116,9 @@
                               <li class="swiper-slide card card-slide aos-init aos-animate swiper-slide-next">
                                 <a href="#Debug" class="btn btn-primary">{{__('messages.Debug')}}</a>
                               </li>
+                              <li class="swiper-slide card card-slide aos-init aos-animate swiper-slide-next">
+                                <a href="#Debug" class="btn btn-primary">{{__('messages.Language')}}</a>
+                              </li>
                             </ul>
                             <div class="swiper-button swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-a3b63471782f110100" aria-disabled="false"></div>
                             <div class="swiper-button swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-a3b63471782f110100" aria-disabled="true"></div>
