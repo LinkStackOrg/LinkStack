@@ -234,7 +234,6 @@ return [
     'No Link Added' => 'You haven’t added any links yet.+',
     'Download' => 'Download+',
     'Clicks' => 'Clicks+',
-    'Add new link' => 'Add new link+',
     'Preview' => ' Preview:+',
     'No compatible browser' => 'Your browser isn’t compatible+',
     'Page Icons' => 'Page Icons+',
@@ -266,6 +265,33 @@ return [
     'Delete your account' => 'Delete your account+',
     'You are about to delete' => 'You are about to delete your account!+',
     'You are about to delete This action cannot be undone' => 'You are about to delete your account! This action cannot be undone.+',
+
+    ########Theme Blade########
+    'Select a theme' => 'Select a theme+',
+    'Select theme' => 'Select theme+',
+    'Custom background' => 'Custom background+',
+    'No image selected' => 'No image selected+',
+    'Remove background' => 'Remove background+',
+    'Manage themes' => 'Manage themes+',
+    'Loading...' => 'Loading...+',
+    'Upload themes' => 'Upload themes+',
+    'Delete themes' => 'Delete themes+',
+    'Download themes' => 'Download themes+',
+
+    ########Theme Updater Blade########
+    'Theme Updater' => 'Theme Updater+',
+    'Theme name' => 'Theme name:+',
+    'Update status' => 'Update status:+',
+    'Version' => 'Version:+',
+    'Error' => 'Error!+',
+    'Update manually' => 'Update manually+',
+    'Update available' => 'Update available+',
+    'Up to date' => 'Up to date+',
+    'Update all themes' => 'Update all themes+',
+    '' => '',
+    '' => '',
+    {{__('messages.Apply')}}
+
 
 
     'Config' => 'Config+',

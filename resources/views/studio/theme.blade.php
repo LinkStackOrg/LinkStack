@@ -14,11 +14,11 @@
                     @foreach($pages as $page)
 
                     <section class='text-gray-400'>
-                    <h3 class="mb-4 card-header"><i class="bi bi-brush"> Select a theme</i></h3>
+                    <h3 class="mb-4 card-header"><i class="bi bi-brush">{{__('messages.Select a theme')}}</i></h3>
                     <div>
                     
                         <button type="button" class="btn btn-primary mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Select theme
+                        {{__('messages.Select theme')}}
                         </button>
 
                     <section class="text-gray-400"></section>
@@ -28,14 +28,14 @@
                             <div class="card rounded shadow-lg bg-light aos-init aos-animate" data-aos="fade-up" data-aos-delay="800">
                               <div class="flex-wrap card-header d-flex justify-content-between align-items-center bg-light">
                                 <div class="header-title">
-                                  <h4 class="card-title">Preview</h4>         
+                                  <h4 class="card-title">{{__('messages.Preview')}}</h4>         
                                 </div>
                               </div>
                               <div class="card-body">
                                 @if(env('USE_THEME_PREVIEW_IFRAME') === false or $page->littlelink_name == '')
                                 <center><img style="width:95%;max-width:700px;argin-left:1rem!important;" src="@if(file_exists(base_path() . '/themes/' . $page->theme . '/preview.png')){{url('/themes/' . $page->theme . '/preview.png')}}@elseif($page->theme === 'default' or empty($page->theme)){{url('/assets/linkstack/images/themes/default.png')}}@else{{url('/assets/linkstack/images/themes/no-preview.png')}}@endif"></img></center>
                                  @else
-                                <iframe frameborder="0" allowtransparency="true" id="frPreview" style="background: #FFFFFF;height:400px;" class='w-100' src="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>">Your browser isn't compatible</iframe>
+                                <iframe frameborder="0" allowtransparency="true" id="frPreview" style="background: #FFFFFF;height:400px;" class='w-100' src="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>">{{__('messages.No compatible browser')}}</iframe>
                                 @endif
                               </div>
                             </div>
@@ -57,7 +57,7 @@
                     @if(env('ALLOW_CUSTOM_BACKGROUNDS') == true)
                     <form action="{{ route('themeBackground') }}" enctype="multipart/form-data" method="post">
                         @csrf
-                        <h3 class="mb-4 card-header">Custom background</h3>
+                        <h3 class="mb-4 card-header">{{__('messages.Custom background')}}</h3>
                         <div style="display: none;" class="form-group col-lg-8">
                             <select class="form-control" name="theme">
                                 <option>{{ $page->theme }}</option>
@@ -66,9 +66,9 @@
                         </div>
                         <div class="form-group col-lg-8">
                             <figure style="max-width:1000px;max-height:562.5px;" class="figure">
-                            @if(!file_exists(base_path('assets/img/background-img/'.findBackground(Auth::user()->id))))<p><i>No image selected</i></p>@endif
+                            @if(!file_exists(base_path('assets/img/background-img/'.findBackground(Auth::user()->id))))<p><i>{{__('messages.No image selected')}}</i></p>@endif
                             <img class="bd-placeholder-img figure-img img-fluid rounded" src="@if(file_exists(base_path('assets/img/background-img/'.findBackground(Auth::user()->id)))){{url('assets//img/background-img/'.findBackground(Auth::user()->id))}}@else{{url('/assets/linkstack/images/themes/no-preview.png')}}@endif"><br>
-                            @if(file_exists(base_path('assets/img/background-img/'.findBackground(Auth::user()->id))))<button class="mt-3 ml-3 btn btn-primary" style="background-color:tomato!important;border-color:tomato!important;transform: scale(.9);" title="Delete background image"><a href="{{ url('/studio/rem-background') }}" style="color:#FFFFFF;"><i class="bi bi-trash-fill"></i> Remove background</a></button><br>@endif
+                            @if(file_exists(base_path('assets/img/background-img/'.findBackground(Auth::user()->id))))<button class="mt-3 ml-3 btn btn-primary" style="background-color:tomato!important;border-color:tomato!important;transform: scale(.9);" title="Delete background image"><a href="{{ url('/studio/rem-background') }}" style="color:#FFFFFF;"><i class="bi bi-trash-fill"></i>{{__('messages.Remove background')}}</a></button><br>@endif
                             {{-- <figcaption class="figure-caption">A caption for the above image.</figcaption> --}}
                         </figure>
                             <br>
@@ -77,7 +77,7 @@
                                 <input type="file" accept="image/jpeg,image/jpg,image/png" class="form-control form-control-lg" name="image"><br>
                             </div>
                         </div>
-                            <button type="submit" class="btn btn-primary">Apply</button>
+                            <button type="submit" class="btn btn-primary">{{__('messages.Apply')}}</button>
                     </form>
                     @endif
                   </div>
@@ -92,7 +92,7 @@
            <div class="card-body">
               <div class="row">
                   <div class="col-sm-12">  
-                    <h3 class="mb-4 card-header">Manage themes</h3>
+                    <h3 class="mb-4 card-header">{{__('messages.Manage themes')}}</h3>
                     @if(env('ENABLE_THEME_UPDATER') == 'true')
                     
                     <div id="ajax-container">
@@ -103,7 +103,7 @@
                               <h2 class="accordion-header" id="details-header">
                                 <button class="accordion-button collapsed disabled" type="button" aria-expanded="false" aria-controls="details-collapse">
                                     <div style="max-height:20px;max-width:20px;" class="spinner-border text-primary" role="status">
-                                        <span class="visually-hidden">Loading...</span>
+                                        <span class="visually-hidden">{{__('messages.Loading...')}}</span>
                                     </div>
                                 </button>
                               </h2>
@@ -120,7 +120,7 @@
                     <br><br><br>
                     <form action="{{ route('editTheme') }}" enctype="multipart/form-data" method="post">
                         @csrf
-                        {{-- <h3>Upload themes</h3> --}}
+                        {{-- <h3>{{__('messages.Upload themes')}}</h3> --}}
                         <div style="display: none;" class="form-group col-lg-8">
                             <select class="form-control" name="theme">
                                 <option>{{ $page->theme }}</option>
@@ -128,13 +128,13 @@
                             <br>
                         </div>
                         <div class="mb-3">
-                            <label>Upload theme</label>
+                            <label>{{__('messages.Upload themes')}}</label>
                             <input type="file" accept=".zip" name="zip" class="form-control form-control-lg">
                         </div><br><br>
                         <div class="d-flex flex-column flex-md-row align-items-md-center">
-                            <button type="submit" class="btn btn-primary me-md-3 mb-3 mb-md-0">Upload theme</button>
-                            <button class="btn btn-danger me-md-3 mb-3 mb-md-0 delete-themes" title="Delete themes"><a href="{{ url('/admin/theme') }}" class="text-white">Delete themes</a></button>
-                            <button class="btn btn-info download-themes" title="Download more themes"><a href="https://linkstack.org/themes/" target="_blank" class="text-white">Download themes</a></button>
+                            <button type="submit" class="btn btn-primary me-md-3 mb-3 mb-md-0">{{__('messages.Upload themes')}}</button>
+                            <button class="btn btn-danger me-md-3 mb-3 mb-md-0 delete-themes" title="Delete themes"><a href="{{ url('/admin/theme') }}" class="text-white">{{__('messages.Delete themes')}}</a></button>
+                            <button class="btn btn-info download-themes" title="Download more themes"><a href="https://linkstack.org/themes/" target="_blank" class="text-white">{{__('messages.Download themes')}}</a></button>
                           </div>
                     </form>
                     </details>
@@ -244,7 +244,7 @@ $(window).on('load', function() {
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('messages.Close')}}</button>
             </div>
         </div>
     </div>
