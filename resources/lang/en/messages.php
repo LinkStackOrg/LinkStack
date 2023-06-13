@@ -475,6 +475,7 @@ return [
     'Next' => 'Next+',
     'Setup failed' => 'Setup failed+',
     'An error has occured. Please try again' => 'An error has occured. Please try again.+',
+    'Depending on your database type:' => 'Depending on your database type:+',
     'Try again' => 'Try again+',
     'Dependency check' => 'Dependency check+',
     'Required PHP modules:' => 'Required PHP modules:+',
