@@ -288,9 +288,7 @@ return [
     'Update available' => 'Update available+',
     'Up to date' => 'Up to date+',
     'Update all themes' => 'Update all themes+',
-    '' => '',
-    '' => '',
-    {{__('messages.Apply')}}
+
 
 
 
