@@ -156,4 +156,17 @@ class InstallerController extends Controller
         return redirect(url(''));
     }
 
+    public function editConfigInstaller(request $request)
+    {
+
+        $type = $request->type;
+        $entry = $request->entry;
+        $value = $request->value;
+        $value = '"' . $request->value . '"';
+        
+        if(EnvEditor::keyExists($entry)){EnvEditor::editKey($entry, $value);}
+
+        return Redirect(url(''));
+    }
+
 }

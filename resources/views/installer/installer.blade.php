@@ -26,6 +26,45 @@
         3. Create the admin user<br>
         4. Configure the app<br>
         </div></p>  
+        
+{{-- start language --}}
+<?php $configValue2 = str_replace('"', "", EnvEditor::getKey('LOCALE')); ?>
+<form id="language-form" action="{{route('editConfigInstaller')}}" enctype="multipart/form-data" method="post">
+    <div class="form-group col-lg-8">
+        <input value="homeurl" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
+        <input value="LOCALE" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
+        <p class="text-muted">Choose a language</p>
+        <div class="input-group">
+            <select style="max-width:600px;min-width:300px;" class="form-control" name="value">
+                @if($configValue2 != '')
+                    <option>{{$configValue2}}</option>
+                @endif
+                <?php
+                try {
+                    $langFolders = array_filter(glob(base_path('resources/lang') . '/*'), 'is_dir');
+                } catch (\Exception $e) {
+                    $langFolders = [];
+                }
+
+                foreach($langFolders as $folder) {
+                    $folderName = basename($folder);
+                    if ($folderName != $configValue2) {
+                        echo '<option>' . $folderName . '</option>';
+                    }
+                }
+                ?>
+            </select>
+        </div>
+    </div>
+    <input type="hidden" name="_token" value="{{csrf_token()}}">
+    <script type="text/javascript">
+        document.getElementById("language-form").addEventListener("change", function() {
+            this.submit();
+        });
+    </script>
+</form>
+{{-- end language --}}
+
         &ensp;<a class="btn" href="{{url('?2')}}"><button>Next</button></a>&ensp;
 @endif
       
