@@ -59,7 +59,7 @@ if (isset($_COOKIE['LinkCount'])) {
                         <div class="row">
                             <section class='pre-left text-gray-400'>
                                 <h3 class="card-header mb-3"><i class="bi bi-link-45deg">{{__('messages.My Links')}}</i>
-                                        <a class="btn btn-primary float-end" href="{{ url('/studio/add-link') }}">{{__('messages.Add new')}}<span class='d-none d-md-inline'>{{__('messages.Link')}}</span></a>
+                                        <a class="btn btn-primary float-end" href="{{ url('/studio/add-link') }}">{{__('messages.Add new Link')}}</a>
                                 </h3>
                             
                                 <div>

@@ -230,8 +230,7 @@ return [
 
     ########Link Blade########
     'My Links' => 'My Links+',
-    'Add new' => 'Add new+',
-    'Link' => 'link+',
+    'Add new Link' => 'Add new Link+',
     'No Link Added' => 'You haven`t added any links yet.+',
     'Download' => 'Download+',
     'Clicks' => 'Clicks+',
