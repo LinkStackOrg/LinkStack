@@ -11,17 +11,16 @@ echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "/../../a
 
 
 @if(str_ends_with($_SERVER['REQUEST_URI'], 'advanced-config'))
-        <h2 class="mb-4"><i class="bi bi-pencil-square"> Advanced config</i></h2>
-          <p>Allows editing the frontend of your site. Amongst other things, this file allows customization of:<br> 
-Home Page, links, titles, Google Analytics and meta tags.</p>
+        <h2 class="mb-4"><i class="bi bi-pencil-square">{{__('messages.Advanced config')}}</i></h2>
+          <p>{{__('messages.AC.description')}}</p>
         <form action="{{ route('editAC') }}" method="post">
           @csrf
           <div class="form-group col-lg-8">
-            <label>Advanced Configuration file.</label>
+            <label>{{__('messages.Advanced Configuration file.')}}</label>
             <pre><textarea class="form-control" name="AdvancedConfig" rows="280">{{ file_get_contents('config/advanced-config.php') }}</textarea></pre>
           </div>
-          <button type="submit" class="mt-3 ml-3 btn btn-info">Save</button>
-          <a class="mt-3 ml-3 btn btn-primary confirmation" href="{{url('/panel/advanced-config?restore-defaults')}}">Restore defaults</a>
+          <button type="submit" class="mt-3 ml-3 btn btn-info">{{__('messages.Save')}}</button>
+          <a class="mt-3 ml-3 btn btn-primary confirmation" href="{{url('/panel/advanced-config?restore-defaults')}}">{{__('messages.Restore defaults')}}</a>
           <script type="text/javascript">
               var elems = document.getElementsByClassName('confirmation');
               var confirmIt = function (e) {
@@ -33,15 +32,15 @@ Home Page, links, titles, Google Analytics and meta tags.</p>
           </script>
         </form>
 @elseif(str_ends_with($_SERVER['REQUEST_URI'], 'env'))
-        <h2 class="mb-4"><i class="bi bi-pencil-square"> ENV</i></h2>
+        <h2 class="mb-4"><i class="bi bi-pencil-square">{{__('messages.ENV')}}</i></h2>
         
         <form action="{{ route('editENV') }}" method="post">
           @csrf
           <div class="form-group col-lg-8">
-            <label>.env</label>
+            <label>{{__('messages.env.')}}</label>
             <pre><textarea class="form-control" name="AdvancedConfig" rows="80">{{ file_get_contents('.env') }}</textarea></pre>
           </div>
-          <button type="submit" class="mt-3 ml-3 btn btn-info">Save</button>
+          <button type="submit" class="mt-3 ml-3 btn btn-info">{{__('messages.Save')}}</button>
         </form>
 @endif
 

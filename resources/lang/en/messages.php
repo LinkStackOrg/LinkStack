@@ -276,15 +276,20 @@ return [
     'Up to date' => 'Up to date+',
     'Update all themes' => 'Update all themes+',
 
+    ########Backup View Panel Blade########
     'Download your updater backups' => 'Download your updater backups:+',
     'The server will never store more that two backups at a time' => 'The server will never store more that two backups at a time.+',
     'No backups found' => 'No backups found+',
     'Backup your instance' => 'Backup your instance+',
-    '' => '+',
-    '' => '+',
-    '' => '+',
-    '' => '+',
 
+    ########Config View Panel Blade########
+    'ENV' => 'ENV+',
+    'env.' => '.env+',
+    '' => '+',
+    '' => '+',
+    '' => '+',
+    '' => '+',
+    {{__('messages.Save')}}
 
     'Config' => 'Config+',
     'Advanced Config' => 'Advanced Config+',
