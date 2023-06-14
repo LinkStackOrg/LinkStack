@@ -27,8 +27,8 @@
     @endif
     
 <div class="container">
-<br><br><h3>Download your updater backups:</h3>
-<hp>The server will never store more that two backups at a time.</hp><br><br><br>
+<br><br><h3>{{__('messages.Download your updater backups')}}</h3>
+<hp>{{__('messages.The server will never store more that two backups at a time')}}</hp><br><br><br>
     <?php 
     $test="test";
     if ($handle = opendir('backups/updater-backups')) {
@@ -40,7 +40,7 @@
 
   @else
 <div class="container">
-<h3>No backups found</h3></div>
+<h3>{{__('messages.No backups found')}}</h3></div>
   @endif
-<center><a class="btn" href="{{ url('backup') }}"><button><i class="fa-solid fa-floppy-disk"></i> Backup your instance</button></a></center>
+<center><a class="btn" href="{{ url('backup') }}"><button><i class="fa-solid fa-floppy-disk"></i>{{__('messages.Backup your instance')}}</button></a></center>
 @endsection

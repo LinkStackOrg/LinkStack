@@ -276,7 +276,14 @@ return [
     'Up to date' => 'Up to date+',
     'Update all themes' => 'Update all themes+',
 
-
+    'Download your updater backups' => 'Download your updater backups:+',
+    'The server will never store more that two backups at a time' => 'The server will never store more that two backups at a time.+',
+    'No backups found' => 'No backups found+',
+    'Backup your instance' => 'Backup your instance+',
+    '' => '+',
+    '' => '+',
+    '' => '+',
+    '' => '+',
 
 
     'Config' => 'Config+',
@@ -524,5 +531,6 @@ return [
 
 
     '' => '+',
+
 
 ];
