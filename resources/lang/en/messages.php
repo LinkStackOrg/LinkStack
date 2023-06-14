@@ -267,6 +267,7 @@ return [
     'Upload themes' => 'Upload themes+',
     'Delete themes' => 'Delete themes+',
     'Download themes' => 'Download themes+',
+    'Delete a theme' => 'Delete a theme+',
 
     ########Theme Updater Blade########
     'Theme Updater' => 'Theme Updater+',
