@@ -285,11 +285,13 @@ return [
     ########Config View Panel Blade########
     'ENV' => 'ENV+',
     'env.' => '.env+',
-    '' => '+',
-    '' => '+',
-    '' => '+',
-    '' => '+',
-    {{__('messages.Save')}}
+
+    ########Edit User View Panel Blade########
+    'Edit User' => 'Edit User+',
+    'Logo' => 'Logo+',
+    'Page description' => 'Page description+',
+    'Role' => 'Role+',
+
 
     'Config' => 'Config+',
     'Advanced Config' => 'Advanced Config+',
