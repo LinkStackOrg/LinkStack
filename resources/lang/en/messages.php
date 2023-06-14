@@ -107,10 +107,13 @@ return [
     'Manage Users' => 'Manage Users+',
     'Footer Pages' => 'Footer Pages+',
     'Site Customization' => 'Site Customization+',
+    'Site Logo' => 'Site logo+',
     'Personalization' => 'Personalization+',
     'Links' => 'Links+',
     'Appearance' => 'Appearance+',
     'Themes' => 'Themes+',
+    'Favicon' => 'Favicon+',
+    'Home message' => 'Home message+',
     
     'View Page' => 'View Page+',
     'Share your profile' => 'Share your profile+',
