@@ -22,7 +22,7 @@
                             <textarea class="form-control ckeditor" name="terms" rows="3">{{ $page->terms }}</textarea>
                           </div>
                           
-                          <button type="submit" class="mt-3 ml-3 btn btn-primary">Save</button>
+                          <button type="submit" class="mt-3 ml-3 btn btn-primary">{{__('messages.Save')}}</button>
   
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                               <textarea class="form-control ckeditor" name="privacy" rows="3">{{  $page->privacy }}</textarea>
                             </div>
 
-                            <button type="submit" class="mt-3 ml-3 btn btn-primary">Save</button>
+                            <button type="submit" class="mt-3 ml-3 btn btn-primary">{{__('messages.Save')}}</button>
     
                       </div>
                   </div>
@@ -60,7 +60,7 @@
                                 <textarea class="form-control ckeditor" name="contact" rows="3">{{ $page->contact }}</textarea>
                               </div>
                               
-                              <button type="submit" class="mt-3 ml-3 btn btn-primary">Save</button>
+                              <button type="submit" class="mt-3 ml-3 btn btn-primary">{{__('messages.Save')}}</button>
       
                         </div>
                     </div>
