@@ -287,10 +287,15 @@ return [
     'env.' => '.env+',
 
     ########Edit User View Panel Blade########
+    
     'Edit User' => 'Edit User+',
     'Logo' => 'Logo+',
     'Page description' => 'Page description+',
     'Role' => 'Role+',
+
+    ########Links View Panel Blade########
+    'Title' => 'Title+',
+
 
 
     'Config' => 'Config+',
