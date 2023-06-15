@@ -733,6 +733,22 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | LinkStack (Links) Page
+    |--------------------------------------------------------------------------
+    |
+    | resources/views/littlelink.blade.php
+    |
+    */
+
+    'Share this page' => 'Share this page+',
+    'Share' => 'Share+',
+    'Copy URL to clipboard' => 'Copy URL to clipboard+',
+    'URL has been copied to your clipboard!' => 'URL has been copied to your clipboard!+',
+    'Verified user' => 'Verified user+',
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Notification messages
     |--------------------------------------------------------------------------
     |
