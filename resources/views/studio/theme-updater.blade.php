@@ -68,22 +68,22 @@
                                 }
                               }
                             if ($themeVe == "error") {
-                            echo '<span class="badge bg-danger">{{__('messages.Error')}}</span>';
+                            echo '<span class="badge bg-danger">'.__('messages.Error').'</span>';
                             } elseif ($hasSource == false) {
-                            echo '<a href="https://linkstack.org/themes.php" target="_blank"><span class="badge bg-danger">{{__('messages.Update manually')}}</span></a>';
+                            echo '<a href="https://linkstack.org/themes.php" target="_blank"><span class="badge bg-danger">'.__('messages.Update manually').'</span></a>';
                             } elseif($updateAv == true) {
-                            echo '<span class="badge bg-warning">{{__('messages.Update available')}}</span>';
+                            echo '<span class="badge bg-warning">'.__('messages.Update available').'</span>';
                             } else {
-                            echo '<span class="badge bg-success">{{__('messages.Up to date')}}</span>';
+                            echo '<span class="badge bg-success">'.__('messages.Up to date').'</span>';
                             }
                             echo '</center></th>';
                             echo '<th>' . $verNr . '</th>';
                             echo '</tr>';}
-                            }} ?>
+                            } } ?>
                 </table>
         </div>
-        <a href="{{ url('update/theme') }}" onclick="updateicon()" class="btn btn-gray ms-3 mb-4">
-            <span id="updateicon"><i class="bi bi-arrow-repeat"></i></span> {{__('messages.Update all themes')}}
+        <a href="'. url('update/theme') .'" onclick="updateicon()" class="btn btn-gray ms-3 mb-4">
+            <span id="updateicon"><i class="bi bi-arrow-repeat"></i></span> '.__('messages.Update all themes').'
         </a>
       </div>
     </div>
