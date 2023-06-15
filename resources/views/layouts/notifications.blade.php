@@ -3,9 +3,11 @@ use App\Models\UserData;
 $GLOBALS['activenotify'] = true;
 $compromised = false;
 function notification($dismiss = '', $ntid, $heading, $body) {
+    $closeMSG = __('messages.Close');
+    $dismissMSG = __('messages.Dismiss');
     $dismissBtn = '';
     if ($dismiss) {
-        $dismissBtn = '<a href="' . url()->current() . '?dismiss=' . $dismiss . '" class="btn btn-danger">Dismiss</a>';
+        $dismissBtn = '<a href="' . url()->current() . '?dismiss=' . $dismiss . '" class="btn btn-danger">'.$dismissMSG.'</a>';
     }
     echo <<<MODAL
     <div class="modal fade" id="$ntid" data-bs-backdrop="true" data-bs-keyboard="false" tabindex="-1" aria-labelledby="${ntid}-label" aria-hidden="true">
@@ -22,7 +24,7 @@ function notification($dismiss = '', $ntid, $heading, $body) {
                 </div>
                 <div class="modal-footer">
                     $dismissBtn
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">$closeMSG</button>
                 </div>
             </div>
         </div>
@@ -84,19 +86,19 @@ $notifyID = Auth::user()->id;
             [
                 'id' => 'modal-1',
                 'icon' => 'bi bi-exclamation-triangle-fill text-danger',
-                'title' => 'Your security is at risk!',
-                'message' => 'Immediate action is required!',
+                'title' => __('messages.Your security is at risk!'),
+                'message' => __('messages.Immediate action is required!'),
                 'condition' => $compromised,
-                'dismiss' => 'Dismiss this notification',
+                'dismiss' => '',
                 'adminonly' => true,
             ],
             [
                 'id' => 'modal-star',
                 'icon' => 'bi bi-heart-fill',
-                'title' => 'Enjoying Linkstack?',
-                'message' => 'Help Us Out',
+                'title' => __('messages.Enjoying Linkstack?'),
+                'message' => __('messages.Help Us Out'),
                 'condition' => UserData::getData($notifyID, 'hide-star-notification') !== true,
-                'dismiss' => 'Hide this notification',
+                'dismiss' => __('messages.Hide this notification'),
                 'adminonly' => true,
             ],
         ];
@@ -115,7 +117,7 @@ $notifyID = Auth::user()->id;
     @else
         @php $GLOBALS['activenotify'] = false; @endphp
         @push('notifications')
-        <center class='p-2'><i>No notifications</i></center>
+        <center class='p-2'><i>{{__('messages.No notifications')}}</i></center>
         @endpush
     @endif
 
@@ -123,8 +125,8 @@ $notifyID = Auth::user()->id;
 
 {{-- Notification Modals --}}
 @push('sidebar-scripts') @php
-notification('', 'modal-1', 'Your security is at risk!', '<b>Your security is at risk.</b> Some files can be accessed by everyone. Immediate action is required!<br><br>Some important files, are publicly accessible, putting your security at risk. Please take immediate action to revoke public access to these files to prevent unauthorized access to your sensitive information.<br><a href="'.url('admin/config#5').'">Learn more</a>.');
-notification('hide-star-notification', 'modal-star', 'Support Linkstack', 'If you\'re enjoying using Linkstack, we would greatly appreciate it if you could take a moment to <a target="_blank" href="https://github.com/linkstackorg/linkstack">give our project a star on GitHub</a>. Your support will help us reach a wider audience and improve the quality of our project.<br><br>If you\'re able to <a target="_blank" href="https://linkstack.org/donate">make a financial contribution</a>, even a small amount would help us cover the costs of maintaining and improving Linkstack.<br><br>Thank you for your support and for being a part of the LinkStack community!');
+notification('', 'modal-1', __('messages.Your security is at risk!'), '<b>'.__('messages.security.msg1').'</b> '.__('messages.security.msg2').'<br><br>'.__('messages.security.msg3').'<br><a href="'.url('admin/config#5').'">'.__('messages.security.msg3').'</a>.');
+notification('hide-star-notification', 'modal-star', __('messages.Support Linkstack'), ''.__('messages.support.msg1').' <a target="_blank" href="https://github.com/linkstackorg/linkstack">'.__('messages.support.msg2').'</a>. '.__('messages.support.msg3').'<br><br>'.__('messages.support.msg4').' <a target="_blank" href="https://linkstack.org/donate">'.__('messages.support.msg5').'<br><br>'.__('messages.support.msg6').'');
 @endphp @endpush
 
 @php 

@@ -127,6 +127,7 @@ return [
     'Reason:' => 'Reason:+',
 
     'Close' => 'Close+',
+    'Dismiss' => 'Dismiss+',
     
     'All Notifications' => 'All Notifications+',
 
@@ -546,7 +547,38 @@ return [
     'Warn.Disable.Maintenance' => 'You are about to disable Maintenance Mode. Are you sure?+',
 
 
-    '' => '+',
+    /*
+    |--------------------------------------------------------------------------
+    | Notification messages
+    |--------------------------------------------------------------------------
+    |
+    | All internal notifications.
+    | resources/views/layouts/notifications.blade.php
+    |
+    */
 
+    'No notifications' => 'No notifications+',
+
+    'Your security is at risk!' => 'Your security is at risk!+',
+    'Immediate action is required!' => 'Immediate action is required!+',
+    'Your security is at risk!' => 'Your security is at risk!+',
+    'security.msg1' => 'Your security is at risk.+',
+    'security.msg2' => 'Some files can be accessed by everyone. Immediate action is required!+',
+    'security.msg3' => 'Some important files, are publicly accessible, putting your security at risk. Please take immediate action to revoke public access to these files to prevent unauthorized access to your sensitive information.+',
+    'security.msg4' => 'Learn more+',
+
+    'Hide this notification' => 'Hide this notification+',
+    'Help Us Out' => 'Help Us Out+',
+    'Enjoying Linkstack?' => 'Enjoying Linkstack?+',
+    'Support Linkstack' => 'Support Linkstack+',
+    'support.msg1' => 'If you\'re enjoying using Linkstack, we would greatly appreciate it if you could take a moment to+',
+    'support.msg2' => 'give our project a star on GitHub+',
+    'support.msg3' => 'Your support will help us reach a wider audience and improve the quality of our project.+',
+    'support.msg4' => 'If you\'re able to+',
+    'support.msg5' => 'make a financial contribution</a>, even a small amount would help us cover the costs of maintaining and improving Linkstack.+',
+    'support.msg6' => 'Thank you for your support and for being a part of the LinkStack community!+',
+
+
+    '' => '+',
 
 ];
