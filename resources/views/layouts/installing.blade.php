@@ -10,7 +10,7 @@
 
 @stack('installer-head')
 
-  <title>LinkStack setup</title>
+  <title>{{__('messages.LinkStack setup')}}</title>
   @include('layouts.fonts') 
   <link rel="stylesheet" href="{{ asset('assets/external-dependencies/bootstrap-icons.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/linkstack/css/normalize.css') }}">

@@ -667,6 +667,9 @@ return [
     |
     */
 
+    # Title
+    'LinkStack setup' => 'LinkStack setup+',
+
     'Setup LinkStack' => 'Setup LinkStack+',
     'Welcome to the setup for LinkStack!' => 'Welcome to the setup for LinkStack!+',
     'This setup will:' => 'This setup will:+',
