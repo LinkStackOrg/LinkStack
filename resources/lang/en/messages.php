@@ -2,6 +2,14 @@
 
 return [
 
+    /*
+    |--------------------------------------------------------------------------
+    | Home Page
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
     'Log in' => 'Log in+',
     'Register' => 'Register+',
 
@@ -11,8 +19,25 @@ return [
     'by' => 'by+',
 
 
+    /*
+    |--------------------------------------------------------------------------
+    | Demo Page/Home Page Example Page
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+    
     'Example page' => 'Example page+',
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Pages
+    |--------------------------------------------------------------------------
+    |
+    | Login, Register, Forgot Password, Reset Password etc.
+    |
+    */
 
     'Sign In' => 'Sign In+',
     'Login to stay connected' => 'Login to stay connected+',
@@ -72,10 +97,14 @@ return [
     'Resend Verification Email' => 'Resend Verification Email+',
 
 
-    'Hi' => 'Hi+',
-    'stranger' => 'stranger+',
-    'welcome' => 'Welcome to :appName!',
-    'Set a handle' => 'Set a handle+',
+    /*
+    |--------------------------------------------------------------------------
+    | Styling Sline In
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
     'Settings' => 'Settings+',
     'Scheme' => 'Scheme+',
     'Auto' => 'Auto+',
@@ -97,6 +126,14 @@ return [
     'Pill One Side' => 'Pill One Side+',
     'Pill All' => 'Pill All+',
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Navbar
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
 
     'Home' => 'Home+',
     'Dashboard' => 'Dashboard+',
@@ -150,6 +187,19 @@ return [
     'Logout' => 'Logout+',
 
 
+    /*
+    |--------------------------------------------------------------------------
+    | Dashboard Page
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
+    'Hi' => 'Hi+',
+    'stranger' => 'stranger+',
+    'welcome' => 'Welcome to :appName!',
+    'Set a handle' => 'Set a handle+',
+
     'Total Links:' => 'Total Links:+',
     'Link Clicks:' => 'Link Clicks:+',
     'View/Edit Links' => 'View/Edit Links+',
@@ -167,7 +217,15 @@ return [
     'Active users:' => 'Active users:+',
     
     
-    ########Button Editor Blade########
+
+    /*
+    |--------------------------------------------------------------------------
+    | Button Editor
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
     'Button Editor' => 'Button Editor+',
     'Back' => 'Back+',
     'Custom Button' => 'Custom Button+',
@@ -204,7 +262,15 @@ return [
     'Update icon' => 'Update icon+',
     'See all icons' => 'See all icons+',
 
-    ########Edit Link Blade########
+
+    /*
+    |--------------------------------------------------------------------------
+    | Edit Link Blade
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
     'Edit' => 'Edit+',
     'Add' => 'Add+',
     'Block' => 'Block+',
@@ -219,7 +285,15 @@ return [
     'editlink.description.4-5' => 'The "Space" button will be replaced with an empty space, so buttons could be visually separated into groups. Entering a number between 1-10 in the title section will change the empty space"s distance.+',
     'editlink.description.5-5' => 'The "Heading" button will be replaced with a sub-heading, where the title defines the text on that heading.+',
 
-    ########Link Blade########
+
+    /*
+    |--------------------------------------------------------------------------
+    | Link Blade
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
     'My Links' => 'My Links+',
     'Add new Link' => 'Add new Link+',
     'No Link Added' => 'You haven’t added any links yet.+',
@@ -230,7 +304,15 @@ return [
     'Page Icons' => 'Page Icons+',
     'Save links' => 'Save links+',
 
-    ########Page Blade########
+
+    /*
+    |--------------------------------------------------------------------------
+    | Page Blade
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
     'My Profile'=> 'My Profile+',
     'Profile Picture' => 'Profile Picture+',
     'Page URL' => 'Page URL+',
@@ -242,7 +324,15 @@ return [
     'Show share button' => 'Show share button+',
     'disablesharebutton' => 'This setting allows you to hide the share button on your page.+',
 
-    ########Profile Blade########
+
+    /*
+    |--------------------------------------------------------------------------
+    | Profile Page
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
     'Account Settings' => 'Account Settings+',
     'Change email' => 'Change email+',
     'Change password' => 'Change password+',
@@ -257,7 +347,15 @@ return [
     'You are about to delete' => 'You are about to delete your account!+',
     'You are about to delete This action cannot be undone' => 'You are about to delete your account! This action cannot be undone.+',
 
-    ########Theme Blade########
+
+    /*
+    |--------------------------------------------------------------------------
+    | Theme Page
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
     'Select a theme' => 'Select a theme+',
     'Select theme' => 'Select theme+',
     'Custom background' => 'Custom background+',
@@ -270,7 +368,15 @@ return [
     'Download themes' => 'Download themes+',
     'Delete a theme' => 'Delete a theme+',
 
-    ########Theme Updater Blade########
+
+    /*
+    |--------------------------------------------------------------------------
+    | Theme Updater
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
     'Theme Updater' => 'Theme Updater+',
     'Theme name' => 'Theme name:+',
     'Update status' => 'Update status:+',
@@ -281,27 +387,64 @@ return [
     'Up to date' => 'Up to date+',
     'Update all themes' => 'Update all themes+',
 
-    ########Backup View Panel Blade########
+
+    /*
+    |--------------------------------------------------------------------------
+    | Backup View Panel Blade
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
     'Download your updater backups' => 'Download your updater backups:+',
     'The server will never store more that two backups at a time' => 'The server will never store more that two backups at a time.+',
     'No backups found' => 'No backups found+',
     'Backup your instance' => 'Backup your instance+',
 
-    ########Config View Panel Blade########
+
+    /*
+    |--------------------------------------------------------------------------
+    | Config View Panel Blade
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
     'ENV' => 'ENV+',
     'env.' => '.env+',
 
-    ########Edit User View Panel Blade########
+
+    /*
+    |--------------------------------------------------------------------------
+    | Edit User View Panel Blade
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
     
     'Edit User' => 'Edit User+',
     'Logo' => 'Logo+',
     'Page description' => 'Page description+',
     'Role' => 'Role+',
 
-    ########Links View Panel Blade########
+
+    /*
+    |--------------------------------------------------------------------------
+    | Links View Panel Blade
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
     'Title' => 'Title+',
 
 
+    /*
+    |--------------------------------------------------------------------------
+    | Config Page
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
 
     'Config' => 'Config+',
     'Advanced Config' => 'Advanced Config+',
@@ -497,7 +640,14 @@ return [
     'LOCALE.description' => 'Change the language of your application+',
 
 
-    ########Installer########
+    /*
+    |--------------------------------------------------------------------------
+    | Installer
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
     'Setup LinkStack' => 'Setup LinkStack+',
     'Welcome to the setup for LinkStack!' => 'Welcome to the setup for LinkStack!+',
     'This setup will:' => 'This setup will:+',
@@ -538,7 +688,14 @@ return [
     'Finish setup' => 'Finish setup+',
 
 
-    ########Maintenance Page########
+    /*
+    |--------------------------------------------------------------------------
+    | Maintenance Page
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
     'Maintenance Mode' => 'Maintenance Mode+',
     'We are performing scheduled site maintenance at this time' => 'We are performing scheduled site maintenance at this time.+',
     'Please check back with us later' => 'Please check back with us later.+',
@@ -559,6 +716,7 @@ return [
 
     'No notifications' => 'No notifications+',
 
+    # Security Risk Notification
     'Your security is at risk!' => 'Your security is at risk!+',
     'Immediate action is required!' => 'Immediate action is required!+',
     'Your security is at risk!' => 'Your security is at risk!+',
@@ -567,6 +725,7 @@ return [
     'security.msg3' => 'Some important files, are publicly accessible, putting your security at risk. Please take immediate action to revoke public access to these files to prevent unauthorized access to your sensitive information.+',
     'security.msg4' => 'Learn more+',
 
+    # Help Us Out Notification
     'Hide this notification' => 'Hide this notification+',
     'Help Us Out' => 'Help Us Out+',
     'Enjoying Linkstack?' => 'Enjoying Linkstack?+',
