@@ -667,7 +667,7 @@ return [
     |
     */
 
-    # Title
+    # Title Tag
     'LinkStack setup' => 'LinkStack setup+',
 
     'Setup LinkStack' => 'Setup LinkStack+',
@@ -722,11 +722,37 @@ return [
     | Updater/Update-Backup
     |--------------------------------------------------------------------------
     |
-    | 
+    | resources/views/update.blade.php
     |
     */
 
+    # Title Tag
     'Update LinkStack' => 'Update LinkStack+',
+
+    'Installed beta version' => 'Installed beta version+',
+    'none' => 'none+',
+    'You need to update to the latest mainline release' => 'You need to update to the latest mainline release+',
+    'You’re running the latest mainline release' => 'You’re running the latest mainline release+',
+
+    'update.manually' => 'You can update your installation automatically or download the update and install it manually:+',
+    'update.windows' => 'Windows users can use the alternative updater. This updater won’t create a backup. Use at your own discretion.+',
+    'Update automatically' => 'Update automatically+',
+    'Update manually' => 'Update manually+',
+
+    'Updating' => 'Updating+',
+    'Creating backup' => 'Creating backup+',
+    'Preparing update' => 'Preparing update+',
+    'No new version' => 'No new version+',
+    'There is no new version available' => 'There is no new version available+',
+    'Admin Panel' => 'Admin Panel+',
+    'Finishing up' => 'Finishing up+',
+    'Success!' => 'Success!+',
+    'The update was successful' => 'The update was successful, you can now return to the Admin Panel.+',
+    'View the release notes' => 'View the release notes+',
+    'Run again' => 'Run again+',
+    'Error' => 'Error+',
+    'Something went wrong with the update' => 'Something went wrong with the update+',
+
 
     /*
     |--------------------------------------------------------------------------

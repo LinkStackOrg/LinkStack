@@ -21,15 +21,15 @@
         @if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
         @if(env('JOIN_BETA') === true)
         <p><?php echo "latest beta version= " . external_file_get_contents("https://beta.linkstack.org/vbeta.json"); ?></p>
-        <p><?php  if(file_exists(base_path("vbeta.json"))) {echo "Installed beta version= " . file_get_contents(base_path("vbeta.json"));} else {echo "Installed beta version= none";}  ?></p>
-        <p><?php  if($Vgit > $Vlocal) {echo "You need to update to the latest mainline release";} else {echo "You're running the latest mainline release";}  ?></p>
+        <p><?php  if(file_exists(base_path("vbeta.json"))) {echo __('messages.Installed beta version')."= " . file_get_contents(base_path("vbeta.json"));} else {echo __('messages.Installed beta version')."= ".__('messages.none');}  ?></p>
+        <p><?php  if($Vgit > $Vlocal) {echo __('messages.You need to update to the latest mainline release');} else {echo __("messages.You’re running the latest mainline release");}  ?></p>
         @else
-        <h4 class="">You can update your installation automatically or download the update and install it manually:</h4>
-        <h5 class="">Windows users can use the alternative updater. This updater won't create a backup. Use at your own discretion.</h5>
+        <h4>{{__('messages.update.manually')}}</h4>
+        <h5>{{__('messages.update.windows')}}</h5>
         @endif
         <br><div class="row">
-        &ensp;<a class="btn" href="{{url()->current()}}/?updating-windows"><button><i class="fa-solid fa-user-gear btn"></i> Update automatically</button></a>&ensp;
-        &ensp;<a class="btn" href="https://linkstack.org/update" target="_blank"><button><i class="fa-solid fa-download btn"></i> Update manually</button></a>&ensp;
+        &ensp;<a class="btn" href="{{url()->current()}}/?updating-windows"><button><i class="fa-solid fa-user-gear btn"></i> {{__('messages.Update automatically')}}</button></a>&ensp;
+        &ensp;<a class="btn" href="https://linkstack.org/update" target="_blank"><button><i class="fa-solid fa-download btn"></i> {{__('messages.Update manually')}}</button></a>&ensp;
         </div>
         @else
         @if(env('JOIN_BETA') === true)
@@ -38,15 +38,15 @@
         <p><?php  if($Vgit > $Vlocal) {echo "You need to update to the latest mainline release";} else {echo "You're running the latest mainline release";}  ?></p>
         @else
         <a target="_blank" href="https://github.com/linkstackorg/linkstack/releases"><code style="color:#222;transform:scale(.9);">{{$Vlocal}} -> {{$Vgit}}</code></a>
-        <h4 class="">You can update your installation automatically or download the update and install it manually:</h4>
+        <h4>{{__('messages.update.manually')}}</h4>
         @endif
         <br><div class="row">
             @if(env('SKIP_UPDATE_BACKUP') == true)
-            &ensp;<a class="btn" href="{{url()->current()}}/?preparing"><button><i class="fa-solid fa-user-gear btn"></i> Update automatically</button></a>&ensp;
+            &ensp;<a class="btn" href="{{url()->current()}}/?preparing"><button><i class="fa-solid fa-user-gear btn"></i> {{__('messages.Update automatically')}}</button></a>&ensp;
             @else
-            &ensp;<a class="btn" href="{{url()->current()}}/?backup"><button><i class="fa-solid fa-user-gear btn"></i> Update automatically</button></a>&ensp;
+            &ensp;<a class="btn" href="{{url()->current()}}/?backup"><button><i class="fa-solid fa-user-gear btn"></i> {{__('messages.Update automatically')}}</button></a>&ensp;
             @endif
-        &ensp;<a class="btn" href="https://linkstack.org/update" target="_blank"><button><i class="fa-solid fa-download btn"></i> Update manually</button></a>&ensp;
+        &ensp;<a class="btn" href="https://linkstack.org/update" target="_blank"><button><i class="fa-solid fa-download btn"></i> {{__('messages.Update manually')}}</button></a>&ensp;
         </div>
         @endif
       
@@ -58,7 +58,7 @@
         <div class="logo-container fadein">
 <img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
         </div>
-        <h1 class="loadingtxt">Updating</h1>
+        <h1 class="loadingtxt">{{__('messages.Updating')}}</h1>
         @Push('updater-head')
          <meta http-equiv="refresh" content="2; URL={{url()->current()}}/?preparing" />
         @endpush
@@ -110,7 +110,7 @@ echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "/?finish
         <div class="logo-container fadein">
 <img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
         </div>
-        <h1 class="loadingtxt">Creating backup</h1>
+        <h1 class="loadingtxt">{{__('messages.Creating backup')}}</h1>
 @endif
 
 @if($_SERVER['QUERY_STRING'] === 'backups')
@@ -130,7 +130,7 @@ exit(); ?>
         <div class="logo-container fadein">
 <img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
         </div>
-        <h1 class="loadingtxt">Preparing update</h1>
+        <h1 class="loadingtxt">{{__('messages.Preparing update')}}</h1>
         
         <?php // Get update preperation script from GitHub
         try {
@@ -154,7 +154,7 @@ exit(); ?>
         <div class="logo-container fadein">
 <img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
         </div>
-        <h1 class="loadingtxt">Updating</h1>
+        <h1 class="loadingtxt">{{__('messages.Updating')}}</h1>
         @Push('updater-head')
          <meta http-equiv="refresh" content="2; URL={{url()->current()}}/../updating" />
          @endpush
@@ -166,10 +166,10 @@ exit(); ?>
         <div class="logo-container fadein">
 <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
-        <h1>No new version</h1>
-        <h4 class="">There is no new version available</h4>
+        <h1>{{__('messages.No new version')}}</h1>
+        <h4>{{__('messages.There is no new version available')}}</h4>
         <br><div class="row">
-        &ensp;<a class="btn" href="{{ url('dashboard') }}"><button><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
+        &ensp;<a class="btn" href="{{ url('dashboard') }}"><button><i class="fa-solid fa-house-laptop btn"></i> {{__('messages.Admin Panel')}}</button></a>&ensp;
         </div>
       
 @endif
@@ -188,7 +188,7 @@ if(EnvEditor::getKey('APP_DEBUG') == 'false'){
         <div class="logo-container fadein">
 <img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
         </div>
-        <h1 class="loadingtxt">Finishing up</h1>
+        <h1 class="loadingtxt">{{__('messages.Finishing up')}}</h1>
         
         @include('components.finishing')
         
@@ -210,22 +210,22 @@ if($debug === true){
         <div class="logo-container fadein">
 <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
-        <h1>Success!</h1>
+        <h1>{{__('messages.Success!')}}</h1>
         @if(env('JOIN_BETA') === true)
         <p><?php echo "latest beta version= " . external_file_get_contents("https://beta.linkstack.org/vbeta.json"); ?></p>
-        <p><?php  if(file_exists(base_path("vbeta.json"))) {echo "Installed beta version= " . file_get_contents(base_path("vbeta.json"));} else {echo "Installed beta version= none";}  ?></p>
-        <p><?php  if($Vgit > $Vlocal) {echo "You need to update to the latest mainline release";} else {echo "You're running the latest mainline release";}  ?></p>
+        <p><?php  if(file_exists(base_path("vbeta.json"))) {echo __('messages.Installed beta version')."= " . file_get_contents(base_path("vbeta.json"));} else {echo __('messages.Installed beta version')."= ".__('messages.none');}  ?></p>
+        <p><?php  if($Vgit > $Vlocal) {echo __('messages.You need to update to the latest mainline release');} else {echo __("messages.You’re running the latest mainline release");}  ?></p>
         @else
-        <h4 class="">The update was successful, you can now return to the Admin Panel.</h4>
+        <h4>{{__('messages.The update was successful')}}</h4>
         <style>.noteslink:hover{color:#006fd5;text-shadow:0px 6px 7px rgba(23,10,6,0.66);}</style>
-        <a class="noteslink" href="https://github.com/linkstackorg/linkstack/releases/latest" target="_blank"><i class="fa-solid fa-up-right-from-square"></i> View the release notes</a>
+        <a class="noteslink" href="https://github.com/linkstackorg/linkstack/releases/latest" target="_blank"><i class="fa-solid fa-up-right-from-square"></i> {{__('messages.View the release notes')}}</a>
         <br>
         @endif
         <br><div class="row">
-        &ensp;<a class="btn" href="{{ url('dashboard') }}"><button><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
+        &ensp;<a class="btn" href="{{ url('dashboard') }}"><button><i class="fa-solid fa-house-laptop btn"></i> {{__('messages.Admin Panel')}}</button></a>&ensp;
 
         @if(env('JOIN_BETA') === true)
-        &ensp;<a class="btn" href="{{url()->current()}}/"><button><i class="fa-solid fa-arrow-rotate-right btn"></i> Run again</button></a>&ensp;
+        &ensp;<a class="btn" href="{{url()->current()}}/"><button><i class="fa-solid fa-arrow-rotate-right btn"></i> {{__('messages.Run again')}}</button></a>&ensp;
         @endif
         </div>
       
@@ -239,15 +239,13 @@ if($debug === true){
         <div class="logo-container fadein">
 <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
-        <h1>Error</h1>
-        <h4 class="">Something went wrong with the update :(</h4>
+        <h1>{{__('messages.Error')}}</h1>
+        <h4>{{__('messages.Something went wrong with the update')}} :(</h4>
         <br><div class="row">
-        &ensp;<a class="btn" href="{{ url('dashboard') }}"><button><i class="fa-solid fa-house-laptop btn"></i> Admin Panel</button></a>&ensp;
+        &ensp;<a class="btn" href="{{ url('dashboard') }}"><button><i class="fa-solid fa-house-laptop btn"></i> {{__('messages.Admin Panel')}}</button></a>&ensp;
         </div>
       
 @endif
-
-@if("8" > phpversion()) <br><br><a style="background-color:tomato;color:#fff;border-radius:5px;" class="nav-link" href="{{ url('/studio/profile') }}" target=""><i class="bi bi-exclamation-circle-fill"></i> <strong>You are using an outdated version of PHP! Official support for this version will end soon.</strong></a> @endif
 
 </div>
 @endpush
