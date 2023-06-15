@@ -90,7 +90,7 @@
   </div>
 
 <?php
-try{ if($GLOBALS['updateAv'] == true) echo '<p class="mt-3 ml-3 h2""><span class="badge bg-success">{{__('messages.Update available')}}</span></p>';
+try{ if($GLOBALS['updateAv'] == true) echo '<p class="mt-3 ml-3 h2""><span class="badge bg-success">'.__('messages.Update available').'</span></p>';
 }catch(Exception $ex){}
 ?>
 
