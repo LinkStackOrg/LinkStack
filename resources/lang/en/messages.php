@@ -7,6 +7,7 @@ return [
     | Home Page
     |--------------------------------------------------------------------------
     |
+    | resources/views/home.blade.php
     |
     */
 
@@ -24,6 +25,7 @@ return [
     | Demo Page/Home Page Example Page
     |--------------------------------------------------------------------------
     |
+    | resources/views/demo.blade.php
     |
     */
     
@@ -36,9 +38,12 @@ return [
     |--------------------------------------------------------------------------
     |
     | Login, Register, Forgot Password, Reset Password etc.
+    | This includes authentication emails like password reset and email verification.
+    | resources/views/auth
     |
     */
 
+    # Login Page
     'Sign In' => 'Sign In+',
     'Login to stay connected' => 'Login to stay connected+',
     'Email' => 'Email+',
@@ -50,11 +55,13 @@ return [
     'Click here to sign up' => 'Click here to sign up+',
 
 
+    # Reset password
     'Forgot your password?' => 'Forgot your password?+',
     'No problem' => 'No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.+',
     'Email Password Reset Link' => 'Email Password Reset Link+',
 
 
+    # Register Page
     'Sign Up' => 'Sign Up+',
     'Register to stay connected' => 'Register to stay connected+',
     'Display Name' => 'Display Name+',
@@ -63,23 +70,28 @@ return [
     'Click here to sign in' => 'Click here to sign in+',
 
 
+    # Pending verification by admin
     'Verification Status' => 'Verification Status+',
     'auth_pending' => 'Your account is still pending verification',
     'auth_unverified' => 'Your account is currently unverified and requires manual verification by an administrator.',
     'Log out' => 'Log out+',
 
 
+    # Password confirmation
     'auth_password' => 'This is a secure area of the application. Please confirm your password before continuing.+',
     'Confirm' => 'Confirm+',
 
 
+    # Password Reset
     'Reset Password' => 'Reset Password+',
     'Enter a new password' => 'Enter a new password+',
 
 
+    # Test email
     'Test E-Mail' => 'Test E-Mail+',
 
 
+    # Signup notification email
     'A new user has registered on' => 'A new user has registered on+',
     'and is awaiting verification' => 'and is awaiting verification+',
     'The user' => 'The user+',
@@ -92,6 +104,7 @@ return [
     'Manage users' => 'Manage users+',
 
 
+    # Email verification email
     'auth_thanks' => 'Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another. If you do not see the email in a few minutes, check your junk mail or spam folder.+',
     'auth_verification' => 'A new verification link has been sent to the email address you provided during registration.+',
     'Resend Verification Email' => 'Resend Verification Email+',
@@ -99,9 +112,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Styling Sline In
+    | Styling Slide In
     |--------------------------------------------------------------------------
     |
+    | resources/views/layouts/sidebar.blade.php
     |
     */
 
@@ -129,9 +143,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Navbar
+    | Site customization
     |--------------------------------------------------------------------------
     |
+    | resources/views/panel/site.blade.php
     |
     */
 
@@ -151,6 +166,16 @@ return [
     'Themes' => 'Themes+',
     'Favicon' => 'Favicon+',
     'Home message' => 'Home message+',
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Navbar
+    |--------------------------------------------------------------------------
+    |
+    | resources/views/layouts/sidebar.blade.php
+    |
+    */
     
     'View Page' => 'View Page+',
     'Share your profile' => 'Share your profile+',
@@ -163,11 +188,14 @@ return [
     'QR code could not be generated' => 'QR code could not be generated+',
     'Reason:' => 'Reason:+',
 
+    # QR Code dropdown
     'Close' => 'Close+',
     'Dismiss' => 'Dismiss+',
     
+    # Notification dropdown
     'All Notifications' => 'All Notifications+',
 
+    # Updater dropdown
     'Updater' => 'Updater+',
     'Beta Mode' => 'Beta Mode+',
     'Local version' => 'Local version+',
@@ -178,6 +206,7 @@ return [
     'Run updater' => 'Run updater+',
     'Check again' => 'Check again+',
 
+    # User section in navbar
     'Administrator' => 'Administrator+',
     'Verified user' => 'Verified user+',
     'User' => 'User+',
@@ -192,14 +221,17 @@ return [
     | Dashboard Page
     |--------------------------------------------------------------------------
     |
+    | resources/views/panel/index.blade.php
     |
     */
 
+    # Header with image
     'Hi' => 'Hi+',
     'stranger' => 'stranger+',
     'welcome' => 'Welcome to :appName!',
     'Set a handle' => 'Set a handle+',
 
+    # Dashboard Page
     'Total Links:' => 'Total Links:+',
     'Link Clicks:' => 'Link Clicks:+',
     'View/Edit Links' => 'View/Edit Links+',
@@ -223,6 +255,7 @@ return [
     | Button Editor
     |--------------------------------------------------------------------------
     |
+    | resources/views/studio/button-editor.blade.php
     |
     */
 
@@ -265,9 +298,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Edit Link Blade
+    | Edit Link Page
     |--------------------------------------------------------------------------
     |
+    | resources/views/studio/edit-link.blade.php
     |
     */
 
@@ -288,9 +322,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Link Blade
+    | Links Page
     |--------------------------------------------------------------------------
     |
+    | resources/views/studio/links.blade.php
     |
     */
 
@@ -307,9 +342,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Page Blade
+    | "My Profile"/Appearance Page
     |--------------------------------------------------------------------------
     |
+    | resources/views/studio/page.blade.php
     |
     */
 
@@ -327,9 +363,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Profile Page
+    | Personal Settings Page
     |--------------------------------------------------------------------------
     |
+    | resources/views/studio/profile.blade.php
     |
     */
 
@@ -350,9 +387,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Theme Page
+    | Themes Page
     |--------------------------------------------------------------------------
     |
+    | resources/views/studio/theme.blade.php
     |
     */
 
@@ -374,6 +412,7 @@ return [
     | Theme Updater
     |--------------------------------------------------------------------------
     |
+    | resources/views/studio/theme-updater.blade.php
     |
     */
 
@@ -390,35 +429,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Backup View Panel Blade
+    | Edit User Page
     |--------------------------------------------------------------------------
     |
-    |
-    */
-
-    'Download your updater backups' => 'Download your updater backups:+',
-    'The server will never store more that two backups at a time' => 'The server will never store more that two backups at a time.+',
-    'No backups found' => 'No backups found+',
-    'Backup your instance' => 'Backup your instance+',
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Config View Panel Blade
-    |--------------------------------------------------------------------------
-    |
-    |
-    */
-
-    'ENV' => 'ENV+',
-    'env.' => '.env+',
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Edit User View Panel Blade
-    |--------------------------------------------------------------------------
-    |
+    | resources/views/panel/edit-user.blade.php
     |
     */
     
@@ -430,11 +444,13 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Links View Panel Blade
+    | Links Page
     |--------------------------------------------------------------------------
     |
+    | resources/views/panel/links.blade.php
     |
     */
+
     'Title' => 'Title+',
 
 
@@ -443,6 +459,8 @@ return [
     | Config Page
     |--------------------------------------------------------------------------
     |
+    | resources/views/components/config/
+    | resources/views/panel/config-editor.blade.php
     |
     */
 
@@ -693,6 +711,7 @@ return [
     | Maintenance Page
     |--------------------------------------------------------------------------
     |
+    | resources/views/mainenance.blade.php
     |
     */
 

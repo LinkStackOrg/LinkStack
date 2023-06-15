@@ -32,12 +32,12 @@ echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "/../../a
           </script>
         </form>
 @elseif(str_ends_with($_SERVER['REQUEST_URI'], 'env'))
-        <h2 class="mb-4"><i class="bi bi-pencil-square">{{__('messages.ENV')}}</i></h2>
+        <h2 class="mb-4"><i class="bi bi-pencil-square">.ENV</i></h2>
         
         <form action="{{ route('editENV') }}" method="post">
           @csrf
           <div class="form-group col-lg-8">
-            <label>{{__('messages.env.')}}</label>
+            <label>env.</label>
             <pre><textarea class="form-control" name="AdvancedConfig" rows="80">{{ file_get_contents('.env') }}</textarea></pre>
           </div>
           <button type="submit" class="mt-3 ml-3 btn btn-info">{{__('messages.Save')}}</button>
