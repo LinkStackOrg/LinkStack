@@ -753,6 +753,28 @@ return [
     'Error' => 'Error+',
     'Something went wrong with the update' => 'Something went wrong with the update+',
 
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Backup
+    |--------------------------------------------------------------------------
+    |
+    | resources/views/backup.blade.php
+    |
+    */
+
+    # Title Tag
+    'Backup.title' => 'Backup+',
+
+    'Backup' => 'Backup+',
+    'You can back up your entire instance:' => 'You can back up your entire instance:+',
+    'The backup system won’t save more than two backups at a time' => 'The backup system won’t save more than two backups at a time.+',
+    'Backup Instance' => 'Backup Instance+',
+    'All Backups' => 'All Backups+',
+    'Creating backup' => 'Creating backup+',
+    'Success!' => 'Success!+',
+    'The backup was successful' => 'The backup was successful, you can now return to the Admin Panel or see all your backups.+',
+
 
     /*
     |--------------------------------------------------------------------------
