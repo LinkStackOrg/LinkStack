@@ -663,6 +663,7 @@ return [
     | Installer
     |--------------------------------------------------------------------------
     |
+    | resources/views/installer/installer.blade.php
     |
     */
 
@@ -674,36 +675,43 @@ return [
     'Create the admin user' => '3. Create the admin user+',
     'Configure the app' => '4. Configure the app+',
     'Choose a language' => 'Choose a language+',
+
     'Next' => 'Next+',
+    'Yes' => 'Yes+',
+    'No' => 'No+',
+    'Finish setup' => 'Finish setup+',
+
     'Setup failed' => 'Setup failed+',
     'An error has occured. Please try again' => 'An error has occured. Please try again.+',
     'Depending on your database type:' => 'Depending on your database type:+',
     'Try again' => 'Try again+',
+
     'Dependency check' => 'Dependency check+',
     'Required PHP modules:' => 'Required PHP modules:+',
+
     'Select a database type' => 'Select a database type+',
     'Under most circumstances, we recommend using SQLite' => 'Under most circumstances, we recommend using SQLite.+',
     'MySQL requires a separate, empty MySQL database.' => 'MySQL requires a separate, empty MySQL database+',
+
     'Database type:' => 'Database type:+',
     'Database host:' => 'Database host:+',
     'Database port:' => 'Database port:+',
     'Database name:' => 'Database name:+',
     'Database username:' => 'Database username:+',
     'Database password:' => 'Database password:+',
+
     'Create an admin account' => 'Create an admin account.+',
     'Admin email:' => 'Admin email:+',
     'Admin password:' => 'Admin password:+',
     'Handle:' => 'Handle:+',
     'Name:' => 'Name:+',
+
     'Configure your page' => 'Configure your page+',
     'Enable registration:' => 'Enable registration:+',
-    'Yes' => 'Yes+',
-    'No' => 'No+',
     'Enable email verification:' => 'Enable email verification:+',
     'Set your page as Home Page' => 'Set your page as Home Page+',
     'This will move the Home Page to /home' => 'This will move the Home Page to /home+',
     'App Name:' => 'App Name:+',
-    'Finish setup' => 'Finish setup+',
 
 
     /*
