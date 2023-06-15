@@ -749,6 +749,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Footer
+    |--------------------------------------------------------------------------
+    |
+    | Added to the bottom of certain pages.
+    | resources/views/layouts/footer.blade.php
+    |
+    */
+
+    'Learn more about LinkStack' => 'Learn more about LinkStack+',
+    'Learn more' => 'Learn more+',
+
+    /*
+    |--------------------------------------------------------------------------
     | Notification messages
     |--------------------------------------------------------------------------
     |
