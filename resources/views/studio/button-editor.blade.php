@@ -238,25 +238,25 @@
                               <td>{{__('messages.Regular')}}</td>
                               <td></td>
                               <td><i class="fa fa-user"></i></td>
-                              <td><p>{{__('messages.Fa-user')}}</p></td>
+                              <td><p>fa-user</p></td>
                             </tr>
                             <tr>
                               <td>{{__('messages.Brands')}}</td>
-                              <td>{{__('messages.Fab')}}</td>
+                              <td>fab</td>
                               <td><i class="fab fa-github"></i></td>
-                              <td><p>{{__('messages.Fab fa-github')}}</p></td>
+                              <td><p>fab fa-github</p></td>
                             </tr>
                             <tr>
                               <td>{{__('messages.Color')}}</td>
                               <td>{{__('messages.Color name')}};</td>
                               <td><i style="color: red;" class="fa fa-ghost"></i></td>
-                              <td><p style="color: red;">{{__('messages.Red fa')}};{{__('messages.Fa ghost')}}</p></td>
+                              <td><p style="color: red;">red; fa-ghost</p></td>
                             </tr>
                             <tr>
                               <td>{{__('messages.Color HEX')}}</td>
                               <td>{{__('messages.Color HEX1')}};</td>
                               <td><i style="color: #1DA1F2;" class="fab fa-twitter"></i></td>
-                              <td><p style="color: #1DA1F2;">#1DA1F2; {{__('messages.Hex fab fa-twitter')}}</p></td>
+                              <td><p style="color: #1DA1F2;">#1DA1F2; fab fa-twitter</p></td>
                             </tr>
                           </tbody>
                           </table>
