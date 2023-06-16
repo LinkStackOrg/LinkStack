@@ -525,6 +525,7 @@ return [
     */
 
     'Manage Users' => 'Manage Users',
+    'Users:' => 'Users:',
     'Search user' => 'Search user',
     'ID' => 'ID',
     'Name' => 'Name',
@@ -1076,7 +1077,5 @@ return [
     'support.msg5' => 'make a financial contribution</a>, even a small amount would help us cover the costs of maintaining and improving Linkstack.',
     'support.msg6' => 'Thank you for your support and for being a part of the LinkStack community!',
 
-
-    '' => '',
 
 ];

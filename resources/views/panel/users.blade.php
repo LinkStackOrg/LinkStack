@@ -31,7 +31,7 @@
                             </div>
                           </div>
                         </form>
-                        Users: 
+                        {{__('messages.Users:')}}
                         <a href="{{ url('') }}/admin/users/all">All</a> - 
                         <a href="{{ url('') }}/admin/users/user">User</a> - 
                         <a href="{{ url('') }}/admin/users/vip">Vip</a> - 
