@@ -13,7 +13,7 @@
                     <div class="col-sm-12">  
   
                       <section class="text-gray-400">
-                        <h2 class="mb-4 card-header"><i class="bi bi-link-45deg">{{__('messages.Links')}}</i></h2>
+                        <h2 class="mb-4 card-header"><i class="bi bi-link-45deg"> {{__('messages.Links')}}</i></h2>
                         <div class="card-body p-0 p-md-3">
                 
                         <div class="table-responsive">
@@ -43,7 +43,7 @@
                                   {!! $links ?? ''->links() !!}
                             </ul>
                 
-                <a class="btn btn-primary" href="{{ url('/admin/users/all') }}"><i class="bi bi-arrow-left-short"></i>{{__('messages.Back')}} </a>
+                <a class="btn btn-primary" href="{{ url('/admin/users/all') }}"><i class="bi bi-arrow-left-short"></i> {{__('messages.Back')}}</a>
                 
                           </div>
                 </section>

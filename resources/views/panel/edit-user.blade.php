@@ -13,7 +13,7 @@
                     <div class="col-sm-12">  
   
                       <section class="text-gray-400">
-                        <h2 class="mb-4 card-header"><i class="bi bi-person">{{__('messages.Edit User')}}</i></h2>
+                        <h2 class="mb-4 card-header"><i class="bi bi-person"> {{__('messages.Edit User')}}</i></h2>
                           <div class="card-body p-0 p-md-3">
                   
                         @foreach($user as $user)
@@ -45,7 +45,7 @@
                               @else
                               <img src="{{ asset('assets/linkstack/images/logo.svg') }}" class="bd-placeholder-img img-thumbnail" width="100" height="100" draggable="false">
                               @endif
-                              @if(file_exists(base_path(findAvatar($user->id))))<br><a title="Remove icon" class="hvr-grow p-1 text-danger" style="padding-left:5px;" href="?delete"><i class="bi bi-trash-fill"></i>{{__('messages.Delete')}}</a>@endif
+                              @if(file_exists(base_path(findAvatar($user->id))))<br><a title="Remove icon" class="hvr-grow p-1 text-danger" style="padding-left:5px;" href="?delete"><i class="bi bi-trash-fill"></i> {{__('messages.Delete')}}</a>@endif
                               @if($_SERVER['QUERY_STRING'] === 'delete' and File::exists(base_path(findAvatar($user->id))))@php File::delete(base_path(findAvatar($user->id))); header("Location: ".url()->current()); die(); @endphp @endif
                           </div><br>
                             
@@ -58,7 +58,7 @@
                             <div class="form-group col-lg-8">
                                 @if(!file_exists(base_path('assets/img/background-img/'.findBackground($user->id))))<p><i>{{__('messages.No image selected')}}</i></p>@endif
                                 <img style="width:95%;max-width:400px;argin-left:1rem!important;border-radius:5px;" src="@if(file_exists(base_path('assets/img/background-img/'.findBackground($user->id)))){{url('assets/img/background-img/'.findBackground($user->id))}}@else{{url('/assets/linkstack/images/themes/no-preview.png')}}@endif">
-                                @if(file_exists(base_path('assets/img/background-img/'.findBackground($user->id))))<br><a title="Remove icon" class="hvr-grow p-1 text-danger" style="padding-left:5px;" href="?deleteB"><i class="bi bi-trash-fill"></i>{{__('messages.Delete')}}</a>@endif
+                                @if(file_exists(base_path('assets/img/background-img/'.findBackground($user->id))))<br><a title="Remove icon" class="hvr-grow p-1 text-danger" style="padding-left:5px;" href="?deleteB"><i class="bi bi-trash-fill"></i> {{__('messages.Delete')}}</a>@endif
                                 @if($_SERVER['QUERY_STRING'] === 'deleteB' and File::exists(base_path('assets/img/background-img/'.findBackground($user->id))))@php File::delete(base_path('assets/img/background-img/'.findBackground($user->id))); header("Location: ".url()->current()); die(); @endphp @endif
                                 <br>
                             </div><br>
@@ -79,7 +79,7 @@
                         </div>
                             
                             <div class="form-group col-lg-8">
-                              <label>{{__('messages.Page description')}}</label>
+                              <label> {{__('messages.Page description')}}</label>
                               <textarea class="form-control" name="littlelink_description" rows="3">{{ $user->littlelink_description }}</textarea>
                             </div>
                             <div class="form-group col-lg-8">

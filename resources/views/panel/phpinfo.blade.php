@@ -84,8 +84,8 @@
 <div style="position: relative; top: 50px; z-index: 2;"><a href="{{ url('admin/config') }}" style="font-size: 40px;" >&nbsp; &nbsp; &nbsp; Back</a></div>
 <div style="position: relative; bottom: 60px; right: 15px; z-index: 1;" align="right"><a onclick="this.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)" href="#" download="phpinfo.html"><button class="btn btn-primary">Download</button></a></div>
         <div id='presentation'>
-            <h1>Information about PHP's configuration</h1>
-            <h2>Outputs information about the current state of PHP</h2>
+            <h1>{{__('messages.Information about PHP’s configuration')}}</h1>
+            <h2>{{__('messages.Outputs information about the current state of PHP')}}</h2>
         </div>
         
 <?php

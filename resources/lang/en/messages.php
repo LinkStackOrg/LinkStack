@@ -453,6 +453,114 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Edit User Page (Admin)
+    |--------------------------------------------------------------------------
+    |
+    | resources/views/panel/edit-user.blade.php
+    |
+    */
+
+    'Edit User' => 'Edit User+',
+    'Email' => 'Email+',
+    'Password' => 'Password+',
+    'Logo' => 'Logo+',
+    'Delete' => 'Delete+',
+    'Custom background' => 'Custom background+',
+    'No image selected' => 'No image selected+',
+    'Page URL' => 'Page URL+',
+    'Page description' => 'Page description+',
+    'Role' => 'Role+',
+    'Save' => 'Save+',
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Links Page (Admin)
+    |--------------------------------------------------------------------------
+    |
+    | resources/views/panel/links.blade.php
+    |
+    */
+
+    'Links' => 'Links+',
+    'Link' => 'Link+',
+    'Title' => 'Title+',
+    'Clicks' => 'Clicks+',
+    'Back' => 'Back+',
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | PHP info Page
+    |--------------------------------------------------------------------------
+    |
+    | resources/views/panel/phpinfo.blade.php
+    |
+    */
+
+    'Information about PHP’s configuration' => 'Information about PHP’s configuration+',
+    'Outputs information about the current state of PHP' => 'Outputs information about the current state of PHP+',
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Delete themes page
+    |--------------------------------------------------------------------------
+    |
+    | resources/views/panel/theme.blade.php
+    |
+    */
+
+    'Delete a theme' => 'Delete a theme+',
+    'Delete theme' => 'Delete theme+',
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Manage Users Page
+    |--------------------------------------------------------------------------
+    |
+    | resources/views/panel/users.blade.php
+    |
+    */
+
+    'Manage Users' => 'Manage Users+',
+    'Search user' => 'Search user+',
+    'ID' => 'ID+',
+    'Name' => 'Name+',
+    'E-Mail' => 'E-Mail+',
+    'Page' => 'Page+',
+    'Links' => 'Links+',
+    'Clicks' => 'Clicks+',
+    'Created at' => 'Created at+',
+    'Last seen' => 'Last seen+',
+    'Status' => 'Status+',
+    'Action' => 'Action+',
+    'N/A' => 'N/A+',
+    'Pending' => 'Pending+',
+    'Verified' => 'Verified+',
+    'Approved' => 'Approved+',
+    'Add new user' => 'Add new user+',
+
+    # Tooltips
+    'tt.Delete' => 'Delete+',
+    'tt.Edit' => 'Edit+',
+    'tt.All links' => 'All links+',
+
+    'confirm.delete.user' => 'Are you sure you want to delete this user? \nThis action cannot be undone!+',
+
+    # Date Format
+    'date.format' => 'd/m/Y',
+
+    'days ago' => 'days ago+',
+    '1 day ago' => '1 day ago+',
+    'Today' => 'Today+',
+    '1 year ago' => '1 year ago+',
+    'years ago' => 'years ago+',
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Config Page
     |--------------------------------------------------------------------------
     |
