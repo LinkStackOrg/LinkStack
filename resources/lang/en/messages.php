@@ -779,6 +779,49 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Page Blocks
+    |--------------------------------------------------------------------------
+    |
+    | Parts are stored in the database.
+    | resources/views/studio/edit-link.blade.php
+    |
+    */
+
+    # predefined
+    'block.title.predefined' => 'Predefined Site+',
+    'block.description.predefined' => 'Select from a list of predefined websites and have your link automatically styled using that sites brand colors and icon.+',
+
+    # link
+    'block.title.link' => 'Custom Link+',
+    'block.description.link' => 'Create a Custom Link that goes to any website. Customize the button styling and icon, or use the favicon from the website as the button icon.+',
+
+    # vcard
+    'block.title.vcard' => 'Vcard+',
+    'block.description.vcard' => 'Create or upload an electronic business card.+',
+
+    # email
+    'block.title.email' => 'E-Mail address+',
+    'block.description.email' => 'Add an email that opens a system dialog to compose a new email.+',
+
+    # telephone
+    'block.title.telephone' => 'Telephone number+',
+    'block.description.telephone' => 'Add a telephone number that opens a system dialog to initiate a phone call.+',
+
+    # heading
+    'block.title.heading' => 'Heading+',
+    'block.description.heading' => 'Use headings to organize your links and separate them into groups.+',
+
+    # spacer
+    'block.title.spacer' => 'Spacer+',
+    'block.description.spacer' => 'Add blank space to your list of links. You can choose how tall.+',
+
+    # text
+    'block.title.text' => 'Text+',
+    'block.description.text' => 'Add static text to your page that is not clickable.+',
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Maintenance Page
     |--------------------------------------------------------------------------
     |

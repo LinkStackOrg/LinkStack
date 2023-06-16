@@ -41,8 +41,8 @@
                                         </button> --}}
                                         {{-- <div class="dropdown-menu">
                                             @foreach ( $LinkTypes as $lt )
-                                            <a data-typeid='{{$lt['id']}}' data-typename='{{$lt['title']}}' class="dropdown-item doSelectLinkType" href="#">
-                                                <i class="{{$lt['icon']}}"></i> {{$lt['title']}}
+                                            <a data-typeid='{{$lt['id']}}' data-typename='{{__('messages.title.'.$ltt)}}' class="dropdown-item doSelectLinkType" href="#">
+                                                <i class="{{$lt['icon']}}"></i> {{__('messages.title.'.$ltt)}}
                                             </a>
                     
                                             @endforeach
@@ -108,7 +108,7 @@
                     
                     <!-- Modal -->
                     <style>.modal-title{color:#000!important;}</style>
-                    <x-modal title="Select Block" id="SelectLinkType">
+                    <x-modal title="{{__('Select Block')}}" id="SelectLinkType">
                     
                         <div class="d-flex flex-row  flex-wrap p-3">
                     
@@ -120,7 +120,11 @@
                             @endphp
                     
                             @foreach ($sorted as $lt)
-                            <a href="#" data-dismiss="modal" data-typeid="{{$lt['id']}}" data-typename="{{$lt['title']}}" class="hvr-grow m-2 w-100 d-block doSelectLinkType">
+                            @php 
+                            $title = __('messages.block.title.'.$lt['typename']); 
+                            $description = __('messages.block.description.'.$lt['typename']); 
+                            @endphp
+                            <a href="#" data-dismiss="modal" data-typeid="{{$lt['id']}}" data-typename="{{$title}}" class="hvr-grow m-2 w-100 d-block doSelectLinkType">
                                 <div class="rounded mb-3 shadow-lg">
                                     <div class="row g-0">
                                         <div class="col-auto bg-light d-flex align-items-center justify-content-center p-3">
@@ -128,13 +132,13 @@
                                         </div>
                                         <div class="col">
                                             <div class="card-body">
-                                                <h5 class="card-title text-dark mb-0">{{$lt['title']}}</h5>
-                                                <p class="card-text text-muted">{{$lt['description']}}</p>
+                                                <h5 class="card-title text-dark mb-0">{{$title}}</h5>
+                                                <p class="card-text text-muted">{{$description}}</p>
                                             </div>
                                         </div>
                                     </div>
-                                </div>                                                                 
-                            </a>                            
+                                </div>      
+                            </a>                     
                             @endforeach
                     
                         </div>
