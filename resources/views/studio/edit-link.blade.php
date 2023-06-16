@@ -28,11 +28,11 @@
                                 <div class="form-group col-lg-8 flex justify-around">
                                     {{-- <label class='font-weight-bold'>{{__('messages.Blocks')}}</label> --}}
                                     <div class="btn-group shadow m-2">
-                                        <button type="button" id='btnLinkType' class="btn btn-primary rounded-pill" title='Click to change link blocks' data-toggle="modal" data-target="#SelectLinkType">{{__('messages.Select Block')}}
+                                        <button type="button" id='btnLinkType' class="btn btn-primary rounded-pill" title='{{__('messages.Click to change link blocks')}}' data-toggle="modal" data-target="#SelectLinkType">{{__('messages.Select Block')}}
                                             <span class="btn-inner">
                                                 <i class="bi bi-window-plus"></i>
                                             </span>
-                                        </button>{{infoIcon('Click for a list of available link blocks')}}
+                                        </button>{{infoIcon(__('messages.Click for a list of available link blocks'))}}
                                           
                     
                     
@@ -108,7 +108,7 @@
                     
                     <!-- Modal -->
                     <style>.modal-title{color:#000!important;}</style>
-                    <x-modal title="{{__('Select Block')}}" id="SelectLinkType">
+                    <x-modal title="{{__('messages.Select Block')}}" id="SelectLinkType">
                     
                         <div class="d-flex flex-row  flex-wrap p-3">
                     
