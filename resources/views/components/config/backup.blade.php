@@ -89,10 +89,6 @@
         .25em 0 0 white,
         .5em 0 0 white;}}
   </style>
-  @push('sidebar-stylesheets')
-  <link rel="stylesheet" href="{{ asset('assets/linkstack/css/animate.css') }}">
-  <style>@font-face{font-family:'ll';src:url({{ asset('assets/linkstack/fonts/littlelink-custom.otf') }}) format("opentype")}</style>
-  @endpush
   
   <div class="container">
   
@@ -100,8 +96,7 @@
   <?php //landing page ?>
           
   <div class="logo-container fadein">
-    <img class="logo-img" src="{{ asset('assets/linkstack/images/just-gear.svg') }}" alt="Logo">
-    <div class="logo-centered">l</div>
+    <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
   </div>
   <h1 class="text-center">{{__('messages.Backup')}}</h1>
   <h4 class="text-center">{{__('messages.You can back up your entire instance:')}}</h4>
