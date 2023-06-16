@@ -203,7 +203,7 @@ if (isset($_COOKIE['LinkCount'])) {
                             </section>
                             
                             <section class='pre-right text-gray-400 pre-side'>
-                                <h3 class="card-header"><i class="bi bi-window-fullscreen" style="font-style:normal!important;">{{__('messages.Preview')}}</i></h3>
+                                <h3 class="card-header"><i class="bi bi-window-fullscreen" style="font-style:normal!important;"> {{__('messages.Preview')}}</i></h3>
                                     <div class='card-body p-0 p-md-3'>
                                             <center><iframe allowtransparency="true" id="frPreview1" style=" border-radius:0.25rem !important; background: #FFFFFF; min-height:600px; height:100%; max-width:500px !important;" class='w-100' src="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>">{{__('messages.No compatible browser')}}</iframe></center>
                                      </div>
