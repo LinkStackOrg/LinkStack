@@ -378,7 +378,7 @@ return [
     'Export all data' => 'Export all data',
     'Export links only' => 'Export links only',
     'Import user data' => 'Import user data',
-    'Import your user data' => 'Import your user data from another instance.',
+    'Import your user data from another instance' => 'Import your user data from another instance.',
     'Import' => 'Import',
     'Delete your account' => 'Delete your account',
     'You are about to delete' => 'You are about to delete your account!',
