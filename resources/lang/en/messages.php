@@ -164,6 +164,7 @@ return [
     'Links' => 'Links',
     'Appearance' => 'Appearance',
     'Themes' => 'Themes',
+    'Site logo' => 'Site logo',
     'Favicon' => 'Favicon',
     'Home message' => 'Home message',
 
