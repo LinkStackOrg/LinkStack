@@ -123,7 +123,7 @@
               
               setTimeout(function(){
                 document.querySelector(".redButton").disabled = false;
-                document.querySelector(".redButton").innerHTML = 'Delete account';
+                document.querySelector(".redButton").innerHTML = '{{__('messages.Delete account')}}';
                 document.querySelector(".redButton").style.filter = "none";
               }, 10000);
               </script>

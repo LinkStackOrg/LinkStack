@@ -336,6 +336,14 @@ return [
     'Page Icons' => 'Page Icons',
     'Save links' => 'Save links',
 
+    # Tooltips
+    'Customize' => 'Customize',
+    'Edit' => 'Edit',
+    'Delete' => 'Delete',
+    'Clear icon cache' => 'Clear icon cache',
+    
+    'confirm_delete' => 'Are you sure you want to delete :title?',
+
 
     /*
     |--------------------------------------------------------------------------
@@ -380,6 +388,7 @@ return [
     'Delete your account' => 'Delete your account',
     'You are about to delete' => 'You are about to delete your account!',
     'You are about to delete This action cannot be undone' => 'You are about to delete your account! This action cannot be undone.',
+    'Delete account' => 'Delete account',
 
 
     /*
