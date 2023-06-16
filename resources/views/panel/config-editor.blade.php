@@ -156,7 +156,7 @@
                   
                   <div class="tab-pane" role="tabpanel" style="scroll-margin-top: 1000px;" aria-labelledby="backups4-tab" id="4">
                       <section class="text-gray-400">
-                      <h2 class="mb-4 card-header"><i class="bi bi-link-45deg"> {{__('messages.Backups')}}</i></h2>
+                      <h2 class="mb-4 card-header"><i class="bi bi-link-45deg"> {{__('messages.All Backups')}}</i></h2>
                       <div class="card-body p-0 p-md-3">
                       @include('components.config.backups')
                       </div>
