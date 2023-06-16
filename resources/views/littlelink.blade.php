@@ -199,13 +199,13 @@ if($customBackgroundExists == true){
 <script>{!! file_get_contents(base_path("assets/linkstack/js/jquery.min.js")) !!}</script>
 <div align="right" class="sharediv">
   <div>
-    <span class="sharebutton button-hover icon-hover share-button" data-share="{{url()->current()}}" tabindex="0" role="button" aria-label="Share this page">
+    <span class="sharebutton button-hover icon-hover share-button" data-share="{{url()->current()}}" tabindex="0" role="button" aria-label="{{__('messages.Share this page')}}">
       <i style="color: black;" class="fa-solid fa-share sharebutton-img share-icon hvr-icon"></i>
-      <span class="sharebutton-mb">Share</span>
+      <span class="sharebutton-mb">{{__('messages.Share')}}</span>
     </span>
   </div>
 </div>
-<span class="copy-icon" tabindex="0" role="button" aria-label="Copy URL to clipboard">
+<span class="copy-icon" tabindex="0" role="button" aria-label="{{__('messages.Copy URL to clipboard')}}">
 </span>
 
 <script>
@@ -215,17 +215,17 @@ if($customBackgroundExists == true){
       const valueToShare = button.dataset.share;
       if (navigator.share) {
         navigator.share({
-          title: 'Share this page',
+          title: "{{__('messages.Share this page')}}",
           url: valueToShare
         })
-        .catch(err => console.error('Error sharing:', err));
+        .catch(err => console.error('Error:', err));
       } else {
         navigator.clipboard.writeText(valueToShare)
         .then(() => {
-          alert('URL has been copied to your clipboard!');
+          alert("{{__('messages.URL has been copied to your clipboard!')}}");
         })
         .catch(err => {
-          alert('Error copying URL:', err);
+          alert('Error', err);
         });
       }
     });
@@ -249,7 +249,7 @@ if($customBackgroundExists == true){
           @endif
 
         <!-- Your Name -->
-        <h1 class="fadein">{{ $info->name }}@if(($userinfo->role == 'vip' or $userinfo->role == 'admin') and theme('disable_verification_badge') != "true" and env('HIDE_VERIFICATION_CHECKMARK') != true and UserData::getData($userinfo->id, 'checkmark') != false)<span title="Verified user">@include('components.verify-svg')@endif</span></h1>
+        <h1 class="fadein">{{ $info->name }}@if(($userinfo->role == 'vip' or $userinfo->role == 'admin') and theme('disable_verification_badge') != "true" and env('HIDE_VERIFICATION_CHECKMARK') != true and UserData::getData($userinfo->id, 'checkmark') != false)<span title="{{__('messages.Verified user')}}">@include('components.verify-svg')@endif</span></h1>
 
         <!-- Short Bio -->
         <style>.description-parent * {margin-bottom: 1em;}.description-parent {padding-bottom: 30px;}</style>

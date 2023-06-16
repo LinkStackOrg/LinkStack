@@ -163,10 +163,10 @@ function toggle($key){
 	<div class="form-group col-lg-8">
 	<input value="toggle" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
 	<input value="'.$key.'" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
-	<h5 style="margin-top:50px">'; foreach($configNames as $obj){if($obj->value == $key){echo $obj->title;}}; echo '</h5>
-    <p class="text-muted">'; foreach($configNames as $obj){if($obj->value == $key){echo $obj->description;}}; echo '</p>
+	<h5 style="margin-top:50px">'; echo __('messages.'.$key.'.title'); echo '</h5>
+    <p class="text-muted">'; echo __('messages.'.$key.'.description'); echo '</p>
 	<div class="input-group">
-	<div class="mb-3 form-check form-switch toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="'.$key.'"'; if(EnvEditor::getKey($key) == 'false'){echo '/>';}else{echo 'checked>';} echo '<label for="'.$key.'" class="form-check-label">Enable</label></div>
+	<div class="mb-3 form-check form-switch toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="'.$key.'"'; if(EnvEditor::getKey($key) == 'false'){echo '/>';}else{echo 'checked>';} echo '<label for="'.$key.'" class="form-check-label">'.__('messages.Enable').'</label></div>
 	</div></div>
     <input type="hidden" name="_token" value="'.csrf_token().'">
     <script type="text/javascript">
@@ -188,10 +188,10 @@ function toggle2($key){
 	<div class="form-group col-lg-8">
 	<input value="toggle2" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
 	<input value="'.$key.'" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
-	<h5 style="margin-top:50px">'; foreach($configNames as $obj){if($obj->value == $key){echo $obj->title;}}; echo '</h5>
-    <p class="text-muted">'; foreach($configNames as $obj){if($obj->value == $key){echo $obj->description;}}; echo '</p>
+	<h5 style="margin-top:50px">'; echo __('messages.'.$key.'.title'); echo '</h5>
+    <p class="text-muted">'; echo __('messages.'.$key.'.description'); echo '</p>
 	<div class="input-group">
-	<div class="mb-3 form-check form-switch toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="'.$key.'"'; if(EnvEditor::getKey($key) == 'auth'){echo '/>';}else{echo 'checked>';} echo '<label for="'.$key.'" class="form-check-label">Enable</label></div>
+	<div class="mb-3 form-check form-switch toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="'.$key.'"'; if(EnvEditor::getKey($key) == 'auth'){echo '/>';}else{echo 'checked>';} echo '<label for="'.$key.'" class="form-check-label">'.__('messages.Enable').'</label></div>
 	</div></div>
     <input type="hidden" name="_token" value="'.csrf_token().'">
     <script type="text/javascript">
@@ -214,12 +214,12 @@ function text($key){
     <div class="form-group col-lg-8">
     <input value="text" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
     <input value="'.$key.'" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
-	<h5 style="margin-top:50px">'; foreach($configNames as $obj){if($obj->value == $key){echo $obj->title;}}; echo '</h5>
-    <p class="text-muted">'; foreach($configNames as $obj){if($obj->value == $key){echo $obj->description;}}; echo '</p>
+	<h5 style="margin-top:50px">'; echo __('messages.'.$key.'.title'); echo '</h5>
+    <p class="text-muted">'; echo __('messages.'.$key.'.description'); echo '</p>
     <div class="input-group">
     <input type="text" class="form-control form-control-lg" style="border-radius:.25rem;max-width:600px" class="form-control" name="value" value="'.$configValue.'" required>';  echo '
     <input type="hidden" name="_token" value="'.csrf_token().'">
-	<button  type="submit" class="btn btn-primary">Apply</button>
+	<button  type="submit" class="btn btn-primary">'.__('messages.Apply').'</button>
     </div></div>
     </form>
 	';
@@ -227,7 +227,7 @@ function text($key){
 ?>
 
 
-<a name="Application"><h2 class="ch2">Application</h2></a>
+<a name="Application"><h2 class="ch2">{{__('messages.Application')}}</h2></a>
 
 @if(!config('linkstack.single_user_mode'))
 {{toggle('ALLOW_REGISTRATION')}}
@@ -247,13 +247,13 @@ function text($key){
 <div class="form-group col-lg-8">
 <input value="homeurl" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
 <input value="HOME_URL" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
-<h5 style="margin-top:50px">Set user page as Home Page</h5>
-<p class="text-muted">Set a user page as the home page. This will move the previous home page to example.com/home.</p>
+<h5 style="margin-top:50px">{{__('messages.HOME_URL.title')}}</h5>
+<p class="text-muted">{{__('messages.HOME_URL.description')}}</p>
 <div class="input-group">
 
 <select style="max-width:600px" class="form-control" name="value">
 @if($configValue2 != '')<option>{{$configValue2}}</option>@endif
-@if($configValue2 != 'default')<option>default</option>@endif
+@if($configValue2 != 'default')<option value="default">{{__('messages.default')}}</option>@endif
 <?php $users = DB::table('users')->where('littlelink_name', '!=', '')->get();
 foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<option>' . $user->littlelink_name . '</option>';}} ?>
 </select>
@@ -274,7 +274,7 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 {{toggle('HIDE_VERIFICATION_CHECKMARK')}}
 
 
-<a name="Panel-settings"><h2 class="ch2">Panel settings</h2></a>
+<a name="Panel-settings"><h2 class="ch2">{{__('messages.Panel settings')}}</h2></a>
 
 {{toggle('NOTIFY_EVENTS')}}
 
@@ -291,7 +291,7 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 {{toggle('ALLOW_CUSTOM_BACKGROUNDS')}}
 
 
-<a name="Security"><h2 class="ch2">Security</h2></a>
+<a name="Security"><h2 class="ch2">{{__('messages.Security')}}</h2></a>
 
 
 {{toggle('ALLOW_USER_HTML')}}
@@ -310,7 +310,7 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 
 
 
-<a name="Advanced"><h2 class="ch2">Advanced</h2></a>
+<a name="Advanced"><h2 class="ch2">{{__('messages.Advanced')}}</h2></a>
 
 {{toggle('JOIN_BETA')}}
 
@@ -319,10 +319,10 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 <div class="form-group col-lg-8">
 <input value="maintenance" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
 <input value="MAINTENANCE_MODE" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
-<h5 style="margin-top:50px">Enable Maintenance Mode</h5>
-<p class="text-muted">Displays a maintenance message on all public pages. This will disable the login pages.</p>
+<h5 style="margin-top:50px">{{__('messages.MAINTENANCE_MODE.title')}}</h5>
+<p class="text-muted">{{__('messages.MAINTENANCE_MODE.description')}}</p>
 <div class="input-group">
-<div class="mb-3 form-check form-switch toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="MAINTENANCE_MODE" <?php if(EnvEditor::getKey('MAINTENANCE_MODE') == 'true' or file_exists(base_path("storage/MAINTENANCE"))){echo 'checked>';}else{echo '/>';} ?><label for="MAINTENANCE_MODE" class="form-check-label">Enable</label></div>
+<div class="mb-3 form-check form-switch toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="MAINTENANCE_MODE" <?php if(EnvEditor::getKey('MAINTENANCE_MODE') == 'true' or file_exists(base_path("storage/MAINTENANCE"))){echo 'checked>';}else{echo '/>';} ?><label for="MAINTENANCE_MODE" class="form-check-label">{{__('messages.Enable')}}</label></div>
 </div></div>
 <input type="hidden" name="_token" value="{{csrf_token()}}">
 <script type="text/javascript">
@@ -349,37 +349,37 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 
 
 {{-- start SMTP settings --}}
-<a name="SMTP"><h2 class="ch2">SMTP</h2></a>
+<a name="SMTP"><h2 class="ch2">{{__('messages.SMTP')}}</h2></a>
 <form id="smtp-form" action="{{route('editConfig')}}" enctype="multipart/form-data" method="post">
 <div class="form-group col-lg-8">
 <input value="smtp" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
 <input value="smtp" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
-<h5 style="margin-top:50px">Use built in SMTP server</h5>
-<p class="text-muted">Uses SMTP server provided by LinkStack. Might not be 100% reliable. Has to be disabled in order to user a custom SMTP server.<br>(Save changes with 'Apply changes' below)</p>
+<h5 style="margin-top:50px">{{__('messages.SMTP.title')}}</h5>
+<p class="text-muted">{{__('messages.SMTP.description')}}<br>{{__('messages.SMTP.description.alt')}}</p>
 <div class="input-group">
-<div class="mb-3 form-check form-switch toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle-smtp" <?php if(env('MAIL_MAILER') != 'built-in'){echo '/>';}else{echo 'checked>';} ?> <label for="toggle-smtp" class="form-check-label">Enable</label></div>
+<div class="mb-3 form-check form-switch toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle-smtp" <?php if(env('MAIL_MAILER') != 'built-in'){echo '/>';}else{echo 'checked>';} ?> <label for="toggle-smtp" class="form-check-label">{{__('messages.Enable')}}</label></div>
 </div></div>
 <input type="hidden" name="_token" value="{{csrf_token()}}">
 <div style="max-width: 600px; padding-left: 20px;">
-<br><h5>Custom SMTP server:</h5>
-<label style="margin-top:15px">Host</label>
+<br><h5>{{__('messages.Custom SMTP server:')}}</h5>
+<label style="margin-top:15px">{{__('messages.Host')}}</label>
 <input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_HOST" value="{{env('MAIL_HOST')}}" />
-<label style="margin-top:15px">Port</label>
+<label style="margin-top:15px">{{__('messages.Port')}}</label>
 <input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_PORT" value="{{env('MAIL_PORT')}}" />
-<label style="margin-top:15px">Username</label>
+<label style="margin-top:15px">{{__('messages.Username')}}</label>
 <input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_USERNAME" value="{{env('MAIL_USERNAME')}}" />
-<label style="margin-top:15px">Password</label>
+<label style="margin-top:15px">{{__('messages.Password')}}</label>
 <input type="password" class="form-control" name="MAIL_PASSWORD" value="{{env('MAIL_PASSWORD')}}" />
-<label style="margin-top:15px">Encryption type</label>
+<label style="margin-top:15px">{{__('messages.Encryption type')}}</label>
 <input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_ENCRYPTION" value="{{env('MAIL_ENCRYPTION')}}" />
-<label style="margin-top:15px">From address</label>
+<label style="margin-top:15px">{{__('messages.From address')}}</label>
 <input type="text" class="form-control form-control-lg" class="form-control form-control-lg" name="MAIL_FROM_ADDRESS" value="{{env('MAIL_FROM_ADDRESS')}}" />
-<button type="submit" class="btn btn-primary mt-4">Apply changes</button>
+<button type="submit" class="btn btn-primary mt-4">{{__('messages.Apply changes')}}</button>
 </div>
 </form>
 
 <div class="form-group col-lg-8">
-  <br><br><h5>Test E-Mail setup:</h5>
+  <br><br><h5>{{__('messages.Test E-Mail setup:')}}</h5>
   @if (session('success'))
   <div class="alert alert-success">
       {{ session('success') }}
@@ -390,12 +390,12 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
   </div>
 @endif
 </div>
-<a href="{{route('SendTestMail')}}"><button class="btn btn-gray">Send Test E-Mail</button></a>
+<a href="{{route('SendTestMail')}}"><button class="btn btn-gray">{{__('messages.Send Test E-Mail')}}</button></a>
 {{-- end SMTP settings --}}
 
 
 {{-- start footer settings --}}
-<a name="Footer"><h2 class="ch2">Footer links</h2></a>
+<a name="Footer"><h2 class="ch2">{{__('messages.Footer links')}}</h2></a>
 
 {{toggle('DISPLAY_FOOTER')}}
 
@@ -414,12 +414,12 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
     <div class="form-group col-lg-8">
     <input value="text" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
     <input value="HOME_FOOTER_LINK" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
-	<h5 style="margin-top:50px">@php foreach($configNames as $obj){if($obj->value == 'HOME_FOOTER_LINK'){echo $obj->title;}}; @endphp</h5>
-    <p class="text-muted">@php foreach($configNames as $obj){if($obj->value == 'HOME_FOOTER_LINK'){echo $obj->description;}}; @endphp</p>
+	<h5 style="margin-top:50px">@php echo __('messages.HOME_FOOTER_LINK.title'); @endphp</h5>
+    <p class="text-muted">@php echo __('messages.HOME_FOOTER_LINK.description'); @endphp</p>
     <div class="input-group">
     <input type="url" style="border-radius:.25rem;max-width:600px" class="form-control" name="value" value="{{$configValue}}">
     <input type="hidden" name="_token" value="{{csrf_token()}}">
-	<button  type="submit" class="btn btn-primary">Apply</button>
+	<button  type="submit" class="btn btn-primary">{{__('messages.Apply')}}</button>
     </div></div>
     </form>
 
@@ -435,20 +435,61 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 
 
 {{-- start debug settings --}}
-<a name="Debug"><h2 class="ch2">Debug</h2></a>
+<a name="Debug"><h2 class="ch2">{{__('messages.Debug')}}</h2></a>
 <form id="debug-form" action="{{route('editConfig')}}" enctype="multipart/form-data" method="post">
 <div class="form-group col-lg-8">
 <input value="debug" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
 <input value="debug" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
-<h5 style="margin-top:50px">Debug mode</h5>
-<p class="text-muted">Should be disabled in a production environment. Useful for debugging during setup.</p>
+<h5 style="margin-top:50px">{{__('messages.Debug.title')}}</h5>
+<p class="text-muted">{{__('messages.Debug.description')}}</p>
 <div class="input-group">
-<div class="mb-3 form-check form-switch toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle-debug" <?php if(EnvEditor::getKey('APP_DEBUG') == 'false'){echo '/>';}else{echo 'checked>';} ?> <label for="toggle-debug" class="form-check-label">Enable</label></div>
+<div class="mb-3 form-check form-switch toggle-btn"><input name="toggle" class="switch toggle-btn" type="checkbox" id="toggle-debug" <?php if(EnvEditor::getKey('APP_DEBUG') == 'false'){echo '/>';}else{echo 'checked>';} ?> <label for="toggle-debug" class="form-check-label">{{__('messages.Enable')}}</label></div>
 </div></div>
 <input type="hidden" name="_token" value="{{csrf_token()}}">
 <script type="text/javascript">document.getElementById("debug-form").addEventListener("change", function() { this.submit(); });</script>
 </form>
 {{-- end debug settings --}}
+
+{{-- start language --}}
+<a name="Language"><h2 class="ch2">{{__('messages.Language')}}</h2></a>
+<?php $configValue2 = str_replace('"', "", EnvEditor::getKey('LOCALE')); ?>
+<form id="language-form" action="{{route('editConfig')}}" enctype="multipart/form-data" method="post">
+    <div class="form-group col-lg-8">
+        <input value="homeurl" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
+        <input value="LOCALE" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
+        <h5 style="margin-top:50px">{{__('messages.LOCALE.title')}}</h5>
+        <p class="text-muted">{{__('messages.LOCALE.description')}}</p>
+        <div class="input-group">
+            <select style="max-width:600px" class="form-control" name="value">
+                @if($configValue2 != '')
+                    <option>{{$configValue2}}</option>
+                @endif
+                <?php
+                try {
+                    $langFolders = array_filter(glob(base_path('resources/lang') . '/*'), 'is_dir');
+                } catch (\Exception $e) {
+                    $langFolders = [];
+                }
+
+                foreach($langFolders as $folder) {
+                    $folderName = basename($folder);
+                    if ($folderName != $configValue2) {
+                        echo '<option>' . $folderName . '</option>';
+                    }
+                }
+                ?>
+            </select>
+        </div>
+    </div>
+    <input type="hidden" name="_token" value="{{csrf_token()}}">
+    <script type="text/javascript">
+        document.getElementById("language-form").addEventListener("change", function() {
+            this.submit();
+        });
+    </script>
+</form>
+{{-- end language --}}
+
 
 <br><br><br><br><br>
 

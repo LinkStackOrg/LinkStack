@@ -57,6 +57,9 @@ use App\Models\Page;
             if(EnvEditor::keyExists('DISPLAY_CREDIT_FOOTER')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('DISPLAY_CREDIT_FOOTER', 'true');}
 
+            if(EnvEditor::keyExists('LOCALE')){ /* Do nothing if key already exists */ 
+            } else {EnvEditor::addKey('LOCALE', 'en');}
+
             if(EnvEditor::keyExists('ADMIN_EMAIL')){} else 
             {if(Auth::user()->id == 1){EnvEditor::addKey('ADMIN_EMAIL', App\Models\User::find(1)->email);}
             else{EnvEditor::addKey('ADMIN_EMAIL', '');}}

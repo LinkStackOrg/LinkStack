@@ -41,7 +41,6 @@ return [
     |
     */
 
-    'lang'            => 'en', // Sets <html lang="en">
     'title'           => '', // Overrides the default meta page title. Leave empty to use your LinkStack page title as the title.
     'description'     => '', // Overrides the default meta page description. Leave empty to use your LinkStack page description as the description.
     'robots'          => 'index,follow',

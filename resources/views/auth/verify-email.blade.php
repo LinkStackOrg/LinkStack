@@ -28,12 +28,12 @@
                 <h4 class="logo-title ms-3">{{env('APP_NAME')}}</h4>
               </a>
               <div class="mb-4 text-sm text-gray-600">
-                {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another. If you do not see the email in a few minutes, check your junk mail or spam folder.') }}
+                {{__('messages.auth_thanks')}}
             </div>
     
             @if (session('status') == 'verification-link-sent')
                 <div class="font-medium text-sm text-green-600">
-                    {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+                  {{__('messages.auth_verification')}}
                 </div>
             @endif
     
@@ -43,7 +43,7 @@
     
                     <div>
                         <button type="submit" class="btn btn-gray mb-2">
-                            {{ __('Resend Verification Email') }}
+                          {{__('messages.Resend Verification Email')}}
                         </button>
                     </div>
                 </form>
@@ -54,7 +54,7 @@
                     @csrf
     
                     <button type="submit" class="btn btn-primary mt-2">
-                        {{ __('Log out') }}
+                        {{ __('messages.Log out') }}
                     </button>
                 </form>
             </div>

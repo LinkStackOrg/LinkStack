@@ -36,8 +36,8 @@ foreach($pages as $page)
                     <!--logo End-->
                 <h4 class="logo-title ms-3">{{env('APP_NAME')}}</h4>
               </a>
-              <h2 class="mb-2 text-center">Forgot your password?</h2>
-              <p class="text-center">No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.</p>
+              <h2 class="mb-2 text-center">{{__('messages.Forgot your password?')}}</h2>
+              <p class="text-center">{{__('messages.No problem')}}</p>
               <form method="POST" action="{{ route('password.email') }}" class="row">
                 @csrf
             
@@ -49,13 +49,13 @@ foreach($pages as $page)
 
                 <!-- Email Address -->
                 <div class="col-lg-12 form-group pb-2">
-                    <label for="email" class="form-label">Email</label>
+                    <label for="email" class="form-label">{{__('messages.Email')}}</label>
             
                     <input id="email" class="form-control" type="email" name="email" :value="old('email')" placeholder=" " required autofocus />
                 </div>
             
                 <div class="col-lg-12 d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary">{{ __('Email Password Reset Link') }}</button>
+                    <button type="submit" class="btn btn-primary">{{__('messages.Email Password Reset Link')}}</button>
                 </div>
             </form>
             </div>

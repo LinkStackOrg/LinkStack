@@ -42,36 +42,36 @@ foreach($pages as $page)
                     <!--logo End-->
                 <h4 class="logo-title ms-3">{{env('APP_NAME')}}</h4>
               </a>
-              <h2 class="mb-2 text-center">Sign In</h2>
-              <p class="text-center">Login to stay connected.</p>
+              <h2 class="mb-2 text-center">{{__('messages.Sign In')}}</h2>
+              <p class="text-center">{{__('messages.Login to stay connected')}}.</p>
               <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="form-group">
-                      <label for="email" class="form-label">Email</label>
+                      <label for="email" class="form-label">{{__('messages.Email')}}</label>
                       <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder=" " :value="old('email')" required autofocus >
                     </div>
                   </div>
                   <div class="col-lg-12">
                     <div class="form-group">
-                      <label for="password" class="form-label">Password</label>
+                      <label for="password" class="form-label">{{__('messages.Password')}}</label>
                       <input type="password" class="form-control" id="password" aria-describedby="password" placeholder=" " name="password" required autocomplete="current-password" />
                     </div>
                   </div>
                   <div class="col-lg-12 d-flex justify-content-between">
                     <div class="form-check mb-3">
                       <input type="checkbox" class="form-check-input" name="remember" id="remember_me">
-                      <label class="form-check-label" for="remember_me">Remember Me</label>
+                      <label class="form-check-label" for="remember_me">{{__('messages.Remember Me')}}</label>
                     </div>
-                    <a href="{{ route('password.request') }}">Forgot Password?</a>
+                    <a href="{{ route('password.request') }}">{{__('messages.Forgot Password?')}}</a>
                   </div>
                 </div>
                 <div class="d-flex justify-content-center">
-                  <button type="submit" class="btn btn-primary">Sign In</button>
+                  <button type="submit" class="btn btn-primary">{{__('messages.Sign In')}}</button>
                 </div>
                 @if(env('ENABLE_SOCIAL_LOGIN') == 'true')
-                <p class="text-center my-3">or sign in with other accounts?</p>
+                <p class="text-center my-3">{{__('messages.or sign in with other accounts?')}}</p>
                 <div class="d-flex justify-content-center">
                   <ul class="list-group list-group-horizontal list-group-flush">
                     @if(!empty(env('FACEBOOK_CLIENT_ID')))
@@ -109,7 +109,7 @@ foreach($pages as $page)
                 @endif
                 @if ((env('ALLOW_REGISTRATION')) and !config('linkstack.single_user_mode'))
                 <p class="mt-3 text-center">
-                  Don’t have an account? <a href="{{ route('register') }}" class="text-underline">Click here to sign up.</a>
+                  {{__('messages.Don’t have an account?')}} <a href="{{ route('register') }}" class="text-underline">{{__('messages.Click here to sign up')}}.</a>
                 </p>
                 @endif
               </form>

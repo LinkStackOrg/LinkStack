@@ -99,7 +99,7 @@
 
 
         <style>.description-parent * {margin-bottom: 1em;}.description-parent {padding-bottom: 30px;}</style>
-        <center><div class="fadein description-parent"><p class="fadein">Example page</p></div></center>
+        <center><div class="fadein description-parent"><p class="fadein">{{__('messages.Example page')}}</p></div></center>
         
         {{-- <!-- Icons -->
         @php $icons = DB::table('links')->where('user_id', $userinfo->id)->where('button_id', 94)->get(); @endphp

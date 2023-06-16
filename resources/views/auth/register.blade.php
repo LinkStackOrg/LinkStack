@@ -42,47 +42,47 @@ foreach($pages as $page)
                     <!--logo End-->
                 <h4 class="logo-title ms-3">{{env('APP_NAME')}}</h4>
               </a>
-              <h2 class="mb-2 text-center">Sign Up</h2>
-              <p class="text-center">Register to stay connected.</p>
+              <h2 class="mb-2 text-center">{{__('messages.Sign Up')}}</h2>
+              <p class="text-center">{{__('messages.Register to stay connected')}}.</p>
               <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="row">
                     <div class="col-lg-12">
                       <div class="form-group">
-                        <label for="name" class="form-label">Display Name</label>
+                        <label for="name" class="form-label">{{__('messages.Display Name')}}</label>
                         <input type="text" class="form-control" id="name" name="name" aria-describedby="name" placeholder=" " :value="old('name')" required autofocus >
                       </div>
                     </div>
                     <div class="col-lg-12">
                       <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
+                        <label for="email" class="form-label">{{__('messages.Email')}}</label>
                         <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder=" " :value="old('email')" required autofocus >
                       </div>
                     </div>
                     <div class="col-lg-12">
                       <div class="form-group">
-                        <label for="password" class="form-label">Password</label>
+                        <label for="password" class="form-label">{{__('messages.Password')}}</label>
                         <input type="password" class="form-control" id="password" aria-describedby="password" placeholder=" " name="password" required autocomplete="new-password" />
                       </div>
                     </div>
                     <div class="col-lg-12">
                       <div class="form-group">
-                        <label for="password_confirmation" class="form-label">Confirm Password</label>
+                        <label for="password_confirmation" class="form-label">{{__('messages.Confirm Password')}}</label>
                         <input type="password" class="form-control" id="password_confirmation" aria-describedby="password_confirmation" placeholder=" " name="password_confirmation" required />
                       </div>
                     </div>
                     <div class="col-lg-12 d-flex justify-content-between">
                       <div class="form-check mb-3">
                         <input type="checkbox" class="form-check-input" name="remember" id="remember_me">
-                        <label class="form-check-label" for="remember_me">Remember Me</label>
+                        <label class="form-check-label" for="remember_me">{{__('messages.Remember Me')}}</label>
                       </div>
                     </div>
                   </div>                  
                 <div class="d-flex justify-content-center">
-                  <button type="submit" class="btn btn-primary">Sign Up</button>
+                  <button type="submit" class="btn btn-primary">{{__('messages.Sign Up')}}</button>
                 </div>
                 @if(env('ENABLE_SOCIAL_LOGIN') == 'true')
-                <p class="text-center my-3">or sign in with other accounts?</p>
+                <p class="text-center my-3">{{__('messages.or sign in with other accounts?')}}</p>
                 <div class="d-flex justify-content-center">
                   <ul class="list-group list-group-horizontal list-group-flush">
                     @if(!empty(env('FACEBOOK_CLIENT_ID')))
@@ -119,7 +119,7 @@ foreach($pages as $page)
                 <br>
                 @endif
                 <p class="mt-3 text-center">
-                   Already have an account? <a href="{{ route('login') }}" class="text-underline">Click here to sign in.</a>
+                  {{__('messages.Already have an account?')}} <a href="{{ route('login') }}" class="text-underline">{{__('messages.Click here to sign in')}}.</a>
                 </p>
               </form>
             </div>

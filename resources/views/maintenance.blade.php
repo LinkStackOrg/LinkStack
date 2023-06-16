@@ -90,12 +90,12 @@ body {
         @endif
 
         <div style="padding-bottom:5%;">
-        <h1 style="font-size: 300%;"><i class="fa-solid fa-screwdriver-wrench"></i> Maintenance Mode <i class="fa-solid fa-screwdriver-wrench"></i></h1>
-		      <h2>We are performing scheduled site maintenance at this time.</h2>
-          <h3>Please check back with us later.</h3>
+        <h1 style="font-size: 300%;"><i class="fa-solid fa-screwdriver-wrench"></i> {{__('messages.Maintenance Mode')}} <i class="fa-solid fa-screwdriver-wrench"></i></h1>
+		      <h2>{{__('messages.We are performing scheduled site maintenance at this time')}}</h2>
+          <h3>{{__('messages.Please check back with us later')}}</h3>
           @if(auth()->user() && auth()->user()->role == 'admin')
-          <br><center><i>Admin options:</i></center>
-          <a href="{{url('dashboard')}}">Dashboard</a> | <a href="{{url('?maintenance=off')}}" onclick="return confirm('You are about to disable Maintenance Mode. Are you sure?');">Turn off</a>
+          <br><center><i>{{__('messages.Admin options:')}}</i></center>
+          <a href="{{url('dashboard')}}">{{__('messages.Dashboard')}}</a> | <a href="{{url('?maintenance=off')}}" onclick="return confirm('{{__('messages.Warn.Disable.Maintenance')}}');">{{__('messages.Turn off')}}</a>
           @endif
         </div>
 

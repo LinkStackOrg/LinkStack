@@ -1,4 +1,4 @@
-<label for='button' class='form-label'>Select a predefined site</label>
+<label for='button' class='form-label'>{{__('messages.Select a predefined site')}}</label>
 <?php use App\Models\Button; $button = Button::find($button_id); if(isset($button->name)){$buttonName = $button->name;}else{$buttonName = 0;} ?>
 
 <select name='button' class='form-control'>
@@ -10,11 +10,11 @@
     @endforeach
 </select>
 
-<label for='title' class='form-label'>Custom Title</label>
+<label for='title' class='form-label'>{{__('messages.Custom Title')}}</label>
 <input type='text' name='title' value='{{$link_title}}' class='form-control' />
-<span class='small text-muted'>Leave blank for default title</span><br>
+<span class='small text-muted'>{{__('messages.Leave blank for default title')}}</span><br>
 
-<label for='link' class='form-label'>URL</label>
+<label for='link' class='form-label'>{{__('messages.URL')}}</label>
 <input type='url' name='link' value='{{$link_url}}' class='form-control' required />
-<span class='small text-muted'>Enter the link URL</span>
+<span class='small text-muted'>{{__('messages.Enter the link URL')}}</span>
 

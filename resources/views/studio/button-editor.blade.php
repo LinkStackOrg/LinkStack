@@ -88,20 +88,20 @@
                     <!-- end button editor -->
                   @endpush
                     <script src="{{ asset('assets/external-dependencies/fontawesome.js') }}" crossorigin="anonymous"></script>
-                  
+                    
                   <div>
                   <section class="shadow text-gray-400">
-                  <h2 class="mb-4 card-header"><i class="bi bi-pen"> Button Editor</i></h2>
+                  <h2 class="mb-4 card-header"><i class="bi bi-pen">{{__('messages.Button Editor')}}</i></h2>
                           <div class="card-body p-0 p-md-3">
                   
-                  <a class="btn btn-primary" href="{{ url('/studio/links') }}"><i class="bi bi-arrow-left-short"></i> Back</a><br><br>
+                  <a class="btn btn-primary" href="{{ url('/studio/links') }}"><i class="bi bi-arrow-left-short"></i>{{__('messages.Back')}}</a><br><br>
                   
-                          <h2>Custom Button</h2><br>
+                          <h2>{{__('messages.Custom Button')}}</h2><br>
                   
                           <!-- start button editor -->
                   <div style="left: 10px;">
                     <div class="modal-profile">
-                  <h2>CSS</h2>
+                  <h2>{{__('messages.CSS')}}</h2>
                       <a class="modal-close-profile" title="Close profile window" href="#"><img href="{{asset('assets/button-editor/images/close.png')}}" alt="Close profile window" /></a>
                        <div id="output">
                        </div>
@@ -122,7 +122,7 @@
                   
                   
                   <div class="tool">
-                  <heading>Color &nbsp;<span>Text</span></heading>
+                  <heading>{{__('messages.Color')}} &nbsp;<span>{{__('messages.Text')}}</span></heading>
                   </br>
                   <input type="button" id="color" style="background-color:#FFFFFF; border:thin solid white;height:50px;width:50px;margin-left:5px;">
                   
@@ -134,7 +134,7 @@
                   
                   
                   <div class="tool">
-                  <heading>background &nbsp;<span>gradient</span></heading>
+                  <heading>{{__('messages.background')}} &nbsp;<span>{{__('messages.gradient')}}</span></heading>
                   </br>
                   <div class="grad_ex" id="ex1"></div>
                   </div>
@@ -160,18 +160,18 @@
                   
                   <br>
                   <details>
-                  <summary>Show CSS</summary>
+                  <summary>{{__('messages.Show CSS')}}</summary>
                   <div style="padding-left: 15px;">
                   <form action="{{ route('editCSS', $id) }}" method="post">
                           @csrf
                           <div class="form-group col-lg-8"><br>
-                            <p>Custom CSS</p>
+                            <p>{{__('messages.Custom CSS')}}</p>
                   
                             <textarea name="custom_css" rows="9" id="sCode" type="text" value="{{ $custom_css }}" class="form-control" required>{{ $custom_css }}</textarea>
                           </div>
                   </div>
                   </details>
-                  <br><button id="code" class="btn btn-primary">Save</button><br>
+                  <br><button id="code" class="btn btn-primary">{{__('messages.Save')}}</button><br>
                         </form>
                   
                         <form action="{{ route('editCSS', $id) }}" method="post">
@@ -181,12 +181,12 @@
                   NULL
                   </textarea>
                           </div>
-                          <button type="submit" class="btn btn-danger">Reset to default</button>
+                          <button type="submit" class="btn btn-danger">{{__('messages.Reset to default')}}</button>
                         </form>
                   
                   <br><br><div id="result" style="left: 1%; position: relative; background-color:#2c2d3a; border-radius: 25px; min-width:300px; max-width:950px; height:300px; box-shadow: 0 10px 20px -10px rgba(0,0,0, 0.6);">
                     <div style="position: relative; top: 50%; transform: translateY(-50%);">
-                      <h2 align="center" style="color:white">Result:</h2>
+                      <h2 align="center" style="color:white">{{__('messages.Result')}}</h2>
                         @if($custom_css === "" or $custom_css === "NULL" and $buttonId == 1)
                           <center><div style="--delay: 1s" class="button-entrance"><div class="button-demo button-custom button hvr-grow hvr-icon-wobble-vertical"><img class="icon-btn hvr-icon fa {{$custom_icon}}">{{ $title }}</div></div></center>
                           @elseif($custom_css === "" or $custom_css === "NULL" and $buttonId == 2)
@@ -203,7 +203,7 @@
                           <form action="{{ route('editCSS', $id) }}" method="post">
                           @csrf
                           <div class="form-group col-lg-8">
-                            <h2>Custom Icon</h2>
+                            <h2>{{__('messages.Custom Icon')}}</h2>
                             <textarea id="textareabox" type="text" name="custom_icon" value="{{ $custom_icon }}" class="form-control" required>{{ $custom_icon }}</textarea>
                           </div>
                           <script type="text/javascript">
@@ -213,51 +213,50 @@
                           var textValue=textarea.value;
                           if (textValue.indexOf(word)==-1)
                             {
-                             alert('Your custom icon\'s short code does not contain the string "fa-" always use icons in the format: fa-ghost, for example.')
+                             alert({{__('messages.Custom Alert')}})
                             } 
                             </script>
                   
                           <details>
-                          <p>Custom icons can be added to buttons via Font Awesome. You can use any icon from the list below, you can access this list by clicking the 'See all icons' button. Each icon on that list has a short code, which you can copy and enter in the custom icon field.</p>
-                          <p>Every icon short code consists of a prefix and main part. If the short code is not a brand icon, you can simply enter the code in the format: fa-icon-name. The 'fa-...' formatting is important here. For example 'fa-code'.</p>
-                          <p>If the short code is a brand icon, it is important to include a 'fab' before the short code part. Again, The 'fa-...' formatting still applies here. For example, 'fab fa-github'</p>
-                          <p>To apply color to your icons, you can simply write out the color name or just write the HEX value before the icon, followed by a ';'. Here it is important to put the color before the icon short code and the color code must be ended with a semicolon.<br>
-                          You can find a list of available colors <a href="https://www.w3schools.com/cssref/css_colors.asp" target="_blank">here</a>.</p>
+                          <p>{{__('messages.cb.description.1-4')}}</p>
+                          <p>{{__('messages.cb.description.2-4')}}</p>
+                          <p>{{__('messages.cb.description.3-4')}}</p>
+                          <p>{{__('messages.cb.description.4-4')}}</p>
                           <br>
                           <div class="table-responsive">
                           <table class="table table-striped">
                           <thead>
                             <tr>
-                              <th scope="col">Style</th>
-                              <th scope="col">Prefix</th>
-                              <th scope="col" style="max-width: 1%">Icon</th>
-                              <th scope="col">Short Code</th>
+                              <th scope="col">{{__('messages.Style')}}</th>
+                              <th scope="col">{{__('messages.Prefix')}}</th>
+                              <th scope="col" style="max-width: 1%">{{__('messages.Icon')}}</th>
+                              <th scope="col">{{__('messages.Short Code')}}</th>
                             </tr>
                           </thead>
                           <tbody>
                           <tr>
-                              <td>Regular</td>
+                              <td>{{__('messages.Regular')}}</td>
                               <td></td>
                               <td><i class="fa fa-user"></i></td>
-                              <td><p>fa-user</p></td>
+                              <td><p>{{__('messages.Fa-user')}}</p></td>
                             </tr>
                             <tr>
-                              <td>Brands</td>
-                              <td>fab</td>
+                              <td>{{__('messages.Brands')}}</td>
+                              <td>{{__('messages.Fab')}}</td>
                               <td><i class="fab fa-github"></i></td>
-                              <td><p>fab fa-github</p></td>
+                              <td><p>{{__('messages.Fab fa-github')}}</p></td>
                             </tr>
                             <tr>
-                              <td>Color</td>
-                              <td>color_name;</td>
+                              <td>{{__('messages.Color')}}</td>
+                              <td>{{__('messages.Color name')}};</td>
                               <td><i style="color: red;" class="fa fa-ghost"></i></td>
-                              <td><p style="color: red;">red; fa-ghost</p></td>
+                              <td><p style="color: red;">{{__('messages.Red fa')}};{{__('messages.Fa ghost')}}</p></td>
                             </tr>
                             <tr>
-                              <td>Color HEX</td>
-                              <td>color_HEX;</td>
+                              <td>{{__('messages.Color HEX')}}</td>
+                              <td>{{__('messages.Color HEX1')}};</td>
                               <td><i style="color: #1DA1F2;" class="fab fa-twitter"></i></td>
-                              <td><p style="color: #1DA1F2;">#1DA1F2; fab fa-twitter</p></td>
+                              <td><p style="color: #1DA1F2;">#1DA1F2; {{__('messages.Hex fab fa-twitter')}}</p></td>
                             </tr>
                           </tbody>
                           </table>
@@ -265,15 +264,15 @@
                           </details>
                   
                           <br>
-                          <button type="submit" class="btn btn-primary">Update icon</button>
-                          <a class="btn btn-primary" href="https://fontawesome.com/search?m=free" target="_blank">See all icons</a>
+                          <button type="submit" class="btn btn-primary">{{__('messages.Update icon')}}</button>
+                          <a class="btn btn-primary" href="https://fontawesome.com/search?m=free" target="_blank">{{__('messages.See all icons')}}</a>
                           
                         </form><br><br><br><br>
                         @endif
                   
                   </div>
                   
-                  <a class="btn btn-primary" href="{{ url('/studio/links') }}"><i class="bi bi-arrow-left-short"></i> Back</a>
+                  <a class="btn btn-primary" href="{{ url('/studio/links') }}"><i class="bi bi-arrow-left-short"></i>{{__('messages.Back')}}</a>
                   
                             </div>
                   </section>

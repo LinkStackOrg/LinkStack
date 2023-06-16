@@ -1,9 +1,5 @@
 @if(env('FORCE_HTTPS') == 'true')<?php URL::forceScheme('https'); header("Content-Security-Policy: upgrade-insecure-requests"); ?>@endif
-@if(env('CUSTOM_META_TAGS') == 'true' and config('advanced-config.lang') != '')
-<html lang="{{ config('advanced-config.lang') }}">
-@else
-<html lang="en">
-@endif
+<html lang="{{ config('app.locale') }}">
 
 {{-- Redirects to https if enabled in the advanced-config --}}
 @if(env('FORCE_ROUTE_HTTPS') == 'true')

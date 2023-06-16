@@ -15,7 +15,7 @@
                     <div class="col-sm-12">  
   
                       <section class="text-gray-400">
-                        <h2 class="mb-4 card-header"><i class="bi bi-person"> Manage Users</i></h2>
+                        <h2 class="mb-4 card-header"><i class="bi bi-person"> {{__('messages.Manage Users')}}</i></h2>
                         <div class="card-body p-0 p-md-3">
                 
                         <form action="{{ route('searchUser') }}" method="post">
@@ -23,7 +23,7 @@
                           <div class="row">
                             <div class="col-lg-8">
                               <div class="input-group mb-3">
-                                <input type="text" name="name" placeholder="search user" class="form-control">
+                                <input type="text" name="name" placeholder="{{__('messages.Search user')}}" class="form-control">
                                 <div class="input-group-append">
                                   <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i></button>
                                 </div>
@@ -41,27 +41,27 @@
                           <table class="table table-stripped">
                             <thead>
                               <tr>
-                                <th id="cs" scope="col" data-sort="id" data-order="asc">ID</th>
-                                <th id="cs" scope="col" data-sort="name" data-order="asc">Name</th>
-                                <th id="cs" scope="col" data-sort="email" data-order="asc">E-Mail</th>
-                                <th id="cs" scope="col" data-sort="page" data-order="asc">Page</th>
-                                <th id="cs" scope="col" data-sort="role" data-order="asc">Role</th>              
-                                <th id="cs" scope="col" data-sort="links" data-order="asc">Links</th>
-                                <th id="cs" scope="col" data-sort="clicks" data-order="asc">Clicks</th>
-                                <th id="cs" scope="col" data-sort="created" data-order="asc">Created at</th>
-                                <th id="cs" scope="col" data-sort="last" data-order="asc">Last seen</th>
-                                @if(env('REGISTER_AUTH') !== 'auth')<th id="cs" scope="col">E-Mail</th>@endif
-                                <th id="cs" scope="col" data-sort="block" data-order="asc">Status</th>
-                                <th scope="col" data-sortable="false">Action</th>
+                                <th id="cs" scope="col" data-sort="id" data-order="asc">{{__('messages.ID')}}</th>
+                                <th id="cs" scope="col" data-sort="name" data-order="asc">{{__('messages.Name')}}</th>
+                                <th id="cs" scope="col" data-sort="email" data-order="asc">{{__('messages.E-Mail')}}</th>
+                                <th id="cs" scope="col" data-sort="page" data-order="asc">{{__('messages.Page')}}</th>
+                                <th id="cs" scope="col" data-sort="role" data-order="asc">{{__('messages.Role')}}</th>              
+                                <th id="cs" scope="col" data-sort="links" data-order="asc">{{__('messages.Links')}}</th>
+                                <th id="cs" scope="col" data-sort="clicks" data-order="asc">{{__('messages.Clicks')}}</th>
+                                <th id="cs" scope="col" data-sort="created" data-order="asc">{{__('messages.Created at')}}</th>
+                                <th id="cs" scope="col" data-sort="last" data-order="asc">{{__('messages.Last seen')}}</th>
+                                @if(env('REGISTER_AUTH') !== 'auth')<th id="cs" scope="col">{{__('messages.E-Mail')}}</th>@endif
+                                <th id="cs" scope="col" data-sort="block" data-order="asc">{{__('messages.Status')}}</th>
+                                <th scope="col" data-sortable="false">{{__('messages.Action')}}</th>
                               </tr>
                             </thead>
                             <tbody>
                             @foreach($users as $user)
                             @php
-                            $dateFormat = 'd/m/Y';
+                            $dateFormat = __('messages.date.format');
                   
                             $date = date($dateFormat, strtotime($user->created_at));
-                            if(!isset($user->created_at)){$date = "N/A";}
+                            if(!isset($user->created_at)){$date = __('messages.N/A');}
                   
                             $lastSeen = $user->updated_at;
                             $lastSeenDate = date($dateFormat, strtotime($lastSeen));
@@ -69,22 +69,22 @@
                             $datetime = new DateTime($lastSeen, $timezone);
                             $now = new DateTime(null, $timezone);
                             $interval = $now->diff($datetime);
-                            $daysAgo = $interval->days." days ago";
-                            if($interval->days == 1) $daysAgo = "1 day ago";
-                            if($interval->days == 0) $daysAgo = "Today";
+                            $daysAgo = $interval->days." ".__('messages.days ago');
+                            if($interval->days == 1) $daysAgo = __('messages.1 day ago');
+                            if($interval->days == 0) $daysAgo = __('messages.Today');
                             if ($interval->days >= 365) {
                             $yearsAgo = floor($interval->days / 365);
                             if ($yearsAgo == 1) {
-                                $daysAgo = "1 year ago";
+                                $daysAgo = __('messages.1 year ago');
                             } else {
-                                $daysAgo = "$yearsAgo years ago";
+                                $daysAgo = $yearsAgo . __('messages.years ago');
                             }}
                             @endphp
                               <tr>
                                 <td data-id>{{ $user->id }}</td>
                                 <td class="shorten" title="{{ $user->name }}" data-name> {{ $user->name }} </td>
                                 <td class="shorten" title="{{ $user->email }}" data-email> {{ $user->email }} </td>
-                                <td class="shorten" title="{{ $user->littlelink_name }}" data-page>@if(isset($user->littlelink_name))<a href="{{ url('') }}/@<?= $user->littlelink_name ?>" target="_blank" class="text-info"><i class="bi bi-box-arrow-up-right"></i>&nbsp; {{ $user->littlelink_name }} </a>@else N/A @endif</td>
+                                <td class="shorten" title="{{ $user->littlelink_name }}" data-page>@if(isset($user->littlelink_name))<a href="{{ url('') }}/@<?= $user->littlelink_name ?>" target="_blank" class="text-info"><i class="bi bi-box-arrow-up-right"></i>&nbsp; {{ $user->littlelink_name }} </a>@else {{__('messages.N/A')}} @endif</td>
                                 <td data-role>{{ $user->role }}</td>
                                 <td data-links>{{$user->links}}</td>
                                 <td data-clicks>{{$user->clicks}}</td>
@@ -92,15 +92,15 @@
                                 <td class="shorten" data-last title="{{ $lastSeenDate }}">{{$daysAgo}}</td>
                                 @if(env('REGISTER_AUTH') !== 'auth')
                                 <td>@if($user->find($user->id)->role == 'admin' and $user->email_verified_at != '')<center>-</center> @else
-                                <a href="{{ route('verifyUser', ['verify' => '-' . $user->email_verified_at, 'id' => $user->id] ) }}" class="text-danger">@if($user->email_verified_at == '')<span class="badge bg-danger">Pending</span>@else<span class="badge bg-success">Verified</span></a>@endif</td>
+                                <a href="{{ route('verifyUser', ['verify' => '-' . $user->email_verified_at, 'id' => $user->id] ) }}" class="text-danger">@if($user->email_verified_at == '')<span class="badge bg-danger">{{__('messages.Pending')}}</span>@else<span class="badge bg-success">{{__('messages.Verified')}}</span></a>@endif</td>
                                 @endif
                                 @endif
-                                <td>@if($user->find($user->id)->role == 'admin' and $user->id == 1)<center>-</center>@else<a href="{{ route('blockUser', ['block' => $user->block, 'id' => $user->id] ) }}">@if($user->block == 'yes') <span class="badge bg-danger">Pending</span> @elseif($user->block == 'no') <span class="badge bg-success">Approved</span> @endif</a>@endif</td>
+                                <td>@if($user->find($user->id)->role == 'admin' and $user->id == 1)<center>-</center>@else<a href="{{ route('blockUser', ['block' => $user->block, 'id' => $user->id] ) }}">@if($user->block == 'yes') <span class="badge bg-danger">{{__('messages.Pending')}}</span> @elseif($user->block == 'no') <span class="badge bg-success">{{__('messages.Approved')}}</span> @endif</a>@endif</td>
                                 <td>
                                   @if($user->find($user->id)->role == 'admin' and $user->id == 1)<center>-</center>
                                   @else
                                   <div class="flex align-items-center list-user-action">
-                                    <a class="btn btn-sm btn-icon btn-success" data-bs-toggle="tooltip" data-bs-placement="top" data-original-title="All links" href="{{ route('showLinksUser', $user->id ) }}" aria-label="All links" data-bs-original-title="All links">
+                                    <a class="btn btn-sm btn-icon btn-success" data-bs-toggle="tooltip" data-bs-placement="top" data-original-title="{{__('messages.tt.All links')}}" href="{{ route('showLinksUser', $user->id ) }}" aria-label="All links" data-bs-original-title="All links">
                                        <span class="btn-inner">   
                                           <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <circle cx="11.7669" cy="11.7666" r="8.98856" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></circle>
@@ -108,7 +108,7 @@
                                           </svg>                                                               
                                        </span>
                                     </a>
-                                    <a class="btn btn-sm btn-icon btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" data-original-title="Edit" href="{{ route('editUser', $user->id ) }}" aria-label="Edit" data-bs-original-title="Edit">
+                                    <a class="btn btn-sm btn-icon btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" data-original-title="{{__('messages.tt.Edit')}}" href="{{ route('editUser', $user->id ) }}" aria-label="Edit" data-bs-original-title="Edit">
                                        <span class="btn-inner">
                                           <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                              <path d="M11.4925 2.78906H7.75349C4.67849 2.78906 2.75049 4.96606 2.75049 8.04806V16.3621C2.75049 19.4441 4.66949 21.6211 7.75349 21.6211H16.5775C19.6625 21.6211 21.5815 19.4441 21.5815 16.3621V12.3341" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -117,7 +117,7 @@
                                           </svg>
                                        </span>
                                     </a>
-                                    <a class="btn btn-sm btn-icon btn-danger confirmation" data-bs-toggle="tooltip" data-bs-placement="top" data-original-title="Delete" href="{{ route('deleteUser', ['id' => $user->id] ) }}" aria-label="Delete" data-bs-original-title="Delete">
+                                    <a class="btn btn-sm btn-icon btn-danger confirmation" data-bs-toggle="tooltip" data-bs-placement="top" data-original-title="{{__('messages.tt.Delete')}}" href="{{ route('deleteUser', ['id' => $user->id] ) }}" aria-label="Delete" data-bs-original-title="Delete">
                                        <span class="btn-inner">
                                           <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
                                              <path d="M19.3248 9.46826C19.3248 9.46826 18.7818 16.2033 18.4668 19.0403C18.3168 20.3953 17.4798 21.1893 16.1088 21.2143C13.4998 21.2613 10.8878 21.2643 8.27979 21.2093C6.96079 21.1823 6.13779 20.3783 5.99079 19.0473C5.67379 16.1853 5.13379 9.46826 5.13379 9.46826" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -134,12 +134,12 @@
                             </tbody>
                           </table>
                         </div></div></div>
-                        <a href="{{ url('') }}/admin/new-user">+ Add new user</a>
+                        <a href="{{ url('') }}/admin/new-user">+ {{__('messages.Add new user')}}</a>
                 
                               <script type="text/javascript">
                                 var elems = document.getElementsByClassName('confirmation');
                                 var confirmIt = function (e) {
-                                    if (!confirm('Are you sure you want to delete this user? \nThis action cannot be undone!')) e.preventDefault();
+                                    if (!confirm("{{__('messages.confirm.delete.user')}}")) e.preventDefault();
                                 };
                                 for (var i = 0, l = elems.length; i < l; i++) {
                                     elems[i].addEventListener('click', confirmIt, false);

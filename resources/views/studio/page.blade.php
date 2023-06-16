@@ -193,7 +193,7 @@
                   @endif
                 </div>                
                 <section class='text-gray-400'>
-                <h3 class="mb-4 card-header"><i class="bi bi-file-earmark-break"> My Profile</i></h3>
+                <h3 class="mb-4 card-header"><i class="bi bi-file-earmark-break">{{__('messages.My Profile')}}</i></h3>
                 <div>
                 
                 <div></div>
@@ -202,7 +202,7 @@
                     @csrf
                     @if($page->littlelink_name != '')
                     <div class="form-group col-lg-8">
-                      <label class="form-label" for="customFile">Profile Picture</label>
+                      <label class="form-label" for="customFile">{{__('messages.Profile Picture')}}</label>
                       <input type="file" accept="image/jpeg,image/jpg,image/png" name="image" class="form-control" id="customFile">
                   </div>
                     @endif
@@ -217,7 +217,7 @@
                             $url = $_SERVER['REQUEST_URI'];
                              if( strpos( $url, "no_page_name" ) == true ) echo '<span style="color:#FF0000; font-size:120%;">You do not have a Page URL</span>'; ?>
                         <br>
-                        <label>Page URL</label>
+                        <label>{{__('messages.Page URL')}}</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                               <div class="d-none d-md-block input-group-text">{{ url('') }}/@</div>
@@ -226,41 +226,41 @@
                             <input type="text" class="form-control" name="littlelink_name" value="{{ $page->littlelink_name ?? '' }}" required>
                         </div>
                 
-                         <label style="margin-top:15px">Display name</label>
+                         <label style="margin-top:15px">{{__('messages.Display name')}}</label>
                         <div class="input-group">
                             {{-- <div class="input-group-prepend">
-                                <div class="input-group-text">Name:</div>
+                                <div class="input-group-text">{{__('messages.Name')}}</div>
                             </div> --}}
                             <input type="text" class="form-control" name="name" value="{{ $page->name }}" required>
                         </div>
                     </div>
                 
                     <div class="form-group col-lg-8">
-                        <label>Page Description</label>
+                        <label>{{__('messages.Page Description')}}</label>
                         <textarea class="form-control @if(env('ALLOW_USER_HTML') === true) ckeditor @endif" name="pageDescription" rows="3">{{ $page->littlelink_description ?? '' }}</textarea>
                     </div>
                 
                     @if(auth()->user()->role == 'admin' || auth()->user()->role == 'vip')
                         <div class="form-group col-lg-8">
-                        <h5 style="margin-top:50px">Show checkmark</h5>
-                        <p class="text-muted">You are a verified user. This setting allows you to hide your checkmark on your page.</p>
+                        <h5 style="margin-top:50px"> {{__('messages.Show checkmark')}}</h5>
+                        <p class="text-muted">{{__('messages.disableverified')}}</p>
                           <div class="mb-3 form-check form-switch">
                             <input name="checkmark" class="switch toggle-btn" type="checkbox" id="checkmark" <?php if(UserData::getData(Auth::user()->id, 'checkmark') == true){echo 'checked';} ?> />
-                            <label class="form-check-label" for="checkmark">Enable</label>
+                            <label class="form-check-label" for="checkmark">{{__('messages.Enable')}}</label>
                           </div>
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                     @endif
                     @endforeach
 
                     <div class="form-group col-lg-8">
-                      <h5 style="margin-top:50px">Show share button</h5>
-                      <p class="text-muted">This setting allows you to hide the share button on your page.</p>
+                      <h5 style="margin-top:50px">{{__('messages.Show share button')}}</h5>
+                      <p class="text-muted">{{__('messages.disablesharebutton')}}</p>
                         <div class="mb-3 form-check form-switch">
                           <input name="sharebtn" class="switch toggle-btn" type="checkbox" id="sharebtn" <?php if(UserData::getData(Auth::user()->id, 'disable-sharebtn') != "true"){echo 'checked';} ?> />
-                          <label class="form-check-label" for="sharebtn">Enable</label>
+                          <label class="form-check-label" for="sharebtn">{{__('messages.Enable')}}</label>
                         </div>
 
-                    <button type="submit" class="mt-3 ml-3 btn btn-primary">Save</button>
+                    <button type="submit" class="mt-3 ml-3 btn btn-primary">{{__('messages.Save')}}</button>
                 </form>
 
                 @if(env('ALLOW_USER_HTML') === true)

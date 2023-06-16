@@ -16,17 +16,56 @@
         <div class="logo-container fadein">
            <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
-        <h1>Setup LinkStack</h1>
+        <h1>{{__('messages.Setup LinkStack')}}</h1>
         <p class="inst-txt">
         <div class="left-txt glass-container">
-        Welcome to the setup for LinkStack!<br><br>
-        <b>This setup will:</b><br>
-        1. Check the server dependencies<br>
-        2. Setup the database<br>
-        3. Create the admin user<br>
-        4. Configure the app<br>
+         {{__('messages.Welcome to the setup for LinkStack!')}}<br><br>
+        <b>{{__('messages.This setup will:')}}</b><br>
+        {{__('messages.Check the server dependencies')}}<br>
+        {{__('messages.Setup the database')}}<br>
+        {{__('messages.Create the admin user')}}<br>
+        {{__('messages.Configure the app')}}<br>
         </div></p>  
-        &ensp;<a class="btn" href="{{url('?2')}}"><button>Next</button></a>&ensp;
+        
+{{-- start language --}}
+<?php $configValue2 = str_replace('"', "", EnvEditor::getKey('LOCALE')); ?>
+<form id="language-form" action="{{route('editConfigInstaller')}}" enctype="multipart/form-data" method="post">
+    <div class="form-group col-lg-8">
+        <input value="homeurl" name="type" style="display:none;" type="text" class="form-control form-control-lg" required>
+        <input value="LOCALE" name="entry" style="display:none;" type="text" class="form-control form-control-lg" required>
+        <p class="text-muted">{{__('messages.Choose a language')}}</p>
+        <div class="input-group">
+            <select style="max-width:600px;min-width:300px;" class="form-control" name="value">
+                @if($configValue2 != '')
+                    <option>{{$configValue2}}</option>
+                @endif
+                <?php
+                try {
+                    $langFolders = array_filter(glob(base_path('resources/lang') . '/*'), 'is_dir');
+                } catch (\Exception $e) {
+                    $langFolders = [];
+                }
+
+                foreach($langFolders as $folder) {
+                    $folderName = basename($folder);
+                    if ($folderName != $configValue2) {
+                        echo '<option>' . $folderName . '</option>';
+                    }
+                }
+                ?>
+            </select>
+        </div>
+    </div>
+    <input type="hidden" name="_token" value="{{csrf_token()}}">
+    <script type="text/javascript">
+        document.getElementById("language-form").addEventListener("change", function() {
+            this.submit();
+        });
+    </script>
+</form>
+{{-- end language --}}
+
+        &ensp;<a class="btn" href="{{url('?2')}}"><button>{{__('messages.Next')}}</button></a>&ensp;
 @endif
       
 @endif
@@ -37,10 +76,10 @@
         <div class="logo-container fadein">
            <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
-        <h1>Setup failed</h1>
-        <p class="inst-txt">An error has occured. Please try again.</p>
+        <h1>{{__('messages.Setup failed')}}</h1>
+        <p class="inst-txt">{{__('messages.An error has occured. Please try again')}}</p>
         <div class="row">
-        &ensp;<a class="btn" href="{{url('')}}"><button>Try again</button></a>&ensp;
+        &ensp;<a class="btn" href="{{url('')}}"><button>{{__('messages.Try again')}}</button></a>&ensp;
         </div>
       
 @endif
@@ -51,8 +90,8 @@
         <div class="logo-container fadein">
            <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
-        <h1>Dependency check</h1>
-        <p class="inst-txt">Required PHP modules:</p>
+        <h1>{{__('messages.Dependency check')}}</h1>
+        <p class="inst-txt">{{__('messages.Required PHP modules:')}}</p>
         <div class="left-txt glass-container">
         <table style="width:115%">
         <style>.bi-x-lg{color:tomato}</style>
@@ -71,14 +110,14 @@
         <tr><td>XML: </td><td>@if(extension_loaded('XML'))<i class="bi bi-check-lg"></i>@else<i class="bi bi-x-lg"></i>@endif</td></tr>
         </table>
         <br>
-        <b style="font-size:90%;margin-bottom:5px;display:flex;">Depending on your database type:</b>
+        <b style="font-size:90%;margin-bottom:5px;display:flex;">{{__('messages.Depending on your database type:')}}</b>
         <table style="width:123%">
         <tr><td>SQLite: </td><td>@if(extension_loaded('PDO_SQLite'))<i class="bi bi-check-lg"></i>@else<i class="bi bi-x-lg"></i>@endif</td></tr>
         <tr><td>MySQL: </td><td>@if(extension_loaded('PDO_MySQL'))<i class="bi bi-check-lg"></i>@else<i class="bi bi-x-lg"></i>@endif</td></tr>
         </table>
         </div><br>
         <div class="row">
-        &ensp;<a class="btn" href="?3"><button>Next</button></a>&ensp;
+        &ensp;<a class="btn" href="?3"><button>{{__('messages.Next')}}</button></a>&ensp;
         </div>
       
 @endif
@@ -89,20 +128,22 @@
         <div class="logo-container fadein">
            <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
-        <h1>Setup LinkStack</h1>
-        <p class="inst-txt">Select a database type</p>
-<p>Under most circumstances, we recommend using SQLite.<br>MySQL requires a separate, empty MySQL database.</p><br>
+        <h1>{{__('messages.Setup LinkStack')}}</h1>
+        <p class="inst-txt">{{__('messages.Select a database type')}}</p>
+<p>{{__('messages.Under most circumstances, we recommend using SQLite')}}
+   <br>
+   {{__('messages.MySQL requires a separate, empty MySQL database')}}</p><br>
 <form id="home-url-form" action="{{route('db')}}" enctype="multipart/form-data" method="post">
 <div class="form-group col-lg-8">
 <div class="input-group">
-<label>Database type:</label>
+<label>{{__('messages.Database type:')}}</label>
 <select style="max-width:300px" class="form-control" name="database">
 <option>SQLite</option>
 <option>MySQL</option>
 </select>
 </div></div><br><br>
 <input type="hidden" name="_token" value="{{csrf_token()}}">
-<button type="submit" class="mt-3 ml-3 btn btn-info">Next</button>
+<button type="submit" class="mt-3 ml-3 btn btn-info">{{__('messages.Next')}}</button>
 </form>
       
 @endif
@@ -113,25 +154,25 @@
         <div class="logo-container fadein">
            <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
-        <h1>Setup LinkStack</h1>
+        <h1>{{__('messages.Setup LinkStack')}}</h1>
         <p class="inst-txt">MySQL</p>
 
 <form id="home-url-form" action="{{route('mysql')}}" enctype="multipart/form-data" method="post">
 <div class="form-group col-lg-8">
-<label>Database host:</label>
+<label>{{__('messages.Database host:')}}</label>
 <input style="max-width:275px;" class="form-control" name="host" type="text" required>
-<label>Database port:</label>
+<label>{{__('messages.Database port:')}}</label>
 <input style="max-width:275px;" class="form-control" name="port" type="text" required>
-<label>Database name:</label>
+<label>{{__('messages.Database name:')}}</label>
 <input style="max-width:275px;" class="form-control" name="name" type="text" required>
-<label>Database username:</label>
+<label>{{__('messages.Database username:')}}</label>
 <input style="max-width:275px;" class="form-control" name="username" type="text" required>
-<label>Database password:</label>
+<label>{{__('messages.Database password:')}}</label>
 <input style="max-width:275px;" class="form-control" name="password" type="password" />
 <div class="input-group">
 </div></div><br>
 <input type="hidden" name="_token" value="{{csrf_token()}}">
-<button type="submit" class="mt-3 ml-3 btn btn-info">Next</button>
+<button type="submit" class="mt-3 ml-3 btn btn-info">{{__('messages.Next')}}</button>
 </form>
 
         <div class="row">
@@ -145,26 +186,26 @@
         <div class="logo-container fadein">
            <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
-        <h1>Setup LinkStack</h1>
-        <p class="inst-txt">Create an admin account.</p>
+        <h1>{{__('messages.Setup LinkStack')}}</h1>
+        <p class="inst-txt">{{__('messages.Create an admin account')}}</p>
 
 <form id="home-url-form" action="{{route('createAdmin')}}" enctype="multipart/form-data" method="post">
 <div class="form-group col-lg-8">
-<label>Admin email:</label>
+<label>{{__('messages.Admin email:')}}</label>
 <input style="max-width:275px;" class="form-control" placeholder="admin@admin.com" name="email" type="email" required>
-<label>Admin password:</label>
+<label>{{__('messages.Admin password:')}}</label>
 <input style="max-width:275px;" class="form-control" placeholder="12345678" name="password" type="password" required>
-<label>Handle:</label>
+<label>{{__('messages.Handle:')}}</label>
 <div class="input-group">
 <div class="input-group-prepend"><div class="input-group-text">@</div></div>
 <input style="max-width:237px; padding-left:50px;" class="form-control" name="handle" type="text" required>
 </div>
-<label>Name:</label>
+<label>{{__('messages.Name:')}}</label>
 <input style="max-width:275px;" class="form-control" name="name" type="text" required>
 <div class="input-group">
 </div></div><br>
 <input type="hidden" name="_token" value="{{csrf_token()}}">
-<button type="submit" class="mt-3 ml-3 btn btn-info">Next</button>
+<button type="submit" class="mt-3 ml-3 btn btn-info">{{__('messages.Next')}}</button>
 </form>
       
 @endif
@@ -175,31 +216,31 @@
         <div class="logo-container fadein">
            <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
-        <h1>Setup LinkStack</h1>
-        <p class="inst-txt">Configure your page</p>
+        <h1>{{__('messages.Setup LinkStack')}}</h1>
+        <p class="inst-txt">{{__('messages.Configure your page')}}</p>
 <form id="home-url-form" action="{{route('options')}}" enctype="multipart/form-data" method="post">
 <div class="form-group col-lg-8">
 <div class="input-group">
 
-<label>Enable registration:</label>
+<label>{{__('messages.Enable registration:')}}</label>
 <select style="max-width:300px" class="form-control" name="register">
-<option>Yes</option>
-<option>No</option>
+<option value="Yes">{{__('messages.Yes')}}</option>
+<option value="No">{{__('messages.No')}}</option>
 </select>
 
-<label>Enable email verification:</label>
+<label>{{__('messages.Enable email verification:')}}</label>
 <select style="max-width:300px" class="form-control" name="verify">
-<option>Yes</option>
-<option>No</option>
+<option value="Yes">{{__('messages.Yes')}}</option>
+<option value="No">{{__('messages.No')}}</option>
 </select>
 
-<label>Set your page as Home Page</label>
+<label>{{__('messages.Set your page as Home Page')}}</label>
 <select id="select" style="max-width:300px" class="form-control" name="page">
-<option>No</option>
-<option>Yes</option>
+<option value="No">{{__('messages.No')}}</option>
+<option value="Yes">{{__('messages.Yes')}}</option>
 </select>
 <style>.hidden{display:flex!important;}</style>
-<span class="" id="hidden" style="display:none;margin-top:-22px;margin-bottom:10px;color:#6c757d;font-size:90%;">This will move the Home Page to /home</span>
+<span class="" id="hidden" style="display:none;margin-top:-22px;margin-bottom:10px;color:#6c757d;font-size:90%;">{{__('messages.This will move the Home Page to /home')}}</span>
 <script src="{{ asset('assets/external-dependencies/jquery-3.4.1.min.js') }}"></script>
 <script>
 $("#select").change(function(){
@@ -211,12 +252,12 @@ $("#select").change(function(){
 });
 </script>
 
-<label>App Name:</label>
+<label>{{__('messages.App Name:')}}</label>
 <input style="max-width:275px;" class="form-control" value="LinkStack" name="app" type="text" required>
 
 </div></div><br>
 <input type="hidden" name="_token" value="{{csrf_token()}}">
-<button type="submit" class="mt-3 ml-3 btn btn-info">Finish setup</button>
+<button type="submit" class="mt-3 ml-3 btn btn-info">{{__('messages.Finish setup')}}</button>
 </form>
       
 @endif

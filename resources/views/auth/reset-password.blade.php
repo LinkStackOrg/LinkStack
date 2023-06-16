@@ -30,8 +30,8 @@
                     <!--logo End-->
                 <h4 class="logo-title ms-3">{{env('APP_NAME')}}</h4>
               </a>
-              <h2 class="mb-2 text-center">Reset Password</h2>
-              <p class="text-center">Enter a new password</p>
+              <h2 class="mb-2 text-center">{{__('messages.Reset Password')}}</h2>
+              <p class="text-center">{{__('messages.Enter a new password')}}</p>
               <form method="POST" action="{{ route('password.update') }}">
                 @csrf
             
@@ -42,7 +42,7 @@
                     <!-- Email Address -->
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label for="email" class="form-label">{{ __('Email') }}</label>
+                            <label for="email" class="form-label">{{ __('messages.Email') }}</label>
                             <input id="email" class="form-control" type="email" name="email" value="{{ old('email', $request->email) }}" required autofocus>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                     <!-- Password -->
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label for="password" class="form-label">{{ __('Password') }}</label>
+                            <label for="password" class="form-label">{{ __('messages.Password') }}</label>
                             <input id="password" class="form-control" type="password" name="password" required>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                     <!-- Confirm Password -->
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label for="password_confirmation" class="form-label">{{ __('Confirm Password') }}</label>
+                            <label for="password_confirmation" class="form-label">{{ __('messages.Confirm Password') }}</label>
                             <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required>
                         </div>
                     </div>
@@ -67,14 +67,14 @@
                     <div class="col-lg-12 d-flex justify-content-between">
                         <div class="form-check mb-3">
                             <input id="remember_me" class="form-check-input" type="checkbox" name="remember">
-                            <label for="remember_me" class="form-check-label">{{ __('Remember Me') }}</label>
+                            <label for="remember_me" class="form-check-label">{{ __('messages.Remember Me') }}</label>
                         </div>
-                        <a href="{{ route('password.request') }}">{{ __('Forgot Password?') }}</a>
+                        <a href="{{ route('password.request') }}">{{ __('messages.Forgot Password?') }}</a>
                     </div>
             
                     <!-- Reset Password Button -->
                     <div class="col-lg-12 d-flex justify-content-end">
-                        <button class="btn btn-primary">{{ __('Reset Password') }}</button>
+                        <button class="btn btn-primary">{{ __('messages.Reset Password') }}</button>
                     </div>
                 </div>
             </form>

@@ -1,6 +1,25 @@
 <?php
 
+function locales($key, $default)
+{
+    $value = env($key, $default);
+    $array = explode(',', $value);
+    $trimmedArray = array_map('trim', $array);
+    return $trimmedArray;
+}
+
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Officially supported languages
+    |--------------------------------------------------------------------------
+    |
+    | Officially supported languages moderated by volunteer translators.
+    |
+    */
+
+    'supported_locales' => locales('LOCALES', 'de, es, pt, zh, ms'),
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +99,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => env('LOCALE', 'en'),
 
     /*
     |--------------------------------------------------------------------------

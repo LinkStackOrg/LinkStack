@@ -17,7 +17,7 @@
                     
                     <section class='text-gray-400'>
                     
-                        <h3 class="card-header"><i class="bi bi-journal-plus"> @if($LinkID !== 0) Edit @else Add @endif Block</i></h3>
+                        <h3 class="card-header"><i class="bi bi-journal-plus"> @if($LinkID !== 0) {{__('messages.Submit')}} @else {{__('messages.Add')}} @endif {{__('messages.Block')}}</i></h3>
                     
                         <div class='card-body'>
                             <form action="{{ route('addLink') }}" method="post" id="my-form">
@@ -26,23 +26,23 @@
                                 <input type='hidden' name='linkid' value="{{ $LinkID }}" />
                     
                                 <div class="form-group col-lg-8 flex justify-around">
-                                    {{-- <label class='font-weight-bold'>Blocks: </label> --}}
+                                    {{-- <label class='font-weight-bold'>{{__('messages.Blocks')}}</label> --}}
                                     <div class="btn-group shadow m-2">
-                                        <button type="button" id='btnLinkType' class="btn btn-primary rounded-pill" title='Click to change link blocks' data-toggle="modal" data-target="#SelectLinkType">Select Block
+                                        <button type="button" id='btnLinkType' class="btn btn-primary rounded-pill" title='{{__('messages.Click to change link blocks')}}' data-toggle="modal" data-target="#SelectLinkType">{{__('messages.Select Block')}}
                                             <span class="btn-inner">
                                                 <i class="bi bi-window-plus"></i>
                                             </span>
-                                        </button>{{infoIcon('Click for a list of available link blocks')}}
+                                        </button>{{infoIcon(__('messages.Click for a list of available link blocks'))}}
                                           
                     
                     
                                         {{-- <button type="button" class="dropdown-toggle border-0 border-left-1 px-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="sr-only">Toggle Dropdown</span>
+                                            <span class="sr-only">{{__('messages.Toggle Dropdown')}}</span>
                                         </button> --}}
                                         {{-- <div class="dropdown-menu">
                                             @foreach ( $LinkTypes as $lt )
-                                            <a data-typeid='{{$lt['id']}}' data-typename='{{$lt['title']}}' class="dropdown-item doSelectLinkType" href="#">
-                                                <i class="{{$lt['icon']}}"></i> {{$lt['title']}}
+                                            <a data-typeid='{{$lt['id']}}' data-typename='{{__('messages.title.'.$ltt)}}' class="dropdown-item doSelectLinkType" href="#">
+                                                <i class="{{$lt['icon']}}"></i> {{__('messages.title.'.$ltt)}}
                                             </a>
                     
                                             @endforeach
@@ -59,9 +59,9 @@
                     
                     
                                 <div class="d-flex align-items-center pt-4">
-                                    <a class="btn btn-danger me-3" href="{{ url('studio/links') }}">Cancel</a>
-                                    <button type="submit" class="btn btn-primary me-3">Save</button>
-                                    <button type="button" class="btn btn-soft-primary me-3" onclick="submitFormWithParam('add_more')">Save and Add More</button>
+                                    <a class="btn btn-danger me-3" href="{{ url('studio/links') }}">{{__('messages.Cancel')}}</a>
+                                    <button type="submit" class="btn btn-primary me-3">{{__('messages.Save')}}</button>
+                                    <button type="button" class="btn btn-soft-primary me-3" onclick="submitFormWithParam('add_more')">{{__('messages.Save and Add More')}}</button>
                                     <script>
                                         function submitFormWithParam(paramValue) {
                                             // get the form element
@@ -94,13 +94,13 @@
                     </section>
                     <br><br>
                     {{-- <details>
-                        <summary>More information</summary>
+                        <summary>{{__('messages.More information')}}</summary>
                         <pre style="color: grey;">
-                    The 'Custom' button allows you to add a custom link, where the text on the button is determined with the link title set above.
-                    The 'Custom_website' button functions similar to the Custom button, with the addition of a function that requests the favicon from the chosen URL and uses it as the button icon.
-                    
-                    The 'Space' button will be replaced with an empty space, so buttons could be visually separated into groups. Entering a number between 1-10 in the title section will change the empty space's distance.
-                    The 'Heading' button will be replaced with a sub-heading, where the title defines the text on that heading.
+                            {{__('messages.editlink.description.1-5')}}
+                            {{__('messages.editlink.description.2-5')}}
+                            {{__('messages.editlink.description.3-5')}}
+                            {{__('messages.editlink.description.4-5')}}
+                            {{__('messages.editlink.description.5-5')}}
                     </pre>
                     </details> --}}
                     
@@ -108,7 +108,7 @@
                     
                     <!-- Modal -->
                     <style>.modal-title{color:#000!important;}</style>
-                    <x-modal title="Select Block" id="SelectLinkType">
+                    <x-modal title="{{__('messages.Select Block')}}" id="SelectLinkType">
                     
                         <div class="d-flex flex-row  flex-wrap p-3">
                     
@@ -120,7 +120,11 @@
                             @endphp
                     
                             @foreach ($sorted as $lt)
-                            <a href="#" data-dismiss="modal" data-typeid="{{$lt['id']}}" data-typename="{{$lt['title']}}" class="hvr-grow m-2 w-100 d-block doSelectLinkType">
+                            @php 
+                            $title = __('messages.block.title.'.$lt['typename']); 
+                            $description = __('messages.block.description.'.$lt['typename']); 
+                            @endphp
+                            <a href="#" data-dismiss="modal" data-typeid="{{$lt['id']}}" data-typename="{{$title}}" class="hvr-grow m-2 w-100 d-block doSelectLinkType">
                                 <div class="rounded mb-3 shadow-lg">
                                     <div class="row g-0">
                                         <div class="col-auto bg-light d-flex align-items-center justify-content-center p-3">
@@ -128,19 +132,19 @@
                                         </div>
                                         <div class="col">
                                             <div class="card-body">
-                                                <h5 class="card-title text-dark mb-0">{{$lt['title']}}</h5>
-                                                <p class="card-text text-muted">{{$lt['description']}}</p>
+                                                <h5 class="card-title text-dark mb-0">{{$title}}</h5>
+                                                <p class="card-text text-muted">{{$description}}</p>
                                             </div>
                                         </div>
                                     </div>
-                                </div>                                                                 
-                            </a>                            
+                                </div>      
+                            </a>                     
                             @endforeach
                     
                         </div>
                     
                         <x-slot name="buttons">
-                            <button type="button" class="btn btn-gray" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-gray" data-dismiss="modal">{{__('messages.Close')}}</button>
                         </x-slot>
                     
                     </x-modal>

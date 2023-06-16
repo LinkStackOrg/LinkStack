@@ -6,16 +6,16 @@
     <div class="accordion-item">
       <h2 class="accordion-header" id="details-header">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#details-collapse" aria-controls="details-collapse">
-          Theme Updater
+        {{__('messages.Theme Updater')}}
         </button>
       </h2>
       <div id="details-collapse" class="accordion-collapse collapse" aria-labelledby="details-header">
         <div class="accordion-body table-responsive">
             <table class="table table-striped table-responsive">
                     <tr>
-                        <th>Theme name:</th>
-                        <th>Update status:</th>
-                        <th>Version:&nbsp;</th>
+                        <th>{{__('messages.Theme name')}}</th>
+                        <th>{{__('messages.Update status')}}</th>
+                        <th>{{__('messages.Version')}}&nbsp;</th>
                     </tr>
                     <?php
                     if ($handle = opendir('themes')) {
@@ -68,29 +68,29 @@
                                 }
                               }
                             if ($themeVe == "error") {
-                            echo '<span class="badge bg-danger">Error!</span>';
+                            echo '<span class="badge bg-danger">'.__('messages.Error').'</span>';
                             } elseif ($hasSource == false) {
-                            echo '<a href="https://linkstack.org/themes.php" target="_blank"><span class="badge bg-danger">Update manually</span></a>';
+                            echo '<a href="https://linkstack.org/themes.php" target="_blank"><span class="badge bg-danger">'.__('messages.Update manually').'</span></a>';
                             } elseif($updateAv == true) {
-                            echo '<span class="badge bg-warning">Update available</span>';
+                            echo '<span class="badge bg-warning">'.__('messages.Update available').'</span>';
                             } else {
-                            echo '<span class="badge bg-success">Up to date</span>';
+                            echo '<span class="badge bg-success">'.__('messages.Up to date').'</span>';
                             }
                             echo '</center></th>';
                             echo '<th>' . $verNr . '</th>';
                             echo '</tr>';}
-                            }} ?>
+                            } } ?>
                 </table>
         </div>
-        <a href="{{ url('update/theme') }}" onclick="updateicon()" class="btn btn-gray ms-3 mb-4">
-            <span id="updateicon"><i class="bi bi-arrow-repeat"></i></span> Update all themes
+        <a href="'. url('update/theme') .'" onclick="updateicon()" class="btn btn-gray ms-3 mb-4">
+            <span id="updateicon"><i class="bi bi-arrow-repeat"></i></span> {{__('messages.Update all themes')}}
         </a>
       </div>
     </div>
   </div>
 
 <?php
-try{ if($GLOBALS['updateAv'] == true) echo '<p class="mt-3 ml-3 h2""><span class="badge bg-success">Update available</span></p>';
+try{ if($GLOBALS['updateAv'] == true) echo '<p class="mt-3 ml-3 h2""><span class="badge bg-success">'.__('messages.Update available').'</span></p>';
 }catch(Exception $ex){}
 ?>
 
