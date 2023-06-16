@@ -59,7 +59,7 @@ if (isset($_COOKIE['LinkCount'])) {
                         <div class="row">
                             <section class='pre-left text-gray-400'>
                                 <h3 class="card-header mb-3"><i class="bi bi-link-45deg">{{__('messages.My Links')}}</i>
-                                        <a class="btn btn-primary float-end" href="{{ url('/studio/add-link') }}">{{__('messages.Add new Link')}}</a>
+                                        <a class="btn btn-primary float-end" href="{{ url('/studio/add-link') }}"> {{__('messages.Add new Link')}}</a>
                                 </h3>
                             
                                 <div>
@@ -220,7 +220,7 @@ if (isset($_COOKIE['LinkCount'])) {
                             
                             <section style="margin-left:-15px;margin-right:-15px;" class='text-gray-400'>
                             <a name="icons"></a>
-                            <h3 class="mb-4 card-header"><i class="fa-solid fa-icons"></i>{{__('messages.Page Icons')}}</i></h3>
+                            <h3 class="mb-4 card-header"><i class="fa-solid fa-icons"></i> {{__('messages.Page Icons')}}</i></h3>
                             <div class="card-body p-0 p-md-3">
                             
                             <form action="{{ route('editIcons') }}" enctype="multipart/form-data" method="post">
@@ -254,7 +254,7 @@ if (isset($_COOKIE['LinkCount'])) {
                                           function icon($name, $label) {
                                               echo '<div class="mb-3">
                                                       <label class="form-label">'.$label.'</label>
-                                                      <span class="form-text" style="font-size: 90%; font-style: italic;">Clicks: '.iconclicks($name).'</span>
+                                                      <span class="form-text" style="font-size: 90%; font-style: italic;">'.__('messages.Clicks').': '.iconclicks($name).'</span>
                                                       <div class="input-group">
                                                         <span class="input-group-text"><i class="fab fa-'.$name.'"></i></span>
                                                         <input type="url" class="form-control" name="'.$name.'" value="'.iconLink($name).'" />
