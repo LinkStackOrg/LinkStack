@@ -64,12 +64,12 @@
                   <div class="col-lg-8">
                     <button class="btn btn-outline-secondary">
                       <a href="{{ route('exportAll') }}">
-                        <i class="bi bi-layer-backward"></i>{{__('messages.Export all data')}}
+                        <i class="bi bi-layer-backward"></i> {{__('messages.Export all data')}}
                       </a>
                     </button>
                     <button class="btn btn-outline-secondary">
                       <a href="{{ route('exportLinks') }}">
-                        <i class="bi bi-layer-backward"></i>{{__('messages.Export links only')}}
+                        <i class="bi bi-layer-backward"></i> {{__('messages.Export links only')}}
                       </a>
                     </button>
                   </div>
@@ -82,7 +82,7 @@
                 @csrf
                 <div class="form-group col-lg-8"><br><br><br>
                   <h4>{{__('messages.Import user data')}}</h4>
-                    <label>{{__('messages.Import your user data from another instance.')}}</label>
+                    <label>{{__('messages.Import your user data from another instance')}}</label>
                     <input type="file" accept="application/JSON" class="form-control" id="customFile" name="import">
                 </div>
               
