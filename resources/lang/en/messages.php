@@ -819,6 +819,78 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Page Items
+    |--------------------------------------------------------------------------
+    |
+    | resources/views/components/pageitems/
+    |
+    */
+
+    'Default Email' => 'Default Email+',
+    'Custom Title' => 'Custom Title+',
+    'Leave blank for default title' => 'Leave blank for default title+',
+    'E-Mail address' => 'E-Mail address+',
+    'Enter your E-Mail' => 'Enter your E-Mail+',
+
+    'Heading Text:' => 'Heading Text:+',
+
+    'Title' => 'Title+',
+    'URL' => 'URL+',
+    'Show website icon on button' => 'Show website icon on button+',
+
+    'Select a predefined site' => 'Select a predefined site+',
+    'Custom Title' => 'Custom Title+',
+    'Leave blank for default title' => 'Leave blank for default title+',
+    'Enter the link URL' => 'Enter the link URL+',
+
+    'Spacing height' => 'Spacing height+',
+
+    'Phone' => 'Phone+',
+    'Custom Title' => 'Custom Title+',
+    'Leave blank for default title' => 'Leave blank for default title+',
+    'Telephone number' => 'Telephone number+',
+    'Enter your telephone number' => 'Enter your telephone number+',
+
+    'Text to display' => 'Text to display+',
+
+    'Vcard' => 'Vcard+',
+    'Custom Title' => 'Custom Title+',
+    'Leave blank for default title' => 'Leave blank for default title+',
+    'Name' => 'Name+',
+    'Prefix' => 'Prefix+',
+    'First Name' => 'First Name+',
+    'Middle Name' => 'Middle Name+',
+    'Last Name' => 'Last Name+',
+    'Suffix' => 'Suffix+',
+    'Work' => 'Work+',
+    'Organization' => 'Organization+',
+    'Title' => 'Title+',
+    'Role' => 'Role+',
+    'Work URL' => 'Work URL+',
+    'Emails' => 'Emails+',
+    'Email' => 'Email+',
+    'Enter your personal email' => 'Enter your personal email+',
+    'Work Email' => 'Work Email+',
+    'Enter your work email' => 'Enter your work email+',
+    'Phones' => 'Phones+',
+    'Home Phone' => 'Home Phone+',
+    'Work Phone' => 'Work Phone+',
+    'Cell Phone' => 'Cell Phone+',
+    'Home Address' => 'Home Address+',
+    'Label' => 'Label+',
+    'Street' => 'Street+',
+    'City' => 'City+',
+    'State/Province' => 'State/Province+',
+    'Zip/Postal Code' => 'Zip/Postal Code+',
+    'Country' => 'Country+',
+    'Work Address' => 'Work Address+',
+
+    'Title' => 'Title+',
+    'URL to the video' => 'URL to the video+',
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Maintenance Page
     |--------------------------------------------------------------------------
     |
