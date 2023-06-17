@@ -637,7 +637,7 @@ return [
 
     'Go back' => 'Go back',
 
-    'Strings with a # in front of them are comments and wont affect anything' => 'Strings with a # in front of them are comments and wont affect anything.s',
+    'Strings with a # in front of them are comments and wont affect anything' => 'Strings with a # in front of them are comments and wont affect anything.',
 
     'Download your updater backups:' => 'Download your updater backups:',
     'The server will never store more that two backups at a time' => 'The server will never store more that two backups at a time.',
