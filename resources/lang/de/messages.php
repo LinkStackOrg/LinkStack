@@ -811,7 +811,7 @@ return [
     # Title Tag
     'Update LinkStack' => 'LinkStack aktualisieren',
 
-    'latest beta version' => 'neueste Beta-Version',
+    'Latest beta version' => 'Neueste Beta-Version',
     'Installed beta version' => 'Installierte Beta-Version',
     'none' => 'keiner',
     'You need to update to the latest mainline release' => 'Sie müssen auf die neueste Hauptversion aktualisieren',

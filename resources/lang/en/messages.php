@@ -839,7 +839,7 @@ return [
     # Title Tag
     'Update LinkStack' => 'Update LinkStack',
 
-    'latest beta version' => 'latest beta version',
+    'Latest beta version' => 'Latest beta version',
     'Installed beta version' => 'Installed beta version',
     'none' => 'none',
     'You need to update to the latest mainline release' => 'You need to update to the latest mainline release',
