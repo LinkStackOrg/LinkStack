@@ -21,6 +21,8 @@
       <!-- Aos Animation Css -->
       <link rel="stylesheet" href="{{asset('assets/vendor/aos/dist/aos.css')}}" />
       
+      @include('layouts.fonts')
+      
       <!-- Hope Ui Design System Css -->
       <link rel="stylesheet" href="{{asset('assets/css/hope-ui.min.css?v=2.0.0')}}" />
       
