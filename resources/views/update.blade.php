@@ -17,7 +17,7 @@
         <div class="logo-container fadein">
 <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
         </div>
-        <h1>{{__('message.Updater')}}</h1>
+        <h1>{{__('messages.Updater')}}</h1>
         @if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
         @if(env('JOIN_BETA') === true)
         <p><?php echo __('messages.Latest beta version')."= " . external_file_get_contents("https://beta.linkstack.org/vbeta.json"); ?></p>
