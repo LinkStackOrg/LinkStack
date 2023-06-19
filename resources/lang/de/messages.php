@@ -154,7 +154,7 @@ return [
     'Administration' => 'Verwaltung',
     'Admin' => 'Administrator',
     'Config' => 'Konfig',
-    'Manage Users' => 'Benutzer verwalten',
+    'Manage Users' => 'Benutzerverwaltung',
     'Footer Pages' => 'Fußzeilen',
     'Site Customization' => 'Seitenanpassung',
     'Site Logo' => 'Site-Logo',
