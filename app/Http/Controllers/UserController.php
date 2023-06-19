@@ -1081,9 +1081,9 @@ class UserController extends Controller
                 $newLink->save();
             }
     
-            return redirect('studio/profile')->with('success', 'Profile updated successfully!');
+            return redirect('studio/profile')->with('success', __('messages.Profile updated successfully!'));
         } catch (\Exception $e) {
-            return redirect('studio/profile')->with('error', 'An error occurred while updating your profile.');
+            return redirect('studio/profile')->with('error', __('messages.An error occurred while updating your profile.'));
         }
     }
     

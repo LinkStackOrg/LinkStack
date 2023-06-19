@@ -386,6 +386,10 @@ return [
     'You are about to delete This action cannot be undone' => 'You are about to delete your account! This action cannot be undone.',
     'Delete account' => 'Delete account',
 
+    # Alerts
+    'Profile updated successfully!' => 'Profile updated successfully!',
+    'An error occurred while updating your profile.' => 'An error occurred while updating your profile.',
+
 
     /*
     |--------------------------------------------------------------------------

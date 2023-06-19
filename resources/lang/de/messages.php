@@ -380,6 +380,10 @@ return [
     'You are about to delete' => 'Sie sind dabei, Ihr Konto zu löschen!',
     'You are about to delete This action cannot be undone' => 'Sie sind dabei, Ihr Konto zu löschen! Diese Aktion kann nicht rückgängig gemacht werden.',
     'Delete account' => 'Konto löschen',
+    
+    # Alerts
+    'Profile updated successfully!' => 'Profil erfolgreich aktualisiert!',
+    'An error occurred while updating your profile.' => 'Beim Aktualisieren Ihres Profils ist ein Fehler aufgetreten.',
 
 
     /*
@@ -832,7 +836,7 @@ return [
     'Success!' => 'Erfolg!',
     'The update was successful' => 'Das Update war erfolgreich, Sie können nun zum Admin-Panel zurückkehren.',
     'View the release notes' => 'Sehen Sie sich die Versionshinweise an',
-    'Run again' => 'Führe es nochmals aus',
+    'Run again' => 'Erneut updaten',
     'Something went wrong with the update' => 'Beim Update ist ein Fehler aufgetreten',
 
     
