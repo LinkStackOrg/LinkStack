@@ -101,7 +101,7 @@ return [
     'Click' => 'Klicken',
     'here' => 'Hier',
     'to verify the user' => 'um den Benutzer zu verifizieren.',
-    'Manage users' => 'Benutzer verwalten',
+    'Manage users' => 'Benutzerverwaltung',
 
 
     # Email verification email
