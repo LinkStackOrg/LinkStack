@@ -212,7 +212,7 @@ if($debug === true){
         </div>
         <h1>{{__('messages.Success!')}}</h1>
         @if(env('JOIN_BETA') === true)
-        <p><?php echo __('messages.latest beta version')."= " . external_file_get_contents("https://beta.linkstack.org/vbeta.json"); ?></p>
+        <p><?php echo __('messages.Latest beta version')."= " . external_file_get_contents("https://beta.linkstack.org/vbeta.json"); ?></p>
         <p><?php  if(file_exists(base_path("vbeta.json"))) {echo __('messages.Installed beta version')."= " . file_get_contents(base_path("vbeta.json"));} else {echo __('messages.Installed beta version')."= ".__('messages.none');}  ?></p>
         <p><?php  if($Vgit > $Vlocal) {echo __('messages.You need to update to the latest mainline release');} else {echo __("messages.You’re running the latest mainline release");}  ?></p>
         @else
