@@ -564,7 +564,7 @@ return [
     */
 
     'Advanced Config' => 'Erweiterte Konfiguration',
-    'Take Backup' => 'Machen Sie ein Backup',
+    'Take Backup' => 'Backup',
     'All Backups' => 'Alle Backups',
     'Diagnosis' => 'Diagnose',
 
