@@ -82,7 +82,7 @@
                             } } ?>
                 </table>
         </div>
-        <a href="'. url('update/theme') .'" onclick="updateicon()" class="btn btn-gray ms-3 mb-4">
+        <a href="{{ url('update/theme') }}" onclick="updateicon()" class="btn btn-gray ms-3 mb-4">
             <span id="updateicon"><i class="bi bi-arrow-repeat"></i></span> {{__('messages.Update all themes')}}
         </a>
       </div>
