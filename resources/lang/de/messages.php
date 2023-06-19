@@ -372,6 +372,7 @@ return [
     'Export all data' => 'Alle Daten exportieren',
     'Export links only' => 'Nur Links exportieren',
     'Import user data' => 'Benutzerdaten importieren',
+    'import.user.alert' => 'Sind Sie sicher, dass Sie diese Datei importieren möchten? Diese Aktion wird alle Ihre aktuellen Daten, einschließlich Links, ersetzen!',
     'Import your user data from another instance' => 'Importieren Sie Ihre Benutzerdaten von einer anderen Instanz.',
     'Import your user data' => 'Importieren Sie Ihre Benutzerdaten von einer anderen Instanz.',
     'Import' => 'Importieren',

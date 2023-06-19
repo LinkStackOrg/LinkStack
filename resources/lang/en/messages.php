@@ -378,6 +378,7 @@ return [
     'Export all data' => 'Export all data',
     'Export links only' => 'Export links only',
     'Import user data' => 'Import user data',
+    'import.user.alert' => 'Are you sure you want to import this file? This action will replace all your current data, including links!',
     'Import your user data from another instance' => 'Import your user data from another instance.',
     'Import' => 'Import',
     'Delete your account' => 'Delete your account',
@@ -764,7 +765,7 @@ return [
     'HOME_URL.description' => 'Set a user page as the home page. This will move the previous home page to example.com/home.',
     'MAINTENANCE_MODE.title' => 'Enable Maintenance Mode',
     'MAINTENANCE_MODE.description' => 'Displays a maintenance message on all public pages. This will disable the login pages.',
-    'LOCALE.title' => 'App locale',
+    'LOCALE.title' => 'App Lokalisierung',
     'LOCALE.description' => 'Change the language of your application',
 
 

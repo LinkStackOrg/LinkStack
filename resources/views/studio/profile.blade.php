@@ -86,7 +86,7 @@
                     <input type="file" accept="application/JSON" class="form-control" id="customFile" name="import">
                 </div>
               
-                <button type="submit" class="mt-3 ml-3 btn btn-primary" onclick="return confirm('Are you sure you want to import this file? This action will replace all your current data, including links!')">{{__('messages.Import')}}</button>
+                <button type="submit" class="mt-3 ml-3 btn btn-primary" onclick="return confirm('{{__('messages.import.user.alert')}}')">{{__('messages.Import')}}</button>
               </form>
               @endif
               
