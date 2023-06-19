@@ -607,7 +607,7 @@ return [
     'security.risk.1-3' => 'Hier können Sie leicht überprüfen, ob kritische Systemdateien von extern zugänglich sind. Es ist wichtig, dass auf diese Dateien nicht zugegriffen werden kann, da ansonsten Benutzerdaten wie Passwörter durchsickern könnten. Einträge, die mit einem',
     'security.risk.2-3' => 'gekennzeichnet sind, können von extern nicht zugegriffen werden. Einträge, die mit einem',
     'security.risk.3-3' => 'gekennzeichnet sind, können von jedem eingesehen werden und erfordern sofortiges Handeln zum Schutz Ihrer Daten.',
-    'Hover for more' => 'Bewegen Sie den Mauszeiger für mehr',
+    'Hover for more' => 'Mauszeiger über Symbole bewegen.',
     'Write access' => 'Schreibzugriff',
     'Write access.description.1-3' => 'Hier können Sie leicht überprüfen, ob wichtige Systemdateien beschreibbar sind. Dies ist wichtig, damit jede Funktion ordnungsgemäß funktioniert. Einträge, die mit einem',
     'Write access.description.2-3' => 'markiert sind, funktionieren wie erwartet. Einträge, die mit einem',
