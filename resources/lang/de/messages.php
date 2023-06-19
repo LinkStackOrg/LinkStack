@@ -831,12 +831,10 @@ return [
     'Backup.title' => 'Sicherung',
 
     'Backup' => 'Backup',
-    'You can back up your entire instance:' => 'Sie können Ihre gesamte Instanz sichern:',
+
     'The backup system won’t save more than two backups at a time' => 'Das Sicherungssystem speichert nicht mehr als zwei Backups.',
     'Backup Instance' => 'Instanz sichern',
-    'All Backups' => 'Alle Backups',
     'Creating backup' => 'Backup wird erstellt',
-    'Success!' => 'Erfolg!',
     'The backup was successful' => 'Die Backup wurde erfolgreich erstellt. Sie können nun zum Administrationsbereich zurückkehren oder alle Ihre Backups anzeigen.',    
 
 
@@ -1002,7 +1000,6 @@ return [
     # Security Risk Notification
     'Your security is at risk!' => 'Ihre Sicherheit ist gefährdet!',
     'Immediate action is required!' => 'Sofortiges Handeln ist erforderlich!',
-    'Your security is at risk!' => 'Ihre Sicherheit ist gefährdet!',
     'security.msg1' => 'Ihre Sicherheit ist gefährdet.',
     'security.msg2' => 'Einige Dateien können von jedem eingesehen werden. Sofortiges Handeln ist erforderlich!',
     'security.msg3' => 'Einige wichtige Dateien sind öffentlich zugänglich und gefährden Ihre Sicherheit. Bitte ergreifen Sie sofort Maßnahmen, um den öffentlichen Zugriff auf diese Dateien zu widerrufen und unbefugten Zugriff auf Ihre sensiblen Informationen zu verhindern.',
