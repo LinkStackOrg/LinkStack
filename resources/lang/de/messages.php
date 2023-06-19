@@ -455,28 +455,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Edit User Page (Admin)
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/panel/edit-user.blade.php
-    |
-    */
-
-    'Edit User' => 'Benutzer bearbeiten',
-    'Email' => 'E-Mail',
-    'Password' => 'Passwort',
-    'Logo' => 'Logo',
-    'Delete' => 'Löschen',
-    'Custom background' => 'Benutzerdefiniertes Hintergrundbild',
-    'No image selected' => 'Kein Bild ausgewählt',
-    'Page URL' => 'Seiten-URL',
-    'Page description' => 'Seitenbeschreibung',
-    'Role' => 'Rolle',
-    'Save' => 'Speichern',
-
-
-    /*
-    |--------------------------------------------------------------------------
     | Links Page (Admin)
     |--------------------------------------------------------------------------
     |

@@ -462,28 +462,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Edit User Page (Admin)
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/panel/edit-user.blade.php
-    |
-    */
-
-    'Edit User' => 'Edit User',
-    'Email' => 'Email',
-    'Password' => 'Password',
-    'Logo' => 'Logo',
-    'Delete' => 'Delete',
-    'Custom background' => 'Custom background',
-    'No image selected' => 'No image selected',
-    'Page URL' => 'Page URL',
-    'Page description' => 'Page description',
-    'Role' => 'Role',
-    'Save' => 'Save',
-
-
-    /*
-    |--------------------------------------------------------------------------
     | Links Page (Admin)
     |--------------------------------------------------------------------------
     |
