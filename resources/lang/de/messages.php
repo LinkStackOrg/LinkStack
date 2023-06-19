@@ -579,7 +579,7 @@ return [
     'Application' => 'Anwendung',
     'Panel settings' => 'Panel-Einstellungen',
     'Security' => 'Sicherheit',
-    'Advanced' => 'Erweitert',
+    'Advanced' => 'Expertenoptionen',
     'SMTP' => 'SMTP',
     'Footer links' => 'Fußzeilen-Links',
     'Debug' => 'Debug',
