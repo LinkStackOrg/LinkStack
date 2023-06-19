@@ -89,6 +89,13 @@ use App\Models\Page;
                 }
             } catch (Exception $e) {}
 
+            try {
+                $vendorLangPath = resource_path('lang/vendor');
+                if (File::exists($vendorLangPath)) {
+                    File::deleteDirectory($vendorLangPath);
+                }
+            } catch (Exception $e) {}
+
             // Footer page customization
             if(EnvEditor::keyExists('DISPLAY_FOOTER_HOME')){} else {EnvEditor::addKey('DISPLAY_FOOTER_HOME', 'true');}
             if(EnvEditor::keyExists('DISPLAY_FOOTER_TERMS')){} else {EnvEditor::addKey('DISPLAY_FOOTER_TERMS', 'true');}
