@@ -899,7 +899,7 @@ return [
     'Heading Text:' => 'Überschriftentext:',
 
     'URL' => 'URL',
-    'Show website icon on button' => 'Website-Symbol auf der Schaltfläche anzeigen',
+    'Show website icon on button' => 'Website-Symbol anzeigen',
 
     'Select a predefined site' => 'Wählen Sie eine vordefinierte Site aus',
     'Enter the link URL' => 'Geben Sie die Link-URL ein',
