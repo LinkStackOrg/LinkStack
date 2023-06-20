@@ -43,7 +43,7 @@ $url2 = getUrlSatusCode(url('database/database.sqlite'));
         <table class="table table-bordered">
         <thead>
           <tr>
-            <th scope="col" style="width: 90%;">Link</th>
+            <th scope="col" style="width: 90%;">{{__('messages.Link')}}</th>
             <th title="You can hover over entries to learn more about their current status" style="cursor: help;" scope="col">{{__('messages.Hover for more')}}</th>
 
           </tr>
@@ -66,7 +66,7 @@ $url2 = getUrlSatusCode(url('database/database.sqlite'));
         <table class="table table-bordered">
         <thead>
           <tr>
-            <th scope="col" style="width: 90%;">File</th>
+            <th scope="col" style="width: 90%;">{{__('messages.File')}}</th>
             <th title="You can hover over entries to learn more about their current status" style="cursor: help;" scope="col">{{__('messages.Hover for more')}}</th>
           </tr>
         </thead>
