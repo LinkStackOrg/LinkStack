@@ -38,7 +38,7 @@ $url2 = getUrlSatusCode(url('database/database.sqlite'));
         @endif
 
         <h3 class="mb-4">{{__('messages.Security')}}</h3>
-        <p>{{__('messages.security.risk.1-3')}} '<i class='bi bi-check-lg'></i>' {{__('messages.security.risk.1-3')}} '<i class='bi bi-exclamation-lg'></i>' {{__('messages.security.risk.1-3')}}</p>
+        <p>{{__('messages.security.risk.1-3')}} '<i class='bi bi-check-lg'></i>' {{__('messages.security.risk.2-3')}} '<i class='bi bi-exclamation-lg'></i>' {{__('messages.security.risk.3-3')}}</p>
 
         <table class="table table-bordered">
         <thead>
