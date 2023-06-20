@@ -36,7 +36,7 @@
                               <h3>{{__('messages.Home message')}}</h3>
                               <textarea class="form-control ckeditor" name="message" rows="3">{{ $home_message }}</textarea>
                             </div>
-                            <button type="submit" class="mt-3 ml-3 btn btn-primary">Save</button>
+                            <button type="submit" class="mt-3 ml-3 btn btn-primary">{{__('messages.Save')}}</button>
                           </form>
                   
                             </div>
