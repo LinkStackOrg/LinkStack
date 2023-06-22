@@ -47,7 +47,7 @@
                                 if (strpos($sourceURL, 'github.com')){
                                 ini_set('user_agent', 'Mozilla/4.0 (compatible; MSIE 6.0)');
                                 try{
-                                    $textGit = file_get_contents($replaced);
+                                    $textGit = external_file_get_contents($replaced);
                                     $patternGit = '/Theme Version:.*/';
                                     preg_match($patternGit, $textGit, $matches, PREG_OFFSET_CAPTURE);
                                     $sourceURLGit = substr($matches[0][0],15);
