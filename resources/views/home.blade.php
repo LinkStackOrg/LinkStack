@@ -221,10 +221,10 @@
             <div class="footer-body">
                 <ul class="left-panel list-inline mb-0 p-0">
                   @if(env('DISPLAY_FOOTER') === true)
-                    @if(env('DISPLAY_FOOTER_HOME') === true)<li class="list-inline-item"><a class="list-inline-item" href="@if(str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK')) === "" ){{ url('') }}@else{{ str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK')) }}@endif">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_HOME'))}}</a></li>@endif
-                    @if(env('DISPLAY_FOOTER_TERMS') === true)<li class="list-inline-item"><a class="list-inline-item" href="{{ url('') }}/pages/{{ strtolower(env('TITLE_FOOTER_TERMS')) }}">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_TERMS'))}}</a></li>@endif
-                    @if(env('DISPLAY_FOOTER_PRIVACY') === true)<li class="list-inline-item"><a class="list-inline-item" href="{{ url('') }}/pages/{{ strtolower(env('TITLE_FOOTER_PRIVACY')) }}">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_PRIVACY'))}}</a></li>@endif
-                    @if(env('DISPLAY_FOOTER_CONTACT') === true)<li class="list-inline-item"><a class="list-inline-item" href="{{ url('') }}/pages/{{ strtolower(env('TITLE_FOOTER_CONTACT')) }}">{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_CONTACT'))}}</a></li>@endif
+                    @if(env('DISPLAY_FOOTER_HOME') === true)<li class="list-inline-item"><a class="list-inline-item" href="@if(str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK')) === "" ){{ url('') }}@else{{ str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK')) }}@endif">{{footer('Home')}}</a></li>@endif
+                    @if(env('DISPLAY_FOOTER_TERMS') === true)<li class="list-inline-item"><a class="list-inline-item" href="{{ url('') }}/pages/{{ strtolower(env('TITLE_FOOTER_TERMS')) }}">{{footer('Terms')}}</a></li>@endif
+                    @if(env('DISPLAY_FOOTER_PRIVACY') === true)<li class="list-inline-item"><a class="list-inline-item" href="{{ url('') }}/pages/{{ strtolower(env('TITLE_FOOTER_PRIVACY')) }}">{{footer('Privacy')}}</a></li>@endif
+                    @if(env('DISPLAY_FOOTER_CONTACT') === true)<li class="list-inline-item"><a class="list-inline-item" href="{{ url('') }}/pages/{{ strtolower(env('TITLE_FOOTER_CONTACT')) }}">{{footer('Contact')}}</a></li>@endif
                   @endif
                 </ul>
                 <div class="right-panel">

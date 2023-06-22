@@ -18,7 +18,7 @@
                     <div class="col-sm-12">  
   
                           <div class="form-group col-lg-8">
-                            <h3>{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_TERMS'))}}</h3><br>
+                            <h3>{{footer('Terms')}}</h3><br>
                             <textarea class="form-control ckeditor" name="terms" rows="3">{{ $page->terms }}</textarea>
                           </div>
                           
@@ -37,7 +37,7 @@
                       <div class="col-sm-12">  
     
                             <div class="form-group col-lg-8">
-                              <h3>{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_PRIVACY'))}}</h3><br>
+                              <h3>{{footer('Privacy')}}</h3><br>
                               <textarea class="form-control ckeditor" name="privacy" rows="3">{{  $page->privacy }}</textarea>
                             </div>
 
@@ -56,7 +56,7 @@
                         <div class="col-sm-12">  
       
                               <div class="form-group col-lg-8">
-                                <h3>{{str_replace('"', "", EnvEditor::getKey('TITLE_FOOTER_CONTACT'))}}</h3><br>
+                                <h3>{{footer('Contact')}}</h3><br>
                                 <textarea class="form-control ckeditor" name="contact" rows="3">{{ $page->contact }}</textarea>
                               </div>
                               

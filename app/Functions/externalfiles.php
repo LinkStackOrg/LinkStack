@@ -16,3 +16,14 @@ function uri($path) {
     $url = str_replace(['http://', 'https://'], '', url(''));
     return "//" . $url . "/" . $path;
 }
+
+function footer($key)
+{
+    $upperStr = strtoupper($key);
+    if (env('TITLE_FOOTER_'.$upperStr) == "") {
+        $title = __('messages.footer.'.$key);
+    } else {
+        $title = env('TITLE_FOOTER_'.$upperStr);
+    }
+    return $title;
+}
