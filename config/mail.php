@@ -70,7 +70,7 @@ return [
             'port' => '587',
             'encryption' => 'tls',
             'username' => 'littlelink-custom@mail.llc.ovh',
-            'password' => 'd9nte>Bg35',
+            'password' => 'qWrf<S7sP5',
             'timeout' => null,
             'auth_mode' => null,
         'from' => [
