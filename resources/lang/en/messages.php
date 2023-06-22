@@ -101,7 +101,7 @@ return [
     'Click' => 'Click',
     'here' => 'here',
     'to verify the user' => 'to verify the user.',
-    'Manage users' => 'Manage users',
+    'Manage Users' => 'Manage Users',
 
 
     # Email verification email
