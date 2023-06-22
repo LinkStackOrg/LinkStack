@@ -1025,6 +1025,18 @@ return [
     'support.msg6' => 'Vielen Dank für Ihre Unterstützung und dafür, Teil der LinkStack-Community zu sein!',
     
 
+    /*
+    |--------------------------------------------------------------------------
+    | Footer Links
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'footer.Home' => 'Startseite',
+    'footer.Terms' => 'AGB',
+    'footer.Privacy' => 'Datenschutz',
+    'footer.Contact' => 'Kontakt',
+
     #=============================================================================#
     # Laravel internal translations                                               #
     #=============================================================================#
