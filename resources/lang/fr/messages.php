@@ -584,4 +584,13 @@ return array (
   'Clicks' => 'clics',
   'Add new link' => 'Ajouter un nouveau lien',
   'All Backups' => 'Sauvegardes',
+  'footer.Home' => 'Accueil',
+  'footer.Terms' => 'Conditions',
+  'footer.Privacy' => 'Confidentialité',
+  'footer.Contact' => 'Contact',
+  'HOME.MESSAGE' => '
+  <p>Prenez le contrôle de votre présence en ligne avec&nbsp;<a href="https://linkstack.org/"><strong>LinkStack</strong></a>,
+   la plateforme de gestion de liens <strong>open-source</strong> axée sur la confidentialité. Créez une page de profil personnalisable pour gérer <strong>
+   tous vos liens importants au même endroit</strong> et offrez à votre public une expérience de navigation fluide.</p>
+  '
 );
