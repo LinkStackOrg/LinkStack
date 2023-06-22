@@ -198,7 +198,7 @@ if (isset($_COOKIE['LinkCount'])) {
                                     {!! $links ?? ''->links() !!}
                                 </ul>
                             
-                                @if(count($links) > 3)<a class="btn btn-primary" href="{{ url('/studio/add-link') }}">{{__('messages.Add new link')}}</a>@endif
+                                @if(count($links) > 3)<a class="btn btn-primary" href="{{ url('/studio/add-link') }}">{{__('messages.Add new Link')}}</a>@endif
                                 </div>
                             </section>
                             
