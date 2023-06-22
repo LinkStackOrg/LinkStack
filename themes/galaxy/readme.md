@@ -1,13 +1,13 @@
 # A LinkStack Theme
-Find more themes: https://github.com/JulianPrieber/llc-themes
+Find more themes: https://github.com/linkstackorg/linkstack-themes
                                                                                                                                                                          
 *	Theme Name: Galaxy
-*	Theme Version: 1.8
+*	Theme Version: 1.9
 *	Theme Date: 2022-06-09
-*	Theme Author: JulianPrieber
+*	Theme Author: JulianPrieber & LinkStack Team
 *	Theme Author URI: https://github.com/JulianPrieber
 *	Theme License: GPLv3
-*	Source code: https://github.com/JulianPrieber2/galaxy
+*	Source code: https://github.com/linkstackorg/galaxy
 
 
 ### Used assets:

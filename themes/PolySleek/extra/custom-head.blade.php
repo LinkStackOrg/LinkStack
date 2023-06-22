@@ -1,5 +1,5 @@
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
+<script src="{{themeAsset('particles.min.js')}}"></script>
 <style>
 /*
  * Animation module with all animation code
