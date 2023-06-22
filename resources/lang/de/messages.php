@@ -20,6 +20,13 @@ return [
     'by' => 'von',
 
 
+    'HOME.MESSAGE' => '
+    <p>Nehmen Sie die Kontrolle über Ihre Online-Präsenz mit <a href="https://linkstack.org/"><strong>LinkStack</strong></a>, 
+    der datenschutzorientierten, quelloffenen <strong>Link-Management-Plattform</strong>. Erstellen Sie eine anpassbare Profilseite, um <strong>
+    alle Ihre wichtigen Links an einem praktischen Ort zu verwalten</strong> und Ihrem Publikum ein nahtloses Browsing-Erlebnis zu bieten.</p>
+    ',
+
+
     /*
     |--------------------------------------------------------------------------
     | Demo Page/Home Page Example Page

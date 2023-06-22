@@ -179,7 +179,11 @@
                 <h1 class="h1 fw-bold mb-4 pt-4">{{ config('app.name') }}</h1>
 
                 <div class="lead">
-                  <?php echo $message->home_message; ?>
+                  @if($message->home_message == "default")
+                    {!!__('messages.HOME.MESSAGE')!!}
+                  @else
+                    {!!$message->home_message!!}
+                  @endif
                 </div>
     
                 <div class="d-flex justify-content-center align-items-center pt-4">

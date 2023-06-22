@@ -347,9 +347,7 @@ class PageSeeder extends Seeder
 <p>&nbsp;</p>
 ',
 
-                'home_message' => '
-<p>Take control of your online presence with&nbsp;<a href="https://linkstack.org/"><strong>LinkStack</strong></a> the privacy-focused, open-source <strong>link management platform</strong>. Create a customizable profile page to manage <strong>all your important links in one convenient location</strong> and give your audience a seamless browsing experience.</p>
-',
+                'home_message' => 'default',
 
                 'register' => null,
             ]
