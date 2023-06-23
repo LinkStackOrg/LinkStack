@@ -240,6 +240,7 @@ return [
     'Top Links:' => 'Top Links:',
     'You haven’t added any links yet' => 'You haven’t added any links yet.',
     'clicks' => 'clicks',
+    'Clicks' => 'Clicks',
     'Site statistics:' => 'Site statistics:',
     'Total links' => 'Total links',
     'Total clicks' => 'Total clicks',
@@ -351,7 +352,7 @@ return [
     'Profile Picture' => 'Profile Picture',
     'Page URL' => 'Page URL',
     'Display name' => 'Display name',
-    'Name' => 'Name:',
+    'Name:' => 'Name:',
     'Page Description' => 'Page Description',
     'Show checkmark' => 'Show checkmark',
     'disableverified' => 'You are a verified user. This setting allows you to hide your checkmark on your page.',
@@ -424,7 +425,7 @@ return [
     'Theme name' => 'Theme name:',
     'Update status' => 'Update status:',
     'Version' => 'Version:',
-    'Error' => 'Error!',
+    'Error!' => 'Error!',
     'Update manually' => 'Update manually',
     'Update all themes' => 'Update all themes',
 
@@ -547,6 +548,7 @@ return [
 
     'Advanced Config' => 'Advanced Config',
     'Take Backup' => 'Take Backup',
+    'All Backups' => 'All Backups',
     'Diagnosis' => 'Diagnosis',
 
     'Alternative Config Editor' => 'Alternative Config Editor',
@@ -641,7 +643,7 @@ return [
     'DISPLAY_CREDIT_FOOTER.title' => 'Display credit in footer',
     'DISPLAY_CREDIT_FOOTER.description' => 'Determines whether the credit notice should be displayed in the footer.',
     'HOME_URL.title' => 'Set user page as Home Page',
-    'HOME_URL.description' => 'Set user page as Home Page',
+    'HOME_URL.description' => 'Set a user page as the home page. This will move the previous home page to example.com/home.',
     'ALLOW_USER_HTML.title' => 'Allow extended syntax in user\'s descriptions',
     'ALLOW_USER_HTML.description' => 'This enables users to use special formatting like headings and links in their page description.<br>This is generally considered safe.',
     'APP_NAME.title' => 'Application title',
@@ -722,7 +724,6 @@ return [
     'ADMIN_EMAIL.description' => 'Used to send notification emails.',
     'HIDE_VERIFICATION_CHECKMARK.title' => 'Hide verification checkmark',
     'HIDE_VERIFICATION_CHECKMARK.description' => 'Hides verification badge displayed on admin and VIP pages.',
-    'HOME_URL.description' => 'Set a user page as the home page. This will move the previous home page to example.com/home.',
     'LOCALE.title' => 'App Lokalisierung',
     'LOCALE.description' => 'Change the language of your application',
 
