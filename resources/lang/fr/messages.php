@@ -764,7 +764,7 @@ return array (
     
   'Select a database type' => 'Sélectionnez un type de base de données',
   'Under most circumstances, we recommend using SQLite' => 'Dans la plupart des cas, nous vous recommandons d\'utiliser SQLite.',
-  'MySQL requires a separate, empty MySQL database.' => 'MySQL nécessite une base de données MySQL distincte et vide',
+  'MySQL requires a separate, empty MySQL database' => 'MySQL nécessite une base de données MySQL distincte et vide.',
     
   'Database type:' => 'Type de base de données :',
   'Database host:' => 'Hébergeur de la base de données :',

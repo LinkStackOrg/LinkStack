@@ -767,7 +767,7 @@ return [
 
     'Select a database type' => 'Wählen Sie einen Datenbanktyp aus',
     'Under most circumstances, we recommend using SQLite' => 'In den meisten Fällen empfehlen wir die Verwendung von SQLite.',
-    'MySQL requires a separate, empty MySQL database.' => 'MySQL erfordert eine separate, leere MySQL-Datenbank',
+    'MySQL requires a separate, empty MySQL database' => 'MySQL erfordert eine separate, leere MySQL-Datenbank.',
 
     'Database type:' => 'Datenbanktyp:',
     'Database host:' => 'Datenbankhost:',
