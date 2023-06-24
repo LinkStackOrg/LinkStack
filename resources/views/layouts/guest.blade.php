@@ -18,16 +18,14 @@
 
         <title>{{ config('app.name') }}</title>
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+      <!-- Fonts -->
+      @include('layouts.fonts')
 
       <!-- Library / Plugin Css Build -->
       <link rel="stylesheet" href="{{asset('assets/css/core/libs.min.css')}}" />
       
       <!-- Aos Animation Css -->
       <link rel="stylesheet" href="{{asset('assets/vendor/aos/dist/aos.css')}}" />
-      
-      @include('layouts.fonts')
       
       <!-- Hope Ui Design System Css -->
       <link rel="stylesheet" href="{{asset('assets/css/hope-ui.min.css?v=2.0.0')}}" />
@@ -48,43 +46,10 @@
       <!-- RTL Css -->
       <link rel="stylesheet" href="{{asset('assets/css/rtl.min.css')}}" />
 
-        <!-- Scripts -->
-        <script src="{{ asset('assets/js/app.js') }}" defer></script>
+      <!-- Scripts -->
+      <script src="{{ asset('assets/js/app.js') }}" defer></script>
 
-		<link rel="stylesheet" href="{{ asset('assets/external-dependencies/bootstrap-icons.css') }}">
-        
-  {{-- <!-- begin dark mode detection -->
-	<script src="{{ asset('assets/linkstack/js/js.cookie.min.js') }}"></script>
-	<script>
-		// code to set the `color_scheme` cookie
-		var $color_scheme = Cookies.get("color_scheme");
-		function get_color_scheme() {
-		return (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
-		}
-		function update_color_scheme() {
-		Cookies.set("color_scheme", get_color_scheme());
-		}
-		// read & compare cookie `color-scheme`
-		if ((typeof $color_scheme === "undefined") || (get_color_scheme() != $color_scheme))
-		update_color_scheme();
-		// detect changes and change the cookie
-		if (window.matchMedia)
-		window.matchMedia("(prefers-color-scheme: dark)").addListener( update_color_scheme );
-		// reloads page to apply the dark mode cookie
-		window.onload = function() {
-		    if(!window.location.hash && get_color_scheme() == "dark" && (get_color_scheme() != $color_scheme)) {
-		        window.location = window.location + '#dark';
-		        window.location.reload();
-		    }
-		}
-	</script>
-		<?php // loads dark mode CSS if dark mode detected
-		     $color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : false; 
-			 $color_scheme_override = isset($_COOKIE["color_scheme_override"]) ? $_COOKIE["color_scheme_override"] : false; ?>
-		@if ($color_scheme == 'dark' and config('advanced-config.theme') != 'light' and $color_scheme_override != 'light' or $color_scheme_override == 'dark' or config('advanced-config.theme') == 'dark')
-		<link rel="stylesheet" href="{{ asset('css/app-dark.css') }}">
-		@endif
-  <!-- end dark mode detection --> --}}
+	  <link rel="stylesheet" href="{{ asset('assets/external-dependencies/bootstrap-icons.css') }}">
     </head>
     <body>
 

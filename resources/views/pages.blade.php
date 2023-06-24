@@ -2,11 +2,9 @@
 @include('layouts.lang')
 <head>
   <meta charset="utf-8">
-  <title>{{env('TITLE_FOOTER_'.strtoupper($name))}} - {{env('APP_NAME')}}</title>
+  <title>{{ucfirst(Request::segment(2))}} - {{env('APP_NAME')}}</title>
 
 @include('layouts.analytics')
-
-  <title>{{ config('app.name') }}</title>
 
       <!-- Favicon -->
       @if(file_exists(base_path("assets/linkstack/images/").findFile('favicon')))

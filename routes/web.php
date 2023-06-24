@@ -88,9 +88,9 @@ $custom_prefix = config('advanced-config.custom_url_prefix');
 Route::get('/going/{id?}', [UserController::class, 'clickNumber'])->where('link', '.*')->name('clickNumber');
 if($custom_prefix != ""){Route::get('/' . $custom_prefix . '{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');}}
 Route::get('/@{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
-Route::get('/pages/'.strtolower(env('TITLE_FOOTER_TERMS')), [AdminController::class, 'pagesTerms'])->name('pagesTerms');
-Route::get('/pages/'.strtolower(env('TITLE_FOOTER_PRIVACY')), [AdminController::class, 'pagesPrivacy'])->name('pagesPrivacy');
-Route::get('/pages/'.strtolower(env('TITLE_FOOTER_CONTACT')), [AdminController::class, 'pagesContact'])->name('pagesContact');
+Route::get('/pages/'.strtolower(footer('Terms')), [AdminController::class, 'pagesTerms'])->name('pagesTerms');
+Route::get('/pages/'.strtolower(footer('Privacy')), [AdminController::class, 'pagesPrivacy'])->name('pagesPrivacy');
+Route::get('/pages/'.strtolower(footer('Contact')), [AdminController::class, 'pagesContact'])->name('pagesContact');
 Route::get('/theme/@{littlelink}', [UserController::class, 'theme'])->name('theme');
 Route::get('/vcard/{id?}', [UserController::class, 'vcard'])->name('vcard');
 
