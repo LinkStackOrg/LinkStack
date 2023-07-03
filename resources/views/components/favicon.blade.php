@@ -27,10 +27,14 @@ function getFavIcon($id) {
         $html = @file_get_contents($url, false, $context);
     }
 
-    $dom = new DOMDocument();
-    if ($html !== false) {
+    
+$dom = new DOMDocument();
+if ($html !== false) {
+    try {
         @$dom->loadHTML($html);
-    }
+    } catch (Throwable $e) {}
+}
+
 
     $xpath = new DOMXPath($dom);
 
