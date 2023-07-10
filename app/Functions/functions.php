@@ -1,35 +1,47 @@
 <?php
 
-function findFile($name){
-    $directory = base_path('/assets/linkstack/images/');
+function findFile($name)
+{
+    $directory = base_path("/assets/linkstack/images/");
     $files = scandir($directory);
     $pathinfo = "error.error";
-    foreach($files as $file) {
-    if (strpos($file, $name.'.') !== false) {
-    $pathinfo = $name. "." . pathinfo($file, PATHINFO_EXTENSION);
-    }}
+    $pattern = '/^' . preg_quote($name, '/') . '(_\w+)?\.\w+$/i';
+    foreach ($files as $file) {
+        if (preg_match($pattern, $file)) {
+            $pathinfo = $file;
+            break;
+        }
+    }
     return $pathinfo;
 }
 
-function findAvatar($name){
-  $directory = base_path('assets/img');
-  $files = scandir($directory);
-  $pathinfo = "error.error";
-  foreach($files as $file) {
-  if (strpos($file, $name.'.') !== false) {
-  $pathinfo = "assets/img/" . $name. "." . pathinfo($file, PATHINFO_EXTENSION);
-  }}
-  return $pathinfo;
-}
-
-function findBackground($name){
-    $directory = base_path('assets/img/background-img/');
+function findAvatar($name)
+{
+    $directory = base_path("assets/img");
     $files = scandir($directory);
     $pathinfo = "error.error";
-    foreach($files as $file) {
-    if (strpos($file, $name.'.') !== false) {
-    $pathinfo = $name. "." . pathinfo($file, PATHINFO_EXTENSION);
-    }}
+    $pattern = '/^' . preg_quote($name, '/') . '(_\w+)?\.\w+$/i';
+    foreach ($files as $file) {
+        if (preg_match($pattern, $file)) {
+            $pathinfo = "assets/img/" . $file;
+            break;
+        }
+    }
+    return $pathinfo;
+}
+
+function findBackground($name)
+{
+    $directory = base_path("assets/img/background-img/");
+    $files = scandir($directory);
+    $pathinfo = "error.error";
+    $pattern = '/^' . preg_quote($name, '/') . '(_\w+)?\.\w+$/i';
+    foreach ($files as $file) {
+        if (preg_match($pattern, $file)) {
+            $pathinfo = $file;
+            break;
+        }
+    }
     return $pathinfo;
 }
 
