@@ -14,7 +14,6 @@ use Auth;
 use DB;
 use ZipArchive;
 use File;
-use DOMDocument;
 
 use App\Models\User;
 use App\Models\Button;
@@ -721,34 +720,8 @@ class UserController extends Controller
 
         $profilePhoto = $request->file('image');
         $pageName = $request->littlelink_name;
-        $pageDescription = $request->pageDescription;
-
-        // Strip HTML tags except for allowed tags
-        $pageDescription = strip_tags($pageDescription, '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
-        
-        // Sanitize attributes and remove JavaScript code
-        if (!empty($pageDescription)) {
-            $document = new DOMDocument();
-            $document->loadHTML($pageDescription, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-        
-            // Find all elements that have attributes
-            $elements = $document->getElementsByTagName('*');
-            foreach ($elements as $element) {
-                // Check each attribute of the element
-                foreach ($element->attributes as $attribute) {
-                    $attributeName = $attribute->nodeName;
-        
-                    // Remove attributes that contain "on" followed by an event name
-                    if (strpos($attributeName, 'on') === 0) {
-                        $element->removeAttribute($attributeName);
-                    }
-                }
-            }
-        
-            // Get the sanitized HTML back
-            $pageDescription = $document->saveHTML();
-        }
-
+        $pageDescription = strip_tags($request->pageDescription,'<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
+        $pageDescription = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $pageDescription);
         $name = $request->name;
         $checkmark = $request->checkmark;
         $sharebtn = $request->sharebtn;
@@ -756,7 +729,7 @@ class UserController extends Controller
         User::where('id', $userId)->update(['littlelink_name' => $pageName, 'littlelink_description' => $pageDescription, 'name' => $name]);
 
         if ($request->hasFile('image')) {
-            $profilePhoto->move(base_path('assets/img'), $userId . ".png");
+            $profilePhoto->move(base_path('assets/img'), $userId . '_' . time() . ".png");
         }
 
         if($checkmark == "on"){
@@ -793,7 +766,7 @@ class UserController extends Controller
             }}
             if(file_exists(base_path('assets/img/background-img/').$pathinfo)){File::delete(base_path('assets/img/background-img/').$pathinfo);}
 
-            $customBackground->move(base_path('assets/img/background-img/'), $userId.".".$request->file('image')->extension());
+            $customBackground->move(base_path('assets/img/background-img/'), $userId . '_' . time() . "." . $request->file('image')->extension());
         }
 
         return Redirect('/studio/theme');

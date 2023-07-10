@@ -274,7 +274,7 @@ public function SendTestMail(Request $request)
             User::where('id', $id)->update(['name' => $name, 'email' => $email, 'password' => $password, 'littlelink_name' => $littlelink_name, 'littlelink_description' => $littlelink_description, 'role' => $role]);
         }
         if (!empty($profilePhoto)) {
-            $profilePhoto->move(base_path('assets/img'), $id . ".png");
+            $profilePhoto->move(base_path('assets/img'), $id . '_' . time() . ".png");
         } 
         if (!empty($customBackground)) {
             $directory = base_path('assets/img/background-img/');
@@ -286,7 +286,7 @@ public function SendTestMail(Request $request)
             }}
             if(file_exists(base_path('assets/img/background-img/').$pathinfo)){File::delete(base_path('assets/img/background-img/').$pathinfo);}
     
-            $customBackground->move(base_path('assets/img/background-img/'), $id.".".$request->file('background')->extension());
+            $customBackground->move(base_path('assets/img/background-img/'), $id . '_' . time() . "." . $request->file('background')->extension());
         } 
 
         return redirect('admin/users/all');
@@ -339,7 +339,7 @@ public function SendTestMail(Request $request)
             }}
             if(file_exists(base_path('/assets/linkstack/images/').$pathinfo)){File::delete(base_path('/assets/linkstack/images/').$pathinfo);}
 
-            $logo->move(base_path('/assets/linkstack/images/'), "avatar.".$request->file('image')->extension());
+            $logo->move(base_path('/assets/linkstack/images/'), "avatar" . '_' . time() . "." .$request->file('image')->extension());
         }
 
         if (!empty($icon)) {
@@ -353,7 +353,7 @@ public function SendTestMail(Request $request)
             }}
             if(file_exists(base_path('/assets/linkstack/images/').$pathinfo)){File::delete(base_path('/assets/linkstack/images/').$pathinfo);}
 
-            $icon->move(base_path('/assets/linkstack/images/'), "favicon.".$request->file('icon')->extension());
+            $icon->move(base_path('/assets/linkstack/images/'), "favicon" . '_' . time() . "." . $request->file('icon')->extension());
         }
         return back();
     }
