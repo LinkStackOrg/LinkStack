@@ -5,6 +5,13 @@
 <head>
   <meta charset="utf-8">
 
+{{-- Mastodon re="me" link --}}
+@foreach($links as $link)
+  @if($link->name === "mastodon")
+    <link href="{{$link->link}}" rel="me">
+  @endif
+@endforeach
+  
 @foreach($information as $info) @php $GLOBALS['themeName'] = $info->theme; @endphp @endforeach
 
 <?php
