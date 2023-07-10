@@ -32,8 +32,7 @@
     },
     "autoload": {
         "files": [
-            "app/Functions/findfile.php",
-            "app/Functions/externalfiles.php"
+            "app/Functions/functions.php"
         ],
         "psr-4": {
             "App\\": "app/",
