@@ -462,7 +462,7 @@ return [
     */
 
     'Information about PHP’s configuration' => 'معلومات حول تكوين PHP',
-    'Outputs information about the current state of PHP' => 'يعرض معلومات حول الحالة الحالية لـ PHP'
+    'Outputs information about the current state of PHP' => 'يعرض معلومات حول الحالة الحالية لـ PHP',
 
     /*
     |--------------------------------------------------------------------------
@@ -499,14 +499,14 @@ return [
     'Pending' => 'قيد الانتظار',
     'Verified' => 'تم التحقق',
     'Approved' => 'تمت الموافقة',
-    'Add new user' => 'إضافة مستخدم جديد'
+    'Add new user' => 'إضافة مستخدم جديد',
 
     # Tooltips
     'tt.Delete' => 'حذف',
     'tt.Edit' => 'تعديل',
     'tt.All links' => 'كافة الروابط',
 
-    'confirm.delete.user' => 'هل أنت متأكد أنك تريد حذف هذا المستخدم؟\nلا يمكن التراجع عن هذا الإجراء!'
+    'confirm.delete.user' => 'هل أنت متأكد أنك تريد حذف هذا المستخدم؟\nلا يمكن التراجع عن هذا الإجراء!',
     # Date Format
     'date.format' => 'd/m/Y',
 
@@ -829,7 +829,7 @@ return [
     |
     */
 
-    'No notifications' => 'لا توجد إشعارات'
+    'No notifications' => 'لا توجد إشعارات',
 
     # Security Risk Notification
     'Your security is at risk!' => 'تعرض أمانك للخطر!',
