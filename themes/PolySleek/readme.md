@@ -2,7 +2,7 @@
 Find more themes: https://github.com/JulianPrieber/llc-themes
                                                                                                                                                                          
 *	Theme Name: PolySleek
-*	Theme Version: 1.1
+*	Theme Version: 1.2
 *	Theme Date: 23/02/2023 <!-- DD/MM/YYYY -->
 *	Theme Author: JulianPrieber & Linkstack Team
 *	Theme Author URI: https://github.com/JulianPrieber
