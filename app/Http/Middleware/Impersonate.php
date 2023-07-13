@@ -15,7 +15,7 @@ class Impersonate
                   ->where('auth_as', '!=', '');
         })->first();
 
-        if ($adminUser) {
+        if ($adminUser && is_numeric($adminUser)) {
 
         $originalUser = $adminUser->id;
 
