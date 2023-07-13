@@ -691,7 +691,7 @@ public function SendTestMail(Request $request)
 
     }
 
-    //Removes impersonation if authenticated
+    //Add impersonation
     public function authAsID(request $request)
     {
 
