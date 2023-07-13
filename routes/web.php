@@ -96,7 +96,7 @@ Route::get('/vcard/{id?}', [UserController::class, 'vcard'])->name('vcard');
 
 Route::get('/demo-page', [App\Http\Controllers\HomeController::class, 'demo'])->name('demo');
 
-Route::middleware(['auth', 'blocked'])->group(function () {
+Route::middleware(['auth', 'blocked', 'impersonate'])->group(function () {
 //User route
 Route::group([
     'middleware' => env('REGISTER_AUTH'),
@@ -128,6 +128,7 @@ Route::post('/edit-icons', [UserController::class, 'editIcons'])->name('editIcon
 Route::get('/clearIcon/{id}', [UserController::class, 'clearIcon'])->name('clearIcon');
 Route::get('/studio/page/delprofilepicture', [UserController::class, 'delProfilePicture'])->name('delProfilePicture');
 Route::get('/studio/delete-user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser')->middleware('verified');
+Route::post('/auth-as', [AdminController::class, 'authAs'])->name('authAs');
 if(env('ALLOW_USER_EXPORT') != false){
   Route::get('/export-links', [UserController::class, 'exportLinks'])->name('exportLinks');
   Route::get('/export-all', [UserController::class, 'exportAll'])->name('exportAll');
@@ -144,7 +145,7 @@ Route::get('/studio/linkparamform_part/{typeid}/{linkid}', [LinkTypeViewControll
 Route::get('/social-auth/{provider}/callback', [SocialLoginController::class, 'providerCallback']);
 Route::get('/social-auth/{provider}', [SocialLoginController::class, 'redirectToProvider'])->name('social.redirect');
 
-Route::middleware(['auth', 'blocked'])->group(function () {
+Route::middleware(['auth', 'blocked', 'impersonate'])->group(function () {
 //Admin route
 Route::group([
     'middleware' => 'admin',
@@ -179,6 +180,7 @@ Route::group([
     Route::get('/admin/config', [AdminController::class, 'showConfig'])->name('showConfig');
     Route::post('/admin/config', [AdminController::class, 'editConfig'])->name('editConfig');
     Route::get('/send-test-email', [AdminController::class, 'SendTestMail'])->name('SendTestMail');
+    Route::get('/auth-as/{id}', [AdminController::class, 'authAsID'])->name('authAsID');
     Route::get('/theme-updater', function () {return view('studio/theme-updater', []);});
     Route::get('/update', function () {return view('update', []);});
     Route::get('/backup', function () {return view('backup', []);});

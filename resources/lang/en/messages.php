@@ -521,6 +521,7 @@ return [
 
     # Tooltips
     'tt.Delete' => 'Delete',
+    'tt.Impersonate' => 'Impersonate',
     'tt.Edit' => 'Edit',
     'tt.All links' => 'All links',
 

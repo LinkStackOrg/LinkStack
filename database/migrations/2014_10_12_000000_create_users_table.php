@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->string('theme')->nullable();
+            $table->unsignedBigInteger('auth_as')->nullable();
         });
     }
 

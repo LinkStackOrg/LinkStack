@@ -665,4 +665,54 @@ public function SendTestMail(Request $request)
     {
         return view('/panel/theme');
     }
+
+    //Removes impersonation if authenticated
+    public function authAs(request $request)
+    {
+
+        $userID = $request->id;
+        $token = $request->token;
+
+        $user = User::find($userID);
+
+        if($user->remember_token == $token){
+            $user->auth_as = null;
+            $user->remember_token = null;
+            $user->save();
+
+            setcookie("display_auth_nav", "", time() - 3600, "/");
+
+            Auth::loginUsingId($userID);
+
+        return redirect('/admin/users/all');
+        } else {
+            return redirect('');
+        }
+
+    }
+
+    //Removes impersonation if authenticated
+    public function authAsID(request $request)
+    {
+
+        $adminUser = User::whereNotNull('auth_as')->where('role', 'admin')->first();
+
+        if (!$adminUser) {
+
+        $userID = $request->id;
+        $id = Auth::user()->id;
+
+        $user = User::find($id);
+
+        $user->auth_as = $userID;
+        $user->save();
+
+        return redirect('dashboard');
+
+        } else {
+            return redirect('admin/users/all');
+        }
+
+    }
+
 }
