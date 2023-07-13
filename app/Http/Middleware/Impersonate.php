@@ -10,7 +10,10 @@ class Impersonate
 {
     public function handle($request, Closure $next)
     {
-        $adminUser = User::whereNotNull('auth_as')->where('role', 'admin')->first();
+        $adminUser = User::where('role', 'admin')->where(function ($query) {
+            $query->where('auth_as', '!=', null)
+                  ->where('auth_as', '!=', '');
+        })->first();
 
         if ($adminUser) {
 
