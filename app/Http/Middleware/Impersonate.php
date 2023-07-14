@@ -27,7 +27,6 @@ class Impersonate
                 if (\Route::currentRouteName() !== 'authAs') {
                     $adminUser->remember_token = $token;
                     $adminUser->save();
-                    echo "<script>window.location.href = '" . url('studio/links') . "';</script>";
                 }
 
                 Auth::loginUsingId($impersonateUserId);
