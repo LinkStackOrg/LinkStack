@@ -35,11 +35,18 @@ class Impersonate
         }
 
             Auth::loginUsingId($id);
-            $request->session()->put('display_auth_nav', true);
+            $request->session()->put('display_auth_nav', $token);
             $request->session()->save();
         }
 
 if($request->session()->has('display_auth_nav')) {
+$dashboard = url('dashboard');
+$URL = url('/auth-as');
+$csrf = csrf_token();
+$remember_token = User::find($originalUser);
+$token = $remember_token->remember_token;
+$storageToken = $request->session()->get('display_auth_nav');
+if($storageToken === $token) {
 if (file_exists(base_path(findAvatar($id)))) {
     $img = '<img alt="avatar" class="iimg irounded" src="' . url(findAvatar($id)) . '">';
 } elseif (file_exists(base_path("assets/linkstack/images/").findFile('avatar'))) {
@@ -47,11 +54,6 @@ if (file_exists(base_path(findAvatar($id)))) {
 } else {
     $img = '<img alt="avatar" class="iimg" src="' . asset('assets/linkstack/images/logo.svg') . '">';
 }
-$dashboard = url('dashboard');
-$URL = url('/auth-as');
-$csrf = csrf_token();
-$remember_token = User::find($originalUser);
-$token = $remember_token->remember_token;
 $customHtml =
 <<<EOD
 
@@ -154,6 +156,6 @@ EOD;;
                 Auth::logout();
             }
             return $next($request);
-        }
+        }}else{return $next($request);}
     }
 }

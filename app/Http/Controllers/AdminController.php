@@ -675,7 +675,7 @@ public function SendTestMail(Request $request)
 
         $user = User::find($userID);
 
-        if($user->remember_token == $token){
+        if($user->remember_token == $token && $request->session()->get('display_auth_nav') === $user->remember_token){
             $user->auth_as = null;
             $user->remember_token = null;
             $user->save();
@@ -686,7 +686,7 @@ public function SendTestMail(Request $request)
 
         return redirect('/admin/users/all');
         } else {
-            return redirect('');
+            Auth::logout();
         }
 
     }
