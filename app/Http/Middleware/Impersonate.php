@@ -35,10 +35,11 @@ class Impersonate
         }
 
             Auth::loginUsingId($id);
-            setcookie("display_auth_nav", "true", time() + (10 * 365 * 24 * 60 * 60), "/");
+            $request->session()->put('display_auth_nav', true);
+            $request->session()->save();
         }
 
-if(isset($_COOKIE['display_auth_nav'])) {
+if($request->session()->has('display_auth_nav')) {
 if (file_exists(base_path(findAvatar($id)))) {
     $img = '<img alt="avatar" class="iimg irounded" src="' . url(findAvatar($id)) . '">';
 } elseif (file_exists(base_path("assets/linkstack/images/").findFile('avatar'))) {
@@ -148,8 +149,8 @@ EOD;;
 
         return $response;
         } else {
-            if(isset($_COOKIE['display_auth_nav'])) {
-                setcookie("display_auth_nav", "", time() - 3600, "/");
+            if($request->session()->has('display_auth_nav')) {
+                $request->session()->forget('display_auth_nav');
                 Auth::logout();
             }
             return $next($request);

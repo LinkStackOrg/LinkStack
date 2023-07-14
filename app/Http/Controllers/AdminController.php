@@ -680,7 +680,7 @@ public function SendTestMail(Request $request)
             $user->remember_token = null;
             $user->save();
 
-            setcookie("display_auth_nav", "", time() - 3600, "/");
+            $request->session()->forget('display_auth_nav');
 
             Auth::loginUsingId($userID);
 
