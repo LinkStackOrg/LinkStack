@@ -33,18 +33,9 @@ function getFaviconURL($url)
         $dom->strictErrorChecking = false;
         @$dom->loadHTMLFile($url);
         if ($dom) {
-            $domxml = simplexml_import_dom($dom);
-            // Check for the historical rel="shortcut icon"
-            if ($domxml->xpath('//link[@rel="shortcut icon"]')) {
-                $path = $domxml->xpath('//link[@rel="shortcut icon"]');
-                $faviconURL = getAbsoluteUrl($url, $path[0]['href']);
-                return $faviconURL;
-            }
-            // Check for the HTML5 rel="icon"
-            elseif ($domxml->xpath('//link[@rel="icon"]')) {
-                $path = $domxml->xpath('//link[@rel="icon"]');
-                $faviconURL = getAbsoluteUrl($url, $path[0]['href']);
-                return $faviconURL;
+            $faviconURL = extractFaviconUrlFromDOM($dom);
+            if ($faviconURL) {
+                return getAbsoluteUrl($url, $faviconURL);
             }
         }
     } catch (Exception $e) {
@@ -53,15 +44,13 @@ function getFaviconURL($url)
 
     // Check directly for favicon.ico or favicon.png
     $parse = parse_url($url);
-    $favicon_headers = @get_headers("http://" . $parse['host'] . "/favicon.ico");
-    if ($favicon_headers && $favicon_headers[0] != 'HTTP/1.1 404 Not Found') {
-        $faviconURL = "http://" . $parse['host'] . "/favicon.ico";
+    $faviconURL = getAbsoluteUrl($url, "/favicon.ico");
+    if (checkURLExists($faviconURL)) {
         return $faviconURL;
     }
 
-    $favicon_headers = @get_headers("http://" . $parse['host'] . "/favicon.png");
-    if ($favicon_headers && $favicon_headers[0] != 'HTTP/1.1 404 Not Found') {
-        $faviconURL = "http://" . $parse['host'] . "/favicon.png";
+    $faviconURL = getAbsoluteUrl($url, "/favicon.png");
+    if (checkURLExists($faviconURL)) {
         return $faviconURL;
     }
 
@@ -79,6 +68,33 @@ function getRedirectUrlFromHeaders($headers)
         return trim($matches[1]);
     }
     return null;
+}
+
+function extractFaviconUrlFromDOM($dom)
+{
+    $xpath = new DOMXPath($dom);
+
+    // Check for the historical rel="shortcut icon"
+    $shortcutIcon = $xpath->query('//link[@rel="shortcut icon"]');
+    if ($shortcutIcon->length > 0) {
+        $path = $shortcutIcon->item(0)->getAttribute('href');
+        return $path;
+    }
+
+    // Check for the HTML5 rel="icon"
+    $icon = $xpath->query('//link[@rel="icon"]');
+    if ($icon->length > 0) {
+        $path = $icon->item(0)->getAttribute('href');
+        return $path;
+    }
+
+    return null;
+}
+
+function checkURLExists($url)
+{
+    $headers = @get_headers($url);
+    return ($headers && strpos($headers[0], '200') !== false);
 }
 
 function extractFaviconUrlWithRegex($html)
@@ -117,36 +133,34 @@ function getAbsoluteUrl($baseUrl, $relativeUrl)
 
 function getFavIcon($id)
 {
-    try{
+    try {
+        $link = Link::find($id);
+        $page = $link->link;
 
-    $link = Link::find($id);
-    $page = $link->link;
+        $url = getFaviconURL($page);
 
-    $url = getFaviconURL($page);
+        $fileExtension = pathinfo($url, PATHINFO_EXTENSION);
+        $filename = $id . '.' . $fileExtension;
+        $filepath = base_path('assets/favicon/icons') . '/' . $filename;
 
-    $fileExtension = pathinfo($url, PATHINFO_EXTENSION);
-    $filename = $id . '.' . $fileExtension;
-    $filepath = base_path('assets/favicon/icons') . '/' . $filename;
+        if (!file_exists($filepath)) {
+            if (function_exists('curl_version')) {
+                $curlHandle = curl_init($url);
+                curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($curlHandle, CURLOPT_TIMEOUT, 3);
+                $faviconData = curl_exec($curlHandle);
+                curl_close($curlHandle);
 
-    if (!file_exists($filepath)) {
-        if (function_exists('curl_version')) {
-            $curlHandle = curl_init($url);
-            curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($curlHandle, CURLOPT_TIMEOUT, 3);
-            $faviconData = curl_exec($curlHandle);
-            curl_close($curlHandle);
-
-            if ($faviconData !== false) {
-                file_put_contents($filepath, $faviconData);
+                if ($faviconData !== false) {
+                    file_put_contents($filepath, $faviconData);
+                }
+            } else {
+                file_put_contents($filepath, file_get_contents($url));
             }
-        } else {
-            file_put_contents($filepath, file_get_contents($url));
         }
-    }
 
-    return url('assets/favicon/icons/' . $id . '.' . $fileExtension);
-    
-    }catch(Exception $e){
+        return url('assets/favicon/icons/' . $id . '.' . $fileExtension);
+    } catch (Exception $e) {
         // Handle the exception by copying the default SVG favicon
         $defaultIcon = base_path('assets/linkstack/icons/website.svg');
         $filename = $id . '.svg';
