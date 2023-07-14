@@ -155,12 +155,11 @@ use App\Models\Page;
             Schema::enableForeignKeyConstraints();
 
             // Adds new column to the users table
-            try {
             if (!Schema::hasColumn('users', 'auth_as')) {
                 Schema::table('users', function (Blueprint $table) {
                  $table->unsignedBigInteger('auth_as')->nullable();
               });
-            }} catch (exception $e) {}
+            }
 
     try {
         DB::table('link_types')->updateOrInsert([
