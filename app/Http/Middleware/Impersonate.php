@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Models\User;
@@ -12,51 +13,46 @@ class Impersonate
     {
         $adminUser = User::where('role', 'admin')->where(function ($query) {
             $query->where('auth_as', '!=', null)
-                  ->where('auth_as', '!=', '');
+                ->where('auth_as', '!=', '');
         })->first();
 
         if ($adminUser && is_numeric($adminUser->auth_as)) {
+            $originalUserId = $adminUser->id;
+            $impersonateUserId = is_numeric($adminUser->auth_as) ? $adminUser->auth_as : $adminUser->id;
+            $impersonateUser = User::find($impersonateUserId);
+            $impersonateUserName = $impersonateUser->name;
 
-        $originalUser = $adminUser->id;
+            if (Auth::user()->id === $originalUserId) {
+                $token = Str::random(60);
+                if (\Route::currentRouteName() !== 'authAs') {
+                    $adminUser->remember_token = $token;
+                    $adminUser->save();
+                    echo "<script>window.location.href = '" . url('studio/links') . "';</script>";
+                }
 
-        $id = is_numeric($adminUser->auth_as) ? $adminUser->auth_as : $adminUser->id;
-        $user = User::find($id);
+                Auth::loginUsingId($impersonateUserId);
+                $request->session()->put('display_auth_nav', $token);
+                $request->session()->save();
+            }
 
-        $name = $user->name;
+            if ($request->session()->has('display_auth_nav')) {
+                $dashboardUrl = url('dashboard');
+                $authAsUrl = url('/auth-as');
+                $csrfToken = csrf_token();
+                $rememberTokenUser = User::find($originalUserId);
+                $rememberToken = $rememberTokenUser->remember_token;
+                $storageToken = $request->session()->get('display_auth_nav');
 
-        if(Auth::user()->id === $originalUser) {
+                if ($storageToken === $rememberToken) {
+                    if (file_exists(base_path(findAvatar($impersonateUserId)))) {
+                        $avatarUrl = url(findAvatar($impersonateUserId));
+                    } elseif (file_exists(base_path("assets/linkstack/images/") . findFile('avatar'))) {
+                        $avatarUrl = url("assets/linkstack/images/") . "/" . findFile('avatar');
+                    } else {
+                        $avatarUrl = asset('assets/linkstack/images/logo.svg');
+                    }
 
-        // Generate unique token
-        $token = Str::random(60);
-        if(\Route::currentRouteName() !== 'authAs'){
-            $adminUser->remember_token = $token;
-            $adminUser->save();
-            echo "<script>window.location.href = '".url('studio/links')."';</script>";
-        }
-
-            Auth::loginUsingId($id);
-            $request->session()->put('display_auth_nav', $token);
-            $request->session()->save();
-        }
-
-if($request->session()->has('display_auth_nav')) {
-$dashboard = url('dashboard');
-$URL = url('/auth-as');
-$csrf = csrf_token();
-$remember_token = User::find($originalUser);
-$token = $remember_token->remember_token;
-$storageToken = $request->session()->get('display_auth_nav');
-if($storageToken === $token) {
-if (file_exists(base_path(findAvatar($id)))) {
-    $img = '<img alt="avatar" class="iimg irounded" src="' . url(findAvatar($id)) . '">';
-} elseif (file_exists(base_path("assets/linkstack/images/").findFile('avatar'))) {
-    $img = '<img alt="avatar" class="iimg irounded" src="' . url("assets/linkstack/images/") . "/" . findFile('avatar') . '">';
-} else {
-    $img = '<img alt="avatar" class="iimg" src="' . asset('assets/linkstack/images/logo.svg') . '">';
-}
-$customHtml =
-<<<EOD
-
+                    $customHtml = <<<EOD
 <style>
   .ibar {
     position: fixed;
@@ -117,7 +113,7 @@ $customHtml =
 <div class="ibar">
   <p class="itext1">
     <span>
-      <a href="$dashboard">$img $name</a>
+      <a href="$dashboardUrl"><img alt="avatar" class="iimg irounded" src="$avatarUrl">$impersonateUserName</a>
     </span>
     <a style="cursor:pointer" onclick="document.getElementById('submitForm').submit(); return false;">
       <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-x" viewBox="0 0 16 16">
@@ -129,10 +125,10 @@ $customHtml =
   </p>
 </div>
 
-<form id="submitForm" action="$URL" method="POST" style="display: none;">
-<input type="hidden" name="_token" value="$csrf">
-<input type="hidden" name="token" value="$token">
-<input type="hidden" name="id" value="$originalUser">
+<form id="submitForm" action="$authAsUrl" method="POST" style="display: none;">
+  <input type="hidden" name="_token" value="$csrfToken">
+  <input type="hidden" name="token" value="$rememberToken">
+  <input type="hidden" name="id" value="$originalUserId">
 </form>
 
 <script>
@@ -140,22 +136,26 @@ $customHtml =
     document.getElementById('submitForm').submit();
   }
 </script>
+EOD;
+                } else {
+                    $customHtml = "";
+                }
 
-EOD;;
-} else {$customHtml = "";}
+                $response = $next($request);
+                $content = $response->getContent();
+                $modifiedContent = preg_replace('/<body([^>]*)>/', "<body$1>{$customHtml}", $content);
+                $response->setContent($modifiedContent);
 
-        $response = $next($request);
-        $content = $response->getContent();
-        $modifiedContent = preg_replace('/<body([^>]*)>/', "<body$1>{$customHtml}", $content);
-        $response->setContent($modifiedContent);
-
-        return $response;
-        } else {
-            if($request->session()->has('display_auth_nav')) {
-                $request->session()->forget('display_auth_nav');
-                Auth::logout();
+                return $response;
+            } else {
+                if ($request->session()->has('display_auth_nav')) {
+                    $request->session()->forget('display_auth_nav');
+                    Auth::logout();
+                }
+                return $next($request);
             }
+        } else {
             return $next($request);
-        }}else{return $next($request);}
+        }
     }
 }
