@@ -9,7 +9,7 @@
         "awssat/laravel-visits": "^5.0",
         "bacon/bacon-qr-code": "^2.0",
         "codedge/laravel-selfupdater": "^3.6",
-        "cohensive/oembed": "^0.16",
+        "cohensive/oembed": "^0.17",
         "doctrine/dbal": "^3.0",
         "fideloper/proxy": "^4.4",
         "geo-sot/laravel-env-editor": "^2.0",
