@@ -267,11 +267,12 @@ public function SendTestMail(Request $request)
         $littlelink_description = $request->littlelink_description;
         $role = $request->role;
         $customBackground = $request->file('background');
+        $theme = $request->theme;
 
         if ($request->password == '') {
-            User::where('id', $id)->update(['name' => $name, 'email' => $email, 'littlelink_name' => $littlelink_name, 'littlelink_description' => $littlelink_description, 'role' => $role]);
+            User::where('id', $id)->update(['name' => $name, 'email' => $email, 'littlelink_name' => $littlelink_name, 'littlelink_description' => $littlelink_description, 'role' => $role, 'theme' => $theme]);
         } else {
-            User::where('id', $id)->update(['name' => $name, 'email' => $email, 'password' => $password, 'littlelink_name' => $littlelink_name, 'littlelink_description' => $littlelink_description, 'role' => $role]);
+            User::where('id', $id)->update(['name' => $name, 'email' => $email, 'password' => $password, 'littlelink_name' => $littlelink_name, 'littlelink_description' => $littlelink_description, 'role' => $role, 'theme' => $theme]);
         }
         if (!empty($profilePhoto)) {
             $profilePhoto->move(base_path('assets/img'), $id . '_' . time() . ".png");

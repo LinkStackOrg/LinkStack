@@ -62,11 +62,47 @@
                                 @if($_SERVER['QUERY_STRING'] === 'deleteB' and File::exists(base_path('assets/img/background-img/'.findBackground($user->id))))@php File::delete(base_path('assets/img/background-img/'.findBackground($user->id))); header("Location: ".url()->current()); die(); @endphp @endif
                                 <br>
                             </div><br>
-                  
-                            <!--<div class="form-group col-lg-8">
-                              <label>Littlelink name </label>
-                              <input type="text" class="form-control" name="littlelink_name" value="{{ $user->id }}">
-                            </div>-->
+
+                            <label>{{__('messages.Select theme')}}</label>
+                              <div class="form-group col-lg-8">
+                                  <select id="theme-select" style="margin-bottom: 40px;" class="form-control" name="theme" data-base-url="{{ url('') }}/@<?= Auth::user()->littlelink_name ?>">
+                                      <?php
+                                          if ($handle = opendir('themes')) {
+                                              while (false !== ($entry = readdir($handle))) {
+                                                  if ($entry != "." && $entry != "..") {
+                                                      if(file_exists(base_path('themes') . '/' . $entry . '/readme.md')){
+                                                          $text = file_get_contents(base_path('themes') . '/' . $entry . '/readme.md');
+                                                          $pattern = '/Theme Name:.*/';
+                                                          preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
+                                                          if(sizeof($matches) > 0) {
+                                                              $themeName = substr($matches[0][0],12);
+                                                          }
+                                                      }
+                                                      if($user->theme != $entry and isset($themeName)){
+                                                          echo '<option value="'.$entry.'" data-image="'.url('themes/'.$entry.'/screenshot.png').'">'.$themeName.'</option>';
+                                                      }
+                                                  }
+                                              }
+                                          }
+                              
+                                          if($user->theme != "default" and $user->theme != ""){
+                                              if(file_exists(base_path('themes') . '/' . $user->theme . '/readme.md')){
+                                                  $text = file_get_contents(base_path('themes') . '/' . $user->theme . '/readme.md');
+                                                  $pattern = '/Theme Name:.*/';
+                                                  preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
+                                                  $themeName = substr($matches[0][0],12);
+                                              }
+                                              echo '<option value="'.$user->theme.'" data-image="'.url('themes/'.$user->theme.'/screenshot.png').'" selected>'.$themeName.'</option>';
+                                          }
+                              
+                                          echo '<option value="default" data-image="'.url('themes/default/screenshot.png').'"';
+                                          if($user->theme == "default" or $user->theme == ""){
+                                              echo ' selected';
+                                          }
+                                          echo '>Default</option>';
+                                      ?>
+                                  </select>
+                              </div>
                             
                             <div class="form-group col-lg-8">
                               <label>{{__('messages.Page URL')}}</label>
