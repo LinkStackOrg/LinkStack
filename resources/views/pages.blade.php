@@ -73,11 +73,11 @@
         <div class="footer-body">
             <ul class="left-panel list-inline mb-0 p-0">
               @if(env('DISPLAY_FOOTER') === true)
-                @if(env('DISPLAY_FOOTER_HOME') === true)<li class="list-inline-item"><a class="list-inline-item" href="@if(str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK')) === "" ){{ url('') }}@else{{ str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK')) }}@endif">{{footer('Home')}}</a></li>@endif
-                @if(env('DISPLAY_FOOTER_TERMS') === true)<li class="list-inline-item"><a class="list-inline-item" href="{{ url('') }}/pages/{{ strtolower(env('TITLE_FOOTER_TERMS')) }}">{{footer('Terms')}}</a></li>@endif
-                @if(env('DISPLAY_FOOTER_PRIVACY') === true)<li class="list-inline-item"><a class="list-inline-item" href="{{ url('') }}/pages/{{ strtolower(env('TITLE_FOOTER_PRIVACY')) }}">{{footer('Privacy')}}</a></li>@endif
-                @if(env('DISPLAY_FOOTER_CONTACT') === true)<li class="list-inline-item"><a class="list-inline-item" href="{{ url('') }}/pages/{{ strtolower(env('TITLE_FOOTER_CONTACT')) }}">{{footer('Contact')}}</a></li>@endif
-              @endif
+                @if(env('DISPLAY_FOOTER_HOME') === true)<li class="list-inline-item"><a class="footer-hover spacing" href="@if(str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK')) === "" ){{ url('') }}@else{{ str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK')) }}@endif">{{footer('Home')}}</a></li>@endif
+                @if(env('DISPLAY_FOOTER_TERMS') === true)<li class="list-inline-item"><a class="footer-hover spacing" href="{{ url('') }}/pages/{{ strtolower(footer('Terms')) }}">{{footer('Terms')}}</a></li>@endif
+                @if(env('DISPLAY_FOOTER_PRIVACY') === true)<li class="list-inline-item"><a class="footer-hover spacing" href="{{ url('') }}/pages/{{ strtolower(footer('Privacy')) }}">{{footer('Privacy')}}</a></li>@endif
+                @if(env('DISPLAY_FOOTER_CONTACT') === true)<li class="list-inline-item"><a class="footer-hover spacing" href="{{ url('') }}/pages/{{ strtolower(footer('Contact')) }}">{{footer('Contact')}}</a></li>@endif
+              @endif                     
             </ul>
             <div class="right-panel">
               {{__('messages.Copyright')}} &copy; @php echo date('Y'); @endphp {{ config('app.name') }}
