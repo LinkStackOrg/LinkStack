@@ -23,6 +23,6 @@ class admin
             return $next($request);
       }   
 
-            return redirect('/');
+            return redirect(url('dashboard'));
     }
 }
