@@ -776,17 +776,6 @@ class UserController extends Controller
     public function removeBackground()
     {
 
-        function findBackground($name){
-            $directory = base_path('assets/img/background-img/');
-            $files = scandir($directory);
-            $pathinfo = "error.error";
-            foreach($files as $file) {
-            if (strpos($file, $name.'.') !== false) {
-            $pathinfo = $name. "." . pathinfo($file, PATHINFO_EXTENSION);
-            }}
-            return $pathinfo;
-        }
-
         $user_id = Auth::user()->id;
         $path = findBackground($user_id);
         $path = base_path('assets/img/background-img/'.$path);
