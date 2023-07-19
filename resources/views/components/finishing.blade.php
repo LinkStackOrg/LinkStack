@@ -157,7 +157,7 @@ use App\Models\Page;
             // Adds new column to the users table
             if (!Schema::hasColumn('users', 'auth_as')) {
                 Schema::table('users', function (Blueprint $table) {
-                 $table->unsignedBigInteger('auth_as')->nullable();
+                 $table->unsignedInteger('auth_as')->nullable();
               });
             }
 
