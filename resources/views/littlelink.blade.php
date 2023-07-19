@@ -12,11 +12,10 @@
   @endif
 @endforeach
   
-@foreach($information as $info) @php $GLOBALS['themeName'] = $info->theme; @endphp @endforeach
-
 <?php
 // Theme Config
-function theme($key){
+if (!function_exists('theme')) {
+  function theme($key){
 $key = trim($key);
 $file = base_path('themes/' . $GLOBALS['themeName'] . '/config.php');
   if (file_exists($file)) {
@@ -25,12 +24,17 @@ $file = base_path('themes/' . $GLOBALS['themeName'] . '/config.php');
     return $config[$key];
 }}
 return null;}
+}
 
 // Theme Custom Asset
+if (!function_exists('themeAsset')) {
 function themeAsset($path){
 $path = url('themes/' . $GLOBALS['themeName'] . '/extra/custom-assets/' . $path);
 return $path;}
+}
 ?>
+
+@foreach($information as $info) @php $GLOBALS['themeName'] = $info->theme; @endphp @endforeach
 
 @if(theme('enable_custom_code') == "true" and theme('enable_custom_head') == "true" and env('ALLOW_CUSTOM_CODE_IN_THEMES') == 'true')@include($GLOBALS['themeName'] . '.extra.custom-head')@endif
 

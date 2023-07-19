@@ -46,7 +46,7 @@ function findBackground($name)
 }
 
 function analyzeImageBrightness($file) {
-
+    try {
     $file = base_path('assets/img/background-img/'.$file);
   
     // Get image information using getimagesize
@@ -95,6 +95,9 @@ function analyzeImageBrightness($file) {
     } else {
       return 'light';
     }
+      } catch (\Throwable $th) {
+          return null;
+      }
   }
   
   function infoIcon($tip) {
