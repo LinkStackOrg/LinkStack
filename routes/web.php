@@ -96,7 +96,7 @@ Route::get('/vcard/{id?}', [UserController::class, 'vcard'])->name('vcard');
 
 Route::get('/demo-page', [App\Http\Controllers\HomeController::class, 'demo'])->name('demo');
 
-Route::middleware(['auth', 'blocked', 'impersonate'])->group(function () {
+Route::middleware(['AuthSession', 'auth', 'blocked', 'impersonate'])->group(function () {
 //User route
 Route::group([
     'middleware' => env('REGISTER_AUTH'),
@@ -141,11 +141,10 @@ Route::get('/studio/linkparamform_part/{typeid}/{linkid}', [LinkTypeViewControll
 });
 }
 
+Route::middleware(['AuthSession', 'auth', 'blocked', 'impersonate'])->group(function () {
 //Social login route
 Route::get('/social-auth/{provider}/callback', [SocialLoginController::class, 'providerCallback']);
 Route::get('/social-auth/{provider}', [SocialLoginController::class, 'redirectToProvider'])->name('social.redirect');
-
-Route::middleware(['auth', 'blocked', 'impersonate'])->group(function () {
 //Admin route
 Route::group([
     'middleware' => 'admin',
