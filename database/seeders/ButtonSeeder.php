@@ -413,6 +413,14 @@ class ButtonSeeder extends Seeder
             [
             'name' => 'linkstack'
             ],
+
+            [
+            'name' => 'picarto'
+            ],
+
+            [
+            'name' => 'trakt'
+            ],
         ];
 
          Button::insert($buttons);
