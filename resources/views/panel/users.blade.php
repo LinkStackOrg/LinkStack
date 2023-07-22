@@ -171,23 +171,23 @@
   </div>
 
   <script>
-    const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+    document.addEventListener('DOMContentLoaded', function() {
+      const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
     
-    const comparer = (idx, asc) => (a, b) =>
-      ((v1, v2) =>
-        v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
-      )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+      const comparer = (idx, asc) => (a, b) =>
+        ((v1, v2) =>
+          v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+        )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
     
-    document.addEventListener('DOMContentLoaded', () => {
       // Find the table and its headers
       const table = document.querySelector('table');
-      const headers = table.querySelectorAll('th[data-sort]');
+      const headers = table.querySelectorAll('th');
     
       // Add caret icon to initial header element
       const initialHeader = table.querySelector('[data-order]');
       initialHeader.innerHTML = `${initialHeader.innerText} <i class="bi bi-caret-down-fill"></i>`;
     
-      // Attach click event listener to all sortable headers
+      // Attach click event listener to all headers
       headers.forEach(th => th.addEventListener('click', function() {
         // Get the clicked header's index, sort order, and sortable attribute
         const thIndex = Array.from(th.parentNode.children).indexOf(th);
@@ -210,13 +210,12 @@
         th.innerHTML = `${th.innerText} ${isAscending ? '<i class="bi bi-caret-down-fill"></i>' : '<i class="bi bi-caret-up-fill"></i>'}`;
     
         // Sort the table rows based on the clicked header
-        Array.from(table.querySelectorAll('tbody tr'))
+        Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
           .sort(comparer(thIndex, isAscending))
-          .forEach(tr => table.querySelector('tbody').appendChild(tr));
+          .forEach(tr => table.appendChild(tr));
       }));
     });
-    </script>
-    
+  </script>
 
 
 @endsection
