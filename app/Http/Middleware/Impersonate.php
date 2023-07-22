@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Models\User;
@@ -11,6 +12,7 @@ class Impersonate
 {
     public function handle($request, Closure $next)
     {
+      if(Schema::hasColumn('users', 'auth_as')) {
         $adminUser = User::where('role', 'admin')->where(function ($query) {
             $query->where('auth_as', '!=', null)
                 ->where('auth_as', '!=', '');
@@ -156,5 +158,10 @@ EOD;
         } else {
             return $next($request);
         }
+
+      } else {
+        return $next($request);
+      }
+
     }
 }
