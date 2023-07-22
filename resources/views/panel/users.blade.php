@@ -171,7 +171,7 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener("DOMContentLoaded", function() {
       const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
     
       const comparer = (idx, asc) => (a, b) =>
@@ -215,7 +215,6 @@
           .forEach(tr => table.appendChild(tr));
       }));
     });
-  </script>
-
-
+    </script>
+    
 @endsection
