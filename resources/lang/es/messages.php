@@ -519,6 +519,7 @@ return array (
 
 # Tooltips
 'tt.Delete' => 'Eliminar',
+'tt.Impersonate' => 'Hacerse pasar por',
 'tt.Edit' => 'Editar',
 'tt.All links' => 'Todos los enlaces',
 
