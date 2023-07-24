@@ -521,6 +521,7 @@ return array (
     
     # Tooltips
   'tt.Delete' => 'Supprimer',
+  'tt.Impersonate' => 'Prendre l\'identité de cet utilisateur',
   'tt.Edit' => 'Modifier',
   'tt.All links' => 'Tous les liens',
     
