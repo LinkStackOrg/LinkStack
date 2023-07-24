@@ -756,6 +756,16 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* Picarto */
+.button.button-picarto {
+  color: #ffffff;
+  background-color: #4aba8a;
+}
+.button.button-picarto:hover,
+.button.button-picarto:focus {
+  filter: brightness(90%);
+}
+
 /* Pinterest */
 .button.button-pinterest {
   color: #000000;
@@ -943,6 +953,16 @@ button.button-scribd{
 }
 .button.button-tiktok:hover,
 .button.button-tiktok:focus {
+  filter: brightness(90%);
+}
+
+/* Trakt */
+.button.button-trakt {
+  color: #ffffff;
+  background-color: #ed1d24;
+}
+.button.button-trakt:hover,
+.button.button-trakt:focus {
   filter: brightness(90%);
 }
 
