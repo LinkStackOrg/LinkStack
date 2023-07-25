@@ -50,7 +50,7 @@
 
 ---
 
-## Function    
+<a name="Function"></a>## Function    
 
 LinkStack: The Ultimate Link Management Solution
 
@@ -62,7 +62,7 @@ Additionally, LinkStack allows other users to register and create their own link
 
 <br>
 	    
-## About
+<a name="About"></a>## About
 
 With LinkStack, our mission is to provide users with a free and privacy-focused solution for managing and sharing links online. We believe that everyone should have access to a customizable link-sharing platform without sacrificing their privacy and control over their data.
 
@@ -74,7 +74,7 @@ Our goal is to provide a free version of a link-sharing service, similar to Link
 	    
 <br>
 	    
-## Instances
+<a name="Instances"></a>## Instances
 
 <h3 align="center">Find the right instance for you</h3>
 
@@ -87,7 +87,7 @@ Our goal is to provide a free version of a link-sharing service, similar to Link
   <a href="https://linkstack.org/instances"><img src="https://raw.githubusercontent.com/LinkStackOrg/branding/main/badges/png/create_account.png" alt="Community instances" width="350" ></a>
 </p>
 	    
-## Themes
+<a name="Themes"></a>## Themes
 
 <h3 align="center">Custom Themes</h3>
 
@@ -129,7 +129,7 @@ Everything is documented in the dedicated GitHub repository.
 
 [github.com/LinkStackOrg/linkstack-themes/tree/main/contributing](https://github.com/LinkStackOrg/linkstack-themes/tree/main/contributing)
 
-## Installation
+<a name="Installation"></a>## Installation
 
 ### Downloading and installing steps:
 * **[Download](https://github.com/linkstackorg/linkstack/releases)** the latest release of LinkStack and simply place the folder 'littlelink' or the contents of this folder in the root directory of your website.
@@ -148,7 +148,7 @@ When accessing your instance for the first time, you will be greeted by the firs
 
 <br>
 
-## Docker
+<a name="Docker"></a>## Docker
 
 <p align="center">
 <a href="https://github.com/linkstackorg/linkstack-docker">
@@ -175,7 +175,7 @@ This docker is based on [Alpine Linux](https://www.alpinelinux.org), a Linux dis
 
 <br>
 
-## Updating
+<a name="Updating"></a>## Updating
 
 When a **new version** is released, you will get an update notification on your Admin Panel.
 
@@ -198,7 +198,7 @@ Before updating, the updater will create a backup. Your instance won’t save mo
 
 If you switched your database to MySQL, your database will not be included in the backup.
 
-## Discord
+<a name="Discord"></a>## Discord
 
 <br>
 
@@ -208,7 +208,7 @@ If you switched your database to MySQL, your database will not be included in th
 
 <br>
 
-## License
+<a name="License"></a>## License
 
 [![License: AGPL v3](https://img.llc.ovh/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
@@ -222,7 +222,7 @@ Finally, any derivative works of the project must be licensed under the same lic
 
 <br>
 
-## Supporters
+<a name="Supporters"></a>## Supporters
 You can support LinkStack [here](https://linkstack.org/sponsor).
 
 
@@ -278,7 +278,7 @@ Thank you for all your efforts!
 
 <br>
 
-## Additional-credit
+<a name="Additional-credit"></a>## Additional-credit
 
 - [laravel](https://github.com/laravel/laravel)
 - [forked from](https://github.com/khzg/littlelink-admin)
