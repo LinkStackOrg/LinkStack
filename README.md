@@ -51,7 +51,7 @@
 ---
 
 <a name="Function"></a>
-## Function    
+## Function
 
 LinkStack: The Ultimate Link Management Solution
 
