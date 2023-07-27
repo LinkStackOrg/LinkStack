@@ -17,6 +17,19 @@
                     <h3 class="mb-4 card-header"><i class="bi bi-brush">{{__('messages.Select a theme')}}</i></h3>
                     <div>
                     
+                        @if($errors->any())
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24">
+                                <use xlink:href="#exclamation-triangle-fill"></use>
+                            </svg>
+                            <div>
+                                @foreach ($errors->all() as $error)
+                                    {{ $error }}
+                                @endforeach
+                            </div>
+                        </div>
+                        @endif
+
                         <button type="button" class="btn btn-primary mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         {{__('messages.Select theme')}}
                         </button>
@@ -74,7 +87,7 @@
                             <br>
                             <br><br>
                             <div class="mb-3">
-                                <input type="file" accept="image/jpeg,image/jpg,image/png" class="form-control form-control-lg" name="image"><br>
+                                <input type="file" accept="image/jpeg,image/jpg,image/png,image/webp,image/gif" class="form-control form-control-lg" name="image"><br>
                             </div>
                         </div>
                             <button type="submit" class="btn btn-primary">{{__('messages.Apply')}}</button>

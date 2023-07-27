@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Response;
 use JeroenDesloovere\VCard\VCard;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 use Auth;
 use DB;
@@ -708,68 +710,110 @@ class UserController extends Controller
     }
 
     //Save littlelink page (name, description, logo)
-    public function editPage(request $request)
+    public function editPage(Request $request)
     {
-        $request->validate([
-            'littlelink_name' => 'sometimes|max:255|string|isunique:users,id,'.Auth::id(),
-            'name' => 'sometimes|max:255|string',
-        ]);
-
         $userId = Auth::user()->id;
         $littlelink_name = Auth::user()->littlelink_name;
-
+    
+        $validator = Validator::make($request->all(), [
+            'littlelink_name' => [
+                'sometimes',
+                'max:255',
+                'string',
+                'isunique:users,id,'.$userId,
+            ],
+            'name' => 'sometimes|max:255|string',
+            'image' => 'sometimes|image|mimes:jpeg,jpg,png,webp|max:2048', // Max file size: 2MB
+        ], [
+            'littlelink_name.unique' => 'That handle has already been taken.',
+            'image.image' => 'The selected file must be an image.',
+            'image.mimes' => 'The image must be a: JPEG, JPG, PNG, webP.',
+            'image.max' => 'The image size should not exceed 2MB.',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect('/studio/page')->withErrors($validator)->withInput();
+        }
+    
         $profilePhoto = $request->file('image');
         $pageName = $request->littlelink_name;
-        $pageDescription = strip_tags($request->pageDescription,'<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
+        $pageDescription = strip_tags($request->pageDescription, '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
         $pageDescription = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $pageDescription);
         $name = $request->name;
         $checkmark = $request->checkmark;
         $sharebtn = $request->sharebtn;
-
-        User::where('id', $userId)->update(['littlelink_name' => $pageName, 'littlelink_description' => $pageDescription, 'name' => $name]);
-
+    
+        User::where('id', $userId)->update([
+            'littlelink_name' => $pageName,
+            'littlelink_description' => $pageDescription,
+            'name' => $name
+        ]);
+    
         if ($request->hasFile('image')) {
-            $profilePhoto->move(base_path('assets/img'), $userId . '_' . time() . ".png");
+            $fileName = $userId . '_' . time() . "." . $profilePhoto->extension();
+            $profilePhoto->move(base_path('assets/img'), $fileName);
         }
-
-        if($checkmark == "on"){
+    
+        if ($checkmark == "on") {
             UserData::saveData($userId, 'checkmark', true);
         } else {
             UserData::saveData($userId, 'checkmark', false);
         }
-
-        if($sharebtn == "on"){
+    
+        if ($sharebtn == "on") {
             UserData::saveData($userId, 'disable-sharebtn', false);
         } else {
             UserData::saveData($userId, 'disable-sharebtn', true);
         }
-
+    
         return Redirect('/studio/page');
     }
 
     //Upload custom theme background image
-    public function themeBackground(request $request)
+    public function themeBackground(Request $request)
     {
-
         $userId = Auth::user()->id;
         $littlelink_name = Auth::user()->littlelink_name;
-
+    
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,jpg,png,webp,gif|max:2048', // Max file size: 2MB
+        ], [
+            'image.required' => 'Please select an image file.',
+            'image.image' => 'The selected file must be an image.',
+            'image.mimes' => 'The image must be a: JPEG, JPG, PNG, webP, GIF.',
+            'image.max' => 'The image size should not exceed 2MB.',
+        ]);
+    
         $customBackground = $request->file('image');
-
-        if (!empty($customBackground)) {
+    
+        if ($customBackground) {
             $directory = base_path('assets/img/background-img/');
             $files = scandir($directory);
             $pathinfo = "error.error";
-            foreach($files as $file) {
-            if (strpos($file, $userId.'.') !== false) {
-            $pathinfo = $userId. "." . pathinfo($file, PATHINFO_EXTENSION);
-            }}
-            if(file_exists(base_path('assets/img/background-img/').$pathinfo)){File::delete(base_path('assets/img/background-img/').$pathinfo);}
-
-            $customBackground->move(base_path('assets/img/background-img/'), $userId . '_' . time() . "." . $request->file('image')->extension());
+            foreach ($files as $file) {
+                if (strpos($file, $userId . '.') !== false) {
+                    $pathinfo = $userId . "." . pathinfo($file, PATHINFO_EXTENSION);
+                }
+            }
+    
+            if (file_exists(base_path('assets/img/background-img/') . $pathinfo)) {
+                File::delete(base_path('assets/img/background-img/') . $pathinfo);
+            }
+    
+            $fileName = $userId . '_' . time() . "." . $customBackground->extension();
+            $customBackground->move(base_path('assets/img/background-img/'), $fileName);
+    
+            if (extension_loaded('imagick')) {
+                $imagePath = base_path('assets/img/background-img/') . $fileName;
+                $image = new \Imagick($imagePath);
+                $image->stripImage();
+                $image->writeImage($imagePath);
+            }
+    
+            return redirect('/studio/theme');
         }
-
-        return Redirect('/studio/theme');
+    
+        return redirect('/studio/theme')->with('error', 'Please select a valid image file.');
     }
 
     //Delete custom background image
