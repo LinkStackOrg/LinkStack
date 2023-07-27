@@ -389,6 +389,12 @@ return [
     'Profile updated successfully!' => 'Profile updated successfully!',
     'An error occurred while updating your profile.' => 'An error occurred while updating your profile.',
 
+    'That handle has already been taken' => 'That handle has already been taken.',
+    'The selected file must be an image' => 'The selected file must be an image.',
+    'The image must be' => 'The image must be:',
+    'The image size should not exceed 2MB' => 'The image size should not exceed 2MB.',
+    'Please select an image' => 'Please select an image.',
+    
 
     /*
     |--------------------------------------------------------------------------

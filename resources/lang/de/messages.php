@@ -392,6 +392,12 @@ return [
     # Alerts
     'Profile updated successfully!' => 'Profil erfolgreich aktualisiert!',
     'An error occurred while updating your profile.' => 'Beim Aktualisieren Ihres Profils ist ein Fehler aufgetreten.',
+    
+    'That handle has already been taken' => 'Dieser Name ist bereits vergeben.',
+    'The selected file must be an image' => 'Die ausgewählte Datei muss ein Bild sein.',
+    'The image must be' => 'Unterstützte Formate:',
+    'The image size should not exceed 2MB' => 'Die Bildgröße darf 2 MB nicht überschreiten.',
+    'Please select an image' => 'Bitte wählen Sie ein Bild aus.',
 
 
     /*
