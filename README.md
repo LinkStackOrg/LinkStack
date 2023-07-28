@@ -30,14 +30,14 @@
 </p>
 
 <p align="center">
-<a href="https://github.com/linkstackorg/linkstack/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/julianprieber/littlelink-custom?label=Star%20the%20project&logo=GitHub"></a>
-<a href="https://mstdn.social/@linkstack"><img alt="Mastodon Follow" src="https://img.shields.io/mastodon/follow/110147874401985724?domain=http%3A%2F%2Fmstdn.social&style=social"></a>
-<a href="https://discord.linkstack.org"><img alt="Discord online user count" src="https://img.shields.io/discord/955765706111193118?color=4A55CC&label=Discord&logo=Discord&style=flat"></a>
+<a href="https://github.com/linkstackorg/linkstack/stargazers"><img alt="GitHub Repo stars" src="https://img.lss.ovh/github/stars/julianprieber/littlelink-custom?label=Star%20the%20project&logo=GitHub"></a>
+<a href="https://mstdn.social/@linkstack"><img alt="Mastodon Follow" src="https://img.lss.ovh/mastodon/follow/110147874401985724?domain=http%3A%2F%2Fmstdn.social&style=social"></a>
+<a href="https://discord.linkstack.org"><img alt="Discord online user count" src="https://img.lss.ovh/discord/955765706111193118?color=4A55CC&label=Discord&logo=Discord&style=flat"></a>
 </p>
 <p align="center">
-<a href="https://github.com/sponsors/julianprieber"><img alt="GitHub spomsors" src="https://img.shields.io/github/sponsors/JulianPrieber?color=BF4B8A&logo=githubsponsors&style=flat&label=Sponsor%20us%20on%20Github"></a>
-<a href="https://patreon.com/julianprieber"><img alt="Patreon" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Djulianprieber%26type%3Dpatrons&style=flat&logo=patreon"></a>
-<a href="https://liberapay.com/LittleLink-Custom"><img src="https://img.shields.io/liberapay/patrons/LittleLink-Custom?logo=liberapay&label=LiberaPay patrons"></a>
+<a href="https://github.com/sponsors/julianprieber"><img alt="GitHub spomsors" src="https://img.lss.ovh/github/sponsors/JulianPrieber?color=BF4B8A&logo=githubsponsors&style=flat&label=Sponsor%20us%20on%20Github"></a>
+<a href="https://patreon.com/julianprieber"><img alt="Patreon" src="https://img.lss.ovh/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Djulianprieber%26type%3Dpatrons&style=flat&logo=patreon"></a>
+<a href="https://liberapay.com/LittleLink-Custom"><img src="https://img.lss.ovh/liberapay/patrons/LittleLink-Custom?logo=liberapay&label=LiberaPay patrons"></a>
 </p>
 
 ---
@@ -45,7 +45,7 @@
 <p align="center">
   <a href="https://github.com/linkstackorg/linkstack/releases/latest/download/linkstack.zip"><img src="https://raw.githubusercontent.com/LinkStackOrg/branding/main/badges/png/download_latest.png" alt="Download latest" width="380" ></a>
     <br>
-	<a href="https://github.com/linkstackorg/linkstack/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/JulianPrieber/LittleLink-Custom?label=Latest%20release"></a>
+	<a href="https://github.com/linkstackorg/linkstack/releases"><img alt="GitHub release (latest by date)" src="https://img.lss.ovh/github/v/release/JulianPrieber/LittleLink-Custom?label=Latest%20release"></a>
 </p>
 
 ---
@@ -218,7 +218,7 @@ If you switched your database to MySQL, your database will not be included in th
 
 <a name="License"></a>## License
 
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![License: AGPL v3](https://img.lss.ovh/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 As of version 4.0.0, the license for this project has been updated to the GNU Affero General Public License v3.0, which explicitly requires that any modifications made to the project must be made public. This license also requires that a copyright notice and license notice be included in any copies or derivative works of the project.
 
