@@ -389,6 +389,11 @@ return [
     'Profile updated successfully!' => 'Profilen uppdaterades!',
     'An error occurred while updating your profile.' => 'Ett fel uppstod medans din profil uppdaterades.',
 
+    'That handle has already been taken' => 'Det angivna användarnamnet är upptaget.',
+    'The selected file must be an image' => 'Den valda filen måste bestå av en bild.',
+    'The image must be' => 'Bilden måste:',
+    'The image size should not exceed 2MB' => 'Bildstorleken bör ej överskrida 2MB.',
+    'Please select an image' => 'Vänligen välj en bild.',
 
     /*
     |--------------------------------------------------------------------------
