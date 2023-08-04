@@ -151,7 +151,7 @@ jobs:
             version=${TAG_VERSION#"v"}
 
             # JSON payload with the new content
-            payload="{\"message\": \"Update version.json to $version\", \"content\": \"$(echo "$version" | base64 -w 0)\", \"sha\": \"$sha\"}"
+            payload="{\"message\": \"Update version.json to $version\", \"content\": \"$(echo -ne "$version\n" | base64 -w 0)\", \"sha\": \"$sha\"}"
 
             # API endpoint to create a new commit
             url="https://api.github.com/repos/$repo/contents/$file_path"
