@@ -34,10 +34,10 @@ jobs:
           mkdir linkstack
           cd linkstack
 
-          echo "${GITHUB_REF##*/}" > version.json
-
           TAG_VERSION="${GITHUB_REF##*/}"
           version=${TAG_VERSION#"v"}
+
+          echo "$version" > version.json
 
           git clone https://github.com/LinkStackOrg/LinkStack/
 
