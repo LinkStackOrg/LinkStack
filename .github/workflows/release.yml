@@ -1,0 +1,179 @@
+name: Setup Ubuntu with Composer and PHP 8
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  setup-ubuntu:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check for GitHub API key
+        if: ${{ github.event_name == 'push' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        run: |
+          if [ -z "${GITHUB_TOKEN}" ]; then
+            echo "GitHub API key not found. Exiting..."
+            exit 0
+          else
+            echo "GitHub API key found."
+          fi
+
+      - name: Install PHP cli + composer
+        run: |
+          sudo apt update
+          sudo apt install php-cli unzip
+          cd ~
+          curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
+          HASH=`curl -sS https://composer.github.io/installer.sig`
+          sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+          cd /tmp
+          mkdir linkstack
+          cd linkstack
+
+          echo "${GITHUB_REF##*/}" > version.json
+
+          TAG_VERSION="${GITHUB_REF##*/}"
+          version=${TAG_VERSION#"v"}
+
+          git clone https://github.com/LinkStackOrg/LinkStack/
+
+          mkdir linkstack
+          mv LinkStack linkstack/linkstack
+
+          cd linkstack
+
+          curl -o README.md https://gist.githubusercontent.com/JulianPrieber/7a3f18a404c524d59c147a8d4f1ad33c/raw/3008f0893da2effaee56b99ee8b956fa533d9b07/README.md
+
+          cd linkstack
+
+          cp "../../version.json" "version.json"
+          
+          composer update --no-scripts -vvv
+          
+          php artisan migrate
+          php artisan db:seed
+          php artisan db:seed --class="PageSeeder"
+          php artisan db:seed --class="ButtonSeeder"
+          
+          rm -r ".git"
+          rm -r ".github"
+          rm README.md
+          cd ../../
+          
+          rsync -av linkstack/linkstack update
+
+          cd update
+          
+          mv linkstack/database/database.sqlite database.sqlite
+
+          curl -o "HOW TO UPDATE.md" https://gist.githubusercontent.com/JulianPrieber/afc782666cf8c8f7a1a9cb9928498af5/raw/dbbbefb3c88ecd7703efbc866209629d9d130659/HOW%2520TO%2520UPDATE.md
+
+          rm linkstack/INSTALLING
+
+          cd ..
+
+          rsync -av linkstack/linkstack/ "$version"
+          
+          rm "$version/.env"
+          rm "$version/INSTALLING"
+          rm "$version/database/database.sqlite"
+          cp version.json "$version/version.json"
+          echo "v$version" > "$version/vbeta.json"
+
+          touch /tmp/linkstack/linkstack/linkstack/storage/app/ISINSTALLED
+
+          cd /tmp/linkstack
+          
+          cd "$version"
+          zip -r "$version.zip" *
+          mv "$version.zip" ../
+          cd ..
+
+          cd linkstack
+          zip -r "linkstack.zip" *
+          mv linkstack.zip ../
+          cd ..
+
+          cd update
+          zip -r "update.zip" *
+          mv update.zip ../
+          cd ..
+
+      - name: Create GitHub Release
+        if: ${{ github.event_name == 'push' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        run: |
+          if [ -z "${GITHUB_TOKEN}" ]; then
+            echo "GitHub API key not found. Exiting..."
+            exit 1
+          else
+            echo "GitHub API key found."
+            cd /tmp/linkstack
+
+            # Get the repository name in the format 'OWNER/REPO'
+            REPO_NAME="LinkStackOrg/LinkStack"
+
+            # Upload 'update.zip'
+            gh release upload "${GITHUB_REF##*/}" "update.zip" --clobber -R "$REPO_NAME"
+
+            # Upload 'linkstack.zip'
+            gh release upload "${GITHUB_REF##*/}" "linkstack.zip" --clobber -R "$REPO_NAME"
+          fi
+
+      - name: Update version.json
+        if: ${{ github.event_name == 'push' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        run: |
+          if [ -z "${GITHUB_TOKEN}" ]; then
+            echo "GitHub API key not found. Exiting..."
+            exit 1
+          else
+            # GitHub credentials
+            username="JulianPrieber"
+            token="${{ secrets.MY_GITHUB_TOKEN }}"
+
+            # The repository and file path
+            repo="LinkStackOrg/LinkStack"
+            file_path="version.json"
+
+            # Fetch the latest commit's SHA for the file
+            sha=$(curl -u "$username:$token" -s "https://api.github.com/repos/$repo/contents/$file_path" | grep -oP '(?<="sha": ")[^"]+')
+
+            # Get version from version.json
+            cd /tmp/linkstack
+            TAG_VERSION="${GITHUB_REF##*/}"
+            version=${TAG_VERSION#"v"}
+
+            # JSON payload with the new content
+            payload="{\"message\": \"Update version.json to $version\", \"content\": \"$(echo "$version" | base64 -w 0)\", \"sha\": \"$sha\"}"
+
+            # API endpoint to create a new commit
+            url="https://api.github.com/repos/$repo/contents/$file_path"
+
+            # Make the API request to update the file
+            curl -X PUT -u "$username:$token" -d "$payload" "$url"
+          fi
+
+      - name: Upload to Update Server
+        if: ${{ github.event_name == 'push' }}
+        run: |
+            cd /tmp/linkstack
+            ls
+            TAG_VERSION="${GITHUB_REF##*/}"
+            version=${TAG_VERSION#"v"}
+
+            # Install the OpenSSH client
+            sudo apt-get install -y openssh-client
+
+            # Clear the remote directory
+            sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "rm -rf ${{ secrets.REMOTE_PATH }}/*"
+
+            # Use SSH to upload the file to the remote server
+            sshpass -p "${{ secrets.SERVER_PASSWORD }}" scp -o StrictHostKeyChecking=no -P ${{ secrets.SERVER_PORT }} $version.zip ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.REMOTE_PATH }}
+
