@@ -427,6 +427,9 @@ class ButtonSeeder extends Seeder
             [
             'name' => 'itaku'    
             ],
+            [
+            'name' => 'furaffinity'
+            ],
         ];
 
          Button::insert($buttons);

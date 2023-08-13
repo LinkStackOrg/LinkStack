@@ -477,6 +477,16 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* FurAffinity */
+.button.button-furaffinity {
+  color: #FFFFFF;
+  background-color: #FAAF3A;
+}
+.button.button-furaffinity:hover,
+.button.button-furaffinity:focus {
+  filter: brightness(90%);
+}
+
 /* Github */
 .button.button-github {
   color: #FFFFFF;
