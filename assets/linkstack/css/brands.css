@@ -542,6 +542,16 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* Itaku */
+.button.button-itaku {
+  color: #000;
+  background-color: #ffeb3b;
+}
+.button.button-itaku:hover,
+.button.button-itaku:focus {
+  filter: brightness(90%);
+}
+
 /* itch.io */
 .button.button-itchio {
   color: #ffffff;
