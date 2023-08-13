@@ -14,6 +14,7 @@ $buttonNames = array(
     'github' => 'GitHub',
     'gitlab' => 'GitLab',
     'itchio' => 'itch.io',
+    'last-fm' => 'last.fm'
     'linkedin' => 'linkedIn',
     'linkstack' => 'LinkStack',
     'openstreetmap' => 'OpenStreetMap',

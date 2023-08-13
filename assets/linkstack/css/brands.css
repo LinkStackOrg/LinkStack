@@ -582,6 +582,16 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* last.fm */
+.button.button-last-fm {
+  color: #ffffff;
+  background-color: #b90000;
+}
+.button.button-last-fm:hover,
+.button.button-last-fm:focus {
+  filter: brightness(90%);
+}
+
 /* Lemmy */
 .button.button-lemmy {
   color: #000000;

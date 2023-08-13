@@ -421,6 +421,9 @@ class ButtonSeeder extends Seeder
             [
             'name' => 'trakt'
             ],
+            [
+            'name' => 'last-fm'
+            ],
         ];
 
          Button::insert($buttons);
