@@ -477,6 +477,16 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* FurAffinity */
+.button.button-furaffinity {
+  color: #FFFFFF;
+  background-color: #FAAF3A;
+}
+.button.button-furaffinity:hover,
+.button.button-furaffinity:focus {
+  filter: brightness(90%);
+}
+
 /* Github */
 .button.button-github {
   color: #FFFFFF;
@@ -542,6 +552,16 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* Itaku */
+.button.button-itaku {
+  color: #000;
+  background-color: #ffeb3b;
+}
+.button.button-itaku:hover,
+.button.button-itaku:focus {
+  filter: brightness(90%);
+}
+
 /* itch.io */
 .button.button-itchio {
   color: #ffffff;
@@ -579,6 +599,16 @@ button:hover,
 }
 .button.button-ko-fi:hover,
 .button.button-ko-fi:focus {
+  filter: brightness(90%);
+}
+
+/* last.fm */
+.button.button-last-fm {
+  color: #ffffff;
+  background-color: #b90000;
+}
+.button.button-last-fm:hover,
+.button.button-last-fm:focus {
   filter: brightness(90%);
 }
 
