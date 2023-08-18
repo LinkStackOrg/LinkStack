@@ -75,36 +75,39 @@ class AdminController extends Controller
 // Get users by type
 public function users(Request $request)
 {
+    // Query to get the admin user with non-null 'auth_as' value
+    $adminUser = User::whereNotNull('auth_as')->where('role', 'admin')->first();
+
     $usersType = $request->type;
 
+    $usersQuery = User::select('id', 'name', 'email', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at', 'updated_at');
+
     switch ($usersType) {
-        case 'all':
-            $users = User::select('id', 'name', 'email', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at', 'updated_at')->get();
-            break;
         case 'user':
-            $users = User::where('role', 'user')->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at', 'updated_at')->get();
+            $usersQuery->where('role', 'user');
             break;
         case 'vip':
-            $users = User::where('role', 'vip')->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at', 'updated_at')->get();
+            $usersQuery->where('role', 'vip');
             break;
         case 'admin':
-            $users = User::where('role', 'admin')->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at', 'updated_at')->get();
+            $usersQuery->where('role', 'admin');
             break;
+    }
+
+    $users = $usersQuery->get();
+
+    // Rest of your code to calculate click counts and link counts for each user
+
+    foreach ($users as $user) {
+        $user->clicks = $clicksCounts[$user->id]->total_clicks ?? 0;
+        $user->links = $linksCounts[$user->id]->total_links ?? 0;
     }
 
     $data['users'] = $users;
-
-    // Loop through each user to get their click count and link count
-    foreach ($users as $user) {
-        $clicks = Link::where('user_id', $user->id)->sum('click_number');
-        $links = Link::where('user_id', $user->id)->select('link')->count();
-        $user->clicks = $clicks;
-        $user->links = $links;
-    }
+    $data['adminUser'] = $adminUser;
 
     return view('panel/users', $data);
 }
-
 
     //Search user by name
     public function searchUser(Request $request)

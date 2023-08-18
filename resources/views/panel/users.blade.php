@@ -93,13 +93,13 @@
                                 <td data-created>{{$date}}</td>
                                 <td class="shorten" data-last title="{{ $lastSeenDate }}">{{$daysAgo}}</td>
                                 @if(env('REGISTER_AUTH') !== 'auth')
-                                <td>@if($user->find($user->id)->role == 'admin' and $user->email_verified_at != '')<center>-</center> @else
+                                <td>@if($user->role == 'admin' and $user->email_verified_at != '')<center>-</center> @else
                                 <a href="{{ route('verifyUser', ['verify' => '-' . $user->email_verified_at, 'id' => $user->id] ) }}" class="text-danger">@if($user->email_verified_at == '')<span class="badge bg-danger">{{__('messages.Pending')}}</span>@else<span class="badge bg-success">{{__('messages.Verified')}}</span></a>@endif</td>
                                 @endif
                                 @endif
-                                <td>@if($user->find($user->id)->role == 'admin' and $user->id == 1)<center>-</center>@else<a href="{{ route('blockUser', ['block' => $user->block, 'id' => $user->id] ) }}">@if($user->block == 'yes') <span class="badge bg-danger">{{__('messages.Pending')}}</span> @elseif($user->block == 'no') <span class="badge bg-success">{{__('messages.Approved')}}</span> @endif</a>@endif</td>
+                                <td>@if($user->role == 'admin' and $user->id == 1)<center>-</center>@else<a href="{{ route('blockUser', ['block' => $user->block, 'id' => $user->id] ) }}">@if($user->block == 'yes') <span class="badge bg-danger">{{__('messages.Pending')}}</span> @elseif($user->block == 'no') <span class="badge bg-success">{{__('messages.Approved')}}</span> @endif</a>@endif</td>
                                 <td>
-                                  @if($user->find($user->id)->role == 'admin' and $user->id == 1)<center>-</center>
+                                  @if($user->role == 'admin' and $user->id == 1)<center>-</center>
                                   @else
                                   <div class="flex align-items-center list-user-action">
                                     <a class="btn btn-sm btn-icon btn-success" data-bs-toggle="tooltip" data-bs-placement="top" data-original-title="{{__('messages.tt.All links')}}" href="{{ route('showLinksUser', $user->id ) }}" aria-label="All links" data-bs-original-title="All links">
@@ -119,8 +119,7 @@
                                           </svg>
                                        </span>
                                     </a>
-                                    @php $adminUser = User::whereNotNull('auth_as')->where('role', 'admin')->first(); @endphp
-                                    <a class="btn btn-sm btn-icon btn-primary" style="@if(!$adminUser && Auth::user()->id !== $user->id) background:#3a57e8;border-color:#3a57e8; @else background:#6c757d;border-color:#6c757d; @endif" data-bs-toggle="tooltip" data-bs-placement="top" data-original-title="{{__('messages.tt.Impersonate')}}" @if(!$adminUser && Auth::user()->id !== $user->id) href="{{ route('authAsID', $user->id ) }}" @endif aria-label="Impersonate" data-bs-original-title="Impersonate">
+                                    <a class="btn btn-sm btn-icon btn-primary" style="@if(!$user->adminUser && Auth::user()->id !== $user->id) background:#3a57e8;border-color:#3a57e8; @else background:#6c757d;border-color:#6c757d; @endif" data-bs-toggle="tooltip" data-bs-placement="top" data-original-title="{{__('messages.tt.Impersonate')}}" @if(!$user->adminUser && Auth::user()->id !== $user->id) href="{{ route('authAsID', $user->id ) }}" @endif aria-label="Impersonate" data-bs-original-title="Impersonate">
                                       <span class="btn-inner">   
                                          <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path fill-rule="evenodd" clip-rule="evenodd" d="M9.59151 15.2068C13.2805 15.2068 16.4335 15.7658 16.4335 17.9988C16.4335 20.2318 13.3015 20.8068 9.59151 20.8068C5.90151 20.8068 2.74951 20.2528 2.74951 18.0188C2.74951 15.7848 5.88051 15.2068 9.59151 15.2068Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
