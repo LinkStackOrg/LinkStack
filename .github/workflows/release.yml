@@ -25,6 +25,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install php8.0-cli unzip
+          php -v
           cd ~
           curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
           HASH=`curl -sS https://composer.github.io/installer.sig`
