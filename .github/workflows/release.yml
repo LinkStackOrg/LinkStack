@@ -50,7 +50,7 @@ jobs:
 
           cp "../../version.json" "version.json"
           
-          /usr/bin/php8.0 /usr/local/bin/composer update --no-scripts
+          /usr/bin/php8.0 /usr/test/bin/composer update --no-scripts
           
           php artisan migrate
           php artisan db:seed
