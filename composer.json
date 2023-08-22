@@ -5,7 +5,7 @@
     "keywords": ["link"],
     "license": "GPL-3.0-or-later",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": ">=8.0",
         "awssat/laravel-visits": "^6.0",
         "bacon/bacon-qr-code": "^2.0",
         "codedge/laravel-selfupdater": "^3.6",
