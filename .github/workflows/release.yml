@@ -21,16 +21,8 @@ jobs:
             echo "GitHub API key found."
           fi
 
-      - name: Install PHP cli + composer
+      - name: Updating Dependencies + zip
         run: |
-          sudo apt update
-          sudo apt install php8.0-cli unzip
-          php -v
-          cd ~
-          curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
-          HASH=`curl -sS https://composer.github.io/installer.sig`
-          sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
-
           cd /tmp
           mkdir linkstack
           cd linkstack
@@ -53,7 +45,7 @@ jobs:
 
           cp "../../version.json" "version.json"
           
-          php8.0 /usr/local/bin/composer update --no-scripts
+          /usr/bin/php8.0 /usr/local/bin/composer update --no-scripts
           
           php artisan migrate
           php artisan db:seed
