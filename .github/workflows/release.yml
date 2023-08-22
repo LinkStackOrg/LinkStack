@@ -29,7 +29,7 @@ jobs:
           cd ~
           curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
           HASH=`curl -sS https://composer.github.io/installer.sig`
-          sudo php8.0 /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+          sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
           cd /tmp
           mkdir linkstack
@@ -53,7 +53,7 @@ jobs:
 
           cp "../../version.json" "version.json"
           
-          composer update --no-scripts -vvv
+          php8.0 /usr/local/bin/composer update --no-scripts
           
           php artisan migrate
           php artisan db:seed
