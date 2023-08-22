@@ -28,6 +28,8 @@ jobs:
           HASH=`curl -sS https://composer.github.io/installer.sig`
           sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
+          sudo update-alternatives --set php /usr/bin/php8.0
+
           cd /tmp
           mkdir linkstack
           cd linkstack
@@ -50,7 +52,7 @@ jobs:
 
           cp "../../version.json" "version.json"
           
-          /usr/bin/php8.0 /usr/local/bin/composer update --no-scripts
+          composer update --no-scripts
           
           php artisan migrate
           php artisan db:seed
