@@ -334,28 +334,26 @@ public function SendTestMail(Request $request)
 
         if (!empty($logo)) {
             // Delete existing image
-            $directory = base_path('/assets/linkstack/images/');
-            $files = scandir($directory);
-            $pathinfo = "error.error";
-            foreach($files as $file) {
-            if (strpos($file, "avatar".'.') !== false) {
-            $pathinfo = "avatar". "." . pathinfo($file, PATHINFO_EXTENSION);
-            }}
-            if(file_exists(base_path('/assets/linkstack/images/').$pathinfo)){File::delete(base_path('/assets/linkstack/images/').$pathinfo);}
+            $path = findFile('avatar');
+            $path = base_path('/assets/linkstack/images/'.$path);
+    
+                // Delete existing image
+                if (File::exists($path)) {
+                    File::delete($path);
+                }
 
             $logo->move(base_path('/assets/linkstack/images/'), "avatar" . '_' . time() . "." .$request->file('image')->extension());
         }
 
         if (!empty($icon)) {
             // Delete existing image
-            $directory = base_path('/assets/linkstack/images/');
-            $files = scandir($directory);
-            $pathinfo = "error.error";
-            foreach($files as $file) {
-            if (strpos($file, "favicon".'.') !== false) {
-            $pathinfo = "favicon". "." . pathinfo($file, PATHINFO_EXTENSION);
-            }}
-            if(file_exists(base_path('/assets/linkstack/images/').$pathinfo)){File::delete(base_path('/assets/linkstack/images/').$pathinfo);}
+            $path = findFile('favicon');
+            $path = base_path('/assets/linkstack/images/'.$path);
+    
+                // Delete existing image
+                if (File::exists($path)) {
+                    File::delete($path);
+                }
 
             $icon->move(base_path('/assets/linkstack/images/'), "favicon" . '_' . time() . "." . $request->file('icon')->extension());
         }
