@@ -365,15 +365,13 @@ public function SendTestMail(Request $request)
     //Delete avatar
     public function delAvatar()
     {
+        $path = findFile('avatar');
+        $path = base_path('/assets/linkstack/images/'.$path);
+
             // Delete existing image
-            $directory = base_path('/assets/linkstack/images/');
-            $files = scandir($directory);
-            $pathinfo = "error.error";
-            foreach($files as $file) {
-            if (strpos($file, "avatar".'.') !== false) {
-            $pathinfo = "avatar". "." . pathinfo($file, PATHINFO_EXTENSION);
-            }}
-            if(file_exists(base_path('/assets/linkstack/images/').$pathinfo)){File::delete(base_path('/assets/linkstack/images/').$pathinfo);}
+            if (File::exists($path)) {
+                File::delete($path);
+            }
         
         return back();
     }
@@ -382,14 +380,13 @@ public function SendTestMail(Request $request)
     public function delFavicon()
     {
             // Delete existing image
-            $directory = base_path('/assets/linkstack/images/');
-            $files = scandir($directory);
-            $pathinfo = "error.error";
-            foreach($files as $file) {
-            if (strpos($file, "favicon".'.') !== false) {
-            $pathinfo = "favicon". "." . pathinfo($file, PATHINFO_EXTENSION);
-            }}
-            if(file_exists(base_path('/assets/linkstack/images/').$pathinfo)){File::delete(base_path('/assets/linkstack/images/').$pathinfo);}
+            $path = findFile('favicon');
+            $path = base_path('/assets/linkstack/images/'.$path);
+    
+                // Delete existing image
+                if (File::exists($path)) {
+                    File::delete($path);
+                }
 
         return back();
     }
