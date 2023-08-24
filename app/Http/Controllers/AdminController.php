@@ -99,8 +99,8 @@ public function users(Request $request)
     // Rest of your code to calculate click counts and link counts for each user
 
     foreach ($users as $user) {
-        $user->clicks = $clicksCounts[$user->id]->total_clicks ?? 0;
-        $user->links = $linksCounts[$user->id]->total_links ?? 0;
+        $user->clicks = Link::where('user_id', $user->id)->sum('click_number');
+        $user->links = Link::where('user_id', $user->id)->select('link')->count();
     }
 
     $data['users'] = $users;
