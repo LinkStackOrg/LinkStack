@@ -225,6 +225,7 @@ return [
     | 'button' => 'website'          |
     | 'button' => 'heading'          |
     | 'button' => 'space'            |
+    | 'button' => 'bluesky'          |
     |--------------------------------|
     */
 
