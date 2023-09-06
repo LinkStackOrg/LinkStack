@@ -25,7 +25,11 @@ class ButtonSeeder extends Seeder
             [
 			'name' => 'custom_website'
             ],
-			
+            
+            [
+            'name' => 'bluesky'
+            ],
+
             [
 			'name' => 'bandcamp'
             ],
