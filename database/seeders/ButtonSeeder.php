@@ -31,6 +31,10 @@ class ButtonSeeder extends Seeder
             ],
 			
             [
+            'name' => 'bluesky'
+            ],
+
+            [
 			'name' => 'buy me a coffee'
             ],
 			
