@@ -254,6 +254,17 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* Bluesky */
+.button.button-bluesky {
+  color: #000000;
+  background-color: #F3F9FF;
+  border: 1px solid #212121;
+}
+.button.button-bluesky:hover,
+.button.button-bluesky:focus {
+  filter: brightness(90%);
+}
+
 /* Briar */
 .button.button-briar {
   color: #FFFFFF;
