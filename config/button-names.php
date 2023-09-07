@@ -8,6 +8,7 @@ $buttonNames = array(
     'apple-music' => 'Apple Music',
     'apple-podcasts' => 'Apple Podcasts',
     'bookwyrm' => 'BookWyrm',
+    'bluesky' => 'Bluesky',
     'dev-to' => 'DEV',
     'epic-games' => 'Epic Games',
     'f-droid' => 'F-Droid',
