@@ -440,7 +440,7 @@ public function SendTestMail(Request $request)
     //Shows config file editor page
     public function showFileEditor(request $request)
     {
-        return view('/panel/config');
+        return redirect('/panel/config');
     }
 
     //Saves advanced config
