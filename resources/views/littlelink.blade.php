@@ -5,9 +5,16 @@
 <head>
   <meta charset="utf-8">
 
-{{-- Mastodon re="me" link --}}
+{{-- Mastodon rel="me" link --}}
 @foreach($links as $link)
   @if($link->name === "mastodon")
+    <link href="{{$link->link}}" rel="me">
+  @endif
+@endforeach
+
+{{-- Firefish rel="me" link --}}
+@foreach($links as $link)
+  @if($link->name === "firefish")
     <link href="{{$link->link}}" rel="me">
   @endif
 @endforeach

@@ -430,6 +430,23 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* Firefish */
+.button.button-firefish {
+  color: #fff;
+  background-image: linear-gradient(
+    45deg,
+    #DB44DB,
+    1%,
+    #EC476D,
+    80%,
+    #F6AE4A
+  );
+}
+.button.button-firefish:hover,
+.button.button-firefish:focus {
+  filter: brightness(90%);
+}
+
 /* Firefox */
 .button.button-firefox {
   color: #FFFFFF;
