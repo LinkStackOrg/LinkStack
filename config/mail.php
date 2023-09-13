@@ -34,6 +34,14 @@ return [
     */
 
     'mailers' => [
+        'sendmail' => [
+            'transport' => 'sendmail',
+            'path' => env('MAIL_SENDMAIL', '/usr/sbin/sendmail -bs'),
+            'from' => [
+                'address' => env('MAIL_FROM_ADDRESS'),
+                'name' => env('MAIL_FROM_NAME'),
+            ]
+        ],
         'smtp' => [
             'transport' => 'smtp',
             'host' => env('MAIL_HOST'),
