@@ -216,7 +216,8 @@ If you switched your database to MySQL, your database will not be included in th
 
 <br>
 
-<a name="License"></a>## License
+<a name="License"></a>
+## License
 
 [![License: AGPL v3](https://img.lss.ovh/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
