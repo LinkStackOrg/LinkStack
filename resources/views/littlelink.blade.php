@@ -5,13 +5,18 @@
 <head>
   <meta charset="utf-8">
 
-{{-- Mastodon re="me" link --}}
+{{-- Fediverse rel="me" links --}}
+@php
+  $relMe = "mastodon, firefish";
+  $relMeList = explode(', ', $relMe);
+@endphp
+
 @foreach($links as $link)
-  @if($link->name === "mastodon")
+  @if(in_array($link->name, $relMeList))
     <link href="{{$link->link}}" rel="me">
   @endif
 @endforeach
-  
+
 <?php
 // Theme Config
 if (!function_exists('theme')) {
@@ -51,7 +56,7 @@ return $path;}
   @endif
 
 @if(env('CUSTOM_META_TAGS') == 'true')
-  @include('layouts.meta') 
+  @include('layouts.meta')
 @else
   <meta name="description" content="{{ $userinfo->littlelink_description }}">
   <meta name="author" content="{{ $userinfo->name }}">
@@ -82,7 +87,7 @@ if($customBackgroundExists == true){
 </style>
 @endif
 @endif
-  
+
 <!--#### BEGIN Meta Tags social media preview images  ####-->
   <!-- This shows a preview for title, description and avatar image of users profiles if shared on social media sites -->
 
@@ -98,7 +103,7 @@ if($customBackgroundExists == true){
     @else
     <meta property="og:image" content="{{ asset('assets/linkstack/images/logo.svg') }}">
     @endif
-    
+
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="{{ url('') }}/{{ "@" . $littlelink_name }}">
@@ -119,7 +124,7 @@ if($customBackgroundExists == true){
   {{-- <script>{!! file_get_contents(base_path("assets/external-dependencies/fontawesome.js")) !!}</script> --}}
   <style>{!! str_replace('../', 'studio/', file_get_contents(base_path("assets/external-dependencies/fontawesome.css"))) !!}</style>
 
-  @include('layouts.fonts') 
+  @include('layouts.fonts')
   <style>{!! file_get_contents(base_path("assets/linkstack/css/normalize.css")) !!}</style>
   <style>{!! file_get_contents(base_path("assets/linkstack/css/animate.css")) !!}</style>
   @if(file_exists(base_path("assets/linkstack/images/").findFile('favicon')))
@@ -265,7 +270,7 @@ if($customBackgroundExists == true){
         <!-- Short Bio -->
         <style>.description-parent * {margin-bottom: 1em;}.description-parent {padding-bottom: 30px;}</style>
         <center><div class="fadein description-parent"><p class="fadein">@if(env('ALLOW_USER_HTML') === true){!! $info->littlelink_description !!}@else{{ $info->littlelink_description }}@endif</p></div></center>
-        
+
         <!-- Icons -->
         @php $icons = DB::table('links')->where('user_id', $userinfo->id)->where('button_id', 94)->get(); @endphp
         @if(count($icons) > 0)
@@ -276,7 +281,7 @@ if($customBackgroundExists == true){
         </div>
         @endif
 
-        @endforeach		
+        @endforeach
 
         <!-- Buttons -->
         @php $initial = 1; @endphp
@@ -295,6 +300,9 @@ if($customBackgroundExists == true){
             @break
         @case('buy me a coffee')
         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-coffee button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="{{ $link->name }}" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/coffee{{theme('custom_icon_extension')}} @else{{ asset('\/assets/linkstack/icons\/')}}coffee.svg @endif">Buy me a Coffee</a></div>
+            @break
+            @case('firefish')
+        <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button button-hover icon-hover" rel="me noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="{{ $link->name }}" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/{{$linkName}}{{theme('custom_icon_extension')}} @else{{ asset('\/assets/linkstack/icons\/') . "firefish" }}.svg @endif">{{ $link->title }}</a></div>
             @break
         @case('mastodon')
         <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $link->name }} button button-hover icon-hover" rel="me noopener noreferrer nofollow" href="{{ route('clickNumber') . '/' . $link->id . "?" . $link->link }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="{{ $link->name }}" class="icon hvr-icon" src="@if(theme('use_custom_icons') == "true"){{ url('themes/' . $GLOBALS['themeName'] . '/extra/custom-icons')}}/{{$linkName}}{{theme('custom_icon_extension')}} @else{{ asset('\/assets/linkstack/icons\/') . "mastodon" }}.svg @endif">{{ $link->title }}</a></div>
@@ -334,7 +342,7 @@ if($customBackgroundExists == true){
 @endforeach
 
         @include('layouts.footer')
-          
+
       </div>
     </div>
   </div>
