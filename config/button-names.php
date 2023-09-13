@@ -11,6 +11,7 @@ $buttonNames = array(
     'dev-to' => 'DEV',
     'epic-games' => 'Epic Games',
     'f-droid' => 'F-Droid',
+    'firefish' => 'Firefish',
     'furaffinity' => 'FurAffinity',
     'github' => 'GitHub',
     'gitlab' => 'GitLab',
