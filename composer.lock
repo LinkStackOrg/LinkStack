@@ -1874,24 +1874,24 @@
         },
         {
             "name": "jeroendesloovere/vcard",
-            "version": "v1.7.3",
+            "version": "v1.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeroendesloovere/vcard.git",
-                "reference": "2b8b6190c613d368b8cb6552e59cf6e6e7d0aea9"
+                "reference": "11a1cc62ffc2074838b138e9ae0790951004dd8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeroendesloovere/vcard/zipball/2b8b6190c613d368b8cb6552e59cf6e6e7d0aea9",
-                "reference": "2b8b6190c613d368b8cb6552e59cf6e6e7d0aea9",
+                "url": "https://api.github.com/repos/jeroendesloovere/vcard/zipball/11a1cc62ffc2074838b138e9ae0790951004dd8e",
+                "reference": "11a1cc62ffc2074838b138e9ae0790951004dd8e",
                 "shasum": ""
             },
             "require": {
                 "behat/transliterator": "~1.0",
-                "php": ">=5.3.3"
+                "php": ">=7.3.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.6.*"
+                "phpunit/phpunit": "^9.3"
             },
             "type": "library",
             "autoload": {
@@ -1921,9 +1921,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jeroendesloovere/vcard/issues",
-                "source": "https://github.com/jeroendesloovere/vcard/tree/v1.7.3"
+                "source": "https://github.com/jeroendesloovere/vcard/tree/v1.7.4"
             },
-            "time": "2021-11-24T20:21:20+00:00"
+            "time": "2023-09-07T19:46:46+00:00"
         },
         {
             "name": "laravel/framework",
