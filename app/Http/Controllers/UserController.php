@@ -175,7 +175,6 @@ class UserController extends Controller
         $LinkTitle = ($request->link_text ?? $request->link_title) ?? $request->title;
         $LinkURL = $request->link_url ?? $request->link;
 
-
         $OrigLink = Link::find($request->linkid);
 
         $customParams = [];
@@ -436,6 +435,10 @@ class UserController extends Controller
                 $links->button_id = $button?->id;
             }
 
+            if(empty($links->button_id)) {
+                return redirect(route('showButtons')); die;
+            }
+            
             $links->save();
 
             $links->order = ($links->id - 1);
