@@ -211,12 +211,15 @@ public function SendTestMail(Request $request)
     {
         $id = $request->id;
 
-        $user = User::find($id);
-
+        Link::where('user_id', $id)->delete();
+    
         Schema::disableForeignKeyConstraints();
+        
+        $user = User::find($id);
         $user->forceDelete();
+    
         Schema::enableForeignKeyConstraints();
-
+    
         return redirect('admin/users/all');
     }
 
