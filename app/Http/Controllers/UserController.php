@@ -959,6 +959,9 @@ class UserController extends Controller
         $id = $request->id;
 
     if($id == Auth::id() and $id != "1") {
+
+        Link::where('user_id', $id)->delete();
+
         $user = User::find($id);
 
         Schema::disableForeignKeyConstraints();
