@@ -37,7 +37,10 @@ php artisan db:seed --class="ButtonSeeder"
 5. Move the folder into a local web server (make sure you double-check the [requirements](https://linkstack.org/docs/d/installation-requirements/)).
 6. Now edit any files you want to change.
 7. Commit your changes to your forked repository.
-2. Issue that pull request!
+8. Issue that pull request!
+
+### Credentials for your development environment
+The default seeded user is `admin@admin.com` with password `12345678` as set in [AdminSeeder.php](database/seeders/AdminSeeder.php)
 
 ## Any contributions you make will be under the GPL-3.0 Software License
 
