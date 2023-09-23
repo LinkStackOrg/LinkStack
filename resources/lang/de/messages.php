@@ -353,6 +353,9 @@ return [
 
     'My Profile' => 'Mein Profil',
     'Profile Picture' => 'Profilbild',
+    'Profile Picture Sizes' => 'Erweiterte Stil-Konfiguration für Profilbild (z.B., px, %, auto)'
+    'Profile Picture Width' => 'Profilbildbreite'
+    'Profile Picture Height' => 'Profilbildhöhe'
     'Page URL' => 'Seiten-URL',
     'Display name' => 'Anzeigename',
     'Name' => 'Name',

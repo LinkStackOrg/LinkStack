@@ -25,6 +25,8 @@ class AdminSeeder extends Seeder
                 'role' => 'admin',
                 'littlelink_name' => 'admin',
                 'littlelink_description' => 'admin page',
+                'profile_picture_height' => "128px",
+                'profile_picture_width' => "128px",
             ]
         ];
 

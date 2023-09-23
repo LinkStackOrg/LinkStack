@@ -257,9 +257,9 @@ if($customBackgroundExists == true){
       <div class="column" style="margin-top: 5%">
         <!-- Your Image Here -->
           @if(file_exists(base_path(findAvatar($userinfo->id))))
-          <img alt="avatar" class="rounded-avatar fadein" src="{{ url(findAvatar($userinfo->id)) }}" height="128px" width="128px" style="object-fit: cover;">
+          <img alt="avatar" class="rounded-avatar fadein" src="{{ url(findAvatar($userinfo->id)) }}" height="{{ $userinfo->profile_picture_height ?? '128px' }}" width="{{ $userinfo->profile_picture_width ?? '128px' }}" style="object-fit: cover;">
           @elseif(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
-          <img alt="avatar" class="fadein" src="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}" height="128px" width="128px" style="object-fit: cover;">
+          <img alt="avatar" class="fadein" src="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}" height="{{ $info->profile_picture_height ?? '128px' }}" width="{{ $info->profile_picture_width ?? '128px' }}" style="object-fit: cover;">
           @else
           <img alt="avatar" class="fadein" src="{{ asset('assets/linkstack/images/logo.svg') }}" height="128px" style="width:auto;min-width:128px;object-fit: cover;">
           @endif

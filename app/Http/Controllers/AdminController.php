@@ -269,6 +269,8 @@ public function SendTestMail(Request $request)
         $email = $request->email;
         $password = Hash::make($request->password);
         $profilePhoto = $request->file('image');
+        $profile_picture_width = $request->profile_picture_width;
+        $profile_picture_height = $request->profile_picture_height;
         $littlelink_name = $request->littlelink_name;
         $littlelink_description = $request->littlelink_description;
         $role = $request->role;

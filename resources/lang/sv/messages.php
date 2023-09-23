@@ -350,6 +350,9 @@ return [
 
     'My Profile'=> 'Min Profil',
     'Profile Picture' => 'Profilbild',
+    'Profile Picture Sizes' => 'Avancerad stilinställning för profilbild (t.ex., px, %, auto)'
+    'Profile Picture Width' => 'Profilbildsbredd'
+    'Profile Picture Height' => 'Profilbildshöjd'
     'Page URL' => 'Sido-URL',
     'Display name' => 'Visningsnamn',
     'Name:' => 'Namn:',

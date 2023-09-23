@@ -295,6 +295,8 @@ if (isset($_COOKIE['LinkCount'])) {
                                 {{-- {!!icon('telegram', 'Telegram')!!}
                             
                                 {!!icon('whatsapp', 'WhatsApp')!!} --}}
+
+                                {!!icon('mailchimp', 'Mailchimp')!!} --}}
                             
                             
                                 <button type="submit" class="mt-3 ml-3 btn btn-primary">{{__('messages.Save links')}}</button>

@@ -350,6 +350,9 @@ return array (
     
   'My Profile' => 'Mon profil',
   'Profile Picture' => 'Image de profil',
+  'Profile Picture Sizes' => 'Configuration de style avancée pour photo de profil (p. ex., px, %, auto)'
+  'Profile Picture Width' => 'Largeur de la photo de profil'
+  'Profile Picture Height' => 'Hauteur de la photo de profil'
   'Page URL' => 'L\'URL de la page',
   'Display name' => 'Nom affiché',
   'Name' => 'Nom',
