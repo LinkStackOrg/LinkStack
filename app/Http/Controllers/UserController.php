@@ -1209,9 +1209,7 @@ class UserController extends Controller
     saveIcon('telegram', $request->telegram);
 
     saveIcon('whatsapp', $request->whatsapp);
-
-    saveIcon('mailchimp', $request->mailchimp);   
-
+        
     saveIcon('twitch', $request->twitch);
 
 
