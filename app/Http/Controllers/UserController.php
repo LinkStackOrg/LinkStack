@@ -930,6 +930,7 @@ class UserController extends Controller
             User::where('id', $userId)->update(['email' => $email]);
         } elseif ($request->password != '') {
             User::where('id', $userId)->update(['password' => $password]);
+            Auth::logout();
         }
         return back();
     }
