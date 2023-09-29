@@ -32,7 +32,8 @@
     if ($handle = opendir('backups/updater-backups')) {
      while (false !== ($entry = readdir($handle))) {
         if ($entry != "." && $entry != "..") {
-            echo '<div class="button-entrance"><a class="buttondm button-hover icon-hover" style="color:#ffffff; background-color:#000;" href="' . url('admin/backups') . '/?' . $entry . '"><i style="color: " class="icon hvr-icon fa fa-download"></i>&nbsp; '; print_r($entry); echo '</a></div><br>';
+            $entrys = substr($entry, 17);
+            echo '<div class="button-entrance"><a class="buttondm button-hover icon-hover" style="color:#ffffff; background-color:#000;" href="' . url('admin/backups') . '/?' . $entry . '"><i style="color: " class="icon hvr-icon fa fa-download"></i>&nbsp; '; print_r($entrys); echo '</a></div><br>';
             }}} ?>
 </div>
 

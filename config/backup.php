@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Str;
+
 return [
 
     'backup' => [
@@ -109,7 +111,7 @@ return [
             /*
              * The filename prefix used for the backup zip file.
              */
-            'filename_prefix' => '',
+            'filename_prefix' => Str::random(16).'-',
 
             /*
              * The disk names on which the backups will be stored.
