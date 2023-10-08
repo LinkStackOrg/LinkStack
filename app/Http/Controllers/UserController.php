@@ -96,6 +96,19 @@ class UserController extends Controller
         return view('littlelink', ['userinfo' => $userinfo, 'information' => $information, 'links' => $links, 'littlelink_name' => $littlelink_name]);
     }
 
+    //Redirect to user page
+    public function userRedirect(request $request)
+    {
+        $id = $request->id;
+        $user = User::select('littlelink_name')->where('id', $id)->value('littlelink_name');
+
+        if (empty($id)) {
+            return abort(404);
+        }
+     
+        return redirect(url('@'.$user));
+    }
+
     //Show littlelink page as home page if set in config
     public function littlelinkhome(request $request)
     {

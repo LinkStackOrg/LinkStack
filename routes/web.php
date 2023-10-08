@@ -93,6 +93,7 @@ Route::get('/pages/'.strtolower(footer('Privacy')), [AdminController::class, 'pa
 Route::get('/pages/'.strtolower(footer('Contact')), [AdminController::class, 'pagesContact'])->name('pagesContact');
 Route::get('/theme/@{littlelink}', [UserController::class, 'theme'])->name('theme');
 Route::get('/vcard/{id?}', [UserController::class, 'vcard'])->name('vcard');
+Route::get('/u/{id?}', [UserController::class, 'userRedirect'])->name('userRedirect');
 
 Route::get('/demo-page', [App\Http\Controllers\HomeController::class, 'demo'])->name('demo');
 
