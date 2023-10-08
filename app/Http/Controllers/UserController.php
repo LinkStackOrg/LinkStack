@@ -106,6 +106,10 @@ class UserController extends Controller
             return abort(404);
         }
      
+        if (empty($user)) {
+            return abort(404);
+        }
+
         return redirect(url('@'.$user));
     }
 
