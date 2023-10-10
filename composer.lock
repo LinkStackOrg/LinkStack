@@ -615,16 +615,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "3.7.0",
+            "version": "3.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "00d03067f07482f025d41ab55e4ba0db5eca2cdf"
+                "reference": "5b7bd66c9ff58c04c5474ab85edce442f8081cb2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/00d03067f07482f025d41ab55e4ba0db5eca2cdf",
-                "reference": "00d03067f07482f025d41ab55e4ba0db5eca2cdf",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/5b7bd66c9ff58c04c5474ab85edce442f8081cb2",
+                "reference": "5b7bd66c9ff58c04c5474ab85edce442f8081cb2",
                 "shasum": ""
             },
             "require": {
@@ -708,7 +708,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/3.7.0"
+                "source": "https://github.com/doctrine/dbal/tree/3.7.1"
             },
             "funding": [
                 {
@@ -724,7 +724,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-09-26T20:56:55+00:00"
+            "time": "2023-10-06T05:06:20+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -3581,16 +3581,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.37",
+            "version": "1.10.38",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "058ba07e92f744d4dcf6061ae75283d0c6456f2e"
+                "reference": "5302bb402c57f00fb3c2c015bac86e0827e4b691"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/058ba07e92f744d4dcf6061ae75283d0c6456f2e",
-                "reference": "058ba07e92f744d4dcf6061ae75283d0c6456f2e",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/5302bb402c57f00fb3c2c015bac86e0827e4b691",
+                "reference": "5302bb402c57f00fb3c2c015bac86e0827e4b691",
                 "shasum": ""
             },
             "require": {
@@ -3639,20 +3639,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-10-02T16:18:37+00:00"
+            "time": "2023-10-06T14:19:14+00:00"
         },
         {
             "name": "phpstan/phpstan-phpunit",
-            "version": "1.3.14",
+            "version": "1.3.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-phpunit.git",
-                "reference": "614acc10c522e319639bf38b0698a4a566665f04"
+                "reference": "70ecacc64fe8090d8d2a33db5a51fe8e88acd93a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-phpunit/zipball/614acc10c522e319639bf38b0698a4a566665f04",
-                "reference": "614acc10c522e319639bf38b0698a4a566665f04",
+                "url": "https://api.github.com/repos/phpstan/phpstan-phpunit/zipball/70ecacc64fe8090d8d2a33db5a51fe8e88acd93a",
+                "reference": "70ecacc64fe8090d8d2a33db5a51fe8e88acd93a",
                 "shasum": ""
             },
             "require": {
@@ -3689,9 +3689,9 @@
             "description": "PHPUnit extensions and rules for PHPStan",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan-phpunit/issues",
-                "source": "https://github.com/phpstan/phpstan-phpunit/tree/1.3.14"
+                "source": "https://github.com/phpstan/phpstan-phpunit/tree/1.3.15"
             },
-            "time": "2023-08-25T09:46:39+00:00"
+            "time": "2023-10-09T18:58:39+00:00"
         },
         {
             "name": "psr/cache",
