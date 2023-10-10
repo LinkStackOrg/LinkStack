@@ -86,7 +86,7 @@ Route::get('/panel/diagnose', function () {
 //Public route
 $custom_prefix = config('advanced-config.custom_url_prefix');
 Route::get('/going/{id?}', [UserController::class, 'clickNumber'])->where('link', '.*')->name('clickNumber');
-if($custom_prefix != ""){Route::get('/' . $custom_prefix . '{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');}}
+if($custom_prefix != ""){Route::get('/' . $custom_prefix . '{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');}
 Route::get('/@{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
 Route::get('/pages/'.strtolower(footer('Terms')), [AdminController::class, 'pagesTerms'])->name('pagesTerms');
 Route::get('/pages/'.strtolower(footer('Privacy')), [AdminController::class, 'pagesPrivacy'])->name('pagesPrivacy');
@@ -96,6 +96,8 @@ Route::get('/vcard/{id?}', [UserController::class, 'vcard'])->name('vcard');
 Route::get('/u/{id?}', [UserController::class, 'userRedirect'])->name('userRedirect');
 
 Route::get('/demo-page', [App\Http\Controllers\HomeController::class, 'demo'])->name('demo');
+
+}
 
 Route::middleware(['auth', 'blocked', 'impersonate'])->group(function () {
 //User route
