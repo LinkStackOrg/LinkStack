@@ -129,9 +129,19 @@
                 </div>
     
                 <div class="d-flex flex-column flex-md-row align-items-md-center">
-                    <button class="btn btn-primary me-md-3 mb-3 mb-md-0"><a href="{{ route('deleteLink', $linkID ) }}" target="_blank" class="text-white">{{__('messages.Delete')}} {{strtolower(__('messages.Link'))}}</a></button>
-                    <button class="btn btn-danger me-md-3 mb-3 mb-md-0"><a href="{{ route('deleteUser', ['id' => $id]) }}" target="_blank" class="text-white">{{__('messages.Delete')}} {{strtolower(__('messages.User'))}}</a></button>
+                    <button class="btn btn-primary me-md-3 mb-3 mb-md-0"><a href="{{ route('deleteLink', $linkID ) }}" target="_blank" class="text-white confirmation">{{__('messages.Delete')}} {{strtolower(__('messages.Link'))}}</a></button>
+                    <button class="btn btn-danger me-md-3 mb-3 mb-md-0"><a href="{{ route('deleteUser', ['id' => $id]) }}" target="_blank" class="text-white confirmation">{{__('messages.Delete')}} {{strtolower(__('messages.User'))}}</a></button>
                   </div>
+
+                  <script type="text/javascript">
+                    var elems = document.getElementsByClassName('confirmation');
+                    var confirmIt = function (e) {
+                        if (!confirm("{{__('messages.confirm.delete.user')}}")) e.preventDefault();
+                    };
+                    for (var i = 0, l = elems.length; i < l; i++) {
+                        elems[i].addEventListener('click', confirmIt, false);
+                    }
+                  </script>
                 @endif
 
 
