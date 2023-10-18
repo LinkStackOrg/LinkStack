@@ -721,7 +721,16 @@ public function SendTestMail(Request $request)
     public function redirectInfo(request $request)
     {
         $linkId = $request->id;
+
+        if (empty($linkId)) {
+            return abort(404);
+        }
+        
         $linkData = Link::find($linkId);
+
+        if (empty($linkData)) {
+            return abort(404);
+        }
 
         function isValidLink($url) {
             $validPrefixes = array('http', 'https', 'ftp', 'mailto', 'tel', 'news');
