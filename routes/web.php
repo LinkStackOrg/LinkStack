@@ -132,6 +132,11 @@ Route::get('/clearIcon/{id}', [UserController::class, 'clearIcon'])->name('clear
 Route::get('/studio/page/delprofilepicture', [UserController::class, 'delProfilePicture'])->name('delProfilePicture');
 Route::get('/studio/delete-user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser')->middleware('verified');
 Route::post('/auth-as', [AdminController::class, 'authAs'])->name('authAs');
+
+// Catch all redirects
+Route::get('/studio', fn() => redirect(url('dashboard')));
+Route::get('/studio/edit-link', fn() => redirect(url('dashboard')));
+
 if(env('ALLOW_USER_EXPORT') != false){
   Route::get('/export-links', [UserController::class, 'exportLinks'])->name('exportLinks');
   Route::get('/export-all', [UserController::class, 'exportAll'])->name('exportAll');
