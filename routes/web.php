@@ -86,6 +86,7 @@ Route::get('/panel/diagnose', function () {
 //Public route
 $custom_prefix = config('advanced-config.custom_url_prefix');
 Route::get('/going/{id?}', [UserController::class, 'clickNumber'])->where('link', '.*')->name('clickNumber');
+Route::get('/info/{id?}', [AdminController::class, 'redirectInfo'])->name('redirectInfo');
 if($custom_prefix != ""){Route::get('/' . $custom_prefix . '{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');}
 Route::get('/@{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
 Route::get('/pages/'.strtolower(footer('Terms')), [AdminController::class, 'pagesTerms'])->name('pagesTerms');

@@ -717,4 +717,31 @@ public function SendTestMail(Request $request)
 
     }
 
+    //Show info about link
+    public function redirectInfo(request $request)
+    {
+        $linkId = $request->id;
+        $linkData = Link::find($linkId);
+
+        function isValidLink($url) {
+            $validPrefixes = array('http', 'https', 'ftp', 'mailto', 'tel', 'news');
+        
+            $pattern = '/^(' . implode('|', $validPrefixes) . '):/i';
+        
+            if (preg_match($pattern, $url) && strlen($url) <= 155) {
+                return $url;
+            } else {
+                return "N/A";
+            }
+        }
+
+        $link = isValidLink($linkData->link);
+
+        $userID = $linkData->user_id;
+        $userData = User::find($userID);
+
+        return view('linkinfo', ['linkID' => $linkId, 'link' => $link, 'id' => $userID, 'userData' => $userData]);
+
+    }
+
 }

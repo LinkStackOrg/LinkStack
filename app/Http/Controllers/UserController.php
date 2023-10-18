@@ -516,8 +516,23 @@ class UserController extends Controller
     public function clickNumber(request $request)
     {
         $linkId = $request->id;
+
+        if (substr($linkId, -1) == '+') {
+            $linkWithoutPlus = str_replace('+', '', $linkId);
+            return redirect(url('info/'.$linkWithoutPlus));
+        }
+    
         $link = Link::find($linkId);
+
+        if (empty($link)) {
+            return abort(404);
+        }
+
         $link = $link->link;
+
+        if (empty($linkId)) {
+            return abort(404);
+        }
 
         Link::where('id', $linkId)->increment('click_number', 1);
 
