@@ -19,6 +19,7 @@ $usrhandl = Auth::user()->littlelink_name;
       
       <base href="{{url()->current()}}" />
 
+    @livewireStyles
 	  @include('layouts.analytics')
 	  @stack('sidebar-stylesheets')
     @include('layouts.notifications')
@@ -791,7 +792,7 @@ $usrhandl = Auth::user()->littlelink_name;
 <script src="{{ asset('assets/js/jquery-block-ui.js') }}"></script>
 <script src="{{ asset('assets/js/main-dashboard.js') }}"></script>
 
-
+@livewireScripts
 @stack('sidebar-scripts')
 
   </body>
