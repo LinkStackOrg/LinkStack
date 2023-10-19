@@ -191,7 +191,6 @@ Route::group([
     Route::get('/send-test-email', [AdminController::class, 'SendTestMail'])->name('SendTestMail');
     Route::get('/auth-as/{id}', [AdminController::class, 'authAsID'])->name('authAsID');
     Route::get('/theme-updater', function () {return view('studio/theme-updater', []);});
-    Route::get('/table', function () {return view('vendor/livewire-tables/datatable', ['this' => NULL]);});
     Route::get('/update', function () {return view('update', []);});
     Route::get('/backup', function () {return view('backup', []);});
 
