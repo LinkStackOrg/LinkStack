@@ -727,6 +727,7 @@ public function SendTestMail(Request $request)
         }
         
         $linkData = Link::find($linkId);
+        $clicks = $linkData->click_number;
 
         if (empty($linkData)) {
             return abort(404);
@@ -749,7 +750,7 @@ public function SendTestMail(Request $request)
         $userID = $linkData->user_id;
         $userData = User::find($userID);
 
-        return view('linkinfo', ['linkID' => $linkId, 'link' => $link, 'id' => $userID, 'userData' => $userData]);
+        return view('linkinfo', ['clicks' => $clicks, 'linkID' => $linkId, 'link' => $link, 'id' => $userID, 'userData' => $userData]);
 
     }
 

@@ -123,7 +123,8 @@
                             {{__('messages.Email')}}: {{$userData->email}}
                             {{__('messages.Role')}}: {{$userData->role}}
                             {{__('messages.Created at')}}: {{$userData->created_at}}
-                            {{__('messages.Last seen')}}: {{$userData->updated_at}}</code>
+                            {{__('messages.Last seen')}}: {{$userData->updated_at}}
+                            {{__('messages.Link Clicks:')}} {{$clicks}}</code>
                     </pre>
                     </div>                        
                 </div>
