@@ -30,3 +30,10 @@ body:
       Is there anything else we should know?
   validations:
     required: false
+- type: checkboxes
+  attributes:
+    label: Is the button already requested?
+    description: Please search to see if an issue for the button already exists.
+    options:
+    - label: I have searched the existing issues
+      required: true
