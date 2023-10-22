@@ -1,0 +1,12 @@
+blank_issues_enabled: true
+contact_links:
+    - name: Feature Request
+      url: https://github.com/orgs/LinkStackOrg/discussions/categories/feature-requests
+      about: Requests regarding new features, enhancements, or changes
+    - name: Button requests
+      url: https://github.com/orgs/LinkStackOrg/discussions/categories/predefined-links
+      about: Requests regarding new buttons, brands, updated styling or changes
+    - name: Docker Issues
+      url: https://github.com/LinkStackOrg/linkstack-docker/issues
+      about: Issues regarding the Docker version exclusively or reverse proxy issues related to the Docker instance
+      
