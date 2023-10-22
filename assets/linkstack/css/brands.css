@@ -987,6 +987,16 @@ button.button-scribd{
   filter: brightness(90%);
 }
 
+/* Streams */
+.button.button-streams {
+  color: #0000FF;
+  background-color: #FFFFFF;
+}
+.button.button-streams:hover,
+.button.button-streams:focus {
+  filter: brightness(90%);
+}
+
 /* Telegram */
 .button.button-telegram {
   color: #FFFFFF;
