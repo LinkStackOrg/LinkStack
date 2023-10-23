@@ -223,6 +223,21 @@ public function SendTestMail(Request $request)
         return redirect('admin/users/all');
     }
 
+    //Delete existing user with POST request
+    public function deleteTableUser(request $request)
+    {
+        $id = $request->id;
+
+        Link::where('user_id', $id)->delete();
+    
+        Schema::disableForeignKeyConstraints();
+        
+        $user = User::find($id);
+        $user->forceDelete();
+    
+        Schema::enableForeignKeyConstraints();
+    }
+
     //Show user to edit
     public function showUser(request $request)
     {

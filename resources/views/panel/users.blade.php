@@ -26,15 +26,39 @@
                         
                         <a href="{{ url('') }}/admin/new-user">+ {{__('messages.Add new user')}}</a>
                 
-                              <script type="text/javascript">
-                                var elems = document.getElementsByClassName('confirmation');
-                                var confirmIt = function (e) {
-                                    if (!confirm("{{__('messages.confirm.delete.user')}}")) e.preventDefault();
-                                };
-                                for (var i = 0, l = elems.length; i < l; i++) {
-                                    elems[i].addEventListener('click', confirmIt, false);
-                                }
-                              </script>
+                        <script type="text/javascript">
+                          var elems = document.getElementsByClassName('confirmation');
+                          var confirmIt = function (e) {
+                              e.preventDefault();
+                              if (confirm("{{ __('messages.confirm.delete.user') }}")) {
+                                  var userId = this.getAttribute('data-id');
+                                  deleteUserData(userId);
+                              }
+                          };
+                      
+                          var deleteUserData = function(userId) {
+                              var url = "{{ route('deleteTableUser', ['id' => ':id']) }}".replace(':id', userId);
+                              var xhr = new XMLHttpRequest();
+                              xhr.open('POST', url, true);
+                              xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
+                              xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+                              xhr.onreadystatechange = function () {
+                                  if (xhr.readyState === 4 && xhr.status === 200) {
+                                      refreshLivewireTable();
+                                  }
+                              };
+                              var data = JSON.stringify({ id: userId });
+                              xhr.send(data);
+                          };
+                      
+                          var refreshLivewireTable = function () {
+                            Livewire.components.getComponentsByName('user-table')[0].$wire.$refresh()
+                          };
+                      
+                          for (var i = 0, l = elems.length; i < l; i++) {
+                              elems[i].addEventListener('click', confirmIt, false);
+                          }
+                      </script>                      
                 
                           </div>
                 </section>
