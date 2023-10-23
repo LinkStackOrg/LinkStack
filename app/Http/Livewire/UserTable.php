@@ -16,21 +16,22 @@ class UserTable extends DataTableComponent
     {
         $this->setPrimaryKey('id');
         $this->setPerPageAccepted([50, 100, 250, 500, 1000, -1]);
+        $this->setColumnSelectEnabled();
     }
 
     public function columns(): array
     {
         return [
-            Column::make("Id", "id")
+            Column::make(__('messages.ID'), "id")
                 ->sortable()
                 ->searchable(),
-            Column::make("Name", "name")
+            Column::make(__('messages.Name'), "name")
                 ->sortable()
                 ->searchable(),
-            Column::make("Email", "email")
+            Column::make(__('messages.E-Mail'), "email")
                 ->sortable()
                 ->searchable(),
-            Column::make("Littlelink name", "littlelink_name")
+            Column::make(__('messages.Page'), "littlelink_name")
                 ->sortable()
                 ->searchable()
                 ->format(function ($value, $row, Column $column) {
@@ -41,22 +42,20 @@ class UserTable extends DataTableComponent
                     }
                 })
                 ->html(),
-            Column::make("Role", "role")
+            Column::make(__('messages.Role'), "role")
                 ->sortable()
                 ->searchable(),
-            Column::make("Test", "id")
-                ->sortable()
+            Column::make(__('messages.Links'), "id")
                 ->format(function ($value, $row) {
                     $linkCount = Link::where('user_id', $row->id)->count();
                     return $linkCount;
                 }),
-            Column::make("Clicks Sum", "id")
-                ->sortable()
+            Column::make(__('messages.Clicks'), "id")
                 ->format(function ($value, $row) {
                     $clicksSum = Link::where('user_id', $row->id)->sum('click_number');
                     return $clicksSum;
                 }),
-            Column::make("E-mail", "email_verified_at")
+            Column::make(__('messages.E-Mail'), "email_verified_at")
                 ->sortable()
                 ->format(function ($value, $row, Column $column) {
                     if (env('REGISTER_AUTH') !== 'auth') {
@@ -78,7 +77,7 @@ class UserTable extends DataTableComponent
                     }
                     return '';
                 })->html(),
-            Column::make("Blocked", "block")
+            Column::make(__('messages.Status'), "block")
                 ->sortable()
                 ->format(function ($value, $row, Column $column) {
                     if ($row->role === 'admin' && $row->id === 1) {
@@ -94,7 +93,7 @@ class UserTable extends DataTableComponent
                     }
                 })
                 ->html(),
-            Column::make("Created at", "created_at")
+            Column::make(__('messages.Created at'), "created_at")
                 ->sortable()
                 ->format(function ($value) {
                     if ($value) {
@@ -103,7 +102,7 @@ class UserTable extends DataTableComponent
                         return '';
                     }
                 }),
-            Column::make("Last seen", "updated_at")
+            Column::make(__('messages.Last seen'), "updated_at")
                 ->sortable()
                 ->format(function ($value) {
                     $now = now();
@@ -119,7 +118,7 @@ class UserTable extends DataTableComponent
                         return $diff->y . ' years ago';
                     }
                 }),
-                Column::make('Actions', "id")
+                Column::make(__('messages.Action'), "id")
                 ->format(function ($value, $row, Column $column) {
                     return view('components.table-components.action', ['user' => $row]);
                 }),

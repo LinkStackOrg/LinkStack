@@ -23,7 +23,6 @@
                       <section class="text-gray-400">
                         <h2 class="mb-4 card-header"><i class="bi bi-person"> {{__('messages.Manage Users')}}</i></h2>
                         <div class="card-body p-0 p-md-3">
-                        {{__('messages.Users:')}}
 
                         <livewire:user-table />
                         
@@ -52,8 +51,9 @@
     </div>
   </div>
 
-@push('sidebar-styles')
+@push('sidebar-stylesheets')
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="{{url('vendor/livewire/livewire/dist/livewire.js')}}"></script>
 @endpush
 
 @push('sidebar-scripts')
