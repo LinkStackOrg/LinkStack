@@ -4,8 +4,6 @@
 
 @section('content')
 
-<style>#cs{cursor: pointer;}.delete{color:transparent; background-color:tomato; border-radius:5px; padding:8px 12px; cursor: pointer;}.delete:hover{color:transparent;background-color:#f13d1d;}html,body{max-width:100%;overflow-x:hidden;}.shorten{cursor:help;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:150px;}</style>
-
 <style>
   [x-cloak] { display: none !important; }
 </style>
