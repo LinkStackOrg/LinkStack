@@ -50,13 +50,13 @@
   </div>
 
 @push('sidebar-stylesheets')
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script defer src="{{url('assets/js/cdn.min.js')}}"></script>
 <script src="{{url('vendor/livewire/livewire/dist/livewire.js')}}"></script>
 @endpush
 
 @push('sidebar-scripts')
 <livewire:scripts />
-<script src="https://unpkg.com/@nextapps-be/livewire-sortablejs@0.1.1/dist/livewire-sortable.js"></script>
+<script src="{{url('assets/js/livewire-sortable.js')}}"></script>
 @endpush
 
 @endsection
