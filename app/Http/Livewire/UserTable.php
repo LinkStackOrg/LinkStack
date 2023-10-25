@@ -67,9 +67,9 @@ class UserTable extends DataTableComponent
                                 'id' => $row->id
                             ]);
                             if ($row->email_verified_at == '') {
-                                return '<a href="' . $verifyLink . '" class="text-danger"><span class="badge bg-danger">' . __('messages.Pending') . '</span></a>';
+                                return '<a style="cursor:pointer" data-id="'.$verifyLink.'" class="user-email text-danger"><span class="badge bg-danger">' . __('messages.Pending') . '</span></a>';
                             } else {
-                                return '<a href="' . $verifyLink . '" class="text-danger"><span class="badge bg-success">' . __('messages.Verified') . '</span></a>';
+                                return '<a style="cursor:pointer" data-id="'.$verifyLink.'" class="user-email text-danger"><span class="badge bg-success">' . __('messages.Verified') . '</span></a>';
                             }
                         }
                     } else {
@@ -85,9 +85,9 @@ class UserTable extends DataTableComponent
                     } else {
                         $route = route('blockUser', ['block' => $row->block, 'id' => $row->id]);
                         if ($row->block === 'yes') {
-                            $badge = '<span class="badge bg-danger">'.__('messages.Pending').'</span>';
+                            $badge = '<a style="cursor:pointer" data-id="'.$route.'" class="user-block text-danger"><span class="badge bg-danger">'.__('messages.Pending').'</span></a>';
                         } elseif ($row->block === 'no') {
-                            $badge = '<span class="badge bg-success">'.__('messages.Approved').'</span>';
+                            $badge = '<a style="cursor:pointer" data-id="'.$route.'" class="user-block text-danger"><span class="badge bg-success">'.__('messages.Approved').'</span></a>';
                         }
                         return "<a href=\"$route\">$badge</a>";
                     }

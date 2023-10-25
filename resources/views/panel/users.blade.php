@@ -27,6 +27,7 @@
                         <a href="{{ url('') }}/admin/new-user">+ {{__('messages.Add new user')}}</a>
                 
                         <script type="text/javascript">
+                          // Function to confirm and delete users
                           var elems = document.getElementsByClassName('confirmation');
                           var confirmIt = function (e) {
                               e.preventDefault();
@@ -35,7 +36,7 @@
                                   deleteUserData(userId);
                               }
                           };
-                      
+                          
                           var deleteUserData = function(userId) {
                               var url = "{{ route('deleteTableUser', ['id' => ':id']) }}".replace(':id', userId);
                               var xhr = new XMLHttpRequest();
@@ -50,16 +51,70 @@
                               var data = JSON.stringify({ id: userId });
                               xhr.send(data);
                           };
-                      
+                          
+                          // Function to refresh the Livewire table
                           var refreshLivewireTable = function () {
                             Livewire.components.getComponentsByName('user-table')[0].$wire.$refresh()
                           };
-                      
+                          
+                          // Attach click event listeners to elements with class 'confirmation'
                           for (var i = 0, l = elems.length; i < l; i++) {
                               elems[i].addEventListener('click', confirmIt, false);
                           }
-                      </script>                      
-                
+                       </script>
+                       <script type="text/javascript">
+                          // Function to handle user verification requests
+                          var elems = document.getElementsByClassName('user-email');
+                          
+                          var handleUserClick = function (e) {
+                            e.preventDefault();
+                            var userId = this.getAttribute('data-id');
+                            sendVerificationRequest(userId);
+                          };
+                          
+                          var sendVerificationRequest = function(userId) {
+                            var xhr = new XMLHttpRequest();
+                            xhr.open('GET', userId, true);
+                            xhr.onreadystatechange = function () {
+                              if (xhr.readyState === 4 && xhr.status === 200) {
+                                refreshLivewireTable();
+                              }
+                            };
+                            xhr.send();
+                          };
+                          
+                          // Attach click event listeners to elements with class 'user-email'
+                          for (var i = 0, l = elems.length; i < l; i++) {
+                            elems[i].addEventListener('click', handleUserClick, false);
+                          }
+                       </script>
+                       <script type="text/javascript">
+                          // Function to handle user blocking
+                          var elems = document.getElementsByClassName('user-block');
+                          
+                          var handleUserClick = function (e) {
+                            e.preventDefault();
+                            var userId = this.getAttribute('data-id');
+                            sendVerificationRequest(userId);
+                          };
+                          
+                          var sendVerificationRequest = function(userId) {
+                            var xhr = new XMLHttpRequest();
+                            xhr.open('GET', userId, true);
+                            xhr.onreadystatechange = function () {
+                              if (xhr.readyState === 4 && xhr.status === 200) {
+                                refreshLivewireTable();
+                              }
+                            };
+                            xhr.send();
+                          };
+                          
+                          // Attach click event listeners to elements with class 'user-block'
+                          for (var i = 0, l = elems.length; i < l; i++) {
+                            elems[i].addEventListener('click', handleUserClick, false);
+                          }
+                       </script>
+
                           </div>
                 </section>
   
