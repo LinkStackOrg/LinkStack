@@ -10,11 +10,10 @@
 
 	@if(env('DISPLAY_CREDIT') === true)
 	{{-- Removed class spacing --}}
-	<div class="credit-footer"><a style="text-decoration: none;" class="" href="https://linkstack.org" target="_blank" title="{{__('messages.Learn more about LinkStack')}}">
+	<a style="text-decoration: none;" class="" href="https://linkstack.org" target="_blank" title="{{__('messages.Learn more about LinkStack')}}">
 		<div style="vertical-align: middle;display: inline-block;padding-bottom:50px;" class="credit-hover hvr-grow fadein">
-			<img style="top:9px;" class="credit-icon image-footer1 generic" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="LinkStack">
-			<a href="https://linkstack.org" target="_blank" title="{{__('messages.Learn more')}}" class="credit-txt credit-txt-clr credit-text">Powered by LinkStack</a>
+			<img style="width:200px" class="" src="{{ asset('assets/linkstack/images/powered-by-linkstack.svg') }}" alt="LinkStack">
 		</div>
-	</a></div>
+	</a>
 	@endif
 	</div>
