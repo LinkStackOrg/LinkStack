@@ -441,6 +441,10 @@ class ButtonSeeder extends Seeder
             [
             'name' => 'firefish'
             ],
+
+            [
+            'name' => 'streams'
+            ],
         ];
 
          Button::insert($buttons);

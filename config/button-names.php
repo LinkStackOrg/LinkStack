@@ -26,6 +26,7 @@ $buttonNames = array(
     'picarto' => 'Picarto',
     'playstore' => 'Google Play',
     'soundcloud' => 'SoundCloud',
+    'streams' => 'Streams',
     'tiktok' => 'TikTok',
     'trakt' => 'Trakt',
     'vrchat' => 'VRChat',
