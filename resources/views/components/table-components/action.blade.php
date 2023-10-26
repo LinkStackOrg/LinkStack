@@ -26,7 +26,7 @@
        </svg>                                                               
     </span>
  </a>
-  <a class="btn btn-sm btn-icon btn-danger confirmation" data-bs-toggle="tooltip" data-bs-placement="top" data-original-title="{{__('messages.tt.Delete')}}" href="{{ route('deleteUser', ['id' => $user->id] ) }}" aria-label="Delete" data-bs-original-title="Delete">
+  <a class="btn btn-sm btn-icon btn-danger confirmation" data-bs-toggle="tooltip" data-bs-placement="top" data-id="{{ $user->id }}" data-original-title="{{__('messages.tt.Delete')}}" aria-label="Delete" data-bs-original-title="Delete">
      <span class="btn-inner">
         <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
            <path d="M19.3248 9.46826C19.3248 9.46826 18.7818 16.2033 18.4668 19.0403C18.3168 20.3953 17.4798 21.1893 16.1088 21.2143C13.4998 21.2613 10.8878 21.2643 8.27979 21.2093C6.96079 21.1823 6.13779 20.3783 5.99079 19.0473C5.67379 16.1853 5.13379 9.46826 5.13379 9.46826" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
