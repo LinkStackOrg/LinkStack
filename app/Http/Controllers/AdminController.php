@@ -172,8 +172,6 @@ public function SendTestMail(Request $request)
         }
 
         User::where('id', $id)->update(['email_verified_at' => $verify]);
-
-        return redirect('admin/users/all');
     }
 
     //Create new user from the Admin Panel
