@@ -791,7 +791,6 @@ $usrhandl = Auth::user()->littlelink_name;
 <script src="{{ asset('assets/js/jquery-block-ui.js') }}"></script>
 <script src="{{ asset('assets/js/main-dashboard.js') }}"></script>
 
-
 @stack('sidebar-scripts')
 
   </body>
