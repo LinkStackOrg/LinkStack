@@ -135,6 +135,7 @@ Route::get('/studio/delete-user/{id}', [UserController::class, 'deleteUser'])->n
 Route::post('/auth-as', [AdminController::class, 'authAs'])->name('authAs');
 
 // Catch all redirects
+Route::get('/admin/users/all', fn() => redirect(route('showUsers')));
 Route::get('/studio', fn() => redirect(url('dashboard')));
 Route::get('/studio/edit-link', fn() => redirect(url('dashboard')));
 
@@ -161,8 +162,7 @@ Route::group([
 ], function () {
     if(env('FORCE_ROUTE_HTTPS') == 'true'){URL::forceScheme('https');}
     Route::get('/panel/index', function(){return redirect(url('dashboard'));});
-    Route::get('/admin/users/{type}', [AdminController::class, 'users'])->name('showUsers');
-    Route::post('/admin/users/{name?}', [AdminController::class, 'searchUser'])->name('searchUser');
+    Route::get('/admin/users', [AdminController::class, 'users'])->name('showUsers');
     Route::get('/admin/links/{id}', [AdminController::class, 'showLinksUser'])->name('showLinksUser');
     Route::get('/admin/deleteLink/{id}', [AdminController::class, 'deleteLinkUser'])->name('deleteLinkUser');
     Route::get('/admin/users/block/{block}/{id}', [AdminController::class, 'blockUser'])->name('blockUser');

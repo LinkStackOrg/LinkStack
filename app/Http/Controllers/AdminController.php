@@ -72,58 +72,12 @@ class AdminController extends Controller
         return view('panel/index', ['lastMonthCount' => $lastMonthCount,'lastWeekCount' => $lastWeekCount,'last24HrsCount' => $last24HrsCount,'updatedLast30DaysCount' => $updatedLast30DaysCount,'updatedLast7DaysCount' => $updatedLast7DaysCount,'updatedLast24HrsCount' => $updatedLast24HrsCount,'toplinks' => $topLinks, 'links' => $links, 'clicks' => $clicks, 'pageStats' => $pageStats, 'littlelink_name' => $littlelink_name, 'links' => $links, 'clicks' => $clicks, 'siteLinks' => $siteLinks, 'siteClicks' => $siteClicks, 'userNumber' => $userNumber]);
     }
 
-// Get users by type
-public function users(Request $request)
+// Users page
+public function users()
 {
-    // Query to get the admin user with non-null 'auth_as' value
-    $adminUser = User::whereNotNull('auth_as')->where('role', 'admin')->first();
-
-    $usersType = $request->type;
-
-    $usersQuery = User::select('id', 'name', 'email', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at', 'updated_at');
-
-    switch ($usersType) {
-        case 'user':
-            $usersQuery->where('role', 'user');
-            break;
-        case 'vip':
-            $usersQuery->where('role', 'vip');
-            break;
-        case 'admin':
-            $usersQuery->where('role', 'admin');
-            break;
-    }
-
-    $users = $usersQuery->get();
-
-    // Rest of your code to calculate click counts and link counts for each user
-
-    foreach ($users as $user) {
-        $user->clicks = Link::where('user_id', $user->id)->sum('click_number');
-        $user->links = Link::where('user_id', $user->id)->select('link')->count();
-    }
-
-    $data['users'] = $users;
-    $data['adminUser'] = $adminUser;
-
-    return view('panel/users', $data);
+    return view('panel/users');
 }
 
-    //Search user by name
-    public function searchUser(Request $request)
-    {
-        $searchTerm = $request->search;
-        $data['users'] = User::where('name', 'like', "%{$searchTerm}%")
-                              ->orWhere('email', 'like', "%{$searchTerm}%")
-                              ->orWhere('littlelink_name', 'like', "%{$searchTerm}%")
-                            //   ->orWhere('role', 'like', "%{$searchTerm}%")
-                            //   ->orWhere('block', 'like', "%{$searchTerm}%")
-                            //   ->orWhere('email_verified_at', 'like', "%{$searchTerm}%")
-                              ->select('id', 'email', 'name', 'littlelink_name', 'role', 'block', 'email_verified_at', 'created_at', 'updated_at')
-                              ->get();
-        return view('panel/users', $data);
-    }
-    
 // Send test mail
 public function SendTestMail(Request $request)
 {
