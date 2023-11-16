@@ -74,7 +74,7 @@
 $latestversion = trim(external_file_get_contents("https://version.linkstack.org/"));
 
 if(env('JOIN_BETA') === true){
-   $fileUrl = 'https://update.linkstack.org/beta/'. $latestversion . '.zip';
+   $fileUrl = 'https://beta.linkstack.org/'. $latestversion . '.zip';
 } else {
    $fileUrl = 'https://update.linkstack.org/'. $latestversion . '.zip';
 }
