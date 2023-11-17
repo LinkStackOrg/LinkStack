@@ -1045,6 +1045,52 @@ return [
     'footer.Privacy' => 'Datenschutz',
     'footer.Contact' => 'Kontakt',
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Report Page
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'report_violation' => 'Verstoß melden',
+    'url_label' => 'URL der gemeldeten Website',
+    'report_type_label' => 'Art des Reports',
+    'hate_speech' => 'Hassrede oder Belästigung',
+    'violence_threats' => 'Gewalt oder Drohungen',
+    'illegal_activities' => 'Illegale Aktivitäten',
+    'copyright_infringement' => 'Verletzung von Urheberrechten',
+    'misinformation_fake_news' => 'Fehlinformationen oder Fake News',
+    'identity_theft' => 'Identitätsdiebstahl',
+    'drug_related_content' => 'Inhalte im Zusammenhang mit Drogen',
+    'weapons_harmful_objects' => 'Waffen oder schädliche Objekte',
+    'child_exploitation' => 'Kindesausbeutung',
+    'fraud_scams' => 'Betrug oder Betrugsversuche',
+    'privacy_violation' => 'Verletzung der Privatsphäre',
+    'impersonation' => 'Identitätswechsel',
+    'other_specify' => 'Sonstiges (bitte angeben)',
+    'additional_comments_label' => 'Zusätzliche Kommentare',
+    'submit_button' => 'Absenden',
+    
+    'report_mail_admin_subject' => 'Profil-Report',
+    'report_mail_admin_report' => 'Ein Profil wurde gemeldet',
+    
+    'report_mail_reported_profile' => 'Gemeldetes Profil',
+    'report_mail_reported_url' => 'Gemeldete URL',
+    'report_mail_type' => 'Art',
+    'report_mail_message' => 'Nachricht',
+    
+    'report_mail_report_submitted_by' => 'Report eingereicht von',
+    'report_mail_reported_by' => 'Gemeldet von',
+    'report_mail_profile' => 'Profil',
+    
+    'report_mail_button_profile' => 'Auf Benutzerseite anzeigen',
+    'report_mail_button_delete' => 'Gemeldeten Benutzer löschen',
+    
+    'report_error' => 'Profil konnte nicht gemeldet werden',
+    'report_success' => 'Profil wurde erfolgreich gemeldet',
+
+    
     #=============================================================================#
     # Laravel internal translations                                               #
     #=============================================================================#
