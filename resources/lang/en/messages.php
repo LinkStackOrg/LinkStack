@@ -1039,6 +1039,53 @@ return [
     'footer.Contact' => 'Contact',
 
 
+    /*
+    |--------------------------------------------------------------------------
+    | Report Page
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'report_violation' => 'Report a Violation',
+    'url_label' => 'URL of the site you are reporting',
+    'report_type_label' => 'Type of report',
+    'hate_speech' => 'Hate Speech or Harassment',
+    'violence_threats' => 'Violence or Threats',
+    'illegal_activities' => 'Illegal Activities',
+    'copyright_infringement' => 'Copyright Infringement',
+    'misinformation_fake_news' => 'Misinformation or Fake News',
+    'identity_theft' => 'Identity Theft',
+    'drug_related_content' => 'Drug-related Content',
+    'weapons_harmful_objects' => 'Weapons or Harmful Objects',
+    'child_exploitation' => 'Child Exploitation',
+    'fraud_scams' => 'Fraud or Scams',
+    'privacy_violation' => 'Privacy Violation',
+    'impersonation' => 'Impersonation',
+    'other_specify' => 'Other (Specify)',
+    'additional_comments_label' => 'Additional comments',
+    'submit_button' => 'Submit',
+    
+
+    'report_mail_admin_subject' => 'Profile Report',
+    'report_mail_admin_report' => 'A Profile has been reported',
+
+    'report_mail_reported_profile' => 'Reported Profile',
+    'report_mail_reported_url' => 'Reported URL',
+    'report_mail_type' => 'Type',
+    'report_mail_message' => 'Message',
+
+    'report_mail_report_submitted_by' => 'Report submitted by',
+    'report_mail_reported_by' => 'Reported by',
+    'report_mail_profile' => 'Profile',
+
+    'report_mail_button_profile' => 'View on Users Page',
+    'report_mail_button_delete' => 'Delete Reported User',
+
+
+    'report_error' => 'Profile could not be reported',
+    'report_success' => 'Profile has been reported successfully',
+
+    
     #=============================================================================#
     # Laravel internal translations                                               #
     #=============================================================================#

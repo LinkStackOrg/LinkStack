@@ -96,6 +96,9 @@ Route::get('/theme/@{littlelink}', [UserController::class, 'theme'])->name('them
 Route::get('/vcard/{id?}', [UserController::class, 'vcard'])->name('vcard');
 Route::get('/u/{id?}', [UserController::class, 'userRedirect'])->name('userRedirect');
 
+Route::get('/report', function () {return view('report');});
+Route::post('/report', [UserController::class, 'report'])->name('report');
+
 Route::get('/demo-page', [App\Http\Controllers\HomeController::class, 'demo'])->name('demo');
 
 }

@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Response;
 use JeroenDesloovere\VCard\VCard;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReportSubmissionMail;
 
 use Auth;
 use DB;
@@ -1159,6 +1161,20 @@ class UserController extends Controller
         }
     }
     
+
+    // Hanle reports
+    function report(Request $request)
+    {
+        $formData = $request->all();
+    
+        try {
+            Mail::to(env('ADMIN_EMAIL'))->send(new ReportSubmissionMail($formData));
+            
+            return redirect('report')->with('success', __('messages.report_success'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', __('messages.report_error'));
+        }
+    }
 
     //Edit/save page icons
     public function editIcons(request $request)
