@@ -60,6 +60,9 @@ use App\Models\Page;
             if(EnvEditor::keyExists('LOCALE')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('LOCALE', 'en');}
 
+            if(EnvEditor::keyExists('ENABLE_REPORT_ICON')){ /* Do nothing if key already exists */ 
+            } else {EnvEditor::addKey('ENABLE_REPORT_ICON', false);}
+
             if(EnvEditor::keyExists('ADMIN_EMAIL')){} else 
             {if(Auth::user()->id == 1){EnvEditor::addKey('ADMIN_EMAIL', App\Models\User::find(1)->email);}
             else{EnvEditor::addKey('ADMIN_EMAIL', '');}}

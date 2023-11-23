@@ -731,6 +731,8 @@ return [
     'ADMIN_EMAIL.description' => 'Used to send notification emails.',
     'HIDE_VERIFICATION_CHECKMARK.title' => 'Hide verification checkmark',
     'HIDE_VERIFICATION_CHECKMARK.description' => 'Hides verification badge displayed on admin and VIP pages.',
+    'ENABLE_REPORT_ICON.title' => 'Enable report icon',
+    'ENABLE_REPORT_ICON.description' => 'Displays an icon on user pages that allows users to report pages.',
     'LOCALE.title' => 'App locale',
     'LOCALE.description' => 'Change the language of your application',
 

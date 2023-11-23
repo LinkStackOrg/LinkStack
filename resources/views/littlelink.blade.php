@@ -252,6 +252,8 @@ if($customBackgroundExists == true){
 
 <?php ////end share button//// ?>
 
+@include('components.report-icon')
+
   <div class="container">
     <div class="row">
       <div class="column" style="margin-top: 5%">

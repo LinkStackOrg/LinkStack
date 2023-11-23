@@ -734,6 +734,8 @@ return [
     'ADMIN_EMAIL.description' => 'Wird zum Versenden von Benachrichtigungs-E-Mails verwendet.',
     'HIDE_VERIFICATION_CHECKMARK.title' => 'Verifizierungshäkchen ausblenden',
     'HIDE_VERIFICATION_CHECKMARK.description' => 'Versteckt das Verifizierungsabzeichen, das auf Admin- und VIP-Seiten angezeigt wird.',
+    'ENABLE_REPORT_ICON.title' => 'Report-Icon aktivieren',
+    'ENABLE_REPORT_ICON.description' => 'Zeigt ein Symbol auf Benutzerseiten an, das es Benutzern ermöglicht, Seiten zu melden.',
     'LOCALE.title' => 'App Lokalisierung',
     'LOCALE.description' => 'Ändern Sie die Sprache Ihrer Anwendung.',
 
@@ -1090,7 +1092,7 @@ return [
     'report_error' => 'Profil konnte nicht gemeldet werden',
     'report_success' => 'Profil wurde erfolgreich gemeldet',
 
-    
+
     #=============================================================================#
     # Laravel internal translations                                               #
     #=============================================================================#
