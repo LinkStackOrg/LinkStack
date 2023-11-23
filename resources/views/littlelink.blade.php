@@ -208,12 +208,13 @@ if($customBackgroundExists == true){
 
 @else
 <?php $ShowShrBtn = 'true'; ?>
+
 @endif
 
-@if($ShowShrBtn == 'true' and UserData::getData($userinfo->id, 'disable-sharebtn') != "true")
+<?php if($ShowShrBtn == 'true' && UserData::getData($userinfo->id, 'disable-sharebtn') != "true"){$DisplayShowShrBtn = true;}else{$DisplayShowShrBtn = false;} ?>
 
-<script>{!! file_get_contents(base_path("assets/linkstack/js/jquery.min.js")) !!}</script>
-<div align="right" class="sharediv">
+@if($DisplayShowShrBtn == true)<script>{!! file_get_contents(base_path("assets/linkstack/js/jquery.min.js")) !!}</script>@endif
+<div align="right" @if($DisplayShowShrBtn == false) style="visibility:hidden" @endif class="sharediv">
   <div>
     <span class="sharebutton button-hover icon-hover share-button" data-share="{{url()->current()}}" tabindex="0" role="button" aria-label="{{__('messages.Share this page')}}">
       <i style="color: black;" class="fa-solid fa-share sharebutton-img share-icon hvr-icon"></i>
@@ -223,7 +224,7 @@ if($customBackgroundExists == true){
 </div>
 <span class="copy-icon" tabindex="0" role="button" aria-label="{{__('messages.Copy URL to clipboard')}}">
 </span>
-
+@if($DisplayShowShrBtn == true)
 <script>
   const shareButtons = document.querySelectorAll('.share-button');
   shareButtons.forEach(button => {
@@ -247,9 +248,8 @@ if($customBackgroundExists == true){
     });
   });
 </script>
-
-
 @endif
+
 <?php ////end share button//// ?>
 
   <div class="container">
