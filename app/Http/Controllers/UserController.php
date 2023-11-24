@@ -13,6 +13,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ReportSubmissionMail;
+use GeoSot\EnvEditor\Facades\EnvEditor;
 
 use Auth;
 use DB;
@@ -779,6 +780,10 @@ class UserController extends Controller
         $name = $request->name;
         $checkmark = $request->checkmark;
         $sharebtn = $request->sharebtn;
+
+        if($pageName != $littlelink_name && $littlelink_name == env('HOME_URL')){
+            EnvEditor::editKey('HOME_URL', $pageName);
+        }
     
         User::where('id', $userId)->update([
             'littlelink_name' => $pageName,
