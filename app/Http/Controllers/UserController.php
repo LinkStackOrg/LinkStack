@@ -781,7 +781,7 @@ class UserController extends Controller
         $checkmark = $request->checkmark;
         $sharebtn = $request->sharebtn;
 
-        if($pageName != $littlelink_name && $littlelink_name == env('HOME_URL')){
+        if(env('HOME_URL') !== '' && $pageName != $littlelink_name && $littlelink_name == env('HOME_URL')){
             EnvEditor::editKey('HOME_URL', $pageName);
         }
     
