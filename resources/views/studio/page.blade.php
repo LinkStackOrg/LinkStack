@@ -218,7 +218,29 @@
                       <input type="file" accept="image/jpeg,image/jpg,image/png,image/webp" name="image" class="form-control" id="customFile">
                   </div>
                     @endif
-                
+                    <label style="margin-top:15px">{{__('messages.Profile Picture Sizes')}}</label>
+                      <div class="input-group" style="margin-top:10px;">
+                          <div class="input-group-prepend">
+                              <div class="input-group-text">{{__('messages.Profile Picture Height')}}</div>
+                          </div>
+                          <input type="text" class="form-control" name="profile_picture_height" value="{{ $page->profile_picture_height }}" required pattern="^(\d+px|\d+%|auto)$" title="Enter a value in px, % or auto">
+                      </div>
+
+                      <div class="input-group" style="margin-top:10px;">
+                          <div class="input-group-prepend">
+                              <div class="input-group-text">{{__('messages.Profile Picture Width')}}</div>
+                          </div>
+                          <input type="text" class="form-control" name="profile_picture_width" value="{{ $page->profile_picture_width }}" required pattern="^(\d+px|\d+%|auto)$" title="Enter a value in px, % or auto">
+                      </div>                        
+
+                    <label style="margin-top:15px">{{__('messages.Display name')}}</label>
+                        <div class="input-group">
+                            {{-- <div class="input-group-prepend">
+                                <div class="input-group-text">{{__('messages.Name')}}</div>
+                            </div> --}}
+                            <input type="text" class="form-control" name="name" value="{{ $page->name }}" required>
+                        </div>
+
                     <!--<div class="form-group col-lg-8">
                             <label>Path name</label>
                             @<input type="text" class="form-control" name="pageName" value="{{ $page->littlelink_name ?? '' }}">

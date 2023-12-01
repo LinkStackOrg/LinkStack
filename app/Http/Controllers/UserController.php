@@ -91,7 +91,7 @@ class UserController extends Controller
             return abort(404);
         }
      
-        $userinfo = User::select('id', 'name', 'littlelink_name', 'littlelink_description', 'theme', 'role')->where('id', $id)->first();
+        $userinfo = User::select('id', 'name', 'littlelink_name', 'littlelink_description', 'theme', 'role', 'profile_picture_height', 'profile_picture_width')->where('id', $id)->first();
         $information = User::select('name', 'littlelink_name', 'littlelink_description', 'theme')->where('id', $id)->get();
         
         $links = DB::table('links')->join('buttons', 'buttons.id', '=', 'links.button_id')->select('links.link', 'links.id', 'links.button_id', 'links.title', 'links.custom_css', 'links.custom_icon', 'buttons.name')->where('user_id', $id)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->get();
@@ -126,7 +126,7 @@ class UserController extends Controller
             return abort(404);
         }
      
-        $userinfo = User::select('id', 'name', 'littlelink_name', 'littlelink_description', 'theme', 'role')->where('id', $id)->first();
+        $userinfo = User::select('id', 'name', 'littlelink_name', 'littlelink_description', 'theme', 'role', 'profile_picture_height', 'profile_picture_width')->where('id', $id)->first();
         $information = User::select('name', 'littlelink_name', 'littlelink_description', 'theme')->where('id', $id)->get();
         
         $links = DB::table('links')->join('buttons', 'buttons.id', '=', 'links.button_id')->select('links.link', 'links.id', 'links.button_id', 'links.title', 'links.custom_css', 'links.custom_icon', 'buttons.name')->where('user_id', $id)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->get();
@@ -742,7 +742,7 @@ class UserController extends Controller
     {
         $userId = Auth::user()->id;
 
-        $data['pages'] = User::where('id', $userId)->select('littlelink_name', 'littlelink_description', 'image', 'name')->get();
+        $data['pages'] = User::where('id', $userId)->select('littlelink_name', 'littlelink_description', 'image', 'name', 'profile_picture_height', 'profile_picture_width')->get();
 
         return view('/studio/page', $data);
     }
@@ -774,6 +774,8 @@ class UserController extends Controller
         }
     
         $profilePhoto = $request->file('image');
+        $profile_picture_width = $request->profile_picture_width;
+        $profile_picture_height = $request->profile_picture_height;
         $pageName = $request->littlelink_name;
         $pageDescription = strip_tags($request->pageDescription, '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
         $pageDescription = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $pageDescription);
@@ -786,6 +788,8 @@ class UserController extends Controller
         }
     
         User::where('id', $userId)->update([
+            'profile_picture_height' => $profile_picture_height,
+            'profile_picture_width' => $profile_picture_width,
             'littlelink_name' => $pageName,
             'littlelink_description' => $pageDescription,
             'name' => $name
@@ -1259,7 +1263,7 @@ class UserController extends Controller
     saveIcon('telegram', $request->telegram);
 
     saveIcon('whatsapp', $request->whatsapp);
-
+        
     saveIcon('twitch', $request->twitch);
 
 

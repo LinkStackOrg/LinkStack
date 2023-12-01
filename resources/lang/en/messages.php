@@ -350,6 +350,9 @@ return [
 
     'My Profile'=> 'My Profile',
     'Profile Picture' => 'Profile Picture',
+    'Profile Picture Sizes' => 'Profile Picture advanced style configuration (e.g., px, %, auto)',
+    'Profile Picture Width' => 'Profile Picture Width',
+    'Profile Picture Height' => 'Profile Picture Height',
     'Page URL' => 'Page URL',
     'Display name' => 'Display name',
     'Name:' => 'Name:',

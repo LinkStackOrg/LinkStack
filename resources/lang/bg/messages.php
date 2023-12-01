@@ -184,6 +184,9 @@ return array (
   'confirm_delete' => 'Сигурни ли сте, че искате да изтриете :title?',
   'My Profile' => 'Моят профил',
   'Profile Picture' => 'Снимка на профила',
+  'Profile Picture Sizes' => 'Разширено конфигуриране на стил за профилна снимка (напр. px, %, auto)'
+  'Profile Picture Width' => 'Ширина на профилната снимка'
+  'Profile Picture Height' => 'Височина на профилната снимка'  
   'Page URL' => 'URL адрес на страницата',
   'Display name' => 'Показвано име',
   'Name:' => 'Име:',

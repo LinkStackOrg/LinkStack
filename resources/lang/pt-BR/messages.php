@@ -337,6 +337,9 @@ return array(
 
 	'My Profile' => 'Meu perfil',
 	'Profile Picture' => 'Foto do perfil',
+	'Profile Picture Sizes' => 'Configuração de estilo avançada para foto do perfil (ex. px, %, auto)'
+	'Profile Picture Width' => 'Largura da foto do perfil'
+	'Profile Picture Height' => 'Altura da foto do perfil'
 	'Page URL' => 'URL da página',
 	'Display name' => 'Nome de exibição',
 	'Name' => 'Nome:',

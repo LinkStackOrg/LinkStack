@@ -74,6 +74,8 @@ class InstallerController extends Controller
             'password' => Hash::make($password),
             'littlelink_name' => $handle,
             'littlelink_description' => 'admin page',
+            'profile_picture_height' => "128px",
+            'profile_picture_width' => "128px",
             'block' => 'no',
         ]);
 
