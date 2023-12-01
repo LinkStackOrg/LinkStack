@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -25,7 +26,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'provider_id',
         'email_verified_at',
         'littlelink_name',
-
     ];
 
     /**
@@ -51,8 +51,29 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return visits($this)->relation();
     }
+
     public function socialAccounts()
     {
-        return $this->hasMany(socialAccount::class);
+        return $this->hasMany(SocialAccount::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+          if (config('linkstack.disable_random_user_ids') != 'true') {
+            $numberOfDigits = config('linkstack.user_id_length') ?? 6;
+    
+            $minIdValue = 10**($numberOfDigits - 1);
+            $maxIdValue = 10**$numberOfDigits - 1;
+    
+            do {
+                $randomId = rand($minIdValue, $maxIdValue);
+            } while (User::find($randomId));
+    
+            $user->id = $randomId;
+          }
+        });
     }
 }
