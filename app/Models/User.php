@@ -62,18 +62,22 @@ class User extends Authenticatable implements MustVerifyEmail
         parent::boot();
 
         static::creating(function ($user) {
-          if (config('linkstack.disable_random_user_ids') != 'true') {
-            $numberOfDigits = config('linkstack.user_id_length') ?? 6;
+            if (config('linkstack.disable_random_user_ids') != 'true') {
+                if (is_null(User::first())) {
+                    $user->id = 1;
+                } else {
+                    $numberOfDigits = config('linkstack.user_id_length') ?? 6;
     
-            $minIdValue = 10**($numberOfDigits - 1);
-            $maxIdValue = 10**$numberOfDigits - 1;
+                    $minIdValue = 10**($numberOfDigits - 1);
+                    $maxIdValue = 10**$numberOfDigits - 1;
     
-            do {
-                $randomId = rand($minIdValue, $maxIdValue);
-            } while (User::find($randomId));
+                    do {
+                        $randomId = rand($minIdValue, $maxIdValue);
+                    } while (User::find($randomId));
     
-            $user->id = $randomId;
-          }
+                    $user->id = $randomId;
+                }
+            }
         });
     }
 }
