@@ -15,6 +15,7 @@ class UserTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id');
+        $this->setDefaultSort('created_at', 'asc');
         $this->setPerPageAccepted([50, 100, 250, 500, 1000, -1]);
         $this->setColumnSelectEnabled();
     }
