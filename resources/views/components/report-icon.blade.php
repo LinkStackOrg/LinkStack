@@ -35,11 +35,12 @@
 
     .report-text {
       opacity: 0;
-      font-size: 14px;
-      transition: opacity 0.3s ease-out;
-      font-family: Arial, Helvetica, sans-serif;
-      color: white;
+      font-size: 14px !important;
+      transition: opacity 0.3s ease-out !important;
+      color: white !important;
       text-decoration: none;
+      font-family: "Open Sans", sans-serif, sans !important;
+      text-transform: none !important;
     }
 
     .report-text:hover {
