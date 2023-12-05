@@ -684,12 +684,12 @@ $usrhandl = Auth::user()->littlelink_name;
                 $redirectURL = url('').'/'.'u/'.Auth::user()->id;
 
                 if (extension_loaded('imagick')) {
-                  $imgSrc = QrCode::format('png')->size(1000)->generate($redirectURL);
+                  $imgSrc = QrCode::format('png')->gradient(224, 36, 252, 35, 199, 225,'diagonal')->eye('circle')->style('round')->size(1000)->generate($redirectURL);
                   $imgSrc = base64_encode($imgSrc);
                   $imgSrc = 'data:image/png;base64,' . $imgSrc;
                   $imgType = 'png';
                 } else {
-                  $imgSrc = QrCode::size(1000)->generate($redirectURL);
+                  $imgSrc = QrCode::gradient(224, 36, 252, 35, 199, 225,'diagonal')->eye('circle')->style('round')->size(1000)->generate($redirectURL);
                   $imgSrc = base64_encode($imgSrc);
                   $imgSrc = 'data:image/svg+xml;base64,' . $imgSrc;
                   $imgType = 'svg';
