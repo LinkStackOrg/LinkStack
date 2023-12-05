@@ -73,7 +73,7 @@ class RegisteredUserController extends Controller
             $user = $request->name;
             $email = $request->email;
             
-            if(env('REGISTER_AUTH') == 'auth'){
+            if(env('REGISTER_AUTH') == 'verified'){
                 if(env('MANUAL_USER_VERIFICATION') == true){
                 try {
                 Mail::send('auth.user-confirmation', ['user' => $user, 'email' => $email], function ($message) use ($user) {
