@@ -242,6 +242,12 @@ public function SendTestMail(Request $request)
         $customBackground = $request->file('background');
         $theme = $request->theme;
 
+        if(User::where('id', $id)->get('role')->first()->role =! $role) {
+            if ($role == 'vip') {
+                UserData::saveData($id, 'checkmark', true);
+            }
+        }
+
         if ($request->password == '') {
             User::where('id', $id)->update(['name' => $name, 'email' => $email, 'littlelink_name' => $littlelink_name, 'littlelink_description' => $littlelink_description, 'role' => $role, 'theme' => $theme]);
         } else {
