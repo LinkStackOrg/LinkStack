@@ -22,8 +22,6 @@ return $path;}
 
 @foreach($information as $info) @php $GLOBALS['themeName'] = $info->theme; @endphp @endforeach
 
-@if(theme('enable_custom_code') == "true" and theme('enable_custom_head') == "true" and env('ALLOW_CUSTOM_CODE_IN_THEMES') == 'true')@include($GLOBALS['themeName'] . '.extra.custom-head')@endif
-
 @if(theme('allow_custom_background') != "false")
 @php
 $customBackgroundFile = findBackground($userinfo->id);
@@ -50,6 +48,7 @@ if($customBackgroundExists == true){
 @endif
 
 @push('linkstack-head-end')
+@if(theme('enable_custom_code') == "true" and theme('enable_custom_head') == "true" and env('ALLOW_CUSTOM_CODE_IN_THEMES') == 'true')@include($GLOBALS['themeName'] . '.extra.custom-head')@endif
 @if($info->theme != '' and $info->theme != 'default')
 
   <!-- LinkStack Theme: "{{$info->theme}}" -->
