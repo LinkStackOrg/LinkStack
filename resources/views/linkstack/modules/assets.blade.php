@@ -1,0 +1,7 @@
+<!-- Custom icons font-awesome -->
+<style>{!! str_replace('../', 'studio/', file_get_contents(base_path("assets/external-dependencies/fontawesome.css"))) !!}</style>
+
+@include('layouts.fonts')
+
+<style>{!! file_get_contents(base_path("assets/linkstack/css/normalize.css")) !!}</style>
+<style>{!! file_get_contents(base_path("assets/linkstack/css/animate.css")) !!}</style>
