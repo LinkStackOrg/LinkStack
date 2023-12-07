@@ -106,3 +106,4 @@ if($customBackgroundExists == true){
 @push('linkstack-body-end')
 @if(theme('enable_custom_code') == "true" and theme('enable_custom_body_end') == "true" and env('ALLOW_CUSTOM_CODE_IN_THEMES') == 'true')@include($GLOBALS['themeName'] . '.extra.custom-body-end')@endif
 @endpush
+@include('linkstack.modules.dynamic-contrast')

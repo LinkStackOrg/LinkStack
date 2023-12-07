@@ -7,4 +7,3 @@
 <style>{!! file_get_contents(base_path("assets/linkstack/css/animate.css")) !!}</style>
 
 <script>{!! file_get_contents(base_path("assets/js/dynamic-contrast.min.js")) !!}</script>
-@include('linkstack.modules.dynamic-contrast')
