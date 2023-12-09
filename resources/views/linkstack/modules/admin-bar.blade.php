@@ -89,7 +89,15 @@ if(Auth::user()->id !== $userinfo->id){
                         @endif
                         <span class="display-name">admin</span></a></li>
                        <li><a class="ab-item" href="{{ url('/studio/page') }}">Edit My Profile</a></li>
-                       <li><a class="ab-item" href="{{ route('logout') }}">Log Out</a></li>
+                       <li><a class="ab-item" onclick="submitForm()" style="cursor:pointer">Log Out</a></li>
+                       <script>
+                        function submitForm() {
+                            document.getElementById('logoutForm').submit();
+                        }
+                    </script>
+                    <form id="logoutForm" action="{{ route('logout') }}" method="post">
+                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    </form>
                     </ul>
                  </div>
               </li>
