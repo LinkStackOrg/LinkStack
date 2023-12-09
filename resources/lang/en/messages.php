@@ -972,7 +972,7 @@ return [
     | LinkStack (Links) Page
     |--------------------------------------------------------------------------
     |
-    | resources/views/littlelink.blade.php
+    | resources/views/linkstack/linkstack.blade.php
     |
     */
 
@@ -980,6 +980,13 @@ return [
     'Share' => 'Share',
     'Copy URL to clipboard' => 'Copy URL to clipboard',
     'URL has been copied to your clipboard!' => 'URL has been copied to your clipboard!',
+
+    'Delete User' => 'Delete User',
+    'Block User' => 'Block User',
+    'Users Theme' => 'Theme',
+    'Search User' => 'Search for User',
+    
+    'Edit my profile' => 'Edit my profile',
 
 
     /*
