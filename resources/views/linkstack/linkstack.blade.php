@@ -12,7 +12,7 @@
    @stack('linkstack-body-start')
    @include('linkstack.modules.admin-bar')
    @include('linkstack.modules.share-button')
-   @include('components.report-icon')
+   @include('linkstack.modules.report-icon')
    <div class="container">
       <div class="row">
          <div class="column" style="margin-top: 5%">
@@ -22,7 +22,7 @@
             @include('linkstack.elements.icons')
             @endforeach
             @include('linkstack.elements.buttons')
-            @include('layouts.footer')
+            @include('linkstack.modules.footer')
          </div>
       </div>
    </div>
