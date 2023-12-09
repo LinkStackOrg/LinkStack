@@ -10,6 +10,7 @@
 </head>
 <body>
    @stack('linkstack-body-start')
+   @include('linkstack.modules.admin-bar')
    @include('linkstack.modules.share-button')
    @include('components.report-icon')
    <div class="container">
