@@ -55,7 +55,7 @@ if(Auth::user()->id !== $userinfo->id){
                  <div class="ab-sub-wrapper">
                     <ul id="linkstack-admin-bar-new-content-default" class="ab-submenu">
                        @if($isUser)
-                       <li><a class="ab-item" href="{{route('deleteUser', ['id' => $userinfo->id])}}">Delete User</a></li>
+                       <li><a class="ab-item" href="{{route('deleteUser', ['id' => $userinfo->id])}}" id="confirmationLink">Delete User</a></li>
                        <li><a class="ab-item" href="{{route('blockUser', ['block' => 'no', 'id' => $userinfo->id])}}">Block User</a></li>
                        <li><a class="ab-item" href="{{ route('editUser', $userinfo->id ) }}">Edit User</a></li>
                        @endif
@@ -103,6 +103,18 @@ if(Auth::user()->id !== $userinfo->id){
         document.getElementById('logoutForm').submit();
     }
   </script>
+    <script>
+      function showConfirmation() {
+        var isConfirmed = confirm("{{__('messages.confirm.delete.user')}}");
+        if (isConfirmed) {
+          window.location.href = document.getElementById("confirmationLink").getAttribute("href");
+        }
+      }
+      document.getElementById("confirmationLink").addEventListener("click", function(event) {
+        event.preventDefault();
+        showConfirmation();
+      });
+    </script>
   <form id="logoutForm" action="{{ route('logout') }}" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
   </form>
