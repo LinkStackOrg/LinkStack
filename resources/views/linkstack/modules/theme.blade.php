@@ -1,4 +1,4 @@
-<?php
+@php
 // Theme Config
 if (!function_exists('theme')) {
   function theme($key){
@@ -18,7 +18,9 @@ function themeAsset($path){
 $path = url('themes/' . $GLOBALS['themeName'] . '/extra/custom-assets/' . $path);
 return $path;}
 }
-?>
+
+$customBackgroundExists = false;
+@endphp
 
 @foreach($information as $info) @php $GLOBALS['themeName'] = $info->theme; @endphp @endforeach
 
@@ -27,11 +29,7 @@ return $path;}
 $customBackgroundFile = findBackground($userinfo->id);
 $customBackgroundPath = base_path('assets/img/background-img/'.$customBackgroundFile);
 $customBackgroundURL = url('assets/img/background-img/'.$customBackgroundFile);
-$customBackgroundExists = file_exists($customBackgroundPath);
-if($customBackgroundExists == true){
-  $customBackgroundBrightness = analyzeImageBrightness($customBackgroundFile);
-    } else {
- $customBackgroundBrightness = false;}
+$customBackgroundExists = file_exists($customBackgroundPath)
 @endphp
 
 @if($customBackgroundExists == true)
