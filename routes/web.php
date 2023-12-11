@@ -54,24 +54,7 @@ if(file_exists(base_path('INSTALLING')) or file_exists(base_path('INSTALLERLOCK'
 // Disables routes if in Maintenance Mode
 if(env('MAINTENANCE_MODE') != 'true'){
 
-//Changes the homepage to a LinkStack profile if set in the config
-if(config('advanced-config.custom_home_url') != '') {
-  $custom_home_page_url = config('advanced-config.custom_home_url');
-} else {
-  $custom_home_page_url = "/home";
-}
-if(env('HOME_URL') != '') {
-  Route::get('/', [UserController::class, 'littlelinkhome'])->name('littlelink');
-  if(config('advanced-config.disable_home_page') == 'redirect') {
-    Route::get($custom_home_page_url, function () {return redirect(config('advanced-config.redirect_home_page'));});
-  }elseif(config('advanced-config.disable_home_page') != 'true') {
-  Route::get( $custom_home_page_url, [App\Http\Controllers\HomeController::class, 'home'])->name('home');}
-} else {
-  if(config('advanced-config.disable_home_page') == 'redirect') {
-    Route::get('/', function () {return redirect(config('advanced-config.redirect_home_page'));});
-  }elseif(config('advanced-config.disable_home_page') != 'true') {
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');}
-}
+require __DIR__.'/home.php';
 
 //Redirect if no page URL is set
 Route::get('/@', function () {
