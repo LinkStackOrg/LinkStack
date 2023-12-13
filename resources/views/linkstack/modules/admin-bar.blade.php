@@ -61,6 +61,7 @@ if(Auth::user()->id == $userinfo->id){
                 <span class="screen-reader-text">{{__('messages.Add Link')}}</span></a>
             </li>
             @endif
+            @if(auth()->user()->role == 'admin')
               <li id="linkstack-admin-bar-defaultsp" class="menupop">
                  <a class="ab-item" aria-haspopup="true" href="#">
                   <svg style="top:4px;position:relative;fill:white;" xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
@@ -78,6 +79,7 @@ if(Auth::user()->id == $userinfo->id){
                     </ul>
                  </div>
               </li>
+            @endif
            </ul>
            <ul id="linkstack-admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
               <li id="linkstack-admin-bar-my-account" class="menupop with-avatar">
