@@ -435,7 +435,7 @@ return [
     'Theme name' => 'Themenname:',
     'Update status' => 'Update Status:',
     'Version' => 'Ausführung:',
-    'Error' => 'Fehler',
+    'Error!' => 'Fehler!',
     'Update manually' => 'Manuell aktualisieren',
     'Update all themes' => 'Aktualisieren Sie alle Themen',
 
