@@ -24,6 +24,18 @@ if(Auth::user()->id == $userinfo->id){
   });
 </script>
 
+<script>
+  if (window.self !== window.top) {
+    document.addEventListener("DOMContentLoaded", function() {
+      var adminBar = document.getElementById("linkstack-adminbar");
+      if (adminBar) {
+        adminBar.style.display = "none";
+      }
+      document.body.style.marginTop = "0";
+    });
+  }
+</script>
+
 <div>
   <div>
      <div id="linkstack-adminbar">
@@ -58,9 +70,9 @@ if(Auth::user()->id == $userinfo->id){
                        <li><a class="ab-item" href="{{route('blockUser', ['block' => 'no', 'id' => $userinfo->id])}}">{{__('messages.Block User')}}</a></li>
                        <li><a class="ab-item" href="{{ route('editUser', $userinfo->id ) }}">{{__('messages.Edit User')}}</a></li>
                        @endif
-                       <li><a class="ab-item" href="{{url('/theme').'/@'.$userinfo->littlelink_name}}">{{__('messages.Users Theme')}}</a></li>
+                       @if($info->theme != '' and $info->theme != 'default')<li><a class="ab-item" href="{{url('/theme').'/@'.$userinfo->littlelink_name}}">{{__('messages.Users Theme')}}</a></li>@endif
                        <li><a class="ab-item" href="{{url('admin/users')."?table[search]=".$userinfo->littlelink_name}}">{{__('messages.Search User')}}</a></li>
-                       @if(!$userinfo->adminUser && $isUser && $userinfo->block !== 'yes' && ($userinfo->email_verified_at != '' || env('REGISTER_AUTH') == 'auth'))<li><a class="ab-item"  href="{{ route('authAsID', $userinfo->id ) }}" >Impersonate</a></li>@endif
+                       @if(!$userinfo->adminUser && !$isUser && $userinfo->block !== 'yes' && ($userinfo->email_verified_at != '' || env('REGISTER_AUTH') == 'auth'))<li><a class="ab-item"  href="{{ route('authAsID', $userinfo->id ) }}" >Impersonate</a></li>@endif
                     </ul>
                  </div>
               </li>
