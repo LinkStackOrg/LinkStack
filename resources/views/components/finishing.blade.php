@@ -63,6 +63,12 @@ use App\Models\Page;
             if(EnvEditor::keyExists('ENABLE_REPORT_ICON')){ /* Do nothing if key already exists */ 
             } else {EnvEditor::addKey('ENABLE_REPORT_ICON', 'false');}
 
+            if(EnvEditor::keyExists('ENABLE_ADMIN_BAR')){ /* Do nothing if key already exists */ 
+            } else {EnvEditor::addKey('ENABLE_ADMIN_BAR', 'true');}
+
+            if(EnvEditor::keyExists('ENABLE_ADMIN_BAR_USERS')){ /* Do nothing if key already exists */ 
+            } else {EnvEditor::addKey('ENABLE_ADMIN_BAR_USERS', 'false');}
+
             if(EnvEditor::keyExists('ADMIN_EMAIL')){} else 
             {if(Auth::user()->id == 1){EnvEditor::addKey('ADMIN_EMAIL', App\Models\User::find(1)->email);}
             else{EnvEditor::addKey('ADMIN_EMAIL', '');}}

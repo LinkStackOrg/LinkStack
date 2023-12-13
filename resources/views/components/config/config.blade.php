@@ -294,6 +294,9 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 {{toggle('ALLOW_CUSTOM_BACKGROUNDS')}}
 
 
+{{toggle('ENABLE_ADMIN_BAR_USERS')}}
+
+
 <a name="Security"><h2 class="ch2">{{__('messages.Security')}}</h2></a>
 
 

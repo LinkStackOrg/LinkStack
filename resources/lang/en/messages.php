@@ -695,6 +695,8 @@ return [
     'FORCE_HTTPS.description' => 'Makes all links utilize HTTPS by default. It is advised to enable this option if you are using a reverse proxy.',
     'ALLOW_CUSTOM_CODE_IN_THEMES.title' => 'Allow custom code in themes',
     'ALLOW_CUSTOM_CODE_IN_THEMES.description' => 'Allows use of custom code in themes. If you use themes from unknown sources, <br>this may pose a security risk.',
+    'ENABLE_ADMIN_BAR_USERS.title' => 'Enable Admin Bar for all users',
+    'ENABLE_ADMIN_BAR_USERS.description' => 'If enabled users, all authenticated users will have an Admin Bar displayed on their links pages.',
     'ENABLE_THEME_UPDATER.title' => 'Enable Theme Updater',
     'ENABLE_THEME_UPDATER.description' => 'Determines if the theme updater should be active.',
     'ENABLE_SOCIAL_LOGIN.title' => 'Enable social login',
