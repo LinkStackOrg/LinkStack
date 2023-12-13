@@ -689,6 +689,8 @@ return array (
   'FORCE_HTTPS.description' => 'Fait en sorte que tous les liens utilisent HTTPS par défaut. Il est conseillé d\'activer cette option si vous utilisez un proxy inverse.',
   'ALLOW_CUSTOM_CODE_IN_THEMES.title' => 'Autoriser le code personnalisé dans les thèmes',
   'ALLOW_CUSTOM_CODE_IN_THEMES.description' => 'Permet l\'utilisation de code personnalisé dans les thèmes. Si vous utilisez des thèmes provenant de sources inconnues, cela peut poser un risque de sécurité.',
+  'ENABLE_ADMIN_BAR_USERS.title' => 'Activer la barre d\'administration pour tous les utilisateurs',
+  'ENABLE_ADMIN_BAR_USERS.description' => 'Si elle est activée, la barre d\'administration s\'affiche pour tous les utilisateurs authentifiés sur leur page de liens.',
   'ENABLE_THEME_UPDATER.title' => 'Activer le programme de mise à jour du thème',
   'ENABLE_THEME_UPDATER.description' => 'Détermine si le programme de mise à jour du thème doit être actif.',
   'ENABLE_SOCIAL_LOGIN.title' => 'Activer la connexion via les réseaux sociaux',
@@ -973,7 +975,11 @@ return array (
   'Copy URL to clipboard' => 'Copier l\'URL dans le presse-papiers',
   'URL has been copied to your clipboard!' => 'L\'URL a été copiée dans votre presse-papier !',
 
+  'Block User' => 'Bloquer les utilisateurs',
+  'Users Theme' => 'Theme',
+  'Search User' => 'Rechercher par utilisateur',
 
+  'Edit my profile' => 'Éditer le profil',
     /*
     |--------------------------------------------------------------------------
     | Footer
