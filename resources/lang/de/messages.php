@@ -698,6 +698,8 @@ return [
     'FORCE_HTTPS.description' => 'Stellt sicher, dass alle Links standardmäßig HTTPS verwenden. Es wird empfohlen, diese Option zu aktivieren, wenn Sie einen Reverse-Proxy verwenden.',
     'ALLOW_CUSTOM_CODE_IN_THEMES.title' => 'Benutzerdefinierten Code in Themes zulassen',
     'ALLOW_CUSTOM_CODE_IN_THEMES.description' => 'Ermöglicht die Verwendung von benutzerdefiniertem Code in Themes. Wenn Sie Themes aus unbekannten Quellen verwenden, kann dies ein Sicherheitsrisiko darstellen.',
+    'ENABLE_ADMIN_BAR_USERS.title' => 'Aktivieren Sie die Adminleiste für alle Benutzer',
+    'ENABLE_ADMIN_BAR_USERS.description' => 'Wenn aktiviert, wird die Adminleiste für alle authentifizierten Benutzer auf ihrer Linkseite angezeigt.',
     'ENABLE_THEME_UPDATER.title' => 'Aktivieren Sie den Theme-Updater',
     'ENABLE_THEME_UPDATER.description' => 'Legt fest, ob der Theme-Updater aktiv sein soll.',
     'ENABLE_SOCIAL_LOGIN.title' => 'Aktivieren Sie Social Login',
@@ -988,6 +990,11 @@ return [
     'Copy URL to clipboard' => 'URL in die Zwischenablage kopieren',
     'URL has been copied to your clipboard!' => 'Die URL wurde in Ihre Zwischenablage kopiert!',
 
+    'Block User' => 'Benutzer blockieren',
+    'Users Theme' => 'Theme',
+    'Search User' => 'Nach Benutzer Suchen',
+    
+    'Edit my profile' => 'Profil editieren',
 
     /*
     |--------------------------------------------------------------------------
