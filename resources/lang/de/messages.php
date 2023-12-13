@@ -834,6 +834,7 @@ return [
     'The update was successful' => 'Das Update war erfolgreich, Sie können nun zum Admin-Panel zurückkehren.',
     'View the release notes' => 'Sehen Sie sich die Versionshinweise an',
     'Run again' => 'Erneut updaten',
+    'Error' => 'Error',
     'Something went wrong with the update' => 'Beim Update ist ein Fehler aufgetreten',
 
     
