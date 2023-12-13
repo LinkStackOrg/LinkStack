@@ -990,6 +990,7 @@ return [
     'Copy URL to clipboard' => 'URL in die Zwischenablage kopieren',
     'URL has been copied to your clipboard!' => 'Die URL wurde in Ihre Zwischenablage kopiert!',
 
+    'Delete User' => 'Benutzer löschen',
     'Block User' => 'Benutzer blockieren',
     'Users Theme' => 'Theme',
     'Search User' => 'Nach Benutzer Suchen',
