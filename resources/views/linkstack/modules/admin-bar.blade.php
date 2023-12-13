@@ -67,7 +67,7 @@ if(Auth::user()->id == $userinfo->id){
                 </a>
                  <div class="ab-sub-wrapper">
                     <ul id="linkstack-admin-bar-new-content-default" class="ab-submenu">
-                       @if($isUser)
+                       @if(!$isUser)
                        <li><a class="ab-item" href="{{route('deleteUser', ['id' => $userinfo->id])}}" id="confirmationLink">{{__('messages.Delete User')}}</a></li>
                        <li><a class="ab-item" href="{{route('blockUser', ['block' => 'no', 'id' => $userinfo->id])}}">{{__('messages.Block User')}}</a></li>
                        <li><a class="ab-item" href="{{ route('editUser', $userinfo->id ) }}">{{__('messages.Edit User')}}</a></li>
