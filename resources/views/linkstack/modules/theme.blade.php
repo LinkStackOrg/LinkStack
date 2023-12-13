@@ -3,7 +3,7 @@
 if (!function_exists('theme')) {
   function theme($key){
 $key = trim($key);
-$file = base_path('themes/' . $GLOBALS['themeName'] . '/config.php');
+$file = base_path('themes/' . Auth::user()->theme . '/config.php');
   if (file_exists($file)) {
     $config = include $file;
   if (isset($config[$key])) {
@@ -15,14 +15,14 @@ return null;}
 // Theme Custom Asset
 if (!function_exists('themeAsset')) {
 function themeAsset($path){
-$path = url('themes/' . $GLOBALS['themeName'] . '/extra/custom-assets/' . $path);
+$path = url('themes/' . Auth::user()->theme . '/extra/custom-assets/' . $path);
 return $path;}
 }
 
 $customBackgroundExists = false;
 @endphp
 
-@foreach($information as $info) @php $GLOBALS['themeName'] = $info->theme; @endphp @endforeach
+@foreach($information as $info) @php Auth::user()->theme = $info->theme; @endphp @endforeach
 
 @if(theme('allow_custom_background') != "false")
 @php
@@ -46,7 +46,7 @@ $customBackgroundExists = file_exists($customBackgroundPath)
 @endif
 
 @push('linkstack-head-end')
-@if(theme('enable_custom_code') == "true" and theme('enable_custom_head') == "true" and env('ALLOW_CUSTOM_CODE_IN_THEMES') == 'true')@include($GLOBALS['themeName'] . '.extra.custom-head')@endif
+@if(theme('enable_custom_code') == "true" and theme('enable_custom_head') == "true" and env('ALLOW_CUSTOM_CODE_IN_THEMES') == 'true')@include(Auth::user()->theme . '.extra.custom-head')@endif
 @if($info->theme != '' and $info->theme != 'default')
 
   <!-- LinkStack Theme: "{{$info->theme}}" -->
@@ -77,7 +77,7 @@ $customBackgroundExists = file_exists($customBackgroundPath)
 @endpush
 
 @push('linkstack-body-start')
-@if(theme('enable_custom_code') == "true" and theme('enable_custom_body') == "true" and env('ALLOW_CUSTOM_CODE_IN_THEMES') == 'true')@include($GLOBALS['themeName'] . '.extra.custom-body')@endif
+@if(theme('enable_custom_code') == "true" and theme('enable_custom_body') == "true" and env('ALLOW_CUSTOM_CODE_IN_THEMES') == 'true')@include(Auth::user()->theme . '.extra.custom-body')@endif
 
 @if($info->theme != '' and $info->theme != 'default')
     <!-- Enables parallax background animations -->
@@ -102,6 +102,6 @@ $customBackgroundExists = file_exists($customBackgroundPath)
 @endpush
 
 @push('linkstack-body-end')
-@if(theme('enable_custom_code') == "true" and theme('enable_custom_body_end') == "true" and env('ALLOW_CUSTOM_CODE_IN_THEMES') == 'true')@include($GLOBALS['themeName'] . '.extra.custom-body-end')@endif
+@if(theme('enable_custom_code') == "true" and theme('enable_custom_body_end') == "true" and env('ALLOW_CUSTOM_CODE_IN_THEMES') == 'true')@include(Auth::user()->theme . '.extra.custom-body-end')@endif
 @endpush
 @include('linkstack.modules.dynamic-contrast')
