@@ -54,9 +54,11 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'disableCookies' => \App\Http\Middleware\DisableCookies::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
+        'homepage' => \App\Http\Middleware\Homepage::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,

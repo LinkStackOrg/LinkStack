@@ -1,6 +1,8 @@
 <?php
 use App\Http\Controllers\UserController;
 
+Route::middleware('disableCookies')->group(function () {
+
 $host = request()->getHost();
 $customConfigs = config('advanced-config.custom_domains', []);
 
@@ -43,3 +45,5 @@ if (env('HOME_URL') != '') {
         Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
     }
 }
+
+});
