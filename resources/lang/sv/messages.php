@@ -668,7 +668,7 @@ return [
     'LOG_CHANNEL.description' => 'LOG_CHANNEL',
     'LOG_LEVEL.title' => 'LOG_LEVEL',
     'LOG_LEVEL.description' => 'LOG_LEVEL',
-    'MAINTENANCE_MODE.title' => 'Aktivera UnderhållslägeEnable Maintenance Mode',
+    'MAINTENANCE_MODE.title' => 'Aktivera Underhållsläge',
     'MAINTENANCE_MODE.description' => 'Visar att underhåll pågår på alla publika sidor. Detta inaktiverar även inloggningssidorna.',
     'MAIL_MAILER.title' => 'MAIL_MAILER',
     'MAIL_MAILER.description' => 'MAIL_MAILER',
@@ -696,6 +696,8 @@ return [
     'ALLOW_CUSTOM_CODE_IN_THEMES.description' => 'Tillåter bruk av anpassad kod i teman. Om du använder teman från okännda källor, <br>så kan detta innebära en säkerhetsrisk.',
     'ENABLE_THEME_UPDATER.title' => 'Aktivera Temauppdateraren',
     'ENABLE_THEME_UPDATER.description' => 'Avgör om temauppdateraren ska vara aktiv.',
+    'ENABLE_ADMIN_BAR_USERS.title' => 'Aktivera administrationsfält för alla användare',
+    'ENABLE_ADMIN_BAR_USERS.description' => 'Om det här alternativet är aktivt kommer alla inloggade användare att ha ett administrationsfält tillgängligt på deras länksidor.',
     'ENABLE_SOCIAL_LOGIN.title' => 'Aktivera social inloggning',
     'ENABLE_SOCIAL_LOGIN.description' => 'Aktiverar inloggning via sociala medier. Det här alternativer kräver vidare konfiguration. Läs mer om detta <a target=\'_blank\' href=\'https://linkstack.org/social-login\'>här</a>.',
     'USE_THEME_PREVIEW_IFRAME.title' => 'Använd iframe som temaförhandsvisning',
@@ -730,6 +732,8 @@ return [
     'ADMIN_EMAIL.description' => 'Används för att skicka notiser via mail.',
     'HIDE_VERIFICATION_CHECKMARK.title' => 'Dölj verifieringsbock',
     'HIDE_VERIFICATION_CHECKMARK.description' => 'Döljer verifieringsbock som visas på administratörers samt VIP-medlemmars sidor.',
+    'ENABLE_REPORT_ICON.title' => 'Aktivera rapportikon',
+    'ENABLE_REPORT_ICON.description' => 'Visar en ikon på användarsidor som låter användare rapportera sidor.',
     'LOCALE.title' => 'Appspråk',
     'LOCALE.description' => 'Ändrar språket på din applikation',
 
@@ -977,6 +981,14 @@ return [
     'Share' => 'Dela',
     'Copy URL to clipboard' => 'Kopiera URL',
     'URL has been copied to your clipboard!' => 'URL:en har kopierats till ditt urklipp!',
+    
+    
+    'Delete User' => 'Radera användare',
+    'Block User' => 'Blockera användare',
+    'Users Theme' => 'Tema',
+    'Search User' => 'Leta upp användare',
+    
+    'Edit my profile' => 'Redigera min profil',
 
 
     /*
@@ -1037,6 +1049,53 @@ return [
     'footer.Privacy' => 'Integritet',
     'footer.Contact' => 'Kontakt',
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Rapportsida
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'report_violation' => 'Rapportera missbruk',
+    'url_label' => 'URL till sidan du vill rapportera',
+    'report_type_label' => 'Typ av rapport',
+    'hate_speech' => 'Hets mot folkgrupp eller trakasseri',
+    'violence_threats' => 'Våld eller hot',
+    'illegal_activities' => 'Olagliga aktiviteter',
+    'copyright_infringement' => 'Missbruk av upphovsrätt',
+    'misinformation_fake_news' => 'Desinformation',
+    'identity_theft' => 'Identitetsstöld',
+    'drug_related_content' => 'Drogrelaterat innehåll',
+    'weapons_harmful_objects' => 'Vapen eller farliga objekt',
+    'child_exploitation' => 'Utnyttjande av barn',
+    'fraud_scams' => 'Bedrägeri',
+    'privacy_violation' => 'Integritetskränkning',
+    'impersonation' => 'Personifiering',
+    'other_specify' => 'Annat (specifiera)',
+    'additional_comments_label' => 'Övriga kommentarer',
+    'submit_button' => 'Skicka',
+    
+
+    'report_mail_admin_subject' => 'Profilrapport',
+    'report_mail_admin_report' => 'En profil har rapporterats',
+
+    'report_mail_reported_profile' => 'Rapporterad profil',
+    'report_mail_reported_url' => 'Rapporterad URL',
+    'report_mail_type' => 'Typ',
+    'report_mail_message' => 'Meddelande',
+
+    'report_mail_report_submitted_by' => 'Rapport inskickad av',
+    'report_mail_reported_by' => 'Rapporterad av',
+    'report_mail_profile' => 'Profil',
+
+    'report_mail_button_profile' => 'Visa på användarens sida',
+    'report_mail_button_delete' => 'Radera användarrapport',
+
+
+    'report_error' => 'Profilen kunde inte rapporteras',
+    'report_success' => 'Profilen har rapporterats',    
+    
 
     #=============================================================================#
     # Laravel internal translations                                               #
