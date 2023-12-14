@@ -1,7 +1,5 @@
 <?php
 
-
-
 $analytics = 
 
 /*
@@ -26,7 +24,7 @@ EOD;;
 return [
 
 // Do not change!
-'version' => '2.0',
+'version' => '2.1',
 
     /*
     |--------------------------------------------------------------------------
@@ -48,12 +46,6 @@ return [
     'canonical_url'   => '', // Tells search engines to index "https://example.com/"  instead of "https://example.com/@admin",  for example.
     'twitter_creator' => '', // Twitter @username.
     'author'          => '', // Your name.
-
-
-    /*
-    | All settings below are always active
-    |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    */
 
     /*
     |--------------------------------------------------------------------------
@@ -131,15 +123,10 @@ return [
     |         'custom_css' => ''
     |       ),
     | 
-    | In the 'button' field, you have to enter the button name (i.e. 'twitter', 'github', 'custom'...).
+    | In the 'button' field, you have to enter the button name (i.e. 'mastodon', 'github', 'custom'...).
     | You can find a list of all available buttons below.
     | 
     | In the 'link' field, you can enter your desired link you may leave this field empty for a display only, non-functional button.
-    | 
-    | 
-    | 
-    | The input fields below only apply to buttons such as 'custom' and 'custom_website' but must always be included even if only empty.
-    |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     | 
     | In the 'title' field, changes the text on a button, such as 'custom' and 'custom_website'.
     | 
@@ -179,53 +166,25 @@ return [
     ),
 
     /*
-    |--------------------------------|
-    | List of Available buttons:     |
-    |--------------------------------|
-    | 'button' => 'custom'           |
-    | 'button' => 'custom_website'   |
-    | 'button' => 'github'           |
-    | 'button' => 'twitter'          |
-    | 'button' => 'instagram'        |
-    | 'button' => 'facebook'         |
-    | 'button' => 'messenger'        |
-    | 'button' => 'linkedin'         |
-    | 'button' => 'youtube'          |
-    | 'button' => 'discord'          |
-    | 'button' => 'twitch'           |
-    | 'button' => 'snapchat'         |
-    | 'button' => 'spotify'          |
-    | 'button' => 'reddit'           |
-    | 'button' => 'medium'           |
-    | 'button' => 'pinterest'        |
-    | 'button' => 'soundcloud'       |
-    | 'button' => 'figma'            |
-    | 'button' => 'kit'              |
-    | 'button' => 'telegram'         |
-    | 'button' => 'tumblr'           |
-    | 'button' => 'steam'            |
-    | 'button' => 'vimeo'            |
-    | 'button' => 'wordpress'        |
-    | 'button' => 'goodreads'        |
-    | 'button' => 'skoob'            |
-    | 'button' => 'tiktok'           |
-    | 'button' => 'default email'    |
-    | 'button' => 'default email_alt'|
-    | 'button' => 'bandcamp'         |
-    | 'button' => 'patreon'          |
-    | 'button' => 'signal'           |
-    | 'button' => 'venmo'            |
-    | 'button' => 'cashapp'          |
-    | 'button' => 'gitlab'           |
-    | 'button' => 'mastodon'         |
-    | 'button' => 'paypal'           |
-    | 'button' => 'whatsapp'         |
-    | 'button' => 'xing'             |
-    | 'button' => 'buy me a coffee'  |
-    | 'button' => 'website'          |
-    | 'button' => 'heading'          |
-    | 'button' => 'space'            |
-    |--------------------------------|
+    |---------------------------------------------------|
+    | List of Available buttons:                        |
+    |---------------------------------------------------|
+    | https://linkstackorg.github.io/buttons/           |
+    |---------------------------------------------------|
     */
 
+/*
+|--------------------------------------------------------------------------
+| Custom Parameters
+|--------------------------------------------------------------------------
+|
+| Add your own custom settings below here.
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+
+
+
+
+
+/* End of Config! */
 ];
