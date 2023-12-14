@@ -16,7 +16,7 @@
     $DisplayShowShrBtn = $ShowShrBtn === 'true' && UserData::getData($userinfo->id, 'disable-sharebtn') !== "true";
 @endphp
 
-<div align="right" @if($DisplayShowShrBtn == false) style="visibility:hidden" @endif class="sharediv">
+<div align="right" @if($DisplayShowShrBtn == 'false') style="visibility:hidden" @endif class="sharediv">
   <div>
     <span class="sharebutton button-hover icon-hover share-button" data-share="{{url()->current()}}" tabindex="0" role="button" aria-label="{{__('messages.Share this page')}}">
       <i style="color: black;" class="fa-solid fa-share sharebutton-img share-icon hvr-icon"></i>
