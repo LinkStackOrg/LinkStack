@@ -668,7 +668,7 @@ return [
     'LOG_CHANNEL.description' => 'LOG_CHANNEL',
     'LOG_LEVEL.title' => 'LOG_LEVEL',
     'LOG_LEVEL.description' => 'LOG_LEVEL',
-    'MAINTENANCE_MODE.title' => 'Aktivera UnderhållslägeEnable Maintenance Mode',
+    'MAINTENANCE_MODE.title' => 'Aktivera Underhållsläge',
     'MAINTENANCE_MODE.description' => 'Visar att underhåll pågår på alla publika sidor. Detta inaktiverar även inloggningssidorna.',
     'MAIL_MAILER.title' => 'MAIL_MAILER',
     'MAIL_MAILER.description' => 'MAIL_MAILER',
