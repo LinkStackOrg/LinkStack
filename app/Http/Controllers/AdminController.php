@@ -422,9 +422,11 @@ public function SendTestMail(Request $request)
     //Saves advanced config
     public function editAC(request $request)
     {
-        $AdvancedConfig = $request->AdvancedConfig;
-
-        file_put_contents('config/advanced-config.php', $AdvancedConfig);
+        if ($request->ResetAdvancedConfig == 'RESET_DEFAULTS') {
+            copy(base_path('storage/templates/advanced-config.php'), base_path('config/advanced-config.php')); 
+        } else {
+            file_put_contents('config/advanced-config.php', $request->AdvancedConfig);
+        }
 
         return redirect('/admin/config#2');
     }
