@@ -257,6 +257,16 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* Booth */
+.button.button-booth {
+  color: #FFFFFF;
+  background-color: #FC4D50;
+}
+.button.button-booth:hover,
+.button.button-booth:focus {
+  filter: brightness(90%);
+}
+
 /* Bluesky */
 .button.button-bluesky {
   color: #000000;
@@ -555,6 +565,16 @@ button:hover,
 }
 .button.button-playstore:hover,
 .button.button-playstore:focus {
+  filter: brightness(90%);
+}
+
+/* HearThis.at */
+.button.button-hearthisat {
+  color: #FFFFFF;
+  background-color: #000000;
+}
+.button.button-hearthisat:hover,
+.button.button-hearthisat:focus {
   filter: brightness(90%);
 }
 
@@ -887,6 +907,16 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* PronounsPage */
+.button.button-pronounspage {
+  color: #ffffff;
+  background-color: #ff95bb;
+}
+.button.button-pronounspage:hover,
+.button.button-pronounspage:focus {
+  filter: brightness(90%);
+}
+
 /* Reddit */
 .button.button-reddit {
   color: #000000;
@@ -1014,6 +1044,16 @@ button.button-scribd{
 }
 .button.button-threema:hover,
 .button.button-threema:focus {
+  filter: brightness(90%);
+}
+
+/* Throne */
+.button.button-throne {
+  color: #FFFFFF;
+  background-color: #805AD5;
+}
+.button.button-throne:hover,
+.button.button-throne:focus {
   filter: brightness(90%);
 }
 

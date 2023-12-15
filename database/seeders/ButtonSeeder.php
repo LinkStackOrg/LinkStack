@@ -445,6 +445,22 @@ class ButtonSeeder extends Seeder
             [
             'name' => 'streams'
             ],
+
+            [
+            'name' => 'pronounspage'
+            ],
+
+            [
+            'name' => 'booth'
+            ],
+
+            [
+            'name' => 'hearthisat'
+            ],
+
+            [
+            'name' => 'throne'
+            ],
         ];
 
          Button::insert($buttons);
