@@ -506,6 +506,16 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* Friendi.ca */
+.button.button-friendica {
+  color: #ffffff;
+  background-color: #5385c1;
+}
+.button.button-friendica:hover,
+.button.button-friendica:focus {
+  filter: brightness(90%);
+}
+
 /* Funkwhale */
 .button.button-funkwhale {
   color: #FFFFFF;

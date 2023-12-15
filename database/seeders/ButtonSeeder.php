@@ -469,6 +469,10 @@ class ButtonSeeder extends Seeder
             [
             'name' => 'gdrive'
             ],
+
+            [
+            'name' => 'friendica'
+            ],
         ];
 
          Button::insert($buttons);
