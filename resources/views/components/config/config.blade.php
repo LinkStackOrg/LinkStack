@@ -157,7 +157,6 @@ input[type=radio] + label {
 
 <?php 
 function toggle($key){
-    $configNames = json_decode(file_get_contents(base_path('config/config-legends.json')));
 	echo '
     <form id="'.$key.'-form" action="'.route('editConfig').'" enctype="multipart/form-data" method="post">
 	<div class="form-group col-lg-8">
@@ -182,7 +181,6 @@ document.getElementById("'.$key.'-form").addEventListener("change", function() {
 
 <?php 
 function toggle2($key){
-    $configNames = json_decode(file_get_contents(base_path('config/config-legends.json')));
 	echo '
     <form id="'.$key.'-form" action="'.route('editConfig').'" enctype="multipart/form-data" method="post">
 	<div class="form-group col-lg-8">
@@ -207,7 +205,6 @@ document.getElementById("'.$key.'-form").addEventListener("change", function() {
 
 <?php 
 function text($key){
-    $configNames = json_decode(file_get_contents(base_path('config/config-legends.json')));
     $configValue = str_replace('"', "", EnvEditor::getKey($key));
 	echo '
     <form id="'.$key.'-form" action="'.route('editConfig').'" enctype="multipart/form-data" method="post">
@@ -413,7 +410,6 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 {{text('TITLE_FOOTER_HOME')}}
 
 @php
-    $configNames = json_decode(file_get_contents(base_path('config/config-legends.json')));
     $configValue = str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK'));
 @endphp
     <form id="HOME_FOOTER_LINK-form" action="{{route('editConfig')}}" enctype="multipart/form-data" method="post">
