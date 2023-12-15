@@ -461,6 +461,10 @@ class ButtonSeeder extends Seeder
             [
             'name' => 'throne'
             ],
+
+            [
+            'name' => 'behance'
+            ],
         ];
 
          Button::insert($buttons);

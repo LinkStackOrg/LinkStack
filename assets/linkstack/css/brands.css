@@ -244,6 +244,20 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* Behance */
+.button.button-behance {
+  color: #ffffff;
+  background-color: linear-gradient(
+    to bottom,
+    #0596E9,
+    #1758D0
+  );
+}
+.button.button-behance:hover,
+.button.button-behance:focus {
+  filter: brightness(90%);
+}
+
 /* BookWyrm */
 .button.button-bookwyrm {
   color: #000000;
