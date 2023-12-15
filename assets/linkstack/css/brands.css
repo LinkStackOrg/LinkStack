@@ -572,6 +572,16 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* Google Drive */
+.button.button-gdrive {
+  color: #FFFFFF;
+  background-color: #1A73E8;
+}
+.button.button-gdrive:hover,
+.button.button-gdrive:focus {
+  filter: brightness(90%);
+}
+
 /* Google Play Store */
 .button.button-playstore {
   color: #FFFFFF;
