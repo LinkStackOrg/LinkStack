@@ -789,6 +789,7 @@ class UserController extends Controller
         $name = $request->name;
         $checkmark = $request->checkmark;
         $sharebtn = $request->sharebtn;
+        $tablinks = $request->tablinks;
 
         if(env('HOME_URL') !== '' && $pageName != $littlelink_name && $littlelink_name == env('HOME_URL')){
             EnvEditor::editKey('HOME_URL', $pageName);
@@ -815,6 +816,12 @@ class UserController extends Controller
             UserData::saveData($userId, 'disable-sharebtn', false);
         } else {
             UserData::saveData($userId, 'disable-sharebtn', true);
+        }
+
+        if ($tablinks == "on") {
+            UserData::saveData($userId, 'links-new-tab', true);
+        } else {
+            UserData::saveData($userId, 'links-new-tab', false);
         }
     
         return Redirect('/studio/page');

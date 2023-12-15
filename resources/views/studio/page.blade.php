@@ -272,6 +272,14 @@
                           <label class="form-check-label" for="sharebtn">{{__('messages.Enable')}}</label>
                         </div>
 
+                        <div class="form-group col-lg-8">
+                          <h5 style="margin-top:50px">{{__('messages.Open links in new tab')}}</h5>
+                          <p class="text-muted">{{__('messages.openlinksnewtab')}}</p>
+                            <div class="mb-3 form-check form-switch">
+                              <input name="tablinks" class="switch toggle-btn" type="checkbox" id="tablinks" <?php if(UserData::getData(Auth::user()->id, 'links-new-tab') != false){echo 'checked';} ?> />
+                              <label class="form-check-label" for="tablinks">{{__('messages.Enable')}}</label>
+                            </div>
+
                     <button type="submit" class="mt-3 ml-3 btn btn-primary">{{__('messages.Save')}}</button>
                 </form>
 

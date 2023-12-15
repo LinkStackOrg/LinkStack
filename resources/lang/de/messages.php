@@ -361,6 +361,8 @@ return [
     'disableverified' => 'Sie sind ein verifizierter Benutzer. Mit dieser Einstellung können Sie Ihr Häkchen auf Ihrer Seite ausblenden.',
     'Show share button' => 'Teilen-Button anzeigen',
     'disablesharebutton' => 'Mit dieser Einstellung können Sie die Schaltfläche „Teilen“ auf Ihrer Seite ausblenden.',
+    'Open links in new tab' => 'Links in neuem Tab öffnen',
+    'openlinksnewtab' => 'Diese Einstellung bestimmt, ob Ihre Links auf Ihrer Seite im gleichen oder einem neuen Tab geöffnet werden.',
 
 
     /*

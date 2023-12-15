@@ -358,6 +358,8 @@ return [
     'disableverified' => 'You are a verified user. This setting allows you to hide your checkmark on your page.',
     'Show share button' => 'Show share button',
     'disablesharebutton' => 'This setting allows you to hide the share button on your page.',
+    'Open links in new tab' => 'Open links in new tab',
+    'openlinksnewtab' => 'This setting determines if your links on your links page get opened in the same or a new tab.',
 
 
     /*
