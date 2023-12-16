@@ -19,459 +19,915 @@ class ButtonSeeder extends Seeder
     {
         $buttons = [
         	[
-			'name' => 'custom'
+			'name' => 'custom',
+            'alt' => 'Custom',
+            'exclude' => true,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'custom_website'
+			'name' => 'custom_website',
+            'alt' => 'Custom Website',
+            'exclude' => true,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'bandcamp'
+			'name' => 'bandcamp',
+            'alt' => 'Bandcamp',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'buy me a coffee'
+			'name' => 'buy me a coffee',
+            'alt' => 'Buy Me a Coffee',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'cashapp'
+			'name' => 'cashapp',
+            'alt' => 'Cash App',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'default email'
+			'name' => 'default email',
+            'alt' => 'Default Email',
+            'exclude' => true,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'default email_alt'
+			'name' => 'default email_alt',
+            'alt' => 'Default Email Alt',
+            'exclude' => true,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'discord'
+			'name' => 'discord',
+            'alt' => 'Discord',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'facebook'
+			'name' => 'facebook',
+            'alt' => 'Facebook',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'figma'
+			'name' => 'figma',
+            'alt' => 'Figma',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'github'
+			'name' => 'github',
+            'alt' => 'GitHub',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'gitlab'
+			'name' => 'gitlab',
+            'alt' => 'GitLab',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'goodreads'
+			'name' => 'goodreads',
+            'alt' => 'Goodreads',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-			'name' => 'instagram'
+			'name' => 'instagram',
+            'alt' => 'Instagram',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'kit'
+			'name' => 'kit',
+            'alt' => 'Kit',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'linkedin'
+			'name' => 'linkedin',
+            'alt' => 'LinkedIn',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'mastodon'
+			'name' => 'mastodon',
+            'alt' => 'Mastodon',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'medium'
+			'name' => 'medium',
+            'alt' => 'Medium',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'messenger'
+			'name' => 'messenger',
+            'alt' => 'Messenger',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'patreon'
+			'name' => 'patreon',
+            'alt' => 'Patreon',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'paypal'
+			'name' => 'paypal',
+            'alt' => 'PayPal',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
                 
             [
-			'name' => 'pinterest'
+			'name' => 'pinterest',
+            'alt' => 'Pinterest',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'reddit'
+			'name' => 'reddit',
+            'alt' => 'Reddit',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'signal'
+			'name' => 'signal',
+            'alt' => 'Signal',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'skoob'
+			'name' => 'skoob',
+            'alt' => 'Skoob',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'snapchat'
+			'name' => 'snapchat',
+            'alt' => 'Snapchat',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'soundcloud'
+			'name' => 'soundcloud',
+            'alt' => 'SoundCloud',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'spotify'
+			'name' => 'spotify',
+            'alt' => 'Spotify',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'steam'
+			'name' => 'steam',
+            'alt' => 'Steam',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'telegram'
+			'name' => 'telegram',
+            'alt' => 'Telegram',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'tiktok'
+			'name' => 'tiktok',
+            'alt' => 'TikTok',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'tumblr'
+			'name' => 'tumblr',
+            'alt' => 'Tumblr',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-			'name' => 'twitch'
+			'name' => 'twitch',
+            'alt' => 'Twitch',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'twitter'
+			'name' => 'twitter',
+            'alt' => 'Twitter',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'venmo'
+			'name' => 'venmo',
+            'alt' => 'Venmo',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'vimeo'
+			'name' => 'vimeo',
+            'alt' => 'Vimeo',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'website'
+			'name' => 'website',
+            'alt' => 'Website',
+            'exclude' => true,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'whatsapp'
+			'name' => 'whatsapp',
+            'alt' => 'WhatsApp',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'wordpress'
+			'name' => 'wordpress',
+            'alt' => 'WordPress',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'xing'
+			'name' => 'xing',
+            'alt' => 'Xing',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'youtube'
+			'name' => 'youtube',
+            'alt' => 'YouTube',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'heading'
+			'name' => 'heading',
+            'alt' => 'Heading',
+            'exclude' => true,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-			'name' => 'space'
+			'name' => 'space',
+            'alt' => 'Space',
+            'exclude' => true,
+            'group' => 'default',
+            'mb' => false,
             ],
 			
             [
-            'name' => 'phone'
+            'name' => 'phone',
+            'alt' => 'Phone',
+            'exclude' => true,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'trello'
+            'name' => 'trello',
+            'alt' => 'Trello',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'littlelink-custom'
+            'name' => 'littlelink-custom',
+            'alt' => 'LittleLink Custom',
+            'exclude' => true,
+            'group' => 'default',
+            'mb' => false,
             ],
                         
             [
-            'name' => 'space'
+            'name' => 'space',
+            'alt' => 'Space',
+            'exclude' => true,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'amazon'
+            'name' => 'amazon',
+            'alt' => 'Amazon',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'appstore'
+            'name' => 'appstore',
+            'alt' => 'App Store',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'apple-music'
+            'name' => 'apple-music',
+            'alt' => 'Apple Music',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
         
             [
-            'name' => 'apple-podcasts'
+            'name' => 'apple-podcasts',
+            'alt' => 'Apple Podcasts',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'briar'
+            'name' => 'briar',
+            'alt' => 'Briar',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [        
-            'name' => 'castopod'
+            'name' => 'castopod',
+            'alt' => 'Castopod',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'codepen'
+            'name' => 'codepen',
+            'alt' => 'CodePen',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
         
             [
-            'name' => 'codeberg'
+            'name' => 'codeberg',
+            'alt' => 'Codeberg',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'cryptpad'
+            'name' => 'cryptpad',
+            'alt' => 'CryptPad',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'dev-to'
+            'name' => 'dev-to',
+            'alt' => 'Dev.to',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'deezer'
+            'name' => 'deezer',
+            'alt' => 'Deezer',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
         
             [
-            'name' => 'epic-games'
+            'name' => 'epic-games',
+            'alt' => 'Epic Games',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'etsy'
+            'name' => 'etsy',
+            'alt' => 'Etsy',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
         
             [
-            'name' => 'firefox'
+            'name' => 'firefox',
+            'alt' => 'Firefox',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'flickr'
+            'name' => 'flickr',
+            'alt' => 'Flickr',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'funkwhale'
+            'name' => 'funkwhale',
+            'alt' => 'Funkwhale',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'f-droid'
+            'name' => 'f-droid',
+            'alt' => 'F-Droid',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'itchio'
+            'name' => 'itchio',
+            'alt' => 'Itch.io',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'humble-bundle'
+            'name' => 'humble-bundle',
+            'alt' => 'Humble Bundle',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
                         
             [
-            'name' => 'kickstarter'
+            'name' => 'kickstarter',
+            'alt' => 'Kickstarter',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'ko-fi'
+            'name' => 'ko-fi',
+            'alt' => 'Ko-fi',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'lemmy'
+            'name' => 'lemmy',
+            'alt' => 'Lemmy',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'letterboxd'
+            'name' => 'letterboxd',
+            'alt' => 'Letterboxd',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'liberapay'
+            'name' => 'liberapay',
+            'alt' => 'Liberapay',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'matrix'
+            'name' => 'matrix',
+            'alt' => 'Matrix',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
     
             [
-            'name' => 'misskey'
+            'name' => 'misskey',
+            'alt' => 'Misskey',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'notion'
+            'name' => 'notion',
+            'alt' => 'Notion',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'odysee'
+            'name' => 'odysee',
+            'alt' => 'Odysee',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'openstreetmap'
+            'name' => 'openstreetmap',
+            'alt' => 'OpenStreetMap',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'owncast'
+            'name' => 'owncast',
+            'alt' => 'Owncast',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'peertube'
+            'name' => 'peertube',
+            'alt' => 'PeerTube',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'pixelfed'
+            'name' => 'pixelfed',
+            'alt' => 'Pixelfed',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'piwigo'
+            'name' => 'piwigo',
+            'alt' => 'Piwigo',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
                         
             [
-            'name' => 'playstore'
+            'name' => 'playstore',
+            'alt' => 'Play Store',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'plemora'
+            'name' => 'plemora',
+            'alt' => 'Plemora',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'producthunt'
+            'name' => 'producthunt',
+            'alt' => 'Product Hunt',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'session'
+            'name' => 'session',
+            'alt' => 'Session',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'strava'
+            'name' => 'strava',
+            'alt' => 'Strava',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'unity'
+            'name' => 'unity',
+            'alt' => 'Unity',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'unraid'
+            'name' => 'unraid',
+            'alt' => 'Unraid',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'untappd'
+            'name' => 'untappd',
+            'alt' => 'Untappd',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'upptime'
+            'name' => 'upptime',
+            'alt' => 'Upptime',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
     
             [
-            'name' => 'vrchat'
+            'name' => 'vrchat',
+            'alt' => 'VRChat',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'youtube-music'
+            'name' => 'youtube-music',
+            'alt' => 'YouTube Music',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'all-inkl'
+            'name' => 'all-inkl',
+            'alt' => 'All-Inkl',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
     
             [
-            'name' => 'text'
+            'name' => 'text',
+            'alt' => 'Text',
+            'exclude' => true,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'icon'
+            'name' => 'icon',
+            'alt' => 'Icon',
+            'exclude' => true,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'bookwyrm'
+            'name' => 'bookwyrm',
+            'alt' => 'Bookwyrm',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'vcard'
+            'name' => 'vcard',
+            'alt' => 'vCard',
+            'exclude' => true,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'apple-books'
+            'name' => 'apple-books',
+            'alt' => 'Apple Books',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'scribd'
+            'name' => 'scribd',
+            'alt' => 'Scribd',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'linkstack'
+            'name' => 'linkstack',
+            'alt' => 'LinkStack',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'picarto'
+            'name' => 'picarto',
+            'alt' => 'Picarto',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'trakt'
+            'name' => 'trakt',
+            'alt' => 'Trakt',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'last-fm'
+            'name' => 'last-fm',
+            'alt' => 'Last.fm',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'itaku'    
+            'name' => 'itaku',
+            'alt' => 'Itaku',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'furaffinity'
+            'name' => 'furaffinity',
+            'alt' => 'Furaffinity',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
             
             [
-            'name' => 'bluesky'
+            'name' => 'bluesky',
+            'alt' => 'Bluesky',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'firefish'
+            'name' => 'firefish',
+            'alt' => 'Firefish',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'streams'
+            'name' => 'streams',
+            'alt' => 'Streams',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'pronounspage'
+            'name' => 'pronounspage',
+            'alt' => 'Pronouns.page',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'booth'
+            'name' => 'booth',
+            'alt' => 'BOOTH',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'hearthisat'
+            'name' => 'hearthisat',
+            'alt' => 'HearThis.at',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'throne'
+            'name' => 'throne',
+            'alt' => 'Throne',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'behance'
+            'name' => 'behance',
+            'alt' => 'Behance',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'gdrive'
+            'name' => 'gdrive',
+            'alt' => 'Google Drive',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
 
             [
-            'name' => 'friendica'
+            'name' => 'friendica',
+            'alt' => 'Friendi.ca',
+            'exclude' => false,
+            'group' => 'default',
+            'mb' => false,
             ],
         ];
 
