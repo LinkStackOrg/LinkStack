@@ -151,19 +151,23 @@ use App\Models\Page;
 
             /* Updates button database entries */ 
             Schema::disableForeignKeyConstraints();
+            $existingMigration = '2021_03_17_044922_create_buttons_table';
+
             try {
+            if (DB::table('migrations')->where('migration', $existingMigration)->exists()) {
+                DB::table('migrations')->where('migration', $existingMigration)->delete();
+            }
+            
+            Schema::dropIfExists('buttons');
+            
             $migrator = app('migrator');
-            $migrator->run(database_path('migrations'), ['--force' => true]);
-            } catch (exception $e) {}
-            try {DB::table('buttons')->delete();} catch (exception $e) {}
-            try {DB::table('buttons')->truncate();} catch (exception $e) {}
-            try {
-                $seeder = new ButtonSeeder();
-                $seeder->run();
+            $migrator->run(database_path('migrations'));
+            
+            $seeder = new ButtonSeeder();
+            $seeder->run();
             } catch (exception $e) {}
             Schema::enableForeignKeyConstraints();
 
-            // Adds new column to the users table
             if (!Schema::hasColumn('users', 'auth_as')) {
                 Schema::table('users', function (Blueprint $table) {
                  $table->unsignedInteger('auth_as')->nullable();

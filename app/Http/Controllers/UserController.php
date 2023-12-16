@@ -219,7 +219,7 @@ class UserController extends Controller
         $button = Button::where('name', $request->button)->first();
 
         if ($button && empty($LinkTitle))
-            $LinkTitle = ucwords($button->name);
+            $LinkTitle = $button->alt;
 
         if ($linkType->typename == 'video' && empty($LinkTitle)) {
             $embed = OEmbed::get($LinkURL);

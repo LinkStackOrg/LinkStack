@@ -123,6 +123,9 @@ jobs:
 
             # Upload 'linkstack.zip'
             gh release upload "${GITHUB_REF##*/}" "linkstack.zip" --clobber -R "$REPO_NAME"
+
+            # Mark the release as the latest
+            gh release edit "${GITHUB_REF##*/}" --title="${GITHUB_REF##*/}" -R "$REPO_NAME"
           fi
 
       - name: Update version.json
