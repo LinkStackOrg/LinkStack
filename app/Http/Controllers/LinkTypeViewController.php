@@ -38,11 +38,12 @@ class LinkTypeViewController extends Controller
 
         if (!empty($linkType) && $linkType->typename === 'predefined') {
             // get buttons list if showing predefined form
-            $buttons = Button::select('name')->orderBy('name', 'asc')->get();
+            $buttons = Button::select()->orderBy('name', 'asc')->get();
             foreach ($buttons as $btn) {
                 $data['buttons'][] = [
                     'name' => $btn->name,
-                    'title' => ucwords($btn->name),
+                    'title' => $btn->alt,
+                    'exclude' => $btn->exclude,
                     'selected' => (is_object($data['params']) && $data['params']->button === $btn->name)
                 ];
             }

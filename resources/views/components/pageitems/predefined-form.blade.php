@@ -4,7 +4,7 @@
 <select name='button' class='form-control'>
         @if($buttonName != 0)<option value='{{$buttonName}}'>{{ucfirst($buttonName)}}</option>@endif
     @foreach ($buttons as $b)
-        @if(!in_array($b["name"], ["custom_website", "custom", "custom", "heading", "space", "text", "icon", $buttonName]))
+        @if($b["exclude"] != true)
         <option class='button button-{{$b["name"]}}' value='{{$b["name"]}}' {{ $b["selected"] == true ? "selected" : ""}}>{{$b["title"]}}</option>
         @endif
     @endforeach

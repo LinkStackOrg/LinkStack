@@ -16,6 +16,10 @@ class CreateButtonsTable extends Migration
         Schema::create('buttons', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('alt')->nullable();
+            $table->boolean('exclude')->default(false);
+            $table->string('group')->nullable();
+            $table->boolean('mb')->default(false);
             $table->timestamps();
         });
     }
