@@ -244,6 +244,20 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* Behance */
+.button.button-behance {
+  color: #ffffff;
+  background-color: linear-gradient(
+    to bottom,
+    #0596E9,
+    #1758D0
+  );
+}
+.button.button-behance:hover,
+.button.button-behance:focus {
+  filter: brightness(90%);
+}
+
 /* BookWyrm */
 .button.button-bookwyrm {
   color: #000000;
@@ -492,6 +506,16 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* Friendi.ca */
+.button.button-friendica {
+  color: #ffffff;
+  background-color: #5385c1;
+}
+.button.button-friendica:hover,
+.button.button-friendica:focus {
+  filter: brightness(90%);
+}
+
 /* Funkwhale */
 .button.button-funkwhale {
   color: #FFFFFF;
@@ -555,6 +579,16 @@ button:hover,
 }
 .button.button-goodreads:hover,
 .button.button-goodreads:focus {
+  filter: brightness(90%);
+}
+
+/* Google Drive */
+.button.button-gdrive {
+  color: #FFFFFF;
+  background-color: #1A73E8;
+}
+.button.button-gdrive:hover,
+.button.button-gdrive:focus {
   filter: brightness(90%);
 }
 
@@ -910,7 +944,7 @@ button:hover,
 /* PronounsPage */
 .button.button-pronounspage {
   color: #ffffff;
-  background-color: #ff95bb;
+  background-color: #c71585;
 }
 .button.button-pronounspage:hover,
 .button.button-pronounspage:focus {
