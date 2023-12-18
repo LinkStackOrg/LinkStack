@@ -23,14 +23,15 @@
         "spatie/laravel-backup": "^8.17"
     },
     "require-dev": {
-        "spatie/laravel-ignition": "^1.0",
         "barryvdh/laravel-ide-helper": "^2.12",
         "fakerphp/faker": "^1.9.1",
+        "laravel-lang/common": "^2.0",
         "laravel/breeze": "^1.1",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.3.3"
+        "phpunit/phpunit": "^9.3.3",
+        "spatie/laravel-ignition": "^1.0"
     },
     "autoload": {
         "files": [
@@ -48,14 +49,15 @@
         }
     },
     "scripts": {
+        "post-update-cmd": [
+            "php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "php artisan lang:update",
+            "echo.> storage/app/ISINSTALLED"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-update-cmd": ["echo.> storage/app/ISINSTALLED"]
+        ]
     },
     "extra": {
         "laravel": {
