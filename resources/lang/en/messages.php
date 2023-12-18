@@ -761,6 +761,8 @@ return [
     'Create the admin user' => '3. Create the admin user',
     'Configure the app' => '4. Configure the app',
     'Choose a language' => 'Choose a language',
+    'setup.disclaimer' => 'By continuing, you agree to abide by our',
+    'Terms and Conditions' => 'Terms and Conditions',
 
     'Next' => 'Next',
     'Yes' => 'Yes',
