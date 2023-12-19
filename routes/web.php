@@ -152,6 +152,7 @@ Route::group([
     Route::get('/admin/links/{id}', [AdminController::class, 'showLinksUser'])->name('showLinksUser');
     Route::get('/admin/deleteLink/{id}', [AdminController::class, 'deleteLinkUser'])->name('deleteLinkUser');
     Route::get('/admin/users/block/{block}/{id}', [AdminController::class, 'blockUser'])->name('blockUser');
+    Route::get('/admin/users/verify/{verify}/{id}', [AdminController::class, 'verifyCheckUser'])->name('verifyCheckUser');
     Route::get('/admin/users/verify/-{verify}/{id}', [AdminController::class, 'verifyUser'])->name('verifyUser');
     Route::get('/admin/edit-user/{id}', [AdminController::class, 'showUser'])->name('showUser');
     Route::post('/admin/edit-user/{id}', [AdminController::class, 'editUser'])->name('editUser');

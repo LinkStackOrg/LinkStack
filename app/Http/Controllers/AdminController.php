@@ -113,6 +113,23 @@ public function SendTestMail(Request $request)
         return redirect('admin/users/all');
     }
 
+    //Verify user
+    public function verifyCheckUser(request $request)
+    {
+        $id = $request->id;
+        $status = $request->verify;
+
+        if ($status == 'vip') {
+            $verify = 'vip';
+        } elseif ($status == 'user') {
+            $verify = 'user';
+        }
+
+        User::where('id', $id)->update(['role' => $verify]);
+
+        return redirect(url('u')."/".$id);
+    }
+
     //Verify or un-verify users emails
     public function verifyUser(request $request)
     {
