@@ -27,6 +27,7 @@ use App\Models\Admin;
 use App\Models\Button;
 use App\Models\Link;
 use App\Models\Page;
+use App\Models\UserData;
 
 class AdminController extends Controller
 {
