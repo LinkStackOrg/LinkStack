@@ -121,6 +121,7 @@ public function SendTestMail(Request $request)
 
         if ($status == 'vip') {
             $verify = 'vip';
+            UserData::saveData($id, 'checkmark', true);
         } elseif ($status == 'user') {
             $verify = 'user';
         }
