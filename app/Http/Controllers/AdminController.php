@@ -166,9 +166,25 @@ public function SendTestMail(Request $request)
             return implode('', $pieces);
         }
 
+        $names = User::pluck('name')->toArray();
+
+        $adminCreatedNames = array_filter($names, function($name) {
+            return strpos($name, 'Admin-Created-') === 0;
+        });
+
+        $numbers = array_map(function($name) {
+            return (int) str_replace('Admin-Created-', '', $name);
+        }, $adminCreatedNames);
+
+        $maxNumber = !empty($numbers) ? max($numbers) : 0;
+        $newNumber = $maxNumber + 1;
+
+        $domain = parse_url(url(''), PHP_URL_HOST);
+        $domain = ($domain == 'localhost') ? 'example.com' : $domain;
+
         $user = User::create([
-            'name' => 'Admin-Created-' . random_str(8),
-            'email' => random_str(8) . '@example.com',
+            'name' => 'Admin-Created-' . $newNumber,
+            'email' => strtolower(random_str(8)) . '@' . $domain,
             'password' => Hash::make(random_str(32)),
             'role' => 'user',
             'block' => 'no',
