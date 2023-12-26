@@ -149,6 +149,18 @@ use App\Models\Page;
             Page::first()->update(['home_message' => $home_message]);
             }
 
+            $migrationFiles = glob(database_path('migrations/*.php'));
+                    
+            $fileNames = array_map(function ($file) {
+                return basename($file, '.php');
+            }, $migrationFiles);
+            
+            foreach ($fileNames as $fileName) {
+                if (!DB::table('migrations')->where('migration', $fileName)->exists()) {
+                    DB::table('migrations')->insert(['migration' => $fileName, 'batch' => 1]);
+                }
+            }
+
             /* Updates button database entries */ 
             Schema::disableForeignKeyConstraints();
             $existingMigration = '2021_03_17_044922_create_buttons_table';
