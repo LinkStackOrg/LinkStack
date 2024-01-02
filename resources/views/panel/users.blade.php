@@ -28,92 +28,64 @@
                 
                         <script type="text/javascript">
                           // Function to confirm and delete users
-                          var elems = document.getElementsByClassName('confirmation');
-                          var confirmIt = function (e) {
+                          var confirmIt = function(e) {
                               e.preventDefault();
                               if (confirm("{{ __('messages.confirm.delete.user') }}")) {
                                   var userId = this.getAttribute('data-id');
+                                  this.innerHTML = '<div class="d-flex justify-content-center"><div class="spinner-border spinner-border-sm text-primary" role="status"><span class="visually-hidden">Loading...</span></div></div>';
                                   deleteUserData(userId);
                               }
                           };
-                          
+                      
                           var deleteUserData = function(userId) {
-                              var url = "{{ route('deleteTableUser', ['id' => ':id']) }}".replace(':id', userId);
                               var xhr = new XMLHttpRequest();
-                              xhr.open('POST', url, true);
+                              xhr.open('POST', `{{ route('deleteTableUser', ['id' => ':id']) }}`.replace(':id', userId), true);
                               xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
                               xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-                              xhr.onreadystatechange = function () {
+                              xhr.onreadystatechange = function() {
                                   if (xhr.readyState === 4 && xhr.status === 200) {
                                       refreshLivewireTable();
                                   }
                               };
-                              var data = JSON.stringify({ id: userId });
-                              xhr.send(data);
+                              xhr.send(JSON.stringify({ id: userId }));
                           };
-                          
+                      
+                          // Function to handle user actions (verification and blocking)
+                          var handleUserClick = function(e) {
+                              e.preventDefault();
+                              var userId = this.getAttribute('data-id');
+                              this.innerHTML = '<div class="d-flex justify-content-center"><div class="spinner-border spinner-border-sm text-primary" role="status"><span class="visually-hidden">Loading...</span></div></div>';
+                              sendUserAction(userId);
+                          };
+                      
+                          var sendUserAction = function(userId) {
+                              var xhr = new XMLHttpRequest();
+                              xhr.open('GET', userId, true);
+                              xhr.onreadystatechange = function() {
+                                  if (xhr.readyState === 4 && xhr.status === 200) {
+                                      refreshLivewireTable();
+                                  }
+                              };
+                              xhr.send();
+                          };
+                      
+                          // Attach click event listeners to elements with class 'confirmation', 'user-email', and 'user-block'
+                          var attachClickEventListeners = function(className, handler) {
+                              var elems = document.getElementsByClassName(className);
+                              for (var i = 0, l = elems.length; i < l; i++) {
+                                  elems[i].addEventListener('click', handler, false);
+                              }
+                          };
+
                           // Function to refresh the Livewire table
-                          var refreshLivewireTable = function () {
+                          var refreshLivewireTable = function() {
                             Livewire.components.getComponentsByName('user-table')[0].$wire.$refresh()
                           };
-                          
-                          // Attach click event listeners to elements with class 'confirmation'
-                          for (var i = 0, l = elems.length; i < l; i++) {
-                              elems[i].addEventListener('click', confirmIt, false);
-                          }
-                       </script>
-                       <script type="text/javascript">
-                          // Function to handle user verification requests
-                          var elems = document.getElementsByClassName('user-email');
-                          
-                          var handleUserClick = function (e) {
-                            e.preventDefault();
-                            var userId = this.getAttribute('data-id');
-                            sendVerificationRequest(userId);
-                          };
-                          
-                          var sendVerificationRequest = function(userId) {
-                            var xhr = new XMLHttpRequest();
-                            xhr.open('GET', userId, true);
-                            xhr.onreadystatechange = function () {
-                              if (xhr.readyState === 4 && xhr.status === 200) {
-                                refreshLivewireTable();
-                              }
-                            };
-                            xhr.send();
-                          };
-                          
-                          // Attach click event listeners to elements with class 'user-email'
-                          for (var i = 0, l = elems.length; i < l; i++) {
-                            elems[i].addEventListener('click', handleUserClick, false);
-                          }
-                       </script>
-                       <script type="text/javascript">
-                          // Function to handle user blocking
-                          var elems = document.getElementsByClassName('user-block');
-                          
-                          var handleUserClick = function (e) {
-                            e.preventDefault();
-                            var userId = this.getAttribute('data-id');
-                            sendVerificationRequest(userId);
-                          };
-                          
-                          var sendVerificationRequest = function(userId) {
-                            var xhr = new XMLHttpRequest();
-                            xhr.open('GET', userId, true);
-                            xhr.onreadystatechange = function () {
-                              if (xhr.readyState === 4 && xhr.status === 200) {
-                                refreshLivewireTable();
-                              }
-                            };
-                            xhr.send();
-                          };
-                          
-                          // Attach click event listeners to elements with class 'user-block'
-                          for (var i = 0, l = elems.length; i < l; i++) {
-                            elems[i].addEventListener('click', handleUserClick, false);
-                          }
-                       </script>
+                      
+                          attachClickEventListeners('confirmation', confirmIt);
+                          attachClickEventListeners('user-email', handleUserClick);
+                          attachClickEventListeners('user-block', handleUserClick);
+                      </script>
 
                           </div>
                 </section>
