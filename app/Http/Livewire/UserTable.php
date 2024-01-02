@@ -61,20 +61,20 @@ class UserTable extends DataTableComponent
                 ->format(function ($value, $row, Column $column) {
                     if (env('REGISTER_AUTH') !== 'auth') {
                         if ($row->role == 'admin' && $row->email_verified_at != '') {
-                            return '<center>-</center>';
+                            return '<div class="text-center">-</div>';
                         } else {
                             $verifyLink = route('verifyUser', [
                                 'verify' => '-' . $row->email_verified_at,
                                 'id' => $row->id
                             ]);
                             if ($row->email_verified_at == '') {
-                                return '<a style="cursor:pointer" data-id="'.$verifyLink.'" class="user-email text-danger"><span class="badge bg-danger">' . __('messages.Pending') . '</span></a>';
+                                return '<div class="text-center"><a style="cursor:pointer" data-id="'.$verifyLink.'" class="user-email text-danger"><span class="badge bg-danger">' . __('messages.Pending') . '</span></a></div>';
                             } else {
-                                return '<a style="cursor:pointer" data-id="'.$verifyLink.'" class="user-email text-danger"><span class="badge bg-success">' . __('messages.Verified') . '</span></a>';
+                                return '<div class="text-center"><a style="cursor:pointer" data-id="'.$verifyLink.'" class="user-email text-danger"><span class="badge bg-success">' . __('messages.Verified') . '</span></a></div>';
                             }
                         }
                     } else {
-                        return '<center>-</center>';
+                        return '<div class="text-center">-</div>';
                     }
                     return '';
                 })->html(),
@@ -82,13 +82,13 @@ class UserTable extends DataTableComponent
                 ->sortable()
                 ->format(function ($value, $row, Column $column) {
                     if ($row->role === 'admin' && $row->id === 1) {
-                        return '<center>-</center>';
+                        return '<div class="text-center">-</div>';
                     } else {
                         $route = route('blockUser', ['block' => $row->block, 'id' => $row->id]);
                         if ($row->block === 'yes') {
-                            $badge = '<a style="cursor:pointer" data-id="'.$route.'" class="user-block text-danger"><span class="badge bg-danger">'.__('messages.Pending').'</span></a>';
+                            $badge = '<div class="text-center"><a style="cursor:pointer" data-id="'.$route.'" class="user-block text-danger"><span class="badge bg-danger">'.__('messages.Pending').'</span></a></div>';
                         } elseif ($row->block === 'no') {
-                            $badge = '<a style="cursor:pointer" data-id="'.$route.'" class="user-block text-danger"><span class="badge bg-success">'.__('messages.Approved').'</span></a>';
+                            $badge = '<div class="text-center"><a style="cursor:pointer" data-id="'.$route.'" class="user-block text-danger"><span class="badge bg-success">'.__('messages.Approved').'</span></a></div>';
                         }
                         return "<a href=\"$route\">$badge</a>";
                     }
