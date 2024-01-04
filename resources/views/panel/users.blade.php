@@ -98,7 +98,7 @@
                           attachClickEventListeners('user-email', handleUserClick);
                           attachClickEventListeners('user-block', handleUserClick);
                       </script>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
 // Get the delete button div
 var deleteButtonDiv = document.getElementById('select-active');
 
@@ -155,7 +155,7 @@ var deleteSelectedUsers = function() {
 
 // Add event listener to delete button
 deleteButton.addEventListener('click', deleteSelectedUsers);
-  </script>
+</script> --}}
 
                           </div>
                 </section>

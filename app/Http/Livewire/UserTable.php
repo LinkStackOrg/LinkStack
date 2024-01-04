@@ -23,10 +23,10 @@ class UserTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make("", "id")
-            ->format(function ($value, $row, Column $column) {
-                return view('components.table-components.select', ['user' => $row]);
-            }),
+            // Column::make("", "id")
+            // ->format(function ($value, $row, Column $column) {
+            //     return view('components.table-components.select', ['user' => $row]);
+            // }),
             Column::make(__('messages.ID'), "id")
                 ->sortable()
                 ->searchable(),
