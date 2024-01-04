@@ -138,7 +138,7 @@ public function SendTestMail(Request $request)
         $id = $request->id;
         $status = $request->verify;
 
-        if ($status == '-') {
+        if ($status == "true") {
             $verify = '0000-00-00 00:00:00';
         } else {
             $verify = NULL;

@@ -67,8 +67,13 @@ class UserTable extends DataTableComponent
                         if ($row->role == 'admin' && $row->email_verified_at != '') {
                             return '<div class="text-center">-</div>';
                         } else {
+                            if($row->email_verified_at == ''){
+                                $verifyLinkBool = 'true';
+                            } else {
+                                $verifyLinkBool = 'false';
+                            }
                             $verifyLink = route('verifyUser', [
-                                'verify' => '-' . $row->email_verified_at,
+                                'verify' => $verifyLinkBool,
                                 'id' => $row->id
                             ]);
                             if ($row->email_verified_at == '') {
