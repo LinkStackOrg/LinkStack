@@ -918,13 +918,13 @@ button:hover,
   filter: brightness(90%);
 }
 
-/* Plemora */
-.button.button-plemora {
+/* Pleroma */
+.button.button-pleroma {
   color: #FFFFFF;
   background-color: #0f161e;
 }
-.button.button-plemora:hover,
-.button.button-plemora:focus {
+.button.button-pleroma:hover,
+.button.button-pleroma:focus {
   filter: brightness(90%);
 }
 

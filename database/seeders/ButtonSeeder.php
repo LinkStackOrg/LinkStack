@@ -667,8 +667,8 @@ class ButtonSeeder extends Seeder
             ],
 
             [
-                "name" => "plemora",
-                "alt" => "Plemora",
+                "name" => "pleroma",
+                "alt" => "Pleroma",
                 "exclude" => false,
                 "group" => "default",
                 "mb" => false,
