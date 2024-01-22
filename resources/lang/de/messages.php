@@ -764,6 +764,8 @@ return [
     'Create the admin user' => '3. Erstellen Sie den Admin-Benutzer',
     'Configure the app' => '4. Konfigurieren Sie die App',
     'Choose a language' => 'Wählen Sie eine Sprache',
+    'setup.disclaimer' => 'Es gelten unsere',
+    'Terms and Conditions' => 'Allgemeinen Geschäftsbedingungen',
 
     'Next' => 'Nächste',
     'Yes' => 'Ja',

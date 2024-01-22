@@ -3,6 +3,9 @@ contact_links:
     - name: Feature Request
       url: https://github.com/orgs/LinkStackOrg/discussions/categories/feature-requests
       about: Requests regarding new features, enhancements, or changes
+    - name: Commission Custom Features
+      url: https://linkstack.org/contact/
+      about: Accelerate feature implementation with our commissioned services. Reach out to us for a personalized quote and fast-track the features you need.
     - name: Button requests
       url: https://github.com/orgs/LinkStackOrg/discussions/categories/predefined-links
       about: Requests regarding new buttons, brands, updated styling or changes

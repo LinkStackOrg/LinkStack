@@ -229,14 +229,13 @@
                             $url = $_SERVER['REQUEST_URI'];
                              if( strpos( $url, "no_page_name" ) == true ) echo '<span style="color:#FF0000; font-size:120%;">You do not have a Page URL</span>'; ?>
                         <br>
-                        <label>{{__('messages.Page URL')}}</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                              <div class="d-none d-md-block input-group-text">{{ url('') }}/@</div>
-                              <div class="d-md-none input-group-text">@</div>
-                            </div>
-                            <input type="text" class="form-control" name="littlelink_name" value="{{ $page->littlelink_name ?? '' }}" required>
+                        <label for="littlelink_name" class="form-label">{{__('messages.Page URL')}}</label>
+                        <div class="input-group mb-3 has-validation">
+                          <span class="input-group-text" id="basic-addon3">{{str_replace(['http://', 'https://'], '', url(''))}}/@</span>
+                          <input type="littlelink_name" class="form-control" id="littlelink_name" name="littlelink_name" aria-describedby="littlelink_name" value="{{ $page->littlelink_name ?? '' }}" :value="old('littlelink_name')" required autofocus >
                         </div>
+                        <script>var exceptionvar = " value="{{ $page->littlelink_name }}";</script>
+                        @include('auth.url-validation')
                 
                          <label style="margin-top:15px">{{__('messages.Display name')}}</label>
                         <div class="input-group">
@@ -280,7 +279,7 @@
                               <label class="form-check-label" for="tablinks">{{__('messages.Enable')}}</label>
                             </div>
 
-                    <button type="submit" class="mt-3 ml-3 btn btn-primary">{{__('messages.Save')}}</button>
+                    <button id="submit-btn" type="submit" class="mt-3 ml-3 btn btn-primary">{{__('messages.Save')}}</button>
                 </form>
 
                 @if(env('ALLOW_USER_HTML') === true)

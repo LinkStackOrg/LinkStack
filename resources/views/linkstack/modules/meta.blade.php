@@ -15,7 +15,7 @@
 @if(env('CUSTOM_META_TAGS') == 'true')
   @include('layouts.meta')
 @else
-  <meta name="description" content="{{ $userinfo->littlelink_description }}">
+  <meta name="description" content="{{ strip_tags($userinfo->littlelink_description) }}">
   <meta name="author" content="{{ $userinfo->name }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 @endif

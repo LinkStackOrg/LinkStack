@@ -27,6 +27,7 @@ use App\Models\Admin;
 use App\Models\Button;
 use App\Models\Link;
 use App\Models\Page;
+use App\Models\UserData;
 
 class AdminController extends Controller
 {
@@ -113,13 +114,31 @@ public function SendTestMail(Request $request)
         return redirect('admin/users/all');
     }
 
+    //Verify user
+    public function verifyCheckUser(request $request)
+    {
+        $id = $request->id;
+        $status = $request->verify;
+
+        if ($status == 'vip') {
+            $verify = 'vip';
+            UserData::saveData($id, 'checkmark', true);
+        } elseif ($status == 'user') {
+            $verify = 'user';
+        }
+
+        User::where('id', $id)->update(['role' => $verify]);
+
+        return redirect(url('u')."/".$id);
+    }
+
     //Verify or un-verify users emails
     public function verifyUser(request $request)
     {
         $id = $request->id;
         $status = $request->verify;
 
-        if ($status == '-') {
+        if ($status == "true") {
             $verify = '0000-00-00 00:00:00';
         } else {
             $verify = NULL;
@@ -147,9 +166,25 @@ public function SendTestMail(Request $request)
             return implode('', $pieces);
         }
 
+        $names = User::pluck('name')->toArray();
+
+        $adminCreatedNames = array_filter($names, function($name) {
+            return strpos($name, 'Admin-Created-') === 0;
+        });
+
+        $numbers = array_map(function($name) {
+            return (int) str_replace('Admin-Created-', '', $name);
+        }, $adminCreatedNames);
+
+        $maxNumber = !empty($numbers) ? max($numbers) : 0;
+        $newNumber = $maxNumber + 1;
+
+        $domain = parse_url(url(''), PHP_URL_HOST);
+        $domain = ($domain == 'localhost') ? 'example.com' : $domain;
+
         $user = User::create([
-            'name' => 'Admin-Created-' . random_str(8),
-            'email' => random_str(8) . '@example.com',
+            'name' => 'Admin-Created-' . $newNumber,
+            'email' => strtolower(random_str(8)) . '@' . $domain,
             'password' => Hash::make(random_str(32)),
             'role' => 'user',
             'block' => 'no',

@@ -18,7 +18,7 @@ foreach($pages as $page)
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <div style="max-width:480px" class="container mt-5 w-100">
+        <div class="container mt-5 w-100">
           <div class="card p-5">
               <a href="{{ url('') }}" class="d-flex align-items-center mb-3">
                 <!--Logo start-->
@@ -55,6 +55,16 @@ foreach($pages as $page)
                     </div>
                     <div class="col-lg-12">
                       <div class="form-group">
+                        <label for="littlelink_name" class="form-label">{{__('messages.Page URL')}}</label>
+                        <div class="input-group mb-3 has-validation">
+                          <span class="input-group-text" id="basic-addon3">{{str_replace(['http://', 'https://'], '', url(''))}}/@</span>
+                          <input type="littlelink_name" class="form-control" id="littlelink_name" name="littlelink_name" aria-describedby="littlelink_name" placeholder=" " :value="old('littlelink_name')" required autofocus >
+                        </div>
+                      </div>
+                    </div>
+                    @include('auth.url-validation')           
+                    <div class="col-lg-12">
+                      <div class="form-group">
                         <label for="email" class="form-label">{{__('messages.Email')}}</label>
                         <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder=" " :value="old('email')" required autofocus >
                       </div>
@@ -65,12 +75,6 @@ foreach($pages as $page)
                         <input type="password" class="form-control" id="password" aria-describedby="password" placeholder=" " name="password" required autocomplete="new-password" />
                       </div>
                     </div>
-                    <div class="col-lg-12">
-                      <div class="form-group">
-                        <label for="password_confirmation" class="form-label">{{__('messages.Confirm Password')}}</label>
-                        <input type="password" class="form-control" id="password_confirmation" aria-describedby="password_confirmation" placeholder=" " name="password_confirmation" required />
-                      </div>
-                    </div>
                     <div class="col-lg-12 d-flex justify-content-between">
                       <div class="form-check mb-3">
                         <input type="checkbox" class="form-check-input" name="remember" id="remember_me">
@@ -79,7 +83,7 @@ foreach($pages as $page)
                     </div>
                   </div>                  
                 <div class="d-flex justify-content-center">
-                  <button type="submit" class="btn btn-primary">{{__('messages.Sign Up')}}</button>
+                  <button id="submit-btn" type="submit" class="btn btn-primary">{{__('messages.Sign Up')}}</button>
                 </div>
                 @if(env('ENABLE_SOCIAL_LOGIN') == 'true')
                 <p class="text-center my-3">{{__('messages.or sign in with other accounts?')}}</p>
