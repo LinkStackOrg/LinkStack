@@ -20,7 +20,7 @@ class LinkId
             return abort(404);
         }
     
-        if ($user->id !== $link->user_id) {
+        if ($user->id != $link->user_id) {
             return abort(403);
         }
     
