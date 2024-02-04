@@ -199,6 +199,9 @@ class UserController extends Controller
     //Save add link
     public function saveLink(request $request)
     {
+        $request->validate([
+            'link' => 'sometimes|url',
+        ]);
 
         $linkType = LinkType::find($request->linktype_id);
         $LinkTitle = ($request->link_text ?? $request->link_title) ?? $request->title;
@@ -704,7 +707,7 @@ class UserController extends Controller
     public function editLink(request $request)
     {
         $request->validate([
-            'link' => 'required',
+            'link' => 'required|url',
             'title' => 'required',
             'button' => 'required',
         ]);
@@ -1200,6 +1203,9 @@ class UserController extends Controller
     //Edit/save page icons
     public function editIcons(request $request)
     {
+        $request->validate([
+            'link' => 'required|url',
+        ]);
 
         function searchIcon($icon)
         {
