@@ -1201,28 +1201,46 @@ class UserController extends Controller
     }
 
     //Edit/save page icons
-    public function editIcons(request $request)
+    public function editIcons(Request $request)
     {
-        $request->validate([
-            'link' => 'required|url',
-        ]);
+        $inputKeys = array_keys($request->except('_token'));
 
-        function searchIcon($icon)
-        {
-            $iconId = DB::table('links')
+        $validationRules = [];
+
+        foreach ($inputKeys as $platform) {
+            $validationRules[$platform] = 'nullable|url|max:255';
+        }
+
+        $request->validate($validationRules);
+
+        foreach ($inputKeys as $platform) {
+            $link = $request->input($platform);
+
+            if (!empty($link)) {
+                $iconId = $this->searchIcon($platform);
+
+                if (!is_null($iconId)) {
+                    $this->updateIcon($platform, $link);
+                } else {
+                    $this->addIcon($platform, $link);
+                }
+            }
+        }
+
+        return redirect('studio/links#icons');
+    }
+
+    private function searchIcon($icon)
+    {
+        return DB::table('links')
             ->where('user_id', Auth::id())
             ->where('title', $icon)
             ->where('button_id', 94)
             ->value('id');
-        
-        if (is_null($iconId)){
-            return false;
-        } else {
-            return $iconId;
-        }
-        }
+    }
 
-        function addIcon($icon, $link){
+    private function addIcon($icon, $link)
+    {
         $userId = Auth::user()->id;
         $links = new Link;
         $links->link = $link;
@@ -1234,61 +1252,12 @@ class UserController extends Controller
         $links->save();
     }
 
-        function updateIcon($icon, $link){
-        Link::where('id', searchIcon($icon))->update([
+    private function updateIcon($icon, $link)
+    {
+        Link::where('id', $this->searchIcon($icon))->update([
             'button_id' => 94,
             'link' => $link,
             'title' => $icon
         ]);
     }
-
-    function saveIcon($icon, $link){
-    if(isset($link)){
-        if(searchIcon($icon) != NULL){
-            updateIcon($icon, $link);
-        }else{
-            addIcon($icon, $link);}
-    }   
-}
-
-
-
-
-    saveIcon('mastodon', $request->mastodon);
-
-    saveIcon('instagram', $request->instagram);
-
-    saveIcon('twitter', $request->twitter);
-
-    saveIcon('facebook', $request->facebook);
-
-    saveIcon('github', $request->github);
-
-    saveIcon('linkedin', $request->linkedin);
-
-    saveIcon('tiktok', $request->tiktok);
-
-    saveIcon('discord', $request->discord);
-
-    saveIcon('youtube', $request->youtube);
-
-    saveIcon('snapchat', $request->snapchat);
-
-    saveIcon('reddit', $request->reddit);
-
-    saveIcon('pinterest', $request->pinterest);
-
-    saveIcon('telegram', $request->telegram);
-
-    saveIcon('whatsapp', $request->whatsapp);
-
-    saveIcon('twitch', $request->twitch);
-
-
-
-
-        return Redirect('studio/links#icons');
-
-    }
-
 }
