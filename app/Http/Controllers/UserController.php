@@ -1167,7 +1167,7 @@ class UserController extends Controller
                 $newLink->link = $linkData['link'];
                 $newLink->title = $linkData['title'];
                 $newLink->order = $linkData['order'];
-                $newLink->click_number = $linkData['click_number'];
+                $newLink->click_number = 0;
                 $newLink->up_link = $linkData['up_link'];
                 $newLink->custom_css = $linkData['custom_css'];
                 $newLink->custom_icon = $linkData['custom_icon'];
