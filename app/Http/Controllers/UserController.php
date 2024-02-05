@@ -1169,12 +1169,32 @@ class UserController extends Controller
     
             // Loop through each link in $userData and create a new link for the user
             foreach ($userData['links'] as $linkData) {
+
+                $validatedData = Validator::make($linkData, [
+                    'link' => 'nullable|url',
+                ]);
+
+                if ($validatedData->fails()) {
+                    throw new \Exception('Invalid link');
+                }
+
                 $newLink = new Link();
     
                 // Copy over the link data from $linkData to $newLink
                 $newLink->button_id = $linkData['button_id'];
                 $newLink->link = $linkData['link'];
-                $newLink->title = $linkData['title'];
+                
+                // Sanitize the title
+                if ($linkData['button_id'] == 93) {
+                    $sanitizedText = strip_tags($linkData['title'], '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
+                    $sanitizedText = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $sanitizedText);
+                    $sanitizedText = strip_tags_except_allowed_protocols($sanitizedText);
+                
+                    $newLink->title = $sanitizedText;
+                } else {
+                    $newLink->title = $linkData['title'];
+                }
+
                 $newLink->order = $linkData['order'];
                 $newLink->click_number = 0;
                 $newLink->up_link = $linkData['up_link'];
