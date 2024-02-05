@@ -41,7 +41,7 @@ class UserTable extends DataTableComponent
                 ->searchable()
                 ->format(function ($value, $row, Column $column) {
                     if (!$row->littlelink_name == NULL) {
-                        return "<a href='" . url('') . "/@" . htmlspecialchars($row->littlelink_name) . "' target='_blank' class='text-info'><i class='bi bi-box-arrow-up-right'></i>&nbsp; " . $row->littlelink_name . " </a>";
+                        return "<a href='" . url('') . "/@" . htmlspecialchars($row->littlelink_name) . "' target='_blank' class='text-info'><i class='bi bi-box-arrow-up-right'></i>&nbsp; " . htmlspecialchars($row->littlelink_name) . " </a>";
                     } else {
                         return 'N/A';
                     }
