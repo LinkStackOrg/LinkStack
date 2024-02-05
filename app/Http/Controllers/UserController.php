@@ -1149,7 +1149,11 @@ class UserController extends Controller
                 $user->littlelink_name = $userData['littlelink_name'];
             }
             if (isset($userData['littlelink_description'])) {
-                $user->littlelink_description = $userData['littlelink_description'];
+                $sanitizedText = $userData['littlelink_description'];
+                $sanitizedText = strip_tags($sanitizedText, '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
+                $sanitizedText = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $sanitizedText);
+                $sanitizedText = strip_tags_except_allowed_protocols($sanitizedText);
+                $user->littlelink_description = $sanitizedText;
             }
             if (isset($userData['image_data'])) {
                 // Decode the image data from Base64
