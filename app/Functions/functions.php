@@ -139,3 +139,15 @@ function footer($key)
     }
     return $title;
 }
+
+function strip_tags_except_allowed_protocols($str) {
+    preg_match_all('/<a[^>]+>(.*?)<\/a>/i', $str, $matches, PREG_SET_ORDER);
+
+    foreach ($matches as $val) {
+        if (!preg_match('/href=["\'](http:|https:|mailto:|tel:)[^"\']*["\']/', $val[0])) {
+            $str = str_replace($val[0], $val[1], $str);
+        }
+    }
+
+    return $str;
+}

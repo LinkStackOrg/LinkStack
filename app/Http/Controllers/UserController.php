@@ -264,9 +264,13 @@ class UserController extends Controller
                         'button_id' => "42",
                     ]);
                 }elseif($linkType->typename == "text"){
+                    $sanitizedText = $request->text;
+                    $sanitizedText = strip_tags($sanitizedText, '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
+                    $sanitizedText = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $sanitizedText);
+                    $sanitizedText = strip_tags_except_allowed_protocols($sanitizedText);
                     $OrigLink->update([
                         'button_id' => "93",
-                        'title' => $request->text,
+                        'title' => $sanitizedText,
                     ]);
                 }elseif($linkType->typename == "email"){
                     $LinkURL = "mailto:".$LinkURL;
@@ -387,8 +391,12 @@ class UserController extends Controller
             }elseif($linkType->typename == "heading"){
                 $links->button_id = "42";
             }elseif($linkType->typename == "text"){
+                $sanitizedText = $request->text;
+                $sanitizedText = strip_tags($sanitizedText, '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
+                $sanitizedText = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $sanitizedText);
+                $sanitizedText = strip_tags_except_allowed_protocols($sanitizedText);
                 $links->button_id = "93";
-                $links->title = $request->text;
+                $links->title = $sanitizedText;
             }elseif($linkType->typename == "email"){
                 $links->link = "mailto:".$links->link;
                 $links->button_id = $button?->id;
@@ -789,6 +797,7 @@ class UserController extends Controller
         $pageName = $request->littlelink_name;
         $pageDescription = strip_tags($request->pageDescription, '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
         $pageDescription = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $pageDescription);
+        $pageDescription = strip_tags_except_allowed_protocols($pageDescription);
         $name = $request->name;
         $checkmark = $request->checkmark;
         $sharebtn = $request->sharebtn;
