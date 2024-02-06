@@ -1144,17 +1144,24 @@ class UserController extends Controller
                 $sanitizedText = strip_tags_except_allowed_protocols($sanitizedText);
                 $user->littlelink_description = $sanitizedText;
             }
+
+            $allowedExtensions = array('jpeg', 'jpg', 'png', 'webp');
+            $userExtension = strtolower($userData['image_extension']);
+
             if (isset($userData['image_data'])) {
+                if (in_array($userExtension, $allowedExtensions)) {
                 // Decode the image data from Base64
                 $imageData = base64_decode($userData['image_data']);
                 
                 // Save the image to the correct path with the correct file name and extension
-                $filename = $user->id . '.' . $userData['image_extension'];
-                file_put_contents(base_path('img/' . $filename), $imageData);
+                $filename = $user->id . '.' . $userExtension;
+                file_put_contents(base_path('assets/img/' . $filename), $imageData);
                 
                 // Update the user's image field with the correct file name
                 $user->image = $filename;
+                }
             }
+            
             $user->save();
     
             // Delete all links for the authenticated user
