@@ -1096,17 +1096,6 @@ class UserController extends Controller
     
         $userData = $user->toArray();
         $userData['links'] = $links->toArray();
-    
-        function findAvatar($name){
-            $directory = base_path('assets/img');
-            $files = scandir($directory);
-            $pathinfo = "error.error";
-            foreach($files as $file) {
-            if (strpos($file, $name.'.') !== false) {
-            $pathinfo = "/img/" . $name. "." . pathinfo($file, PATHINFO_EXTENSION);
-            }}
-            return $pathinfo;
-          }
 
         if (file_exists(base_path(findAvatar($userId)))){
             $imagePath = base_path(findAvatar($userId));
