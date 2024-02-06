@@ -814,6 +814,13 @@ class UserController extends Controller
         ]);
     
         if ($request->hasFile('image')) {
+
+            // Delete the user's current avatar if it exists
+            while (findAvatar($userId) !== "error.error") {
+                $avatarName = findAvatar($userId);
+                unlink(base_path($avatarName));
+            }
+            
             $fileName = $userId . '_' . time() . "." . $profilePhoto->extension();
             $profilePhoto->move(base_path('assets/img'), $fileName);
         }
@@ -866,10 +873,12 @@ class UserController extends Controller
                 }
             }
     
-            if (file_exists(base_path('assets/img/background-img/') . $pathinfo)) {
-                File::delete(base_path('assets/img/background-img/') . $pathinfo);
+            // Delete the user's current background image if it exists
+            while (findBackground($userId) !== "error.error") {
+                $avatarName = "assets/img/background-img/" . findBackground(Auth::id());
+                unlink(base_path($avatarName));
             }
-    
+                
             $fileName = $userId . '_' . time() . "." . $customBackground->extension();
             $customBackground->move(base_path('assets/img/background-img/'), $fileName);
     
@@ -1152,6 +1161,12 @@ class UserController extends Controller
                 if (in_array($userExtension, $allowedExtensions)) {
                 // Decode the image data from Base64
                 $imageData = base64_decode($userData['image_data']);
+
+                // Delete the user's current avatar if it exists
+                while (findAvatar(Auth::id()) !== "error.error") {
+                    $avatarName = findAvatar(Auth::id());
+                    unlink(base_path($avatarName));
+                }
                 
                 // Save the image to the correct path with the correct file name and extension
                 $filename = $user->id . '.' . $userExtension;
@@ -1161,7 +1176,7 @@ class UserController extends Controller
                 $user->image = $filename;
                 }
             }
-            
+
             $user->save();
     
             // Delete all links for the authenticated user
