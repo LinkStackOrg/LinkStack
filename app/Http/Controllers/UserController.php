@@ -898,13 +898,12 @@ class UserController extends Controller
     //Delete custom background image
     public function removeBackground()
     {
+        $userId = Auth::user()->id;
 
-        $user_id = Auth::user()->id;
-        $path = findBackground($user_id);
-        $path = base_path('assets/img/background-img/'.$path);
-        
-        if (File::exists($path)) {
-            File::delete($path);
+        // Delete the user's current background image if it exists
+        while (findBackground($userId) !== "error.error") {
+            $avatarName = "assets/img/background-img/" . findBackground(Auth::id());
+            unlink(base_path($avatarName));
         }
 
         return back();
@@ -1055,11 +1054,12 @@ class UserController extends Controller
     //Delete profile picture
     public function delProfilePicture()
     {
-        $user_id = Auth::user()->id;
-        $path = base_path(findAvatar($user_id));
+        $userId = Auth::user()->id;
         
-        if (File::exists($path)) {
-            File::delete($path);
+        // Delete the user's current avatar if it exists
+        while (findAvatar($userId) !== "error.error") {
+            $avatarName = findAvatar($userId);
+            unlink(base_path($avatarName));
         }
 
         return back();
