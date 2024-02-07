@@ -200,7 +200,7 @@ class UserController extends Controller
     public function saveLink(request $request)
     {
         $request->validate([
-            'link' => 'sometimes|url',
+            'link' => 'sometimes|exturl',
         ]);
 
         $linkType = LinkType::find($request->linktype_id);
@@ -476,7 +476,7 @@ class UserController extends Controller
             }
 
             if(empty($links->button_id)) {
-                return redirect(route('showButtons')); die;
+                throw new \Exception('Invalid link');
             }
             
             $links->save();
@@ -715,7 +715,7 @@ class UserController extends Controller
     public function editLink(request $request)
     {
         $request->validate([
-            'link' => 'required|url',
+            'link' => 'required|exturl',
             'title' => 'required',
             'button' => 'required',
         ]);
@@ -1055,7 +1055,7 @@ class UserController extends Controller
     public function delProfilePicture()
     {
         $userId = Auth::user()->id;
-        
+
         // Delete the user's current avatar if it exists
         while (findAvatar($userId) !== "error.error") {
             $avatarName = findAvatar($userId);
@@ -1154,10 +1154,11 @@ class UserController extends Controller
                 $user->littlelink_description = $sanitizedText;
             }
 
-            $allowedExtensions = array('jpeg', 'jpg', 'png', 'webp');
-            $userExtension = strtolower($userData['image_extension']);
-
             if (isset($userData['image_data'])) {
+
+                $allowedExtensions = array('jpeg', 'jpg', 'png', 'webp');
+                $userExtension = strtolower($userData['image_extension']);
+
                 if (in_array($userExtension, $allowedExtensions)) {
                 // Decode the image data from Base64
                 $imageData = base64_decode($userData['image_data']);
@@ -1186,11 +1187,11 @@ class UserController extends Controller
             foreach ($userData['links'] as $linkData) {
 
                 $validatedData = Validator::make($linkData, [
-                    'link' => 'nullable|url',
+                    'link' => 'nullable|exturl',
                 ]);
 
                 if ($validatedData->fails()) {
-                    throw new \Exception('Invalid link');
+                    print_r($linkData); die;
                 }
 
                 $newLink = new Link();
@@ -1222,7 +1223,6 @@ class UserController extends Controller
                 // Save the new link to the database
                 $newLink->save();
             }
-    
             return redirect('studio/profile')->with('success', __('messages.Profile updated successfully!'));
         } catch (\Exception $e) {
             return redirect('studio/profile')->with('error', __('messages.An error occurred while updating your profile.'));
@@ -1252,7 +1252,7 @@ class UserController extends Controller
         $validationRules = [];
 
         foreach ($inputKeys as $platform) {
-            $validationRules[$platform] = 'nullable|url|max:255';
+            $validationRules[$platform] = 'nullable|exturl|max:255';
         }
 
         $request->validate($validationRules);
