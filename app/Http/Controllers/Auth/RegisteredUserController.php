@@ -24,7 +24,7 @@ class RegisteredUserController extends Controller
     public function validateHandle(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'littlelink_name' => 'required|string|max:50|unique:users',
+            'littlelink_name' => 'required|string|max:50|unique:users|regex:/^[\p{L}0-9-_]+$/u',
         ]);
     
         if ($validator->fails()) {
@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'littlelink_name' => 'required|string|max:50|unique:users',
+            'littlelink_name' => 'required|string|max:50|unique:users|regex:/^[\p{L}0-9-_]+$/u',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
         ]);
