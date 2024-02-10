@@ -1143,9 +1143,7 @@ class UserController extends Controller
             if (isset($userData['name'])) {
                 $user->name = $userData['name'];
             }
-            if (isset($userData['littlelink_name'])) {
-                $user->littlelink_name = $userData['littlelink_name'];
-            }
+
             if (isset($userData['littlelink_description'])) {
                 $sanitizedText = $userData['littlelink_description'];
                 $sanitizedText = strip_tags($sanitizedText, '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
