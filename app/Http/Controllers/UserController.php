@@ -1189,7 +1189,7 @@ class UserController extends Controller
                 ]);
 
                 if ($validatedData->fails()) {
-                    print_r($linkData); die;
+                    throw new \Exception('Invalid link');
                 }
 
                 $newLink = new Link();
