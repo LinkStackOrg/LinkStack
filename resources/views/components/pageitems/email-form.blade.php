@@ -10,3 +10,14 @@
 <input type='email' name='link' value='{{str_replace("mailto:", "", $link_url)}}' class='form-control' required />
 <span class='small text-muted'>{{__('messages.Enter your E-Mail')}}</span>
 
+<script>
+$(document).ready(function() {
+    $('form').on('submit', function(e) {
+        var linkInput = $(this).find('input[name="link"]');
+        var linkValue = linkInput.val();
+        if (!linkValue.toLowerCase().startsWith('mailto:')) {
+            linkInput.val('mailto:' + linkValue);
+        }
+    });
+});
+</script>

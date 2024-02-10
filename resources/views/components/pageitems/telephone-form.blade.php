@@ -10,3 +10,14 @@
 <input type='tel' name='link' value='{{str_replace("tel:", "", $link_url)}}' class='form-control' required />
 <span class='small text-muted'>{{__('messages.Enter your telephone number')}}</span>
 
+<script>
+$(document).ready(function() {
+    $('form').on('submit', function(e) {
+        var linkInput = $(this).find('input[name="link"]');
+        var linkValue = linkInput.val();
+        if (!linkValue.toLowerCase().startsWith('tel:')) {
+            linkInput.val('tel:' + linkValue);
+        }
+    });
+});
+</script>

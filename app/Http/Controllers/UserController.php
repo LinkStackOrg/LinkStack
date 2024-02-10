@@ -273,14 +273,12 @@ class UserController extends Controller
                         'title' => $sanitizedText,
                     ]);
                 }elseif($linkType->typename == "email"){
-                    $LinkURL = "mailto:".$LinkURL;
                     $OrigLink->update([
                         'link' => $LinkURL,
                         'button_id' => $button?->id,
                         'title' => $LinkTitle,
                     ]);
                 }elseif($linkType->typename == "telephone"){
-                    $LinkURL = "tel:".$LinkURL;
                     $OrigLink->update([
                         'link' => $LinkURL,
                         'button_id' => $button?->id,
@@ -398,10 +396,8 @@ class UserController extends Controller
                 $links->button_id = "93";
                 $links->title = $sanitizedText;
             }elseif($linkType->typename == "email"){
-                $links->link = "mailto:".$links->link;
                 $links->button_id = $button?->id;
             }elseif($linkType->typename == "telephone"){
-                $links->link = "tel:".$links->link;
                 $links->button_id = $button?->id;
             }elseif($linkType->typename == "vcard"){
 
