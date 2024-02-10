@@ -218,10 +218,10 @@
                             </script>
                   
                           <details>
-                          <p>{{__('messages.cb.description.1-4')}}</p>
-                          <p>{{__('messages.cb.description.2-4')}}</p>
-                          <p>{{__('messages.cb.description.3-4')}}</p>
-                          <p>{{__('messages.cb.description.4-4')}}</p>
+                          <p>{!!__('messages.cb.description.1-4')!!}</p>
+                          <p>{!!__('messages.cb.description.2-4')!!}</p>
+                          <p>{!!__('messages.cb.description.3-4')!!}</p>
+                          <p>{!!__('messages.cb.description.4-4')!!}</p>
                           <br>
                           <div class="table-responsive">
                           <table class="table table-striped">
