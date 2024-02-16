@@ -241,15 +241,21 @@
 <option value="No">{{__('messages.No')}}</option>
 <option value="Yes">{{__('messages.Yes')}}</option>
 </select>
-<style>.hidden{display:flex!important;}</style>
-<span class="" id="hidden" style="display:none;margin-top:-22px;margin-bottom:10px;color:#6c757d;font-size:90%;">{{__('messages.This will move the Home Page to /home')}}</span>
 <script src="{{ asset('assets/external-dependencies/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ asset('assets/external-dependencies/sweetalert2.min.js') }}"></script>
 <script>
 $("#select").change(function(){
     if($(this).val() == "Yes") {
-       $('#hidden').addClass('hidden');
-    } else {
-       $('#hidden').removeClass('hidden');
+        $('.container').hide();
+
+        Swal.fire({
+            title: "{{__('messages.Set your page as Home Page')}}",
+            text: "{{__('messages.This will move the Home Page to /home')}}",
+            icon: 'info',
+            confirmButtonText: "{{__('messages.Confirm')}}",
+        }).then((result) => {
+            $('.container').show();
+        });
     }
 });
 </script>
