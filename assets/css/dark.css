@@ -24,150 +24,150 @@ hr {
    */
 }
 .dark .bg-soft-primary {
-  background-color: rgba(104, 126, 237, 0.1) !important;
+  background-color: rgba(104, 126, 237, 0.1) ;
 }
 .dark a.bg-soft-primary:hover, .dark a.bg-soft-primary:focus,
 .dark button.bg-soft-primary:hover,
 .dark button.bg-soft-primary:focus {
   cursor: pointer;
   color: #1632bf;
-  background-color: rgba(104, 126, 237, 0.15) !important;
+  background-color: rgba(104, 126, 237, 0.15) ;
 }
 .dark .bg-soft-secondary {
-  background-color: rgba(125, 138, 183, 0.1) !important;
+  background-color: rgba(125, 138, 183, 0.1) ;
 }
 .dark a.bg-soft-secondary:hover, .dark a.bg-soft-secondary:focus,
 .dark button.bg-soft-secondary:hover,
 .dark button.bg-soft-secondary:focus {
   cursor: pointer;
   color: #404c74;
-  background-color: rgba(125, 138, 183, 0.15) !important;
+  background-color: rgba(125, 138, 183, 0.15) ;
 }
 .dark .bg-soft-success {
-  background-color: rgba(33, 204, 106, 0.1) !important;
+  background-color: rgba(33, 204, 106, 0.1) ;
 }
 .dark a.bg-soft-success:hover, .dark a.bg-soft-success:focus,
 .dark button.bg-soft-success:hover,
 .dark button.bg-soft-success:focus {
   cursor: pointer;
   color: #0f5e31;
-  background-color: rgba(33, 204, 106, 0.15) !important;
+  background-color: rgba(33, 204, 106, 0.15) ;
 }
 .dark .bg-soft-info {
-  background-color: rgba(9, 200, 211, 0.1) !important;
+  background-color: rgba(9, 200, 211, 0.1) ;
 }
 .dark a.bg-soft-info:hover, .dark a.bg-soft-info:focus,
 .dark button.bg-soft-info:hover,
 .dark button.bg-soft-info:focus {
   cursor: pointer;
   color: #045459;
-  background-color: rgba(9, 200, 211, 0.15) !important;
+  background-color: rgba(9, 200, 211, 0.15) ;
 }
 .dark .bg-soft-warning {
-  background-color: rgba(244, 137, 75, 0.1) !important;
+  background-color: rgba(244, 137, 75, 0.1) ;
 }
 .dark a.bg-soft-warning:hover, .dark a.bg-soft-warning:focus,
 .dark button.bg-soft-warning:hover,
 .dark button.bg-soft-warning:focus {
   cursor: pointer;
   color: #b44a0b;
-  background-color: rgba(244, 137, 75, 0.15) !important;
+  background-color: rgba(244, 137, 75, 0.15) ;
 }
 .dark .bg-soft-danger {
-  background-color: rgba(221, 73, 55, 0.1) !important;
+  background-color: rgba(221, 73, 55, 0.1) ;
 }
 .dark a.bg-soft-danger:hover, .dark a.bg-soft-danger:focus,
 .dark button.bg-soft-danger:hover,
 .dark button.bg-soft-danger:focus {
   cursor: pointer;
   color: #7f2116;
-  background-color: rgba(221, 73, 55, 0.15) !important;
+  background-color: rgba(221, 73, 55, 0.15) ;
 }
 .dark .bg-soft-light {
-  background-color: rgba(251, 252, 252, 0.1) !important;
+  background-color: rgba(251, 252, 252, 0.1) ;
 }
 .dark a.bg-soft-light:hover, .dark a.bg-soft-light:focus,
 .dark button.bg-soft-light:hover,
 .dark button.bg-soft-light:focus {
   cursor: pointer;
   color: #b2bcc5;
-  background-color: rgba(251, 252, 252, 0.15) !important;
+  background-color: rgba(251, 252, 252, 0.15) ;
 }
 .dark .bg-soft-dark {
-  background-color: rgba(91, 102, 113, 0.1) !important;
+  background-color: rgba(91, 102, 113, 0.1) ;
 }
 .dark a.bg-soft-dark:hover, .dark a.bg-soft-dark:focus,
 .dark button.bg-soft-dark:hover,
 .dark button.bg-soft-dark:focus {
   cursor: pointer;
   color: black;
-  background-color: rgba(91, 102, 113, 0.15) !important;
+  background-color: rgba(91, 102, 113, 0.15) ;
 }
 .dark .bg-soft-gray {
-  background-color: rgba(134, 142, 150, 0.1) !important;
+  background-color: rgba(134, 142, 150, 0.1) ;
 }
 .dark a.bg-soft-gray:hover, .dark a.bg-soft-gray:focus,
 .dark button.bg-soft-gray:hover,
 .dark button.bg-soft-gray:focus {
   cursor: pointer;
   color: #494f54;
-  background-color: rgba(134, 142, 150, 0.15) !important;
+  background-color: rgba(134, 142, 150, 0.15) ;
 }
 .dark .bg-soft-gray-dark {
-  background-color: rgba(91, 102, 113, 0.1) !important;
+  background-color: rgba(91, 102, 113, 0.1) ;
 }
 .dark a.bg-soft-gray-dark:hover, .dark a.bg-soft-gray-dark:focus,
 .dark button.bg-soft-gray-dark:hover,
 .dark button.bg-soft-gray-dark:focus {
   cursor: pointer;
   color: #121416;
-  background-color: rgba(91, 102, 113, 0.15) !important;
+  background-color: rgba(91, 102, 113, 0.15) ;
 }
 .dark .text-primary {
-  color: #3a57e8 !important;
+  color: #3a57e8 ;
 }
 .dark .text-secondary {
-  color: #5c6ca5 !important;
+  color: #5c6ca5 ;
 }
 .dark .text-success {
-  color: #1aa053 !important;
+  color: #1aa053 ;
 }
 .dark .text-info {
-  color: #079aa2 !important;
+  color: #079aa2 ;
 }
 .dark .text-warning {
-  color: #f16a1b !important;
+  color: #f16a1b ;
 }
 .dark .text-danger {
-  color: #c03221 !important;
+  color: #c03221 ;
 }
 .dark .text-light {
-  color: #dee2e6 !important;
+  color: #dee2e6 ;
 }
 .dark .text-dark {
-  color: #212529 !important;
+  color: #212529 ;
 }
 .dark .text-gray {
-  color: #6c757d !important;
+  color: #6c757d ;
 }
 .dark .text-gray-dark {
-  color: #343a40 !important;
+  color: #343a40 ;
 }
 .dark .iq-media-group .iq-icon-box-3 {
   background: #222738;
 }
 .dark {
   color: #8A92A6;
-  background-color: #151824 !important;
+  background-color: #151824 ;
 }
 .dark h1, .dark .h1, .dark h2, .dark .h2, .dark h3, .dark .h3, .dark h4, .dark .h4, .dark h5, .dark .h5, .dark h6, .dark .h6 {
   color: #8A92A6;
 }
 .dark .border {
-  border-color: #30384f !important;
+  border-color: #30384f ;
 }
 .dark .border-bottom {
-  border-color: #30384f !important;
+  border-color: #30384f ;
 }
 .dark .datepicker-picker {
   background-color: #222738;
@@ -424,7 +424,7 @@ hr {
           filter: invert(1);
 }
 .dark.boxed {
-  background: var(--bs-primary) !important;
+  background: var(--bs-primary) ;
 }
 .dark.boxed .boxed-inner {
   background: #151824;
@@ -469,7 +469,7 @@ hr {
   background-color: rgba(var(--bs-primary-rgb), 0.2);
 }
 .dark .footer {
-  background-color: #222738 !important;
+  background-color: #222738 ;
 }
 .dark .footer a {
   color: #8A92A6;
@@ -1042,19 +1042,19 @@ hr {
   background-color: #30384f;
 }
 .dark .iq-timeline li .timeline-dots {
-  background-color: #151824 !important;
+  background-color: #151824 ;
 }
 .dark .iq-timeline0:before {
   background-color: #30384f;
 }
 .dark .iq-timeline0 li .timeline-dots {
-  background-color: #151824 !important;
+  background-color: #151824 ;
 }
 .dark .iq-timeline0 li .timeline-dots1 {
   background-color: #151824;
 }
 .dark .credit-card-widget .primary-gradient-card {
-  border-color: #000 !important;
+  border-color: #000 ;
 }
 .dark .credit-card-widget .primary-gradient-card {
   background: -webkit-linear-gradient(332.24deg, rgba(0, 0, 0, 0.5) -7.21%, rgba(0, 0, 0, 0.01) 118.08%);
@@ -1083,7 +1083,7 @@ hr {
   border-color: #30384f;
 }
 .dark .bg-light {
-  background: #60658a !important;
+  background: #60658a ;
 }
 .dark .popover {
   background-color: #151824;
@@ -1120,7 +1120,7 @@ hr {
   border-color: #30384f;
 }
 .dark .pricing .table th.bg-light {
-  background: #151824 !important;
+  background: #151824 ;
 }
 .dark .pricing .table thead tr {
   border-color: #30384f;
@@ -1138,7 +1138,7 @@ hr {
   border-right-color: #17235d;
 }
 .dark .iq-single-card.bg-light {
-  background: #60658a !important;
+  background: #60658a ;
 }
 .dark .line-around {
   border-color: #30384f;
@@ -1147,7 +1147,7 @@ hr {
   background: #151824;
 }
 .dark .login-content .bg-white {
-  background: #222738 !important;
+  background: #222738 ;
 }
 .dark .apexcharts-svg .apexcharts-yaxis-texts-g text {
   fill: #5c6ca5;
@@ -1165,16 +1165,16 @@ hr {
   text-transform: capitalize;
 }
 .dark .fc-unthemed th, .dark .fc-unthemed td, .dark .fc-unthemed thead, .dark .fc-unthemed tbody, .dark .fc-unthemed .fc-divider, .dark .fc-unthemed .fc-row, .dark .fc-unthemed .fc-content, .dark .fc-unthemed .fc-popover, .dark .fc-unthemed .fc-list-view, .dark .fc-unthemed .fc-list-heading td {
-  border-color: #30384f !important;
+  border-color: #30384f ;
 }
 .dark .fc-other-month.fc-past, .dark .fc-other-month.fc-future {
   background: #131620;
 }
 .dark .fc-unthemed td.fc-today {
-  background: rgba(58, 87, 232, 0.1) !important;
+  background: rgba(58, 87, 232, 0.1) ;
 }
 .dark.boxed {
-  background: #3a57e8 !important;
+  background: #3a57e8 ;
 }
 .dark.boxed .boxed-inner {
   background: #151824;

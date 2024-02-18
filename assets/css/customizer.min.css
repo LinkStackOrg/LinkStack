@@ -960,34 +960,34 @@ body{
     --bs-info-rgb: 37, 199, 153
 }
 .text-primary{
-    color:var(--bs-primary) !important
+    color:var(--bs-primary) 
 }
 .bg-primary{
-    background-color:var(--bs-primary) !important
+    background-color:var(--bs-primary) 
 }
 .bg-soft-primary{
     color:var(--bs-primary);
-    background-color:rgba(var(--bs-primary-rgb), 0.1) !important
+    background-color:rgba(var(--bs-primary-rgb), 0.1) 
 }
 .text-secondary{
-    color:var(--bs-secondary) !important
+    color:var(--bs-secondary) 
 }
 .bg-secondary{
-    background-color:var(--bs-secondary) !important
+    background-color:var(--bs-secondary) 
 }
 .bg-soft-secondary{
     color:var(--bs-secondary);
-    background-color:rgba(var(--bs-secondary-rgb), 0.1) !important
+    background-color:rgba(var(--bs-secondary-rgb), 0.1) 
 }
 .text-info{
-    color:var(--bs-info) !important
+    color:var(--bs-info) 
 }
 .bg-info{
-    background-color:var(--bs-info) !important
+    background-color:var(--bs-info) 
 }
 .bg-soft-info{
     color:var(--bs-info);
-    background-color:rgba(var(--bs-info-rgb), 0.1) !important
+    background-color:rgba(var(--bs-info-rgb), 0.1) 
 }
 .accordion-button:not(.collapsed){
     color:var(--bs-primary-shade-20);
@@ -1215,14 +1215,14 @@ body{
 }
 .form-check-input:checked{
     border-color:var(--bs-primary-shade-20);
-    background-color:var(--bs-primary) !important
+    background-color:var(--bs-primary) 
 }
 .form-check-input:focus{
-    border-color:var(--bs-primary-shade-20) !important;
-    background-color:var(--bs-primary) !important
+    border-color:var(--bs-primary-shade-20) ;
+    background-color:var(--bs-primary) 
 }
 .border-primary{
-    border-color:var(--bs-primary) !important
+    border-color:var(--bs-primary) 
 }
 #top-tab-list li a{
     color:var(--bs-primary);
@@ -1262,7 +1262,7 @@ body{
     z-index:3
 }
 .nav-slider .nav-slider-thumb{
-    z-index:1 !important;
+    z-index:1 ;
     width:100%;
     color:var(--bs-primary);
     background:var(--bs-primary)
@@ -1317,33 +1317,33 @@ body{
     fill:var(--bs-info)
 }
 .fc-button-primary{
-    color:#fff !important;
-    background-color:var(--bs-primary) !important;
-    border-color:var(--bs-primary) !important
+    color:#fff ;
+    background-color:var(--bs-primary) ;
+    border-color:var(--bs-primary) 
 }
 .child-cell.active{
     color:var(--bs-primary);
     stroke:var(--bs-primary)
 }
 .dark .text-primary{
-    color:var(--bs-primary) !important
+    color:var(--bs-primary) 
 }
 .dark .bg-primary{
-    background-color:var(--bs-primary) !important
+    background-color:var(--bs-primary) 
 }
 .dark .bg-soft-primary{
     color:var(--bs-primary);
-    background-color:rgba(var(--bs-primary-rgb), 0.1) !important
+    background-color:rgba(var(--bs-primary-rgb), 0.1) 
 }
 .dark .text-info{
-    color:var(--bs-info) !important
+    color:var(--bs-info) 
 }
 .dark .bg-info{
-    background-color:var(--bs-info) !important
+    background-color:var(--bs-info) 
 }
 .dark .bg-soft-info{
     color:var(--bs-info);
-    background-color:rgba(var(--bs-info-rgb), 0.1) !important
+    background-color:rgba(var(--bs-info-rgb), 0.1) 
 }
 .dark .accordion-button:not(.collapsed){
     color:var(--bs-primary-shade-20);
@@ -1527,14 +1527,14 @@ body{
 }
 .dark .form-check-input:checked{
     border-color:var(--bs-primary-shade-20);
-    background-color:var(--bs-primary) !important
+    background-color:var(--bs-primary) 
 }
 .dark .form-check-input:focus{
-    border-color:var(--bs-primary-shade-20) !important;
-    background-color:var(--bs-primary) !important
+    border-color:var(--bs-primary-shade-20) ;
+    background-color:var(--bs-primary) 
 }
 .dark .border-primary{
-    border-color:var(--bs-primary) !important
+    border-color:var(--bs-primary) 
 }
 .dark #top-tab-list li a{
     color:var(--bs-primary);
@@ -1574,7 +1574,7 @@ body{
     z-index:3
 }
 .dark .nav-slider .nav-slider-thumb{
-    z-index:1 !important;
+    z-index:1 ;
     width:100%;
     color:var(--bs-primary);
     background:var(--bs-primary)
@@ -1629,29 +1629,29 @@ body{
     fill:var(--bs-info)
 }
 .dark .fc-button-primary{
-    color:#fff !important;
-    background-color:var(--bs-primary) !important;
-    border-color:var(--bs-primary) !important
+    color:#fff ;
+    background-color:var(--bs-primary) ;
+    border-color:var(--bs-primary) 
 }
 .text-primary{
-    color:var(--bs-primary) !important
+    color:var(--bs-primary) 
 }
 .bg-primary{
-    background-color:var(--bs-primary) !important
+    background-color:var(--bs-primary) 
 }
 .bg-soft-primary{
     color:var(--bs-primary);
-    background-color:rgba(var(--bs-primary-rgb), 0.1) !important
+    background-color:rgba(var(--bs-primary-rgb), 0.1) 
 }
 .text-info{
-    color:var(--bs-info) !important
+    color:var(--bs-info) 
 }
 .bg-info{
-    background-color:var(--bs-info) !important
+    background-color:var(--bs-info) 
 }
 .bg-soft-info{
     color:var(--bs-info);
-    background-color:rgba(var(--bs-info-rgb), 0.1) !important
+    background-color:rgba(var(--bs-info-rgb), 0.1) 
 }
 *{
     scrollbar-width:thin;
