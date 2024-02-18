@@ -262,11 +262,11 @@ text-decoration: none;
 
 @media (prefers-color-scheme: dark) {
 .credit-txt-clr{
-    color: #FFF ;
+    color: #FFF;
 }
 }
 @media (prefers-color-scheme: light) {
 .credit-txt-clr{
-    color: #100a26 ;
+    color: #100a26;
 }
 }
