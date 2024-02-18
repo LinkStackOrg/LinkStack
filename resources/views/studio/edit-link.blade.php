@@ -60,7 +60,7 @@
                     
                                 <div class="d-flex align-items-center pt-4">
                                     <a class="btn btn-danger me-3" href="{{ url('studio/links') }}">{{__('messages.Cancel')}}</a>
-                                    <button type="submit" class="btn btn-primary me-3">{{__('messages.Save')}}</button>
+                                    <button type="submit" onclick="if (document.getElementsByClassName('form-control').link.type == 'email') {if(!document.getElementsByClassName('form-control').link.value.includes('mailto:')){document.getElementsByClassName('form-control').link.value = 'mailto:' + document.getElementsByClassName('form-control').link.value; submitFormWithParam()}} else if (document.getElementsByClassName('form-control').link.type == 'tel'){if(!document.getElementsByClassName('form-control').link.value.include('tel:')){document.getElementsByClassName('form-control').link.value = 'tel:' + document.getElementsByClassName('form-control').link.value}}" class="btn btn-primary me-3">{{__('messages.Save')}}</button>
                                     <button type="button" class="btn btn-soft-primary me-3" onclick="submitFormWithParam('add_more')">{{__('messages.Save and Add More')}}</button>
                                     <script>
                                         function submitFormWithParam(paramValue) {
