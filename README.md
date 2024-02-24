@@ -137,7 +137,7 @@ Everything is documented in the dedicated GitHub repository.
 ## Installation
 
 ### Downloading and installing steps:
-* **[Download](https://github.com/linkstackorg/linkstack/releases)** the latest release of LinkStack and simply place the folder 'littlelink' or the contents of this folder in the root directory of your website.
+* **[Download](https://github.com/linkstackorg/linkstack/releases)** the latest release of LinkStack and simply place the folder 'linkstack' or the contents of this folder in the root directory of your website.
 
 ### That's it! No coding no command line setup just plug and play.
 
