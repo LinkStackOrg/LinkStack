@@ -991,6 +991,16 @@ button.button-scribd{
   filter: brightness(90%);
 }
 
+/* Simplex */
+.button.button-simplex {
+  color: #ffffff;
+  background-color: #0e2b57;
+}
+.button.button-simplex:hover,
+.button.button-simplex:focus {
+  filter: brightness(90%);
+}
+
 /* Skoob */
 .button.button-skoob {
   color: #FFFFFF;
