@@ -929,6 +929,15 @@ class ButtonSeeder extends Seeder
                 "group" => "default",
                 "mb" => false,
             ],
+
+            [
+                "name" => "simplex",
+                "alt" => "Simplex",
+                "exclude" => false,
+                "group" => "default",
+                "mb" => false,
+            ],
+
         ];
 
         Button::insert($buttons);
