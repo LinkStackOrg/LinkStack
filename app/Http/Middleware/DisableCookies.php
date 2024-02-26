@@ -17,7 +17,7 @@ class DisableCookies
             return $next($request);
         }
 
-        Cookie::queue(Cookie::forget(strtolower(config('app.name')).'_session'));
+        Cookie::queue(Cookie::forget(str_replace(' ', '_', strtolower(config('app.name')).'_session')));
         Cookie::queue(Cookie::forget('XSRF-TOKEN'));
         config(['session.driver' => 'array']);
 
