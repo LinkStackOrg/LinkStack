@@ -794,7 +794,7 @@ return [
     'Create an admin account' => 'Erstellen Sie ein Administratorkonto.',
     'Admin email:' => 'Admin-E-Mail:',
     'Admin password:' => 'Administrator-Passwort:',
-    'Handle:' => 'Handhaben:',
+    'Handle:' => 'Handle:',
     'Name:' => 'Name:',
 
     'Configure your page' => 'Konfigurieren Sie Ihre Seite',
