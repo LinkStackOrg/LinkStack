@@ -1,0 +1,39 @@
+name: Request a button
+description: Request a button to be added to LinkStack (in the "Pre-defined Sites" block).
+title: "[Button request]: "
+labels: ["button", "enhancement"]
+body:
+- type: input
+  attributes:
+    label: Brand Name
+    description: What's the name of the brand you're requesting a button for?
+    placeholder: E.g. "YouTube", "Apple Music" etc.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Brand Assets
+    description: |
+      Where can we find assets such as logos, color palettes etc.?
+      This field is not required, but including it will greatly improve the speed and chance of your request being implemented.
+    placeholder: |
+      Examples:
+      https://www.youtube.com/howyoutubeworks/resources/brand-resources/#logos-icons-and-colors
+      https://joinfirefish.org/about/#brand
+      ...
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Other
+    description: |
+      Is there anything else we should know?
+  validations:
+    required: false
+- type: checkboxes
+  attributes:
+    label: Is the button already requested?
+    description: Please search to see if an issue for the button already exists.
+    options:
+    - label: I have searched the existing issues
+      required: true
