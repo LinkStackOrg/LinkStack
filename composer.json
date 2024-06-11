@@ -10,7 +10,7 @@
         "codedge/laravel-selfupdater": "^3.8.1",
         "cohensive/oembed": "^0.17",
         "doctrine/dbal": "^3.8.0",
-        "geo-sot/laravel-env-editor": "^2.1.1",
+        "geo-sot/laravel-env-editor": "^3.1.0",
         "guzzlehttp/guzzle": "^7.4",
         "jeroendesloovere/vcard": "^1.7",
         "laravel/framework": "^10.42.0",

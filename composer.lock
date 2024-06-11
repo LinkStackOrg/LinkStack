@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "efb1317bfb040cb494e38900d4d3052f",
+    "content-hash": "f98bc15b011b0d26a1c32be0348298f8",
     "packages": [
         {
             "name": "awssat/laravel-visits",
@@ -1370,26 +1370,27 @@
         },
         {
             "name": "geo-sot/laravel-env-editor",
-            "version": "2.1.1",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GeoSot/Laravel-EnvEditor.git",
-                "reference": "00eb54c0caa7c2e88ea6aed8a6ab246207ec92cb"
+                "reference": "ba93bdb1bd80d6ce2b5ef434b8c60d3fd440293d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GeoSot/Laravel-EnvEditor/zipball/00eb54c0caa7c2e88ea6aed8a6ab246207ec92cb",
-                "reference": "00eb54c0caa7c2e88ea6aed8a6ab246207ec92cb",
+                "url": "https://api.github.com/repos/GeoSot/Laravel-EnvEditor/zipball/ba93bdb1bd80d6ce2b5ef434b8c60d3fd440293d",
+                "reference": "ba93bdb1bd80d6ce2b5ef434b8c60d3fd440293d",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": ">=8.0",
-                "php": ">=8.0"
+                "laravel/framework": ">=10.0",
+                "php": ">=8.1"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3",
-                "nunomaduro/larastan": "^1|^2",
-                "orchestra/testbench": ">=7"
+                "larastan/larastan": "^2",
+                "orchestra/testbench": ">=9",
+                "rector/rector": "^1.0"
             },
             "type": "library",
             "extra": {
@@ -1426,9 +1427,9 @@
             ],
             "support": {
                 "issues": "https://github.com/GeoSot/Laravel-EnvEditor/issues",
-                "source": "https://github.com/GeoSot/Laravel-EnvEditor/tree/2.1.1"
+                "source": "https://github.com/GeoSot/Laravel-EnvEditor/tree/3.1.0"
             },
-            "time": "2023-10-02T17:04:56+00:00"
+            "time": "2024-04-14T22:39:23+00:00"
         },
         {
             "name": "graham-campbell/result-type",
