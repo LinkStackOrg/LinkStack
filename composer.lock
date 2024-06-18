@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e96bafd0a5c2c060a93444b8458c0711",
+    "content-hash": "a9969331a27ad9aaed19ae2c27b819f1",
     "packages": [
         {
             "name": "awssat/laravel-visits",
@@ -407,21 +407,20 @@
         },
         {
             "name": "cohensive/oembed",
-            "version": "v0.17",
+            "version": "v0.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KaneCohen/oembed.git",
-                "reference": "42006e220142a3774718351e2994ad5857f5ab04"
+                "reference": "674e8e9e59d14e4e5eb3debedfb7cf44a250940c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KaneCohen/oembed/zipball/42006e220142a3774718351e2994ad5857f5ab04",
-                "reference": "42006e220142a3774718351e2994ad5857f5ab04",
+                "url": "https://api.github.com/repos/KaneCohen/oembed/zipball/674e8e9e59d14e4e5eb3debedfb7cf44a250940c",
+                "reference": "674e8e9e59d14e4e5eb3debedfb7cf44a250940c",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.0",
-                "symfony/http-client": "^5.2"
+                "php": "^8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.0|^9.0"
@@ -460,9 +459,9 @@
             ],
             "support": {
                 "issues": "https://github.com/KaneCohen/oembed/issues",
-                "source": "https://github.com/KaneCohen/oembed/tree/v0.17"
+                "source": "https://github.com/KaneCohen/oembed/tree/v0.18.1"
             },
-            "time": "2023-07-14T09:29:52+00:00"
+            "time": "2024-04-28T07:15:52+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -5689,175 +5688,6 @@
             "time": "2023-10-31T17:30:12+00:00"
         },
         {
-            "name": "symfony/http-client",
-            "version": "v5.4.34",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/http-client.git",
-                "reference": "8fe833b758bc5b325e9d96a913376d6d57a90fb0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client/zipball/8fe833b758bc5b325e9d96a913376d6d57a90fb0",
-                "reference": "8fe833b758bc5b325e9d96a913376d6d57a90fb0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2.5",
-                "psr/log": "^1|^2|^3",
-                "symfony/deprecation-contracts": "^2.1|^3",
-                "symfony/http-client-contracts": "^2.4",
-                "symfony/polyfill-php73": "^1.11",
-                "symfony/polyfill-php80": "^1.16",
-                "symfony/service-contracts": "^1.0|^2|^3"
-            },
-            "provide": {
-                "php-http/async-client-implementation": "*",
-                "php-http/client-implementation": "*",
-                "psr/http-client-implementation": "1.0",
-                "symfony/http-client-implementation": "2.4"
-            },
-            "require-dev": {
-                "amphp/amp": "^2.5",
-                "amphp/http-client": "^4.2.1",
-                "amphp/http-tunnel": "^1.0",
-                "amphp/socket": "^1.1",
-                "guzzlehttp/promises": "^1.4",
-                "nyholm/psr7": "^1.0",
-                "php-http/httplug": "^1.0|^2.0",
-                "php-http/message-factory": "^1.0",
-                "psr/http-client": "^1.0",
-                "symfony/dependency-injection": "^4.4|^5.0|^6.0",
-                "symfony/http-kernel": "^4.4.13|^5.1.5|^6.0",
-                "symfony/process": "^4.4|^5.0|^6.0",
-                "symfony/stopwatch": "^4.4|^5.0|^6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\HttpClient\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Provides powerful methods to fetch HTTP resources synchronously or asynchronously",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "http"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/http-client/tree/v5.4.34"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-12-02T08:41:43+00:00"
-        },
-        {
-            "name": "symfony/http-client-contracts",
-            "version": "v2.5.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/http-client-contracts.git",
-                "reference": "ba6a9f0e8f3edd190520ee3b9a958596b6ca2e70"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client-contracts/zipball/ba6a9f0e8f3edd190520ee3b9a958596b6ca2e70",
-                "reference": "ba6a9f0e8f3edd190520ee3b9a958596b6ca2e70",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2.5"
-            },
-            "suggest": {
-                "symfony/http-client-implementation": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "2.5-dev"
-                },
-                "thanks": {
-                    "name": "symfony/contracts",
-                    "url": "https://github.com/symfony/contracts"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Contracts\\HttpClient\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Generic abstractions related to HTTP clients",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "abstractions",
-                "contracts",
-                "decoupling",
-                "interfaces",
-                "interoperability",
-                "standards"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/http-client-contracts/tree/v2.5.2"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2022-04-12T15:48:08+00:00"
-        },
-        {
             "name": "symfony/http-foundation",
             "version": "v6.4.2",
             "source": {
@@ -6687,85 +6517,6 @@
             ],
             "support": {
                 "source": "https://github.com/symfony/polyfill-php72/tree/v1.28.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-01-26T09:26:14+00:00"
-        },
-        {
-            "name": "symfony/polyfill-php73",
-            "version": "v1.28.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-php73.git",
-                "reference": "fe2f306d1d9d346a7fee353d0d5012e401e984b5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php73/zipball/fe2f306d1d9d346a7fee353d0d5012e401e984b5",
-                "reference": "fe2f306d1d9d346a7fee353d0d5012e401e984b5",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.28-dev"
-                },
-                "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php73\\": ""
-                },
-                "classmap": [
-                    "Resources/stubs"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill backporting some PHP 7.3+ features to lower PHP versions",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-php73/tree/v1.28.0"
             },
             "funding": [
                 {
