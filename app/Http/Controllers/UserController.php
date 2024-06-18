@@ -146,352 +146,113 @@ class UserController extends Controller
     //Show add/update form
     public function AddUpdateLink($id = 0)
     {
-
-        if ($id !== 0) {
-            $linkData = Link::find($id);
-        } elseif ($id == 0) {
-            $linkData = new Link(['typename' => 'link', 'id'=>'0']);
-        } else {
-            $linkData = new Link(['typename' => 'link', 'id'=>'0']);
-        }
-        $data['LinkTypes'] = LinkType::get();
-        $data['LinkData'] = $linkData;
-        $data['LinkID'] = $id;
-        $data['linkTypeID'] = "1";
-        $data['title'] = "Predefined Site";
-
-        if (Route::currentRouteName() != 'showButtons') {
-            $links = DB::table('links')->where('id', $id)->first();
-
-            $bid = $links->button_id;
-
-            if($bid == 1 or $bid == 2){
-                $data['linkTypeID'] = "2";
-            } elseif ($bid == 42) {
-                $data['linkTypeID'] = "3";
-            } elseif ($bid == 43) {
-                $data['linkTypeID'] = "4";
-            } elseif ($bid == 93) {
-                $data['linkTypeID'] = "5";
-            } elseif ($bid == 6 or $bid == 7) {
-                $data['linkTypeID'] = "6";
-            } elseif ($bid == 44) {
-                $data['linkTypeID'] = "7";
-            } elseif ($bid == 96) {
-                $data['linkTypeID'] = "8";
-            } else {
-                $data['linkTypeID'] = "1";
-            }
-
+        $linkData = $id ? Link::find($id) : new Link(['typename' => 'link', 'id' => '0']);
+    
+        $data = [
+            'LinkTypes' => LinkType::get(),
+            'LinkData' => $linkData,
+            'LinkID' => $id,
+            'linkTypeID' => "1",
+            'title' => "Predefined Site",
+        ];
+    
+        if (Route::currentRouteName() != 'showButtons' && $link = DB::table('links')->where('id', $id)->first()) {
+            $bidToLinkTypeId = [
+                1 => "2", 2 => "2", 42 => "3", 43 => "4", 93 => "5", 6 => "6", 7 => "6", 44 => "7", 96 => "8",
+            ];
+    
+            $data['linkTypeID'] = $bidToLinkTypeId[$link->button_id] ?? "1";
             $data['title'] = LinkType::where('id', $data['linkTypeID'])->value('title');
         }
-
-        foreach ($data['LinkTypes']->toArray() as $key => $val) {
-            if ($val['typename'] === $linkData['typename']) {
-                $data['SelectedLinkType'] = $val;
-                break;
-            }
-        }
-        
+    
+        $data['SelectedLinkType'] = $data['LinkTypes']->firstWhere('typename', $linkData['typename']);
+    
         return view('studio/edit-link', $data);
     }
 
     //Save add link
-    public function saveLink(request $request)
+    public function saveLink(Request $request)
     {
         $request->validate([
             'link' => 'sometimes|exturl',
         ]);
-
+    
         $linkType = LinkType::find($request->linktype_id);
         $LinkTitle = ($request->link_text ?? $request->link_title) ?? $request->title;
         $LinkURL = $request->link_url ?? $request->link;
-
         $OrigLink = Link::find($request->linkid);
-
+    
         $customParams = [];
         foreach ($request->all() as $key => $param) {
-            //echo $key . " = " . $param . "<br />";
-            if (str_starts_with($key, "_") ||  in_array($key, ['linktype_id', 'linktype_title', 'link_text', 'link_url']))
-                continue;
-
+            if (str_starts_with($key, "_") || in_array($key, ['linktype_id', 'linktype_title', 'link_text', 'link_url'])) continue;
             $customParams[$key] = $param;
         }
-
+    
         $userId = Auth::user()->id;
         $button = Button::where('name', $request->button)->first();
-
-        if ($button && empty($LinkTitle))
-            $LinkTitle = $button->alt;
-
+        if ($button && empty($LinkTitle)) $LinkTitle = $button->alt;
+    
         if ($linkType->typename == 'video' && empty($LinkTitle)) {
             $embed = OEmbed::get($LinkURL);
-            if ($embed) {
-                $LinkTitle = $embed->data()['title'];
-            }
+            if ($embed) $LinkTitle = $embed->data()['title'];
         }
-
-        $message = (ucwords($button?->name) ?? ucwords($linkType->typename)). " has been ";
-
-        if ($OrigLink) {
-            //EDITING EXISTING
-
-            $isCustomWebsite = $customParams['GetSiteIcon'] ?? null;
-            $SpacerHeight = $customParams['height'] ?? null;
-
-                if($linkType->typename == "link" and $isCustomWebsite == "1"){
-                    $OrigLink->update([
-                        'link' => $LinkURL,
-                        'title' => $LinkTitle,
-                        'button_id' => "2",
-                    ]);
-                }elseif($linkType->typename == "link"){
-                    $OrigLink->update([
-                        'link' => $LinkURL,
-                        'title' => $LinkTitle,
-                        'button_id' => "1",
-                    ]);
-                }elseif($linkType->typename == "spacer"){
-                    $OrigLink->update([
-                        'link' => $LinkURL,
-                        'title' => $customParams['height'] ?? null,
-                        'button_id' => "43",
-                    ]);
-                }elseif($linkType->typename == "heading"){
-                    $OrigLink->update([
-                        'link' => $LinkURL,
-                        'title' => $LinkTitle,
-                        'button_id' => "42",
-                    ]);
-                }elseif($linkType->typename == "text"){
-                    $sanitizedText = $request->text;
-                    $sanitizedText = strip_tags($sanitizedText, '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
-                    $sanitizedText = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $sanitizedText);
-                    $sanitizedText = strip_tags_except_allowed_protocols($sanitizedText);
-                    $OrigLink->update([
-                        'button_id' => "93",
-                        'title' => $sanitizedText,
-                    ]);
-                }elseif($linkType->typename == "email"){
-                    $OrigLink->update([
-                        'link' => $LinkURL,
-                        'button_id' => $button?->id,
-                        'title' => $LinkTitle,
-                    ]);
-                }elseif($linkType->typename == "telephone"){
-                    $OrigLink->update([
-                        'link' => $LinkURL,
-                        'button_id' => $button?->id,
-                        'title' => $LinkTitle,
-                    ]);
-                }elseif($linkType->typename == "vcard"){
-
-                    $prefix = $request->input('prefix');
-                    $firstName = $request->input('first_name');
-                    $middleName = $request->input('middle_name');
-                    $lastName = $request->input('last_name');
-                    $suffix = $request->input('suffix');
-                    $nickname = $request->input('nickname');
-                    $organization = $request->input('organization');
-                    $vtitle = $request->input('vtitle');
-                    $role = $request->input('role');
-                    $workUrl = $request->input('work_url');
-                    $email = $request->input('email');
-                    $workEmail = $request->input('work_email');
-                    $homePhone = $request->input('home_phone');
-                    $workPhone = $request->input('work_phone');
-                    $cellPhone = $request->input('cell_phone');
-                    $homeAddressLabel = $request->input('home_address_label');
-                    $homeAddressStreet = $request->input('home_address_street');
-                    $homeAddressCity = $request->input('home_address_city');
-                    $homeAddressState = $request->input('home_address_state');
-                    $homeAddressZip = $request->input('home_address_zip');
-                    $homeAddressCountry = $request->input('home_address_country');
-                    $workAddressLabel = $request->input('work_address_label');
-                    $workAddressStreet = $request->input('work_address_street');
-                    $workAddressCity = $request->input('work_address_city');
-                    $workAddressState = $request->input('work_address_state');
-                    $workAddressZip = $request->input('work_address_zip');
-                    $workAddressCountry = $request->input('work_address_country');
     
-                    // Create an array with all the input fields
-                    $data = [
-                        'prefix' => $request->input('prefix'),
-                        'first_name' => $request->input('first_name'),
-                        'middle_name' => $request->input('middle_name'),
-                        'last_name' => $request->input('last_name'),
-                        'suffix' => $request->input('suffix'),
-                        'nickname' => $request->input('nickname'),
-                        'organization' => $request->input('organization'),
-                        'vtitle' => $request->input('vtitle'),
-                        'role' => $request->input('role'),
-                        'work_url' => $request->input('work_url'),
-                        'email' => $request->input('email'),
-                        'work_email' => $request->input('work_email'),
-                        'home_phone' => $request->input('home_phone'),
-                        'work_phone' => $request->input('work_phone'),
-                        'cell_phone' => $request->input('cell_phone'),
-                        'home_address_label' => $request->input('home_address_label'),
-                        'home_address_street' => $request->input('home_address_street'),
-                        'home_address_city' => $request->input('home_address_city'),
-                        'home_address_state' => $request->input('home_address_state'),
-                        'home_address_zip' => $request->input('home_address_zip'),
-                        'home_address_country' => $request->input('home_address_country'),
-                        'work_address_label' => $request->input('work_address_label'),
-                        'work_address_street' => $request->input('work_address_street'),
-                        'work_address_city' => $request->input('work_address_city'),
-                        'work_address_state' => $request->input('work_address_state'),
-                        'work_address_zip' => $request->input('work_address_zip'),
-                        'work_address_country' => $request->input('work_address_country'),
-                    ];
-                    
-                    // Convert the array to JSON format
-                    $json = json_encode($data);
-                    
-                    // Set the JSON as the variable $links->link, or null if the JSON is empty
-                    $LinkURL = $json ? $json : null;        
-
-                    $OrigLink->update([
-                        'link' => $LinkURL,
-                        'button_id' => 96,
-                        'title' => $LinkTitle,
-                    ]);
-                }else{
-                    $OrigLink->update([
-                        'link' => $LinkURL,
-                        'title' => $LinkTitle,
-                        'button_id' => $button?->id,
-                    ]);
-                }
-                
-            $message .="updated";
-
+        $message = (ucwords($button?->name) ?? ucwords($linkType->typename)) . " has been ";
+    
+        $linkData = [
+            'link' => $LinkURL,
+            'title' => $LinkTitle,
+            'user_id' => $userId,
+            'button_id' => $button?->id
+        ];
+    
+        if ($linkType->typename == "link" && $customParams['GetSiteIcon'] == "1") {
+            $linkData['button_id'] = "2";
+        } elseif ($linkType->typename == "link") {
+            $linkData['button_id'] = "1";
+        } elseif ($linkType->typename == "spacer") {
+            $linkData['title'] = $customParams['height'] ?? null;
+            $linkData['button_id'] = "43";
+        } elseif ($linkType->typename == "heading") {
+            $linkData['button_id'] = "42";
+        } elseif ($linkType->typename == "text") {
+            $sanitizedText = $request->text;
+            $sanitizedText = strip_tags($sanitizedText, '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
+            $sanitizedText = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $sanitizedText);
+            $sanitizedText = strip_tags_except_allowed_protocols($sanitizedText);
+            $linkData['title'] = $sanitizedText;
+            $linkData['button_id'] = "93";
+        } elseif (in_array($linkType->typename, ["email", "telephone"])) {
+            $linkData['button_id'] = $button?->id;
+        } elseif ($linkType->typename == "vcard") {
+            $data = $request->only([
+                'prefix', 'first_name', 'middle_name', 'last_name', 'suffix', 'nickname',
+                'organization', 'vtitle', 'role', 'work_url', 'email', 'work_email',
+                'home_phone', 'work_phone', 'cell_phone', 'home_address_label', 'home_address_street',
+                'home_address_city', 'home_address_state', 'home_address_zip', 'home_address_country',
+                'work_address_label', 'work_address_street', 'work_address_city', 'work_address_state',
+                'work_address_zip', 'work_address_country'
+            ]);
+            $linkData['link'] = json_encode($data);
+            $linkData['button_id'] = 96;
+        }
+    
+        if ($OrigLink) {
+            $OrigLink->update($linkData);
+            $message .= "updated";
         } else {
-            // ADDING NEW
-
-            $isCustomWebsite = $customParams['GetSiteIcon'] ?? null;
-            $SpacerHeight = $customParams['height'] ?? null;
-            
-            $links = new Link;
-            $links->link = $LinkURL;
+            $links = new Link($linkData);
             $links->user_id = $userId;
-            if($linkType->typename == "spacer"){
-            $links->title = $SpacerHeight;
-            }else{
-            $links->title = $LinkTitle;
-            }
-            if($linkType->typename == "link" and $isCustomWebsite == "1"){
-                $links->button_id = "2";
-            }elseif($linkType->typename == "link"){
-                $links->button_id = "1";
-            }elseif($linkType->typename == "spacer"){
-                $links->button_id = "43";
-            }elseif($linkType->typename == "heading"){
-                $links->button_id = "42";
-            }elseif($linkType->typename == "text"){
-                $sanitizedText = $request->text;
-                $sanitizedText = strip_tags($sanitizedText, '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
-                $sanitizedText = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $sanitizedText);
-                $sanitizedText = strip_tags_except_allowed_protocols($sanitizedText);
-                $links->button_id = "93";
-                $links->title = $sanitizedText;
-            }elseif($linkType->typename == "email"){
-                $links->button_id = $button?->id;
-            }elseif($linkType->typename == "telephone"){
-                $links->button_id = $button?->id;
-            }elseif($linkType->typename == "vcard"){
-
-                $prefix = $request->input('prefix');
-                $firstName = $request->input('first_name');
-                $middleName = $request->input('middle_name');
-                $lastName = $request->input('last_name');
-                $suffix = $request->input('suffix');
-                $nickname = $request->input('nickname');
-                $organization = $request->input('organization');
-                $vtitle = $request->input('vtitle');
-                $role = $request->input('role');
-                $workUrl = $request->input('work_url');
-                $email = $request->input('email');
-                $workEmail = $request->input('work_email');
-                $homePhone = $request->input('home_phone');
-                $workPhone = $request->input('work_phone');
-                $cellPhone = $request->input('cell_phone');
-                $homeAddressLabel = $request->input('home_address_label');
-                $homeAddressStreet = $request->input('home_address_street');
-                $homeAddressCity = $request->input('home_address_city');
-                $homeAddressState = $request->input('home_address_state');
-                $homeAddressZip = $request->input('home_address_zip');
-                $homeAddressCountry = $request->input('home_address_country');
-                $workAddressLabel = $request->input('work_address_label');
-                $workAddressStreet = $request->input('work_address_street');
-                $workAddressCity = $request->input('work_address_city');
-                $workAddressState = $request->input('work_address_state');
-                $workAddressZip = $request->input('work_address_zip');
-                $workAddressCountry = $request->input('work_address_country');
-
-                // Create an array with all the input fields
-                $data = [
-                    'prefix' => $request->input('prefix'),
-                    'first_name' => $request->input('first_name'),
-                    'middle_name' => $request->input('middle_name'),
-                    'last_name' => $request->input('last_name'),
-                    'suffix' => $request->input('suffix'),
-                    'nickname' => $request->input('nickname'),
-                    'organization' => $request->input('organization'),
-                    'vtitle' => $request->input('vtitle'),
-                    'role' => $request->input('role'),
-                    'work_url' => $request->input('work_url'),
-                    'email' => $request->input('email'),
-                    'work_email' => $request->input('work_email'),
-                    'home_phone' => $request->input('home_phone'),
-                    'work_phone' => $request->input('work_phone'),
-                    'cell_phone' => $request->input('cell_phone'),
-                    'home_address_label' => $request->input('home_address_label'),
-                    'home_address_street' => $request->input('home_address_street'),
-                    'home_address_city' => $request->input('home_address_city'),
-                    'home_address_state' => $request->input('home_address_state'),
-                    'home_address_zip' => $request->input('home_address_zip'),
-                    'home_address_country' => $request->input('home_address_country'),
-                    'work_address_label' => $request->input('work_address_label'),
-                    'work_address_street' => $request->input('work_address_street'),
-                    'work_address_city' => $request->input('work_address_city'),
-                    'work_address_state' => $request->input('work_address_state'),
-                    'work_address_zip' => $request->input('work_address_zip'),
-                    'work_address_country' => $request->input('work_address_country'),
-                ];
-                
-                // Convert the array to JSON format
-                $json = json_encode($data);
-                
-                // Set the JSON as the variable $links->link, or null if the JSON is empty
-                $links->link = $json ? $json : null;               
-
-                $links->button_id = 96;
-            }else{
-                $links->button_id = $button?->id;
-            }
-
-            if(empty($links->button_id)) {
-                throw new \Exception('Invalid link');
-            }
-            
             $links->save();
-
             $links->order = ($links->id - 1);
             $links->save();
             $message .= "added";
         }
-
-            if ($request->input('param') == 'add_more') {
-                return Redirect('studio/add-link')
-                ->with('success', $message);
-            } else {
-                return Redirect('studio/links')
-                ->with('success', $message);
-            }
-
+    
+        $redirectUrl = $request->input('param') == 'add_more' ? 'studio/add-link' : 'studio/links';
+        return Redirect($redirectUrl)->with('success', $message);
     }
-
+    
     public function sortLinks(Request $request)
     {
         $linkOrders  = $request->input("linkOrders", []);
