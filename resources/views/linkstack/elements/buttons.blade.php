@@ -4,7 +4,7 @@
 
         @foreach($links as $link)
         @if(isset($link->custom_html) && $link->custom_html)
-            @include('blocks::' . $link->name . '.display', ['link' => $link])
+            @include('blocks::' . $link->name . '.display', ['link' => $link, 'initial' => $initial++])
         @else
             @switch($link->name)
                 @case('icon')
