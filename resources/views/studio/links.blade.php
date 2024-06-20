@@ -45,7 +45,7 @@ if (isset($_COOKIE['LinkCount'])) {
 @include('components.favicon')
 @include('components.favicon-extension')
 
-<?php function strp($urlStrp){return str_replace(array('http://', 'https://'), '', $urlStrp);} ?>
+<?php if(!function_exists('strp')){function strp($urlStrp){return str_replace(array('http://', 'https://'), '', $urlStrp);}} ?>
 
 <div class="conatiner-fluid content-inner mt-n5 py-0">
     <div class="row">   
@@ -227,42 +227,63 @@ if (isset($_COOKIE['LinkCount'])) {
                                 @csrf
                                 <div class="form-group col-lg-8">
                             
-                                        @php
-                                        function iconLink($icon){
-                                        $iconLink = DB::table('links')
-                                        ->where('user_id', Auth::id())
-                                        ->where('title', $icon)
-                                        ->where('button_id', 94)
-                                        ->value('link');
-                                          if (is_null($iconLink)){
-                                               return false;
-                                          } else {
-                                                return $iconLink;}}
-                                        function searchIcon($icon)
-                                    {$iconId = DB::table('links')
-                                        ->where('user_id', Auth::id())
-                                        ->where('title', $icon)
-                                        ->where('button_id', 94)
-                                        ->value('id');
-                                    if(is_null($iconId)){return false;}else{return $iconId;}}
-                                        function iconclicks($icon){
-                                        $iconClicks = searchIcon($icon);
-                                        $iconClicks = DB::table('links')->where('id', $iconClicks)->value('click_number');
-                                          if (is_null($iconClicks)){return 0;}
-                                          else {return $iconClicks;}}
-                            
-                                          function icon($name, $label) {
-                                              echo '<div class="mb-3">
-                                                      <label class="form-label">'.$label.'</label>
-                                                      <span class="form-text" style="font-size: 90%; font-style: italic;">'.__('messages.Clicks').': '.iconclicks($name).'</span>
-                                                      <div class="input-group">
-                                                        <span class="input-group-text"><i class="fab fa-'.$name.'"></i></span>
-                                                        <input type="url" class="form-control" name="'.$name.'" value="'.iconLink($name).'" />
-                                                        '.(searchIcon($name) != NULL ? '<a href="'.route("deleteLink", searchIcon($name)).'" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>' : '').'
-                                                      </div>
-                                                    </div>';
+                                    @php
+                                    if (!function_exists('iconLink')) {
+                                        function iconLink($icon) {
+                                            $iconLink = DB::table('links')
+                                                ->where('user_id', Auth::id())
+                                                ->where('title', $icon)
+                                                ->where('button_id', 94)
+                                                ->value('link');
+                                            if (is_null($iconLink)){
+                                                return false;
+                                            } else {
+                                                return $iconLink;
                                             }
-                                        @endphp
+                                        }
+                                    }
+                                    
+                                    if (!function_exists('searchIcon')) {
+                                        function searchIcon($icon) {
+                                            $iconId = DB::table('links')
+                                                ->where('user_id', Auth::id())
+                                                ->where('title', $icon)
+                                                ->where('button_id', 94)
+                                                ->value('id');
+                                            if (is_null($iconId)){
+                                                return false;
+                                            } else {
+                                                return $iconId;
+                                            }
+                                        }
+                                    }
+                                    
+                                    if (!function_exists('iconclicks')) {
+                                        function iconclicks($icon) {
+                                            $iconClicks = searchIcon($icon);
+                                            $iconClicks = DB::table('links')->where('id', $iconClicks)->value('click_number');
+                                            if (is_null($iconClicks)){
+                                                return 0;
+                                            } else {
+                                                return $iconClicks;
+                                            }
+                                        }
+                                    }
+                                    
+                                    if (!function_exists('icon')) {
+                                        function icon($name, $label) {
+                                            echo '<div class="mb-3">
+                                                    <label class="form-label">'.$label.'</label>
+                                                    <span class="form-text" style="font-size: 90%; font-style: italic;">'.__('messages.Clicks').': '.iconclicks($name).'</span>
+                                                    <div class="input-group">
+                                                      <span class="input-group-text"><i class="fab fa-'.$name.'"></i></span>
+                                                      <input type="url" class="form-control" name="'.$name.'" value="'.iconLink($name).'" />
+                                                      '.(searchIcon($name) != NULL ? '<a href="'.route("deleteLink", searchIcon($name)).'" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>' : '').'
+                                                    </div>
+                                                  </div>';
+                                        }
+                                    }
+                                    @endphp
                                     <style>input{border-top-right-radius: 0.25rem!important; border-bottom-right-radius: 0.25rem!important;}</style>
                             
                             

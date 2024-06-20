@@ -1,0 +1,5 @@
+id: 4
+typename: spacer
+title: "Custom Link"
+icon: "bi bi-distribute-vertical"
+custom_html: true

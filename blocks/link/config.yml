@@ -1,0 +1,5 @@
+id: 2
+typename: link
+title: "Custom Link"
+icon: "bi bi-link"
+custom_html: false

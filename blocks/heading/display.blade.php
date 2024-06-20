@@ -1,0 +1,1 @@
+<div class="fadein"><h2>{{ $link->title }}</h2></div>

@@ -1,0 +1,5 @@
+id: 7
+typename: telephone
+title: "Custom Link"
+icon: "bi bi-telephone-fill"
+custom_html: false

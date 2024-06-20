@@ -9,7 +9,7 @@ class Link extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['link', 'title', 'button_id', 'type_params', 'typename'];
+    protected $fillable = ['link', 'title', 'button_id', 'type_params', 'type'];
 
     protected static function boot()
     {

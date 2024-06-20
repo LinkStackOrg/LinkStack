@@ -103,7 +103,27 @@ class UserController extends Controller
             return abort(404);
         }
         
-        $links = DB::table('links')->join('buttons', 'buttons.id', '=', 'links.button_id')->select('links.link', 'links.id', 'links.button_id', 'links.title', 'links.custom_css', 'links.custom_icon', 'buttons.name')->where('user_id', $id)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->get();
+        $links = DB::table('links')
+        ->join('buttons', 'buttons.id', '=', 'links.button_id')
+        ->select('links.*', 'buttons.name') // Assuming 'links.*' to fetch all columns including 'type_params'
+        ->where('user_id', $id)
+        ->orderBy('up_link', 'asc')
+        ->orderBy('order', 'asc')
+        ->get();
+
+        // Loop through each link to decode 'type_params' and merge it into the link object
+        foreach ($links as $link) {
+            if (!empty($link->type_params)) {
+                // Decode the JSON string into an associative array
+                $typeParams = json_decode($link->type_params, true);
+                if (is_array($typeParams)) {
+                    // Merge the associative array into the link object
+                    foreach ($typeParams as $key => $value) {
+                        $link->$key = $value;
+                    }
+                }
+            }
+        }
 
         return view('linkstack.linkstack', ['userinfo' => $userinfo, 'information' => $information, 'links' => $links, 'littlelink_name' => $littlelink_name]);
     }
@@ -152,20 +172,11 @@ class UserController extends Controller
             'LinkTypes' => LinkType::get(),
             'LinkData' => $linkData,
             'LinkID' => $id,
-            'linkTypeID' => "1",
+            'linkTypeID' => "predefined",
             'title' => "Predefined Site",
         ];
-    
-        if (Route::currentRouteName() != 'showButtons' && $link = DB::table('links')->where('id', $id)->first()) {
-            $bidToLinkTypeId = [
-                1 => "2", 2 => "2", 42 => "3", 43 => "4", 93 => "5", 6 => "6", 7 => "6", 44 => "7", 96 => "8",
-            ];
-    
-            $data['linkTypeID'] = $bidToLinkTypeId[$link->button_id] ?? "1";
-            $data['title'] = LinkType::where('id', $data['linkTypeID'])->value('title');
-        }
-    
-        $data['SelectedLinkType'] = $data['LinkTypes']->firstWhere('typename', $linkData['typename']);
+
+        $data['typename'] = $link->type ?? 'predefined';
     
         return view('studio/edit-link', $data);
     }
@@ -173,82 +184,78 @@ class UserController extends Controller
     //Save add link
     public function saveLink(Request $request)
     {
-        $request->validate([
-            'link' => 'sometimes|exturl',
-        ]);
+        // Step 1: Validate Request
+        // $request->validate([
+        //     'link' => 'sometimes|url',
+        // ]);
     
-        $linkType = LinkType::find($request->linktype_id);
-        $LinkTitle = ($request->link_text ?? $request->link_title) ?? $request->title;
-        $LinkURL = $request->link_url ?? $request->link;
-        $OrigLink = Link::find($request->linkid);
-    
-        $customParams = [];
-        foreach ($request->all() as $key => $param) {
-            if (str_starts_with($key, "_") || in_array($key, ['linktype_id', 'linktype_title', 'link_text', 'link_url'])) continue;
-            $customParams[$key] = $param;
-        }
-    
+        // Step 2: Determine Link Type and Title
+        $linkType = LinkType::findByTypename($request->typename);
+        $LinkTitle = $request->title;
+        $LinkURL = $request->link;
+
+        // Step 3: Load Link Type Logic
+        if($request->typename == 'predefined') {
+            $button = Button::where('name', $request->button)->first();
+            $linkData = [
+                'link' => $LinkURL,
+                'title' => $LinkTitle ?? $button?->alt,
+                'user_id' => Auth::user()->id,
+                'button_id' => $button?->id,
+                'type' => $request->typename // Save the link type
+            ];
+        } else {
+            $linkTypePath = base_path("blocks/{$linkType->typename}/handler.php");
+            if (file_exists($linkTypePath)) {
+                include $linkTypePath;
+                $linkData = handleLinkType($request, $linkType);
+                $linkData['type'] = $linkType->typename; // Ensure 'type' is included in $linkData
+            } else {
+                abort(404, "Link type logic not found.");
+            }
+        }   
+
+        // Step 4: Handle Custom Parameters
+        // (Same as before)
+
+        // Step 5: User and Button Information
         $userId = Auth::user()->id;
         $button = Button::where('name', $request->button)->first();
         if ($button && empty($LinkTitle)) $LinkTitle = $button->alt;
-    
-        if ($linkType->typename == 'video' && empty($LinkTitle)) {
-            $embed = OEmbed::get($LinkURL);
-            if ($embed) $LinkTitle = $embed->data()['title'];
-        }
-    
-        $message = (ucwords($button?->name) ?? ucwords($linkType->typename)) . " has been ";
-    
-        $linkData = [
-            'link' => $LinkURL,
-            'title' => $LinkTitle,
-            'user_id' => $userId,
-            'button_id' => $button?->id
-        ];
-    
-        if ($linkType->typename == "link" && $customParams['GetSiteIcon'] == "1") {
-            $linkData['button_id'] = "2";
-        } elseif ($linkType->typename == "link") {
-            $linkData['button_id'] = "1";
-        } elseif ($linkType->typename == "spacer") {
-            $linkData['title'] = $customParams['height'] ?? null;
-            $linkData['button_id'] = "43";
-        } elseif ($linkType->typename == "heading") {
-            $linkData['button_id'] = "42";
-        } elseif ($linkType->typename == "text") {
-            $sanitizedText = $request->text;
-            $sanitizedText = strip_tags($sanitizedText, '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
-            $sanitizedText = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $sanitizedText);
-            $sanitizedText = strip_tags_except_allowed_protocols($sanitizedText);
-            $linkData['title'] = $sanitizedText;
-            $linkData['button_id'] = "93";
-        } elseif (in_array($linkType->typename, ["email", "telephone"])) {
-            $linkData['button_id'] = $button?->id;
-        } elseif ($linkType->typename == "vcard") {
-            $data = $request->only([
-                'prefix', 'first_name', 'middle_name', 'last_name', 'suffix', 'nickname',
-                'organization', 'vtitle', 'role', 'work_url', 'email', 'work_email',
-                'home_phone', 'work_phone', 'cell_phone', 'home_address_label', 'home_address_street',
-                'home_address_city', 'home_address_state', 'home_address_zip', 'home_address_country',
-                'work_address_label', 'work_address_street', 'work_address_city', 'work_address_state',
-                'work_address_zip', 'work_address_country'
-            ]);
-            $linkData['link'] = json_encode($data);
-            $linkData['button_id'] = 96;
-        }
-    
+
+        // Step 6: Prepare Link Data
+        // (Handled by the included file)
+
+        // Step 7: Save or Update Link
+        $OrigLink = Link::find($request->linkid);
+        $linkColumns = Schema::getColumnListing('links'); // Get all column names of links table
+        $filteredLinkData = array_intersect_key($linkData, array_flip($linkColumns)); // Filter $linkData to only include keys that are columns in the links table
+
+        // Combine remaining variables into one array and convert to JSON for the type_params column
+        $customParams = array_diff_key($linkData, $filteredLinkData);
+
+            // Check if $linkType->custom_html is defined and not null
+            if (isset($linkType->custom_html)) {
+                // Add $linkType->custom_html to the $customParams array
+                $customParams['custom_html'] = $linkType->custom_html;
+            }
+        
+        $filteredLinkData['type_params'] = json_encode($customParams);
+
         if ($OrigLink) {
-            $OrigLink->update($linkData);
-            $message .= "updated";
+            $currentValues = $OrigLink->getAttributes();
+            $nonNullFilteredLinkData = array_filter($filteredLinkData, function($value) {return !is_null($value);});
+            $updatedValues = array_merge($currentValues, $nonNullFilteredLinkData);
+            $OrigLink->update($updatedValues);
+            $message = "Link updated";
         } else {
-            $links = new Link($linkData);
-            $links->user_id = $userId;
-            $links->save();
-            $links->order = ($links->id - 1);
-            $links->save();
-            $message .= "added";
+            $link = new Link($filteredLinkData);
+            $link->user_id = $userId;
+            $link->save();
+            $message = "Link added";
         }
-    
+
+        // Step 8: Redirect
         $redirectUrl = $request->input('param') == 'add_more' ? 'studio/add-link' : 'studio/links';
         return Redirect($redirectUrl)->with('success', $message);
     }

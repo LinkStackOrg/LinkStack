@@ -8,3 +8,6 @@ if(trim(file_get_contents(base_path("version.json"))) < '4.0.0'){
     }
 } catch (Exception $e) {}
 }
+?>
+{{-- update links table to new structure --}}
+@include('components.updater.links-table-translation-layer')

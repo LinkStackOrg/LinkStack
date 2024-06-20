@@ -43,7 +43,7 @@ class ButtonSeeder extends Seeder
             ],
 
             [
-                "name" => "buy me a coffee",
+                "name" => "coffee",
                 "alt" => "Buy Me a Coffee",
                 "exclude" => false,
                 "group" => "default",

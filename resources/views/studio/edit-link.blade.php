@@ -47,7 +47,7 @@
                     
                                             @endforeach
                                         </div> --}}
-                                        <input type='hidden' name='linktype_id' value='{{$linkTypeID}}'>
+                                        <input type='hidden' name='typename' value='{{$typename}}'>
                     
                                     </div>
                                 </div>
@@ -111,20 +111,12 @@
                     <x-modal title="{{__('messages.Select Block')}}" id="SelectLinkType">
                     
                         <div class="d-flex flex-row  flex-wrap p-3">
-                    
-                            @php
-                              $custom_order = [1, 2, 8, 6, 7, 3, 4, 5,];
-                               $sorted = $LinkTypes->sortBy(function ($item) use ($custom_order) {
-                                    return array_search($item['id'], $custom_order);
-                             });
-                            @endphp
-                    
-                            @foreach ($sorted as $lt)
+                            @foreach ($LinkTypes as $lt)
                             @php 
                             $title = __('messages.block.title.'.$lt['typename']); 
                             $description = __('messages.block.description.'.$lt['typename']); 
                             @endphp
-                            <a href="#" data-dismiss="modal" data-typeid="{{$lt['id']}}" data-typename="{{$title}}" class="hvr-grow m-2 w-100 d-block doSelectLinkType">
+                            <a href="#" data-dismiss="modal" data-typeid="{{$lt['typename']}}" data-typename="{{$title}}" class="hvr-grow m-2 w-100 d-block doSelectLinkType">
                                 <div class="rounded mb-3 shadow-lg">
                                     <div class="row g-0">
                                         <div class="col-auto bg-light d-flex align-items-center justify-content-center p-3">
@@ -163,10 +155,10 @@
 @push("sidebar-scripts")
 <script>
 $(function() {
-    LoadLinkTypeParams($("input[name='linktype_id']").val() , $("input[name=linkid]").val());
+    LoadLinkTypeParams($("input[name='typename']").val() , $("input[name=linkid]").val());
 
     $('.doSelectLinkType').on('click', function() {
-        $("input[name='linktype_id']").val($(this).data('typeid'));
+        $("input[name='typename']").val($(this).data('typeid'));
         $("#btnLinkType").html($(this).data('typename'));
 
         LoadLinkTypeParams($(this).data('typeid'), $("input[name=linkid]").val());

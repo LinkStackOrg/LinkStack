@@ -1,0 +1,5 @@
+id: 6
+typename: email
+title: "Custom Link"
+icon: "bi bi-envelope-fill"
+custom_html: false
