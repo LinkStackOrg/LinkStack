@@ -17,6 +17,8 @@ class CreateLinksTable extends Migration
             $table->id();
             $table->text('link');
             $table->string('title');
+            $table->string('type')->nullable();
+            $table->text('type_params')->nullable();
             $table->integer('order')->default(0);
             $table->integer('click_number')->default(0);
             $table->enum('up_link', ['yes', 'no'])->default('no');
