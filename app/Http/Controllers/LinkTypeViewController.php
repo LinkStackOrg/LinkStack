@@ -26,12 +26,9 @@ class LinkTypeViewController extends Controller
                 $data['button_id'] = $link->button_id;
             }
     
-            // Check if type_params is not empty and is a valid JSON string
             if (!empty($link->type_params) && is_string($link->type_params)) {
-                // Decode the JSON string into an associative array
                 $typeParams = json_decode($link->type_params, true);
                 if (is_array($typeParams)) {
-                    // Merge the associative array into $data
                     $data = array_merge($data, $typeParams);
                 }
             }
@@ -46,8 +43,10 @@ class LinkTypeViewController extends Controller
                     'selected' => ($linkId && isset($link) && $link->button_id == $btn->id),
                 ];
             }
-            return view('components.pageitems.predefined-form', $data);
         }
+    
+        // Set the block asset context before returning the view
+        setBlockAssetContext($typename);
     
         return view($typename . '.form', $data);
     }
