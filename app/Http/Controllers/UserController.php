@@ -176,7 +176,7 @@ class UserController extends Controller
             'title' => "Predefined Site",
         ];
 
-        $data['typename'] = $link->type ?? 'predefined';
+        $data['typename'] = $linkData->type ?? 'predefined';
     
         return view('studio/edit-link', $data);
     }
@@ -209,6 +209,7 @@ class UserController extends Controller
             if (file_exists($linkTypePath)) {
                 include $linkTypePath;
                 $linkData = handleLinkType($request, $linkType);
+                $linkData['button_id'] = $linkData['button_id'] ?? 1; // Set 'button_id' unless overwritten by handleLinkType
                 $linkData['type'] = $linkType->typename; // Ensure 'type' is included in $linkData
             } else {
                 abort(404, "Link type logic not found.");
@@ -384,7 +385,7 @@ class UserController extends Controller
         $userId = Auth::user()->id;
         $data['pagePage'] = 10;
         
-        $data['links'] = Link::select('id', 'link', 'title', 'order', 'click_number', 'up_link', 'links.button_id')->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(99999);
+        $data['links'] = Link::select()->where('user_id', $userId)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->paginate(99999);
         return view('studio/links', $data);
     }
 

@@ -1,5 +1,4 @@
 id: 5
 typename: text
-title: "Custom Link"
 icon: "bi bi-fonts"
 custom_html: true

@@ -151,3 +151,45 @@ function strip_tags_except_allowed_protocols($str) {
 
     return $str;
 }
+
+if(!function_exists('setBlockAssetContext')) {
+  function setBlockAssetContext($type = null) {
+      static $currentType = null;
+      if ($type !== null) {
+          $currentType = $type;
+      }
+      return $currentType;
+  }
+}
+
+// Get custom block assets
+if(!function_exists('block_asset')) {
+  function block_asset($file) {
+      $type = setBlockAssetContext(); // Retrieve the current type context
+      return url("block-asset/$type?asset=$file");
+  }
+}
+
+if(!function_exists('get_block_file_contents')) {
+  function get_block_file_contents($file) {
+      $type = setBlockAssetContext(); // Retrieve the current type context
+      return file_get_contents(base_path("blocks/$type/$file"));
+  }
+}
+
+function block_text_translation_check($text) {
+  if (empty($text)) {
+    return false;
+  }
+  $translate = __("messages.$text");
+  return $translate === "messages.$text" ? true : false;
+}
+
+function block_text($text) {
+  $translate = __("messages.$text");
+  return $translate === "messages.$text" ? $text : $translate;
+}
+
+function bt($text) {
+  return block_text($text);
+}

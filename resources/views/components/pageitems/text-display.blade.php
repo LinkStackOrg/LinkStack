@@ -1,3 +1,3 @@
 
-<div class='button-text'> {{$link_title}}</div>
+<div class='button-text'> {{$title}}</div>
 

@@ -1,5 +1,5 @@
 <label for='text' class='form-label'>{{__('messages.Text to display')}}</label>
-<textarea class="form-control @if(env('ALLOW_USER_HTML') === true) ckeditor @endif" name="text" rows="6">{{ $link_title ?? '' }}</textarea>
+<textarea class="form-control @if(env('ALLOW_USER_HTML') === true) ckeditor @endif" name="text" rows="6">{{ $title ?? '' }}</textarea>
 @if(env('ALLOW_USER_HTML') === true)
 <script src="{{ asset('assets/external-dependencies/ckeditor.js') }}"></script>
 <script>

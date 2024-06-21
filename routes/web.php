@@ -84,6 +84,9 @@ Route::post('/report', [UserController::class, 'report'])->name('report');
 
 Route::get('/demo-page', [App\Http\Controllers\HomeController::class, 'demo'])->name('demo')->middleware('disableCookies');
 
+Route::get('/block-asset/{type}', [LinkTypeViewController::class, 'blockAsset'])
+  ->name('block.asset')->where(['type' => '[a-zA-Z0-9_-]+']);
+
 }
 
 Route::middleware(['auth', 'blocked', 'impersonate'])->group(function () {

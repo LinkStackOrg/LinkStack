@@ -1,5 +1,4 @@
 id: 3
 typename: heading
-title: "Custom Link"
 icon: "bi bi-card-heading"
 custom_html: true

@@ -3,11 +3,11 @@
 <select style="display:none" name="button" class="form-control"><option class="button button-default email" value="default email">{{__('messages.Default Email')}}</option></select>
 
 <label for='title' class='form-label'>{{__('messages.Custom Title')}}</label>
-<input type='text' name='title' value='{{$link_title}}' class='form-control' />
+<input type='text' name='title' value='{{$title}}' class='form-control' />
 <span class='small text-muted'>{{__('messages.Leave blank for default title')}}</span><br>
 
 <label for='link' class='form-label'>{{__('messages.E-Mail address')}}</label>
-<input type='email' name='link' value='{{str_replace("mailto:", "", $link_url)}}' class='form-control' required />
+<input type='email' name='link' value='{{str_replace("mailto:", "", $link)}}' class='form-control' required />
 <span class='small text-muted'>{{__('messages.Enter your E-Mail')}}</span>
 
 <script>

@@ -1,10 +1,13 @@
 <?php use App\Models\UserData; ?>
 
-        @php $initial = 1; @endphp
+        @php 
+        $initial = 1; 
+        @endphp
 
         @foreach($links as $link)
         @if(isset($link->custom_html) && $link->custom_html)
-            @include('blocks::' . $link->name . '.display', ['link' => $link, 'initial' => $initial++])
+            @php setBlockAssetContext($link->type); @endphp
+            @include('blocks::' . $link->type . '.display', ['link' => $link, 'initial' => $initial++])
         @else
             @switch($link->name)
                 @case('icon')

@@ -12,17 +12,16 @@ class LinkTypeViewController extends Controller
     public function getParamForm($typename, $linkId = 0)
     {
         $data = [
-            'link_title' => '',
-            'link_url' => '',
+            'title' => '',
+            'link' => '',
             'button_id' => 0,
             'buttons' => [],
         ];
     
         if ($linkId) {
             $link = Link::find($linkId);
-            $typename = $link->type ?? 'predefined';
-            $data['link_title'] = $link->title;
-            $data['link_url'] = $link->link;
+            $data['title'] = $link->title;
+            $data['link'] = $link->link;
             if (Route::currentRouteName() != 'showButtons') {
                 $data['button_id'] = $link->button_id;
             }
@@ -51,5 +50,33 @@ class LinkTypeViewController extends Controller
         }
     
         return view($typename . '.form', $data);
+    }
+
+    public function blockAsset(Request $request, $type)
+    {
+        $asset = $request->query('asset');
+
+        // Prevent directory traversal in $type
+        if (preg_match('/\.\.|\/|\\\\/', $type)) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        // Define allowed file extensions
+        $allowedExtensions = ['js', 'css', 'img', 'svg', 'gif', 'jpg', 'jpeg', 'png', 'mp4', 'mp3'];
+
+        $extension = strtolower(pathinfo($asset, PATHINFO_EXTENSION));
+        if (!in_array($extension, $allowedExtensions)) {
+            return response('File type not allowed', Response::HTTP_FORBIDDEN);
+        }
+
+        $basePath = realpath(base_path("blocks/$type"));
+
+        $fullPath = realpath(base_path("blocks/$type/$asset"));
+
+        if (!$fullPath || !file_exists($fullPath) || strpos($fullPath, $basePath) !== 0) {
+            return response('File not found', Response::HTTP_NOT_FOUND);
+        }
+
+        return response()->file($fullPath);
     }
 }

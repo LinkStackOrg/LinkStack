@@ -4,7 +4,7 @@
 
 @php
 try {
-$data = json_decode($link_url);
+$data = json_decode($link);
 
 $prefix = $data->prefix;
 $firstName = $data->first_name;
@@ -38,7 +38,7 @@ catch (exception $e) {}
 @endphp
 
 <label for='title' class='form-label'>{{__('messages.Custom Title')}}</label>
-<input type='text' name='link_title' value='{{ $link_title }}' class='form-control' />
+<input type='text' name='link_title' value='{{ $title }}' class='form-control' />
 <span class='small text-muted'>{{__('messages.Leave blank for default title')}}</span><br>
 
 {{-- <br><h5>Upload existing file</h5>
