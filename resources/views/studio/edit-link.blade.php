@@ -2,6 +2,10 @@
 
 @section('content')
 
+@push('sidebar-stylesheets')
+<script src="{{ asset('assets/external-dependencies/fontawesome.js') }}" crossorigin="anonymous"></script>
+@endpush
+
 <div class="conatiner-fluid content-inner mt-n5 py-0">
     <div class="row">   
         
