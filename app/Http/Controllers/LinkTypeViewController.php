@@ -43,6 +43,7 @@ class LinkTypeViewController extends Controller
                     'selected' => ($linkId && isset($link) && $link->button_id == $btn->id),
                 ];
             }
+            return view('components.pageitems.predefined-form', $data);
         }
     
         // Set the block asset context before returning the view
