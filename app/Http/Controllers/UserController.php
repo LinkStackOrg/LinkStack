@@ -979,6 +979,8 @@ class UserController extends Controller
                 $newLink->up_link = $linkData['up_link'];
                 $newLink->custom_css = $linkData['custom_css'];
                 $newLink->custom_icon = $linkData['custom_icon'];
+                $newLink->type = $linkData['type'];
+                $newLink->type_params = $linkData['type_params'];
     
                 // Set the user ID to the current user's ID
                 $newLink->user_id = $user->id;
