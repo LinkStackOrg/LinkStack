@@ -79,7 +79,7 @@
                             @foreach ($LinkTypes as $lt)
                             @php 
                             if(block_text_translation_check($lt['title'])) {$title = bt($lt['title']);} else {$title = __('messages.block.title.'.$lt['typename']);}
-                            $description = bt($lt['description']) ?? __('messages.block.description.'.$lt['typename']); 
+                            $description = bt($lt['description']) ?? __('messages.block.description.'.$lt['typename']);
                             @endphp
                             <a href="#" data-dismiss="modal" data-typeid="{{$lt['typename']}}" data-typename="{{$title}}" class="hvr-grow m-2 w-100 d-block doSelectLinkType">
                                 <div class="rounded mb-3 shadow-lg">

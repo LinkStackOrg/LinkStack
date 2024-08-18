@@ -896,6 +896,9 @@ return [
     'block.title.text' => 'Text',
     'block.description.text' => 'Add static text to your page that is not clickable.',
 
+    'block.title.xmpp' => 'XMPP address',
+    'block.description.xmpp' => 'Add an XMPP address that opens a system dialog.',
+
 
     /*
     |--------------------------------------------------------------------------
