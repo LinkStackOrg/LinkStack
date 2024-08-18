@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Handles the logic for "email" link type.
- * 
+ * Handles the logic for "xmpp" link type.
+ *
  * @param \Illuminate\Http\Request $request The incoming request.
  * @param mixed $linkType The link type information.
  * @return array The prepared link data.
