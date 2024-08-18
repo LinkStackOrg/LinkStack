@@ -11,7 +11,7 @@ function handleLinkType($request, $linkType) {
     // Prepare the link data
     $linkData = [
         'title' => $request->title,
-        'button_id' => "9",
+        'button_id' => "6",
         'link' => $request->link,
     ];
 
