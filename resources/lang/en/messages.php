@@ -914,6 +914,7 @@ return [
     'Leave blank for default title' => 'Leave blank for default title',
     'E-Mail address' => 'E-Mail address',
     'Enter your E-Mail' => 'Enter your E-Mail',
+    'Enter your XMPP' => 'Enter your XMPP',
 
     'Heading Text:' => 'Heading Text:',
 
