@@ -195,13 +195,16 @@ class UserController extends Controller
         $LinkURL = $request->link;
 
         // Step 3: Load Link Type Logic
-        if($request->typename == 'predefined') {
-            $button = Button::where('name', $request->button)->first();
+        if($request->typename == 'predefined' || $request->typename == 'link') {
+            // Determine button id based on whether a custom or predefined button is used
+            $button_id = ($request->typename == 'link') ? ($request->GetSiteIcon == 1 ? 2 : 1) : null;
+            $button = ($request->typename != 'link') ? Button::where('name', $request->button)->first() : null;
+
             $linkData = [
                 'link' => $LinkURL,
                 'title' => $LinkTitle ?? $button?->alt,
                 'user_id' => Auth::user()->id,
-                'button_id' => $button?->id,
+                'button_id' => $button?->id ?? $button_id,
                 'type' => $request->typename // Save the link type
             ];
         } else {
