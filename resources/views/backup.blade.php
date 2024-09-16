@@ -37,7 +37,7 @@
 <?php 
 try {Artisan::call('backup:clean');}
 catch (exception $e) {}
-Artisan::call('backup:run', ['--only-files' => true]);
+Artisan::call('backup:run', ['--only-files' => true, '--disable-notifications' => true]);
 $tst = base_path('backups/');
 file_put_contents($tst.'CANUPDATE', '');
 $URL = Route::current()->getName();   
