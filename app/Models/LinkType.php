@@ -63,6 +63,7 @@ class LinkType extends Model
             'heading',
             'spacer',
             'text',
+            'xmpp',
         ];
     
         $sorted = $linkTypes->sortBy(function ($item) use ($custom_order) {

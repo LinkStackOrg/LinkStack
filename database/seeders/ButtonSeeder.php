@@ -938,6 +938,14 @@ class ButtonSeeder extends Seeder
                 "mb" => false,
             ],
 
+            [
+                "name" => "xmpp",
+                "alt" => "XMPP",
+                "exclude" => false,
+                "group" => "default",
+                "mb" => false,
+            ],
+
         ];
 
         Button::insert($buttons);
