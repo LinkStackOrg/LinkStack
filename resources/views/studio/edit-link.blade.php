@@ -135,7 +135,7 @@ $(function() {
     function LoadLinkTypeParams($TypeId, $LinkId) {
         var baseURL = <?php echo "\"" . url('') . "\""; ?>;
         $("#link_params").html('<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>').load(baseURL + `/studio/linkparamform_part/${$TypeId}/${$LinkId}`);
-
+        setTimeout(function() { document.dispatchEvent(new Event('contentLoaded')); }, 300);
     }
 });
 </script>
