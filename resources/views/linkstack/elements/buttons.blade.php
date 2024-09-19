@@ -6,8 +6,14 @@
 
         @foreach($links as $link)
         @if(isset($link->custom_html) && $link->custom_html)
-            @php setBlockAssetContext($link->type); @endphp
-            @include('blocks::' . $link->type . '.display', ['link' => $link, 'initial' => $initial++])
+            @if(isset($link->ignore_container) && $link->ignore_container)
+            </div></div></div>
+            @endif
+                @php setBlockAssetContext($link->type); @endphp
+                @include('blocks::' . $link->type . '.display', ['link' => $link, 'initial' => $initial++])
+            @if(isset($link->ignore_container) && $link->ignore_container)
+            <div class="container"><div class="row"><div class="column">
+            @endif
         @else
             @switch($link->name)
                 @case('icon')
