@@ -312,11 +312,17 @@ if (isset($_COOKIE['LinkCount'])) {
                                 {!!icon('reddit', 'Reddit')!!}
                             
                                 {!!icon('pinterest', 'Pinterest')!!}
-                            
-                                {{-- {!!icon('telegram', 'Telegram')!!}
-                            
-                                {!!icon('whatsapp', 'WhatsApp')!!} --}}
-                            
+
+                                {!!icon('telegram', 'Telegram')!!}
+
+                                {!!icon('whatsapp', 'WhatsApp')!!}
+
+                                {!! icon('behance', 'Behance') !!}
+
+                                {!! icon('dribbble', 'Dribble') !!}
+
+                                {!! icon('bluesky', 'Bluesky') !!}
+                        
                             
                                 <button type="submit" class="mt-3 ml-3 btn btn-primary">{{__('messages.Save links')}}</button>
                             </form>
