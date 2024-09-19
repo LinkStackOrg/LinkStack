@@ -6,6 +6,7 @@ use App\Models\LinkType;
 use App\Models\Link;
 use App\Models\Button;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\File;
 
 class LinkTypeViewController extends Controller
 {
@@ -55,28 +56,47 @@ class LinkTypeViewController extends Controller
     public function blockAsset(Request $request, $type)
     {
         $asset = $request->query('asset');
-
+    
         // Prevent directory traversal in $type
         if (preg_match('/\.\.|\/|\\\\/', $type)) {
             abort(403, 'Unauthorized action.');
         }
-
+    
         // Define allowed file extensions
         $allowedExtensions = ['js', 'css', 'img', 'svg', 'gif', 'jpg', 'jpeg', 'png', 'mp4', 'mp3'];
-
+    
         $extension = strtolower(pathinfo($asset, PATHINFO_EXTENSION));
         if (!in_array($extension, $allowedExtensions)) {
             return response('File type not allowed', Response::HTTP_FORBIDDEN);
         }
-
+    
         $basePath = realpath(base_path("blocks/$type"));
-
+    
         $fullPath = realpath(base_path("blocks/$type/$asset"));
-
+    
         if (!$fullPath || !file_exists($fullPath) || strpos($fullPath, $basePath) !== 0) {
             return response('File not found', Response::HTTP_NOT_FOUND);
         }
-
-        return response()->file($fullPath);
+    
+        // Map file extensions to MIME types
+        $mimeTypes = [
+            'js' => 'application/javascript',
+            'css' => 'text/css',
+            'img' => 'image/png',
+            'svg' => 'image/svg+xml',
+            'gif' => 'image/gif',
+            'jpg' => 'image/jpeg',
+            'jpeg' => 'image/jpeg',
+            'png' => 'image/png',
+            'mp4' => 'video/mp4',
+            'mp3' => 'audio/mpeg',
+        ];
+    
+        // Determine the MIME type using the mapping
+        $mimeType = $mimeTypes[$extension] ?? 'application/octet-stream';
+    
+        return response()->file($fullPath, [
+            'Content-Type' => $mimeType
+        ]);
     }
 }
