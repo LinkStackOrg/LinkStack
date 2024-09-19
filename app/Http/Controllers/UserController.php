@@ -243,6 +243,12 @@ class UserController extends Controller
                 // Add $linkType->custom_html to the $customParams array
                 $customParams['custom_html'] = $linkType->custom_html;
             }
+
+            // Check if $linkType->ignore_container is defined and not null
+            if (isset($linkType->ignore_container)) {
+                // Add $linkType->ignore_container to the $customParams array
+                $customParams['ignore_container'] = $linkType->ignore_container;
+            }
         
         $filteredLinkData['type_params'] = json_encode($customParams);
 
