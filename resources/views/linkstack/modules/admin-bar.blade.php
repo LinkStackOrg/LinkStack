@@ -131,18 +131,20 @@ if(Auth::user()->id == $userinfo->id){
         document.getElementById('logoutForm').submit();
     }
   </script>
-    <script>
-      function showConfirmation() {
-        var isConfirmed = confirm("{{__('messages.confirm.delete.user')}}");
-        if (isConfirmed) {
-          window.location.href = document.getElementById("confirmationLink").getAttribute("href");
-        }
+  @if(auth()->user()->role != 'admin')
+  <script>
+    function showConfirmation() {
+      var isConfirmed = confirm("{{__('messages.confirm.delete.user')}}");
+      if (isConfirmed) {
+        window.location.href = document.getElementById("confirmationLink").getAttribute("href");
       }
-      document.getElementById("confirmationLink").addEventListener("click", function(event) {
-        event.preventDefault();
-        showConfirmation();
-      });
-    </script>
+    }
+    document.getElementById("confirmationLink").addEventListener("click", function(event) {
+      event.preventDefault();
+      showConfirmation();
+    });
+  </script>
+  @endif
   <form id="logoutForm" action="{{ route('logout') }}" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
   </form>
