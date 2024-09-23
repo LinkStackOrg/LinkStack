@@ -249,6 +249,12 @@ class UserController extends Controller
                 // Add $linkType->ignore_container to the $customParams array
                 $customParams['ignore_container'] = $linkType->ignore_container;
             }
+
+            // Check if $linkType->include_libraries is defined and not null
+            if (isset($linkType->include_libraries)) {
+                // Add $linkType->include_libraries to the $customParams array
+                $customParams['include_libraries'] = $linkType->include_libraries;
+            }
         
         $filteredLinkData['type_params'] = json_encode($customParams);
 

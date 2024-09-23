@@ -8,7 +8,7 @@ use Illuminate\Filesystem\Filesystem;
 
 class LinkType extends Model
 {
-    protected $fillable = ['id', 'typename', 'title', 'description', 'icon', 'custom_html', 'ignore_container'];
+    protected $fillable = ['id', 'typename', 'title', 'description', 'icon', 'custom_html', 'ignore_container', 'include_libraries'];
 
     // Assuming no database interaction, we can disable timestamps
     public $timestamps = false;
@@ -33,6 +33,7 @@ class LinkType extends Model
         'icon' => 'bi bi-boxes',
         'custom_html' => false,
         'ignore_container' => false,
+        'include_libraries' => [],
     ]);
 
     $linkTypes->prepend($predefinedLinkType);
@@ -51,6 +52,7 @@ class LinkType extends Model
                 'icon' => $configData['icon'] ?? null,
                 'custom_html' => $configData['custom_html'] ?? false,
                 'ignore_container' => $configData['ignore_container'] ?? false,
+                'include_libraries' => $configData['include_libraries'] ?? [],
             ]);
             $linkTypes->push($linkType);
         }

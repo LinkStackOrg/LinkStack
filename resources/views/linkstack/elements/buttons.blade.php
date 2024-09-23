@@ -4,6 +4,8 @@
         $initial = 1; 
         @endphp
 
+        @include('linkstack.modules.block-libraries', ['links' => $links])
+
         @foreach($links as $link)
         @if(isset($link->custom_html) && $link->custom_html)
             @if(isset($link->ignore_container) && $link->ignore_container)
