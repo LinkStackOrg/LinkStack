@@ -451,7 +451,7 @@ public function SendTestMail(Request $request)
     //Shows config file editor page
     public function showFileEditor(request $request)
     {
-        return redirect('/panel/config');
+        return redirect('/admin/config');
     }
 
     //Saves advanced config
