@@ -748,17 +748,12 @@ class UserController extends Controller
             $files = scandir($folder);
 
             foreach ($files as $file) {
-                if ($file !== '.' && $file !== '..') {
-                    if (preg_match($regex, $file)) {
-                        $new_file = preg_replace($regex, '', $file);
-                        File::copyDirectory($folder . '/' . $file, $folder . '/' . $new_file);
-                        $dirname = $folder . '/' . $file;
-                        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-                            system('rmdir ' . escapeshellarg($dirname) . ' /s /q');
-                        } else {
-                            system("rm -rf " . escapeshellarg($dirname));
-                        }
-                    }
+                $basename = basename($file);
+                if (preg_match($regex, $basename)) {
+                    $newBasename = preg_replace($regex, '', $basename);
+                    $newPath = $folder . '/' . $newBasename;
+                    File::copyDirectory($file, $newPath);
+                    File::deleteDirectory($file);
                 }
             }
         }
