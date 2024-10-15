@@ -8,6 +8,9 @@
  * @return array The prepared link data.
  */
 function handleLinkType($request, $linkType) {
+
+    $rules = [];
+
     // Extract the necessary data from the request
     $data = $request->only([
         'prefix', 'first_name', 'middle_name', 'last_name', 'suffix', 'nickname',
@@ -25,5 +28,5 @@ function handleLinkType($request, $linkType) {
         'button_id' => "96",
     ];
 
-    return $linkData;
+    return ['rules' => $rules, 'linkData' => $linkData];
 }

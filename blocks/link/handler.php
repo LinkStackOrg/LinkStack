@@ -9,6 +9,14 @@
  */
 function handleLinkType($request, $linkType) {
 
+    $rules = [
+        'title' => [
+            'required',
+            'string',
+            'max:255',
+        ],
+    ];
+    
     if ($request->GetSiteIcon == "1") {
         $buttonID = "2";
     } else {
@@ -21,5 +29,5 @@ function handleLinkType($request, $linkType) {
         'button_id' => $buttonID,
     ];
 
-    return $linkData;
+    return ['rules' => $rules, 'linkData' => $linkData];
 }

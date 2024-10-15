@@ -8,6 +8,15 @@
  * @return array The prepared link data.
  */
 function handleLinkType($request, $linkType) {
+
+    $rules = [
+        'text' => [
+            'required',
+            'string',
+            'max:5000',
+        ],
+    ];
+
     // Sanitize the text input
     $sanitizedText = $request->text;
     $sanitizedText = strip_tags($sanitizedText, '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
@@ -24,5 +33,5 @@ function handleLinkType($request, $linkType) {
         'button_id' => "93", // Assuming '93' is a predefined ID for a "text" button
     ];
 
-    return $linkData;
+    return ['rules' => $rules, 'linkData' => $linkData];
 }

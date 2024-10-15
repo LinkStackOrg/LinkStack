@@ -8,13 +8,20 @@
  * @return array The prepared link data.
  */
 function handleLinkType($request, $linkType) {
+
+    $rules = [
+        'title' => [
+            'required',
+            'string',
+            'max:255',
+        ],
+    ];
+
     // Prepare the link data
     $linkData = [
         'title' => $request->title,
         'button_id' => "42",
-        'var1' => "1",
-        'var2' => "1",
     ];
 
-    return $linkData;
+    return ['rules' => $rules, 'linkData' => $linkData];
 }
