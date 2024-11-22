@@ -731,7 +731,7 @@ class UserController extends Controller
 
 
 
-        if (!empty($zipfile)) {
+        if (!empty($zipfile) && Auth::user()->role == 'admin') {
 
             $zipfile->move(base_path('/themes'), "temp.zip");
 
