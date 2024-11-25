@@ -141,7 +141,27 @@ class UserController extends Controller
         $userinfo = User::select('id', 'name', 'littlelink_name', 'littlelink_description', 'theme', 'role', 'block')->where('id', $id)->first();
         $information = User::select('name', 'littlelink_name', 'littlelink_description', 'theme')->where('id', $id)->get();
         
-        $links = DB::table('links')->join('buttons', 'buttons.id', '=', 'links.button_id')->select('links.link', 'links.id', 'links.button_id', 'links.title', 'links.custom_css', 'links.custom_icon', 'buttons.name')->where('user_id', $id)->orderBy('up_link', 'asc')->orderBy('order', 'asc')->get();
+        $links = DB::table('links')
+        ->join('buttons', 'buttons.id', '=', 'links.button_id')
+        ->select('links.*', 'buttons.name') // Assuming 'links.*' to fetch all columns including 'type_params'
+        ->where('user_id', $id)
+        ->orderBy('up_link', 'asc')
+        ->orderBy('order', 'asc')
+        ->get();
+
+        // Loop through each link to decode 'type_params' and merge it into the link object
+        foreach ($links as $link) {
+            if (!empty($link->type_params)) {
+                // Decode the JSON string into an associative array
+                $typeParams = json_decode($link->type_params, true);
+                if (is_array($typeParams)) {
+                    // Merge the associative array into the link object
+                    foreach ($typeParams as $key => $value) {
+                        $link->$key = $value;
+                    }
+                }
+            }
+        }
 
         return view('linkstack.linkstack', ['userinfo' => $userinfo, 'information' => $information, 'links' => $links, 'littlelink_name' => $littlelink_name]);
     }
