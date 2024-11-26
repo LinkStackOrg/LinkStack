@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\File;
 use Database\Seeders\ButtonSeeder;
 use App\Models\Page;
 
+set_time_limit(0);
+
          //run before finishing:
             if(EnvEditor::keyExists('JOIN_BETA')){ /* Do nothing if key already exists */ 
             } else { EnvEditor::addKey('JOIN_BETA', 'false');} // Adds key to .env file 

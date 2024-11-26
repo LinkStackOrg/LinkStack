@@ -191,38 +191,8 @@ Route::group([
             'linktype'=>LinkTypeController::class
         ]);
     });
-  
 
-    Route::get('/updating', function (\Codedge\Updater\UpdaterManager $updater) {
-
-  // Check if new version is available
-  if($updater->source()->isNewVersionAvailable() and (file_exists(base_path("backups/CANUPDATE")) or env('SKIP_UPDATE_BACKUP') == true)) {
-
-    EnvEditor::editKey('MAINTENANCE_MODE', true);
-
-      // Get the current installed version
-      echo $updater->source()->getVersionInstalled();
-
-      // Get the new version available
-      $versionAvailable = $updater->source()->getVersionAvailable();
-
-      // Create a release
-      $release = $updater->source()->fetch($versionAvailable);
-
-      // Run the update process
-      $updater->source()->update($release);
-
-      if(env('SKIP_UPDATE_BACKUP') != true) {unlink(base_path("backups/CANUPDATE"));}
-
-      echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "/../update?finishing\" />";
-
-  } else {
-    echo "<meta http-equiv=\"refresh\" content=\"0; " . url()->current() . "/../update?error\" />";
-  }
-
-});
-
-}); // ENd Admin authenticated routes
+}); // End Admin authenticated routes
 });
 
 // Displays Maintenance Mode page

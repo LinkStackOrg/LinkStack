@@ -7,7 +7,6 @@
     "require": {
         "php": ">=8.0",
         "awssat/laravel-visits": "^6.0",
-        "codedge/laravel-selfupdater": "^3.6",
         "cohensive/oembed": "^0.17",
         "doctrine/dbal": "^3.0",
         "fideloper/proxy": "^4.4",
