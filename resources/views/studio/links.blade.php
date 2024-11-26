@@ -291,7 +291,7 @@ if (isset($_COOKIE['LinkCount'])) {
                             
                                 {!!icon('instagram', 'Instagram')!!}
                             
-                                {!!icon('twitter', 'Twitter')!!}
+                                {!!icon('twitter', 'X')!!}
                             
                                 {!!icon('facebook', 'Facebook')!!}
                             
