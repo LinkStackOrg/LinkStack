@@ -4,14 +4,20 @@
 
     @php
         // Must end with '/'
-        $betaServer      = env('BETA_SERVER', 'https://beta.linkstack.org/');
-        $updateServer    = env('UPDATE_SERVER', 'https://update.linkstack.org/');
-        $versionServer   = env('VERSION_SERVER', 'https://version.linkstack.org/');
-        $preUpdateServer = env('PRE_UPDATE_SERVER', 'https://pre-update.linkstack.org/');
-        $repositoryUrl   = env('REPOSITORY_URL', 'https://github.com/linkstackorg/linkstack/');
+        $betaServer          = env('BETA_SERVER', 'https://beta.linkstack.org/');
+        $betaPreUpdateServer = env('BETA_PRE_UPDATE_SERVER', 'https://pre-update.linkstack.org/beta/');
+        $updateServer        = env('UPDATE_SERVER', 'https://update.linkstack.org/');
+        $versionServer       = env('VERSION_SERVER', 'https://version.linkstack.org/');
+        $preUpdateServer     = env('PRE_UPDATE_SERVER', 'https://pre-update.linkstack.org/');
+        $repositoryUrl       = env('REPOSITORY_URL', 'https://github.com/linkstackorg/linkstack/');
+
+        $isBeta = env('JOIN_BETA', false);
+
+        if ($isBeta) {
+            $preUpdateServer = $betaPreUpdateServer;
+        }
 
         try {
-            $isBeta = env('JOIN_BETA', false);
             $Vbeta = trim(Http::timeout(5)->get($betaServer . 'vbeta.json')->body());
             $Vbeta_git = trim(Http::timeout(5)->get($betaServer . 'version.json')->body());
             $Vgit = trim(Http::timeout(5)->get($versionServer)->body());
