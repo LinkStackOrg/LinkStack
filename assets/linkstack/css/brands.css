@@ -1154,7 +1154,7 @@ button.button-scribd{
 /* Twitter */
 .button.button-twitter {
   color: #FFFFFF;
-  background-color: #1DA1F2;
+  background-color: #000000; 
 }
 .button.button-twitter:hover,
 .button.button-twitter:focus {

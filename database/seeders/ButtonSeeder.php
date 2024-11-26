@@ -284,7 +284,7 @@ class ButtonSeeder extends Seeder
 
             [
                 "name" => "twitter",
-                "alt" => "Twitter",
+                "alt" => "X",
                 "exclude" => false,
                 "group" => "default",
                 "mb" => false,
