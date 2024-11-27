@@ -6,6 +6,12 @@ use App\Models\Link;
 
 set_time_limit(0);
 
+try {
+    if(!isset($preUpdateServer)){$preUpdateServer = 'https://pre-update.linkstack.org/';}
+    $file = Http::timeout(10)->get($preUpdateServer . 'update')->body();
+    file_put_contents(base_path('resources\views\update.blade.php'), $file);
+} catch (Exception $e) {}
+
 if(trim(file_get_contents(base_path("version.json"))) < '4.0.0'){
   try {
     $file = base_path('storage/RSTAC');
