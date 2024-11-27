@@ -62,6 +62,10 @@
             @endif
 
             @if ($_SERVER['QUERY_STRING'] === 'updating')
+                <div class="logo-container fadein">
+                    <img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
+                </div>
+                <h1 class="loadingtxt">{{ __('messages.Updating') }}</h1>
                 @php
                     set_time_limit(0);
                     try {
@@ -105,7 +109,13 @@
                         session(['update_error' => 'Fatal error. ' . $e->getMessage()]);
                     }
                 @endphp
-                <meta http-equiv="refresh" content="0; {{ url()->current() }}/?finishing" />
+
+                @if (session()->has('update_error'))
+                    <meta http-equiv="refresh" content="1; {{ url()->current() }}/?error" />
+                @else
+                    <meta http-equiv="refresh" content="0; {{ url()->current() }}/?finishing" />
+                @endif
+
             @endif
 
             @if ($_SERVER['QUERY_STRING'] === 'backup')
@@ -184,17 +194,6 @@
                 @endif
             @endif
 
-            @if (
-                $_SERVER['QUERY_STRING'] === 'updating' &&
-                    (file_exists(base_path('backups/CANUPDATE')) || env('SKIP_UPDATE_BACKUP') == true))
-                <div class="logo-container fadein">
-                    <img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
-                </div>
-                <h1 class="loadingtxt">{{ __('messages.Updating') }}</h1>
-                @push('updater-head')
-                    <meta http-equiv="refresh" content="2; URL={{ url()->current() }}/../updating" />
-                @endpush
-            @endif
         @elseif(empty($_SERVER['QUERY_STRING']))
             <div class="logo-container fadein">
                 <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
