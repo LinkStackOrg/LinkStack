@@ -299,7 +299,6 @@ Thank you for all your efforts!
 - [config editor](https://github.com/GeoSot/Laravel-EnvEditor)
 - [text editor (admin)](https://github.com/ckeditor/ckeditor4)
 - [text editor (user)](https://github.com/ckeditor/ckeditor5)
-- [updater backend](https://github.com/codedge/laravel-selfupdater)
 - [backup backend](https://github.com/spatie/laravel-backup)
 - [Vcard backend](https://github.com/jeroendesloovere/vcard)
 - [QR code backend](https://github.com/Bacon/BaconQrCode)
