@@ -1299,3 +1299,13 @@ button.button-scribd{
 .button.button-linkstack:focus {
   filter: brightness(90%);
 }
+
+/* Xbox */
+.button.button-xbox {
+  color: #FFFFFF;
+  background-color:  #107C11;
+}
+.button.button-xbox:hover,
+.button.button-xbox:focus {
+  filter: brightness(90%);
+}
