@@ -767,7 +767,7 @@ return [
     'setup.disclaimer' => 'Es gelten unsere',
     'Terms and Conditions' => 'Allgemeinen Geschäftsbedingungen',
 
-    'Next' => 'Nächste',
+    'Next' => 'Weiter',
     'Yes' => 'Ja',
     'No' => 'NEIN',
     'Finish setup' => 'Beenden Sie die Einrichtung',
