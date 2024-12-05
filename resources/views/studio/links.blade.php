@@ -322,8 +322,9 @@ if (isset($_COOKIE['LinkCount'])) {
                                 {!! icon('dribbble', 'Dribble') !!}
 
                                 {!! icon('bluesky', 'Bluesky') !!}
-                        
-                            
+
+                                {!! icon('xbox', 'Xbox') !!}
+                                                            
                                 <button type="submit" class="mt-3 ml-3 btn btn-primary">{{__('messages.Save links')}}</button>
                             </form>
                             
