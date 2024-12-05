@@ -938,6 +938,14 @@ class ButtonSeeder extends Seeder
                 "mb" => false,
             ],
 
+            [
+                "name" => "threads",
+                "alt" => "Threads",
+                "exclude" => false,
+                "group" => "default",
+                "mb" => false,
+            ],
+
         ];
 
         Button::insert($buttons);

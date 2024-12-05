@@ -1299,3 +1299,13 @@ button.button-scribd{
 .button.button-linkstack:focus {
   filter: brightness(90%);
 }
+
+/* Threads */
+.button.button-threads {
+  color: #FFFFFF;
+  background-color:  #000000;
+}
+.button.button-threads:hover,
+.button.button-threads:focus {
+  filter: brightness(90%);
+}
