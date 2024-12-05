@@ -1309,3 +1309,14 @@ button.button-scribd{
 .button.button-threads:focus {
   filter: brightness(90%);
 }
+
+/* Xbox */
+.button.button-xbox {
+  color: #FFFFFF;
+  background-color:  #0e7a0d
+  ;
+}
+.button.button-xbox:hover,
+.button.button-xbox:focus {
+  filter: brightness(90%);
+}

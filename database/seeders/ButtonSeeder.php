@@ -946,6 +946,14 @@ class ButtonSeeder extends Seeder
                 "mb" => false,
             ],
 
+            [
+                "name" => "xbox",
+                "alt" => "Xbox",
+                "exclude" => false,
+                "group" => "default",
+                "mb" => false,
+            ],
+
         ];
 
         Button::insert($buttons);
