@@ -1113,12 +1113,21 @@ button.button-scribd{
 
 /* Trakt */
 .button.button-trakt {
-  color: #ffffff;
-  background-color: #ed1d24;
-}
-.button.button-trakt:hover,
-.button.button-trakt:focus {
-  filter: brightness(90%);
+  color: white;
+  background: radial-gradient(
+    farthest-corner at 0% 100%, 
+    rgb(245, 6, 19) 0%, 
+    rgb(225, 20, 60) 10%, 
+    rgb(207, 32, 97) 18%, 
+    rgb(192, 43, 129) 27%, 
+    rgb(180, 51, 154) 36%, 
+    rgb(170, 57, 173) 47%, 
+    rgb(164, 62, 187) 58%, 
+    rgb(160, 65, 195) 73%, 
+    rgb(159, 66, 198) 100%
+    );
+  background-size: 400% 200%;
+  background-position: left bottom;
 }
 
 /* Trello */
