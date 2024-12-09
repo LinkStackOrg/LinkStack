@@ -937,10 +937,18 @@ class ButtonSeeder extends Seeder
                 "group" => "default",
                 "mb" => false,
             ],
-            
+
             [
                 "name" => "xbox",
                 "alt" => "Xbox",
+                "exclude" => false,
+                "group" => "default",
+                "mb" => false,
+            ],
+
+            [
+                "name" => "threads",
+                "alt" => "Threads",
                 "exclude" => false,
                 "group" => "default",
                 "mb" => false,
