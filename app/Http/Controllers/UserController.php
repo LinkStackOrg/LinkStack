@@ -766,6 +766,7 @@ class UserController extends Controller
             $folder = base_path('themes');
             $regex = '/[0-9.-]/';
             $files = scandir($folder);
+            $files = array_diff($files, array('.', '..'));
 
             foreach ($files as $file) {
                 $basename = basename($file);
