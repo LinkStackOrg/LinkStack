@@ -77,7 +77,7 @@ if (isset($_COOKIE['LinkCount'])) {
                                         @foreach($links as $link)
                                         @php $button = Button::find($link->button_id); if(isset($button->name)){$buttonName = $button->name;}else{$buttonName = 0;} @endphp
                                         @php if($buttonName == "default email"){$buttonName = "email";} if($buttonName == "default email_alt"){$buttonName = "email_alt";} @endphp
-                                        @if($button->name !== 'icon')
+                                        @if($button && $button->name !== 'icon')
                                         <div class='row h-100 pb-0 mb-2 border rounded hvr-glow w-100' data-id="{{$link->id}}">
                                             <div class="d-flex ">
                             
