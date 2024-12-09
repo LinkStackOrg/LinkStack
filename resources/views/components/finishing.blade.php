@@ -429,4 +429,42 @@ try {
     session(['update_error' => $e->getMessage()]);
 }
 
+try {
+
+    $themesPath = base_path('themes');
+    $regex = '/[0-9.-]/';
+    $files = scandir($themesPath);
+    $files = array_diff($files, array('.', '..'));
+
+    $themeError = 'The update was successful. Your theme-filesystem was detected as corrupted and has been reset.';
+
+    foreach ($files as $file) {
+
+        $basename = basename($file);
+        $filePath = $themesPath . '/' . $basename;
+
+        if (!is_dir($filePath)) {
+
+            File::deleteDirectory($themesPath);
+            mkdir($themesPath);
+            session(['update_error' => $themeError]);
+            break;
+
+        }
+
+        if (preg_match($regex, $basename)) {
+
+            $newBasename = preg_replace($regex, '', $basename);
+            $newPath = $themesPath . '/' . $newBasename;
+            File::copyDirectory($filePath, $newPath);
+            File::deleteDirectory($filePath);
+
+        }
+
+    }
+
+} catch (exception $e) {
+    session(['update_error' => $e->getMessage()]);
+}
+
 ?>
