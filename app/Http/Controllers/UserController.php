@@ -753,29 +753,46 @@ class UserController extends Controller
 
         if (!empty($zipfile) && Auth::user()->role == 'admin') {
 
-            $zipfile->move(base_path('/themes'), "temp.zip");
+            $themesPath = base_path('themes');
+            $tmpPath = base_path() . '/themes/temp.zip';
+            $zipfile->move($themesPath, "temp.zip");
 
             $zip = new ZipArchive;
-            $zip->open(base_path() . '/themes/temp.zip');
-            $zip->extractTo(base_path() . '/themes');
+            $zip->open($tmpPath);
+            $zip->extractTo($themesPath);
             $zip->close();
-            unlink(base_path() . '/themes/temp.zip');
+            unlink($tmpPath);
 
             // Removes version numbers from folder.
 
-            $folder = base_path('themes');
             $regex = '/[0-9.-]/';
-            $files = scandir($folder);
+            $files = scandir($themesPath);
+            $files = array_diff($files, array('.', '..'));
 
             foreach ($files as $file) {
+
                 $basename = basename($file);
-                if (preg_match($regex, $basename)) {
-                    $newBasename = preg_replace($regex, '', $basename);
-                    $newPath = $folder . '/' . $newBasename;
-                    File::copyDirectory($file, $newPath);
-                    File::deleteDirectory($file);
+                $filePath = $themesPath . '/' . $basename;
+
+                if (!is_dir($filePath)) {
+                        
+                    try {
+                        File::delete($filePath);
+                    } catch (exception $e) {}
+
                 }
+
+                if (preg_match($regex, $basename)) {
+
+                    $newBasename = preg_replace($regex, '', $basename);
+                    $newPath = $themesPath . '/' . $newBasename;
+                    File::copyDirectory($filePath, $newPath);
+                    File::deleteDirectory($filePath);
+
+                }
+
             }
+
         }
 
 

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Database\Seeders\ButtonSeeder;
 use App\Models\Page;
+use App\Models\Link;
 
 set_time_limit(0);
 
@@ -425,6 +426,68 @@ try {
             File::move($oldPath, $newPath);
         }
     }
+} catch (exception $e) {
+    session(['update_error' => $e->getMessage()]);
+}
+
+try {
+
+    $links = Link::where('button_id', 94)->get()->groupBy('user_id');
+
+    foreach ($links as $userId => $userLinks) {
+        $hasXTwitter = $userLinks->contains('title', 'x-twitter');
+
+        foreach ($userLinks as $link) {
+            if ($link->title == 'twitter') {
+                if ($hasXTwitter) {
+                    $link->delete();
+                } else {
+                    $link->title = 'x-twitter';
+                    $link->save();
+                    $hasXTwitter = true;
+                }
+            }
+        }
+    }
+
+} catch (exception $e) {
+session(['update_error' => $e->getMessage()]);
+}
+
+try {
+
+    $themesPath = base_path('themes');
+    $regex = '/[0-9.-]/';
+    $files = scandir($themesPath);
+    $files = array_diff($files, array('.', '..'));
+
+    $themeError = 'The update was successful. Your theme-filesystem was detected as corrupted and has been reset.';
+
+    foreach ($files as $file) {
+
+        $basename = basename($file);
+        $filePath = $themesPath . '/' . $basename;
+
+        if (!is_dir($filePath)) {
+
+            File::deleteDirectory($themesPath);
+            mkdir($themesPath);
+            session(['update_error' => $themeError]);
+            break;
+
+        }
+
+        if (preg_match($regex, $basename)) {
+
+            $newBasename = preg_replace($regex, '', $basename);
+            $newPath = $themesPath . '/' . $newBasename;
+            File::copyDirectory($filePath, $newPath);
+            File::deleteDirectory($filePath);
+
+        }
+
+    }
+
 } catch (exception $e) {
     session(['update_error' => $e->getMessage()]);
 }
