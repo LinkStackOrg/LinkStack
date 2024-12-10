@@ -11,7 +11,6 @@ $firstName = $data->first_name;
 $middleName = $data->middle_name;
 $lastName = $data->last_name;
 $suffix = $data->suffix;
-$nickname = $data->nickname;
 $organization = $data->organization;
 $vtitle = $data->vtitle;
 $role = $data->role;
