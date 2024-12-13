@@ -686,17 +686,10 @@ $usrhandl = Auth::user()->littlelink_name;
                 $argValues = config('advanced-config.qr_code_gradient') ?? [0, 0, 0, 0, 0, 0, 'diagonal'];
                 list($arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7) = $argValues;
 
-                if (extension_loaded('imagick')) {
-                  $imgSrc = QrCode::format('png')->gradient($arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7)->eye('circle')->style('round')->size(1000)->generate($redirectURL);
-                  $imgSrc = base64_encode($imgSrc);
-                  $imgSrc = 'data:image/png;base64,' . $imgSrc;
-                  $imgType = 'png';
-                } else {
-                  $imgSrc = QrCode::gradient($arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7)->eye('circle')->style('round')->size(1000)->generate($redirectURL);
-                  $imgSrc = base64_encode($imgSrc);
-                  $imgSrc = 'data:image/svg+xml;base64,' . $imgSrc;
-                  $imgType = 'svg';
-                }
+                $imgSrc = QrCode::gradient($arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7)->eye('circle')->style('round')->size(1000)->generate($redirectURL);
+                $imgSrc = base64_encode($imgSrc);
+                $imgSrc = 'data:image/svg+xml;base64,' . $imgSrc;
+                $imgType = 'svg';
 
               } catch(exception $e) {
                 $imgSrc = url('/assets/linkstack/images/themes/no-preview.png');
