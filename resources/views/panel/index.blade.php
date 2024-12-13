@@ -25,9 +25,6 @@
                 </div>
             </div>
 
-            @push('sidebar-stylesheets')
-                <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-            @endpush
             @push('sidebar-scripts')
                 <script>
                     $(document).ready(function() {

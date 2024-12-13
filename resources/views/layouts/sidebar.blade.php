@@ -14,6 +14,7 @@
     <title>{{ env('APP_NAME') }}</title>
 
     <script src="{{ asset('assets/js/detect-dark-mode.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 
     <base href="{{ url()->current() }}" />
 
