@@ -93,19 +93,19 @@ class AdminController extends Controller
         }
     
         return view('studio/index', [
-            'links' => $userLinksData->links ?? null,
-            'clicks' => $userLinksData->clicks ?? null,
-            'userNumber' => $userCounts->userNumber ?? null,
-            'siteLinks' => $siteLinksData->siteLinks ?? null,
-            'siteClicks' => $siteLinksData->siteClicks ?? null,
-            'lastMonthCount' => $userCounts->lastMonthCount ?? null,
-            'lastWeekCount' => $userCounts->lastWeekCount ?? null,
-            'last24HrsCount' => $userCounts->last24HrsCount ?? null,
-            'updatedLast30DaysCount' => $userCounts->updatedLast30DaysCount ?? null,
-            'updatedLast7DaysCount' => $userCounts->updatedLast7DaysCount ?? null,
-            'updatedLast24HrsCount' => $userCounts->updatedLast24HrsCount ?? null,
+            'links' => $userLinksData->links ?? 0,
+            'clicks' => $userLinksData->clicks ?? 0,
+            'userNumber' => $userCounts->userNumber ?? 0,
+            'siteLinks' => $siteLinksData->siteLinks ?? 0,
+            'siteClicks' => $siteLinksData->siteClicks ?? 0,
+            'lastMonthCount' => $userCounts->lastMonthCount ?? 0,
+            'lastWeekCount' => $userCounts->lastWeekCount ?? 0,
+            'last24HrsCount' => $userCounts->last24HrsCount ?? 0,
+            'updatedLast30DaysCount' => $userCounts->updatedLast30DaysCount ?? 0,
+            'updatedLast7DaysCount' => $userCounts->updatedLast7DaysCount ?? 0,
+            'updatedLast24HrsCount' => $userCounts->updatedLast24HrsCount ?? 0,
             'toplinks' => $topLinks ?? [],
-            'pageStats' => $pageStats ?? null,
+            'pageStats' => $pageStats ?? 0,
         ]);
     }
 
