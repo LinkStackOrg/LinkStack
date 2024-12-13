@@ -429,33 +429,81 @@
                                 {{-- <! –– Checks if file version.json exists AND if version.json exists on server to continue (without this PHP will throw ErrorException ) ––> --}}
                                 @if (file_exists(base_path('version.json')))
 
-                                    <?php // Requests newest version from server and sets it as variable
-                                    
-                                    try {
-                                        $Vgit = external_file_get_contents('https://version.linkstack.org/');
-                                    
-                                        // Requests current version from the local version file and sets it as variable
+                                    @php
                                         $Vlocal = file_get_contents(base_path('version.json'));
-                                    } catch (Exception $e) {
-                                        $Vgit = '0';
-                                        $Vlocal = '0';
-                                    }
-                                    ?>
+                                    @endphp
+
+                                    @push('sidebar-scripts')
+                                        <script>
+                                            const isVisible = true;
+
+                                            async function externalFileGetContents(url) {
+                                                try {
+                                                    const response = await fetch(url, {
+                                                        method: 'GET',
+                                                        redirect: 'follow' // This ensures that redirects are followed
+                                                    });
+
+                                                    if (!response.ok) {
+                                                        console.error(`Error fetching the URL: ${response.statusText}`);
+                                                        return null;
+                                                    }
+
+                                                    const data = await response.text();
+                                                    return data.trim();
+                                                } catch (error) {
+                                                    console.error(`Error fetching the URL: ${error.message}`);
+                                                    return null;
+                                                }
+                                            }
+
+                                            function changeLocation(isVisible) {
+                                                if (isVisible) {
+                                                    window.location.href = "{{ url('update') }}";
+                                                } else {
+                                                    window.location.href = "{{ url()->current() }}";
+                                                }
+                                            }
+
+                                            window.onload = async function() {
+                                                const Vgit = await externalFileGetContents('https://version.linkstack.org/');
+                                                const Vlocal = `{{ trim($Vlocal) }}`;
+
+                                                const isVisible = Vgit > Vlocal;
+
+                                                var updateElements = document.getElementsByClassName('update-icon-update');
+                                                var normalElements = document.getElementsByClassName('update-icon-normal');
+
+                                                for (var i = 0; i < updateElements.length; i++) {
+                                                    updateElements[i].style.display = isVisible ? 'block' : 'none';
+                                                }
+
+                                                for (var i = 0; i < normalElements.length; i++) {
+                                                    normalElements[i].style.display = isVisible ? 'none' : 'block';
+                                                }
+                                            };
+                                        </script>
+                                    @endpush
 
                                     @if (auth()->user()->role == 'admin')
                                         <li class="nav-item dropdown">
                                             <a href="#" class="nav-link" id="mail-drop"
                                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <svg class="icon-24" width="24" viewBox="0 0 24 24"
-                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <svg style="display:none" class="update-icon-update icon-24"
+                                                    width="24" viewBox="0 0 24 24" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                                         d="M22 7.92V16.09C22 19.62 19.729 22 16.34 22H7.67C4.28 22 2 19.62 2 16.09V7.92C2 4.38 4.28 2 7.67 2H16.34C19.729 2 22 4.38 22 7.92ZM11.25 9.73V16.08C11.25 16.5 11.59 16.83 12 16.83C12.42 16.83 12.75 16.5 12.75 16.08V9.73L15.22 12.21C15.36 12.35 15.56 12.43 15.75 12.43C15.939 12.43 16.13 12.35 16.28 12.21C16.57 11.92 16.57 11.44 16.28 11.15L12.53 7.38C12.25 7.1 11.75 7.1 11.47 7.38L7.72 11.15C7.43 11.44 7.43 11.92 7.72 12.21C8.02 12.5 8.49 12.5 8.79 12.21L11.25 9.73Z"
                                                         fill="currentColor"></path>
-                                                    @if ($Vgit > $Vlocal or env('JOIN_BETA'))
-                                                        <circle cx="18" cy="17" r="5"
-                                                            @if ($Vgit > $Vlocal) fill="tomato" @elseif(env('JOIN_BETA')) fill="orange" @endif
-                                                            stroke="white" stroke-width="2" />
-                                                    @endif
+                                                    <circle cx="18" cy="17" r="5" fill="tomato"
+                                                        stroke="white" stroke-width="2" />
+                                                </svg>
+                                                <svg style="display:none" class="update-icon-normal icon-24"
+                                                    width="24" viewBox="0 0 24 24" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M22 7.92V16.09C22 19.62 19.729 22 16.34 22H7.67C4.28 22 2 19.62 2 16.09V7.92C2 4.38 4.28 2 7.67 2H16.34C19.729 2 22 4.38 22 7.92ZM11.25 9.73V16.08C11.25 16.5 11.59 16.83 12 16.83C12.42 16.83 12.75 16.5 12.75 16.08V9.73L15.22 12.21C15.36 12.35 15.56 12.43 15.75 12.43C15.939 12.43 16.13 12.35 16.28 12.21C16.57 11.92 16.57 11.44 16.28 11.15L12.53 7.38C12.25 7.1 11.75 7.1 11.47 7.38L7.72 11.15C7.43 11.44 7.43 11.92 7.72 12.21C8.02 12.5 8.49 12.5 8.79 12.21L11.25 9.73Z"
+                                                        fill="currentColor"></path>
                                                 </svg>
                                                 <span class="bg-primary count-mail"></span>
                                             </a>
@@ -519,7 +567,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="p-0 card-body rounded-bottom">
-                                                            <a @if ($Vgit > $Vlocal) href="{{ url('update') }}" @else href="{{ url()->current() }}" @endif
+                                                            <a onclick="changeLocation(isVisible)"
                                                                 class="iq-sub-card">
                                                                 <div class="d-flex align-items-center">
                                                                     <svg class="icon-32" width="32"
@@ -533,21 +581,19 @@
                                                                             fill="currentColor"></path>
                                                                     </svg>
                                                                     <div class="ms-3 w-100">
-                                                                        <h6 class="mb-0 ">
-                                                                            @if ($Vgit > $Vlocal)
-                                                                                {{ __('messages.Update available') }}
-                                                                            @else
-                                                                                {{ __('messages.Up to date') }}
-                                                                            @endif
+                                                                        <h6 class="mb-0 update-icon-update">
+                                                                            {{ __('messages.Update available') }}
+                                                                        </h6>
+                                                                        <h6 class="mb-0 update-icon-normal">
+                                                                            {{ __('messages.Up to date') }}
                                                                         </h6>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <p class="mb-0"><i>
-                                                                                    @if ($Vgit > $Vlocal)
-                                                                                        {{ __('messages.Run updater') }}
-                                                                                    @else
-                                                                                        {{ __('messages.Check again') }}
-                                                                                    @endif
+                                                                            <p class="mb-0 update-icon-update"><i>
+                                                                                    {{ __('messages.Run updater') }}
+                                                                                </i></p>
+                                                                            <p class="mb-0 update-icon-normal"><i>
+                                                                                    {{ __('messages.Check again') }}
                                                                                 </i></p>
                                                                             <small
                                                                                 class="float-end font-size-12">v{{ $Vlocal }}</small>
