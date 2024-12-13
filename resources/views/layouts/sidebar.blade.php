@@ -337,7 +337,7 @@ $usrhandl = Auth::user()->littlelink_name;
                 </li>
 
                 {{-- <! –– #### begin update detection #### ––> --}}
-                @if(env('NOTIFY_UPDATES') == 'true' or env('NOTIFY_UPDATES') === 'major' or env('NOTIFY_UPDATES') === 'all')
+                @if(auth()->user()->role == 'admin' && (env('NOTIFY_UPDATES') == 'true' or env('NOTIFY_UPDATES') === 'major' or env('NOTIFY_UPDATES') === 'all'))
               
                               {{-- <! –– Checks if file version.json exists AND if version.json exists on server to continue (without this PHP will throw ErrorException ) ––> --}}
                               @if(file_exists(base_path("version.json")))
