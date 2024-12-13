@@ -34,22 +34,14 @@ class AdminController extends Controller
     //Statistics of the number of clicks and links
     public function index()
     {
-        $userId = Auth::user()->id;
-        $littlelink_name = Auth::user()->littlelink_name;
+        return view('panel/index');
+    }
     
-        $links = Link::where('user_id', $userId)->count();
-        $clicks = Link::where('user_id', $userId)->sum('click_number');
-    
-        $userNumber = User::count();
-        $siteLinks = Link::count();
-        $siteClicks = Link::sum('click_number');
-    
-        $lastMonthCount = User::where('created_at', '>=', Carbon::now()->subDays(30))->count();
-        $lastWeekCount = User::where('created_at', '>=', Carbon::now()->subDays(7))->count();
-        $last24HrsCount = User::where('created_at', '>=', Carbon::now()->subHours(24))->count();
-        $updatedLast30DaysCount = User::where('updated_at', '>=', Carbon::now()->subDays(30))->count();
-        $updatedLast7DaysCount = User::where('updated_at', '>=', Carbon::now()->subDays(7))->count();
-        $updatedLast24HrsCount = User::where('updated_at', '>=', Carbon::now()->subHours(24))->count();
+    public function stats()
+    {
+        $user = Auth::user();
+        $userId = $user->id;
+        $littlelink_name = $user->littlelink_name;
     
         $topLinks = Link::where('user_id', $userId)
             ->whereNotNull('link')
@@ -57,35 +49,63 @@ class AdminController extends Controller
             ->orderBy('click_number', 'desc')
             ->take(5)
             ->get();
+
+            // Combine queries for user-specific data
+            $userLinksData = Link::where('user_id', $userId)
+            ->selectRaw('COUNT(*) as links, SUM(click_number) as clicks')
+            ->first();
+
+        if ($user->role == 'admin') {
+
+            // Combine queries for site-wide data
+            $siteLinksData = Link::selectRaw('COUNT(*) as siteLinks, SUM(click_number) as siteClicks')
+                ->first();
+
+            // Combine queries for user counts
+            $userCounts = User::selectRaw('COUNT(*) as userNumber, 
+                                           SUM(CASE WHEN created_at >= ? THEN 1 ELSE 0 END) as lastMonthCount, 
+                                           SUM(CASE WHEN created_at >= ? THEN 1 ELSE 0 END) as lastWeekCount, 
+                                           SUM(CASE WHEN created_at >= ? THEN 1 ELSE 0 END) as last24HrsCount, 
+                                           SUM(CASE WHEN updated_at >= ? THEN 1 ELSE 0 END) as updatedLast30DaysCount, 
+                                           SUM(CASE WHEN updated_at >= ? THEN 1 ELSE 0 END) as updatedLast7DaysCount, 
+                                           SUM(CASE WHEN updated_at >= ? THEN 1 ELSE 0 END) as updatedLast24HrsCount', [
+                Carbon::now()->subDays(30),
+                Carbon::now()->subDays(7),
+                Carbon::now()->subHours(24),
+                Carbon::now()->subDays(30),
+                Carbon::now()->subDays(7),
+                Carbon::now()->subHours(24)
+            ])->first();
+                                        
+            $pageStats = [
+                'visitors' => [
+                    'all' => visits('App\Models\User', $littlelink_name)->count(),
+                    'day' => visits('App\Models\User', $littlelink_name)->period('day')->count(),
+                    'week' => visits('App\Models\User', $littlelink_name)->period('week')->count(),
+                    'month' => visits('App\Models\User', $littlelink_name)->period('month')->count(),
+                    'year' => visits('App\Models\User', $littlelink_name)->period('year')->count(),
+                ],
+                'os' => visits('App\Models\User', $littlelink_name)->operatingSystems(),
+                'referers' => visits('App\Models\User', $littlelink_name)->refs(),
+                'countries' => visits('App\Models\User', $littlelink_name)->countries(),
+            ];
+
+        }
     
-        $pageStats = [
-            'visitors' => [
-                'all' => visits('App\Models\User', $littlelink_name)->count(),
-                'day' => visits('App\Models\User', $littlelink_name)->period('day')->count(),
-                'week' => visits('App\Models\User', $littlelink_name)->period('week')->count(),
-                'month' => visits('App\Models\User', $littlelink_name)->period('month')->count(),
-                'year' => visits('App\Models\User', $littlelink_name)->period('year')->count(),
-            ],
-            'os' => visits('App\Models\User', $littlelink_name)->operatingSystems(),
-            'referers' => visits('App\Models\User', $littlelink_name)->refs(),
-            'countries' => visits('App\Models\User', $littlelink_name)->countries(),
-        ];
-    
-        return view('panel/index', [
-            'lastMonthCount' => $lastMonthCount,
-            'lastWeekCount' => $lastWeekCount,
-            'last24HrsCount' => $last24HrsCount,
-            'updatedLast30DaysCount' => $updatedLast30DaysCount,
-            'updatedLast7DaysCount' => $updatedLast7DaysCount,
-            'updatedLast24HrsCount' => $updatedLast24HrsCount,
-            'toplinks' => $topLinks,
-            'links' => $links,
-            'clicks' => $clicks,
-            'pageStats' => $pageStats,
-            'littlelink_name' => $littlelink_name,
-            'siteLinks' => $siteLinks,
-            'siteClicks' => $siteClicks,
-            'userNumber' => $userNumber
+        return view('studio/index', [
+            'links' => $userLinksData->links ?? null,
+            'clicks' => $userLinksData->clicks ?? null,
+            'userNumber' => $userCounts->userNumber ?? null,
+            'siteLinks' => $siteLinksData->siteLinks ?? null,
+            'siteClicks' => $siteLinksData->siteClicks ?? null,
+            'lastMonthCount' => $userCounts->lastMonthCount ?? null,
+            'lastWeekCount' => $userCounts->lastWeekCount ?? null,
+            'last24HrsCount' => $userCounts->last24HrsCount ?? null,
+            'updatedLast30DaysCount' => $userCounts->updatedLast30DaysCount ?? null,
+            'updatedLast7DaysCount' => $userCounts->updatedLast7DaysCount ?? null,
+            'updatedLast24HrsCount' => $userCounts->updatedLast24HrsCount ?? null,
+            'toplinks' => $topLinks ?? [],
+            'pageStats' => $pageStats ?? null,
         ]);
     }
 

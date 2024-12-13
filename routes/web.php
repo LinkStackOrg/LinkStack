@@ -99,6 +99,7 @@ Route::group([
 if(env('FORCE_ROUTE_HTTPS') == 'true'){URL::forceScheme('https');}
 if(isset($_COOKIE['LinkCount'])){if($_COOKIE['LinkCount'] == '20'){$LinkPage = 'showLinks20';}elseif($_COOKIE['LinkCount'] == '30'){$LinkPage = 'showLinks30';}elseif($_COOKIE['LinkCount'] == 'all'){$LinkPage = 'showLinksAll';} else {$LinkPage = 'showLinks';}} else {$LinkPage = 'showLinks';} //Shows correct link number
 Route::get('/dashboard', [AdminController::class, 'index'])->name('panelIndex');
+Route::get('/dashboard/site-stats', [AdminController::class, 'stats']);
 Route::get('/studio/index', function(){return redirect(url('dashboard'));});
 Route::get('/studio/add-link', [UserController::class, 'AddUpdateLink'])->name('showButtons');
 Route::post('/studio/edit-link', [UserController::class, 'saveLink'])->name('addLink');
