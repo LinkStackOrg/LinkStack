@@ -16,8 +16,8 @@
         "laravel/framework": "^10.42.0",
         "laravel/socialite": "^5.5",
         "laravel/tinker": "^2.5",
-        "livewire/livewire": "^2.12",
-        "rappasoft/laravel-livewire-tables": "^2.15",
+        "livewire/livewire": "^3.0",
+        "rappasoft/laravel-livewire-tables": "^3.0",
         "simplesoftwareio/simple-qrcode": "~4",
         "spatie/laravel-backup": "^8.1.5"
     },

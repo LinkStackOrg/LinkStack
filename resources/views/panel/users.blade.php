@@ -34,7 +34,7 @@
                           </button>
                         </div>
 
-                        <livewire:user-table />
+                        <livewire:users-table />
                         
                         <a href="{{ url('') }}/admin/new-user">+ {{__('messages.Add new user')}}</a>
                         
@@ -91,72 +91,13 @@
 
                           // Function to refresh the Livewire table
                           var refreshLivewireTable = function() {
-                            Livewire.components.getComponentsByName('user-table')[0].$wire.$refresh()
+                            Livewire.dispatch('refresh');
                           };
                       
                           attachClickEventListeners('confirmation', confirmIt);
                           attachClickEventListeners('user-email', handleUserClick);
                           attachClickEventListeners('user-block', handleUserClick);
                       </script>
-{{-- <script type="text/javascript">
-// Get the delete button div
-var deleteButtonDiv = document.getElementById('select-active');
-
-// Get all checkboxes
-var checkboxes = document.querySelectorAll('.form-check-input');
-
-// Function to check if at least one checkbox is selected
-var isAnyCheckboxSelected = function() {
-    for (var i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].checked) {
-            return true;
-        }
-    }
-    return false;
-};
-
-// Function to show or hide the delete button div
-var showOrHideDeleteButton = function() {
-    if (isAnyCheckboxSelected()) {
-        deleteButtonDiv.classList.remove('d-none');
-    } else {
-        setTimeout(function() {
-            deleteButtonDiv.classList.add('d-none');
-        });
-    }
-};
-
-// Add event listener to checkboxes
-for (var i = 0; i < checkboxes.length; i++) {
-    checkboxes[i].addEventListener('change', showOrHideDeleteButton);
-}
-
-// Get the delete button
-var deleteButton = deleteButtonDiv.querySelector('button');
-
-// Function to delete selected users
-var deleteSelectedUsers = function() {
-    for (var i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].checked && checkboxes[i].getAttribute('data-id') !== null) {
-            var userId = checkboxes[i].getAttribute('data-id');
-
-            // Find the corresponding <a> element
-            var deleteButton = document.querySelector('a[data-id="' + userId + '"]');
-
-            // If the <a> element exists, add loading spinner to it
-            if (deleteButton) {
-                deleteButton.innerHTML = '<div class="d-flex justify-content-center"><div class="spinner-border spinner-border-sm text-primary" role="status"><span class="visually-hidden">Loading...</span></div></div>';
-            }
-
-            deleteUserData(userId);
-        }
-    }
-};
-
-// Add event listener to delete button
-deleteButton.addEventListener('click', deleteSelectedUsers);
-</script> --}}
-
                           </div>
                 </section>
   
@@ -171,13 +112,11 @@ deleteButton.addEventListener('click', deleteSelectedUsers);
   </div>
 
 @push('sidebar-stylesheets')
-<script defer src="{{url('assets/js/cdn.min.js')}}"></script>
-<script src="{{url('vendor/livewire/livewire/dist/livewire.js')}}"></script>
+@livewireStyles
 @endpush
 
 @push('sidebar-scripts')
-<livewire:scripts />
-<script src="{{url('assets/js/livewire-sortable.js')}}"></script>
+<script src="{{url('/assets/vendor/livewire/livewire.js')}}" data-update-uri="/livewire/update" data-navigate-once="true"></script>
 @endpush
 
 @endsection
