@@ -4,9 +4,18 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 use App\Models\Link;
 
+$minPhpVersion = '8.1.0';
+
 set_time_limit(0);
 
-try {
+if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
+
+    session(['update_error' => "This update requires at least PHP version $minPhpVersion. Your current PHP version is " . PHP_VERSION]);
+    echo "<meta http-equiv='refresh' content='0;" . url()->current() . "/?error' />";
+
+} else {
+
+    try {
     if(!isset($preUpdateServer)){$preUpdateServer = 'https://pre-update.linkstack.org/';}
     $file = Http::timeout(10)->get($preUpdateServer . 'update')->body();
     file_put_contents(base_path('resources\views\update.blade.php'), $file);
@@ -80,4 +89,6 @@ if (!Schema::hasColumn('links', 'type_params')) {
         $link->save();
     }
 }
+}
+
 }
