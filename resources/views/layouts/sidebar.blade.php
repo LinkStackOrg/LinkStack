@@ -1112,7 +1112,8 @@ MODAL; // Indentation breaks my code editor :/
         </div>
     </div>
 
-    <script>
+    {{-- Unused. Download for removed PNG QR Code generation feature. --}}
+    {{-- <script>
         document.addEventListener("DOMContentLoaded", function() {
             var downloadButton = document.getElementById("downloadButton");
             var generatedImage = document.getElementById("generatedImage");
@@ -1127,7 +1128,7 @@ MODAL; // Indentation breaks my code editor :/
                 document.body.removeChild(downloadLink);
             });
         });
-    </script>
+    </script> --}}
 
     <!-- Library Bundle Script -->
     <script src="{{ asset('assets/js/core/libs.min.js') }}"></script>
