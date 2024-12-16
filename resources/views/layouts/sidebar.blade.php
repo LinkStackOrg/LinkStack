@@ -475,66 +475,89 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                MODAL;
+MODAL; // Indentation breaks my code editor :/
                                             }
                                             notification('', 'modal-1', __('messages.Your security is at risk!'), '<b>' . __('messages.security.msg1') . '</b> ' . __('messages.security.msg2') . '<br><br>' . __('messages.security.msg3') . '<br><a href="' . url('admin/config#5') . '">' . __('messages.security.msg3') . '</a>.');
                                             notification('hide-star-notification', 'modal-star', __('messages.Support Linkstack'), '' . __('messages.support.msg1') . ' <a target="_blank" href="https://github.com/linkstackorg/linkstack">' . __('messages.support.msg2') . '</a>. ' . __('messages.support.msg3') . '<br><br>' . __('messages.support.msg4') . ' <a target="_blank" href="https://linkstack.org/donate">' . __('messages.support.msg5') . '<br><br>' . __('messages.support.msg6') . '');
                                         @endphp
                                     @endpush
 
-                                    @push('sidebar-scripts')
-                                        <script>
-                                            const isVisible = true;
+                                    @if (auth()->user()->role == 'admin')
 
-                                            async function externalFileGetContents(url) {
-                                                try {
-                                                    const response = await fetch(url, {
-                                                        method: 'GET',
-                                                        redirect: 'follow' // This ensures that redirects are followed
-                                                    });
+                                        @push('sidebar-scripts')
+                                            <script>
+                                                const isVisible = true;
 
-                                                    if (!response.ok) {
-                                                        console.error(`Error fetching the URL: ${response.statusText}`);
+                                                async function externalFileGetContents(url) {
+                                                    try {
+                                                        const response = await fetch(url, {
+                                                            method: 'GET',
+                                                            redirect: 'follow' // This ensures that redirects are followed
+                                                        });
+
+                                                        if (!response.ok) {
+                                                            console.error(`Error fetching the URL: ${response.statusText}`);
+                                                            return null;
+                                                        }
+
+                                                        const data = await response.text();
+                                                        return data.trim();
+                                                    } catch (error) {
+                                                        console.error(`Error fetching the URL: ${error.message}`);
                                                         return null;
                                                     }
-
-                                                    const data = await response.text();
-                                                    return data.trim();
-                                                } catch (error) {
-                                                    console.error(`Error fetching the URL: ${error.message}`);
-                                                    return null;
-                                                }
-                                            }
-
-                                            function changeLocation(isVisible) {
-                                                if (isVisible) {
-                                                    window.location.href = "{{ url('update') }}";
-                                                } else {
-                                                    window.location.href = "{{ url()->current() }}";
-                                                }
-                                            }
-
-                                            window.onload = async function() {
-                                                const Vgit = await externalFileGetContents('https://version.linkstack.org/');
-                                                const Vlocal = `{{ trim($Vlocal) }}`;
-
-                                                const isVisible = Vgit > Vlocal;
-
-                                                var updateElements = document.getElementsByClassName('update-icon-update');
-                                                var normalElements = document.getElementsByClassName('update-icon-normal');
-
-                                                for (var i = 0; i < updateElements.length; i++) {
-                                                    updateElements[i].style.display = isVisible ? 'block' : 'none';
                                                 }
 
-                                                for (var i = 0; i < normalElements.length; i++) {
-                                                    normalElements[i].style.display = isVisible ? 'none' : 'block';
+                                                function changeLocation(isVisible) {
+                                                    if (isVisible) {
+                                                        window.location.href = "{{ url('update') }}";
+                                                    } else {
+                                                        window.location.href = "{{ url()->current() }}";
+                                                    }
                                                 }
-                                            };
-                                        </script>
-                                    @endpush
+                                            </script>
 
-                                    @if (auth()->user()->role == 'admin')
+                                            @if (env('JOIN_BETA') == true)
+                                                <script>                                
+                                                    window.onload = async function() {
+                                                        const Vbeta = await externalFileGetContents('https://beta.linkstack.org/vbeta.json');
+                                                    
+                                                        const isVisible = true;
+
+                                                        $('#beta-version').text(Vbeta);
+                                                    
+                                                        var updateElements = document.getElementsByClassName('update-icon-update');
+                                                    
+                                                        for (var i = 0; i < updateElements.length; i++) {
+                                                            updateElements[i].style.display = isVisible ? 'block' : 'none';
+                                                        }
+
+                                                    };
+                                                </script>
+                                            @else
+                                                <script>                                
+                                                    window.onload = async function() {
+                                                        const Vgit = await externalFileGetContents('https://version.linkstack.org/');
+                                                        const Vlocal = `{{ trim($Vlocal) }}`;
+                                                    
+                                                        const isVisible = Vgit > Vlocal;
+                                                    
+                                                        var updateElements = document.getElementsByClassName('update-icon-update');
+                                                        var normalElements = document.getElementsByClassName('update-icon-normal');
+                                                    
+                                                        for (var i = 0; i < updateElements.length; i++) {
+                                                            updateElements[i].style.display = isVisible ? 'block' : 'none';
+                                                        }
+                                                    
+                                                        for (var i = 0; i < normalElements.length; i++) {
+                                                            normalElements[i].style.display = isVisible ? 'none' : 'block';
+                                                        }
+                                                    };
+                                                </script>
+                                            @endif
+
+                                        @endpush
+
                                         <li class="nav-item dropdown">
                                             <a href="#" class="nav-link" id="mail-drop"
                                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -594,8 +617,7 @@
                                                                                     </center>
                                                                                 </td>
                                                                                 <td>
-                                                                                    <center><span
-                                                                                            class="badge rounded-pill bg-primary"><?php echo external_file_get_contents('https://beta.linkstack.org/vbeta.json'); ?></span>
+                                                                                    <center><span id="beta-version" class="badge rounded-pill bg-primary"></span>
                                                                                     </center>
                                                                                 </td>
                                                                             </tr>
