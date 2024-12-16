@@ -2,6 +2,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Migrations\Migrator;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -488,6 +489,12 @@ try {
 
     }
 
+} catch (exception $e) {
+    session(['update_error' => $e->getMessage()]);
+}
+
+try {
+    Artisan::call('view:clear');
 } catch (exception $e) {
     session(['update_error' => $e->getMessage()]);
 }
