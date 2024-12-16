@@ -234,7 +234,7 @@
                           <span class="input-group-text" id="basic-addon3">{{str_replace(['http://', 'https://'], '', url(''))}}/@</span>
                           <input type="littlelink_name" class="form-control" id="littlelink_name" name="littlelink_name" aria-describedby="littlelink_name" value="{{ $page->littlelink_name ?? '' }}" :value="old('littlelink_name')" required autofocus >
                         </div>
-                        <script>var exceptionvar = " value="{{ $page->littlelink_name }}";</script>
+                        <script>var exceptionvar = value="{{ $page->littlelink_name }}";</script>
                         @include('auth.url-validation')
                 
                          <label style="margin-top:15px">{{__('messages.Display name')}}</label>
