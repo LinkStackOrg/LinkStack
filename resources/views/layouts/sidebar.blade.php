@@ -3,6 +3,9 @@
     use App\Models\User;
     use App\Models\UserData;
     $usrhandl = Auth::user()->littlelink_name;
+
+    $betaServer    = env('BETA_SERVER', 'https://beta.linkstack.org/');
+    $versionServer = env('VERSION_SERVER', 'https://version.linkstack.org/');
 @endphp
 <!doctype html>
 @include('layouts.lang')
@@ -520,7 +523,7 @@ MODAL; // Indentation breaks my code editor :/
                                             @if (env('JOIN_BETA') == true)
                                                 <script>                                
                                                     window.onload = async function() {
-                                                        const Vbeta = await externalFileGetContents('https://beta.linkstack.org/vbeta.json');
+                                                        const Vbeta = await externalFileGetContents('{{"{$betaServer}vbeta.json"}}');
                                                     
                                                         const isVisible = true;
 
@@ -537,7 +540,7 @@ MODAL; // Indentation breaks my code editor :/
                                             @else
                                                 <script>                                
                                                     window.onload = async function() {
-                                                        const Vgit = await externalFileGetContents('https://version.linkstack.org/');
+                                                        const Vgit = await externalFileGetContents('{{$versionServer}}');
                                                         const Vlocal = `{{ trim($Vlocal) }}`;
                                                     
                                                         const isVisible = Vgit > Vlocal;
