@@ -408,9 +408,7 @@
                               </a>
                             </li>
 
-                            {{-- <! –– #### begin update detection #### ––> --}}
-                            @if (auth()->user()->role == 'admin' &&
-                                    (env('NOTIFY_UPDATES') == 'true' or env('NOTIFY_UPDATES') === 'major' or env('NOTIFY_UPDATES') === 'all'))
+                            @if (env('NOTIFY_UPDATES') == 'true' or env('NOTIFY_UPDATES') === 'major' or env('NOTIFY_UPDATES') === 'all')
 
                                 {{-- <! –– Checks if file version.json exists AND if version.json exists on server to continue (without this PHP will throw ErrorException ) ––> --}}
                                 @if (file_exists(base_path('version.json')))
@@ -450,7 +448,7 @@
                                     {{-- Notification Modals --}}
                                     @push('sidebar-scripts')
                                         @php
-                                            function notification($dismiss = '', $ntid, $heading, $body)
+                                            function notification($adminOnly = false, $dismiss = '', $ntid, $heading, $body)
                                             {
                                                 $closeMSG = __('messages.Close');
                                                 $dismissMSG = __('messages.Dismiss');
@@ -458,232 +456,239 @@
                                                 if ($dismiss) {
                                                     $dismissBtn = '<a href="' . url()->current() . '?dismiss=' . $dismiss . '" class="btn btn-danger">' . $dismissMSG . '</a>';
                                                 }
-                                                echo <<<MODAL
-                                                    <div class="modal fade" id="$ntid" data-bs-backdrop="true" data-bs-keyboard="false" tabindex="-1" aria-labelledby="${ntid}-label" aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="${ntid}-label">$heading</h5>
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="bd-example">
-                                                                        $body
-                                                                    </div>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    $dismissBtn
-                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">$closeMSG</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-MODAL; // Indentation breaks my code editor :/
+$body = <<<MODAL
+    <div class="modal fade" id="$ntid" data-bs-backdrop="true" data-bs-keyboard="false" tabindex="-1" aria-labelledby="${ntid}-label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="${ntid}-label">$heading</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="bd-example">
+                        $body
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    $dismissBtn
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">$closeMSG</button>
+                </div>
+            </div>
+        </div>
+    </div>
+MODAL; // <-- Indentation breaks my code editor :/
+
+                                                if (!$adminOnly || Auth::user()->role == 'admin') {
+                                                    echo $body;
+                                                }
+
                                             }
-                                            notification('', 'modal-1', __('messages.Your security is at risk!'), '<b>' . __('messages.security.msg1') . '</b> ' . __('messages.security.msg2') . '<br><br>' . __('messages.security.msg3') . '<br><a href="' . url('admin/config#5') . '">' . __('messages.security.msg3') . '</a>.');
-                                            notification('hide-star-notification', 'modal-star', __('messages.Support Linkstack'), '' . __('messages.support.msg1') . ' <a target="_blank" href="https://github.com/linkstackorg/linkstack">' . __('messages.support.msg2') . '</a>. ' . __('messages.support.msg3') . '<br><br>' . __('messages.support.msg4') . ' <a target="_blank" href="https://linkstack.org/donate">' . __('messages.support.msg5') . '<br><br>' . __('messages.support.msg6') . '');
+                                            notification(true, '', 'modal-1', __('messages.Your security is at risk!'), '<b>' . __('messages.security.msg1') . '</b> ' . __('messages.security.msg2') . '<br><br>' . __('messages.security.msg3') . '<br><a href="' . url('admin/config#5') . '">' . __('messages.security.msg3') . '</a>.');
+                                            notification(true, 'hide-star-notification', 'modal-star', __('messages.Support Linkstack'), '' . __('messages.support.msg1') . ' <a target="_blank" href="https://github.com/linkstackorg/linkstack">' . __('messages.support.msg2') . '</a>. ' . __('messages.support.msg3') . '<br><br>' . __('messages.support.msg4') . ' <a target="_blank" href="https://linkstack.org/donate">' . __('messages.support.msg5') . '<br><br>' . __('messages.support.msg6') . '');
                                         @endphp
                                     @endpush
 
-                                    @if (auth()->user()->role == 'admin')
+                                    {{-- <! –– #### begin update detection #### ––> --}}
+                                    @if(auth()->user()->role == 'admin')
+                                    @push('sidebar-scripts')
+                                    <script>
+                                        const isVisible = true;
 
-                                        @push('sidebar-scripts')
-                                            <script>
+                                        async function externalFileGetContents(url) {
+                                            try {
+                                                const response = await fetch(url, {
+                                                    method: 'GET',
+                                                    redirect: 'follow' // This ensures that redirects are followed
+                                                });
+
+                                                if (!response.ok) {
+                                                    console.error(`Error fetching the URL: ${response.statusText}`);
+                                                    return null;
+                                                }
+
+                                                const data = await response.text();
+                                                return data.trim();
+                                            } catch (error) {
+                                                console.error(`Error fetching the URL: ${error.message}`);
+                                                return null;
+                                            }
+                                        }
+
+                                        function changeLocation(isVisible) {
+                                            if (isVisible) {
+                                                window.location.href = "{{ url('update') }}";
+                                            } else {
+                                                window.location.href = "{{ url()->current() }}";
+                                            }
+                                        }
+                                    </script>
+
+                                    @if (env('JOIN_BETA') == true)
+                                        <script>                                
+                                            window.onload = async function() {
+                                                const Vbeta = await externalFileGetContents('{{"{$betaServer}vbeta.json"}}');
+                                            
                                                 const isVisible = true;
 
-                                                async function externalFileGetContents(url) {
-                                                    try {
-                                                        const response = await fetch(url, {
-                                                            method: 'GET',
-                                                            redirect: 'follow' // This ensures that redirects are followed
-                                                        });
-
-                                                        if (!response.ok) {
-                                                            console.error(`Error fetching the URL: ${response.statusText}`);
-                                                            return null;
-                                                        }
-
-                                                        const data = await response.text();
-                                                        return data.trim();
-                                                    } catch (error) {
-                                                        console.error(`Error fetching the URL: ${error.message}`);
-                                                        return null;
-                                                    }
+                                                $('#beta-version').text(Vbeta);
+                                            
+                                                var updateElements = document.getElementsByClassName('update-icon-update');
+                                            
+                                                for (var i = 0; i < updateElements.length; i++) {
+                                                    updateElements[i].style.display = isVisible ? 'block' : 'none';
                                                 }
 
-                                                function changeLocation(isVisible) {
-                                                    if (isVisible) {
-                                                        window.location.href = "{{ url('update') }}";
-                                                    } else {
-                                                        window.location.href = "{{ url()->current() }}";
-                                                    }
+                                            };
+                                        </script>
+                                    @else
+                                        <script>                                
+                                            window.onload = async function() {
+                                                const Vgit = await externalFileGetContents('{{$versionServer}}');
+                                                const Vlocal = `{{ trim($Vlocal) }}`;
+                                            
+                                                const isVisible = Vgit > Vlocal;
+                                            
+                                                var updateElements = document.getElementsByClassName('update-icon-update');
+                                                var normalElements = document.getElementsByClassName('update-icon-normal');
+                                            
+                                                for (var i = 0; i < updateElements.length; i++) {
+                                                    updateElements[i].style.display = isVisible ? 'block' : 'none';
                                                 }
-                                            </script>
-
-                                            @if (env('JOIN_BETA') == true)
-                                                <script>                                
-                                                    window.onload = async function() {
-                                                        const Vbeta = await externalFileGetContents('{{"{$betaServer}vbeta.json"}}');
-                                                    
-                                                        const isVisible = true;
-
-                                                        $('#beta-version').text(Vbeta);
-                                                    
-                                                        var updateElements = document.getElementsByClassName('update-icon-update');
-                                                    
-                                                        for (var i = 0; i < updateElements.length; i++) {
-                                                            updateElements[i].style.display = isVisible ? 'block' : 'none';
-                                                        }
-
-                                                    };
-                                                </script>
-                                            @else
-                                                <script>                                
-                                                    window.onload = async function() {
-                                                        const Vgit = await externalFileGetContents('{{$versionServer}}');
-                                                        const Vlocal = `{{ trim($Vlocal) }}`;
-                                                    
-                                                        const isVisible = Vgit > Vlocal;
-                                                    
-                                                        var updateElements = document.getElementsByClassName('update-icon-update');
-                                                        var normalElements = document.getElementsByClassName('update-icon-normal');
-                                                    
-                                                        for (var i = 0; i < updateElements.length; i++) {
-                                                            updateElements[i].style.display = isVisible ? 'block' : 'none';
-                                                        }
-                                                    
-                                                        for (var i = 0; i < normalElements.length; i++) {
-                                                            normalElements[i].style.display = isVisible ? 'none' : 'block';
-                                                        }
-                                                    };
-                                                </script>
-                                            @endif
-
-                                        @endpush
-
-                                        <li class="nav-item dropdown">
-                                            <a href="#" class="nav-link" id="mail-drop"
-                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <svg style="display:none" class="update-icon-update icon-24"
-                                                    width="24" viewBox="0 0 24 24" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M22 7.92V16.09C22 19.62 19.729 22 16.34 22H7.67C4.28 22 2 19.62 2 16.09V7.92C2 4.38 4.28 2 7.67 2H16.34C19.729 2 22 4.38 22 7.92ZM11.25 9.73V16.08C11.25 16.5 11.59 16.83 12 16.83C12.42 16.83 12.75 16.5 12.75 16.08V9.73L15.22 12.21C15.36 12.35 15.56 12.43 15.75 12.43C15.939 12.43 16.13 12.35 16.28 12.21C16.57 11.92 16.57 11.44 16.28 11.15L12.53 7.38C12.25 7.1 11.75 7.1 11.47 7.38L7.72 11.15C7.43 11.44 7.43 11.92 7.72 12.21C8.02 12.5 8.49 12.5 8.79 12.21L11.25 9.73Z"
-                                                        fill="currentColor"></path>
-                                                    <circle cx="18" cy="17" r="5" fill="tomato"
-                                                        stroke="white" stroke-width="2" />
-                                                </svg>
-                                                <svg style="display:none" class="update-icon-normal icon-24"
-                                                    width="24" viewBox="0 0 24 24" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M22 7.92V16.09C22 19.62 19.729 22 16.34 22H7.67C4.28 22 2 19.62 2 16.09V7.92C2 4.38 4.28 2 7.67 2H16.34C19.729 2 22 4.38 22 7.92ZM11.25 9.73V16.08C11.25 16.5 11.59 16.83 12 16.83C12.42 16.83 12.75 16.5 12.75 16.08V9.73L15.22 12.21C15.36 12.35 15.56 12.43 15.75 12.43C15.939 12.43 16.13 12.35 16.28 12.21C16.57 11.92 16.57 11.44 16.28 11.15L12.53 7.38C12.25 7.1 11.75 7.1 11.47 7.38L7.72 11.15C7.43 11.44 7.43 11.92 7.72 12.21C8.02 12.5 8.49 12.5 8.79 12.21L11.25 9.73Z"
-                                                        fill="currentColor"></path>
-                                                </svg>
-                                                <span class="bg-primary count-mail"></span>
-                                            </a>
-                                            <div class="p-0 sub-drop dropdown-menu dropdown-menu-end"
-                                                aria-labelledby="mail-drop">
-                                                <div class="m-0 shadow-none card">
-                                                    @if (env('JOIN_BETA') == true)
-                                                        <div
-                                                            class="py-3 card-header d-flex justify-content-between bg-primary">
-                                                            <div class="header-title">
-                                                                <h5 class="mb-0 text-white">
-                                                                    {{ __('messages.Updater') }} <span
-                                                                        style="background-color:orange;"
-                                                                        class="badge">{{ __('messages.Beta Mode') }}</span>
-                                                                </h5>
-                                                            </div>
-                                                        </div>
-                                                        <div class="p-0 card-body rounded-bottom">
-                                                            <a href="{{ url('update') }}" class="iq-sub-card">
-                                                                <div class="d-flex align-items-center">
-                                                                    <table class="m-0 table table-bordered table-sm">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th>{{ __('messages.Local version') }}
-                                                                                </th>
-                                                                                <th>{{ __('messages.Latest beta') }}
-                                                                                </th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td>
-                                                                                    <center><span
-                                                                                            class="badge rounded-pill bg-primary"><?php if (file_exists(base_path('vbeta.json'))) {
-                                                                                                echo file_get_contents(base_path('vbeta.json'));
-                                                                                            } else {
-                                                                                                echo 'none';
-                                                                                            } ?></span>
-                                                                                    </center>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <center><span id="beta-version" class="badge rounded-pill bg-primary"></span>
-                                                                                    </center>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                                <center><button
-                                                                        class="btn btn-primary rounded-pill mt-2">{{ __('messages.Run updater') }}</button>
-                                                                </center>
-                                                            </a>
-                                                        </div>
-                                                    @else
-                                                        <div
-                                                            class="py-3 card-header d-flex justify-content-between bg-primary">
-                                                            <div class="header-title">
-                                                                <h5 class="mb-0 text-white">
-                                                                    {{ __('messages.Updater') }}</h5>
-                                                            </div>
-                                                        </div>
-                                                        <div class="p-0 card-body rounded-bottom">
-                                                            <a onclick="changeLocation(isVisible)"
-                                                                class="iq-sub-card">
-                                                                <div class="d-flex align-items-center">
-                                                                    <svg class="icon-32" width="32"
-                                                                        viewBox="0 0 24 24" fill="none"
-                                                                        xmlns="http://www.w3.org/2000/svg">
-                                                                        <path
-                                                                            d="M12.0122 14.8299C10.4077 14.8299 9.10986 13.5799 9.10986 12.0099C9.10986 10.4399 10.4077 9.17993 12.0122 9.17993C13.6167 9.17993 14.8839 10.4399 14.8839 12.0099C14.8839 13.5799 13.6167 14.8299 12.0122 14.8299Z"
-                                                                            fill="currentColor"></path>
-                                                                        <path opacity="0.4"
-                                                                            d="M21.2301 14.37C21.036 14.07 20.76 13.77 20.4023 13.58C20.1162 13.44 19.9322 13.21 19.7687 12.94C19.2475 12.08 19.5541 10.95 20.4228 10.44C21.4447 9.87 21.7718 8.6 21.179 7.61L20.4943 6.43C19.9118 5.44 18.6344 5.09 17.6226 5.67C16.7233 6.15 15.5685 5.83 15.0473 4.98C14.8838 4.7 14.7918 4.4 14.8122 4.1C14.8429 3.71 14.7203 3.34 14.5363 3.04C14.1582 2.42 13.4735 2 12.7172 2H11.2763C10.5302 2.02 9.84553 2.42 9.4674 3.04C9.27323 3.34 9.16081 3.71 9.18125 4.1C9.20169 4.4 9.10972 4.7 8.9462 4.98C8.425 5.83 7.27019 6.15 6.38109 5.67C5.35913 5.09 4.09191 5.44 3.49917 6.43L2.81446 7.61C2.23194 8.6 2.55897 9.87 3.57071 10.44C4.43937 10.95 4.74596 12.08 4.23498 12.94C4.06125 13.21 3.87729 13.44 3.59115 13.58C3.24368 13.77 2.93709 14.07 2.77358 14.37C2.39546 14.99 2.4159 15.77 2.79402 16.42L3.49917 17.62C3.87729 18.26 4.58245 18.66 5.31825 18.66C5.66572 18.66 6.0745 18.56 6.40153 18.36C6.65702 18.19 6.96361 18.13 7.30085 18.13C8.31259 18.13 9.16081 18.96 9.18125 19.95C9.18125 21.1 10.1215 22 11.3069 22H12.6968C13.872 22 14.8122 21.1 14.8122 19.95C14.8429 18.96 15.6911 18.13 16.7029 18.13C17.0299 18.13 17.3365 18.19 17.6022 18.36C17.9292 18.56 18.3278 18.66 18.6855 18.66C19.411 18.66 20.1162 18.26 20.4943 17.62L21.2097 16.42C21.5776 15.75 21.6083 14.99 21.2301 14.37Z"
-                                                                            fill="currentColor"></path>
-                                                                    </svg>
-                                                                    <div class="ms-3 w-100">
-                                                                        <h6 class="mb-0 update-icon-update">
-                                                                            {{ __('messages.Update available') }}
-                                                                        </h6>
-                                                                        <h6 class="mb-0 update-icon-normal">
-                                                                            {{ __('messages.Up to date') }}
-                                                                        </h6>
-                                                                        <div
-                                                                            class="d-flex justify-content-between align-items-center">
-                                                                            <p class="mb-0 update-icon-update"><i>
-                                                                                    {{ __('messages.Run updater') }}
-                                                                                </i></p>
-                                                                            <p class="mb-0 update-icon-normal"><i>
-                                                                                    {{ __('messages.Check again') }}
-                                                                                </i></p>
-                                                                            <small
-                                                                                class="float-end font-size-12">v{{ $Vlocal }}</small>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </li>
+                                            
+                                                for (var i = 0; i < normalElements.length; i++) {
+                                                    normalElements[i].style.display = isVisible ? 'none' : 'block';
+                                                }
+                                            };
+                                        </script>
                                     @endif
-                                @endif
+
+                                @endpush
+
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link" id="mail-drop"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <svg style="display:none" class="update-icon-update icon-24"
+                                            width="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M22 7.92V16.09C22 19.62 19.729 22 16.34 22H7.67C4.28 22 2 19.62 2 16.09V7.92C2 4.38 4.28 2 7.67 2H16.34C19.729 2 22 4.38 22 7.92ZM11.25 9.73V16.08C11.25 16.5 11.59 16.83 12 16.83C12.42 16.83 12.75 16.5 12.75 16.08V9.73L15.22 12.21C15.36 12.35 15.56 12.43 15.75 12.43C15.939 12.43 16.13 12.35 16.28 12.21C16.57 11.92 16.57 11.44 16.28 11.15L12.53 7.38C12.25 7.1 11.75 7.1 11.47 7.38L7.72 11.15C7.43 11.44 7.43 11.92 7.72 12.21C8.02 12.5 8.49 12.5 8.79 12.21L11.25 9.73Z"
+                                                fill="currentColor"></path>
+                                            <circle cx="18" cy="17" r="5" fill="tomato"
+                                                stroke="white" stroke-width="2" />
+                                        </svg>
+                                        <svg style="display:none" class="update-icon-normal icon-24"
+                                            width="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M22 7.92V16.09C22 19.62 19.729 22 16.34 22H7.67C4.28 22 2 19.62 2 16.09V7.92C2 4.38 4.28 2 7.67 2H16.34C19.729 2 22 4.38 22 7.92ZM11.25 9.73V16.08C11.25 16.5 11.59 16.83 12 16.83C12.42 16.83 12.75 16.5 12.75 16.08V9.73L15.22 12.21C15.36 12.35 15.56 12.43 15.75 12.43C15.939 12.43 16.13 12.35 16.28 12.21C16.57 11.92 16.57 11.44 16.28 11.15L12.53 7.38C12.25 7.1 11.75 7.1 11.47 7.38L7.72 11.15C7.43 11.44 7.43 11.92 7.72 12.21C8.02 12.5 8.49 12.5 8.79 12.21L11.25 9.73Z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                        <span class="bg-primary count-mail"></span>
+                                    </a>
+                                    <div class="p-0 sub-drop dropdown-menu dropdown-menu-end"
+                                        aria-labelledby="mail-drop">
+                                        <div class="m-0 shadow-none card">
+                                            @if (env('JOIN_BETA') == true)
+                                                <div
+                                                    class="py-3 card-header d-flex justify-content-between bg-primary">
+                                                    <div class="header-title">
+                                                        <h5 class="mb-0 text-white">
+                                                            {{ __('messages.Updater') }} <span
+                                                                style="background-color:orange;"
+                                                                class="badge">{{ __('messages.Beta Mode') }}</span>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <div class="p-0 card-body rounded-bottom">
+                                                    <a href="{{ url('update') }}" class="iq-sub-card">
+                                                        <div class="d-flex align-items-center">
+                                                            <table class="m-0 table table-bordered table-sm">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>{{ __('messages.Local version') }}
+                                                                        </th>
+                                                                        <th>{{ __('messages.Latest beta') }}
+                                                                        </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <center><span
+                                                                                    class="badge rounded-pill bg-primary"><?php if (file_exists(base_path('vbeta.json'))) {
+                                                                                        echo file_get_contents(base_path('vbeta.json'));
+                                                                                    } else {
+                                                                                        echo 'none';
+                                                                                    } ?></span>
+                                                                            </center>
+                                                                        </td>
+                                                                        <td>
+                                                                            <center><span id="beta-version" class="badge rounded-pill bg-primary"></span>
+                                                                            </center>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <center><button
+                                                                class="btn btn-primary rounded-pill mt-2">{{ __('messages.Run updater') }}</button>
+                                                        </center>
+                                                    </a>
+                                                </div>
+                                            @else
+                                                <div
+                                                    class="py-3 card-header d-flex justify-content-between bg-primary">
+                                                    <div class="header-title">
+                                                        <h5 class="mb-0 text-white">
+                                                            {{ __('messages.Updater') }}</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="p-0 card-body rounded-bottom">
+                                                    <a onclick="changeLocation(isVisible)"
+                                                        class="iq-sub-card">
+                                                        <div class="d-flex align-items-center">
+                                                            <svg class="icon-32" width="32"
+                                                                viewBox="0 0 24 24" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M12.0122 14.8299C10.4077 14.8299 9.10986 13.5799 9.10986 12.0099C9.10986 10.4399 10.4077 9.17993 12.0122 9.17993C13.6167 9.17993 14.8839 10.4399 14.8839 12.0099C14.8839 13.5799 13.6167 14.8299 12.0122 14.8299Z"
+                                                                    fill="currentColor"></path>
+                                                                <path opacity="0.4"
+                                                                    d="M21.2301 14.37C21.036 14.07 20.76 13.77 20.4023 13.58C20.1162 13.44 19.9322 13.21 19.7687 12.94C19.2475 12.08 19.5541 10.95 20.4228 10.44C21.4447 9.87 21.7718 8.6 21.179 7.61L20.4943 6.43C19.9118 5.44 18.6344 5.09 17.6226 5.67C16.7233 6.15 15.5685 5.83 15.0473 4.98C14.8838 4.7 14.7918 4.4 14.8122 4.1C14.8429 3.71 14.7203 3.34 14.5363 3.04C14.1582 2.42 13.4735 2 12.7172 2H11.2763C10.5302 2.02 9.84553 2.42 9.4674 3.04C9.27323 3.34 9.16081 3.71 9.18125 4.1C9.20169 4.4 9.10972 4.7 8.9462 4.98C8.425 5.83 7.27019 6.15 6.38109 5.67C5.35913 5.09 4.09191 5.44 3.49917 6.43L2.81446 7.61C2.23194 8.6 2.55897 9.87 3.57071 10.44C4.43937 10.95 4.74596 12.08 4.23498 12.94C4.06125 13.21 3.87729 13.44 3.59115 13.58C3.24368 13.77 2.93709 14.07 2.77358 14.37C2.39546 14.99 2.4159 15.77 2.79402 16.42L3.49917 17.62C3.87729 18.26 4.58245 18.66 5.31825 18.66C5.66572 18.66 6.0745 18.56 6.40153 18.36C6.65702 18.19 6.96361 18.13 7.30085 18.13C8.31259 18.13 9.16081 18.96 9.18125 19.95C9.18125 21.1 10.1215 22 11.3069 22H12.6968C13.872 22 14.8122 21.1 14.8122 19.95C14.8429 18.96 15.6911 18.13 16.7029 18.13C17.0299 18.13 17.3365 18.19 17.6022 18.36C17.9292 18.56 18.3278 18.66 18.6855 18.66C19.411 18.66 20.1162 18.26 20.4943 17.62L21.2097 16.42C21.5776 15.75 21.6083 14.99 21.2301 14.37Z"
+                                                                    fill="currentColor"></path>
+                                                            </svg>
+                                                            <div class="ms-3 w-100">
+                                                                <h6 class="mb-0 update-icon-update">
+                                                                    {{ __('messages.Update available') }}
+                                                                </h6>
+                                                                <h6 class="mb-0 update-icon-normal">
+                                                                    {{ __('messages.Up to date') }}
+                                                                </h6>
+                                                                <div
+                                                                    class="d-flex justify-content-between align-items-center">
+                                                                    <p class="mb-0 update-icon-update"><i>
+                                                                            {{ __('messages.Run updater') }}
+                                                                        </i></p>
+                                                                    <p class="mb-0 update-icon-normal"><i>
+                                                                            {{ __('messages.Check again') }}
+                                                                        </i></p>
+                                                                    <small
+                                                                        class="float-end font-size-12">v{{ $Vlocal }}</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </li>
                             @endif
                             {{-- <! –– #### end update detection #### ––> --}}
+
+                            @endif
+
+                            @endif
 
                             <li class="nav-item dropdown">
                                 <a class="py-0 nav-link d-flex align-items-center dropdown-toggle" href="#"
