@@ -2,15 +2,16 @@
 
 namespace App\Http\Livewire;
 
-use App\Http\Livewire;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\User;
 use App\Models\Link;
 
-class UserTable extends DataTableComponent
+class UsersTable extends DataTableComponent
 {
     protected $model = User::class;
+
+    protected $listeners = ['refresh' => '$refresh'];
 
     public function configure(): void
     {
@@ -20,13 +21,14 @@ class UserTable extends DataTableComponent
         $this->setColumnSelectEnabled();
     }
 
+    public function rendered()
+    {
+        $this->dispatch('table-loaded');
+    }
+
     public function columns(): array
     {
         return [
-            // Column::make("", "id")
-            // ->format(function ($value, $row, Column $column) {
-            //     return view('components.table-components.select', ['user' => $row]);
-            // }),
             Column::make(__('messages.ID'), "id")
                 ->sortable()
                 ->searchable(),
@@ -41,7 +43,7 @@ class UserTable extends DataTableComponent
                 ->searchable()
                 ->format(function ($value, $row, Column $column) {
                     if (!$row->littlelink_name == NULL) {
-                        return "<a href='" . url('') . "/@" . htmlspecialchars($row->littlelink_name) . "' target='_blank' class='text-info'><i class='bi bi-box-arrow-up-right'></i>&nbsp; " . htmlspecialchars($row->littlelink_name) . " </a>";
+                        return "<a href='" . url('') . "/@" . htmlspecialchars($row->littlelink_name) . "' target='_blank' class='text-warning'><i class='bi bi-box-arrow-up-right'></i>&nbsp; " . htmlspecialchars($row->littlelink_name) . " </a>";
                     } else {
                         return 'N/A';
                     }
