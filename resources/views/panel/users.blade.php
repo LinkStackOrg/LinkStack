@@ -26,10 +26,76 @@
 
                                         <livewire:users-table lazy />
 
-                                        <section id="loading-spinner" style="height:50vh" class="mb-3 text-center p-4 w-full">
-                                          <div class="spinner-border text-primary" role="status">
-                                              <span class="visually-hidden">Loading...</span>
+                                        <section id="loading-spinner">
+                                          <style>
+                                            :root {
+                                              --spinnerColor: #8a92a6;
+                                            }
+
+                                            .placeholder {
+                                              height: 1.5rem;
+                                              background-color: #8a92a6;
+                                              background: linear-gradient(90deg, var(--spinnerColor) 25%, #b8bcc5 50%, var(--spinnerColor) 75%);
+                                              background-size: 200% 100%;
+                                              animation: shimmer 3s infinite linear;
+                                            }
+
+                                            @keyframes shimmer {
+                                              0% {
+                                                background-position: -200% 0;
+                                              }
+                                              100% {
+                                                background-position: 200% 0;
+                                              }
+                                            }
+                                          </style>
+                                          <div class="d-flex flex-column">
+                                            <div class="d-md-flex justify-content-between mb-3">
+                                                <div class="d-md-flex">
+                                                    <div class="mb-3 mb-md-0 input-group flex">
+                                                        <input disabled="" placeholder="Search" type="text" class="block w-full form-control" />
+                                                    </div>
+                                                </div>
+                                                <div class="d-md-flex">
+                                                    <div class="">
+                                                        <div class="dropdown d-block d-md-inline">
+                                                            <button disabled="" class="btn dropdown-toggle d-block w-100 d-md-inline" type="button">
+                                                                Columns
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ms-0 ms-md-2"><select disabled="" style="border-color: var(--bs-btn-disabled-border-color);" class="form-select"><option>{{request('tableperPage', 50)}}</option></select></div>
+                                                </div>
+                                            </div>
                                           </div>
+
+                                          @php
+                                          $widths = [30, 20, 12.5, 12.5, 12.5];
+                                          @endphp
+
+                                          <table class="laravel-livewire-table table">
+                                            <thead>
+                                                <tr>
+                                                  @foreach ($widths as $width)
+                                                    <th scope="col" style="width: {{ $width }}%;"><div class="d-flex align-items-center laravel-livewire-tables-cursor"><span>{{ __('messages.Loading...') }}</span></div></th>
+                                                  @endforeach
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                              @for ($ii = 0; $ii < 2; $ii++)
+                                                <tr class="bg-light rappasoft-striped-row">
+                                                    @for ($i = 0; $i < 5; $i++)
+                                                      <td><div class="placeholder"></div></td>
+                                                    @endfor
+                                                </tr>
+                                                <tr class="bg-white rappasoft-striped-row">
+                                                  @for ($i = 0; $i < 5; $i++)
+                                                    <td><div class="placeholder"></div></td>
+                                                  @endfor
+                                                </tr>
+                                              @endfor
+                                            </tbody>
+                                          </table>
                                         </section>
 
                                         <script>
