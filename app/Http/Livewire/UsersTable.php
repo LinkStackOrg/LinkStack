@@ -19,10 +19,11 @@ class UsersTable extends DataTableComponent
         $this->setDefaultSort('created_at', 'asc');
         $this->setPerPageAccepted([50, 100, 250, 500, 1000, -1]);
         $this->setColumnSelectEnabled();
+    }
 
-        $this->setThAttributes(function(Column $column) {
-            return ['default' => true];
-          });
+    public function rendered()
+    {
+        $this->dispatch('table-loaded');
     }
 
     public function columns(): array
@@ -42,7 +43,7 @@ class UsersTable extends DataTableComponent
                 ->searchable()
                 ->format(function ($value, $row, Column $column) {
                     if (!$row->littlelink_name == NULL) {
-                        return "<a href='" . url('') . "/@" . htmlspecialchars($row->littlelink_name) . "' target='_blank' class='text-info'><i class='bi bi-box-arrow-up-right'></i>&nbsp; " . htmlspecialchars($row->littlelink_name) . " </a>";
+                        return "<a href='" . url('') . "/@" . htmlspecialchars($row->littlelink_name) . "' target='_blank' class='text-warning'><i class='bi bi-box-arrow-up-right'></i>&nbsp; " . htmlspecialchars($row->littlelink_name) . " </a>";
                     } else {
                         return 'N/A';
                     }
