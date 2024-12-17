@@ -19,6 +19,18 @@ class UsersTable extends DataTableComponent
         $this->setDefaultSort('created_at', 'asc');
         $this->setPerPageAccepted([50, 100, 250, 500, 1000, -1]);
         $this->setColumnSelectEnabled();
+
+        $attributes = [
+            'default' => false,
+            'default-colors' => true,
+            'default-styling' => false,
+        ];
+        
+        $this->setTableAttributes(['class' => 'table table-striped']);
+        $this->setTrAttributes(fn($row, $index) => $attributes);
+        $this->setTheadAttributes($attributes);
+        $this->setTbodyAttributes($attributes);
+        $this->setTrAttributes(fn($row, $index) => $attributes);
     }
 
     public function rendered()
@@ -43,7 +55,7 @@ class UsersTable extends DataTableComponent
                 ->searchable()
                 ->format(function ($value, $row, Column $column) {
                     if (!$row->littlelink_name == NULL) {
-                        return "<a href='" . url('') . "/@" . htmlspecialchars($row->littlelink_name) . "' target='_blank' class='text-warning'><i class='bi bi-box-arrow-up-right'></i>&nbsp; " . htmlspecialchars($row->littlelink_name) . " </a>";
+                        return "<a href='" . url('') . "/@" . htmlspecialchars($row->littlelink_name) . "' target='_blank' class='text-info'><i class='bi bi-box-arrow-up-right'></i>&nbsp; " . htmlspecialchars($row->littlelink_name) . " </a>";
                     } else {
                         return 'N/A';
                     }
@@ -63,31 +75,27 @@ class UsersTable extends DataTableComponent
                     return $clicksSum;
                 }),
             Column::make(__('messages.E-Mail'), "email_verified_at")
+                ->hideIf(env('REGISTER_AUTH') === 'auth')
                 ->sortable()
                 ->format(function ($value, $row, Column $column) {
-                    if (env('REGISTER_AUTH') !== 'auth') {
-                        if ($row->role == 'admin' && $row->email_verified_at != '') {
-                            return '<div class="text-center">-</div>';
-                        } else {
-                            if($row->email_verified_at == ''){
-                                $verifyLinkBool = 'true';
-                            } else {
-                                $verifyLinkBool = 'false';
-                            }
-                            $verifyLink = route('verifyUser', [
-                                'verify' => $verifyLinkBool,
-                                'id' => $row->id
-                            ]);
-                            if ($row->email_verified_at == '') {
-                                return '<div class="text-center"><a style="cursor:pointer" data-id="'.$verifyLink.'" class="user-email text-danger"><span class="badge bg-danger">' . __('messages.Pending') . '</span></a></div>';
-                            } else {
-                                return '<div class="text-center"><a style="cursor:pointer" data-id="'.$verifyLink.'" class="user-email text-danger"><span class="badge bg-success">' . __('messages.Verified') . '</span></a></div>';
-                            }
-                        }
-                    } else {
+                    if ($row->role == 'admin' && $row->email_verified_at != '') {
                         return '<div class="text-center">-</div>';
+                    } else {
+                        if($row->email_verified_at == ''){
+                            $verifyLinkBool = 'true';
+                        } else {
+                            $verifyLinkBool = 'false';
+                        }
+                        $verifyLink = route('verifyUser', [
+                            'verify' => $verifyLinkBool,
+                            'id' => $row->id
+                        ]);
+                        if ($row->email_verified_at == '') {
+                            return '<div class="text-center"><a style="cursor:pointer" data-id="'.$verifyLink.'" class="user-email text-danger"><span class="badge bg-danger">' . __('messages.Pending') . '</span></a></div>';
+                        } else {
+                            return '<div class="text-center"><a style="cursor:pointer" data-id="'.$verifyLink.'" class="user-email text-danger"><span class="badge bg-success">' . __('messages.Verified') . '</span></a></div>';
+                        }
                     }
-                    return '';
                 })->html(),
             Column::make(__('messages.Status'), "block")
                 ->sortable()

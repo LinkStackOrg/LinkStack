@@ -12,7 +12,6 @@
     <div class="conatiner-fluid content-inner mt-n5 py-0">
         <div class="row">
 
-
             <div class="col-lg-12">
                 <div class="card rounded">
                     <div class="card-body">
@@ -33,11 +32,11 @@
                                             }
 
                                             .placeholder {
-                                              height: 1.5rem;
+                                              height: 1.2rem;
                                               background-color: #8a92a6;
                                               background: linear-gradient(90deg, var(--spinnerColor) 25%, #b8bcc5 50%, var(--spinnerColor) 75%);
                                               background-size: 200% 100%;
-                                              animation: shimmer 3s infinite linear;
+                                              animation: shimmer 2s infinite linear;
                                             }
 
                                             @keyframes shimmer {
@@ -59,7 +58,7 @@
                                                 <div class="d-md-flex">
                                                     <div class="">
                                                         <div class="dropdown d-block d-md-inline">
-                                                            <button disabled="" class="btn dropdown-toggle d-block w-100 d-md-inline" type="button">
+                                                            <button disabled="" style="border:none" class="btn dropdown-toggle d-block w-100 d-md-inline" type="button">
                                                                 Columns
                                                             </button>
                                                         </div>
@@ -82,13 +81,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                              @for ($ii = 0; $ii < 2; $ii++)
-                                                <tr class="bg-light rappasoft-striped-row">
+                                              @for ($ii = 0; $ii < 4; $ii++)
+                                                <tr>
                                                     @for ($i = 0; $i < 5; $i++)
                                                       <td><div class="placeholder"></div></td>
                                                     @endfor
                                                 </tr>
-                                                <tr class="bg-white rappasoft-striped-row">
+                                                <tr>
                                                   @for ($i = 0; $i < 5; $i++)
                                                     <td><div class="placeholder"></div></td>
                                                   @endfor
