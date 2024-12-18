@@ -21,7 +21,6 @@
     <base href="{{ url()->current() }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    {{-- <script src="{{ asset('assets/js/detect-dark-mode.js') }}"></script> --}}
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 
     @include('layouts.analytics')
@@ -508,7 +507,6 @@ MODAL; // <-- Indentation breaks my code editor :/
 
                                     {{-- <! –– #### begin update detection #### ––> --}}
                                     @if(auth()->user()->role == 'admin')
-                                    @push('sidebar-scripts')
                                     <script>
                                         var isVisible = true;
 
@@ -541,26 +539,30 @@ MODAL; // <-- Indentation breaks my code editor :/
                                         }
                                     </script>
 
-                                    @if (env('JOIN_BETA') == true)
-                                        <script>                                
-                                            window.onload = async function() {
+                                @if (env('JOIN_BETA') == true)
+                                    <script>                             
+                                        (async function() {
+                                            async function updateBetaVersion() {
                                                 var Vbeta = await externalFileGetContents('{{"{$betaServer}vbeta.json"}}');
-                                            
                                                 var isVisible = true;
-
-                                                $('#beta-version').text(Vbeta);
+                                            
+                                                document.getElementById('beta-version').textContent = Vbeta;
                                             
                                                 var updateElements = document.getElementsByClassName('update-icon-update');
                                             
                                                 for (var i = 0; i < updateElements.length; i++) {
                                                     updateElements[i].style.display = isVisible ? 'block' : 'none';
                                                 }
-
-                                            };
-                                        </script>
-                                    @else
-                                        <script>                                
-                                            window.onload = async function() {
+                                            }
+                                        
+                                            document.addEventListener('DOMContentLoaded', updateBetaVersion);
+                                            document.addEventListener('livewire:navigated', updateBetaVersion);
+                                        })();
+                                    </script>
+                                @else
+                                    <script>                                
+                                        (async function() {
+                                            async function updateVersionIcons() {
                                                 var Vgit = await externalFileGetContents('{{$versionServer}}');
                                                 var Vlocal = `{{ trim($Vlocal) }}`;
                                             
@@ -576,11 +578,13 @@ MODAL; // <-- Indentation breaks my code editor :/
                                                 for (var i = 0; i < normalElements.length; i++) {
                                                     normalElements[i].style.display = isVisible ? 'none' : 'block';
                                                 }
-                                            };
-                                        </script>
-                                    @endif
-
-                                @endpush
+                                            }
+                                        
+                                            document.addEventListener('DOMContentLoaded', updateVersionIcons);
+                                            document.addEventListener('livewire:navigated', updateVersionIcons);
+                                        })();
+                                    </script>
+                                @endif
 
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link" id="mail-drop"
@@ -1173,7 +1177,7 @@ MODAL; // <-- Indentation breaks my code editor :/
     <script src="{{ asset('assets/js/plugins/setting.js') }}"></script>
 
     <!-- Slider-tab Script -->
-    <script src="{{ asset('assets/js/plugins/slider-tabs.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/plugins/slider-tabs.js') }}"></script> --}}
 
     <!-- Form Wizard Script -->
     <script src="{{ asset('assets/js/plugins/form-wizard.js') }}"></script>
@@ -1182,11 +1186,11 @@ MODAL; // <-- Indentation breaks my code editor :/
     <script src="{{ asset('assets/vendor/aos/dist/aos.js') }}"></script>
 
     <!-- App Script -->
-    <script src="{{ asset('assets/js/hope-ui.js') }}" defer data-navigate-track></script>
+    <script src="{{ asset('assets/js/hope-ui.js') }}" defer></script>
 
     <!-- Flatpickr Script -->
-    <script src="{{ asset('assets/vendor/flatpickr/dist/flatpickr.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/flatpickr.js') }}" defer></script>
+    {{-- <script src="{{ asset('assets/vendor/flatpickr/dist/flatpickr.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/flatpickr.js') }}" defer></script> --}}
 
     <script src="{{ asset('assets/js/plugins/prism.mini.js') }}"></script>
 
@@ -1233,24 +1237,18 @@ MODAL; // <-- Indentation breaks my code editor :/
     <script src="{{ asset('assets/js/main-dashboard.js') }}"></script>
 
     @stack('sidebar-scripts')
-
-    {{-- @livewireScriptConfig 
-    <script data-navigate-once="true">window.livewireScriptConfig.progressBar = true;</script>  --}}
-    <script src="{{ asset('assets/vendor/livewire/livewire.js') }}" data-update-uri="/livewire/update" data-navigate-once="true"></script>
-    <script>
     
+    {{-- <script>
     document.addEventListener("livewire:navigated", () => {
-        if (typeof Alpine !== 'undefined' && Alpine.start) {
-    console.log("Alpine.js is running!");
-} else {
-    console.log("Alpine.js is not running.");
-    Alpine.start();
-}
+        if (document.getElementById('SvgjsSvg1001')) {
+            // Your code to run if the element exists
+            console.log('Element SvgjsSvg1001 exists!');
+        } else {
+            // Your code to run if the element does not exist
+            // console.log('Element SvgjsSvg1001 does not exist.');
+        }
     });
-
-    document.addEventListener("alpine:init",()=>{console.log("Alpine initialized")})
-    
-    </script>
+    </script> --}}
+    @livewireScripts
 </body>
-
 </html>
