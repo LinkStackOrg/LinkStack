@@ -39,6 +39,12 @@ Index Of Script
     // Variables
     let sidebarTypeSetting = [];
 
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
     //  RTL mode on change offcanvas position change function
     const rtlModeDefault = (check) => {
         if (check) {
@@ -88,10 +94,10 @@ Index Of Script
     // For Dark, RTL & Sidebar Class Update
     const changeMode = (type, value, target) => {
         let detailObj = {}
-        if (type == 'color-mode') {
-            detailObj = {dark: value}
-            document.querySelector('body').classList.add(value)
-        }
+        // if (type == 'color-mode') {
+        //     detailObj = {dark: value}
+        //     document.querySelector('body').classList.add(value)
+        // }
         if (type == 'dir-mode') {
             detailObj = {dir: value}
             document.querySelector('html').setAttribute('dir',value)
@@ -119,13 +125,11 @@ Index Of Script
             }
         })
 
-        // For Dark Mode
-        const colorMode =  localStorage.getItem('color-mode')
-        if(colorMode !== null && colorMode !== undefined) {
-            document.body.classList.remove('dark')
-            document.body.classList.add(colorMode)
-            darkMode()
-            checkSettingMenu('color-mode', 'color', colorMode, 'addedClass')
+        // For Dark Mode        
+        const colorMode = getCookie('color-mode');
+        if (colorMode !== null && colorMode !== undefined) {
+            darkMode();
+            checkSettingMenu('color-mode', 'color', colorMode, 'noClass');
         }
 
         // For RTL Mode
@@ -187,7 +191,7 @@ Index Of Script
                 el.classList.remove('active')
                 document.querySelector('body').classList.remove(el.getAttribute('data-value'))
             })
-            localStorage.setItem('color-mode', mode.getAttribute('data-value'))
+            document.cookie = `color-mode=${mode.getAttribute('data-value')}; path=/;`;
             mode.classList.add('active')
             document.querySelector('body').classList.add(mode.getAttribute('data-value'))
             changeMode('color-mode', mode.getAttribute('data-value'))
@@ -314,16 +318,16 @@ Index Of Script
     const event = new CustomEvent("ColorChange", {detail :{detail1:colorInfo.trim(), detail2:colors.trim()}});
     document.dispatchEvent(event);
     }
-    const elements = document.querySelectorAll('[data-setting="color-mode1"][data-name="color"]')
-    Array.from(elements, (mode) => {
-        const colorclass = mode.getAttribute('data-value');
-        if(colorclass === custombodyclass ){
-            mode.classList.add('active')
-        }
-        else{
-            mode.classList.remove('active')
-        }
-    })
+    // const elements = document.querySelectorAll('[data-setting="color-mode1"][data-name="color"]')
+    // Array.from(elements, (mode) => {
+    //     const colorclass = mode.getAttribute('data-value');
+    //     if(colorclass === custombodyclass ){
+    //         mode.classList.add('active')
+    //     }
+    //     else{
+    //         mode.classList.remove('active')
+    //     }
+    // })
     }
 
     const elements = document.querySelectorAll('[data-setting="color-mode1"][data-name="color"]')

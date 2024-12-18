@@ -16,10 +16,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{ env('APP_NAME') }}</title>
 
-    <script src="{{ asset('assets/js/detect-dark-mode.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    @livewireStyles
 
     <base href="{{ url()->current() }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    {{-- <script src="{{ asset('assets/js/detect-dark-mode.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 
     @include('layouts.analytics')
     @stack('sidebar-stylesheets')
@@ -66,21 +69,36 @@
     <!-- RTL Css -->
     <link rel="stylesheet" href="{{ asset('assets/css/rtl.min.css') }}" />
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('assets/linkstack/css/hover-min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/linkstack/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/external-dependencies/bootstrap-icons.css') }}">
+{{-- <style>
+    body * {
+        animation-name: loadfade;
+        animation-duration: .6s;
+        animation-fill-mode: both;
+    }
 
+@keyframes loadfade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+</style> --}}
 </head>
-
-<body class="  ">
-    <!-- loader Start -->
+<body class="{{$_COOKIE['color-mode'] ?? 'auto'}}">
+    {{-- <!-- loader Start -->
     <div id="loading">
-        <div class="loader simple-loader">
+        <div id="loader" class="loader simple-loader">
             <div class="loader-body"></div>
         </div>
     </div>
-    <!-- loader END -->
+    <script>document.getElementById('loader').style.backgroundColor = colorMode === 'dark' ? '#222738' : '';</script>
+    <!-- loader END --> --}}
 
     <aside class="sidebar sidebar-default sidebar-white sidebar-base navs-rounded-all ">
         <div class="sidebar-header d-flex align-items-center justify-content-start">
@@ -136,7 +154,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(1) == 'dashboard' ? 'active' : 'bg-soft-primary' }}"
-                            aria-current="page" href="{{ route('panelIndex') }}">
+                            aria-current="page" href="{{ route('panelIndex') }}" wire:navigate>
                             <i class="icon">
                                 <svg width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg" class="icon-20">
@@ -150,7 +168,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(2) == 'add-link' ? 'active' : '' }}"
-                            aria-current="page" href="{{ url('/studio/add-link') }}">
+                            aria-current="page" href="{{ url('/studio/add-link') }}" wire:navigate>
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -166,7 +184,7 @@
                     </li>
                     @if (auth()->user()->role == 'admin')
                         <li class="nav-item static-item">
-                            <a class="nav-link static-item disabled" href="#" tabindex="-1">
+                            <a class="nav-link static-item disabled" href="#" tabindex="-1" wire:navigate>
                                 <span class="default-icon">{{ __('messages.Administration') }}</span>
                                 <span class="mini-icon">-</span>
                             </a>
@@ -194,28 +212,28 @@
                             <ul class="sub-nav collapse" id="utilities-error" data-bs-parent="#sidebar-menu">
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::segment(2) == 'config' ? 'active' : '' }}"
-                                        href="{{ url('admin/config') }}">
+                                        href="{{ url('admin/config') }}" wire:navigate>
                                         <i class="bi bi-wrench-adjustable-circle-fill"></i>
                                         <span class="item-name">{{ __('messages.Config') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::segment(2) == 'users' ? 'active' : '' }}"
-                                        href="{{ url('admin/users/all') }}">
+                                        href="{{ url('admin/users/all') }}" wire:navigate>
                                         <i class="bi bi-people-fill"></i>
                                         <span class="item-name">{{ __('messages.Manage Users') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::segment(2) == 'pages' ? 'active' : '' }}"
-                                        href="{{ url('admin/pages') }}">
+                                        href="{{ url('admin/pages') }}" wire:navigate>
                                         <i class="bi bi-collection-fill"></i>
                                         <span class="item-name">{{ __('messages.Footer Pages') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::segment(2) == 'site' ? 'active' : '' }}"
-                                        href="{{ url('admin/site') }}">
+                                        href="{{ url('admin/site') }}" wire:navigate>
                                         <i class="bi bi-palette-fill"></i>
                                         <span class="item-name">{{ __('messages.Site Customization') }}</span>
                                     </a>
@@ -231,7 +249,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(2) == 'links' ? 'active' : '' }}"
-                            href="{{ url('/studio/links') }}">
+                            href="{{ url('/studio/links') }}" wire:navigate>
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -245,7 +263,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(2) == 'page' ? 'active' : '' }}"
-                            href="{{ url('/studio/page') }}">
+                            href="{{ url('/studio/page') }}" wire:navigate>
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -259,7 +277,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(2) == 'theme' ? 'active' : '' }}"
-                            href="{{ url('/studio/theme') }}">
+                            href="{{ url('/studio/theme') }}" wire:navigate>
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -421,7 +439,7 @@
                                         $(document).ready(function() {
                                             async function fetchAndReplaceContent() {
                                                 try {
-                                                    const response = await $.ajax({
+                                                    var response = await $.ajax({
                                                         url: "{{ url('/dashboard/notifications') }}",
                                                         method: 'GET',
                                                         dataType: 'html'
@@ -492,11 +510,11 @@ MODAL; // <-- Indentation breaks my code editor :/
                                     @if(auth()->user()->role == 'admin')
                                     @push('sidebar-scripts')
                                     <script>
-                                        const isVisible = true;
+                                        var isVisible = true;
 
                                         async function externalFileGetContents(url) {
                                             try {
-                                                const response = await fetch(url, {
+                                                var response = await fetch(url, {
                                                     method: 'GET',
                                                     redirect: 'follow' // This ensures that redirects are followed
                                                 });
@@ -506,7 +524,7 @@ MODAL; // <-- Indentation breaks my code editor :/
                                                     return null;
                                                 }
 
-                                                const data = await response.text();
+                                                var data = await response.text();
                                                 return data.trim();
                                             } catch (error) {
                                                 console.error(`Error fetching the URL: ${error.message}`);
@@ -526,9 +544,9 @@ MODAL; // <-- Indentation breaks my code editor :/
                                     @if (env('JOIN_BETA') == true)
                                         <script>                                
                                             window.onload = async function() {
-                                                const Vbeta = await externalFileGetContents('{{"{$betaServer}vbeta.json"}}');
+                                                var Vbeta = await externalFileGetContents('{{"{$betaServer}vbeta.json"}}');
                                             
-                                                const isVisible = true;
+                                                var isVisible = true;
 
                                                 $('#beta-version').text(Vbeta);
                                             
@@ -543,10 +561,10 @@ MODAL; // <-- Indentation breaks my code editor :/
                                     @else
                                         <script>                                
                                             window.onload = async function() {
-                                                const Vgit = await externalFileGetContents('{{$versionServer}}');
-                                                const Vlocal = `{{ trim($Vlocal) }}`;
+                                                var Vgit = await externalFileGetContents('{{$versionServer}}');
+                                                var Vlocal = `{{ trim($Vlocal) }}`;
                                             
-                                                const isVisible = Vgit > Vlocal;
+                                                var isVisible = Vgit > Vlocal;
                                             
                                                 var updateElements = document.getElementsByClassName('update-icon-update');
                                                 var normalElements = document.getElementsByClassName('update-icon-normal');
@@ -1164,7 +1182,7 @@ MODAL; // <-- Indentation breaks my code editor :/
     <script src="{{ asset('assets/vendor/aos/dist/aos.js') }}"></script>
 
     <!-- App Script -->
-    <script src="{{ asset('assets/js/hope-ui.js') }}" defer></script>
+    <script src="{{ asset('assets/js/hope-ui.js') }}" defer data-navigate-track></script>
 
     <!-- Flatpickr Script -->
     <script src="{{ asset('assets/vendor/flatpickr/dist/flatpickr.min.js') }}"></script>
@@ -1175,13 +1193,13 @@ MODAL; // <-- Indentation breaks my code editor :/
     <!-- Share Button -->
     <script>
         // Get a reference to all buttons with the class "share-button"
-        const shareButtons = document.querySelectorAll('.share-button');
+        var shareButtons = document.querySelectorAll('.share-button');
 
         // Add a click event listener to each button
         shareButtons.forEach(button => {
             button.addEventListener('click', () => {
                 // Get the value to share/copy from the "data-share" attribute
-                const valueToShare = button.dataset.share;
+                var valueToShare = button.dataset.share;
 
                 // Check if the Web Share API is supported
                 if (navigator.share) {
@@ -1216,6 +1234,23 @@ MODAL; // <-- Indentation breaks my code editor :/
 
     @stack('sidebar-scripts')
 
+    {{-- @livewireScriptConfig 
+    <script data-navigate-once="true">window.livewireScriptConfig.progressBar = true;</script>  --}}
+    <script src="{{ asset('assets/vendor/livewire/livewire.js') }}" data-update-uri="/livewire/update" data-navigate-once="true"></script>
+    <script>
+    
+    document.addEventListener("livewire:navigated", () => {
+        if (typeof Alpine !== 'undefined' && Alpine.start) {
+    console.log("Alpine.js is running!");
+} else {
+    console.log("Alpine.js is not running.");
+    Alpine.start();
+}
+    });
+
+    document.addEventListener("alpine:init",()=>{console.log("Alpine initialized")})
+    
+    </script>
 </body>
 
 </html>
