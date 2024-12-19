@@ -3,7 +3,9 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Request;
 use Throwable;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -38,10 +40,32 @@ class Handler extends ExceptionHandler
             //
         });
 
-        $this->renderable(function (\Exception $e) {
-            if ($e->getPrevious() instanceof \Illuminate\Session\TokenMismatchException) {
-                return redirect()->route('login');
-            };
+        $this->renderable(function (Throwable $e, Request $request) {
+
+            try {
+            // Check if the request matches a specific route
+            if ($request->is('dashboard') || 
+                    $request->is('dashboard/*') || 
+                    $request->is('admin/*') || 
+                    $request->is('studio/*')) {
+                    
+                // Handle 404 errors for this specific route
+                if ($e instanceof NotFoundHttpException) {
+                    $message = "The page you are looking for was not found.";
+                    return response()->view('errors.dashboard-error', compact('message'), 404);
+                }
+
+                // Handle general exceptions for this specific route
+
+                $error = $e;
+                $message = $e->getMessage();
+                return response()->view('errors.dashboard-error', compact(['error', 'message']), 500);
+            }
+
+            // Default exception handling for other routes
+            return parent::render($request, $e);
+            } catch (Throwable $e) {}
+
         });
     }
 }
