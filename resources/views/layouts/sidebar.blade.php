@@ -159,7 +159,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(1) == 'dashboard' ? 'active' : 'bg-soft-primary' }}"
-                            aria-current="page" href="{{ route('panelIndex') }}" wire:navigate>
+                            aria-current="page" href="{{ route('panelIndex') }}" wire:current="active" wire:navigate>
                             <i class="icon">
                                 <svg width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg" class="icon-20">
@@ -173,7 +173,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(2) == 'add-link' ? 'active' : '' }}"
-                            aria-current="page" href="{{ url('/studio/add-link') }}" wire:navigate>
+                            aria-current="page" href="{{ url('/studio/add-link') }}" wire:current="active" wire:navigate>
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -189,14 +189,14 @@
                     </li>
                     @if (auth()->user()->role == 'admin')
                         <li class="nav-item static-item">
-                            <a class="nav-link static-item disabled" href="#" tabindex="-1" wire:navigate>
+                            <a class="nav-link static-item disabled" href="#" tabindex="-1">
                                 <span class="default-icon">{{ __('messages.Administration') }}</span>
                                 <span class="mini-icon">-</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" href="#utilities-error" role="button"
-                                aria-expanded="false" aria-controls="utilities-error">
+                            <a id="admin-toggle" class="nav-link" data-bs-toggle="collapse" href="#admin-section" role="button"
+                                aria-expanded="false" aria-controls="admin-section">
                                 <i class="icon">
                                     <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -214,31 +214,31 @@
                                     </svg>
                                 </i>
                             </a>
-                            <ul class="sub-nav collapse" id="utilities-error" data-bs-parent="#sidebar-menu">
+                            <ul class="sub-nav collapse" id="admin-section" data-bs-parent="#sidebar-menu">
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::segment(2) == 'config' ? 'active' : '' }}"
-                                        href="{{ url('admin/config') }}" wire:navigate>
+                                        href="{{ url('admin/config') }}" wire:current="active" wire:navigate>
                                         <i class="bi bi-wrench-adjustable-circle-fill"></i>
                                         <span class="item-name">{{ __('messages.Config') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::segment(2) == 'users' ? 'active' : '' }}"
-                                        href="{{ url('admin/users/all') }}" wire:navigate>
+                                        href="{{ url('admin/users/all') }}" wire:current="active" wire:navigate>
                                         <i class="bi bi-people-fill"></i>
                                         <span class="item-name">{{ __('messages.Manage Users') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::segment(2) == 'pages' ? 'active' : '' }}"
-                                        href="{{ url('admin/pages') }}" wire:navigate>
+                                        href="{{ url('admin/pages') }}" wire:current="active" wire:navigate>
                                         <i class="bi bi-collection-fill"></i>
                                         <span class="item-name">{{ __('messages.Footer Pages') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::segment(2) == 'site' ? 'active' : '' }}"
-                                        href="{{ url('admin/site') }}" wire:navigate>
+                                        href="{{ url('admin/site') }}" wire:current="active" wire:navigate>
                                         <i class="bi bi-palette-fill"></i>
                                         <span class="item-name">{{ __('messages.Site Customization') }}</span>
                                     </a>
@@ -254,7 +254,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(2) == 'links' ? 'active' : '' }}"
-                            href="{{ url('/studio/links') }}" wire:navigate>
+                            href="{{ url('/studio/links') }}" wire:current="active" wire:navigate>
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -268,7 +268,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(2) == 'page' ? 'active' : '' }}"
-                            href="{{ url('/studio/page') }}" wire:navigate>
+                            href="{{ url('/studio/page') }}" wire:current="active" wire:current="active" wire:navigate>
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -282,7 +282,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(2) == 'theme' ? 'active' : '' }}"
-                            href="{{ url('/studio/theme') }}" wire:navigate>
+                            href="{{ url('/studio/theme') }}" wire:current="active" wire:navigate>
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -1237,6 +1237,19 @@ MODAL; // <-- Indentation breaks my code editor :/
     <script src="{{ asset('assets/js/main-dashboard.js') }}"></script>
 
     @stack('sidebar-scripts')
+
+    <script>
+    document.addEventListener('livewire:navigated', () => {
+        var collapseElement = document.getElementById("admin-section");
+        if (collapseElement && window.location.href.includes('admin')) {
+            collapseElement.classList.add("show");
+            var toggleElement = document.getElementById("admin-toggle");
+            if (toggleElement) {
+                toggleElement.setAttribute("aria-expanded", "true");
+            }
+        }
+    }, { once: true });
+    </script>
     @livewireScripts
 </body>
 </html>
