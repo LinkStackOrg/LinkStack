@@ -5,6 +5,13 @@
     $usrhandl = Auth::user()->littlelink_name;
 
     $spa = env('SPA_MODE', false);
+    
+    $colorMode = null;
+    if (isset($_COOKIE['color-mode'])) {
+        $colorMode = $_COOKIE['color-mode'];
+    } else {
+        $colorMode = 'auto';
+    }
 
     $betaServer    = env('BETA_SERVER', 'https://beta.linkstack.org/');
     $versionServer = env('VERSION_SERVER', 'https://version.linkstack.org/');
@@ -150,11 +157,11 @@
     <script src="{{ asset('assets/js/main-dashboard.js') }}"></script>
     <script src="{{ asset('assets/vendor/livewire/core.min.js') }}"></script>
 </head>
-<body class="{{$_COOKIE['color-mode'] ?? 'auto'}}">
+<body class="{{$colorMode ?? 'auto'}}">
     @if(!$spa)
         <!-- loader Start -->
         <div id="loading">
-            <div id="loader" @if($_COOKIE['color-mode'] == 'dark')style="background:#222738"@endif class="loader simple-loader">
+            <div id="loader" @if($colorMode == 'dark')style="background:#222738"@endif class="loader simple-loader">
                 <div class="loader-body"></div>
             </div>
         </div>
