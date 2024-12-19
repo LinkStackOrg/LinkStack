@@ -276,6 +276,9 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 
 <a name="Panel-settings"><h2 class="ch2">{{__('messages.Panel settings')}}</h2></a>
 
+{{toggle('SPA_MODE')}}
+
+
 {{toggle('NOTIFY_EVENTS')}}
 
 

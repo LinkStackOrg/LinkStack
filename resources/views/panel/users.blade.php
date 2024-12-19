@@ -124,14 +124,14 @@
     </div>
 
     @push('sidebar-stylesheets')
-        @if(false)
+        @if(!env('SPA_MODE', false))
             @livewireStyles
         @endif
         <link rel="stylesheet" href="{{ asset('assets/vendor/livewire/core.min.css') }}" />
     @endpush
 
     @push('sidebar-scripts')
-        @if(false)
+        @if(!env('SPA_MODE', false))
             @livewireScripts
             <script src="{{ asset('assets/vendor/livewire/core.min.js') }}"></script>
         @endif

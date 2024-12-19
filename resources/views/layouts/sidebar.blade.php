@@ -4,6 +4,8 @@
     use App\Models\UserData;
     $usrhandl = Auth::user()->littlelink_name;
 
+    $spa = env('SPA_MODE', false);
+
     $betaServer    = env('BETA_SERVER', 'https://beta.linkstack.org/');
     $versionServer = env('VERSION_SERVER', 'https://version.linkstack.org/');
 @endphp
@@ -16,7 +18,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{ env('APP_NAME') }}</title>
 
-    @livewireStyles
+    @if($spa)
+        @livewireStyles
+    @endif
 
     <base href="{{ url()->current() }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -71,29 +75,12 @@
     <link rel="stylesheet" href="{{ asset('assets/linkstack/css/hover-min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/linkstack/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/external-dependencies/bootstrap-icons.css') }}">
-{{-- <style>
-    body * {
-        animation-name: loadfade;
-        animation-duration: .6s;
-        animation-fill-mode: both;
-    }
 
-@keyframes loadfade {
-  from {
-    opacity: 0;
-  }
+    <!-- Library Bundle Script -->
+    <script src="{{ asset('assets/js/core/libs.min.js') }}"></script>
 
-  to {
-    opacity: 1;
-  }
-}
-</style> --}}
-
-<!-- Library Bundle Script -->
-<script src="{{ asset('assets/js/core/libs.min.js') }}"></script>
-
-<!-- App Script -->
-<script src="{{ asset('assets/js/hope-ui.js') }}" defer></script>
+    <!-- App Script -->
+    <script src="{{ asset('assets/js/hope-ui.js') }}" defer></script>
 
 
     <!-- External Library Bundle Script -->
@@ -101,10 +88,6 @@
 
     <!-- Widgetchart Script -->
     <script src="{{ asset('assets/js/charts/widgetcharts.js') }}"></script>
-
-    <!-- mapchart Script -->
-    <script src="{{ asset('assets/js/charts/vectore-chart.js') }}"></script>
-    <script src="{{ asset('assets/js/charts/dashboard.js') }}"></script>
 
     <!-- fslightbox Script -->
     <script src="{{ asset('assets/js/plugins/fslightbox.js') }}"></script>
@@ -168,14 +151,15 @@
     <script src="{{ asset('assets/vendor/livewire/core.min.js') }}"></script>
 </head>
 <body class="{{$_COOKIE['color-mode'] ?? 'auto'}}">
-    {{-- <!-- loader Start -->
-    <div id="loading">
-        <div id="loader" class="loader simple-loader">
-            <div class="loader-body"></div>
+    @if(!$spa)
+        <!-- loader Start -->
+        <div id="loading">
+            <div id="loader" @if($_COOKIE['color-mode'] == 'dark')style="background:#222738"@endif class="loader simple-loader">
+                <div class="loader-body"></div>
+            </div>
         </div>
-    </div>
-    <script>document.getElementById('loader').style.backgroundColor = colorMode === 'dark' ? '#222738' : '';</script>
-    <!-- loader END --> --}}
+        <!-- loader END -->
+    @endif
 
     <aside class="sidebar sidebar-default sidebar-white sidebar-base navs-rounded-all ">
         <div class="sidebar-header d-flex align-items-center justify-content-start">
@@ -1238,6 +1222,10 @@ MODAL; // <-- Indentation breaks my code editor :/
     <!-- Settings Script -->
     <script src="{{ asset('assets/js/plugins/setting.js') }}"></script>
 
+    <!-- mapchart Script -->
+    <script src="{{ asset('assets/js/charts/vectore-chart.js') }}"></script>
+    <script src="{{ asset('assets/js/charts/dashboard.js') }}"></script>
+
     @stack('sidebar-scripts')
 
     {{-- <script src="{{ asset('assets/js/detect-dark-mode.js') }}"></script> --}}
@@ -1254,6 +1242,9 @@ MODAL; // <-- Indentation breaks my code editor :/
         }
     }, { once: true });
     </script>
-    @livewireScripts
+
+    @if($spa)
+        @livewireScripts
+    @endif
 </body>
 </html>

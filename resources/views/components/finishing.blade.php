@@ -162,6 +162,12 @@ if (EnvEditor::keyExists('ALLOW_REGISTRATION')) {
     }
 }
 
+if (EnvEditor::keyExists('SPA_MODE')) {
+    /* Do nothing if key already exists */
+} else {
+    EnvEditor::addKey('SPA_MODE', 'false');
+}
+
 try {
     $file = base_path('storage/RSTAC');
     if (file_exists($file)) {

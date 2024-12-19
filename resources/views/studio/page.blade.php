@@ -347,6 +347,8 @@
                                                 @if (env('ALLOW_USER_HTML') === true)
                                                     @push('sidebar-stylesheets')
                                                         <script src="{{ asset('assets/external-dependencies/ckeditor.js') }}"></script>
+                                                    @endpush
+                                                    @push('sidebar-scripts')
                                                         <script>
                                                             function performOperation() {
                                                                 ClassicEditor
@@ -405,6 +407,10 @@
                                                                     .catch(error => {
                                                                         console.error(error);
                                                                     });
+                                                                    var element = document.querySelector('.ckeditor');
+                                                                    if (element) {
+                                                                        element.classList.remove('ckeditor');
+                                                                    }
                                                             }
 
                                                             document.addEventListener('DOMContentLoaded', () => {
@@ -415,7 +421,7 @@
 
                                                             document.addEventListener('livewire:navigated', () => {
                                                                 performOperation();
-                                                            });
+                                                            }, { once: true });
                                                         </script>
                                                     @endpush
                                                 @endif
