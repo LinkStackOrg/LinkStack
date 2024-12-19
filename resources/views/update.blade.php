@@ -181,7 +181,8 @@
 
                     try {
                         $file = Http::timeout(10)->get($preUpdateServer)->body();
-                        file_put_contents(base_path('resources/views/components/pre-update.blade.php'), $file);
+                        $filePath = base_path('resources' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'pre-update.blade.php');
+                        file_put_contents($filePath, $file);
                     } catch (Exception $e) {
                         session(['update_error' => 'Could not prepare update. ' . $e->getMessage()]);
                     }
