@@ -1226,7 +1226,7 @@ MODAL; // <-- Indentation breaks my code editor :/
 
     <!-- mapchart Script -->
     {{-- <script src="{{ asset('assets/js/charts/vectore-chart.js') }}"></script> --}}
-    {{-- <script src="{{ asset('assets/js/charts/dashboard.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/charts/dashboard.js') }}"></script>
 
     @stack('sidebar-scripts')
 
