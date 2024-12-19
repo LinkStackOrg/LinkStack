@@ -81,7 +81,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                              @for ($ii = 0; $ii < 4; $ii++)
+                                              @for ($ii = 0; $ii < 3; $ii++)
                                                 <tr>
                                                     @for ($i = 0; $i < 5; $i++)
                                                       <td><div class="placeholder"></div></td>
