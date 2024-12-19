@@ -49,7 +49,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/core/libs.min.css') }}" />
 
     <!-- Aos Animation Css -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/aos/dist/aos.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('assets/vendor/aos/dist/aos.css') }}" /> --}}
 
     @include('layouts.fonts')
 
@@ -70,7 +70,7 @@
     @endif
 
     <!-- RTL Css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/rtl.min.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('assets/css/rtl.min.css') }}" /> --}}
 
     <link rel="stylesheet" href="{{ asset('assets/linkstack/css/hover-min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/linkstack/css/animate.css') }}">
@@ -87,25 +87,25 @@
     <script src="{{ asset('assets/js/core/external.min.js') }}"></script>
 
     <!-- Widgetchart Script -->
-    <script src="{{ asset('assets/js/charts/widgetcharts.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/charts/widgetcharts.js') }}"></script> --}}
 
     <!-- fslightbox Script -->
-    <script src="{{ asset('assets/js/plugins/fslightbox.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/plugins/fslightbox.js') }}"></script> --}}
 
     <!-- Slider-tab Script -->
     {{-- <script src="{{ asset('assets/js/plugins/slider-tabs.js') }}"></script> --}}
 
     <!-- Form Wizard Script -->
-    <script src="{{ asset('assets/js/plugins/form-wizard.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/plugins/form-wizard.js') }}"></script> --}}
 
     <!-- AOS Animation Plugin-->
-    <script src="{{ asset('assets/vendor/aos/dist/aos.js') }}"></script>
+    {{-- <script src="{{ asset('assets/vendor/aos/dist/aos.js') }}"></script> --}}
 
     <!-- Flatpickr Script -->
     {{-- <script src="{{ asset('assets/vendor/flatpickr/dist/flatpickr.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/flatpickr.js') }}" defer></script> --}}
 
-    <script src="{{ asset('assets/js/plugins/prism.mini.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/plugins/prism.mini.js') }}"></script> --}}
 
     <!-- Share Button -->
     <script>
@@ -163,7 +163,7 @@
 
     <aside class="sidebar sidebar-default sidebar-white sidebar-base navs-rounded-all ">
         <div class="sidebar-header d-flex align-items-center justify-content-start">
-            <a href="{{ route('panelIndex') }}" class="navbar-brand">
+            <a href="{{ route('panelIndex') }}" class="navbar-brand" wire:navigate>
 
                 <!--Logo start-->
                 <div class="logo-main">
@@ -803,9 +803,9 @@ MODAL; // <-- Indentation breaks my code editor :/
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{{ url('/studio/page') }}"><i
+                                    <li><a class="dropdown-item" href="{{ url('/studio/page') }}" wire:navigate><i
                                                 class="bi bi-person-fill"></i> {{ __('messages.Profile') }}</a></li>
-                                    <li><a class="dropdown-item" href="{{ url('/studio/profile') }}"><i
+                                    <li><a class="dropdown-item" href="{{ url('/studio/profile') }}" wire:navigate><i
                                                 class="bi bi-gear-fill"></i> {{ __('messages.Settings') }}</a></li>
                                     <li><a class="dropdown-item" data-bs-toggle="offcanvas"
                                             data-bs-target="#offcanvasExample" role="button"
@@ -1223,8 +1223,8 @@ MODAL; // <-- Indentation breaks my code editor :/
     <script src="{{ asset('assets/js/plugins/setting.js') }}"></script>
 
     <!-- mapchart Script -->
-    <script src="{{ asset('assets/js/charts/vectore-chart.js') }}"></script>
-    <script src="{{ asset('assets/js/charts/dashboard.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/charts/vectore-chart.js') }}"></script> --}}
+    {{-- <script src="{{ asset('assets/js/charts/dashboard.js') }}"></script> --}}
 
     @stack('sidebar-scripts')
 
