@@ -1,6 +1,4 @@
-
-
-
+<?php include app_path("View/Includes/DarkMode.php"); ?>
 <!doctype html>
 @include('layouts.lang')
   <head>
@@ -19,8 +17,6 @@
       @else
       <link rel="icon" type="image/svg+xml" href="{{ asset('assets/linkstack/images/logo.svg') }}">
       @endif
-      
-      <script src="{{asset('assets/js/detect-dark-mode.js')}}"></script>
 
       <!-- Library / Plugin Css Build -->
       <link rel="stylesheet" href="{{asset('assets/css/core/libs.min.css')}}" />
@@ -69,7 +65,7 @@ if ($_SERVER['QUERY_STRING'] != '') {
 
 @endphp
 
-  <body>
+<body class="{{ $colorMode ?? null }}">
     <div class="container-fluid">
         <div class="align-items-center justify-content-center d-flex min-vh-100">
             <div class="col-10 col-sm-8 col-md-6 col-lg-5">

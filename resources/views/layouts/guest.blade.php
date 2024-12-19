@@ -1,3 +1,4 @@
+<?php include app_path("View/Includes/DarkMode.php"); ?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -7,8 +8,6 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <script src="{{asset('assets/js/detect-dark-mode.js')}}"></script>
 
 		@if(file_exists(base_path("assets/linkstack/images/").findFile('favicon')))
 		<link rel="icon" type="image/png" href="{{ asset('assets/linkstack/images/'.findFile('favicon')) }}">
@@ -51,7 +50,7 @@
 
 	  <link rel="stylesheet" href="{{ asset('assets/external-dependencies/bootstrap-icons.css') }}">
     </head>
-    <body>
+    <body class="{{ $colorMode ?? null }}">
 
             {{ $slot }}
 

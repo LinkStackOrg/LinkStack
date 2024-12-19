@@ -1,6 +1,4 @@
-
-
-
+<?php include app_path("View/Includes/DarkMode.php"); ?>
 <!doctype html>
 @include('layouts.lang')
   <head>
@@ -20,7 +18,6 @@
       <link rel="icon" type="image/svg+xml" href="{{ asset('assets/linkstack/images/logo.svg') }}">
       @endif
       
-      <script src="{{asset('assets/js/detect-dark-mode.js')}}"></script>
       <link rel="stylesheet" href="{{ asset('assets/external-dependencies/bootstrap-icons.css') }}">
 
       <!-- Library / Plugin Css Build -->
@@ -51,7 +48,7 @@
       <link rel="stylesheet" href="{{asset('assets/css/rtl.min.css')}}" />
   </head>
 
-<body>
+  <body class="{{ $colorMode ?? null }}">
         <!--Nav Start-->
         <nav class="nav navbar navbar-expand-lg navbar-light iq-navbar">
             <div class="container-fluid navbar-inner">

@@ -2,16 +2,11 @@
     use SimpleSoftwareIO\QrCode\Facades\QrCode;
     use App\Models\User;
     use App\Models\UserData;
+    include app_path("View/Includes/DarkMode.php");
+
     $usrhandl = Auth::user()->littlelink_name;
 
     $spa = env('SPA_MODE', false);
-    
-    $colorMode = null;
-    if (isset($_COOKIE['color-mode'])) {
-        $colorMode = $_COOKIE['color-mode'];
-    } else {
-        $colorMode = 'auto';
-    }
 
     $betaServer    = env('BETA_SERVER', 'https://beta.linkstack.org/');
     $versionServer = env('VERSION_SERVER', 'https://version.linkstack.org/');
@@ -157,11 +152,11 @@
     <script src="{{ asset('assets/js/main-dashboard.js') }}"></script>
     <script src="{{ asset('assets/vendor/livewire/core.min.js') }}"></script>
 </head>
-<body class="{{$colorMode ?? 'auto'}}">
+<body class="{{ $colorMode ?? null }}">
     @if(!$spa)
         <!-- loader Start -->
         <div id="loading">
-            <div id="loader" @if($colorMode == 'dark')style="background:#222738"@endif class="loader simple-loader">
+            <div id="loader" @if(isset($colorMode) && $colorMode == 'dark')style="background:#222738"@endif class="loader simple-loader">
                 <div class="loader-body"></div>
             </div>
         </div>
@@ -1207,10 +1202,6 @@ MODAL; // <-- Indentation breaks my code editor :/
             </div>
         </div>
     </div>
-
-    @if($colorMode == 'auto')
-        <script src="{{asset('assets/js/detect-dark-mode.js')}}"></script>
-    @endif
 
     {{-- Unused. Download for removed PNG QR Code generation feature. --}}
     {{-- <script>

@@ -1,6 +1,4 @@
-
-
-
+<?php include app_path("View/Includes/DarkMode.php"); ?>
 <!doctype html>
 @include('layouts.lang')
   <head>
@@ -47,8 +45,6 @@
       @else
       <link rel="icon" type="image/svg+xml" href="{{ asset('assets/linkstack/images/logo.svg') }}">
       @endif
-      
-      <script src="{{asset('assets/js/detect-dark-mode.js')}}"></script>
 
       <!-- Library / Plugin Css Build -->
       <link rel="stylesheet" href="{{asset('assets/css/core/libs.min.css')}}" />
@@ -85,7 +81,7 @@
   foreach($pages as $page){}
   @endphp
 
-  <body class=" " data-bs-spy="scroll" data-bs-target="#elements-section" data-bs-offset="0" tabindex="0">
+  <body class="{{ $colorMode ?? null }}" data-bs-spy="scroll" data-bs-target="#elements-section" data-bs-offset="0" tabindex="0">
         <!--Nav Start-->
         <nav class="nav navbar navbar-expand-lg navbar-light iq-navbar fixed-top">
           <div class="container-fluid navbar-inner">
