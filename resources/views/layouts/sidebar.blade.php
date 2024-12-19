@@ -88,6 +88,12 @@
   }
 }
 </style> --}}
+
+<!-- Library Bundle Script -->
+<script src="{{ asset('assets/js/core/libs.min.js') }}"></script>
+
+<!-- App Script -->
+<script src="{{ asset('assets/js/hope-ui.js') }}" defer></script>
 </head>
 <body class="{{$_COOKIE['color-mode'] ?? 'auto'}}">
     {{-- <!-- loader Start -->
@@ -1157,9 +1163,6 @@ MODAL; // <-- Indentation breaks my code editor :/
         });
     </script> --}}
 
-    <!-- Library Bundle Script -->
-    <script src="{{ asset('assets/js/core/libs.min.js') }}"></script>
-
     <!-- External Library Bundle Script -->
     <script src="{{ asset('assets/js/core/external.min.js') }}"></script>
 
@@ -1184,9 +1187,6 @@ MODAL; // <-- Indentation breaks my code editor :/
 
     <!-- AOS Animation Plugin-->
     <script src="{{ asset('assets/vendor/aos/dist/aos.js') }}"></script>
-
-    <!-- App Script -->
-    <script src="{{ asset('assets/js/hope-ui.js') }}" defer></script>
 
     <!-- Flatpickr Script -->
     {{-- <script src="{{ asset('assets/vendor/flatpickr/dist/flatpickr.min.js') }}"></script>
@@ -1237,18 +1237,6 @@ MODAL; // <-- Indentation breaks my code editor :/
     <script src="{{ asset('assets/js/main-dashboard.js') }}"></script>
 
     @stack('sidebar-scripts')
-    
-    {{-- <script>
-    document.addEventListener("livewire:navigated", () => {
-        if (document.getElementById('SvgjsSvg1001')) {
-            // Your code to run if the element exists
-            console.log('Element SvgjsSvg1001 exists!');
-        } else {
-            // Your code to run if the element does not exist
-            // console.log('Element SvgjsSvg1001 does not exist.');
-        }
-    });
-    </script> --}}
     @livewireScripts
 </body>
 </html>

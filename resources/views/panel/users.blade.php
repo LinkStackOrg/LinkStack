@@ -98,15 +98,13 @@
                                         </section>
 
                                         <script>
-                                            document.addEventListener('DOMContentLoaded', function() {
-                                                Livewire.on('table-loaded', () => {
-                                                  document.getElementById('loading-spinner').style.display = 'none';
+                                            document.addEventListener('table-loaded', function() {
+                                                document.getElementById('loading-spinner').style.display = 'none';
                                                     setTimeout(() => {
                                                         attachClickEventListeners('confirmation', confirmIt);
                                                         attachClickEventListeners('user-email', handleUserClick);
                                                         attachClickEventListeners('user-block', handleUserClick);
                                                     }, 500);
-                                                })
                                             });
                                         </script>
 
