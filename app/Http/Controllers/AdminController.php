@@ -76,20 +76,6 @@ class AdminController extends Controller
                 Carbon::now()->subDays(7),
                 Carbon::now()->subHours(24)
             ])->first();
-                                        
-            $pageStats = [
-                'visitors' => [
-                    'all' => visits('App\Models\User', $littlelink_name)->count(),
-                    'day' => visits('App\Models\User', $littlelink_name)->period('day')->count(),
-                    'week' => visits('App\Models\User', $littlelink_name)->period('week')->count(),
-                    'month' => visits('App\Models\User', $littlelink_name)->period('month')->count(),
-                    'year' => visits('App\Models\User', $littlelink_name)->period('year')->count(),
-                ],
-                'os' => visits('App\Models\User', $littlelink_name)->operatingSystems(),
-                'referers' => visits('App\Models\User', $littlelink_name)->refs(),
-                'countries' => visits('App\Models\User', $littlelink_name)->countries(),
-            ];
-
         }
     
         return view('studio/index', [
@@ -105,7 +91,6 @@ class AdminController extends Controller
             'updatedLast7DaysCount' => $userCounts->updatedLast7DaysCount ?? 0,
             'updatedLast24HrsCount' => $userCounts->updatedLast24HrsCount ?? 0,
             'toplinks' => $topLinks ?? [],
-            'pageStats' => $pageStats ?? 0,
         ]);
     }
 

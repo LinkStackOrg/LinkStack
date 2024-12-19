@@ -63,22 +63,7 @@ class UserController extends Controller
             ->whereNotNull('link')->where('link', '<>', '')
             ->take(5)->get();
 
-        $pageStats = [
-            'visitors' => [
-                'all' => visits('App\Models\User', $littlelink_name)->count(),
-                'day' => visits('App\Models\User', $littlelink_name)->period('day')->count(),
-                'week' => visits('App\Models\User', $littlelink_name)->period('week')->count(),
-                'month' => visits('App\Models\User', $littlelink_name)->period('month')->count(),
-                'year' => visits('App\Models\User', $littlelink_name)->period('year')->count(),
-            ],
-            'os' => visits('App\Models\User', $littlelink_name)->operatingSystems(),
-            'referers' => visits('App\Models\User', $littlelink_name)->refs(),
-            'countries' => visits('App\Models\User', $littlelink_name)->countries(),
-        ];
-
-
-
-        return view('studio/index', ['greeting' => $userinfo->name, 'toplinks' => $topLinks, 'links' => $links, 'clicks' => $clicks, 'pageStats' => $pageStats]);
+        return view('studio/index', ['greeting' => $userinfo->name, 'toplinks' => $topLinks, 'links' => $links, 'clicks' => $clicks]);
     }
 
     //Show littlelink page. example => http://127.0.0.1:8000/+admin
