@@ -124,13 +124,17 @@
     </div>
 
     @push('sidebar-stylesheets')
-        {{-- @livewireStyles --}}
+        @if(false)
+            @livewireStyles
+        @endif
         <link rel="stylesheet" href="{{ asset('assets/vendor/livewire/core.min.css') }}" />
     @endpush
 
     @push('sidebar-scripts')
-        {{-- <script src="{{ asset('assets/vendor/livewire/livewire.js') }}" data-update-uri="/livewire/update" data-navigate-once="true"></script> --}}
-        <script src="{{ asset('assets/vendor/livewire/core.min.js') }}"></script>
+        @if(false)
+            @livewireScripts
+            <script src="{{ asset('assets/vendor/livewire/core.min.js') }}"></script>
+        @endif
         <script src="{{ asset('assets/external-dependencies/sweetalert2.min.js') }}"></script>
         <script type="text/javascript">
             // Function to confirm and delete users

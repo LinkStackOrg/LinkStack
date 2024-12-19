@@ -94,6 +94,78 @@
 
 <!-- App Script -->
 <script src="{{ asset('assets/js/hope-ui.js') }}" defer></script>
+
+
+    <!-- External Library Bundle Script -->
+    <script src="{{ asset('assets/js/core/external.min.js') }}"></script>
+
+    <!-- Widgetchart Script -->
+    <script src="{{ asset('assets/js/charts/widgetcharts.js') }}"></script>
+
+    <!-- mapchart Script -->
+    <script src="{{ asset('assets/js/charts/vectore-chart.js') }}"></script>
+    <script src="{{ asset('assets/js/charts/dashboard.js') }}"></script>
+
+    <!-- fslightbox Script -->
+    <script src="{{ asset('assets/js/plugins/fslightbox.js') }}"></script>
+
+    <!-- Slider-tab Script -->
+    {{-- <script src="{{ asset('assets/js/plugins/slider-tabs.js') }}"></script> --}}
+
+    <!-- Form Wizard Script -->
+    <script src="{{ asset('assets/js/plugins/form-wizard.js') }}"></script>
+
+    <!-- AOS Animation Plugin-->
+    <script src="{{ asset('assets/vendor/aos/dist/aos.js') }}"></script>
+
+    <!-- Flatpickr Script -->
+    {{-- <script src="{{ asset('assets/vendor/flatpickr/dist/flatpickr.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/flatpickr.js') }}" defer></script> --}}
+
+    <script src="{{ asset('assets/js/plugins/prism.mini.js') }}"></script>
+
+    <!-- Share Button -->
+    <script>
+        // Get a reference to all buttons with the class "share-button"
+        var shareButtons = document.querySelectorAll('.share-button');
+
+        // Add a click event listener to each button
+        shareButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Get the value to share/copy from the "data-share" attribute
+                var valueToShare = button.dataset.share;
+
+                // Check if the Web Share API is supported
+                if (navigator.share) {
+                    // Call the Web Share API to open the native share dialog
+                    navigator.share({
+                            title: '{{ __('messages.Share your profile') }}',
+                            text: valueToShare,
+                            url: valueToShare,
+                        })
+                        .catch(err => console.error('{{ __('messages.Error sharing:') }}', err));
+                } else {
+                    // If the Web Share API is not supported, copy the value to the clipboard
+                    navigator.clipboard.writeText(valueToShare)
+                        .then(() => {
+                            // If copying was successful, alert the user
+                            alert('{{ __('messages.Text copied to clipboard!') }}');
+                        })
+                        .catch(err => {
+                            // If copying failed, alert the user
+                            alert('{{ __('messages.Error copying text:') }}', err);
+                        });
+                }
+            });
+        });
+    </script>
+
+    <script src="{{ asset('assets/js/popper.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/Sortable.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery-block-ui.js') }}"></script>
+    <script src="{{ asset('assets/js/main-dashboard.js') }}"></script>
+    <script src="{{ asset('assets/vendor/livewire/core.min.js') }}"></script>
 </head>
 <body class="{{$_COOKIE['color-mode'] ?? 'auto'}}">
     {{-- <!-- loader Start -->
@@ -224,7 +296,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::segment(2) == 'users' ? 'active' : '' }}"
-                                        href="{{ url('admin/users/all') }}" wire:current="active" wire:navigate>
+                                        href="{{ url('admin/users') }}" wire:current="active" wire:navigate>
                                         <i class="bi bi-people-fill"></i>
                                         <span class="item-name">{{ __('messages.Manage Users') }}</span>
                                     </a>
@@ -1162,81 +1234,13 @@ MODAL; // <-- Indentation breaks my code editor :/
             });
         });
     </script> --}}
-
-    <!-- External Library Bundle Script -->
-    <script src="{{ asset('assets/js/core/external.min.js') }}"></script>
-
-    <!-- Widgetchart Script -->
-    <script src="{{ asset('assets/js/charts/widgetcharts.js') }}"></script>
-
-    <!-- mapchart Script -->
-    <script src="{{ asset('assets/js/charts/vectore-chart.js') }}"></script>
-    <script src="{{ asset('assets/js/charts/dashboard.js') }}"></script>
-
-    <!-- fslightbox Script -->
-    <script src="{{ asset('assets/js/plugins/fslightbox.js') }}"></script>
-
+    
     <!-- Settings Script -->
     <script src="{{ asset('assets/js/plugins/setting.js') }}"></script>
 
-    <!-- Slider-tab Script -->
-    {{-- <script src="{{ asset('assets/js/plugins/slider-tabs.js') }}"></script> --}}
-
-    <!-- Form Wizard Script -->
-    <script src="{{ asset('assets/js/plugins/form-wizard.js') }}"></script>
-
-    <!-- AOS Animation Plugin-->
-    <script src="{{ asset('assets/vendor/aos/dist/aos.js') }}"></script>
-
-    <!-- Flatpickr Script -->
-    {{-- <script src="{{ asset('assets/vendor/flatpickr/dist/flatpickr.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/flatpickr.js') }}" defer></script> --}}
-
-    <script src="{{ asset('assets/js/plugins/prism.mini.js') }}"></script>
-
-    <!-- Share Button -->
-    <script>
-        // Get a reference to all buttons with the class "share-button"
-        var shareButtons = document.querySelectorAll('.share-button');
-
-        // Add a click event listener to each button
-        shareButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Get the value to share/copy from the "data-share" attribute
-                var valueToShare = button.dataset.share;
-
-                // Check if the Web Share API is supported
-                if (navigator.share) {
-                    // Call the Web Share API to open the native share dialog
-                    navigator.share({
-                            title: '{{ __('messages.Share your profile') }}',
-                            text: valueToShare,
-                            url: valueToShare,
-                        })
-                        .catch(err => console.error('{{ __('messages.Error sharing:') }}', err));
-                } else {
-                    // If the Web Share API is not supported, copy the value to the clipboard
-                    navigator.clipboard.writeText(valueToShare)
-                        .then(() => {
-                            // If copying was successful, alert the user
-                            alert('{{ __('messages.Text copied to clipboard!') }}');
-                        })
-                        .catch(err => {
-                            // If copying failed, alert the user
-                            alert('{{ __('messages.Error copying text:') }}', err);
-                        });
-                }
-            });
-        });
-    </script>
-
-    <script src="{{ asset('assets/js/popper.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/Sortable.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery-block-ui.js') }}"></script>
-    <script src="{{ asset('assets/js/main-dashboard.js') }}"></script>
-
     @stack('sidebar-scripts')
+
+    {{-- <script src="{{ asset('assets/js/detect-dark-mode.js') }}"></script> --}}
 
     <script>
     document.addEventListener('livewire:navigated', () => {

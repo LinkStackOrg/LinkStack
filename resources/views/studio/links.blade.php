@@ -344,7 +344,22 @@ if (isset($_COOKIE['LinkCount'])) {
       </div>
     </div>
 
-<script src="{{ asset('assets/external-dependencies/jquery-1.12.4.min.js') }}"></script>
-<script type="text/javascript">$("iframe").load(function() { $("iframe").contents().find("a").each(function(index) { $(this).on("click", function(event) { event.preventDefault(); event.stopPropagation(); }); }); });</script>
-
+    <script type="text/javascript">
+        const iframes = ['frPreview1', 'frPreview2'];
+        
+        iframes.forEach(id => {
+            const iframe = document.getElementById(id);
+        
+            iframe.onload = function() {
+                const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    * {
+                        pointer-events: none !important;
+                    }
+                `;
+                iframeDocument.head.appendChild(style);
+            };
+        });
+        </script>
 @endsection
