@@ -1208,6 +1208,10 @@ MODAL; // <-- Indentation breaks my code editor :/
         </div>
     </div>
 
+    @if($colorMode == 'auto')
+        <script src="{{asset('assets/js/detect-dark-mode.js')}}"></script>
+    @endif
+
     {{-- Unused. Download for removed PNG QR Code generation feature. --}}
     {{-- <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -1234,8 +1238,6 @@ MODAL; // <-- Indentation breaks my code editor :/
     {{-- <script src="{{ asset('assets/js/charts/dashboard.js') }}"></script> --}}
 
     @stack('sidebar-scripts')
-
-    {{-- <script src="{{ asset('assets/js/detect-dark-mode.js') }}"></script> --}}
 
     <script>
     document.addEventListener('livewire:navigated', () => {
