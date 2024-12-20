@@ -608,9 +608,11 @@ MODAL; // <-- Indentation breaks my code editor :/
                                                 document.getElementById('beta-version').textContent = Vbeta;
                                             
                                                 var updateElements = document.getElementsByClassName('update-icon-update');
+                                                var normalElements = document.getElementsByClassName('update-icon-normal');
                                             
                                                 for (var i = 0; i < updateElements.length; i++) {
                                                     updateElements[i].style.display = isVisible ? 'block' : 'none';
+                                                    normalElements[i].style.display = 'none';
                                                 }
                                             }
                                         
@@ -632,6 +634,7 @@ MODAL; // <-- Indentation breaks my code editor :/
                                             
                                                 for (var i = 0; i < updateElements.length; i++) {
                                                     updateElements[i].style.display = isVisible ? 'block' : 'none';
+                                                    normalElements[i].style.display = 'none';
                                                 }
                                             
                                                 for (var i = 0; i < normalElements.length; i++) {
@@ -657,7 +660,7 @@ MODAL; // <-- Indentation breaks my code editor :/
                                             <circle cx="18" cy="17" r="5" fill="tomato"
                                                 stroke="white" stroke-width="2" />
                                         </svg>
-                                        <svg style="display:none" class="update-icon-normal icon-24"
+                                        <svg style="display:block" class="update-icon-normal icon-24"
                                             width="24" viewBox="0 0 24 24" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd"
