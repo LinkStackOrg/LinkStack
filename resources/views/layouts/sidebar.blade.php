@@ -48,6 +48,8 @@
         <link rel="icon" type="image/svg+xml" href="{{ asset('assets/linkstack/images/logo.svg') }}">
     @endif
 
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+
     <!-- Library / Plugin Css Build -->
     <link rel="stylesheet" href="{{ asset('assets/css/core/libs.min.css') }}" />
 
@@ -82,12 +84,11 @@
     <!-- Library Bundle Script -->
     <script src="{{ asset('assets/js/core/libs.min.js') }}"></script>
 
-    <!-- App Script -->
-    <script src="{{ asset('assets/js/hope-ui.js') }}" defer></script>
-
-
     <!-- External Library Bundle Script -->
     <script src="{{ asset('assets/js/core/external.min.js') }}"></script>
+
+    <!-- App Script -->
+    <script src="{{ asset('assets/js/hope-ui.js') }}" defer></script>
 
     <!-- Widgetchart Script -->
     {{-- <script src="{{ asset('assets/js/charts/widgetcharts.js') }}"></script> --}}
@@ -145,11 +146,6 @@
             });
         });
     </script>
-
-<script src="{{ asset('assets/js/main-dashboard.js') }}"></script>
-<script src="{{ asset('assets/js/popper.js') }}"></script>
-<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-
 </head>
 <body class="{{ $colorMode ?? null }}">
     @if(!$spa)
@@ -1219,19 +1215,21 @@ MODAL; // <-- Indentation breaks my code editor :/
             });
         });
     </script> --}}
-    
+
     <!-- Settings Script -->
     <script src="{{ asset('assets/js/plugins/setting.js') }}"></script>
 
     <!-- mapchart Script -->
     {{-- <script src="{{ asset('assets/js/charts/vectore-chart.js') }}"></script> --}}
     <script src="{{ asset('assets/js/charts/dashboard.js') }}"></script>
+    <script src="{{ asset('assets/js/Sortable.min.js') }}"></script>
+    <script src="{{ asset('assets/js/main-dashboard.js') }}"></script>
 
     @stack('sidebar-scripts')
 
-    <script src="{{ asset('assets/js/Sortable.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery-block-ui.js') }}"></script>
     <script src="{{ asset('assets/vendor/livewire/core.min.js') }}"></script>
+    <script src="{{ asset('assets/js/popper.js') }}"></script>
 
     <script>
     document.addEventListener('livewire:navigated', () => {
