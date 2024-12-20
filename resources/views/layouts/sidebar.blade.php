@@ -146,12 +146,10 @@
         });
     </script>
 
-    <script src="{{ asset('assets/js/popper.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/Sortable.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery-block-ui.js') }}"></script>
-    <script src="{{ asset('assets/js/main-dashboard.js') }}"></script>
-    <script src="{{ asset('assets/vendor/livewire/core.min.js') }}"></script>
+<script src="{{ asset('assets/js/main-dashboard.js') }}"></script>
+<script src="{{ asset('assets/js/popper.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+
 </head>
 <body class="{{ $colorMode ?? null }}">
     @if(!$spa)
@@ -1230,6 +1228,10 @@ MODAL; // <-- Indentation breaks my code editor :/
     <script src="{{ asset('assets/js/charts/dashboard.js') }}"></script>
 
     @stack('sidebar-scripts')
+
+    <script src="{{ asset('assets/js/Sortable.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery-block-ui.js') }}"></script>
+    <script src="{{ asset('assets/vendor/livewire/core.min.js') }}"></script>
 
     <script>
     document.addEventListener('livewire:navigated', () => {

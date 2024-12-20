@@ -190,7 +190,7 @@ if (isset($_COOKIE['LinkCount'])) {
                             
                             
                                     <script type="text/javascript">
-                                        const linksTableOrders = "{{ implode(' | ', $links->pluck('id')->toArray()) }}"
+                                        var linksTableOrders = "{{ implode(' | ', $links->pluck('id')->toArray()) }}"
                                     </script>
                                 </div>
                             
@@ -345,14 +345,14 @@ if (isset($_COOKIE['LinkCount'])) {
     </div>
 
     <script type="text/javascript">
-        const iframes = ['frPreview1', 'frPreview2'];
+        var iframes = ['frPreview1', 'frPreview2'];
         
         iframes.forEach(id => {
-            const iframe = document.getElementById(id);
+            var iframe = document.getElementById(id);
         
             iframe.onload = function() {
-                const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-                const style = document.createElement('style');
+                var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+                var style = document.createElement('style');
                 style.innerHTML = `
                     * {
                         pointer-events: none !important;
