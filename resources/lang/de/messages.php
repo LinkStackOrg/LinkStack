@@ -743,6 +743,9 @@ return [
     'LOCALE.title' => 'App Lokalisierung',
     'LOCALE.description' => 'Ändern Sie die Sprache Ihrer Anwendung.',
 
+    'SPA_MODE.title' => 'SPA-Modus aktivieren <span class="badge rounded-pill bg-danger">BETA</span>',
+    'SPA_MODE.description' => 'Aktiviert den Single Page Application (SPA)-Modus, der eine schnellere Navigation ermöglicht, indem Inhalte dynamisch geladen werden, ohne die Seite vollständig neu zu laden.',
+
 
     /*
     |--------------------------------------------------------------------------

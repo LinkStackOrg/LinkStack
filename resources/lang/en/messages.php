@@ -740,6 +740,9 @@ return [
     'LOCALE.title' => 'App locale',
     'LOCALE.description' => 'Change the language of your application',
 
+    'SPA_MODE.title' => 'Enable SPA Mode <span class="badge rounded-pill bg-danger">BETA</span>',
+    'SPA_MODE.description' => 'Activates Single Page Application (SPA) mode, enabling faster navigation by loading content dynamically without full page reloads.',
+
 
     /*
     |--------------------------------------------------------------------------
