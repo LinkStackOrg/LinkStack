@@ -1,4 +1,3 @@
-<?php include app_path("View/Includes/DarkMode.php"); ?>
 <!doctype html>
 @include('layouts.lang')
   <head>
@@ -10,6 +9,8 @@
       @else
       <title>{{ config('app.name') }}</title>
       @endif
+
+      @php include app_path("View/Includes/DarkMode.php"); @endphp
 
       <!-- Favicon -->
       @if(file_exists(base_path("assets/linkstack/images/").findFile('favicon')))

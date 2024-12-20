@@ -1,4 +1,3 @@
-<?php include app_path("View/Includes/DarkMode.php"); ?>
 <!doctype html>
 @include('layouts.lang')
   <head>
@@ -10,6 +9,8 @@
       @else
       <title>{{ config('app.name') }}</title>
       @endif
+
+      @php include app_path("View/Includes/DarkMode.php"); @endphp
       
 <!--#### BEGIN Meta Tags social media preview images  ####-->
   <!-- This shows a preview for title, description and avatar image of users profiles if shared on social media sites -->

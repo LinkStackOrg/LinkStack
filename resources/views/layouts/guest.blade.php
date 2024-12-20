@@ -1,4 +1,3 @@
-<?php include app_path("View/Includes/DarkMode.php"); ?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -16,6 +15,8 @@
 		@endif
 
         <title>{{ config('app.name') }}</title>
+
+        @php include app_path("View/Includes/DarkMode.php"); @endphp
 
       <!-- Fonts -->
       @include('layouts.fonts')

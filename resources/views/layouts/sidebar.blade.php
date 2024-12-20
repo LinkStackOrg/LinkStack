@@ -2,7 +2,6 @@
     use SimpleSoftwareIO\QrCode\Facades\QrCode;
     use App\Models\User;
     use App\Models\UserData;
-    include app_path("View/Includes/DarkMode.php");
 
     $usrhandl = Auth::user()->littlelink_name;
 
@@ -19,6 +18,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{ env('APP_NAME') }}</title>
+
+    @php include app_path("View/Includes/DarkMode.php"); @endphp
 
     @if($spa)
         @livewireStyles
