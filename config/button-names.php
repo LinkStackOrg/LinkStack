@@ -30,7 +30,6 @@ $buttonNames = array(
     'tiktok' => 'TikTok',
     'trakt' => 'Trakt',
     'vrchat' => 'VRChat',
-    'weasyl' => 'Weasyl',
     'whatsapp' => 'WhatsApp',
     'wordpress' => 'WordPress',
     'youtube' => 'YouTube',
