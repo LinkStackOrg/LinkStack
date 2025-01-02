@@ -169,7 +169,7 @@ The official docker version of [LinkStack](https://github.com/linkstackorg/links
 
 The docker version of LinkStack retains all the features and customization options of the [original version](https://github.com/linkstackorg/linkstack).
 
-This docker is based on [Alpine Linux](https://www.alpinelinux.org), a Linux distribution designed to be small, simple and secure. The web server is running [Apache2](https://www.apache.org), a free and open-source cross-platform web server software. The docker comes with [PHP 8.0](https://www.php.net/releases/8.0/en.php) for high compatibility and performance.
+This docker is based on [Alpine Linux](https://www.alpinelinux.org), a Linux distribution designed to be small, simple and secure. The web server is running [Apache2](https://www.apache.org), a free and open-source cross-platform web server software. The docker comes with [PHP 8.2](https://www.php.net/releases/8.2/en.php) for high compatibility and performance.
 
 #### Using the docker is as simple as pulling and deploying.
 
