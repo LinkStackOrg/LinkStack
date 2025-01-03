@@ -211,6 +211,17 @@
         <script>
             document.addEventListener('table-loaded', () => {
                 setTimeout(() => {
+                    const bulkActionsDiv = document.querySelector('.dropdown-menu[aria-labelledby="table-bulkActionsDropdown"]');
+
+                    if (bulkActionsDiv) {
+                        const dropdownItems = bulkActionsDiv.querySelectorAll("a.dropdown-item");
+                    
+                        dropdownItems.forEach(item => {
+                            item.style.cursor = "pointer";
+                            item.removeAttribute("href");
+                        });
+                    }
+
                     const checkboxes = document.querySelectorAll('.form-check-input');
                     let lastChecked;
                 
