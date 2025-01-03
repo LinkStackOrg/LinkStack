@@ -208,5 +208,35 @@
                 Livewire.dispatch('refresh');
             };
         </script>
+        <script>
+            document.addEventListener('table-loaded', () => {
+                setTimeout(() => {
+                    const checkboxes = document.querySelectorAll('.form-check-input');
+                    let lastChecked;
+                
+                    function handleShiftSelect(e) {
+                        let inBetween = false;
+                    
+                        if (e.shiftKey && this.checked) {
+                            checkboxes.forEach(checkbox => {
+                                if (checkbox === this || checkbox === lastChecked) {
+                                    inBetween = !inBetween;
+                                }
+                                if (inBetween || checkbox === this || checkbox === lastChecked) {
+                                    checkbox.checked = true;
+                                    checkbox.dispatchEvent(new Event('change'));
+                                }
+                            });
+                        }
+                    
+                        lastChecked = this;
+                    }
+                
+                    checkboxes.forEach(checkbox =>
+                        checkbox.addEventListener('click', handleShiftSelect)
+                    );
+                }, 500);
+            });
+        </script>
     @endpush
 @endsection
