@@ -47,8 +47,8 @@ Index Of Script
               Sticky-Nav
 -----------------------------------------------------------------------*/
 window.addEventListener('scroll', function () {
-  let yOffset = document.documentElement.scrollTop;
-  let navbar = document.querySelector(".navs-sticky")
+  var yOffset = document.documentElement.scrollTop;
+  var navbar = document.querySelector(".navs-sticky")
   if (navbar !== null) {
     if (yOffset >= 100) {
       navbar.classList.add("menu-sticky");
@@ -83,13 +83,13 @@ if (typeof bootstrap !== typeof undefined) {
 /*---------------------------------------------------------------------
               Circle Progress
 -----------------------------------------------------------------------*/
-const progressBar = document.getElementsByClassName('circle-progress')
+var progressBar = document.getElementsByClassName('circle-progress')
 if (typeof progressBar !== typeof undefined) {
   Array.from(progressBar, (elem) => {
-    const minValue = elem.getAttribute('data-min-value')
-    const maxValue = elem.getAttribute('data-max-value')
-    const value = elem.getAttribute('data-value')
-    const type = elem.getAttribute('data-type')
+    var minValue = elem.getAttribute('data-min-value')
+    var maxValue = elem.getAttribute('data-max-value')
+    var value = elem.getAttribute('data-value')
+    var type = elem.getAttribute('data-type')
     if (elem.getAttribute('id') !== '' && elem.getAttribute('id') !== null) {
       new CircleProgress('#' + elem.getAttribute('id'), {
         min: minValue,
@@ -103,8 +103,8 @@ if (typeof progressBar !== typeof undefined) {
 /*---------------------------------------------------------------------
               Progress Bar
 -----------------------------------------------------------------------*/
-const progressBarInit = (elem) => {
-  const currentValue = elem.getAttribute('aria-valuenow')
+var progressBarInit = (elem) => {
+  var currentValue = elem.getAttribute('aria-valuenow')
   elem.style.width = '0%'
   elem.style.transition = 'width 2s'
   if (typeof Waypoint !== typeof undefined) {
@@ -119,14 +119,14 @@ const progressBarInit = (elem) => {
     })
   }
 }
-const customProgressBar = document.querySelectorAll('[data-toggle="progress-bar"]')
+var customProgressBar = document.querySelectorAll('[data-toggle="progress-bar"]')
 Array.from(customProgressBar, (elem) => {
   progressBarInit(elem)
 })
 /*---------------------------------------------------------------------
                  noUiSlider
 -----------------------------------------------------------------------*/
-const rangeSlider = document.querySelectorAll('.range-slider');
+var rangeSlider = document.querySelectorAll('.range-slider');
 Array.from(rangeSlider, (elem) => {
   if (typeof noUiSlider !== typeof undefined) {
     noUiSlider.create(elem, {
@@ -140,7 +140,7 @@ Array.from(rangeSlider, (elem) => {
   }
 })
 
-const slider = document.querySelectorAll('.slider');
+var slider = document.querySelectorAll('.slider');
 Array.from(slider, (elem) => {
   if (typeof noUiSlider !== typeof undefined) {
     noUiSlider.create(elem, {
@@ -156,13 +156,13 @@ Array.from(slider, (elem) => {
 /*---------------------------------------------------------------------
               Copy To Clipboard
 -----------------------------------------------------------------------*/
-const copy = document.querySelectorAll('[data-toggle="copy"]')
+var copy = document.querySelectorAll('[data-toggle="copy"]')
 if (typeof copy !== typeof undefined) {
   Array.from(copy, (elem) => {
     elem.addEventListener('click', (e) => {
-      const target = elem.getAttribute("data-copy-target");
-      let value = elem.getAttribute("data-copy-value");
-      const container = document.querySelector(target);
+      var target = elem.getAttribute("data-copy-target");
+      var value = elem.getAttribute("data-copy-value");
+      var container = document.querySelector(target);
       if (container !== undefined && container !== null) {
         if (container.value !== undefined && container.value !== null) {
           value = container.value;
@@ -171,7 +171,7 @@ if (typeof copy !== typeof undefined) {
         }
       }
       if (value !== null) {
-        const elem = document.createElement("input");
+        var elem = document.createElement("input");
         document.querySelector("body").appendChild(elem);
         elem.value = value;
         elem.select();
@@ -186,11 +186,11 @@ if (typeof copy !== typeof undefined) {
               CounterUp 2
 -----------------------------------------------------------------------*/
 if (window.counterUp !== undefined) {
-  const counterUp = window.counterUp["default"];
-  const counterUp2 = document.querySelectorAll('.counter')
+  var counterUp = window.counterUp["default"];
+  var counterUp2 = document.querySelectorAll('.counter')
   Array.from(counterUp2, (el) => {
     if (typeof Waypoint !== typeof undefined) {
-      const waypoint = new Waypoint({
+      var waypoint = new Waypoint({
         element: el,
         handler: function () {
           counterUp(el, {
@@ -213,7 +213,7 @@ Array.from(document.querySelectorAll('[data-toggle="slider-tab"]'), (elem) => {
   }
 })
 
-let Scrollbar
+var Scrollbar
 if (typeof Scrollbar !== typeof null) {
   if (document.querySelectorAll(".data-scrollbar").length) {
     Scrollbar = window.Scrollbar
@@ -228,7 +228,7 @@ if (typeof Scrollbar !== typeof null) {
 -----------------------------------------------------------------------*/
 if ($.fn.DataTable) {
   if ($('[data-toggle="data-table"]').length) {
-    const table = $('[data-toggle="data-table"]').DataTable({
+    var table = $('[data-toggle="data-table"]').DataTable({
       "dom": '<"row align-items-center"<"col-md-6" l><"col-md-6" f>><"table-responsive border-bottom my-3" rt><"row align-items-center" <"col-md-6" i><"col-md-6" p>><"clear">',
     });
   }
@@ -236,8 +236,8 @@ if ($.fn.DataTable) {
 /*---------------------------------------------------------------------
   Active Class for Pricing Table
 -----------------------------------------------------------------------*/
-const tableTh = document.querySelectorAll('#my-table tr th')
-const tableTd = document.querySelectorAll('#my-table td')
+var tableTh = document.querySelectorAll('#my-table tr th')
+var tableTd = document.querySelectorAll('#my-table td')
 if (tableTh !== null) {
   Array.from(tableTh, (elem) => {
     elem.addEventListener('click', (e) => {
@@ -249,8 +249,8 @@ if (tableTh !== null) {
       elem.children[0].classList.add('active')
       Array.from(tableTd, (td) => td.classList.remove('active'))
 
-      const col = Array.prototype.indexOf.call(document.querySelector('#my-table tr').children, elem);
-      const tdIcons = document.querySelectorAll("#my-table tr td:nth-child(" + parseInt(col + 1) + ")");
+      var col = Array.prototype.indexOf.call(document.querySelector('#my-table tr').children, elem);
+      var tdIcons = document.querySelectorAll("#my-table tr td:nth-child(" + parseInt(col + 1) + ")");
       Array.from(tdIcons, (td) => td.classList.add('active'))
     })
   })
@@ -274,10 +274,10 @@ if (typeof AOS !== typeof undefined) {
 /*---------------------------------------------------------------------
               Resize Plugins
 -----------------------------------------------------------------------*/
-const resizePlugins = () => {
+var resizePlugins = () => {
   // sidebar-mini
-  const tabs = document.querySelectorAll('.nav')
-  const sidebarResponsive = document.querySelector('.sidebar-default')
+  var tabs = document.querySelectorAll('.nav')
+  var sidebarResponsive = document.querySelector('.sidebar-default')
   if (window.innerWidth < 1025) {
     Array.from(tabs, (elem) => {
       if (!elem.classList.contains('flex-column') && elem.classList.contains('nav-tabs') && elem.classList.contains('nav-pills')) {
@@ -305,8 +305,8 @@ const resizePlugins = () => {
 /*---------------------------------------------------------------------
               LoaderInit
 -----------------------------------------------------------------------*/
-const loaderInit = () => {
-  const loader = document.querySelector('.loader')
+var loaderInit = () => {
+  var loader = document.querySelector('.loader')
   if (loader) {
     setTimeout(() => {
       loader.classList.add('animate__animated', 'animate__fadeOut')
@@ -319,9 +319,9 @@ const loaderInit = () => {
 /*---------------------------------------------------------------------
               Sidebar Toggle
 -----------------------------------------------------------------------*/
-const sidebarToggle = (elem) => {
+var sidebarToggle = (elem) => {
   elem.addEventListener('click', (e) => {
-    const sidebar = document.querySelector('.sidebar')
+    var sidebar = document.querySelector('.sidebar')
     if (sidebar.classList.contains('sidebar-mini')) {
       sidebar.classList.remove('sidebar-mini')
     } else {
@@ -330,15 +330,15 @@ const sidebarToggle = (elem) => {
   })
 }
 
-const sidebarToggleBtn = document.querySelectorAll('[data-toggle="sidebar"]')
-const sidebar = document.querySelector('.sidebar-default')
+var sidebarToggleBtn = document.querySelectorAll('[data-toggle="sidebar"]')
+var sidebar = document.querySelector('.sidebar-default')
 if (sidebar !== null) {
-  const sidebarActiveItem = sidebar.querySelectorAll('.active')
+  var sidebarActiveItem = sidebar.querySelectorAll('.active')
   Array.from(sidebarActiveItem, (elem) => {
     if (!elem.closest('ul').classList.contains('iq-main-menu')) {
-      const childMenu = elem.closest('ul')
+      var childMenu = elem.closest('ul')
       childMenu.classList.add('show')
-      const parentMenu = childMenu.closest('li').querySelector('.nav-link')
+      var parentMenu = childMenu.closest('li').querySelector('.nav-link')
       parentMenu.classList.add('collapsed')
       parentMenu.setAttribute('aria-expanded', true)
     }
@@ -350,7 +350,7 @@ Array.from(sidebarToggleBtn, (sidebarBtn) => {
 /*---------------------------------------------------------------------------
                             Back To Top
 ----------------------------------------------------------------------------*/
-const backToTop = document.getElementById("back-to-top")
+var backToTop = document.getElementById("back-to-top")
 if (backToTop !== null && backToTop !== undefined) {
   document.getElementById("back-to-top").classList.add("animate__animated", "animate__fadeOut")
   window.addEventListener('scroll', (e) => {
@@ -412,7 +412,7 @@ function show_offcanvas(offcanvas_id) {
 }
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll('[data-trigger]').forEach(function (everyelement) {
-    let offcanvas_id = everyelement.getAttribute('data-trigger');
+    var offcanvas_id = everyelement.getAttribute('data-trigger');
     everyelement.addEventListener('click', function (e) {
       e.preventDefault();
       show_offcanvas(offcanvas_id);
@@ -459,7 +459,7 @@ window.addEventListener('load', function () {
   /*----------------------------------------------------------
                              Flatpickr
   -------------------------------------------------------------*/
-  const date_flatpickr = document.querySelectorAll('.date_flatpicker')
+  var date_flatpickr = document.querySelectorAll('.date_flatpicker')
   Array.from(date_flatpickr, (elem) => {
     if (typeof flatpickr !== typeof undefined) {
       flatpickr(elem, {
@@ -469,7 +469,7 @@ window.addEventListener('load', function () {
     }
   })
   /*----------Range Flatpickr--------------*/
-  const range_flatpicker = document.querySelectorAll('.range_flatpicker')
+  var range_flatpicker = document.querySelectorAll('.range_flatpicker')
   Array.from(range_flatpicker, (elem) => {
     if (typeof flatpickr !== typeof undefined) {
       flatpickr(elem, {
@@ -480,7 +480,7 @@ window.addEventListener('load', function () {
     }
   })
   /*------------Wrap Flatpickr---------------*/
-  const wrap_flatpicker = document.querySelectorAll('.wrap_flatpicker')
+  var wrap_flatpicker = document.querySelectorAll('.wrap_flatpicker')
   Array.from(wrap_flatpicker, (elem) => {
     if (typeof flatpickr !== typeof undefined) {
       flatpickr(elem, {
@@ -491,7 +491,7 @@ window.addEventListener('load', function () {
     }
   })
   /*-------------Time Flatpickr---------------*/
-  const time_flatpickr = document.querySelectorAll('.time_flatpicker')
+  var time_flatpickr = document.querySelectorAll('.time_flatpicker')
   Array.from(time_flatpickr, (elem) => {
     if (typeof flatpickr !== typeof undefined) {
       flatpickr(elem, {
@@ -502,7 +502,7 @@ window.addEventListener('load', function () {
     }
   })
   /*-------------Inline Flatpickr-----------------*/
-  const inline_flatpickr = document.querySelectorAll('.inline_flatpickr')
+  var inline_flatpickr = document.querySelectorAll('.inline_flatpickr')
   Array.from(inline_flatpickr, (elem) => {
     if (typeof flatpickr !== typeof undefined) {
       flatpickr(elem, {

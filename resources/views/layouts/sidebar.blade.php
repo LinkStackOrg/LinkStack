@@ -87,9 +87,6 @@
     <!-- External Library Bundle Script -->
     <script src="{{ asset('assets/js/core/external.min.js') }}"></script>
 
-    <!-- App Script -->
-    <script src="{{ asset('assets/js/hope-ui.js') }}" defer></script>
-
     <!-- Widgetchart Script -->
     {{-- <script src="{{ asset('assets/js/charts/widgetcharts.js') }}"></script> --}}
 
@@ -1244,8 +1241,12 @@ MODAL; // <-- Indentation breaks my code editor :/
                 toggleElement.setAttribute("aria-expanded", "true");
             }
         }
+        resizePlugins();
     }, { once: true });
     </script>
+
+    <!-- App Script -->
+    <script src="{{ asset('assets/js/hope-ui.js') }}" defer></script>
 
     @if($spa)
         @livewireScripts
