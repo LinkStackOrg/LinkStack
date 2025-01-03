@@ -1,6 +1,5 @@
 @extends('layouts.sidebar')
 
-
 @section('content')
     <div id="site-stats" class="conatiner-fluid content-inner mt-n5 py-0" style="">
         <style>
@@ -111,7 +110,7 @@
 
                                             <div class="p-2">
                                                 <h3 class="text-primary d-flex align-items-center">
-                                                    <i class="bi bi-share-fill"></i>
+                                                    <i class="bi bi-eye-fill"></i>
                                                     <div class="spinner-border text-primary ms-2" role="status">
                                                         <span class="visually-hidden">Loading...</span>
                                                     </div>
@@ -121,7 +120,7 @@
 
                                             <div class="p-2">
                                                 <h3 class="text-primary d-flex align-items-center">
-                                                    <i class="bi bi-share-fill"></i>
+                                                    <i class="bi bi bi-person-fill"></i>
                                                     <div class="spinner-border text-primary ms-2" role="status">
                                                         <span class="visually-hidden">Loading...</span>
                                                     </div>
@@ -150,30 +149,27 @@
                                         <br>
                                         <div class="d-flex flex-wrap justify-content-around">
 
-                                            <div class="p-2">
+                                            <div class="p-2 d-flex flex-column justify-content-center align-items-center">
                                                 <h3 class="text-primary d-flex align-items-center">
-                                                    <i class="bi bi-share-fill"></i>
-                                                    <div class="spinner-border text-primary ms-2" role="status">
+                                                    <div class="spinner-border text-primary" role="status">
                                                         <span class="visually-hidden">Loading...</span>
                                                     </div>
                                                 </h3>
                                                 <span class="text-muted">{{ __('messages.Last 30 days') }}</span>
                                             </div>
 
-                                            <div class="p-2">
+                                            <div class="p-2 d-flex flex-column justify-content-center align-items-center">
                                                 <h3 class="text-primary d-flex align-items-center">
-                                                    <i class="bi bi-share-fill"></i>
-                                                    <div class="spinner-border text-primary ms-2" role="status">
+                                                    <div class="spinner-border text-primary" role="status">
                                                         <span class="visually-hidden">Loading...</span>
                                                     </div>
                                                 </h3>
                                                 <span class="text-muted">{{ __('messages.Last 7 days') }}</span>
                                             </div>
 
-                                            <div class="p-2">
+                                            <div class="p-2 d-flex flex-column justify-content-center align-items-center">
                                                 <h3 class="text-primary d-flex align-items-center">
-                                                    <i class="bi bi-share-fill"></i>
-                                                    <div class="spinner-border text-primary ms-2" role="status">
+                                                    <div class="spinner-border text-primary" role="status">
                                                         <span class="visually-hidden">Loading...</span>
                                                     </div>
                                                 </h3>
@@ -200,30 +196,27 @@
                                         <br>
                                         <div class="d-flex flex-wrap justify-content-around">
 
-                                            <div class="p-2">
+                                            <div class="p-2 d-flex flex-column justify-content-center align-items-center">
                                                 <h3 class="text-primary d-flex align-items-center">
-                                                    <i class="bi bi-share-fill"></i>
-                                                    <div class="spinner-border text-primary ms-2" role="status">
+                                                    <div class="spinner-border text-primary" role="status">
                                                         <span class="visually-hidden">Loading...</span>
                                                     </div>
                                                 </h3>
                                                 <span class="text-muted">{{ __('messages.Last 30 days') }}</span>
                                             </div>
 
-                                            <div class="p-2">
+                                            <div class="p-2 d-flex flex-column justify-content-center align-items-center">
                                                 <h3 class="text-primary d-flex align-items-center">
-                                                    <i class="bi bi-share-fill"></i>
-                                                    <div class="spinner-border text-primary ms-2" role="status">
+                                                    <div class="spinner-border text-primary" role="status">
                                                         <span class="visually-hidden">Loading...</span>
                                                     </div>
                                                 </h3>
                                                 <span class="text-muted">{{ __('messages.Last 7 days') }}</span>
                                             </div>
 
-                                            <div class="p-2">
+                                            <div class="p-2 d-flex flex-column justify-content-center align-items-center">
                                                 <h3 class="text-primary d-flex align-items-center">
-                                                    <i class="bi bi-share-fill"></i>
-                                                    <div class="spinner-border text-primary ms-2" role="status">
+                                                    <div class="spinner-border text-primary" role="status">
                                                         <span class="visually-hidden">Loading...</span>
                                                     </div>
                                                 </h3>
