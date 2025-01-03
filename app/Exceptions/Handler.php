@@ -42,28 +42,32 @@ class Handler extends ExceptionHandler
 
         $this->renderable(function (Throwable $e, Request $request) {
 
-            try {
-            // Check if the request matches a specific route
-            if ($request->is('dashboard') || 
-                    $request->is('dashboard/*') || 
-                    $request->is('admin/*') || 
-                    $request->is('studio/*')) {
-                    
-                // Handle 404 errors for this specific route
-                if ($e instanceof NotFoundHttpException) {
-                    $message = "The page you are looking for was not found.";
-                    return response()->view('errors.dashboard-error', compact('message'), 404);
-                }
+            if ($e->getPrevious() instanceof \Illuminate\Session\TokenMismatchException) {
 
-                // Handle general exceptions for this specific route
-
-                $error = $e;
-                $message = $e->getMessage();
-                return response()->view('errors.dashboard-error', compact(['error', 'message']), 500);
+                return redirect()->route('login')->withErrors(['email' => 'Your session has expired. Please log in again.']);
+                
             }
 
-            // Default exception handling for other routes
-            return parent::render($request, $e);
+            try {
+                    $patterns = ['dashboard', 'dashboard/*', 'admin/*', 'studio/*'];
+
+                    if (collect($patterns)->contains(fn($pattern) => $request->is($pattern))) {
+                    
+                        if ($e instanceof NotFoundHttpException) {
+
+                            $message = "The page you are looking for was not found.";
+
+                            return response()->view('errors.dashboard-error', compact('message'), 404);
+
+                        }
+                    
+                        $error = $e;
+                        $message = $e->getMessage();
+
+                        return response()->view('errors.dashboard-error', compact(['error', 'message']), 500);
+                        
+                    }
+
             } catch (Throwable $e) {}
 
         });

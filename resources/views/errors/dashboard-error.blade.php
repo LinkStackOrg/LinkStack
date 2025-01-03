@@ -35,9 +35,14 @@
                                                         <div class="col-md-12">
                                                             <div class="alert alert-danger mb-0" role="alert">
                                                                 @php
-                                                                preg_match('/^(.*?)\s?\((.*?)\)$/', $message, $matches);
-                                                                $outside = $matches[1];
-                                                                $inside = $matches[2];
+                                                                    try {
+                                                                        preg_match('/^(.*?)\s?\((.*?)\)$/', $message, $matches);
+                                                                        $outside = $matches[1];
+                                                                        $inside = $matches[2];
+                                                                    } catch (\Throwable $th) {
+                                                                        $outside = $message;
+                                                                        $inside = '';
+                                                                    }
                                                                 @endphp
                                                                 <h4 class="alert-heading">{{$outside}}</h4>
                                                                 <p>{{$inside}}</p>
