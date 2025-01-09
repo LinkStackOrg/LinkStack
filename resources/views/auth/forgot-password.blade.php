@@ -42,10 +42,10 @@ foreach($pages as $page)
                 @csrf
             
         <!-- Session Status -->
-        <x-auth-session-status class="mb-0 alert alert-success pb-2" role="alert" :status="session('status')" />
+        <x-auth-session-status class="mb-0 alert alert-warning pb-2" role="alert" :status="session('status')" />
 
         <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-0 alert alert-success pb-2" role="alert" :errors="$errors" />
+        <x-auth-validation-errors class="mb-0 alert alert-danger pb-2" role="alert" :errors="$errors" />
 
                 <!-- Email Address -->
                 <div class="col-lg-12 form-group pb-2">
