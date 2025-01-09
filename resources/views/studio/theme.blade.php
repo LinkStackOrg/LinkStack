@@ -197,7 +197,7 @@
                 var lazyElement = $('#my-lazy-element');
 
                 $.ajax({
-                    url: '../theme-updater',
+                    url: "{{url('theme-updater')}}",
                     success: function(response) {
                         placeholder.replaceWith(lazyElement);
 
@@ -213,8 +213,11 @@
             });
 
             document.addEventListener('livewire:navigated', () => {
-                performOperation();
-            });
+                console.log('Livewire navigated');
+                setTimeout(() => {
+                    performOperation();
+                }, 1000);
+            }, { once: true });
         </script>
         <script type="text/javascript">
             var iframe = document.getElementById('frPreview');
