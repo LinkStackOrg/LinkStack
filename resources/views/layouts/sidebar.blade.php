@@ -157,7 +157,7 @@
 
     <aside class="sidebar sidebar-default sidebar-white sidebar-base navs-rounded-all ">
         <div class="sidebar-header d-flex align-items-center justify-content-start">
-            <a href="{{ route('panelIndex') }}" class="navbar-brand" wire:navigate>
+            <a href="{{ route('panelIndex') }}" class="navbar-brand" @if($spa) wire:navigate @endif>
 
                 <!--Logo start-->
                 <div class="logo-main">
@@ -209,7 +209,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(1) == 'dashboard' ? 'active' : 'bg-soft-primary' }}"
-                            aria-current="page" href="{{ route('panelIndex') }}" wire:current="active" wire:navigate>
+                            aria-current="page" href="{{ route('panelIndex') }}" wire:current="active" @if($spa) wire:navigate @endif>
                             <i class="icon">
                                 <svg width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg" class="icon-20">
@@ -223,7 +223,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(2) == 'add-link' ? 'active' : '' }}"
-                            aria-current="page" href="{{ url('/studio/add-link') }}" wire:current="active" wire:navigate>
+                            aria-current="page" href="{{ url('/studio/add-link') }}" wire:current="active" @if($spa) wire:navigate @endif>
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -267,28 +267,28 @@
                             <ul class="sub-nav collapse" id="admin-section" data-bs-parent="#sidebar-menu">
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::segment(2) == 'config' ? 'active' : '' }}"
-                                        href="{{ url('admin/config') }}" wire:current="active" wire:navigate>
+                                        href="{{ url('admin/config') }}" wire:current="active" @if($spa) wire:navigate @endif>
                                         <i class="bi bi-wrench-adjustable-circle-fill"></i>
                                         <span class="item-name">{{ __('messages.Config') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::segment(2) == 'users' ? 'active' : '' }}"
-                                        href="{{ url('admin/users') }}" wire:current="active" wire:navigate>
+                                        href="{{ url('admin/users') }}" wire:current="active" @if($spa) wire:navigate @endif>
                                         <i class="bi bi-people-fill"></i>
                                         <span class="item-name">{{ __('messages.Manage Users') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::segment(2) == 'pages' ? 'active' : '' }}"
-                                        href="{{ url('admin/pages') }}" wire:current="active" wire:navigate>
+                                        href="{{ url('admin/pages') }}" wire:current="active" @if($spa) wire:navigate @endif>
                                         <i class="bi bi-collection-fill"></i>
                                         <span class="item-name">{{ __('messages.Footer Pages') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::segment(2) == 'site' ? 'active' : '' }}"
-                                        href="{{ url('admin/site') }}" wire:current="active" wire:navigate>
+                                        href="{{ url('admin/site') }}" wire:current="active" @if($spa) wire:navigate @endif>
                                         <i class="bi bi-palette-fill"></i>
                                         <span class="item-name">{{ __('messages.Site Customization') }}</span>
                                     </a>
@@ -304,7 +304,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(2) == 'links' ? 'active' : '' }}"
-                            href="{{ url('/studio/links') }}" wire:current="active" wire:navigate>
+                            href="{{ url('/studio/links') }}" wire:current="active" @if($spa) wire:navigate @endif>
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -318,7 +318,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(2) == 'page' ? 'active' : '' }}"
-                            href="{{ url('/studio/page') }}" wire:current="active" wire:current="active" wire:navigate>
+                            href="{{ url('/studio/page') }}" wire:current="active" wire:current="active" @if($spa) wire:navigate @endif>
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -332,7 +332,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(2) == 'theme' ? 'active' : '' }}"
-                            href="{{ url('/studio/theme') }}" wire:current="active" wire:navigate>
+                            href="{{ url('/studio/theme') }}" wire:current="active" @if($spa) wire:navigate @endif>
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -800,9 +800,9 @@ MODAL; // <-- Indentation breaks my code editor :/
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{{ url('/studio/page') }}" wire:navigate><i
+                                    <li><a class="dropdown-item" href="{{ url('/studio/page') }}" @if($spa) wire:navigate @endif><i
                                                 class="bi bi-person-fill"></i> {{ __('messages.Profile') }}</a></li>
-                                    <li><a class="dropdown-item" href="{{ url('/studio/profile') }}" wire:navigate><i
+                                    <li><a class="dropdown-item" href="{{ url('/studio/profile') }}" @if($spa) wire:navigate @endif><i
                                                 class="bi bi-gear-fill"></i> {{ __('messages.Settings') }}</a></li>
                                     <li><a class="dropdown-item" data-bs-toggle="offcanvas"
                                             data-bs-target="#offcanvasExample" role="button"
