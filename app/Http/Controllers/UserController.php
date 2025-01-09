@@ -201,6 +201,17 @@ class UserController extends Controller
 
         // Step 3: Load Link Type Logic
         if($request->typename == 'predefined' || $request->typename == 'link') {
+
+            $rules = [
+                'link' => 'url',
+            ];
+        
+            $validator = Validator::make($request->all(), $rules);
+        
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
             // Determine button id based on whether a custom or predefined button is used
             $button_id = ($request->typename == 'link') ? ($request->GetSiteIcon == 1 ? 2 : 1) : null;
             $button = ($request->typename != 'link') ? Button::where('name', $request->button)->first() : null;
