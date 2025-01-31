@@ -410,6 +410,16 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* Duolingo */
+.button.button-duolingo {
+  color: #FFFFFF;
+  background-color: #89E219;
+}
+.button.button-duolingo:hover,
+.button.button-duolingo:focus {
+  filter: brightness(90%);
+}
+
 /* Epic Games */
 .button.button-epic-games {
   color: #FFFFFF;
