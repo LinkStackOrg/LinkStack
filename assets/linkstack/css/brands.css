@@ -552,6 +552,16 @@ button:hover,
   filter: brightness(90%);
 }
 
+/* Furtrack */
+.button.button-furtrack {
+  color: #2D0E4C;
+  background-color: #000000;
+}
+.button.button-furtrack:hover,
+.button.button-furtrack:focus {
+  filter: brightness(90%);
+}
+
 /* Github */
 .button.button-github {
   color: #FFFFFF;
