@@ -325,7 +325,7 @@ if (isset($_COOKIE['LinkCount'])) {
 
                                 {!! icon('threads', 'Threads') !!}
                                     
-                                {!! icon('telegram', 'Telegtam') !!}
+                                {!! icon('telegram', 'Telegram') !!}
                         
                             
                                 <button type="submit" class="mt-3 ml-3 btn btn-primary">{{__('messages.Save links')}}</button>
