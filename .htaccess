@@ -33,20 +33,27 @@ Deny from all
     Order allow,deny
     Deny from all
 </Files>
+<Files ~ "\.log$">
+    Order allow,deny
+    Deny from all
+</Files>
 
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
 
-RewriteEngine On
+    RewriteEngine On
 
-# Block access to .env files
-RewriteRule ^.*\.env$ - [F,L]
+    # Block access to .env files
+    RewriteRule ^.*\.env$ - [F,L]
 
-# Block access to SQLite database files
-RewriteRule ^.*\.sqlite$ - [F,L]
+    # Block access to SQLite database files
+    RewriteRule ^.*\.sqlite$ - [F,L]
 
-# Block access to ZIP files
-RewriteRule ^.*\.zip$ - [F,L]
+    # Block access to ZIP files
+    RewriteRule ^.*\.zip$ - [F,L]
+
+    # Block access to LOG files
+    RewriteRule ^.*\.log$ - [F,L]
 </IfModule>
