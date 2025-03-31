@@ -968,7 +968,7 @@ return [
     |
     */
 
-    'Maintenance Mode' => 'Maintenance Mode',
+    'Maintenance Mode' => 'Site under Mauntencance',
     'We are performing scheduled site maintenance at this time' => 'We are performing scheduled site maintenance at this time.',
     'Please check back with us later' => 'Please check back with us later.',
     'Admin options:' => 'Admin options:',
