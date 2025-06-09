@@ -614,8 +614,9 @@ return array (
     
   'Backup your instance' => 'Créer une sauvegarde',
   'Go back' => 'Retour en arrière',
-    
-  
+
+  'Strings with a # in front of them are comments and wont affect anything' => 'Les lignes précédées d\'un # sont des commentaires et n\'ont aucun effet.',
+
   'Download your updater backups:' => 'Téléchargez vos sauvegardes de mise à jour :',
     
   'The server will never store more that two backups at a time' => 'Le serveur ne conservera jamais plus de deux sauvegardes.',
