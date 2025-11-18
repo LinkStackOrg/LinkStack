@@ -156,6 +156,8 @@ When accessing your instance for the first time, you will be greeted by the firs
 <a name="Docker"></a>
 ## Docker
 
+
+
 <p align="center">
 <a href="https://github.com/linkstackorg/linkstack-docker">
 <picture>
@@ -164,6 +166,8 @@ When accessing your instance for the first time, you will be greeted by the firs
 </picture>
 </a>
 </p>
+
+<a href="https://zeabur.com/templates/U03362?referralCode=LokiSalmonNeko"><img src="https://zeabur.com/button.svg" alt="Deploy on Zeabur"/></a>
 
 The official docker version of [LinkStack](https://github.com/linkstackorg/linkstack). This docker image is a simple to set up solution, containing everything you need to run LinkStack.
 
