@@ -139,7 +139,7 @@ return [
          * When set to 'default', we'll use ZipArchive::EM_AES_256 if it is
          * available on your system.
          */
-        'encryption' => null,
+        'encryption' => 'default',
     ],
 
     /*

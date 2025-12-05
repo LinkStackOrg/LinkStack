@@ -5,30 +5,29 @@
     "keywords": ["link"],
     "license": "GPL-3.0-or-later",
     "require": {
-        "php": ">=8.1",
+        "php": "^8.2",
         "geo-sot/laravel-env-editor": "^2.1.1",
         "jeroendesloovere/vcard": "^1.7",
-        "laravel/framework": "^10.42.0",
-        "laravel/socialite": "^5.5",
-        "laravel/tinker": "^2.5",
-        "livewire/livewire": "^3.0",
+        "laravel/framework": "^12.0",
+        "laravel/socialite": "^5.16",
+        "laravel/tinker": "^2.10",
+        "livewire/livewire": "^3.5",
         "rappasoft/laravel-livewire-tables": "^3.0",
         "simplesoftwareio/simple-qrcode": "~4",
-        "spatie/laravel-backup": "^8.1.5",
-        "symfony/yaml": "^6.0|^7.0",
-        "laravel-lang/common": "^6.1.0"
+        "spatie/laravel-backup": "^9.1",
+        "symfony/yaml": "^6.0|^7.0"
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^7.4",
-        "doctrine/dbal": "^3.8.0",
-        "barryvdh/laravel-ide-helper": "^2.12",
-        "fakerphp/faker": "^1.9.1",
-        "laravel/breeze": "^1.1",
-        "laravel/sail": "^1.27.2",
-        "mockery/mockery": "^1.4.2",
-        "nunomaduro/collision": "^7.10.0",
-        "phpunit/phpunit": "^10.5.9",
-        "spatie/laravel-ignition": "^2.4.1"
+        "doctrine/dbal": "^4.0",
+        "barryvdh/laravel-ide-helper": "^3.1",
+        "fakerphp/faker": "^1.23",
+        "laravel/breeze": "^2.2",
+        "laravel/sail": "^1.37",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.5",
+        "phpunit/phpunit": "^11.5",
+        "spatie/laravel-ignition": "^2.8"
     },
     "autoload": {
         "files": [
