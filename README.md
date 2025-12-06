@@ -37,7 +37,7 @@
 <p align="center">
 <a href="https://github.com/sponsors/julianprieber"><img alt="GitHub spomsors" src="https://img.lss.ovh/github/sponsors/JulianPrieber?color=BF4B8A&logo=githubsponsors&style=flat&label=Sponsor%20us%20on%20Github"></a>
 <a href="https://patreon.com/julianprieber"><img alt="Patreon" src="https://img.lss.ovh/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Djulianprieber%26type%3Dpatrons&style=flat&logo=patreon"></a>
-<a href="https://liberapay.com/LittleLink-Custom"><img src="https://img.lss.ovh/liberapay/patrons/LittleLink-Custom?logo=liberapay&label=LiberaPay patrons"></a>
+<a href="https://liberapay.com/LinkStack"><img src="https://img.lss.ovh/liberapay/patrons/LinkStack?logo=liberapay&label=LiberaPay%20patrons"></a>
 </p>
 
 ---
