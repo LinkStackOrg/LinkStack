@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 use App\Models\Link;
 
-$minPhpVersion = '8.1.0';
+$minPhpVersion = '8.2.0';
 
 set_time_limit(0);
 
