@@ -135,8 +135,13 @@ if (EnvEditor::keyExists('ENABLE_ADMIN_BAR_USERS')) {
 
 if (EnvEditor::keyExists('ADMIN_EMAIL')) {
 } else {
-    if (Auth::user()->id == 1) {
-        EnvEditor::addKey('ADMIN_EMAIL', App\Models\User::find(1)->email);
+    if (Auth::check() && Auth::user()->id == 1) {
+        $adminUser = App\Models\User::find(1);
+        if ($adminUser) {
+            EnvEditor::addKey('ADMIN_EMAIL', $adminUser->email);
+        } else {
+            EnvEditor::addKey('ADMIN_EMAIL', '');
+        }
     } else {
         EnvEditor::addKey('ADMIN_EMAIL', '');
     }
