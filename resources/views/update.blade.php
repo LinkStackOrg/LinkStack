@@ -17,21 +17,6 @@
             $preUpdateServer = $betaPreUpdateServer;
         }
 
-        // Re-authenticate user if session was lost during update using cache
-        if (!auth()->check()) {
-            try {
-                $updateUserId = Cache::get('update_auth_user_id');
-                if ($updateUserId) {
-                    $user = App\Models\User::find($updateUserId);
-                    if ($user && $user->role === 'admin') {
-                        Auth::login($user);
-                    }
-                }
-            } catch (Exception $e) {
-                // If re-authentication fails, continue without it
-            }
-        }
-
         try {
             $Vbeta = trim(Http::timeout(5)->get($betaServer . 'vbeta.json')->body());
             $Vbeta_git = trim(Http::timeout(5)->get($betaServer . 'version.json')->body());
