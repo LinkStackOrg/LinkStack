@@ -31,14 +31,31 @@
         @if ((auth()->check() && auth()->user()->role == 'admin' && $Vgit > $Vlocal) || $isBeta)
             @if (empty($_SERVER['QUERY_STRING']))
                 @php
-                    // Store authenticated admin user ID in cache for session persistence during update
-                    // Cache is PHP-internal and more secure than file storage
+                    // Create a signed authentication token for session persistence during update
+                    // This survives Laravel version changes by using a cookie-based approach
                     if (auth()->check() && auth()->user()->role === 'admin') {
                         try {
-                            // Store for 2 hours (7200 seconds)
-                            Cache::put('update_auth_user_id', auth()->user()->id, 7200);
+                            $userId = auth()->user()->id;
+                            $timestamp = time();
+                            
+                            // Create a signed token: user_id:timestamp:hash
+                            $hash = hash_hmac('sha256', $userId . ':' . $timestamp, config('app.key'));
+                            $tokenData = $userId . ':' . $timestamp . ':' . $hash;
+                            $token = base64_encode($tokenData);
+                            
+                            // Set cookie that will survive the Laravel version change
+                            // Cookie lasts 2 hours and is HTTP only for security
+                            setcookie(
+                                'update_auth_token',
+                                $token,
+                                time() + 7200, // 2 hours
+                                '/',
+                                '',
+                                !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off',
+                                true // HTTP only
+                            );
                         } catch (Exception $e) {
-                            // If storing fails, continue anyway - worst case user might need to re-login
+                            // If token creation fails, continue anyway
                         }
                     }
                 @endphp
@@ -271,9 +288,9 @@
 
         @if ($_SERVER['QUERY_STRING'] === 'success')
             @php
-                // Clean up cache after successful update
+                // Clean up authentication cookie after successful update
                 try {
-                    Cache::forget('update_auth_user_id');
+                    setcookie('update_auth_token', '', time() - 3600, '/');
                 } catch (Exception $e) {
                     // Ignore cleanup errors
                 }
@@ -314,9 +331,9 @@
             @php
                 EnvEditor::editKey('MAINTENANCE_MODE', false);
                 
-                // Clean up cache on error
+                // Clean up authentication cookie on error
                 try {
-                    Cache::forget('update_auth_user_id');
+                    setcookie('update_auth_token', '', time() - 3600, '/');
                 } catch (Exception $e) {
                     // Ignore cleanup errors
                 }
