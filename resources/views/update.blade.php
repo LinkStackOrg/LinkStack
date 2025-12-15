@@ -1,3 +1,4 @@
+<?php use Illuminate\Support\Facades\Auth; ?>
 @extends('layouts.updater')
 
 @push('updater-body')
@@ -12,20 +13,28 @@
         $repositoryUrl       = env('REPOSITORY_URL', 'https://github.com/linkstackorg/linkstack/');
 
         $isBeta = env('JOIN_BETA', false);
-
         if ($isBeta) {
             $preUpdateServer = $betaPreUpdateServer;
         }
 
         try {
-            $Vbeta = trim(Http::timeout(5)->get($betaServer . 'vbeta.json')->body());
-            $Vbeta_git = trim(Http::timeout(5)->get($betaServer . 'version.json')->body());
+            $Vbeta = trim(
+                Http::timeout(5)
+                    ->get($betaServer . 'vbeta.json')
+                    ->body(),
+            );
+            $Vbeta_git = trim(
+                Http::timeout(5)
+                    ->get($betaServer . 'version.json')
+                    ->body(),
+            );
             $Vgit = trim(Http::timeout(5)->get($versionServer)->body());
             $Vlocal = trim(file_get_contents(base_path('version.json')));
         } catch (Exception $e) {
             session(['update_error' => 'Unexpected error. ' . $e->getMessage()]);
         }
 
+        // Store the user ID to restore session after update
         $preUpdateUserId = auth()->id();
         if ($preUpdateUserId) {
             session(['updater_user_id' => $preUpdateUserId]);
@@ -33,15 +42,42 @@
     @endphp
 
     <div class="container">
+
+        <script>
+            async function safeRedirect(nextUrl) {
+                try {
+                    const res = await fetch('{{ url('/session-check') }}', {
+                        method: 'GET',
+                        credentials: 'same-origin',
+                        cache: 'no-store',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    });
+                    if (res.ok) {
+                        window.location.replace(nextUrl);
+                    } else {
+                        console.warn("Session invalid, redirecting to login");
+                        window.location.replace('{{ url('login') }}');
+                    }
+                } catch (e) {
+                    console.error("Session validation failed", e);
+                    window.location.reload();
+                }
+            }
+        </script>
+
         @if ((auth()->user()->role == 'admin' && $Vgit > $Vlocal) || $isBeta)
+
+            {{-- Initial update screen --}}
             @if (empty($_SERVER['QUERY_STRING']))
                 <div class="logo-container fadein">
                     <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
                 </div>
                 <h1>{{ __('messages.Updater') }}</h1>
+
                 @if ($isBeta)
-                    <p>{{ __('messages.Latest beta version') }} =
-                        {{ $Vbeta }}</p>
+                    <p>{{ __('messages.Latest beta version') }} = {{ $Vbeta }}</p>
                     <p>{{ __('messages.Installed beta version') }} =
                         {{ file_exists(base_path('vbeta.json')) ? file_get_contents(base_path('vbeta.json')) : __('messages.none') }}
                     </p>
@@ -53,10 +89,11 @@
                     </a>
                     <h4>{{ __('messages.update.manually') }}</h4>
                 @endif
+
                 <br>
                 <div class="row">
                     <a class="btn"
-                        href="{{ url()->current() }}/?{{ env('SKIP_UPDATE_BACKUP') == true ? 'preparing' : 'backup' }}">
+                        href="javascript:safeRedirect('{{ url()->current() }}/?{{ env('SKIP_UPDATE_BACKUP') ? 'preparing' : 'backup' }}');">
                         <button><i class="fa-solid fa-user-gear btn"></i>
                             {{ __('messages.Update automatically') }}</button>
                     </a>
@@ -66,120 +103,19 @@
                 </div>
             @endif
 
-            @if ($_SERVER['QUERY_STRING'] === 'updating')
-                <div class="logo-container fadein">
-                    <img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
-                </div>
-                <h1 class="loadingtxt">{{ __('messages.Updating') }}</h1>
-                @php
-                    set_time_limit(0);
-                    try {
-                        // Determine the latest version and file URL
-                        $latestVersion = $isBeta ? $Vbeta_git : $Vgit;
-                        $fileUrl = $isBeta ? $betaServer . $latestVersion . '.zip' : $updateServer . $latestVersion . '.zip';
-
-                        // Download the update file
-                        $response = Http::timeout(120)->get($fileUrl);
-
-                        if ($response->failed()) {
-                            throw new Exception("HTTP request failed: {$response->status()} - {$response->body()}");
-                        }
-
-                        // Save the downloaded ZIP file to storage
-                        $zipPath = storage_path('update.zip');
-                        $result = file_put_contents($zipPath, $response->body());
-                        if ($result === false) {
-                            throw new Exception('Failed to write update.zip to storage.');
-                        }
-
-                        // Initialize the ZIP archive
-                        $zip = new ZipArchive();
-                        if ($zip->open($zipPath) !== true) {
-                            throw new Exception('Failed to open ZIP archive for extraction.');
-                        }
-
-                        // Extract the contents to the base path
-                        $extractPath = base_path();
-                        if (!$zip->extractTo($extractPath)) {
-                            throw new Exception('ZIP extraction failed.');
-                        }
-
-                        $zip->close();
-
-                        // Delete the ZIP file after extraction
-                        if (!unlink($zipPath)) {
-                            Log::warning("Failed to delete ZIP file: $zipPath");
-                        }
-
-                        // Restore session/auth after files replacement (Laravel 12 may invalidate sessions)
-                        try {
-                            $restoreId = session('updater_user_id') ?? $preUpdateUserId ?? null;
-                            if ($restoreId) {
-                                // Re-login using the stored user ID and issue a fresh session cookie
-                                Auth::loginUsingId($restoreId, remember: true);
-                                // Regenerate session id to avoid fixation and ensure a fresh cookie is set
-                                session()->regenerate();
-                            }
-                        } catch (Exception $e) {
-                            Log::warning('Updater: failed to revalidate session after update: ' . $e->getMessage());
-                        }
-                    } catch (Exception $e) {
-                        session(['update_error' => 'Fatal error. ' . $e->getMessage()]);
-                    }
-                @endphp
-
-                @if (session()->has('update_error'))
-                    <meta http-equiv="refresh" content="1; {{ url()->current() }}/?error" />
-                @else
-                    <script>
-                    (async () => {
-                      try {
-                        await fetch('{{ url('/') }}', {
-                          method: 'GET',
-                          credentials: 'same-origin',
-                          cache: 'no-store',
-                          headers: {'X-Requested-With':'XMLHttpRequest'}
-                        });
-                      } catch (e) {
-                        console.warn('Session handshake failed, proceeding:', e);
-                      }
-                      window.location.replace('{{ url()->current() }}/?finishing');
-                    })();
-                    </script>
-                @endif
-
-            @endif
-
+            {{-- Backup --}}
             @if ($_SERVER['QUERY_STRING'] === 'backup')
-                @push('updater-head')
-                    <meta http-equiv="refresh" content="2; URL={{ url()->current() }}/?backups" />
-                @endpush
                 <div class="logo-container fadein">
                     <img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
                 </div>
                 <h1 class="loadingtxt">{{ __('messages.Creating backup') }}</h1>
-            @endif
-
-            @if ($_SERVER['QUERY_STRING'] === 'backups')
                 @php
                     set_time_limit(0);
-                    // Test if the Artisan command is available
-                    try {
-                        $exitCode = Artisan::call('list');
-
-                        if ($exitCode !== 0) {
-                            session(['update_error' => "Backup creation failed. Your system doesn't support backups. Consider disabling update backups in your config. Exit code: $exitCode"]);
-                        }
-                    } catch (Exception $e) {
-                        session(['update_error' => "Backup creation failed. This may indicate that your system doesn't support backups or that the process exceeded the time limit. Consider disabling update backups in your config. Exit code: " . $e->getMessage()]);
-                    }
-
                     try {
                         Artisan::call('backup:clean', ['--disable-notifications' => true]);
                     } catch (Exception $e) {
                         session(['update_error' => $e->getMessage()]);
                     }
-
                     try {
                         Artisan::call('backup:run', ['--only-files' => true, '--disable-notifications' => true]);
                     } catch (Exception $e) {
@@ -188,13 +124,18 @@
                 @endphp
 
                 @if (session()->has('update_error'))
-                    <meta http-equiv="refresh" content="1; {{ url()->current() }}/?error" />
+                    <script>
+                        safeRedirect('{{ url()->current() }}/?error');
+                    </script>
                 @else
                     @php file_put_contents(base_path('backups/CANUPDATE'), ''); @endphp
-                    <meta http-equiv="refresh" content="1; {{ url()->current() }}?preparing" />
+                    <script>
+                        safeRedirect('{{ url()->current() }}?preparing');
+                    </script>
                 @endif
             @endif
 
+            {{-- Preparing --}}
             @if ($_SERVER['QUERY_STRING'] === 'preparing')
                 <div class="logo-container fadein">
                     <img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
@@ -202,178 +143,130 @@
                 <h1 class="loadingtxt">{{ __('messages.Preparing update') }}</h1>
                 @php
                     set_time_limit(0);
-
-                    if (file_exists(base_path() . '/storage/update.zip')) {
-                        try {
-                            unlink(base_path() . '/storage/update.zip');
-                        } catch (Exception $e) {
-                            session(['update_error' => 'File permission error. ' . $e->getMessage()]);
-                        }
+                    if (file_exists(storage_path('update.zip'))) {
+                        unlink(storage_path('update.zip'));
                     }
-
                     try {
                         $file = Http::timeout(10)->get($preUpdateServer)->body();
-                        $filePath = base_path('resources' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'pre-update.blade.php');
-                        file_put_contents($filePath, $file);
+                        file_put_contents(base_path('resources/views/components/pre-update.blade.php'), $file);
                     } catch (Exception $e) {
                         session(['update_error' => 'Could not prepare update. ' . $e->getMessage()]);
                     }
                 @endphp
+
                 @if (session()->has('update_error'))
-                    <meta http-equiv="refresh" content="1; {{ url()->current() }}/?error" />
+                    <script>
+                        safeRedirect('{{ url()->current() }}/?error');
+                    </script>
                 @else
                     @include('components.pre-update')
-                    <meta http-equiv="refresh" content="1; {{ url()->current() }}?updating" />
+                    <script>
+                        safeRedirect('{{ url()->current() }}?updating');
+                    </script>
                 @endif
             @endif
 
-        @elseif(empty($_SERVER['QUERY_STRING']))
-            <div class="logo-container fadein">
-                <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
-            </div>
-            <h1>{{ __('messages.No new version') }}</h1>
-            <h4>{{ __('messages.There is no new version available') }}</h4>
-            <br>
-            <div class="row">
-                <a class="btn" href="{{ url('dashboard') }}">
-                    <button><i class="fa-solid fa-house-laptop btn"></i> {{ __('messages.Admin Panel') }}</button>
-                </a>
-            </div>
-        @endif
-
-        @if ($_SERVER['QUERY_STRING'] === 'finishing')
-            @php
-                set_time_limit(0);
-                $debug = null;
-                if (EnvEditor::getKey('APP_DEBUG') == 'false') {
-                    if (EnvEditor::keyExists('APP_DEBUG')) {
-                        EnvEditor::editKey('APP_DEBUG', 'true');
-                    }
-                    if (EnvEditor::keyExists('APP_ENV')) {
-                        EnvEditor::editKey('APP_ENV', 'local');
-                    }
-                    if (EnvEditor::keyExists('LOG_LEVEL')) {
-                        EnvEditor::editKey('LOG_LEVEL', 'debug');
-                    }
-                    $debug = true;
-                }
-
-                // Ensure the session remains valid in the finishing step
-                if (!Auth::check() && session('updater_user_id')) {
+            {{-- Updating --}}
+            @if ($_SERVER['QUERY_STRING'] === 'updating')
+                <div class="logo-container fadein">
+                    <img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
+                </div>
+                <h1 class="loadingtxt">{{ __('messages.Updating') }}</h1>
+                @php
+                    set_time_limit(0);
                     try {
+                        $latestVersion = $isBeta ? $Vbeta_git : $Vgit;
+                        $fileUrl = $isBeta
+                            ? $betaServer . $latestVersion . '.zip'
+                            : $updateServer . $latestVersion . '.zip';
+                        $response = Http::timeout(120)->get($fileUrl);
+                        if ($response->failed()) {
+                            throw new Exception("HTTP request failed: {$response->status()}");
+                        }
+
+                        $zipPath = storage_path('update.zip');
+                        file_put_contents($zipPath, $response->body());
+
+                        $zip = new ZipArchive();
+                        if ($zip->open($zipPath) !== true) {
+                            throw new Exception('Failed to open ZIP archive');
+                        }
+                        $zip->extractTo(base_path());
+                        $zip->close();
+                        unlink($zipPath);
+
+                        $restoreId = session('updater_user_id') ?? ($preUpdateUserId ?? null);
+                        if ($restoreId) {
+                            Auth::loginUsingId($restoreId, true);
+                            session()->regenerate();
+                        }
+                    } catch (Exception $e) {
+                        session(['update_error' => 'Fatal error. ' . $e->getMessage()]);
+                    }
+                @endphp
+
+                @if (session()->has('update_error'))
+                    <script>
+                        safeRedirect('{{ url()->current() }}/?error');
+                    </script>
+                @else
+                    <script>
+                        safeRedirect('{{ url()->current() }}?finishing');
+                    </script>
+                @endif
+            @endif
+
+            {{-- Finishing --}}
+            @if ($_SERVER['QUERY_STRING'] === 'finishing')
+                <div class="logo-container fadein">
+                    <img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
+                </div>
+                <h1 class="loadingtxt">{{ __('messages.Finishing up') }}</h1>
+                @php
+                    set_time_limit(0);
+                    $debug = null;
+                    if (!Auth::check() && session('updater_user_id')) {
                         Auth::loginUsingId(session('updater_user_id'), true);
                         session()->regenerate();
-                    } catch (Exception $e) {
-                        Log::warning('Updater: failed to revalidate session in finishing step: ' . $e->getMessage());
                     }
-                }
-            @endphp
-            <div class="logo-container fadein">
-                <img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
-            </div>
-            <h1 class="loadingtxt">{{ __('messages.Finishing up') }}</h1>
-            @include('components.finishing')
-            @php
-                EnvEditor::editKey('MAINTENANCE_MODE', false);
-                if ($debug === true) {
-                    if (EnvEditor::keyExists('APP_DEBUG')) {
-                        EnvEditor::editKey('APP_DEBUG', 'false');
+                    if (EnvEditor::getKey('APP_DEBUG') == 'false') {
+                        if (EnvEditor::keyExists('APP_DEBUG')) {
+                            EnvEditor::editKey('APP_DEBUG', 'true');
+                        }
+                        if (EnvEditor::keyExists('APP_ENV')) {
+                            EnvEditor::editKey('APP_ENV', 'local');
+                        }
+                        if (EnvEditor::keyExists('LOG_LEVEL')) {
+                            EnvEditor::editKey('LOG_LEVEL', 'debug');
+                        }
+                        $debug = true;
                     }
-                    if (EnvEditor::keyExists('APP_ENV')) {
-                        EnvEditor::editKey('APP_ENV', 'production');
+                    EnvEditor::editKey('MAINTENANCE_MODE', false);
+                    if ($debug) {
+                        if (EnvEditor::keyExists('APP_DEBUG')) {
+                            EnvEditor::editKey('APP_DEBUG', 'false');
+                        }
+                        if (EnvEditor::keyExists('APP_ENV')) {
+                            EnvEditor::editKey('APP_ENV', 'production');
+                        }
+                        if (EnvEditor::keyExists('LOG_LEVEL')) {
+                            EnvEditor::editKey('LOG_LEVEL', 'error');
+                        }
                     }
-                    if (EnvEditor::keyExists('LOG_LEVEL')) {
-                        EnvEditor::editKey('LOG_LEVEL', 'error');
-                    }
-                }
-            @endphp
-            @if(!session()->has('update_error') && ($isBeta || $Vgit === $Vlocal))
-                <script>
-                (async () => {
-                  try {
-                    await fetch('{{ url('/') }}', {
-                      method: 'GET',
-                      credentials: 'same-origin',
-                      cache: 'no-store',
-                      headers: {'X-Requested-With':'XMLHttpRequest'}
-                    });
-                  } catch(e) {}
-                  window.location.replace('{{ url()->current() }}?success');
-                })();
-                </script>
-            @else
-                @php
-                if (!session()->has('update_error')) {
-                    session(['update_error' => 'Update failed unexpectedly. Please try again later.']);
-                }
                 @endphp
-                <meta http-equiv="refresh" content="0; {{ url()->current() }}?error" />
-            @endif
-        @endif
-
-        @if ($_SERVER['QUERY_STRING'] === 'success')
-            <div class="logo-container fadein">
-                <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
-            </div>
-            <h1>{{ __('messages.Success!') }}</h1>
-            @if ($isBeta)
-                <p>{{ __('messages.Latest beta version') }} =
-                    {{ $Vbeta }}</p>
-                <p>{{ __('messages.Installed beta version') }} =
-                    {{ file_exists(base_path('vbeta.json')) ? file_get_contents(base_path('vbeta.json')) : __('messages.none') }}
-                </p>
-                <p>{{ $Vgit > $Vlocal ? __('messages.You need to update to the latest mainline release') : __('messages.You’re running the latest mainline release') }}
-                </p>
-            @else
-                <h4>{{ __('messages.The update was successful') }}</h4>
-                <a class="noteslink" href="{{ $repositoryUrl }}releases/latest" target="_blank">
-                    <i class="fa-solid fa-up-right-from-square"></i> {{ __('messages.View the release notes') }}
-                </a>
-                <br>
-            @endif
-            <br>
-            <div class="row">
-                <a class="btn" href="{{ url('dashboard') }}">
-                    <button><i class="fa-solid fa-house-laptop btn"></i> {{ __('messages.Admin Panel') }}</button>
-                </a>
-                @if ($isBeta)
-                    <a class="btn" href="{{ url()->current() }}/">
-                        <button><i class="fa-solid fa-arrow-rotate-right btn"></i> {{ __('messages.Run again') }}</button>
-                    </a>
+                @include('components.finishing')
+                @if (!session()->has('update_error') && ($isBeta || $Vgit === $Vlocal))
+                    <script>
+                        safeRedirect('{{ url()->current() }}?success');
+                    </script>
+                @else
+                    <script>
+                        safeRedirect('{{ url()->current() }}?error');
+                    </script>
                 @endif
-            </div>
-        @endif
-
-        @if ($_SERVER['QUERY_STRING'] === 'error')
-            <?php EnvEditor::editKey('MAINTENANCE_MODE', false); ?>
-
-            <div class="logo-container fadein">
-                <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
-            </div>
-            <h1>{{ __('messages.Error') }}</h1>
-            <h4>{{ __('messages.Something went wrong with the update') }} :(</h4>
-
-            @if (session()->has('update_error'))
-                <div class="alert-box alert-box-error">
-                    <strong>Error:</strong>
-                    {{ session('update_error') }}
-                </div>
-                @php
-                    session()->forget('update_error');
-                @endphp
-            @else
-                <div class="alert-box alert-box-error">
-                    <strong>Error:</strong>
-                    Unknown error
-                </div>
             @endif
 
-            <br>
-            <div class="row">
-                &ensp;<a class="btn" href="{{ url('dashboard') }}"><button><i class="fa-solid fa-house-laptop btn"></i>
-                        {{ __('messages.Admin Panel') }}</button></a>&ensp;
-            </div>
-        @endif
+        @endif {{-- end admin update check --}}
 
     </div>
 @endpush
