@@ -17,21 +17,6 @@
             $preUpdateServer = $betaPreUpdateServer;
         }
 
-        // Re-authenticate user if session was lost during update using cache
-        if (!auth()->check()) {
-            try {
-                $updateUserId = Cache::get('update_auth_user_id');
-                if ($updateUserId) {
-                    $user = App\Models\User::find($updateUserId);
-                    if ($user && $user->role === 'admin') {
-                        Auth::login($user);
-                    }
-                }
-            } catch (Exception $e) {
-                // If re-authentication fails, continue without it
-            }
-        }
-
         try {
             $Vbeta = trim(Http::timeout(5)->get($betaServer . 'vbeta.json')->body());
             $Vbeta_git = trim(Http::timeout(5)->get($betaServer . 'version.json')->body());
@@ -43,20 +28,8 @@
     @endphp
 
     <div class="container">
-        @if ((auth()->check() && auth()->user()->role == 'admin' && $Vgit > $Vlocal) || $isBeta)
+        @if ((auth()->user()->role == 'admin' && $Vgit > $Vlocal) || $isBeta)
             @if (empty($_SERVER['QUERY_STRING']))
-                @php
-                    // Store authenticated admin user ID in cache for session persistence during update
-                    // Cache is PHP-internal and more secure than file storage
-                    if (auth()->check() && auth()->user()->role === 'admin') {
-                        try {
-                            // Store for 2 hours (7200 seconds)
-                            Cache::put('update_auth_user_id', auth()->user()->id, 7200);
-                        } catch (Exception $e) {
-                            // If storing fails, continue anyway - worst case user might need to re-login
-                        }
-                    }
-                @endphp
                 <div class="logo-container fadein">
                     <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
                 </div>
@@ -285,14 +258,6 @@
         @endif
 
         @if ($_SERVER['QUERY_STRING'] === 'success')
-            @php
-                // Clean up cache after successful update
-                try {
-                    Cache::forget('update_auth_user_id');
-                } catch (Exception $e) {
-                    // Ignore cleanup errors
-                }
-            @endphp
             <div class="logo-container fadein">
                 <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
             </div>
@@ -326,16 +291,7 @@
         @endif
 
         @if ($_SERVER['QUERY_STRING'] === 'error')
-            @php
-                EnvEditor::editKey('MAINTENANCE_MODE', false);
-                
-                // Clean up cache on error
-                try {
-                    Cache::forget('update_auth_user_id');
-                } catch (Exception $e) {
-                    // Ignore cleanup errors
-                }
-            @endphp
+            <?php EnvEditor::editKey('MAINTENANCE_MODE', false); ?>
 
             <div class="logo-container fadein">
                 <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
