@@ -44,28 +44,52 @@
     <div class="container">
 
         <script>
-            async function safeRedirect(nextUrl) {
-                try {
-                    const res = await fetch('{{ url('/session-check') }}', {
-                        method: 'GET',
-                        credentials: 'same-origin',
-                        cache: 'no-store',
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest'
-                        }
-                    });
+        function safeRedirect(nextUrl, maxRetries = 5, interval = 1000) {
+            console.log("[Updater] Safe redirect initiated to:", nextUrl);
+            let attempts = 0;
+        
+            function checkSession() {
+                console.log(`[Updater] Checking session (attempt ${attempts + 1}/${maxRetries})...`);
+                fetch('{{ url('/session-check') }}', {
+                    method: 'GET',
+                    credentials: 'same-origin',
+                    cache: 'no-store',
+                    headers: {'X-Requested-With':'XMLHttpRequest'}
+                })
+                .then(res => {
+                    console.log("[Updater] /session-check response:", res.status, res.ok);
                     if (res.ok) {
+                        console.log("[Updater] Session valid. Redirecting to:", nextUrl);
                         window.location.replace(nextUrl);
                     } else {
-                        console.warn("Session invalid, redirecting to login");
+                        console.warn("[Updater] Session invalid. Retrying...");
+                        attempts++;
+                        if (attempts < maxRetries) setTimeout(checkSession, interval);
+                        else {
+                            console.error("[Updater] Session could not be validated. Redirecting to login.");
+                            window.location.replace('{{ url('login') }}');
+                        }
+                    }
+                })
+                .catch(err => {
+                    console.error("[Updater] Fetch error:", err);
+                    attempts++;
+                    if (attempts < maxRetries) setTimeout(checkSession, interval);
+                    else {
+                        console.error("[Updater] Max retries reached. Redirecting to login.");
                         window.location.replace('{{ url('login') }}');
                     }
-                } catch (e) {
-                    console.error("Session validation failed", e);
-                    window.location.reload();
-                }
+                });
             }
+        
+            // Run after full page load
+            window.addEventListener('load', () => {
+                console.log("[Updater] Page fully loaded. Starting session validation...");
+                checkSession();
+            });
+        }
         </script>
+
 
         @if ((auth()->user()->role == 'admin' && $Vgit > $Vlocal) || $isBeta)
 
