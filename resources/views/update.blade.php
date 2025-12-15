@@ -117,7 +117,7 @@
                 <br>
                 <div class="row">
                     <a class="btn"
-                        href="javascript:safeRedirect('{{ url()->current() }}/?{{ env('SKIP_UPDATE_BACKUP') ? 'preparing' : 'backup' }}');">
+                        href="{{ url()->current() }}/?{{ env('SKIP_UPDATE_BACKUP') ? 'preparing' : 'backup' }}">
                         <button><i class="fa-solid fa-user-gear btn"></i>
                             {{ __('messages.Update automatically') }}</button>
                     </a>
