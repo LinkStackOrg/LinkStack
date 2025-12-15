@@ -25,6 +25,11 @@
         } catch (Exception $e) {
             session(['update_error' => 'Unexpected error. ' . $e->getMessage()]);
         }
+
+        $preUpdateUserId = auth()->id();
+        if ($preUpdateUserId) {
+            session(['updater_user_id' => $preUpdateUserId]);
+        }
     @endphp
 
     <div class="container">
@@ -105,6 +110,19 @@
                         if (!unlink($zipPath)) {
                             Log::warning("Failed to delete ZIP file: $zipPath");
                         }
+
+                        // Restore session/auth after files replacement (Laravel 12 may invalidate sessions)
+                        try {
+                            $restoreId = session('updater_user_id') ?? $preUpdateUserId ?? null;
+                            if ($restoreId) {
+                                // Re-login using the stored user ID and issue a fresh session cookie
+                                Auth::loginUsingId($restoreId, remember: true);
+                                // Regenerate session id to avoid fixation and ensure a fresh cookie is set
+                                session()->regenerate();
+                            }
+                        } catch (Exception $e) {
+                            Log::warning('Updater: failed to revalidate session after update: ' . $e->getMessage());
+                        }
                     } catch (Exception $e) {
                         session(['update_error' => 'Fatal error. ' . $e->getMessage()]);
                     }
@@ -113,7 +131,21 @@
                 @if (session()->has('update_error'))
                     <meta http-equiv="refresh" content="1; {{ url()->current() }}/?error" />
                 @else
-                    <meta http-equiv="refresh" content="0; {{ url()->current() }}/?finishing" />
+                    <script>
+                    (async () => {
+                      try {
+                        await fetch('{{ url('/') }}', {
+                          method: 'GET',
+                          credentials: 'same-origin',
+                          cache: 'no-store',
+                          headers: {'X-Requested-With':'XMLHttpRequest'}
+                        });
+                      } catch (e) {
+                        console.warn('Session handshake failed, proceeding:', e);
+                      }
+                      window.location.replace('{{ url()->current() }}/?finishing');
+                    })();
+                    </script>
                 @endif
 
             @endif
@@ -225,6 +257,16 @@
                     }
                     $debug = true;
                 }
+
+                // Ensure the session remains valid in the finishing step
+                if (!Auth::check() && session('updater_user_id')) {
+                    try {
+                        Auth::loginUsingId(session('updater_user_id'), true);
+                        session()->regenerate();
+                    } catch (Exception $e) {
+                        Log::warning('Updater: failed to revalidate session in finishing step: ' . $e->getMessage());
+                    }
+                }
             @endphp
             <div class="logo-container fadein">
                 <img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
@@ -246,7 +288,19 @@
                 }
             @endphp
             @if(!session()->has('update_error') && ($isBeta || $Vgit === $Vlocal))
-                <meta http-equiv="refresh" content="0; {{ url()->current() }}?success" />
+                <script>
+                (async () => {
+                  try {
+                    await fetch('{{ url('/') }}', {
+                      method: 'GET',
+                      credentials: 'same-origin',
+                      cache: 'no-store',
+                      headers: {'X-Requested-With':'XMLHttpRequest'}
+                    });
+                  } catch(e) {}
+                  window.location.replace('{{ url()->current() }}?success');
+                })();
+                </script>
             @else
                 @php
                 if (!session()->has('update_error')) {
