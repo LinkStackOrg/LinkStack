@@ -208,11 +208,6 @@ Route::get('/{any}', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/session-check', function() {
-    return auth()->check() ? response()->json(['status'=>'ok'], 200)
-                            : response()->json(['status'=>'unauthenticated'], 401);
-});
-
 if(config('advanced-config.custom_url_prefix') == ""){
   Route::get('/{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');
 }
