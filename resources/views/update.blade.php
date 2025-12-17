@@ -67,7 +67,6 @@
                 </div>
                 <h1 class="loadingtxt">{{ __('messages.Updating') }}</h1>
                 @php
-                    $updaterUserId = auth()->id();
                     set_time_limit(0);
                     try {
                         // Determine the latest version and file URL
@@ -108,17 +107,6 @@
                         }
                     } catch (Exception $e) {
                         session(['update_error' => 'Fatal error. ' . $e->getMessage()]);
-                    }
-
-                    if ($updaterUserId) {
-                        auth()->logout(); // flush broken session
-                        request()->session()->invalidate();
-                        request()->session()->regenerateToken();
-                                        
-                        if ($user = \App\Models\User::find($updaterUserId)) {
-                            auth()->login($user); // new valid session
-                            request()->session()->regenerate();
-                        }
                     }
                 @endphp
 

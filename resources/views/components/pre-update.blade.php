@@ -15,7 +15,15 @@ if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
 
 } else {
 
-    try {
+if (!EnvEditor::keyExists('APP_PREVIOUS_KEYS')) {
+    // Get current APP_KEY
+    $currentAppKey = env('APP_KEY');
+
+    // Store it in APP_PREVIOUS_KEYS
+    EnvEditor::addKey('APP_PREVIOUS_KEYS', $currentAppKey);
+}
+
+try {
     if(!isset($preUpdateServer)){$preUpdateServer = 'https://pre-update.linkstack.org/';}
     $file = Http::timeout(10)->get($preUpdateServer . 'update')->body();
     file_put_contents(base_path('resources/views/update.blade.php'), $file);
