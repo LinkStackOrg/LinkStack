@@ -17,7 +17,6 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-
         if (EnvEditor::keyExists('UPDATER_USER_ID')) {
             $userId = EnvEditor::getKey('UPDATER_USER_ID');
             EnvEditor::removeKey('UPDATER_USER_ID'); // one-time use
@@ -33,6 +32,7 @@ class AuthenticatedSessionController extends Controller
             }
 
 
+    }
     }
 
     /**
