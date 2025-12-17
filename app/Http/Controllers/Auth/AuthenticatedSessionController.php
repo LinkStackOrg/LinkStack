@@ -7,8 +7,6 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
-use Jackiedo\DotenvEditor\Facades\DotenvEditor as EnvEditor;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -19,30 +17,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        return view('auth.login');
-    }
 
-    /**
-     * Handle an incoming authentication request.
-     *
-     * @param  \App\Http\Requests\Auth\LoginRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(LoginRequest $request)
-    {
-        $request->authenticate();
-        $request->session()->regenerate();
-
-        return redirect('/dashboard');
-    }
-
-    /**
-     * Handle updater re-login if UPDATER_USER_ID is present.
-     *
-     * @return \Illuminate\Http\RedirectResponse|null
-     */
-    public function updaterRelogin()
-    {
         if (EnvEditor::keyExists('UPDATER_USER_ID')) {
             $userId = EnvEditor::getKey('UPDATER_USER_ID');
             EnvEditor::removeKey('UPDATER_USER_ID'); // one-time use
@@ -53,12 +28,29 @@ class AuthenticatedSessionController extends Controller
 
                 // Redirect directly to finishing step
                 return redirect('/update?finishing');
+            } else {
+        return view('auth.login');
             }
-        }
 
-        return null; // No updater user ID, nothing to do
+
     }
 
+    /**
+     * Handle an incoming authentication request.
+     *
+     * @param  \App\Http\Requests\Auth\LoginRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(LoginRequest $request)
+    {
+
+        $request->authenticate();
+
+        $request->session()->regenerate();
+
+        return redirect('/dashboard');
+
+    }
     /**
      * Destroy an authenticated session.
      *
@@ -70,6 +62,7 @@ class AuthenticatedSessionController extends Controller
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
+
         $request->session()->regenerateToken();
 
         return redirect('/');
