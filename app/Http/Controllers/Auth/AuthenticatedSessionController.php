@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Jackiedo\DotenvEditor\Facades\DotenvEditor as EnvEditor;
 
 class AuthenticatedSessionController extends Controller
 {
