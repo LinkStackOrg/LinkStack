@@ -15,12 +15,8 @@ if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
 
 } else {
 
-if (!EnvEditor::keyExists('APP_PREVIOUS_KEYS')) {
-    // Get current APP_KEY
-    $currentAppKey = env('APP_KEY');
-
-    // Store it in APP_PREVIOUS_KEYS
-    EnvEditor::addKey('APP_PREVIOUS_KEYS', $currentAppKey);
+if (!EnvEditor::keyExists('UPDATER_USER_ID') && auth()->check()) {
+    EnvEditor::addKey('UPDATER_USER_ID', auth()->id());
 }
 
 try {
