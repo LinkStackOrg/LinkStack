@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -15,8 +16,19 @@ class AuthenticatedSessionController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
+        $canUpdateFile = base_path('backups/CANUPDATE');
+        $hasSecurityKey = $request->cookie('update_security_key') !== null;
+
+        // Key + file check - hands off before showing login
+        if (file_exists($canUpdateFile) && $hasSecurityKey) {
+            if (! $this->validateSecurityKey($request->cookie('update_security_key'))) {
+                Cookie:: queue(Cookie::forget('update_security_key'));
+                abort(403, 'Invalid or expired security key');
+            }
+        }
+
         return view('auth.login');
     }
 
@@ -28,14 +40,83 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-
+        // Normal authentication logic
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        return redirect('/dashboard');
+        // After session is created, check if user is admin AND file still exists
+        $canUpdateFile = base_path('backups/CANUPDATE');
+        
+        if (auth()->user()->role === 'admin' && file_exists($canUpdateFile)) {
+            // Admin with active CANUPDATE file - redirect to finishing
+            return redirect(url('/update? finishing'));
+        }
 
+        // Normal flow - redirect to dashboard
+        return redirect('/dashboard');
     }
+
+    /**
+     * Validate the security key against stored data in . env
+     *
+     * @param string $cookieKey
+     * @return bool
+     */
+    private function validateSecurityKey(string $cookieKey): bool
+    {
+        try {
+            $storedData = $this->getStoredSecurityKey();
+            
+            if (!$storedData) {
+                return false;
+            }
+            
+            // Check if key matches
+            if (! hash_equals($storedData['key'], $cookieKey)) {
+                return false;
+            }
+            
+            // Check if key is expired (60 seconds from timestamp)
+            $expiresAt = $storedData['timestamp'] + 60;
+            if (time() > $expiresAt) {
+                return false;
+            }
+            
+            return true;
+            
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    /**
+     * Get stored security key from .env
+     *
+     * @return array|null
+     */
+    private function getStoredSecurityKey(): ?array
+    {
+        $encodedKey = env('UPDATE_SECURITY_KEY');
+        
+        if (!$encodedKey) {
+            return null;
+        }
+        
+        // Parse encoded key: key|timestamp|nonce
+        $parts = explode('|', $encodedKey);
+        
+        if (count($parts) !== 3) {
+            return null;
+        }
+        
+        return [
+            'key' => $parts[0],
+            'timestamp' => (int)$parts[1],
+            'nonce' => $parts[2]
+        ];
+    }
+
     /**
      * Destroy an authenticated session.
      *
@@ -44,7 +125,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        Auth::guard('web')->logout();
+        Auth:: guard('web')->logout();
 
         $request->session()->invalidate();
 

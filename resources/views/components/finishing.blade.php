@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\File;
 use Database\Seeders\ButtonSeeder;
 use App\Models\Page;
 use App\Models\Link;
+use Illuminate\Support\Facades\Cookie;
 
 set_time_limit(0);
 
@@ -503,6 +504,18 @@ try {
     Artisan::call('view:clear');
 } catch (exception $e) {
     session(['update_error' => $e->getMessage()]);
+}
+
+// Remove from .env
+if (EnvEditor::keyExists('UPDATE_SECURITY_KEY')) {
+    EnvEditor::deleteKey('UPDATE_SECURITY_KEY');
+
+// Clear cookie
+Cookie::queue(Cookie::forget('update_security_key'))
+$canUpdateFile = base_path('backups/CANUPDATE');
+
+if (file_exists($canUpdateFile)) {
+    unlink($canUpdateFile);
 }
 
 ?>
