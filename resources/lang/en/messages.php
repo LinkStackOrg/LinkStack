@@ -556,9 +556,9 @@ return [
     */
 
     'Advanced Config' => 'Advanced Config',
-    'Take Backup' => 'Take Backup',
-    'All Backups' => 'All Backups',
-    'Diagnosis' => 'Diagnosis',
+    'Take Backup' => 'Make Backup',
+    'All Backups' => 'View Backups',
+    'Diagnosis' => 'Diagnostics',
 
     'Alternative Config Editor' => 'Alternative Config Editor',
     'Use the Alternative Config Editor to edit the config directly' => 'Use the Alternative Config Editor to edit the config directly',
