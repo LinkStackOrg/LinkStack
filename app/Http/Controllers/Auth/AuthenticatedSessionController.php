@@ -18,11 +18,11 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(Request $request)
     {
-        $canUpdateFile = base_path('backups/CANUPDATE');
+        $canUpdateFile = env('UPDATE_SECURITY_KEY');
         $hasSecurityKey = $request->cookie('update_security_key') !== null;
 
         // Key + file check - hands off before showing login
-        if (file_exists($canUpdateFile) && $hasSecurityKey) {
+        if ($canUpdateFile && $hasSecurityKey) {
             // Validate the key
             if (! $this->validateSecurityKey($request->cookie('update_security_key'))) {
                 Cookie::queue(Cookie::forget('update_security_key'));
@@ -50,9 +50,9 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         // After session is created, check if user is admin AND file still exists
-        $canUpdateFile = base_path('backups/CANUPDATE');
+        $canUpdateFile = env('UPDATE_SECURITY_KEY');
         
-        if (auth()->user()->role === 'admin' && file_exists($canUpdateFile)) {
+        if (auth()->user()->role === 'admin' && $canUpdateFile) {
             // Admin with active CANUPDATE file - redirect to finishing
             return redirect(url('/update?finishing'));
         }
