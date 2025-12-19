@@ -158,10 +158,7 @@
                 @if (session()->has('update_error'))
                     <meta http-equiv="refresh" content="1; {{ url()->current() }}/?error" />
                 @else
-                    @php $canUpdateFile = base_path('backups/CANUPDATE'); @endphp
-                        @if(!file_exists($canUpdateFile))
-                            file_put_contents(base_path('backups/CANUPDATE'), '');
-                        @endif
+                    @php file_put_contents(base_path('backups/CANUPDATE'), ''); @endphp
                     <meta http-equiv="refresh" content="1; {{ url()->current() }}?preparing" />
                 @endif
             @endif
@@ -171,13 +168,9 @@
                     <img class="logo-img" src="{{ asset('assets/linkstack/images/logo-loading.svg') }}" alt="Logo">
                 </div>
                 <h1 class="loadingtxt">{{ __('messages.Preparing update') }}</h1>
-                @php
+                @php 
                     set_time_limit(0);
-                    $canUpdateFile = base_path('backups/CANUPDATE'); 
-                @endphp
-                        @if(!file_exists($canUpdateFile))
-                            file_put_contents(base_path('backups/CANUPDATE'), '');
-                        @endif
+                    file_put_contents(base_path('backups/CANUPDATE'), '');
 
                     if (file_exists(base_path() . '/storage/update.zip')) {
                         try {
