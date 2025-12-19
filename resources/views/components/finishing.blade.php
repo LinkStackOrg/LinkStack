@@ -509,6 +509,7 @@ try {
 // Remove from .env
 if (EnvEditor::keyExists('UPDATE_SECURITY_KEY')) {
     EnvEditor::deleteKey('UPDATE_SECURITY_KEY');
+}
 
 // Clear cookie
 Cookie::queue(Cookie::forget('update_security_key'));
