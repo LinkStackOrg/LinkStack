@@ -165,7 +165,7 @@ return [
     'Site Logo' => 'Site logo',
     'Personalization' => 'Personalization',
     'Links' => 'Links',
-    'Appearance' => 'Appearance',
+    'Appearance' => 'Profile',
     'Themes' => 'Themes',
     'Site logo' => 'Site logo',
     'Favicon' => 'Favicon',
@@ -354,12 +354,12 @@ return [
     'Display name' => 'Display name',
     'Name:' => 'Name:',
     'Page Description' => 'Page Description',
-    'Show checkmark' => 'Show checkmark',
-    'disableverified' => 'You are a verified user. This setting allows you to hide your checkmark on your page.',
+    'Show checkmark' => 'Show Verified checkmark',
+    'disableverified' => 'You are a verified user. This setting allows you to hide or show your verified checkmark on your page.',
     'Show share button' => 'Show share button',
-    'disablesharebutton' => 'This setting allows you to hide the share button on your page.',
+    'disablesharebutton' => 'Use this setting to enable or disable the share button on your links page.',
     'Open links in new tab' => 'Open links in new tab',
-    'openlinksnewtab' => 'This setting determines if your links on your links page get opened in the same or a new tab.',
+    'openlinksnewtab' => 'Use this setting to choose whether links on your links page open in the same tab or a separate tab.',
 
 
     /*
