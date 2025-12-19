@@ -125,7 +125,7 @@ return [
     |
     */
 
-    'Settings' => 'Settings',
+    'Settings' => 'Profile Settings',
     'Scheme' => 'Scheme',
     'Auto' => 'Auto',
     'Dark' => 'Dark',
