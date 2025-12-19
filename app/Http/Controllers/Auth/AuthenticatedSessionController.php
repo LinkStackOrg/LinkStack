@@ -23,14 +23,14 @@ class AuthenticatedSessionController extends Controller
 
         // Key + file check - hands off before showing login
         if (file_exists($canUpdateFile) && $hasSecurityKey) {
-            // Admin with active CANUPDATE file - redirect to finishing
-            return redirect(url('/update? finishing'));
-        }
-
+            // Validate the key
             if (! $this->validateSecurityKey($request->cookie('update_security_key'))) {
-                Cookie:: queue(Cookie::forget('update_security_key'));
+                Cookie::queue(Cookie::forget('update_security_key'));
                 abort(403, 'Invalid or expired security key');
             }
+            
+            // Key is valid - redirect to finishing
+            return redirect(url('/update? finishing'));
         }
 
         return view('auth.login');
@@ -54,7 +54,7 @@ class AuthenticatedSessionController extends Controller
         
         if (auth()->user()->role === 'admin' && file_exists($canUpdateFile)) {
             // Admin with active CANUPDATE file - redirect to finishing
-            return redirect(url('/update? finishing'));
+            return redirect(url('/update?finishing'));
         }
 
         // Normal flow - redirect to dashboard
