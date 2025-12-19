@@ -158,12 +158,10 @@
                 @if (session()->has('update_error'))
                     <meta http-equiv="refresh" content="1; {{ url()->current() }}/?error" />
                 @else
-                    @php
-                        $canUpdateFile = base_path('backups/CANUPDATE');
+                    @php $canUpdateFile = base_path('backups/CANUPDATE'); @endphp
                         @if(!file_exists($canUpdateFile))
                             file_put_contents(base_path('backups/CANUPDATE'), '');
                         @endif
-                    @endphp
                     <meta http-equiv="refresh" content="1; {{ url()->current() }}?preparing" />
                 @endif
             @endif
@@ -175,12 +173,11 @@
                 <h1 class="loadingtxt">{{ __('messages.Preparing update') }}</h1>
                 @php
                     set_time_limit(0);
-                    @php
-                    $canUpdateFile = base_path('backups/CANUPDATE');
+                    $canUpdateFile = base_path('backups/CANUPDATE'); 
+                @endphp
                         @if(!file_exists($canUpdateFile))
                             file_put_contents(base_path('backups/CANUPDATE'), '');
                         @endif
-                    @endphp
 
                     if (file_exists(base_path() . '/storage/update.zip')) {
                         try {
