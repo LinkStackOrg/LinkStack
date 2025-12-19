@@ -511,7 +511,7 @@ if (EnvEditor::keyExists('UPDATE_SECURITY_KEY')) {
     EnvEditor::deleteKey('UPDATE_SECURITY_KEY');
 
 // Clear cookie
-Cookie::queue(Cookie::forget('update_security_key'))
+Cookie::queue(Cookie::forget('update_security_key'));
 $canUpdateFile = base_path('backups/CANUPDATE');
 
 if (file_exists($canUpdateFile)) {
