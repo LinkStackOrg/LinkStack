@@ -23,6 +23,10 @@ class AuthenticatedSessionController extends Controller
 
         // Key + file check - hands off before showing login
         if (file_exists($canUpdateFile) && $hasSecurityKey) {
+            // Admin with active CANUPDATE file - redirect to finishing
+            return redirect(url('/update? finishing'));
+        }
+
             if (! $this->validateSecurityKey($request->cookie('update_security_key'))) {
                 Cookie:: queue(Cookie::forget('update_security_key'));
                 abort(403, 'Invalid or expired security key');

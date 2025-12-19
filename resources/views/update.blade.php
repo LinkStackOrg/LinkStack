@@ -170,7 +170,11 @@
                 <h1 class="loadingtxt">{{ __('messages.Preparing update') }}</h1>
                 @php
                     set_time_limit(0);
-
+                    @php file_put_contents(base_path('backups/CANUPDATE'), ''); @endphp
+                    @(!file_exists($canUpdateFile))
+                    @php file_put_contents(base_path('backups/CANUPDATE'), ''); @endphp
+                    @endphp
+                    
                     if (file_exists(base_path() . '/storage/update.zip')) {
                         try {
                             unlink(base_path() . '/storage/update.zip');
