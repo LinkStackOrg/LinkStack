@@ -16,11 +16,11 @@ return [
 
     'Dashboard' => '控制面板',
     'Copyright' => '版權所有',
-    'Made with' => '技術支援',
-    'by' => '由',
+    'Made with' => '由',
+    'by' => '製作',
 
     'HOME.MESSAGE' => '
-    <p>使用<strong><a href="https://linkstack.org/">LinkStack</strong></a>，這款以隱私為重點的開源<strong>鏈接管理平台</strong>，來掌控您的在線形象。建立一個可自訂的個人資料頁面，將您<strong>所有重要的連結集中管理在一個方便的地方</strong>，讓您的觀眾享有無縫的瀏覽體驗。</p>
+    <p>使用<strong><a href="https://linkstack.org/">LinkStack</a></strong>，這款以隱私為重點的開源<strong>連結管理平台</strong>，來掌控您的線上形象。建立一個可自訂的個人資料頁面，將您<strong>所有重要的連結集中管理在一個方便的地方</strong>，讓您的觀眾享有無縫的瀏覽體驗。</p>
     ',
 
 
@@ -116,7 +116,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | 側邊攔樣式
+    | 側邊欄樣式
     |--------------------------------------------------------------------------
     |
     | resources/views/layouts/sidebar.blade.php
@@ -136,12 +136,12 @@ return [
     'Sidebar Types' => '側邊欄類型',
     'Mini' => '迷你',
     'Hover' => '懸停',
-    'Boxed' => '有框的',
-    'Sidebar Active Style' => '側邊欄活動樣式',
+    'Boxed' => '有邊框',
+    'Sidebar Active Style' => '側邊欄啟用樣式',
     'Rounded One Side' => '單邊圓角',
     'Rounded All' => '全部圓角',
-    'Pill One Side' => '單邊圓柱形',
-    'Pill All' => '全部圓柱形',
+    'Pill One Side' => '單邊膠囊',
+    'Pill All' => '全膠囊',
 
 
     /*
@@ -184,7 +184,7 @@ return [
     'Share your profile:' => '分享您的個人檔案：',
     'Error sharing:' => '分享錯誤：',
     'Text copied to clipboard!' => '文字已複製到剪貼簿！',
-    'Error copying text:' => '複製文字出錯：',
+    'Error copying text:' => '複製文字時發生錯誤：',
     'QR Code' => 'QR碼',
     'Scan QR Code' => '掃描QR碼',
     'QR code could not be generated' => '無法生成QR碼',
@@ -204,7 +204,7 @@ return [
     'Latest beta' => '最新測試版',
     'Run updater' => '執行更新程式',
     'Update available' => '有可用更新',
-    'Up to date' => '已是最新',
+    'Up to date' => '已是最新版本',
     'Check again' => '再次檢查',
 
     # 導航欄中的使用者部分
@@ -229,18 +229,18 @@ return [
     'Hi' => '您好',
     'stranger' => '陌生人',
     'welcome' => '歡迎來到 :appName！',
-    'Set a handle' => '設定一個標識(@example)',
+    'Set a handle' => '設定一個標識（@example）',
 
     # 儀表板頁面
-    'Total Links:' => '鏈接總數：',
-    'Link Clicks:' => '鏈接點擊數：',
-    'View/Edit Links' => '查看/編輯鏈接',
-    'Top Links:' => '熱門鏈接：',
-    'You haven’t added any links yet' => '您還沒有添加任何鏈接。',
+    'Total Links:' => '連結總數：',
+    'Link Clicks:' => '連結點擊數：',
+    'View/Edit Links' => '查看/編輯連結',
+    'Top Links:' => '熱門連結：',
+    'You haven’t added any links yet' => '您還沒有新增任何連結。',
     'clicks' => '點擊數',
     'Clicks' => '點擊數',
     'Site statistics:' => '網站統計：',
-    'Total links' => '鏈接總數',
+    'Total links' => '連結總數',
     'Total clicks' => '點擊總數',
     'Total users' => '使用者總數',
     'Registrations:' => '註冊數：',
@@ -248,7 +248,6 @@ return [
     'Last 7 days' => '過去7天',
     'Last 24 hours' => '過去24小時',
     'Active users:' => '活躍使用者：',
-
 
 
     /*
@@ -272,23 +271,22 @@ return [
     'Reset to default' => '恢復預設',
     'Result' => '結果：',
     'Custom Icon' => '自訂圖示',
-    'Custom Alert' => '您的自訂圖示短代碼中未包含字串“fa-”，請始終使用如“fa-ghost”格式的圖示。',
-    'cb.description.1-4' => '可以通過 Font Awesome 向按鈕添加自訂圖示。您可以使用下面列表中的任何圖示，您可以通過點擊“查看所有圖示”按鈕訪問此列表。列表中的每個圖示都有一個短代碼，您可以複製並輸入到自訂圖示欄位中。',
-    'cb.description.2-4' => '每個圖示的短代碼都由前綴和主要部分組成。如果短代碼不是品牌圖示，您可以簡單地輸入格式為：fa-icon-name的代碼。“fa-...”格式在此很重要。例如“fa-code”。',
-    'cb.description.3-4' => '如果短代碼是品牌圖示，重要的是在短代碼部分之前包含“fab”。同樣，“fa-...”格式在此仍然適用。例如，“fab fa-github”。',
-    'cb.description.4-4' => '要為您的圖示應用顏色，您可以簡單地寫出顏色名稱或在圖示前寫下HEX值，後跟一個“;”。在這裡，將顏色放在圖示短代碼前很重要，並且顏色代碼必須以分號結束。<br>您可以在<a href="https://www.w3schools.com/cssref/css_colors.asp" target="_blank">這裡</a>找到可用顏色列表。',
+    'Custom Alert' => '您的自訂圖示短代碼中未包含字串「fa-」，請始終使用如「fa-ghost」格式的圖示。',
+    'cb.description.1-4' => '可以透過 Font Awesome 向按鈕新增自訂圖示。您可以使用下面列表中的任何圖示，並可透過點擊「查看所有圖示」按鈕開啟此列表。列表中的每個圖示都有一個短代碼，您可以複製並輸入到自訂圖示欄位中。',
+    'cb.description.2-4' => '每個圖示的短代碼都由前綴和主要部分組成。如果短代碼不是品牌圖示，您可以簡單地輸入格式為：fa-icon-name 的代碼。「fa-…」格式在此很重要，例如「fa-code」。',
+    'cb.description.3-4' => '如果短代碼是品牌圖示，重要的是在短代碼部分之前包含「fab」。同樣，「fa-…」格式在此仍然適用。例如「fab fa-github」。',
+    'cb.description.4-4' => '要為您的圖示套用顏色，您可以簡單地寫出顏色名稱或在圖示前寫下 HEX 值，後跟一個「;」。在這裡，必須先寫顏色代碼，並以分號結束。<br>您可以在<a href="https://www.w3schools.com/cssref/css_colors.asp" target="_blank">這裡</a>找到可用顏色列表。',
     'Style' => '風格',
     'Prefix' => '前綴',
     'Icon' => '圖示',
     'Short Code' => '短代碼',
-    'Regular' => '常規',
+    'Regular' => '一般',
     'Brands' => '品牌',
     'Color name' => '顏色名稱',
     'Color HEX' => '顏色HEX',
     'Color HEX1' => '顏色HEX',
     'Update icon' => '更新圖示',
     'See all icons' => '查看所有圖示',
-
 
 
     /*
@@ -307,7 +305,7 @@ return [
     'Select Block' => '選擇區塊',
     'Toggle Dropdown' => '切換下拉選單',
     'Cancel' => '取消',
-    'Save and Add More' => '保存並新增更多',
+    'Save and Add More' => '儲存並新增更多',
     'Click to change link blocks' => '點擊更改連結區塊',
     'Click for a list of available link blocks' => '點擊查看可用連結區塊列表',
 
@@ -323,10 +321,10 @@ return [
 
     'My Links' => '我的連結',
     'Add new Link' => '新增連結',
-    'No Link Added' => '尚未添加連結。',
+    'No Link Added' => '尚未新增任何連結。',
     'Download' => '下載',
     'Preview' => '預覽：',
-    'No compatible browser' => '您的瀏覽器不兼容',
+    'No compatible browser' => '您的瀏覽器不支援',
     'Page Icons' => '頁面圖示',
     'Save links' => '儲存連結',
 
@@ -340,7 +338,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | “我的個人資料”/“外觀”頁面
+    | 「我的個人資料」/「外觀」頁面
     |--------------------------------------------------------------------------
     |
     | resources/views/studio/page.blade.php
@@ -357,8 +355,8 @@ return [
     'disableverified' => '您是已驗證使用者。此設定允許您在頁面上隱藏您的勾選標記。',
     'Show share button' => '顯示分享按鈕',
     'disablesharebutton' => '此設定允許您在頁面上隱藏分享按鈕。',
-    'Open links in new tab' => '在新分頁中打開連結',
-    'openlinksnewtab' => '此設定決定您的連結頁面上的連結是在同一分頁中打開還是在新分頁中打開。',
+    'Open links in new tab' => '在新分頁中開啟連結',
+    'openlinksnewtab' => '此設定決定您的連結頁面上的連結是在同一分頁中開啟還是在新分頁中開啟。',
 
 
     /*
@@ -383,23 +381,23 @@ return [
     'Import' => '匯入',
     'Delete your account' => '刪除您的帳戶',
     'You are about to delete' => '您即將刪除您的帳戶！',
-    'You are about to delete This action cannot be undone' => '您即將刪除您的帳戶！此操作無法反悔。',
+    'You are about to delete This action cannot be undone' => '您即將刪除您的帳戶！此操作無法復原。',
     'Delete account' => '刪除帳戶',
 
     # 警告
     'Profile updated successfully!' => '個人資料更新成功！',
     'An error occurred while updating your profile.' => '更新您的個人資料時發生錯誤。',
 
-    'That handle has already been taken' => '該標識(@example)已被使用。',
-    'The selected file must be an image' => '所選文件必須是圖片。',
+    'That handle has already been taken' => '該標識（@example）已被使用。',
+    'The selected file must be an image' => '所選檔案必須是圖片。',
     'The image must be' => '圖片必須是：',
-    'The image size should not exceed 2MB' => '圖片大小不應超過2MB。',
+    'The image size should not exceed 2MB' => '圖片大小不應超過 2MB。',
     'Please select an image' => '請選擇一張圖片。',
 
 
     /*
     |--------------------------------------------------------------------------
-    | 主题頁面
+    | 主題頁面
     |--------------------------------------------------------------------------
     |
     | resources/views/studio/theme.blade.php
@@ -421,7 +419,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | 主题更新器
+    | 主題更新器
     |--------------------------------------------------------------------------
     |
     | resources/views/studio/theme-updater.blade.php
@@ -450,6 +448,7 @@ return [
     'Logo' => '標誌',
     'Page description' => '頁面描述',
     'Role' => '角色',
+
 
     /*
     |--------------------------------------------------------------------------
@@ -484,8 +483,8 @@ return [
     |
     */
 
-    'Information about PHP’s configuration' => '關於 PHP 配定的資訊',
-    'Outputs information about the current state of PHP' => '輸出有關當前 PHP 狀態的資訊',
+    'Information about PHP’s configuration' => '關於 PHP 設定的資訊',
+    'Outputs information about the current state of PHP' => '輸出有關目前 PHP 狀態的資訊',
 
 
     /*
@@ -531,7 +530,7 @@ return [
     'tt.Edit' => '編輯',
     'tt.All links' => '所有連結',
 
-    'confirm.delete.user' => '您確定要刪除這個使用者嗎？\n此操作無法反悔！',
+    'confirm.delete.user' => '您確定要刪除這個使用者嗎？\n此操作無法復原！',
 
     # 日期格式
     'date.format' => 'Y/m/d',
@@ -554,15 +553,15 @@ return [
     */
 
     'Advanced Config' => '進階設定',
-    'Take Backup' => '備份',
+    'Take Backup' => '建立備份',
     'All Backups' => '所有備份',
     'Diagnosis' => '診斷',
 
     'Alternative Config Editor' => '替代設定編輯器',
     'Use the Alternative Config Editor to edit the config directly' => '使用替代設定編輯器直接編輯設定',
 
-    'PHP info' => 'PHP資訊',
-    'Display debugging information about your PHP setup' => '顯示有關您的PHP設置的除錯信息',
+    'PHP info' => 'PHP 資訊',
+    'Display debugging information about your PHP setup' => '顯示有關您的 PHP 設定的除錯資訊',
 
     'Jump directly to:' => '直接跳至：',
 
@@ -578,34 +577,34 @@ return [
     'default' => '預設',
     'Apply' => '套用',
 
-    'AC.description' => '允許編輯您的網站前端。此文件允許自定義首頁、連結、標題、Google分析和元標籤等內容。',
-    'Advanced Configuration file.' => '高級設定檔。',
+    'AC.description' => '允許編輯您的網站前端。此檔案允許自訂首頁、連結、標題、Google 分析與中繼標籤等內容。',
+    'Advanced Configuration file.' => '進階設定檔。',
     'Restore defaults' => '恢復預設值',
 
     'Backup' => '備份',
     'You can back up your entire instance:' => '您可以備份整個實例：',
-    'The backup system won’t save more than two backups at a time' => '備份系統一次不會保存超過兩個備份。',
+    'The backup system won’t save more than two backups at a time' => '備份系統一次不會保留超過兩個備份。',
     'Backup Instance' => '備份實例',
 
     'wtrue' => '一切運行正常！',
-    'wfalse' => '此文件無法寫入。這可能妨礙正常運行。',
-    'utrue' => '您的安全處於風險中。此文件可以被所有人訪問。需要立即採取行動！',
+    'wfalse' => '此檔案無法寫入。這可能會影響正常運作。',
+    'utrue' => '您的安全處於風險中。此檔案可以被所有人存取。需要立即採取行動！',
     'ufalse' => '一切運行正常！',
-    'unull' => '出現了一些問題。如果您在代理或Docker容器後面運行，這可能是正常的。',
-    'Debugging information' => '除錯信息',
-    'security.risk' => '您的安全處於風險中。某些文件可以被所有人訪問。需要立即採取行動！點擊此消息瞭解更多。',
-    'security.risk.1-3' => '在這裡，您可以輕鬆驗證是否可以從外部訪問關鍵系統文件。重要的是這些文件不能被訪問，否則像密碼這樣的用戶數據可能會洩露。標有',
-    'security.risk.2-3' => '的條目不能從外部訪問，標有',
-    'security.risk.3-3' => '的條目可以被任何人訪問，需要立即採取行動以保護您的數據。',
-    'Hover for more' => '懸停以獲得更多信息',
-    'Write access' => '寫入許可權',
-    'Write access.description.1-3' => '在這裡，您可以輕鬆驗證是否可以寫入重要的系統文件。這對於每個功能的正常工作都很重要。標有',
-    'Write access.description.2-3' => '的條目按預期工作，標有',
-    'Write access.description.3-3' => '的條目不行。',
-    'File' => '文件',
-    'Dependencies' => '依賴項',
+    'unull' => '出現了一些問題。如果您在代理或 Docker 容器後面運行，這可能是正常的。',
+    'Debugging information' => '除錯資訊',
+    'security.risk' => '您的安全處於風險中。某些檔案可以被所有人存取。需要立即採取行動！點擊此訊息了解更多。',
+    'security.risk.1-3' => '在這裡，您可以輕鬆驗證是否可以從外部存取關鍵系統檔案。重要的是這些檔案不能被存取，否則像密碼這樣的使用者資料可能會洩露。標有',
+    'security.risk.2-3' => '的項目表示無法從外部存取，標有',
+    'security.risk.3-3' => '的項目則可以被任何人存取，需要立即採取行動以保護您的資料。',
+    'Hover for more' => '滑鼠移至此處以獲得更多資訊',
+    'Write access' => '寫入權限',
+    'Write access.description.1-3' => '在這裡，您可以輕鬆驗證是否可以寫入重要的系統檔案。這對各項功能的正常運作非常重要。標有',
+    'Write access.description.2-3' => '的項目表示運作正常，標有',
+    'Write access.description.3-3' => '的項目則不正常。',
+    'File' => '檔案',
+    'Dependencies' => '相依項目',
     'Required PHP modules' => '所需的 PHP 模組。',
-    'PHP Extension' => 'PHP 擴展',
+    'PHP Extension' => 'PHP 擴充模組',
     'No backups found' => '未找到備份',
     'Backup your instance' => '備份您的實例',
 
@@ -614,24 +613,24 @@ return [
     'Strings with a # in front of them are comments and wont affect anything' => '前面有 # 的字串是註解，不會影響任何事情。',
 
     'Download your updater backups:' => '下載您的更新備份：',
-    'The server will never store more that two backups at a time' => '伺服器一次最多只會存儲兩個備份。',
+    'The server will never store more that two backups at a time' => '伺服器一次最多只會儲存兩個備份。',
 
-    'SMTP.title' => '使用內建SMTP伺服器',
-    'SMTP.description' => '使用由LinkStack提供的SMTP伺服器。可能不是100%可靠。必須禁用它才能使用自定義SMTP伺服器。',
-    'SMTP.description.alt' => '（在下方用“應用更改”保存更改）',
+    'SMTP.title' => '使用內建 SMTP 伺服器',
+    'SMTP.description' => '使用由 LinkStack 提供的 SMTP 伺服器。可能不是 100% 可靠。若要使用自訂 SMTP 伺服器，必須先停用此選項。',
+    'SMTP.description.alt' => '（在下方用「套用」儲存變更）',
     'Enable' => '啟用',
-    'Custom SMTP server:' => '自定義SMTP伺服器：',
+    'Custom SMTP server:' => '自訂 SMTP 伺服器：',
     'Host' => '主機',
     'Port' => '埠號',
     'Username' => '使用者名稱',
     'Encryption type' => '加密類型',
     'From address' => '寄件人地址',
-    'Apply changes' => '應用更改',
-    'Test E-Mail setup:' => '測試電子郵件設置：',
+    'Apply changes' => '套用變更',
+    'Test E-Mail setup:' => '測試電子郵件設定：',
     'Send Test E-Mail' => '發送測試電子郵件',
 
-    'Debug.title' => '除錯模式',
-    'Debug.description' => '在生產環境中應該禁用。在設置過程中用於除錯。',
+    'Debug.title' => '偵錯模式',
+    'Debug.description' => '在正式環境中應該停用，僅在設定及除錯過程中使用。',
 
     'DISPLAY_FOOTER_HOME.title' => '首頁頁尾連結',
     'DISPLAY_FOOTER_HOME.description' => '啟用首頁頁尾連結。',
@@ -639,28 +638,28 @@ return [
     'REGISTER_AUTH.description' => '決定使用者註冊時是否必須驗證其電子郵件。',
     'ALLOW_REGISTRATION.title' => '啟用註冊',
     'ALLOW_REGISTRATION.description' => '決定使用者是否可以註冊您的應用程式。',
-    'NOTIFY_EVENTS.title' => '通知事件',
+    'NOTIFY_EVENTS.title' => '事件通知',
     'NOTIFY_EVENTS.description' => '如果有事件正在進行，則顯示通知。',
-    'NOTIFY_UPDATES.title' => '通知更新',
+    'NOTIFY_UPDATES.title' => '更新通知',
     'NOTIFY_UPDATES.description' => '如果有新的更新可用，則顯示通知。',
     'DISPLAY_FOOTER.title' => '顯示頁尾',
-    'DISPLAY_FOOTER.description' => '決定是否應顯示頁尾連結。',
-    'DISPLAY_CREDIT.title' => '在使用者頁面顯示信用',
-    'DISPLAY_CREDIT.description' => '決定是否應在使用者頁面上顯示信用通知。',
-    'DISPLAY_CREDIT_FOOTER.title' => '在頁尾中顯示信用',
-    'DISPLAY_CREDIT_FOOTER.description' => '決定是否應在頁尾中顯示信用通知。',
+    'DISPLAY_FOOTER.description' => '決定是否顯示頁尾連結。',
+    'DISPLAY_CREDIT.title' => '在使用者頁面顯示致謝',
+    'DISPLAY_CREDIT.description' => '決定是否在使用者頁面上顯示致謝訊息。',
+    'DISPLAY_CREDIT_FOOTER.title' => '在頁尾顯示致謝',
+    'DISPLAY_CREDIT_FOOTER.description' => '決定是否在頁尾中顯示致謝訊息。',
     'HOME_URL.title' => '將使用者頁面設為首頁',
-    'HOME_URL.description' => '將一個使用者頁面設為首頁。這將把之前的首頁移動到example.com/home。',
-    'ALLOW_USER_HTML.title' => '允許在使用者的描述中使用擴展語法',
-    'ALLOW_USER_HTML.description' => '這使得使用者能夠在其頁面描述中使用特殊格式，如標題和連結。<br>這通常被認為是安全的。',
+    'HOME_URL.description' => '將某個使用者頁面設為首頁。這將把原本的首頁移至 example.com/home。',
+    'ALLOW_USER_HTML.title' => '允許在使用者描述中使用進階語法',
+    'ALLOW_USER_HTML.description' => '允許使用者在頁面描述中使用特殊格式，例如標題與連結。<br>這通常被認為是安全的。',
     'APP_NAME.title' => '應用程式名稱',
-    'APP_NAME.description' => '設定您的應用程式名稱。更改將登出每個活躍使用者。',
+    'APP_NAME.description' => '設定您的應用程式名稱。更改後會登出所有目前的已登入使用者。',
     'APP_KEY.title' => 'APP_KEY',
     'APP_KEY.description' => 'APP_KEY',
     'APP_URL.title' => 'APP_URL',
     'APP_URL.description' => 'APP_URL',
     'ENABLE_BUTTON_EDITOR.title' => '啟用按鈕編輯器',
-    'ENABLE_BUTTON_EDITOR.description' => '決定是否允許使用者使用CSS自定義他們自己的按鈕。',
+    'ENABLE_BUTTON_EDITOR.description' => '決定是否允許使用者使用 CSS 自訂自己的按鈕。',
     'APP_DEBUG.title' => 'APP_DEBUG',
     'APP_DEBUG.description' => 'APP_DEBUG',
     'APP_ENV.title' => 'APP_ENV',
@@ -670,7 +669,7 @@ return [
     'LOG_LEVEL.title' => 'LOG_LEVEL',
     'LOG_LEVEL.description' => 'LOG_LEVEL',
     'MAINTENANCE_MODE.title' => '啟用維護模式',
-    'MAINTENANCE_MODE.description' => '在所有公共頁面上顯示維護訊息。這將禁用登錄頁面。',
+    'MAINTENANCE_MODE.description' => '在所有公開頁面上顯示維護訊息。這將停用登入頁面。',
     'MAIL_MAILER.title' => 'MAIL_MAILER',
     'MAIL_MAILER.description' => 'MAIL_MAILER',
     'MAIL_HOST.title' => 'MAIL_HOST',
@@ -686,25 +685,25 @@ return [
     'MAIL_FROM_ADDRESS.title' => 'MAIL_FROM_ADDRESS',
     'MAIL_FROM_ADDRESS.description' => 'MAIL_FROM_ADDRESS',
     'JOIN_BETA.title' => '加入測試版計畫',
-    'JOIN_BETA.description' => '在更新時啟用測試版的使用。在<a target=\'_blank\' href=\'https://linkstack.org/b\'>這裡</a>了解更多。',
+    'JOIN_BETA.description' => '在更新時啟用測試版使用。在<a target=\'_blank\' href=\'https://linkstack.org/b\'>這裡</a>了解更多。',
     'SKIP_UPDATE_BACKUP.title' => '略過更新備份',
-    'SKIP_UPDATE_BACKUP.description' => '在更新時略過備份。建議始終停用此選項，<br>但在某些配置中可能會導致錯誤。',
-    'CUSTOM_META_TAGS.title' => '啟用自訂元標籤',
-    'CUSTOM_META_TAGS.description' => '在所有頁面的頭部啟用自訂元標籤的使用。在高級配置中定義。',
-    'FORCE_HTTPS.title' => '強制使用HTTPS連線',
-    'FORCE_HTTPS.description' => '預設情況下使所有連線使用HTTPS。如果您使用反向代理，建議啟用此選項。',
-    'ALLOW_CUSTOM_CODE_IN_THEMES.title' => '允許在佈景主題中使用自訂程式碼',
-    'ALLOW_CUSTOM_CODE_IN_THEMES.description' => '允許在佈景主題中使用自訂程式碼。如果您使用來自未知來源的佈景主題，<br>這可能構成安全風險。',
-    'ENABLE_ADMIN_BAR_USERS.title' => '為所有使用者啟用管理員工具列',
-    'ENABLE_ADMIN_BAR_USERS.description' => '如果啟用，所有經過身份驗證的使用者都將在其頁面上顯示管理員工具列。',
-    'ENABLE_THEME_UPDATER.title' => '啟用佈景主題更新器',
-    'ENABLE_THEME_UPDATER.description' => '決定佈景主題更新器是否應處於活動狀態。',
-    'ENABLE_SOCIAL_LOGIN.title' => '啟用社交登入',
-    'ENABLE_SOCIAL_LOGIN.description' => '啟用社交登入。此選項需要進一步設定。在<a target=\'_blank\' href=\'https://linkstack.org/social-login\'>這裡</a>了解更多。',
-    'USE_THEME_PREVIEW_IFRAME.title' => '使用 iframe 作為佈景主題預覽',
-    'USE_THEME_PREVIEW_IFRAME.description' => '決定是否應使用內部 iframe 作為佈景主題頁面的預覽。',
-    'FORCE_ROUTE_HTTPS.title' => '將所有頁面重定向到 HTTPS',
-    'FORCE_ROUTE_HTTPS.description' => '如果使用反向代理，此選項將破壞您的設定。',
+    'SKIP_UPDATE_BACKUP.description' => '更新時略過備份。建議始終停用此選項，<br>但在某些環境中可能會避免錯誤。',
+    'CUSTOM_META_TAGS.title' => '啟用自訂中繼標籤',
+    'CUSTOM_META_TAGS.description' => '在所有頁面的 <head> 中啟用自訂中繼標籤。在進階設定中定義。',
+    'FORCE_HTTPS.title' => '強制使用 HTTPS 連線',
+    'FORCE_HTTPS.description' => '預設讓所有連線使用 HTTPS。若您使用反向代理，建議啟用此選項。',
+    'ALLOW_CUSTOM_CODE_IN_THEMES.title' => '允許在主題中使用自訂程式碼',
+    'ALLOW_CUSTOM_CODE_IN_THEMES.description' => '允許在主題中使用自訂程式碼。如果您使用來自未知來源的主題，<br>這可能構成安全風險。',
+    'ENABLE_ADMIN_BAR_USERS.title' => '為所有使用者啟用管理工具列',
+    'ENABLE_ADMIN_BAR_USERS.description' => '若啟用，所有已驗證的使用者都會在其頁面上看到管理工具列。',
+    'ENABLE_THEME_UPDATER.title' => '啟用主題更新器',
+    'ENABLE_THEME_UPDATER.description' => '決定主題更新器是否啟用。',
+    'ENABLE_SOCIAL_LOGIN.title' => '啟用社群登入',
+    'ENABLE_SOCIAL_LOGIN.description' => '啟用社群登入。此選項需要額外設定。在<a target=\'_blank\' href=\'https://linkstack.org/social-login\'>這裡</a>了解更多。',
+    'USE_THEME_PREVIEW_IFRAME.title' => '使用 iframe 作為主題預覽',
+    'USE_THEME_PREVIEW_IFRAME.description' => '決定是否使用內部 iframe 作為主題頁面的預覽。',
+    'FORCE_ROUTE_HTTPS.title' => '將所有頁面重新導向至 HTTPS',
+    'FORCE_ROUTE_HTTPS.description' => '若使用反向代理，啟用此選項可能會破壞您的設定。',
     'DISPLAY_FOOTER_TERMS.title' => '條款頁尾連結',
     'DISPLAY_FOOTER_TERMS.description' => '啟用條款頁尾連結。',
     'DISPLAY_FOOTER_PRIVACY.title' => '隱私頁尾連結',
@@ -712,36 +711,36 @@ return [
     'DISPLAY_FOOTER_CONTACT.title' => '聯絡頁尾連結',
     'DISPLAY_FOOTER_CONTACT.description' => '啟用聯絡頁尾連結。',
     'TITLE_FOOTER_HOME.title' => '<div style="margin-top:-40px"></div>',
-    'TITLE_FOOTER_HOME.description' => '首頁頁腳連結的標題。',
+    'TITLE_FOOTER_HOME.description' => '首頁頁尾連結的標題。',
     'TITLE_FOOTER_TERMS.title' => '<div style="margin-top:-40px"></div>',
-    'TITLE_FOOTER_TERMS.description' => '條款頁腳連結的標題。',
+    'TITLE_FOOTER_TERMS.description' => '條款頁尾連結的標題。',
     'TITLE_FOOTER_PRIVACY.title' => '<div style="margin-top:-40px"></div>',
-    'TITLE_FOOTER_PRIVACY.description' => '隱私頁腳連結的標題。',
+    'TITLE_FOOTER_PRIVACY.description' => '隱私頁尾連結的標題。',
     'TITLE_FOOTER_CONTACT.title' => '<div style="margin-top:-40px"></div>',
-    'TITLE_FOOTER_CONTACT.description' => '聯絡頁腳連結的標題。',
-    'HOME_FOOTER_LINK.title' => '<div style="margin-top:-40px">首頁頁腳連結網址</div>',
-    'HOME_FOOTER_LINK.description' => '輸入任何網址以重新導向您的首頁連結網址。<br>留空使用預設連結。',
+    'TITLE_FOOTER_CONTACT.description' => '聯絡頁尾連結的標題。',
+    'HOME_FOOTER_LINK.title' => '<div style="margin-top:-40px">首頁頁尾連結網址</div>',
+    'HOME_FOOTER_LINK.description' => '輸入任何網址以重新導向您的首頁頁尾連結。<br>留空則使用預設連結。',
     'ALLOW_CUSTOM_BACKGROUNDS.title' => '允許自訂背景',
-    'ALLOW_CUSTOM_BACKGROUNDS.description' => '允許使用者上傳自訂背景圖片至其頁面。',
+    'ALLOW_CUSTOM_BACKGROUNDS.description' => '允許使用者為其頁面上傳自訂背景圖片。',
     'ALLOW_USER_IMPORT.title' => '允許使用者從其他實例匯入設定檔',
-    'ALLOW_USER_IMPORT.description' => '允許使用者從外部檔案匯入其設定檔和連結。',
+    'ALLOW_USER_IMPORT.description' => '允許使用者從外部檔案匯入其設定檔與連結。',
     'ALLOW_USER_EXPORT.title' => '允許使用者匯出其設定檔',
-    'ALLOW_USER_EXPORT.description' => '允許使用者匯出其自己的連結和設定檔。',
+    'ALLOW_USER_EXPORT.description' => '允許使用者匯出自己的連結與設定檔。',
     'MANUAL_USER_VERIFICATION.title' => '手動驗證使用者',
     'MANUAL_USER_VERIFICATION.description' => '決定管理員是否必須手動驗證新註冊的使用者。',
     'ADMIN_EMAIL.title' => '管理員電子郵件',
     'ADMIN_EMAIL.description' => '用於發送通知電子郵件。',
     'HIDE_VERIFICATION_CHECKMARK.title' => '隱藏驗證勾選標記',
-    'HIDE_VERIFICATION_CHECKMARK.description' => '隱藏在管理員和VIP頁面上顯示的驗證徽章。',
-    'ENABLE_REPORT_ICON.title' => '啟用報告圖示',
-    'ENABLE_REPORT_ICON.description' => '在使用者頁面上顯示一個圖示，允許使用者舉報頁面。',
-    'LOCALE.title' => '應用程式區域設置',
+    'HIDE_VERIFICATION_CHECKMARK.description' => '隱藏在管理員與 VIP 頁面上顯示的驗證徽章。',
+    'ENABLE_REPORT_ICON.title' => '啟用檢舉圖示',
+    'ENABLE_REPORT_ICON.description' => '在使用者頁面上顯示一個圖示，允許使用者檢舉頁面。',
+    'LOCALE.title' => '應用程式語系',
     'LOCALE.description' => '更改您的應用程式的語言',
 
 
     /*
     |--------------------------------------------------------------------------
-    | 安装
+    | 安裝
     |--------------------------------------------------------------------------
     |
     | resources/views/installer/installer.blade.php
@@ -749,25 +748,25 @@ return [
     */
 
     # 標題標籤
-    'LinkStack setup' => 'LinkStack 設置',
+    'LinkStack setup' => 'LinkStack 設定',
 
-    'Setup LinkStack' => '設置 LinkStack',
-    'Welcome to the setup for LinkStack!' => '歡迎使用 LinkStack 設置！',
-    'This setup will:' => '本設置將：',
+    'Setup LinkStack' => '設定 LinkStack',
+    'Welcome to the setup for LinkStack!' => '歡迎使用 LinkStack 設定精靈！',
+    'This setup will:' => '本設定將：',
     'Check the server dependencies' => '1. 檢查伺服器相依性',
-    'Setup the database' => '2. 設置資料庫',
+    'Setup the database' => '2. 設定資料庫',
     'Create the admin user' => '3. 建立管理員使用者',
-    'Configure the app' => '4. 配置應用程式',
+    'Configure the app' => '4. 設定應用程式',
     'Choose a language' => '選擇語言',
     'setup.disclaimer' => '繼續即表示您同意遵守我們的',
-    'Terms and Conditions' => '條款和條件',
+    'Terms and Conditions' => '條款與條件',
 
     'Next' => '下一步',
     'Yes' => '是',
     'No' => '否',
-    'Finish setup' => '完成設置',
+    'Finish setup' => '完成設定',
 
-    'Setup failed' => '設置失敗',
+    'Setup failed' => '設定失敗',
     'An error has occured. Please try again' => '發生錯誤，請重試',
     'Depending on your database type:' => '根據您的資料庫類型：',
     'Try again' => '重試',
@@ -777,7 +776,7 @@ return [
 
     'Select a database type' => '選擇資料庫類型',
     'Under most circumstances, we recommend using SQLite' => '在大多數情況下，我們建議使用 SQLite',
-    'MySQL requires a separate, empty MySQL database' => 'MySQL 需要一個獨立的、空的 MySQL 資料庫',
+    'MySQL requires a separate, empty MySQL database' => 'MySQL 需要一個獨立且空白的 MySQL 資料庫',
 
     'Database type:' => '資料庫類型：',
     'Database host:' => '資料庫主機：',
@@ -792,17 +791,17 @@ return [
     'Handle:' => '使用者名稱：',
     'Name:' => '姓名：',
 
-    'Configure your page' => '配置您的頁面',
+    'Configure your page' => '設定您的頁面',
     'Enable registration:' => '啟用註冊：',
     'Enable email verification:' => '啟用電子郵件驗證：',
-    'Set your page as Home Page' => '將您的頁面設置為首頁',
+    'Set your page as Home Page' => '將您的頁面設為首頁',
     'This will move the Home Page to /home' => '這將把首頁移至 /home',
     'App Name:' => '應用程式名稱：',
 
 
     /*
     |--------------------------------------------------------------------------
-    | 升级步驟/升級備份
+    | 升級步驟/升級備份
     |--------------------------------------------------------------------------
     |
     | resources/views/update.blade.php
@@ -816,25 +815,25 @@ return [
     'Installed beta version' => '已安裝測試版',
     'none' => '無',
     'You need to update to the latest mainline release' => '您需要更新到最新的主線版本',
-    'You’re running the latest mainline release' => '您正在運行最新的主線版本',
+    'You’re running the latest mainline release' => '您正在執行最新的主線版本',
 
-    'update.manually' => '您可以自動更新您的安裝，也可以下載更新並手動安裝：',
-    'update.windows' => 'Windows 使用者可以使用替代升級程序。此升級程序不會創建備份。請謹慎使用。',
+    'update.manually' => '您可以自動更新安裝，也可以下載更新並手動安裝：',
+    'update.windows' => 'Windows 使用者可以使用替代升級程式。此升級程式不會建立備份，請謹慎使用。',
     'Update automatically' => '自動更新',
 
     'Updating' => '正在更新',
-    'Creating backup' => '建立備份',
+    'Creating backup' => '正在建立備份',
     'Preparing update' => '準備更新',
     'No new version' => '沒有新版本',
-    'There is no new version available' => '沒有可用的新版本',
+    'There is no new version available' => '目前沒有可用的新版本',
     'Admin Panel' => '管理員面板',
-    'Finishing up' => '完成',
+    'Finishing up' => '完成中',
     'Success!' => '成功！',
     'The update was successful' => '更新成功，您現在可以返回管理員面板。',
-    'View the release notes' => '查看發布說明',
+    'View the release notes' => '查看發行說明',
     'Run again' => '重新執行',
     'Error' => '錯誤',
-    'Something went wrong with the update' => '更新過程中出現了問題',
+    'Something went wrong with the update' => '更新過程中發生問題',
 
 
     /*
@@ -849,7 +848,7 @@ return [
     # 標題標籤
     'Backup.title' => '備份',
 
-    'The backup was successful' => '備份成功，您現在可以返回管理員面板或查看您的所有備份。',
+    'The backup was successful' => '備份成功，您現在可以返回管理員面板或查看所有備份。',
 
 
     /*
@@ -862,13 +861,13 @@ return [
     |
     */
 
-    # 预設
+    # 預設
     'block.title.predefined' => '預設網站',
-    'block.description.predefined' => '從預設網站列表中選擇，並使用該網站的品牌顏色和圖示自動為您的連結設置樣式。',
+    'block.description.predefined' => '從預設網站列表中選擇，並使用該網站的品牌顏色與圖示自動為您的連結設置樣式。',
 
     # 連結
     'block.title.link' => '自訂連結',
-    'block.description.link' => '建立一個指向任何網站的自訂連結。自訂按鈕樣式和圖示，或使用網站的站點圖示作為按鈕圖示。',
+    'block.description.link' => '建立一個指向任何網站的自訂連結。可自訂按鈕樣式與圖示，或使用網站的網站圖示作為按鈕圖示。',
 
     # 電子名片
     'block.title.vcard' => '電子名片',
@@ -876,7 +875,7 @@ return [
 
     # 電子郵件
     'block.title.email' => '電子郵件地址',
-    'block.description.email' => '新增一個電子郵件地址，以開啟系統對話方塊來編寫新電子郵件。',
+    'block.description.email' => '新增一個電子郵件地址，以開啟系統對話方塊來撰寫新郵件。',
 
     # 電話
     'block.title.telephone' => '電話號碼',
@@ -884,15 +883,15 @@ return [
 
     # 標題
     'block.title.heading' => '標題',
-    'block.description.heading' => '使用標題來組織您的連結並將它們分為不同的組。',
+    'block.description.heading' => '使用標題來整理您的連結並將它們分組。',
 
     # 間距
     'block.title.spacer' => '間距',
-    'block.description.spacer' => '在連結列表中添加空白空間。您可以選擇間距的高度。',
+    'block.description.spacer' => '在連結列表中加入空白間距。您可以選擇間距高度。',
 
     # 文字
     'block.title.text' => '文字',
-    'block.description.text' => '在您的頁面上添加不可點擊的靜態文字。',
+    'block.description.text' => '在頁面上新增不可點擊的靜態文字。',
 
 
     /*
@@ -909,23 +908,23 @@ return [
     'Leave blank for default title' => '若要使用預設標題，請留空',
     'E-Mail address' => '電子郵件地址',
     'Enter your E-Mail' => '輸入您的電子郵件',
-    
+
     'Heading Text:' => '標題文字：',
-    
+
     'URL' => '網址',
     'Show website icon on button' => '在按鈕上顯示網站圖示',
-    
-    'Select a predefined site' => '選擇預定義網站',
+
+    'Select a predefined site' => '選擇預設網站',
     'Enter the link URL' => '輸入連結網址',
-    
+
     'Spacing height' => '間距高度',
-    
+
     'Phone' => '電話',
     'Telephone number' => '電話號碼',
     'Enter your telephone number' => '輸入您的電話號碼',
-    
+
     'Text to display' => '要顯示的文字',
-    
+
     'Vcard' => '電子名片',
     'First Name' => '名字',
     'Middle Name' => '中間名',
@@ -939,7 +938,7 @@ return [
     'Work Email' => '工作電子郵件',
     'Enter your work email' => '輸入您的工作電子郵件',
     'Phones' => '電話',
-    'Home Phone' => '家庭電話',
+    'Home Phone' => '家用電話',
     'Work Phone' => '工作電話',
     'Cell Phone' => '手機',
     'Home Address' => '家庭地址',
@@ -950,8 +949,8 @@ return [
     'Zip/Postal Code' => '郵遞區號',
     'Country' => '國家',
     'Work Address' => '工作地址',
-    
-    'URL to the video' => '影片的網址',    
+
+    'URL to the video' => '影片網址',
 
 
     /*
@@ -964,16 +963,16 @@ return [
     */
 
     'Maintenance Mode' => '維護模式',
-    'We are performing scheduled site maintenance at this time' => '我們目前正在進行定期的網站維護。',
+    'We are performing scheduled site maintenance at this time' => '我們目前正在進行例行網站維護。',
     'Please check back with us later' => '請稍後再回來查看。',
     'Admin options:' => '管理員選項：',
     'Turn off' => '關閉',
-    'Warn.Disable.Maintenance' => '您即將關閉維護模式。您確定嗎？',    
+    'Warn.Disable.Maintenance' => '您即將關閉維護模式。您確定嗎？',
 
 
     /*
     |--------------------------------------------------------------------------
-    | LinkStack (Links) 頁面
+    | LinkStack（連結）頁面
     |--------------------------------------------------------------------------
     |
     | resources/views/linkstack/linkstack.blade.php
@@ -984,18 +983,18 @@ return [
     'Share' => '分享',
     'Copy URL to clipboard' => '複製網址到剪貼簿',
     'URL has been copied to your clipboard!' => '網址已複製到您的剪貼簿！',
-    
+
     'Delete User' => '刪除使用者',
     'Block User' => '封鎖使用者',
     'Users Theme' => '使用者主題',
     'Search User' => '搜尋使用者',
-    
-    'Edit my profile' => '編輯我的個人資料',    
+
+    'Edit my profile' => '編輯我的個人資料',
 
 
     /*
     |--------------------------------------------------------------------------
-    | 頁腳
+    | 頁尾
     |--------------------------------------------------------------------------
     |
     | 添加到某些頁面的底部。
@@ -1006,42 +1005,43 @@ return [
     'Learn more about LinkStack' => '了解更多關於 LinkStack',
     'Learn more' => '了解更多',
 
+
     /*
     |--------------------------------------------------------------------------
     | 通知消息
     |--------------------------------------------------------------------------
     |
-    | 所有内部通知。
+    | 所有內部通知。
     | resources/views/layouts/notifications.blade.php
     |
     */
 
-    'No notifications' => '没有通知',
+    'No notifications' => '沒有通知',
 
     # 安全風險通知
     'Your security is at risk!' => '您的安全受到威脅！',
-    'Immediate action is required!' => '需要立即行動！',
+    'Immediate action is required!' => '需要立即採取行動！',
     'security.msg1' => '您的安全受到威脅。',
     'security.msg2' => '某些檔案可被所有人存取。需要立即採取行動！',
-    'security.msg3' => '一些重要檔案可公開存取，可能危及您的安全。請立即採取行動，撤銷對這些檔案的公開存取，以防止未經授權存取您的敏感資訊。',
+    'security.msg3' => '一些重要檔案可公開存取，可能危及您的安全。請立即撤銷這些檔案的公開存取，以防止未經授權地存取您的敏感資訊。',
     'security.msg4' => '了解更多',
 
-    # 帮助我們通知
+    # 幫助我們通知
     'Hide this notification' => '隱藏此通知',
     'Help Us Out' => '幫助我們',
     'Enjoying Linkstack?' => '喜歡使用 Linkstack 嗎？',
     'Support Linkstack' => '支持 Linkstack',
-    'support.msg1' => '如果您喜歡使用 Linkstack，我們將非常感激您如果您能花一點時間',
+    'support.msg1' => '如果您喜歡使用 Linkstack，非常感謝您能花一點時間',
     'support.msg2' => '在 GitHub 上給我們的專案一個星',
-    'support.msg3' => '您的支持將幫助我們吸引更廣泛的受眾，提高我們專案的品質。',
-    'support.msg4' => '如果您能',
-    'support.msg5' => '提供財政支持</a>，哪怕是一點點，也將有助於我們支付維護和改進 Linkstack 的成本。',
-    'support.msg6' => '感謝您的支持，以及您是 LinkStack 社群的一部分！',
+    'support.msg3' => '您的支持將幫助我們接觸更多使用者，並提升專案品質。',
+    'support.msg4' => '如果您也能',
+    'support.msg5' => '提供財務支持</a>，哪怕只是一點點，也能幫助我們支付維護與改進 Linkstack 的成本。',
+    'support.msg6' => '感謝您的支持，也感謝您成為 LinkStack 社群的一份子！',
 
 
     /*
     |--------------------------------------------------------------------------
-    | 頁腳連結
+    | 頁尾連結
     |--------------------------------------------------------------------------
     |
     */
@@ -1049,7 +1049,7 @@ return [
     'footer.Home' => '首頁',
     'footer.Terms' => '條款',
     'footer.Privacy' => '隱私',
-    'footer.Contact' => '聯繫',
+    'footer.Contact' => '聯絡',
 
 
     /*
@@ -1060,7 +1060,7 @@ return [
     */
 
     'report_violation' => '檢舉違規行為',
-    'url_label' => '您要檢舉的網站網址',
+    'url_label' => '您要檢舉的頁面網址',
     'report_type_label' => '檢舉類型',
     'hate_speech' => '仇恨言論或騷擾',
     'violence_threats' => '暴力或威脅',
@@ -1075,9 +1075,8 @@ return [
     'privacy_violation' => '侵犯隱私',
     'impersonation' => '冒充',
     'other_specify' => '其他（請具體說明）',
-    'additional_comments_label' => '附加評論',
+    'additional_comments_label' => '附加說明',
     'submit_button' => '提交',
-
 
     'report_mail_admin_subject' => '個人檢舉',
     'report_mail_admin_report' => '已檢舉個人資料',
@@ -1094,9 +1093,8 @@ return [
     'report_mail_button_profile' => '在使用者頁面上查看',
     'report_mail_button_delete' => '刪除被檢舉使用者',
 
-
     'report_error' => '個人資料無法被檢舉',
-    'report_success' => '個人資料已成功檢舉',
+    'report_success' => '個人資料已成功送出檢舉',
 
 
     #=============================================================================#
@@ -1106,33 +1104,30 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | 認證語言線
+    | 認證語言行
     |--------------------------------------------------------------------------
     |
-    | 以下語言線用於過程中的各種消息，我們需要向使用者顯示這些內容。
-    | 您可以根據您的應用程序要求自由修改這些語言線。
-    |
+    | 以下語言行用於認證過程中的各種訊息，我們需要向使用者顯示這些內容。
+    | 您可以根據應用程式需求自由修改這些語言行。
     |
     */
 
-    'failed' => '這些認證與我們的記錄不符。',
+    'failed' => '這些登入憑證與我們的記錄不符。',
     'password' => '提供的密碼不正確。',
-    'throttle' => '登入嘗試次數過多。請在 :seconds 秒後重試。',
+    'throttle' => '登入嘗試次數過多。請在 :seconds 秒後再試一次。',
 
 
     /*
     |--------------------------------------------------------------------------
-    | 分頁語言線
+    | 分頁語言行
     |--------------------------------------------------------------------------
     |
-    | 以下語言線由分頁器庫用於構建簡單的分頁鏈接。
-    | 您可以根據您的應用程序要求更改它們以更好地匹配您的視圖。
-    |
+    | 以下語言行由分頁器用於構建簡單的分頁連結。
+    | 您可以依照應用程式需求調整這些內容。
     |
     */
 
     'previous' => '&laquo; 上一頁',
     'next' => '下一頁 &raquo;',
-
 
 ];
