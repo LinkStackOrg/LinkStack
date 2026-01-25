@@ -1,3 +1,3 @@
         <!-- Short Bio -->
-        <style>.description-parent * {margin-bottom: 1em;}.description-parent {padding-bottom: 30px;}</style>
+        <style>.description-parent * {margin-bottom: 1em;}.description-parent {padding-bottom: 30px;}.description-parent ul,.description-parent ol{text-align:left;display:table;margin:0 auto 1em auto;padding-left:20px;}.description-parent li{text-align:left;}</style>
         <center><div class="fadein description-parent dynamic-contrast"><p class="fadein">@if(env('ALLOW_USER_HTML') === true){!! $info->littlelink_description !!}@else{{ $info->littlelink_description }}@endif</p></div></center>
