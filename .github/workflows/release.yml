@@ -60,8 +60,6 @@ jobs:
           cp "../../version.json" "version.json"
           
           composer update --no-dev --no-scripts
-
-          php artisan lang:update
           
           php artisan migrate
           php artisan db:seed
