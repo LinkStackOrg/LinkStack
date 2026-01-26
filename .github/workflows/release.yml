@@ -6,7 +6,7 @@ on:
 
 jobs:
   setup-ubuntu:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Check for GitHub API key
@@ -181,4 +181,3 @@ jobs:
 
             # Use SSH to upload the file to the remote server
             sshpass -p "${{ secrets.SERVER_PASSWORD }}" scp -o StrictHostKeyChecking=no -P ${{ secrets.SERVER_PORT }} $version.zip ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.REMOTE_PATH }}
-
