@@ -21,14 +21,50 @@ jobs:
             echo "GitHub API key found."
           fi
 
+      - name: Install PHP 8.0 and extensions
+        run: |
+          sudo apt-get update
+
+          # Core PHP 8.0 + CLI
+          sudo apt-get install -y \
+            php8.0 \
+            php8.0-cli \
+            php8.0-common
+
+          # Extensions
+          sudo apt-get install -y \
+            php8.0-bcmath \      
+            php8.0-bz2 \       
+            php8.0-curl \       
+            php8.0-gd \       
+            php8.0-intl \        
+            php8.0-mbstring \     
+            php8.0-mysql \        
+            php8.0-pgsql \        
+            php8.0-sqlite3 \      
+            php8.0-xml \          
+            php8.0-zip \          
+            php8.0-readline \
+            php-redis \           
+            unzip \
+            tzdata
+            
+          # Register php8.0 as the default php
+          if update-alternatives --query php >/dev/null 2>&1; then
+            sudo update-alternatives --set php /usr/bin/php8.0
+          else
+            sudo update-alternatives --install /usr/bin/php php /usr/bin/php8.0 1
+          fi
+
+          php -v
+          php -m
+
       - name: Updating Dependencies + zip
         run: |
           cd ~
           curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
           HASH=`curl -sS https://composer.github.io/installer.sig`
           sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
-
-          sudo update-alternatives --set php /usr/bin/php8.0
 
           cd /tmp
           mkdir linkstack
@@ -168,16 +204,17 @@ jobs:
       - name: Upload to Update Server
         if: ${{ github.event_name == 'push' }}
         run: |
-            cd /tmp/linkstack
-            ls
-            TAG_VERSION="${GITHUB_REF##*/}"
-            version=${TAG_VERSION#"v"}
+          cd /tmp/linkstack
+          ls
+          TAG_VERSION="${GITHUB_REF##*/}"
+          version=${TAG_VERSION#"v"}
 
-            # Install the OpenSSH client
-            sudo apt-get install -y openssh-client
+          # Install the OpenSSH client and sshpass
+          sudo apt-get update
+          sudo apt-get install -y openssh-client sshpass
 
-            # Clear the remote directory
-            sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "rm -rf ${{ secrets.REMOTE_PATH }}/*"
+          # Clear the remote directory
+          sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "rm -rf ${{ secrets.REMOTE_PATH }}/*"
 
-            # Use SSH to upload the file to the remote server
-            sshpass -p "${{ secrets.SERVER_PASSWORD }}" scp -o StrictHostKeyChecking=no -P ${{ secrets.SERVER_PORT }} $version.zip ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.REMOTE_PATH }}
+          # Use SSH to upload the file to the remote server
+          sshpass -p "${{ secrets.SERVER_PASSWORD }}" scp -o StrictHostKeyChecking=no -P ${{ secrets.SERVER_PORT }} $version.zip ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.REMOTE_PATH }}
