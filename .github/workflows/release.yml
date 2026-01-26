@@ -6,7 +6,7 @@ on:
 
 jobs:
   setup-ubuntu:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Check for GitHub API key
@@ -21,14 +21,21 @@ jobs:
             echo "GitHub API key found."
           fi
 
+      - name: Setup PHP 8.0 and Composer
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+          tools: composer:v2
+          extensions: mbstring, intl, zip, curl, sqlite, pdo_sqlite
+          coverage: none
+
+      - name: Verify PHP version
+        run: php -v
+
       - name: Updating Dependencies + zip
         run: |
           cd ~
-          curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
-          HASH=`curl -sS https://composer.github.io/installer.sig`
-          sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
-
-          sudo update-alternatives --set php /usr/bin/php8.0
+          # Composer already provided by setup-php
 
           cd /tmp
           mkdir linkstack
@@ -173,8 +180,9 @@ jobs:
             TAG_VERSION="${GITHUB_REF##*/}"
             version=${TAG_VERSION#"v"}
 
-            # Install the OpenSSH client
-            sudo apt-get install -y openssh-client
+            # Install required clients
+            sudo apt-get update
+            sudo apt-get install -y openssh-client sshpass
 
             # Clear the remote directory
             sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "rm -rf ${{ secrets.REMOTE_PATH }}/*"
