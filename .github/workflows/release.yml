@@ -52,7 +52,7 @@ jobs:
 
           cp "../../version.json" "version.json"
           
-          composer update --no-scripts
+          composer update --no-dev --no-scripts
 
           php artisan lang:update
           

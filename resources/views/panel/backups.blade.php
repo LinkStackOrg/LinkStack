@@ -1,25 +1,45 @@
 @extends('layouts.sidebar')
 
 @section('content')
-  @if (file_exists(base_path('backups/updater-backups/')) and is_dir(base_path('backups/updater-backups/')))
-    <?php
-    $filename = $_SERVER['QUERY_STRING'];
-    
-    $filepath = base_path('backups/updater-backups/') . $filename;
-    
-    $strFile = file_get_contents($filepath);			
-    
-      header("Content-type: application/force-download");
-      header('Content-Disposition: attachment; filename="'.$filename.'"');	
-      
-      header('Content-Length: ' . filesize($filepath));	
-      echo $strFile;
-      while (ob_get_level()) {
-    	ob_end_clean();
-      }
-      readfile($filepath);	 
-    	exit;
-    ?>
-  @endif
-  
-@endsection
+    @if (file_exists(base_path('backups/updater-backups/')) && is_dir(base_path('backups/updater-backups/')))
+            <?php
+                    
+                            if (isset($_GET['file'])) {
+                                        $filename = $_GET['file'];
+                                                
+                                                            if (str_contains($filename, '/') || str_contains($filename, '\\') || !preg_match('/^[A-Za-z0-9._-]+$/', $filename)) {
+                                                                            http_response_code(400);
+                                                                                            exit('Invalid filename.');
+                                                                                                        }
+                                                                                                                
+                                                                                                                            $baseDir = base_path('backups/updater-backups');
+                                                                                                                                        $filepath = $baseDir . DIRECTORY_SEPARATOR . $filename;
+                                                                                                                                                
+                                                                                                                                                            $realBaseDir = realpath($baseDir);
+                                                                                                                                                                        $realPath = realpath($filepath);
+                                                                                                                                                                                
+                                                                                                                                                                                            if ($realBaseDir === false || $realPath === false || !is_file($realPath)) {
+                                                                                                                                                                                                            http_response_code(404);
+                                                                                                                                                                                                                            exit('File not found.');
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                            if (strpos($realPath, $realBaseDir . DIRECTORY_SEPARATOR) !== 0) {
+                                                                                                                                                                                                                                                                            http_response_code(403);
+                                                                                                                                                                                                                                                                                            exit('Access denied.');
+                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                            while (ob_get_level()) {
+                                                                                                                                                                                                                                                                                                                                            ob_end_clean();
+                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                            header('Content-Type: application/octet-stream');
+                                                                                                                                                                                                                                                                                                                                                                                        header('Content-Disposition: attachment; filename="' . basename($filename) . '"');
+                                                                                                                                                                                                                                                                                                                                                                                                    header('Content-Length: ' . filesize($realPath));
+                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                        readfile($realPath);
+                                                                                                                                                                                                                                                                                                                                                                                                                                    exit();
+                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    ?>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        @endif
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        @endsection
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        
