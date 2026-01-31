@@ -381,8 +381,10 @@ class UserController extends Controller
     //Download Vcard
     public function vcard(request $request)
     {
+        $linkId = $request->id;
+
         // Find the link with the specified ID
-        $link = Link::findOrFail($request->id);
+        $link = Link::findOrFail($linkId);
 
         // Decode the JSON to a PHP array
         $data = json_decode($link->link, true) ?? [];
@@ -392,11 +394,11 @@ class UserController extends Controller
 
         // Name: pass empty strings if missing
         $vcard->addName(
-            $data['last_name']   ?? '',
-            $data['first_name']  ?? '',
-            $data['middle_name'] ?? '',
-            $data['prefix']      ?? '',
-            $data['suffix']      ?? ''
+            trim((string)($data['last_name']   ?? '')),
+            trim((string)($data['first_name']  ?? '')),
+            trim((string)($data['middle_name'] ?? '')),
+            trim((string)($data['prefix']      ?? '')),
+            trim((string)($data['suffix']      ?? ''))
         );
 
         // Small helper: call $fn only if $value is meaningfully present
@@ -411,9 +413,9 @@ class UserController extends Controller
         $runIf($data['role'] ?? null,         fn($v) => $vcard->addRole($v));
     
         $runIf($data['email'] ?? null,        fn($v) => $vcard->addEmail($v));
-        $runIf($data['work_email'] ?? null,   fn($v) => $vcard->addEmail($v, 'Work'));
+        $runIf($data['work_email'] ?? null,   fn($v) => $vcard->addEmail($v, 'WORK'));
     
-        $runIf($data['work_url'] ?? null,     fn($v) => $vcard->addURL($v, 'Work'));
+        $runIf($data['work_url'] ?? null,     fn($v) => $vcard->addURL($v, 'WORK'));
     
         $runIf($data['home_phone'] ?? null,   fn($v) => $vcard->addPhoneNumber($v, 'HOME'));
         $runIf($data['work_phone'] ?? null,   fn($v) => $vcard->addPhoneNumber($v, 'WORK'));
@@ -422,22 +424,22 @@ class UserController extends Controller
         
         // Addresses: add only if any component exists
         $home = [
-            $data['home_address_street']  ?? '',
-            $data['home_address_city']    ?? '',
-            $data['home_address_state']   ?? '',
-            $data['home_address_zip']     ?? '',
-            $data['home_address_country'] ?? '',
+            trim((string)($data['home_address_street']  ?? '')),
+            trim((string)($data['home_address_city']    ?? '')),
+            trim((string)($data['home_address_state']   ?? '')),
+            trim((string)($data['home_address_zip']     ?? '')),
+            trim((string)($data['home_address_country'] ?? '')),
         ];
         if (implode('', $home) !== '') {
             $vcard->addAddress($home[0], '', $home[1], $home[2], $home[3], $home[4], 'HOME');
         }
-
+        
         $work = [
-            $data['work_address_street']  ?? '',
-            $data['work_address_city']    ?? '',
-            $data['work_address_state']   ?? '',
-            $data['work_address_zip']     ?? '',
-            $data['work_address_country'] ?? '',
+            trim((string)($data['work_address_street']  ?? '')),
+            trim((string)($data['work_address_city']    ?? '')),
+            trim((string)($data['work_address_state']   ?? '')),
+            trim((string)($data['work_address_zip']     ?? '')),
+            trim((string)($data['work_address_country'] ?? '')),
         ];
         if (implode('', $work) !== '') {
             $vcard->addAddress($work[0], '', $work[1], $work[2], $work[3], $work[4], 'WORK');
@@ -454,7 +456,6 @@ class UserController extends Controller
             'Content-Disposition' => 'attachment; filename="contact.vcf"'
         ];
 
-        // Increment our click count
         Link::where('id', $linkId)->increment('click_number', 1);
 
         // Return the file download response
