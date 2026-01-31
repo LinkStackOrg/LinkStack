@@ -381,33 +381,67 @@ class UserController extends Controller
     //Download Vcard
     public function vcard(request $request)
     {
-        $linkId = $request->id;
-
         // Find the link with the specified ID
-        $link = Link::findOrFail($linkId);
-
-        $json = $link->link;
+        $link = Link::findOrFail($request->id);
 
         // Decode the JSON to a PHP array
-        $data = json_decode($json, true);
-        
+        $data = json_decode($link->link, true) ?? [];
+
         // Create a new vCard object
         $vcard = new VCard();
+
+        // Name: pass empty strings if missing
+        $vcard->addName(
+            $data['last_name']   ?? '',
+            $data['first_name']  ?? '',
+            $data['middle_name'] ?? '',
+            $data['prefix']      ?? '',
+            $data['suffix']      ?? ''
+        );
+
+        // Small helper: call $fn only if $value is meaningfully present
+        $runIf = function ($value, callable $fn) {
+            if (is_string($value)) $value = trim($value);
+            if ($value !== null && $value !== '') $fn($value);
+        };
+
+        // Optional fields - Only add if value is present
+        $runIf($data['organization'] ?? null, fn($v) => $vcard->addCompany($v));
+        $runIf($data['vtitle'] ?? null,       fn($v) => $vcard->addJobtitle($v));
+        $runIf($data['role'] ?? null,         fn($v) => $vcard->addRole($v));
+    
+        $runIf($data['email'] ?? null,        fn($v) => $vcard->addEmail($v));
+        $runIf($data['work_email'] ?? null,   fn($v) => $vcard->addEmail($v, 'Work'));
+    
+        $runIf($data['work_url'] ?? null,     fn($v) => $vcard->addURL($v, 'Work'));
+    
+        $runIf($data['home_phone'] ?? null,   fn($v) => $vcard->addPhoneNumber($v, 'HOME'));
+        $runIf($data['work_phone'] ?? null,   fn($v) => $vcard->addPhoneNumber($v, 'WORK'));
+        $runIf($data['cell_phone'] ?? null,   fn($v) => $vcard->addPhoneNumber($v, 'CELL'));
+
         
-        // Set the vCard properties from the $data array
-        $vcard->addName($data['last_name'], $data['first_name'], $data['middle_name'], $data['prefix'], $data['suffix']);
-        $vcard->addCompany($data['organization']);
-        $vcard->addJobtitle($data['vtitle']);
-        $vcard->addRole($data['role']);
-        $vcard->addEmail($data['email']);
-        $vcard->addEmail($data['work_email'], 'WORK');
-        $vcard->addURL($data['work_url'], 'WORK');
-        $vcard->addPhoneNumber($data['home_phone'], 'HOME');
-        $vcard->addPhoneNumber($data['work_phone'], 'WORK');
-        $vcard->addPhoneNumber($data['cell_phone'], 'CELL');
-        $vcard->addAddress($data['home_address_street'], '', $data['home_address_city'], $data['home_address_state'], $data['home_address_zip'], $data['home_address_country'], 'HOME');
-        $vcard->addAddress($data['work_address_street'], '', $data['work_address_city'], $data['work_address_state'], $data['work_address_zip'], $data['work_address_country'], 'WORK');
-        
+        // Addresses: add only if any component exists
+        $home = [
+            $data['home_address_street']  ?? '',
+            $data['home_address_city']    ?? '',
+            $data['home_address_state']   ?? '',
+            $data['home_address_zip']     ?? '',
+            $data['home_address_country'] ?? '',
+        ];
+        if (implode('', $home) !== '') {
+            $vcard->addAddress($home[0], '', $home[1], $home[2], $home[3], $home[4], 'HOME');
+        }
+
+        $work = [
+            $data['work_address_street']  ?? '',
+            $data['work_address_city']    ?? '',
+            $data['work_address_state']   ?? '',
+            $data['work_address_zip']     ?? '',
+            $data['work_address_country'] ?? '',
+        ];
+        if (implode('', $work) !== '') {
+            $vcard->addAddress($work[0], '', $work[1], $work[2], $work[3], $work[4], 'WORK');
+        }
 
         // $vcard->addPhoto(base_path('img/1.png'));
         
@@ -419,11 +453,12 @@ class UserController extends Controller
             'Content-Type' => 'text/x-vcard',
             'Content-Disposition' => 'attachment; filename="contact.vcf"'
         ];
-        
+
+        // Increment our click count
         Link::where('id', $linkId)->increment('click_number', 1);
 
         // Return the file download response
-        return response()->make($file_contents, 200, $headers);
+        return response($file_contents, 200, $headers);
 
     }
 
