@@ -386,9 +386,11 @@ class UserController extends Controller
         // Find the link with the specified ID
         $link = Link::findOrFail($linkId);
 
-        // Decode the JSON to a PHP array
-        $data = json_decode($link->link, true) ?? [];
+        $json = $link->link;
 
+        // Decode the JSON to a PHP array
+        $data = json_decode($json, true);
+        
         // Create a new vCard object
         $vcard = new VCard();
 
@@ -459,7 +461,7 @@ class UserController extends Controller
         Link::where('id', $linkId)->increment('click_number', 1);
 
         // Return the file download response
-        return response($file_contents, 200, $headers);
+        return response()->make($file_contents, 200, $headers);
 
     }
 
