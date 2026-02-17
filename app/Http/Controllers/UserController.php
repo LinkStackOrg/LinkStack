@@ -393,21 +393,59 @@ class UserController extends Controller
         
         // Create a new vCard object
         $vcard = new VCard();
+
+        // Name: pass empty strings if missing
+        $vcard->addName(
+            trim((string)($data['last_name']   ?? '')),
+            trim((string)($data['first_name']  ?? '')),
+            trim((string)($data['middle_name'] ?? '')),
+            trim((string)($data['prefix']      ?? '')),
+            trim((string)($data['suffix']      ?? ''))
+        );
+
+        // Small helper: call $fn only if $value is meaningfully present
+        $runIf = function ($value, callable $fn) {
+            if (is_string($value)) $value = trim($value);
+            if ($value !== null && $value !== '') $fn($value);
+        };
+
+        // Optional fields - Only add if value is present
+        $runIf($data['organization'] ?? null, fn($v) => $vcard->addCompany($v));
+        $runIf($data['vtitle'] ?? null,       fn($v) => $vcard->addJobtitle($v));
+        $runIf($data['role'] ?? null,         fn($v) => $vcard->addRole($v));
+    
+        $runIf($data['email'] ?? null,        fn($v) => $vcard->addEmail($v));
+        $runIf($data['work_email'] ?? null,   fn($v) => $vcard->addEmail($v, 'WORK'));
+    
+        $runIf($data['work_url'] ?? null,     fn($v) => $vcard->addURL($v, 'WORK'));
+    
+        $runIf($data['home_phone'] ?? null,   fn($v) => $vcard->addPhoneNumber($v, 'HOME'));
+        $runIf($data['work_phone'] ?? null,   fn($v) => $vcard->addPhoneNumber($v, 'WORK'));
+        $runIf($data['cell_phone'] ?? null,   fn($v) => $vcard->addPhoneNumber($v, 'CELL'));
+
         
-        // Set the vCard properties from the $data array
-        $vcard->addName($data['last_name'], $data['first_name'], $data['middle_name'], $data['prefix'], $data['suffix']);
-        $vcard->addCompany($data['organization']);
-        $vcard->addJobtitle($data['vtitle']);
-        $vcard->addRole($data['role']);
-        $vcard->addEmail($data['email']);
-        $vcard->addEmail($data['work_email'], 'WORK');
-        $vcard->addURL($data['work_url'], 'WORK');
-        $vcard->addPhoneNumber($data['home_phone'], 'HOME');
-        $vcard->addPhoneNumber($data['work_phone'], 'WORK');
-        $vcard->addPhoneNumber($data['cell_phone'], 'CELL');
-        $vcard->addAddress($data['home_address_street'], '', $data['home_address_city'], $data['home_address_state'], $data['home_address_zip'], $data['home_address_country'], 'HOME');
-        $vcard->addAddress($data['work_address_street'], '', $data['work_address_city'], $data['work_address_state'], $data['work_address_zip'], $data['work_address_country'], 'WORK');
+        // Addresses: add only if any component exists
+        $home = [
+            trim((string)($data['home_address_street']  ?? '')),
+            trim((string)($data['home_address_city']    ?? '')),
+            trim((string)($data['home_address_state']   ?? '')),
+            trim((string)($data['home_address_zip']     ?? '')),
+            trim((string)($data['home_address_country'] ?? '')),
+        ];
+        if (implode('', $home) !== '') {
+            $vcard->addAddress($home[0], '', $home[1], $home[2], $home[3], $home[4], 'HOME');
+        }
         
+        $work = [
+            trim((string)($data['work_address_street']  ?? '')),
+            trim((string)($data['work_address_city']    ?? '')),
+            trim((string)($data['work_address_state']   ?? '')),
+            trim((string)($data['work_address_zip']     ?? '')),
+            trim((string)($data['work_address_country'] ?? '')),
+        ];
+        if (implode('', $work) !== '') {
+            $vcard->addAddress($work[0], '', $work[1], $work[2], $work[3], $work[4], 'WORK');
+        }
 
         // $vcard->addPhoto(base_path('img/1.png'));
         
@@ -419,7 +457,7 @@ class UserController extends Controller
             'Content-Type' => 'text/x-vcard',
             'Content-Disposition' => 'attachment; filename="contact.vcf"'
         ];
-        
+
         Link::where('id', $linkId)->increment('click_number', 1);
 
         // Return the file download response
