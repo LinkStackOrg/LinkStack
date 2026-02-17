@@ -22,7 +22,7 @@
         "rappasoft/laravel-livewire-tables": "^2.15",
         "simplesoftwareio/simple-qrcode": "~4",
         "spatie/laravel-backup": "^8.1.5",
-        "symfony/yaml": "^6.4"
+        "symfony/yaml": "^6.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",
