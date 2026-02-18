@@ -1248,6 +1248,16 @@ button.button-scribd{
   filter: brightness(90%);
 }
 
+/* Weasyl */
+.button.button-weasyl {
+  color: #FFFFFF;
+  background-color: #121A1D;
+}
+.button.button-weasyl:hover,
+.button.button-weasyl:focus {
+  filter: brightness(90%);
+}
+
 /* WhatsApp */
 .button.button-whatsapp {
   color: #ffffff;
