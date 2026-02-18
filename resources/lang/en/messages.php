@@ -266,6 +266,7 @@ return [
     'Back' => 'Back',
     'Custom Button' => 'Custom Button',
     'CSS' => 'CSS',
+    'Text' => 'text',
     'background' => 'background',
     'gradient' => 'gradient',
     'Show CSS' => 'Show CSS',
