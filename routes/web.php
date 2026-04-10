@@ -120,7 +120,7 @@ Route::get('/studio/rem-background', [UserController::class, 'removeBackground']
 Route::get('/studio/profile', [UserController::class, 'showProfile'])->name('showProfile');
 Route::post('/studio/profile', [UserController::class, 'editProfile'])->name('editProfile');
 Route::post('/edit-icons', [UserController::class, 'editIcons'])->name('editIcons');
-Route::get('/clearIcon/{id}', [UserController::class, 'clearIcon'])->name('clearIcon');
+Route::get('/clearIcon/{id}', [UserController::class, 'clearIcon'])->name('clearIcon')->middleware('link-id');
 Route::get('/studio/page/delprofilepicture', [UserController::class, 'delProfilePicture'])->name('delProfilePicture');
 Route::get('/studio/delete-user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser')->middleware('verified');
 Route::post('/auth-as', [AdminController::class, 'authAs'])->name('authAs');
