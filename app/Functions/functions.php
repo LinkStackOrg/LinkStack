@@ -1,48 +1,110 @@
 <?php
 
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Redis;
+
+if (!function_exists('preloadDirectoryFiles')) {
+    /**
+     * Preload all files in a directory and optionally cache in Redis or Laravel cache.
+     *
+     * @param string $directory
+     * @param string $cacheKey Unique cache key
+     * @param int $ttl Cache time in seconds
+     * @return array Array of filenames
+     */
+    function preloadDirectoryFiles(string $directory, string $cacheKey, int $ttl = 3600): array
+    {
+        static $memoryCache = [];
+
+        // Return from memory if already loaded
+        if (isset($memoryCache[$directory])) {
+            return $memoryCache[$directory];
+        }
+
+        $files = [];
+        $fingerprint = md5(json_encode(scandir($directory)));
+
+        // Try Redis first
+        if (class_exists('Redis')) {
+            try {
+                $cached = Redis::get($cacheKey);
+                if ($cached) {
+                    $cached = json_decode($cached, true);
+                    if (isset($cached['fingerprint']) && $cached['fingerprint'] === $fingerprint) {
+                        $memoryCache[$directory] = $cached['files'];
+                        return $cached['files'];
+                    }
+                }
+            } catch (\Exception $e) {
+                // Redis not available, fallback to local memory
+            }
+        }
+
+        // Scan directory and cache
+        $files = scandir($directory);
+
+        // Cache in Redis if possible
+        $data = [
+            'fingerprint' => $fingerprint,
+            'files' => $files
+        ];
+        if (class_exists('Redis')) {
+            try {
+                Redis::setex($cacheKey, $ttl, json_encode($data));
+            } catch (\Exception $e) {
+                // fallback silently
+            }
+        } else {
+            // Laravel cache fallback
+            Cache::put($cacheKey, $data, $ttl);
+        }
+
+        $memoryCache[$directory] = $files;
+
+        return $files;
+    }
+}
+
 function findFile($name)
 {
     $directory = base_path("/assets/linkstack/images/");
-    $files = scandir($directory);
-    $pathinfo = "error.error";
+    $files = preloadDirectoryFiles($directory, 'linkstack_images_files');
+
     $pattern = '/^' . preg_quote($name, '/') . '(_\w+)?\.\w+$/i';
     foreach ($files as $file) {
         if (preg_match($pattern, $file)) {
-            $pathinfo = $file;
-            break;
+            return $file;
         }
     }
-    return $pathinfo;
+    return "error.error";
 }
 
 function findAvatar($name)
 {
     $directory = base_path("assets/img");
-    $files = scandir($directory);
-    $pathinfo = "error.error";
+    $files = preloadDirectoryFiles($directory, 'assets_img_files');
+
     $pattern = '/^' . preg_quote($name, '/') . '(_\w+)?\.\w+$/i';
     foreach ($files as $file) {
         if (preg_match($pattern, $file)) {
-            $pathinfo = "assets/img/" . $file;
-            break;
+            return "assets/img/" . $file;
         }
     }
-    return $pathinfo;
+    return "error.error";
 }
 
 function findBackground($name)
 {
     $directory = base_path("assets/img/background-img/");
-    $files = scandir($directory);
-    $pathinfo = "error.error";
+    $files = preloadDirectoryFiles($directory, 'assets_img_background_files');
+
     $pattern = '/^' . preg_quote($name, '/') . '(_\w+)?\.\w+$/i';
     foreach ($files as $file) {
         if (preg_match($pattern, $file)) {
-            $pathinfo = $file;
-            break;
+            return $file;
         }
     }
-    return $pathinfo;
+    return "error.error";
 }
 
 function analyzeImageBrightness($file) {
