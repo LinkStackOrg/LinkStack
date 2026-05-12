@@ -1,13 +1,14 @@
 <?php
 
-function locales($key, $default)
-{
-    $value = env($key, $default);
-    $array = explode(',', $value);
-    $trimmedArray = array_map('trim', $array);
-    return $trimmedArray;
+if (! function_exists('locales')) {
+    function locales($key, $default)
+    {
+        $value = env($key, $default);
+        $array = explode(',', $value);
+        $trimmedArray = array_map('trim', $array);
+        return $trimmedArray;
+    }
 }
-
 return [
 
     /*
