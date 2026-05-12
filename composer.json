@@ -12,9 +12,9 @@
   "license": "GPL-3.0-or-later",
   "require": {
     "php": "^8.2",
-    "ext-zip": "*",
     "ext-bcmath": "*",
     "ext-gd": "*",
+    "ext-zip": "*",
     "awssat/laravel-visits": "^6.0",
     "cohensive/oembed": "^0.17",
     "doctrine/dbal": "^3.0",
@@ -26,6 +26,7 @@
     "laravel/framework": "^9.52.4",
     "laravel/socialite": "^5.5",
     "laravel/tinker": "^2.5",
+    "league/flysystem-aws-s3-v3": "^3.0",
     "livewire/livewire": "^2.12",
     "rappasoft/laravel-livewire-tables": "^2.15",
     "simplesoftwareio/simple-qrcode": "~4",
