@@ -12,6 +12,7 @@
   "license": "GPL-3.0-or-later",
   "require": {
     "php": "^8.2",
+    "ext-zip": "*",
     "ext-bcmath": "*",
     "ext-gd": "*",
     "awssat/laravel-visits": "^6.0",
@@ -75,8 +76,12 @@
     "optimize-autoloader": true,
     "preferred-install": "dist",
     "sort-packages": true,
+    "platform": {
+    "php": "8.2.31"
+    },
     "allow-plugins": {
       "phpstan/extension-installer": true
+    
     }
   },
   "minimum-stability": "dev",
