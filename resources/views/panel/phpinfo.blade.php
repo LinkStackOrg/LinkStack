@@ -89,8 +89,8 @@
         </div>
         
 <?php
-phpinfo();
-phpinfo(INFO_MODULES);
+//phpinfo();
+//phpinfo(INFO_MODULES);
 
 ?>
     </div>  
