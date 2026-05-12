@@ -1,4 +1,7 @@
 * text=auto
+.gitattributes text eol=lf
+*.php text eol=lf
+*.blade.php text eol=lf
 *.css linguist-vendored
 *.scss linguist-vendored
 *.js linguist-vendored

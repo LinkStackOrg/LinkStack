@@ -17,7 +17,7 @@ foreach ($customConfigs as $config) {
         return app(UserController::class)->littlelink($request);
     };
 
-    Route::get('/', $routeCallback)->name('littlelink');
+    Route::get('/', $routeCallback);
 
     return;
     }
@@ -28,7 +28,7 @@ $disableHomePageConfig = config('advanced-config.disable_home_page');
 $redirectHomePageConfig = config('advanced-config.redirect_home_page');
 
 if (env('HOME_URL') != '') {
-    Route::get('/', [UserController::class, 'littlelinkhome'])->name('littlelink');
+    Route::get('/', [UserController::class, 'littlelinkhome']);
     if ($disableHomePageConfig == 'redirect') {
         Route::get($customHomeUrl, function () use ($redirectHomePageConfig) {
             return redirect($redirectHomePageConfig);
