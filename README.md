@@ -1,6 +1,7 @@
 # Livelatch
 
 ![AGPL-3.0 License](https://img.shields.io/github/license/livelatch/livelatch-dev-docker)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Flivelatch%2Flivelatch-dev-docker.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Flivelatch%2Flivelatch-dev-docker?ref=badge_shield)
 
 ![Status](https://img.shields.io/badge/status-alpha-orange)
 
@@ -142,6 +143,9 @@ Useful resources:
   https://www.gnu.org/licenses/agpl-3.0.en.html
 
 ---
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Flivelatch%2Flivelatch-dev-docker.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Flivelatch%2Flivelatch-dev-docker?ref=badge_large)
 
 ## Security
 
