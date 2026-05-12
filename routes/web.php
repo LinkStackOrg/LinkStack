@@ -168,7 +168,7 @@ Route::group([
     Route::post('/admin/pages', [AdminController::class, 'editSitePage'])->name('editSitePage');
     Route::get('/admin/advanced-config', [AdminController::class, 'showFileEditor'])->name('showFileEditor');
     Route::post('/admin/advanced-config', [AdminController::class, 'editAC'])->name('editAC');
-    Route::get('/admin/env', [AdminController::class, 'showFileEditor'])->name('showFileEditor');
+    Route::get('/admin/env', [AdminController::class, 'showEnvEditor'])->name('showEnvEditor');
     Route::post('/admin/env', [AdminController::class, 'editENV'])->name('editENV');
     Route::get('/admin/site', [AdminController::class, 'showSite'])->name('showSite');
     Route::post('/admin/site', [AdminController::class, 'editSite'])->name('editSite');
