@@ -12,6 +12,8 @@
   "license": "GPL-3.0-or-later",
   "require": {
     "php": "^8.2",
+    "ext-bcmath": "*",
+    "ext-gd": "*",
     "awssat/laravel-visits": "^6.0",
     "cohensive/oembed": "^0.17",
     "doctrine/dbal": "^3.0",
