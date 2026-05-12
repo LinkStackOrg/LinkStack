@@ -1,77 +1,82 @@
 {
-    "name": "linkstackorg/linkstack",
-    "type": "project",
-    "description": "LinkStack is a highly customizable link sharing platform",
-    "keywords": ["link"],
-    "license": "GPL-3.0-or-later",
-    "require": {
-        "php": ">=8.0",
-        "awssat/laravel-visits": "^6.0",
-        "cohensive/oembed": "^0.17",
-        "doctrine/dbal": "^3.0",
-        "fideloper/proxy": "^4.4",
-        "geo-sot/laravel-env-editor": "^2.0",
-        "guzzlehttp/guzzle": "^7.4",
-        "jeroendesloovere/vcard": "^1.7",
-        "laravel-lang/common": "^2.0",
-        "laravel/framework": "^9.52.4",
-        "laravel/socialite": "^5.5",
-        "laravel/tinker": "^2.5",
-        "livewire/livewire": "^2.12",
-        "nunomaduro/collision": "^6.1",
-        "rappasoft/laravel-livewire-tables": "^2.15",
-        "simplesoftwareio/simple-qrcode": "~4",
-        "spatie/laravel-backup": "^8.1.5",
-        "symfony/yaml": "^6.0"
-    },
-    "require-dev": {
-        "barryvdh/laravel-ide-helper": "^2.12",
-        "fakerphp/faker": "^1.9.1",
-        "laravel/breeze": "^1.1",
-        "laravel/sail": "^1.0.1",
-        "mockery/mockery": "^1.4.2",
-        "spatie/laravel-ignition": "^1.0",
-        "phpunit/phpunit": "^9.3.3"
-    },
-    "autoload": {
-        "files": [
-            "app/Functions/functions.php"
-        ],
-        "psr-4": {
-            "App\\": "app/",
-            "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "post-update-cmd": [
-            "php artisan vendor:publish --tag=laravel-assets --ansi --force",
-            "php artisan lang:update",
-            "echo.> storage/app/ISINSTALLED"
-        ],
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ]
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "allow-plugins": {
-            "phpstan/extension-installer": true
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+  "name": "livelatch/livelatch",
+  "type": "project",
+  "description": "Livelatch is a creator-focused link and collectible engagement platform based on LinkStack.",
+  "keywords": [
+    "link",
+    "creator",
+    "streamer",
+    "livelatch",
+    "latchdeck"
+  ],
+  "license": "GPL-3.0-or-later",
+  "require": {
+    "php": "^8.1",
+    "awssat/laravel-visits": "^6.0",
+    "cohensive/oembed": "^0.17",
+    "doctrine/dbal": "^3.0",
+    "fideloper/proxy": "^4.4",
+    "geo-sot/laravel-env-editor": "^2.0",
+    "guzzlehttp/guzzle": "^7.4",
+    "jeroendesloovere/vcard": "^1.7",
+    "laravel-lang/common": "^2.0",
+    "laravel/framework": "^9.52.4",
+    "laravel/socialite": "^5.5",
+    "laravel/tinker": "^2.5",
+    "livewire/livewire": "^2.12",
+    "rappasoft/laravel-livewire-tables": "^2.15",
+    "simplesoftwareio/simple-qrcode": "~4",
+    "spatie/laravel-backup": "^8.1.5",
+    "symfony/yaml": "^6.0"
+  },
+  "require-dev": {
+    "barryvdh/laravel-ide-helper": "^2.12",
+    "fakerphp/faker": "^1.9.1",
+    "laravel/breeze": "^1.1",
+    "laravel/sail": "^1.0.1",
+    "mockery/mockery": "^1.4.2",
+    "nunomaduro/collision": "^6.1",
+    "spatie/laravel-ignition": "^1.0",
+    "phpunit/phpunit": "^9.3.3"
+  },
+  "autoload": {
+    "files": [
+      "app/Functions/functions.php"
+    ],
+    "psr-4": {
+      "App\\": "app/",
+      "Database\\Factories\\": "database/factories/",
+      "Database\\Seeders\\": "database/seeders/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "post-update-cmd": [
+      "@php artisan vendor:publish --tag=laravel-assets --ansi --force || true",
+      "@php artisan lang:update || true"
+    ],
+    "post-autoload-dump": [
+      "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+      "@php artisan package:discover --ansi"
+    ]
+  },
+  "extra": {
+    "laravel": {
+      "dont-discover": []
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "allow-plugins": {
+      "phpstan/extension-installer": true
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
