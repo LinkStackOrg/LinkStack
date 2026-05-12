@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schema.railpack.com",
+  "build": {
+    "commands": [
+      "mkdir -p storage/framework/{sessions,views,cache,testing} storage/logs bootstrap/cache",
+      "chmod -R a+rw storage",
+      "php artisan config:cache",
+      "php artisan event:cache",
+      "php artisan view:cache"
+    ]
+  }
+}
