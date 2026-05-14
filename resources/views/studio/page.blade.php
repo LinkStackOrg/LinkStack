@@ -178,14 +178,14 @@
                     }
                     </style>
                 <div class="profile-img position-relative me-3 mb-3 mb-lg-0 profile-logo profile-logo1">
-                  @if(file_exists(base_path(findAvatar(Auth::user()->id))))
-                  <img src="{{ url(findAvatar(Auth::user()->id)) }}" class="img-fluid rounded-pill avatar-100 bg-white" width="100" height="100" draggable="false" style="object-fit:cover;">
+                  @if(profileImageExists(Auth::user()->id))
+                  <img src="{{ profileImageUrl(Auth::user()->id) }}" class="img-fluid rounded-pill avatar-100 bg-white" width="100" height="100" draggable="false" style="object-fit:cover;">
                   @elseif(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
                   <img src="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}" class="img-fluid rounded-pill avatar-100 bg-white" width="100" height="100" draggable="false">
                   @else
                   <img src="{{ asset('assets/linkstack/images/logo.svg') }}" class="img-fluid rounded-pill avatar-100 bg-white" width="100" height="100" draggable="false">
                   @endif
-                  @if(file_exists(base_path(findAvatar(Auth::user()->id))))
+                  @if(profileImageExists(Auth::user()->id))
                   <div class="upload-icone bg-primary">
                     <a href="{{ route('delProfilePicture') }}" style="top:1px;position:relative;" data-bs-toggle="tooltip" data-bs-placement="right" title="Delete profile picture"><i class="bi bi-trash-fill text-white"></i></a>
                     <input class="file-upload" type="file" accept="image/*">

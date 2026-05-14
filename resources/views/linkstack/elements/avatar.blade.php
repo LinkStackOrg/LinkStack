@@ -1,6 +1,6 @@
         <!-- Your Image Here -->
-        @if(file_exists(base_path(findAvatar($userinfo->id))))
-        <img alt="avatar" id="avatar" class="rounded-avatar fadein" src="{{ url(findAvatar($userinfo->id)) }}" height="128px" width="128px" style="object-fit: cover;">
+        @if(profileImageExists($userinfo->id))
+        <img alt="avatar" id="avatar" class="rounded-avatar fadein" src="{{ profileImageUrl($userinfo->id) }}" height="128px" width="128px" style="object-fit: cover;">
         @elseif(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
         <img alt="avatar" id="avatar" class="fadein" src="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}" height="128px" width="128px" style="object-fit: cover;">
         @else

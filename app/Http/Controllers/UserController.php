@@ -12,6 +12,8 @@ use JeroenDesloovere\VCard\VCard;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use App\Mail\ReportSubmissionMail;
 use GeoSot\EnvEditor\Facades\EnvEditor;
 
@@ -627,15 +629,32 @@ class UserController extends Controller
         ]);
     
         if ($request->hasFile('image')) {
+            try {
+                $fileName = $userId . '_' . time() . '_' . Str::uuid() . "." . $profilePhoto->extension();
+                $path = $profilePhoto->storeAs("users/{$userId}/profile", $fileName, "s3");
 
-            // Delete the user's current avatar if it exists
-            while (findAvatar($userId) !== "error.error") {
-                $avatarName = findAvatar($userId);
-                unlink(base_path($avatarName));
+                deleteProfileImage($userId);
+
+                User::where('id', $userId)->update([
+                    'image' => $path,
+                ]);
+
+                \Log::info('Profile photo uploaded to S3', [
+                    'user_id' => $userId,
+                    'path' => $path,
+                    'source' => 'studio',
+                ]);
+            } catch (\Throwable $e) {
+                \Log::error('Profile photo upload to S3 failed', [
+                    'user_id' => $userId,
+                    'source' => 'studio',
+                    'message' => $e->getMessage(),
+                ]);
+
+                return redirect('/studio/page')->withErrors([
+                    'image' => __('messages.Failed to upload profile photo.'),
+                ])->withInput();
             }
-            
-            $fileName = $userId . '_' . time() . "." . $profilePhoto->extension();
-            $profilePhoto->move(base_path('assets/img'), $fileName);
         }
     
         if ($checkmark == "on") {
@@ -881,11 +900,8 @@ class UserController extends Controller
     {
         $userId = Auth::user()->id;
 
-        // Delete the user's current avatar if it exists
-        while (findAvatar($userId) !== "error.error") {
-            $avatarName = findAvatar($userId);
-            unlink(base_path($avatarName));
-        }
+        deleteProfileImage($userId);
+        User::where('id', $userId)->update(['image' => null]);
 
         return back();
     }
@@ -931,7 +947,24 @@ class UserController extends Controller
         $userData = $user->toArray();
         $userData['links'] = $links->toArray();
 
-        if (file_exists(base_path(findAvatar($userId)))){
+        $exportedS3Image = false;
+        if (!empty($user->image) && str_starts_with($user->image, 'users/') && !filter_var($user->image, FILTER_VALIDATE_URL)) {
+            try {
+                if (Storage::disk('s3')->exists($user->image)) {
+                    $userData['image_data'] = base64_encode(Storage::disk('s3')->get($user->image));
+                    $userData['image_extension'] = pathinfo($user->image, PATHINFO_EXTENSION);
+                    $exportedS3Image = true;
+                }
+            } catch (\Throwable $e) {
+                \Log::warning('Unable to export profile photo from S3', [
+                    'user_id' => $userId,
+                    'path' => $user->image,
+                    'message' => $e->getMessage(),
+                ]);
+            }
+        }
+
+        if (!$exportedS3Image && file_exists(base_path(findAvatar($userId)))){
             $imagePath = base_path(findAvatar($userId));
             $imageData = base64_encode(file_get_contents($imagePath));
             $userData['image_data'] = $imageData;
@@ -986,18 +1019,17 @@ class UserController extends Controller
                 // Decode the image data from Base64
                 $imageData = base64_decode($userData['image_data']);
 
-                // Delete the user's current avatar if it exists
-                while (findAvatar(Auth::id()) !== "error.error") {
-                    $avatarName = findAvatar(Auth::id());
-                    unlink(base_path($avatarName));
-                }
-                
-                // Save the image to the correct path with the correct file name and extension
-                $filename = $user->id . '.' . $userExtension;
-                file_put_contents(base_path('assets/img/' . $filename), $imageData);
-                
-                // Update the user's image field with the correct file name
-                $user->image = $filename;
+                $filename = $user->id . '_' . time() . '_' . Str::uuid() . '.' . $userExtension;
+                $path = "users/{$user->id}/profile/{$filename}";
+
+                Storage::disk('s3')->put($path, $imageData);
+                deleteProfileImage($user->id);
+
+                $user->image = $path;
+                \Log::info('Imported profile photo uploaded to S3', [
+                    'user_id' => $user->id,
+                    'path' => $path,
+                ]);
                 }
             }
 

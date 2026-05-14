@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use App\Models\User;
 
 if (!function_exists('preloadDirectoryFiles')) {
     /**
@@ -19,6 +22,10 @@ if (!function_exists('preloadDirectoryFiles')) {
         // Return from memory if already loaded
         if (isset($memoryCache[$directory])) {
             return $memoryCache[$directory];
+        }
+
+        if (!is_dir($directory)) {
+            return [];
         }
 
         $files = [];
@@ -91,6 +98,90 @@ function findAvatar($name)
         }
     }
     return "error.error";
+}
+
+function profileImageUrl($userId)
+{
+    $user = User::find($userId);
+    $image = $user ? $user->image : null;
+
+    if (!empty($image)) {
+        if (filter_var($image, FILTER_VALIDATE_URL)) {
+            return $image;
+        }
+
+        if (str_starts_with($image, 'assets/img/') && file_exists(base_path($image))) {
+            return url($image);
+        }
+
+        if (!str_contains($image, '/') && file_exists(base_path('assets/img/' . $image))) {
+            return url('assets/img/' . $image);
+        }
+
+        try {
+            if (Storage::disk('s3')->exists($image)) {
+                return Storage::disk('s3')->url($image);
+            }
+        } catch (\Throwable $e) {
+            Log::warning('Unable to resolve profile image from S3', [
+                'user_id' => $userId,
+                'path' => $image,
+                'message' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    $legacyAvatar = findAvatar($userId);
+    if ($legacyAvatar !== "error.error" && file_exists(base_path($legacyAvatar))) {
+        return url($legacyAvatar);
+    }
+
+    return null;
+}
+
+function profileImageExists($userId)
+{
+    return profileImageUrl($userId) !== null;
+}
+
+function deleteProfileImage($userId)
+{
+    $user = User::find($userId);
+    $image = $user ? $user->image : null;
+
+    if (!empty($image) && !filter_var($image, FILTER_VALIDATE_URL)) {
+        if (str_starts_with($image, 'assets/img/') && file_exists(base_path($image))) {
+            @unlink(base_path($image));
+        } elseif (!str_contains($image, '/') && file_exists(base_path('assets/img/' . $image))) {
+            @unlink(base_path('assets/img/' . $image));
+        } else {
+            try {
+                if (Storage::disk('s3')->exists($image)) {
+                    Storage::disk('s3')->delete($image);
+                    Log::info('Deleted profile photo from S3', [
+                        'user_id' => $userId,
+                        'path' => $image,
+                    ]);
+                }
+            } catch (\Throwable $e) {
+                Log::warning('Unable to delete profile photo from S3', [
+                    'user_id' => $userId,
+                    'path' => $image,
+                    'message' => $e->getMessage(),
+                ]);
+            }
+        }
+    }
+
+    $directory = base_path("assets/img");
+    if (is_dir($directory)) {
+        $pattern = '/^' . preg_quote($userId, '/') . '(_\w+)?\.\w+$/i';
+        foreach (scandir($directory) as $file) {
+            if (preg_match($pattern, $file)) {
+                @unlink($directory . DIRECTORY_SEPARATOR . $file);
+            }
+        }
+    }
 }
 
 function findBackground($name)

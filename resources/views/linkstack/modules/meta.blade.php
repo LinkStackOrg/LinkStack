@@ -28,8 +28,8 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ $userinfo->name }}">
     <meta property="og:description" content="{{ strip_tags($userinfo->littlelink_description) }}">
-    @if(file_exists(base_path(findAvatar($userinfo->id))))
-    <meta property="og:image" content="{{ url(findAvatar($userinfo->id)) }}">
+    @if(profileImageExists($userinfo->id))
+    <meta property="og:image" content="{{ profileImageUrl($userinfo->id) }}">
     @elseif(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
     <meta property="og:image" content="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}">
     @else
@@ -42,8 +42,8 @@
     <meta property="twitter:url" content="{{ url('') }}/{{ "@" . $littlelink_name }}">
     <meta name="twitter:title" content="{{ $userinfo->littlelink_name }}">
     <meta name="twitter:description" content="{{ strip_tags($userinfo->littlelink_description) }}">
-    @if(file_exists(base_path(findAvatar($userinfo->id))))
-    <meta name="twitter:image" content="{{ url(findAvatar($userinfo->id)) }}">
+    @if(profileImageExists($userinfo->id))
+    <meta name="twitter:image" content="{{ profileImageUrl($userinfo->id) }}">
     @elseif(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
     <meta name="twitter:image" content="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}">
     @else

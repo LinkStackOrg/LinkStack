@@ -348,37 +348,47 @@ class AdminController extends Controller
       }
     }
 
-    if ($request->password == "") {
-      User::where("id", $id)->update([
+    $userData = [
         "name" => $name,
         "email" => $email,
         "littlelink_name" => $littlelink_name,
         "littlelink_description" => $littlelink_description,
         "role" => $role,
         "theme" => $theme,
-      ]);
-    } else {
-      User::where("id", $id)->update([
-        "name" => $name,
-        "email" => $email,
-        "password" => $password,
-        "littlelink_name" => $littlelink_name,
-        "littlelink_description" => $littlelink_description,
-        "role" => $role,
-        "theme" => $theme,
-      ]);
+    ];
+
+    if ($request->password != "") {
+      $userData["password"] = $password;
     }
+
     if (!empty($profilePhoto)) {
+      try {
+        $filename =
+          $id . "_" . time() . "_" . Str::uuid() . "." . $profilePhoto->extension();
 
-    $filename = $id . "_" . time() . ".png";
+        $path = $profilePhoto->storeAs("users/{$id}/profile", $filename, "s3");
 
-    $path = $profilePhoto->storeAs(
-        "users/{$id}/profile",
-        $filename,
-        "s3"
-    );
+        deleteProfileImage($id);
+        $userData["image"] = $path;
 
-}
+        \Log::info("Profile photo uploaded to S3", [
+          "user_id" => $id,
+          "path" => $path,
+          "source" => "admin",
+        ]);
+      } catch (\Throwable $e) {
+        \Log::error("Profile photo upload to S3 failed", [
+          "user_id" => $id,
+          "source" => "admin",
+          "message" => $e->getMessage(),
+        ]);
+
+        return back()->with("fail", "Failed to upload profile photo.");
+      }
+    }
+
+    User::where("id", $id)->update($userData);
+
     if (!empty($customBackground)) {
       $directory = base_path("assets/img/background-img/");
       $files = scandir($directory);

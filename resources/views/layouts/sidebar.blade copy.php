@@ -426,8 +426,8 @@ $usrhandl = Auth::user()->littlelink_name;
 
                 <li class="nav-item dropdown">
                   <a class="py-0 nav-link d-flex align-items-center dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-target="#navbarDropdownIcon">
-					@if(file_exists(base_path(findAvatar(Auth::user()->id))))
-					<img src="{{ url(findAvatar(Auth::user()->id)) }}" alt="User-Profile" class="img-fluid avatar avatar-40 avatar-rounded" style="object-fit:cover;">
+					@if(profileImageExists(Auth::user()->id))
+					<img src="{{ profileImageUrl(Auth::user()->id) }}" alt="User-Profile" class="img-fluid avatar avatar-40 avatar-rounded" style="object-fit:cover;">
           @elseif(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
           <img src="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}" alt="User-Profile" class="img logo" style="width:auto;height:30px;">
 					@else

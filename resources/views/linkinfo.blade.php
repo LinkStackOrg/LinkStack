@@ -95,8 +95,8 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="p-2 mb-3">
-                                @if(file_exists(base_path(findAvatar($id))))
-                                    <img alt="avatar" class="rounded-avatar fadein" src="{{ url(findAvatar($id)) }}" height="128px" width="128px" style="object-fit: cover;">
+                                @if(profileImageExists($id))
+                                    <img alt="avatar" class="rounded-avatar fadein" src="{{ profileImageUrl($id) }}" height="128px" width="128px" style="object-fit: cover;">
                                 @elseif(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
                                     <img alt="avatar" class="fadein" src="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}" height="128px" width="128px" style="object-fit: cover;">
                                 @else
