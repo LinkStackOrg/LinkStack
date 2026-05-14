@@ -33,10 +33,10 @@ Current areas of focus include:
 
 ⚠️ Livelatch is currently in **alpha**.
 
-This means:
+This means: 
 
 - Features may change rapidly
-- APIs may change
+- APIs may change!
 - Database structures may change
 - Breaking changes may occur
 - Some systems may be incomplete
