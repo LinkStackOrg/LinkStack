@@ -8,6 +8,9 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
 
 use GeoSot\EnvEditor\Controllers\EnvController;
 use GeoSot\EnvEditor\Exceptions\EnvException;
@@ -366,8 +369,16 @@ class AdminController extends Controller
       ]);
     }
     if (!empty($profilePhoto)) {
-      $profilePhoto->move(base_path("assets/img"), $id . "_" . time() . ".png");
-    }
+
+    $filename = $id . "_" . time() . ".png";
+
+    $path = $profilePhoto->storeAs(
+        "users/{$id}/profile",
+        $filename,
+        "s3"
+    );
+
+}
     if (!empty($customBackground)) {
       $directory = base_path("assets/img/background-img/");
       $files = scandir($directory);
