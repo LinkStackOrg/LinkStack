@@ -93,6 +93,9 @@ Route::get('/block-asset/{type}', [LinkTypeViewController::class, 'blockAsset'])
 Route::get('/media/profile/{userId}', [MediaController::class, 'profile'])
   ->name('media.profile')
   ->where(['userId' => '[0-9]+']);
+Route::get('/media/opengraph/{userId}', [MediaController::class, 'openGraphProfile'])
+  ->name('media.opengraph.profile')
+  ->where(['userId' => '[0-9]+']);
 
 }
 
