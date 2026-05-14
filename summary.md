@@ -9,6 +9,9 @@ Current coverage: 27 fork commits from `8e19376` on 2026-05-12 through `c45776a`
 ## Recent Changes
 
 ### 2026-05-14
+- Added an `AGENTS.md` convention for owner-authored notes in `summary.md`; future reports should preserve those notes and treat them as additional context/justification.
+- Updated `AGENTS.md` to require future `summary.md` entries to preserve the current format, date heading style, fork-only scope, and separation between recent changes and fork history.
+- Added `AGENTS.md` with repo-level instructions for future agent sessions, including automatic `summary.md` updates after changes and PNG output for generated Open Graph previews.
 - Replaced the previous full-repository history digest with a fork-only summary based on `upstream/main..main`.
 - Kept the file focused on Livelatch-specific deployment, S3 media, dashboard avatar, and Open Graph work.
 - Expanded the 2026-05-14 fork history entry so every commit from today is listed, not only representative commits.
@@ -84,6 +87,8 @@ Commit list:
 - Updated the generated preview card design from the editor output.
 - Switched Discord-facing preview images to PNG output instead of SVG.
 - Improved PNG rendering quality by rendering at higher internal resolution, downsampling, improving fallbacks, and cache-busting the OG image URL.
+
+!! I need to look in to font rendering for opengraph, please provide some suggestions for this.
 
 #### Documentation
 - Made a small README edit after the media/Open Graph work.
