@@ -96,6 +96,9 @@ Route::get('/media/profile/{userId}', [MediaController::class, 'profile'])
 Route::get('/media/opengraph/{userId}', [MediaController::class, 'openGraphProfile'])
   ->name('media.opengraph.profile')
   ->where(['userId' => '[0-9]+']);
+Route::get('/media/opengraph/{userId}.png', [MediaController::class, 'openGraphProfile'])
+  ->name('media.opengraph.profile.png')
+  ->where(['userId' => '[0-9]+']);
 
 }
 

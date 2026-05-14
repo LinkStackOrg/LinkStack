@@ -138,17 +138,31 @@ class MediaController extends Controller
             'stored_image' => profileImageValue($user),
         ]);
 
-        $svg = $this->profileOpenGraphSvg([
-            'username' => $username,
-            'display_name' => $displayName,
-            'bio' => $bio,
-            'url' => $profileUrl,
-            'avatar' => $avatarDataUri,
-            'brand' => 'Livelatch',
+        if (function_exists('imagecreatetruecolor')) {
+            $png = $this->profileOpenGraphPng([
+                'username' => $username,
+                'display_name' => $displayName,
+                'bio' => $bio,
+                'url' => $profileUrl,
+                'avatar' => $avatarDataUri,
+                'brand' => 'Livelatch',
+            ]);
+
+            if ($png !== null) {
+                return response($png, 200)
+                    ->header('Content-Type', 'image/png')
+                    ->header('Cache-Control', self::CACHE_CONTROL)
+                    ->header('X-Content-Type-Options', 'nosniff');
+            }
+        }
+
+        Log::warning('Open Graph PNG generation unavailable; returning default PNG', [
+            'user_id' => $userId,
+            'gd_loaded' => extension_loaded('gd'),
         ]);
 
-        return response($svg, 200)
-            ->header('Content-Type', 'image/svg+xml; charset=UTF-8')
+        return response($this->defaultPngBytes(), 200)
+            ->header('Content-Type', 'image/png')
             ->header('Cache-Control', self::CACHE_CONTROL)
             ->header('X-Content-Type-Options', 'nosniff');
     }
@@ -244,6 +258,16 @@ class MediaController extends Controller
         return 'data:' . $mimeType . ';base64,' . base64_encode($contents);
     }
 
+    private function defaultPngBytes()
+    {
+        $default = base_path('assets/img/user.png');
+        if (is_file($default)) {
+            return file_get_contents($default);
+        }
+
+        return base64_decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/p9sAAAAASUVORK5CYII=');
+    }
+
     private function profileOpenGraphSvg($data)
     {
         $title = $this->escapeSvg($data['display_name']);
@@ -303,6 +327,184 @@ class MediaController extends Controller
   <text x="70" y="590" fill="#ffffff" fill-opacity=".64" font-size="22" font-weight="700" font-family="Inter, Arial, sans-serif">{$brand}</text>
 </svg>
 SVG;
+    }
+
+    private function profileOpenGraphPng($data)
+    {
+        try {
+            $width = self::OG_WIDTH;
+            $height = self::OG_HEIGHT;
+            $image = imagecreatetruecolor($width, $height);
+            imagealphablending($image, true);
+            imagesavealpha($image, true);
+
+            $red = [255, 0, 0];
+            $blue = [0, 30, 255];
+            for ($y = 0; $y < $height; $y++) {
+                for ($x = 0; $x < $width; $x++) {
+                    $t = ($x / $width + $y / $height) / 2;
+                    $r = (int) ($red[0] * (1 - $t) + $blue[0] * $t);
+                    $g = (int) ($red[1] * (1 - $t) + $blue[1] * $t);
+                    $b = (int) ($red[2] * (1 - $t) + $blue[2] * $t);
+                    if ((($x * 13 + $y * 17) % 23) < 9) {
+                        $r = max(0, min(255, $r + (($x + $y) % 17) - 8));
+                        $g = max(0, min(255, $g + (($x * 2 + $y) % 17) - 8));
+                        $b = max(0, min(255, $b + (($x + $y * 2) % 17) - 8));
+                    }
+                    $v = max(abs($x - $width / 2) / ($width / 2), abs($y - $height / 2) / ($height / 2));
+                    $darken = min(1, max(0, ($v - 0.2) / 0.8));
+                    $r = (int) ($r * (1 - $darken * 0.78));
+                    $g = (int) ($g * (1 - $darken * 0.78));
+                    $b = (int) ($b * (1 - $darken * 0.78));
+                    imagesetpixel($image, $x, $y, imagecolorallocate($image, $r, $g, $b));
+                }
+            }
+
+            $this->filledRoundedRectangle($image, 70, 80, 1130, 550, 34, [21, 27, 38], 28);
+            $this->drawAvatar($image, $data['avatar'], 78, 150, 220);
+            $this->drawCircleOutline($image, 188, 260, 112, [237, 247, 247], 92, 5);
+
+            $fontRegular = $this->findFont(false);
+            $fontBold = $this->findFont(true);
+            $this->drawText($image, $data['display_name'], 340, 205, 68, [247, 251, 255], $fontBold, 800);
+            $this->drawWrappedText($image, $data['bio'], 344, 305, 32, [200, 210, 223], $fontRegular, 42, 3, 38);
+            $this->drawText($image, $data['url'], 344, 420, 24, [33, 199, 168], $fontBold, 700);
+            $this->drawText($image, $data['brand'], 70, 590, 22, [190, 196, 205], $fontBold, 700);
+
+            for ($x = 0; $x < 6; $x++) {
+                for ($y = 0; $y < 3; $y++) {
+                    $cx = 850 + $x * 38;
+                    $cy = 390 + $y * 35;
+                    $alpha = (int) max(0, min(127, 127 - (0.28 + (($x + $y) / 12)) * 90));
+                    imagefilledellipse($image, $cx, $cy, 10, 10, imagecolorallocatealpha($image, 237, 247, 247, $alpha));
+                }
+            }
+
+            ob_start();
+            imagepng($image, null, 7);
+            $png = ob_get_clean();
+            imagedestroy($image);
+
+            return $png;
+        } catch (\Throwable $e) {
+            Log::warning('Open Graph PNG generation failed', [
+                'message' => $e->getMessage(),
+            ]);
+
+            return null;
+        }
+    }
+
+    private function drawText($image, $text, $x, $y, $size, $rgb, $font, $weight = 700)
+    {
+        $color = imagecolorallocate($image, $rgb[0], $rgb[1], $rgb[2]);
+        $text = html_entity_decode(strip_tags((string) $text), ENT_QUOTES, 'UTF-8');
+
+        if ($font && function_exists('imagettftext')) {
+            imagettftext($image, $size, 0, $x, $y, $color, $font, $text);
+            return;
+        }
+
+        imagestring($image, 5, $x, $y - 16, $text, $color);
+    }
+
+    private function drawWrappedText($image, $text, $x, $y, $size, $rgb, $font, $maxChars, $maxLines, $lineHeight)
+    {
+        foreach ($this->wrapSvgText($text, $maxChars, $maxLines) as $index => $line) {
+            $this->drawText($image, $line, $x, $y + ($index * $lineHeight), $size, $rgb, $font, 500);
+        }
+    }
+
+    private function filledRoundedRectangle($image, $x1, $y1, $x2, $y2, $radius, $rgb, $alpha)
+    {
+        $color = imagecolorallocatealpha($image, $rgb[0], $rgb[1], $rgb[2], $alpha);
+        imagefilledrectangle($image, $x1 + $radius, $y1, $x2 - $radius, $y2, $color);
+        imagefilledrectangle($image, $x1, $y1 + $radius, $x2, $y2 - $radius, $color);
+        imagefilledellipse($image, $x1 + $radius, $y1 + $radius, $radius * 2, $radius * 2, $color);
+        imagefilledellipse($image, $x2 - $radius, $y1 + $radius, $radius * 2, $radius * 2, $color);
+        imagefilledellipse($image, $x1 + $radius, $y2 - $radius, $radius * 2, $radius * 2, $color);
+        imagefilledellipse($image, $x2 - $radius, $y2 - $radius, $radius * 2, $radius * 2, $color);
+    }
+
+    private function drawCircleOutline($image, $cx, $cy, $radius, $rgb, $alpha, $thickness)
+    {
+        $color = imagecolorallocatealpha($image, $rgb[0], $rgb[1], $rgb[2], $alpha);
+        imagesetthickness($image, $thickness);
+        imageellipse($image, $cx, $cy, $radius * 2, $radius * 2, $color);
+        imagesetthickness($image, 1);
+    }
+
+    private function drawAvatar($image, $dataUri, $x, $y, $size)
+    {
+        $avatar = $this->imageFromDataUri($dataUri);
+        if (!$avatar) {
+            return;
+        }
+
+        $srcW = imagesx($avatar);
+        $srcH = imagesy($avatar);
+        $srcSize = min($srcW, $srcH);
+        $srcX = (int) (($srcW - $srcSize) / 2);
+        $srcY = (int) (($srcH - $srcSize) / 2);
+        $dest = imagecreatetruecolor($size, $size);
+        imagesavealpha($dest, true);
+        imagealphablending($dest, false);
+        imagefilledrectangle($dest, 0, 0, $size, $size, imagecolorallocatealpha($dest, 0, 0, 0, 127));
+        imagecopyresampled($dest, $avatar, 0, 0, $srcX, $srcY, $size, $size, $srcSize, $srcSize);
+
+        $mask = imagecreatetruecolor($size, $size);
+        imagefilledrectangle($mask, 0, 0, $size, $size, imagecolorallocate($mask, 0, 0, 0));
+        imagefilledellipse($mask, $size / 2, $size / 2, $size, $size, imagecolorallocate($mask, 255, 255, 255));
+
+        for ($px = 0; $px < $size; $px++) {
+            for ($py = 0; $py < $size; $py++) {
+                if ((imagecolorat($mask, $px, $py) & 0xFF) === 0) {
+                    imagesetpixel($dest, $px, $py, imagecolorallocatealpha($dest, 0, 0, 0, 127));
+                }
+            }
+        }
+
+        imagecopy($image, $dest, $x, $y, 0, 0, $size, $size);
+        imagedestroy($avatar);
+        imagedestroy($dest);
+        imagedestroy($mask);
+    }
+
+    private function imageFromDataUri($dataUri)
+    {
+        if (!preg_match('/^data:image\/[a-zA-Z0-9.+-]+;base64,(.+)$/', $dataUri, $matches)) {
+            return null;
+        }
+
+        $bytes = base64_decode($matches[1], true);
+        if ($bytes === false) {
+            return null;
+        }
+
+        return @imagecreatefromstring($bytes) ?: null;
+    }
+
+    private function findFont($bold)
+    {
+        $paths = $bold
+            ? [
+                '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',
+                '/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf',
+                'C:\\Windows\\Fonts\\arialbd.ttf',
+            ]
+            : [
+                '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',
+                '/usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf',
+                'C:\\Windows\\Fonts\\arial.ttf',
+            ];
+
+        foreach ($paths as $path) {
+            if (is_file($path)) {
+                return $path;
+            }
+        }
+
+        return null;
     }
 
     private function wrapSvgText($text, $maxChars, $maxLines)
