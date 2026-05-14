@@ -139,10 +139,12 @@ function isJsonProfileSettings($value)
 function profileImageUrl($image)
 {
     $legacyAvatar = null;
+    $userId = null;
 
     if (is_numeric($image)) {
         $user = User::find($image);
         if ($user) {
+            $userId = $user->id;
             $legacyAvatar = findAvatar($user->id);
             $image = profileImageValue($user);
         }
@@ -161,7 +163,18 @@ function profileImageUrl($image)
     }
 
     if (Str::startsWith($image, 'users/')) {
-        return Storage::disk('s3')->url($image);
+        if (!$userId && preg_match('/^users\/([^\/]+)\/profile\//', $image, $matches)) {
+            $userId = $matches[1];
+        }
+
+        if ($userId) {
+            return route('media.profile', [
+                'userId' => $userId,
+                'v' => profileImageCacheBuster($image),
+            ]);
+        }
+
+        return asset('assets/img/user.png');
     }
 
     if (Str::startsWith($image, 'assets/img/')) {
@@ -169,6 +182,20 @@ function profileImageUrl($image)
     }
 
     return asset('assets/img/' . ltrim($image, '/'));
+}
+
+function profileImageCacheBuster($image)
+{
+    if (empty($image)) {
+        return 'default';
+    }
+
+    $basename = pathinfo($image, PATHINFO_FILENAME);
+    if (!empty($basename)) {
+        return substr(md5($basename), 0, 12);
+    }
+
+    return substr(md5($image), 0, 12);
 }
 
 function profileImageExists($userId)

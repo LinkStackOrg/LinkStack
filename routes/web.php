@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\LinkTypeViewController;
+use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\InstallerController;
 use Illuminate\Support\Facades\Auth;
@@ -88,6 +89,10 @@ Route::get('/demo-page', [App\Http\Controllers\HomeController::class, 'demo'])->
 
 Route::get('/block-asset/{type}', [LinkTypeViewController::class, 'blockAsset'])
   ->name('block.asset')->where(['type' => '[a-zA-Z0-9_-]+']);
+
+Route::get('/media/profile/{userId}', [MediaController::class, 'profile'])
+  ->name('media.profile')
+  ->where(['userId' => '[0-9]+']);
 
 }
 
