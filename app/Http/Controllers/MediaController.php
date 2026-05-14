@@ -260,6 +260,21 @@ class MediaController extends Controller
 
     private function defaultPngBytes()
     {
+        if (function_exists('imagecreatetruecolor')) {
+            $png = $this->profileOpenGraphPng([
+                'username' => 'livelatch',
+                'display_name' => 'Livelatch',
+                'bio' => 'Create and share your Livelatch profile.',
+                'url' => url('/'),
+                'avatar' => $this->localImageDataUri(base_path('assets/img/user.png')),
+                'brand' => 'Livelatch',
+            ]);
+
+            if ($png !== null) {
+                return $png;
+            }
+        }
+
         $default = base_path('assets/img/user.png');
         if (is_file($default)) {
             return file_get_contents($default);
@@ -332,8 +347,9 @@ SVG;
     private function profileOpenGraphPng($data)
     {
         try {
-            $width = self::OG_WIDTH;
-            $height = self::OG_HEIGHT;
+            $scale = 2;
+            $width = self::OG_WIDTH * $scale;
+            $height = self::OG_HEIGHT * $scale;
             $image = imagecreatetruecolor($width, $height);
             imagealphablending($image, true);
             imagesavealpha($image, true);
@@ -346,44 +362,50 @@ SVG;
                     $r = (int) ($red[0] * (1 - $t) + $blue[0] * $t);
                     $g = (int) ($red[1] * (1 - $t) + $blue[1] * $t);
                     $b = (int) ($red[2] * (1 - $t) + $blue[2] * $t);
-                    if ((($x * 13 + $y * 17) % 23) < 9) {
-                        $r = max(0, min(255, $r + (($x + $y) % 17) - 8));
-                        $g = max(0, min(255, $g + (($x * 2 + $y) % 17) - 8));
-                        $b = max(0, min(255, $b + (($x + $y * 2) % 17) - 8));
+                    if ((($x * 13 + $y * 17) % 31) < 10) {
+                        $r = max(0, min(255, $r + (($x + $y) % 9) - 4));
+                        $g = max(0, min(255, $g + (($x * 2 + $y) % 9) - 4));
+                        $b = max(0, min(255, $b + (($x + $y * 2) % 9) - 4));
                     }
                     $v = max(abs($x - $width / 2) / ($width / 2), abs($y - $height / 2) / ($height / 2));
                     $darken = min(1, max(0, ($v - 0.2) / 0.8));
-                    $r = (int) ($r * (1 - $darken * 0.78));
-                    $g = (int) ($g * (1 - $darken * 0.78));
-                    $b = (int) ($b * (1 - $darken * 0.78));
+                    $r = (int) ($r * (1 - $darken * 0.58));
+                    $g = (int) ($g * (1 - $darken * 0.58));
+                    $b = (int) ($b * (1 - $darken * 0.58));
                     imagesetpixel($image, $x, $y, imagecolorallocate($image, $r, $g, $b));
                 }
             }
 
-            $this->filledRoundedRectangle($image, 70, 80, 1130, 550, 34, [21, 27, 38], 28);
-            $this->drawAvatar($image, $data['avatar'], 78, 150, 220);
-            $this->drawCircleOutline($image, 188, 260, 112, [237, 247, 247], 92, 5);
+            $this->filledRoundedRectangle($image, 70 * $scale, 80 * $scale, 1130 * $scale, 550 * $scale, 34 * $scale, [21, 27, 38], 28);
+            $this->drawAvatar($image, $data['avatar'], 78 * $scale, 150 * $scale, 220 * $scale);
+            $this->drawCircleOutline($image, 188 * $scale, 260 * $scale, 112 * $scale, [237, 247, 247], 92, 5 * $scale);
 
             $fontRegular = $this->findFont(false);
             $fontBold = $this->findFont(true);
-            $this->drawText($image, $data['display_name'], 340, 205, 68, [247, 251, 255], $fontBold, 800);
-            $this->drawWrappedText($image, $data['bio'], 344, 305, 32, [200, 210, 223], $fontRegular, 42, 3, 38);
-            $this->drawText($image, $data['url'], 344, 420, 24, [33, 199, 168], $fontBold, 700);
-            $this->drawText($image, $data['brand'], 70, 590, 22, [190, 196, 205], $fontBold, 700);
+            $this->drawText($image, $data['display_name'], 340 * $scale, 205 * $scale, 68 * $scale, [247, 251, 255], $fontBold, 800);
+            $this->drawWrappedText($image, $data['bio'], 344 * $scale, 305 * $scale, 32 * $scale, [200, 210, 223], $fontRegular, 42, 3, 38 * $scale);
+            $this->drawText($image, $data['url'], 344 * $scale, 420 * $scale, 24 * $scale, [33, 199, 168], $fontBold, 700);
+            $this->drawText($image, $data['brand'], 70 * $scale, 590 * $scale, 22 * $scale, [190, 196, 205], $fontBold, 700);
 
             for ($x = 0; $x < 6; $x++) {
                 for ($y = 0; $y < 3; $y++) {
-                    $cx = 850 + $x * 38;
-                    $cy = 390 + $y * 35;
+                    $cx = (850 + $x * 38) * $scale;
+                    $cy = (390 + $y * 35) * $scale;
                     $alpha = (int) max(0, min(127, 127 - (0.28 + (($x + $y) / 12)) * 90));
-                    imagefilledellipse($image, $cx, $cy, 10, 10, imagecolorallocatealpha($image, 237, 247, 247, $alpha));
+                    imagefilledellipse($image, $cx, $cy, 10 * $scale, 10 * $scale, imagecolorallocatealpha($image, 237, 247, 247, $alpha));
                 }
             }
 
+            $output = imagecreatetruecolor(self::OG_WIDTH, self::OG_HEIGHT);
+            imagealphablending($output, true);
+            imagesavealpha($output, true);
+            imagecopyresampled($output, $image, 0, 0, 0, 0, self::OG_WIDTH, self::OG_HEIGHT, $width, $height);
+
             ob_start();
-            imagepng($image, null, 7);
+            imagepng($output, null, 6);
             $png = ob_get_clean();
             imagedestroy($image);
+            imagedestroy($output);
 
             return $png;
         } catch (\Throwable $e) {
@@ -405,7 +427,18 @@ SVG;
             return;
         }
 
-        imagestring($image, 5, $x, $y - 16, $text, $color);
+        $fontSize = 5;
+        $sourceW = max(1, imagefontwidth($fontSize) * strlen($text));
+        $sourceH = imagefontheight($fontSize);
+        $targetH = max(12, (int) ($size * 0.78));
+        $targetW = max(1, (int) ($sourceW * ($targetH / $sourceH)));
+        $source = imagecreatetruecolor($sourceW, $sourceH);
+        imagesavealpha($source, true);
+        imagealphablending($source, false);
+        imagefilledrectangle($source, 0, 0, $sourceW, $sourceH, imagecolorallocatealpha($source, 0, 0, 0, 127));
+        imagestring($source, $fontSize, 0, 0, $text, imagecolorallocate($source, $rgb[0], $rgb[1], $rgb[2]));
+        imagecopyresampled($image, $source, $x, $y - $targetH, 0, 0, $targetW, $targetH, $sourceW, $sourceH);
+        imagedestroy($source);
     }
 
     private function drawWrappedText($image, $text, $x, $y, $size, $rgb, $font, $maxChars, $maxLines, $lineHeight)
@@ -489,12 +522,18 @@ SVG;
         $paths = $bold
             ? [
                 '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',
+                '/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf',
                 '/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf',
+                '/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf',
+                '/usr/share/fonts/TTF/DejaVuSans-Bold.ttf',
                 'C:\\Windows\\Fonts\\arialbd.ttf',
             ]
             : [
                 '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',
+                '/usr/share/fonts/dejavu/DejaVuSans.ttf',
                 '/usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf',
+                '/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf',
+                '/usr/share/fonts/TTF/DejaVuSans.ttf',
                 'C:\\Windows\\Fonts\\arial.ttf',
             ];
 
@@ -505,6 +544,15 @@ SVG;
         }
 
         return null;
+    }
+
+    private function localImageDataUri($path)
+    {
+        if (is_file($path)) {
+            return 'data:' . $this->fallbackMimeType($path) . ';base64,' . base64_encode(file_get_contents($path));
+        }
+
+        return 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/p9sAAAAASUVORK5CYII=';
     }
 
     private function wrapSvgText($text, $maxChars, $maxLines)

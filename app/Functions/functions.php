@@ -222,7 +222,9 @@ function profilePreviewImageUrl($userId)
         $user = User::find($userId);
         $image = profileImageValue($user);
 
-        return url('/media/opengraph/' . rawurlencode($userId) . '.png') . '?v=' . urlencode(profileImageCacheBuster($image ?: (string) optional($user)->updated_at));
+        $version = 'og2-' . profileImageCacheBuster($image ?: (string) optional($user)->updated_at);
+
+        return url('/media/opengraph/' . rawurlencode($userId) . '.png') . '?v=' . urlencode($version);
     } catch (\Throwable $e) {
         Log::warning('Unable to generate profile preview image URL', [
             'user_id' => $userId,
