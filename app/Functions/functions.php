@@ -212,6 +212,11 @@ function profileImageCacheBuster($image)
     return substr(md5($image), 0, 12);
 }
 
+function profilePreviewImageUrl($userId)
+{
+    return profileImageUrl($userId);
+}
+
 function profileImageExists($userId)
 {
     try {

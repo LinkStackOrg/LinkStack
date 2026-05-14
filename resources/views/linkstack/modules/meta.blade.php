@@ -4,6 +4,17 @@
 @php
   $relMe = "mastodon, firefish, streams";
   $relMeList = explode(', ', $relMe);
+  $profileUsername = $littlelink_name ?: $userinfo->littlelink_name;
+  $profileDisplayName = trim($userinfo->name ?? '');
+  $profileTitle = $profileDisplayName !== ''
+      ? $profileDisplayName . ' (@' . $profileUsername . ') on Livelatch'
+      : $profileUsername . ' on Livelatch';
+  $profileDescription = trim(strip_tags(html_entity_decode($userinfo->littlelink_description ?? '', ENT_QUOTES, 'UTF-8')));
+  $profileDescription = $profileDescription !== ''
+      ? $profileDescription
+      : "View {$profileUsername}'s Livelatch profile.";
+  $profileUrl = url('/@' . $profileUsername);
+  $profileImageUrl = profilePreviewImageUrl($userinfo->id);
 @endphp
 
 @foreach($links as $link)
@@ -15,30 +26,22 @@
 @if(env('CUSTOM_META_TAGS') == 'true')
   @include('layouts.meta')
 @else
-  <meta name="description" content="{{ strip_tags($userinfo->littlelink_description) }}">
-  <meta name="author" content="{{ $userinfo->name }}">
+  <meta name="description" content="{{ $profileDescription }}">
+  <meta name="author" content="{{ $profileDisplayName ?: $profileUsername }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 @endif
 
-<!--#### BEGIN Meta Tags social media preview images  ####-->
-  <!-- This shows a preview for title, description and avatar image of users profiles if shared on social media sites -->
+<meta property="og:title" content="{{ $profileTitle }}">
+<meta property="og:description" content="{{ $profileDescription }}">
+<meta property="og:image" content="{{ $profileImageUrl }}">
+<meta property="og:url" content="{{ $profileUrl }}">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="{{ config('app.name', 'Livelatch') }}">
 
-    <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="{{ url('') }}/{{ "@" . $littlelink_name }}">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ $userinfo->name }}">
-    <meta property="og:description" content="{{ strip_tags($userinfo->littlelink_description) }}">
-    <meta property="og:image" content="{{ profileImageUrl($userinfo->id) }}">
-
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="{{ url('') }}/{{ "@" . $littlelink_name }}">
-    <meta property="twitter:url" content="{{ url('') }}/{{ "@" . $littlelink_name }}">
-    <meta name="twitter:title" content="{{ $userinfo->littlelink_name }}">
-    <meta name="twitter:description" content="{{ strip_tags($userinfo->littlelink_description) }}">
-    <meta name="twitter:image" content="{{ profileImageUrl($userinfo->id) }}">
-
-<!--#### END Meta Tags social media preview images  ####-->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $profileTitle }}">
+<meta name="twitter:description" content="{{ $profileDescription }}">
+<meta name="twitter:image" content="{{ $profileImageUrl }}">
 
 @if(config('advanced-config.linkstack_title') != '' and env('HOME_URL') === '')
 <title>{{ $userinfo->name }} {{ config('advanced-config.linkstack_title') }}</title>
