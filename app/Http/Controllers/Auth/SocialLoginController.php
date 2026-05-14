@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 use App\Models\User;
 use App\Models\SocialAccount;
 
@@ -38,13 +39,16 @@ class SocialLoginController extends Controller
 
             // If User not found, then create new user
             if (!$user) {
-                $user = User::create([
+                $userData = [
                     'email' => $social_user->getEmail(),
                     'name' => $social_user->getName(),
-                    'image' => $social_user->getAvatar(),
                     'littlelink_name' => $social_user->getNickname(),
                     'email_verified_at' => now(),
-                ]);
+                ];
+
+                $userData[Schema::hasColumn('users', 'profile_image') ? 'profile_image' : 'image'] = $social_user->getAvatar();
+
+                $user = User::create($userData);
             }
 
             // Create Social Accounts

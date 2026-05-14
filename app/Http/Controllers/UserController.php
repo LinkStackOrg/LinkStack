@@ -636,7 +636,7 @@ class UserController extends Controller
                 deleteProfileImage($userId);
 
                 User::where('id', $userId)->update([
-                    'image' => $path,
+                    Schema::hasColumn('users', 'profile_image') ? 'profile_image' : 'image' => $path,
                 ]);
 
                 \Log::info('Profile photo uploaded to S3', [
@@ -901,7 +901,9 @@ class UserController extends Controller
         $userId = Auth::user()->id;
 
         deleteProfileImage($userId);
-        User::where('id', $userId)->update(['image' => null]);
+        User::where('id', $userId)->update([
+            Schema::hasColumn('users', 'profile_image') ? 'profile_image' : 'image' => null,
+        ]);
 
         return back();
     }
@@ -948,17 +950,18 @@ class UserController extends Controller
         $userData['links'] = $links->toArray();
 
         $exportedS3Image = false;
-        if (!empty($user->image) && str_starts_with($user->image, 'users/') && !filter_var($user->image, FILTER_VALIDATE_URL)) {
+        $profileImage = profileImageValue($user);
+        if (!empty($profileImage) && str_starts_with($profileImage, 'users/') && !filter_var($profileImage, FILTER_VALIDATE_URL)) {
             try {
-                if (Storage::disk('s3')->exists($user->image)) {
-                    $userData['image_data'] = base64_encode(Storage::disk('s3')->get($user->image));
-                    $userData['image_extension'] = pathinfo($user->image, PATHINFO_EXTENSION);
+                if (Storage::disk('s3')->exists($profileImage)) {
+                    $userData['image_data'] = base64_encode(Storage::disk('s3')->get($profileImage));
+                    $userData['image_extension'] = pathinfo($profileImage, PATHINFO_EXTENSION);
                     $exportedS3Image = true;
                 }
             } catch (\Throwable $e) {
                 \Log::warning('Unable to export profile photo from S3', [
                     'user_id' => $userId,
-                    'path' => $user->image,
+                    'path' => $profileImage,
                     'message' => $e->getMessage(),
                 ]);
             }
@@ -1025,7 +1028,11 @@ class UserController extends Controller
                 Storage::disk('s3')->put($path, $imageData);
                 deleteProfileImage($user->id);
 
-                $user->image = $path;
+                if (Schema::hasColumn('users', 'profile_image')) {
+                    $user->profile_image = $path;
+                } else {
+                    $user->image = $path;
+                }
                 \Log::info('Imported profile photo uploaded to S3', [
                     'user_id' => $user->id,
                     'path' => $path,

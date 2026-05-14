@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\User;
@@ -101,6 +102,40 @@ function findAvatar($name)
     return "error.error";
 }
 
+function profileImageValue($user)
+{
+    if (!$user) {
+        return null;
+    }
+
+    if (Schema::hasColumn('users', 'profile_image') && !empty($user->profile_image)) {
+        return $user->profile_image;
+    }
+
+    $image = $user->image ?? null;
+    if (empty($image) || isJsonProfileSettings($image)) {
+        return null;
+    }
+
+    return $image;
+}
+
+function isJsonProfileSettings($value)
+{
+    if (!is_string($value) || !Str::startsWith(trim($value), ['{', '['])) {
+        return false;
+    }
+
+    $decoded = json_decode($value, true);
+    if (!is_array($decoded)) {
+        return false;
+    }
+
+    return array_key_exists('checkmark', $decoded)
+        || array_key_exists('disable-sharebtn', $decoded)
+        || array_key_exists('links-new-tab', $decoded);
+}
+
 function profileImageUrl($image)
 {
     $legacyAvatar = null;
@@ -109,11 +144,11 @@ function profileImageUrl($image)
         $user = User::find($image);
         if ($user) {
             $legacyAvatar = findAvatar($user->id);
-            $image = $user->image;
+            $image = profileImageValue($user);
         }
     }
 
-    if (empty($image)) {
+    if (empty($image) || isJsonProfileSettings($image)) {
         if ($legacyAvatar && $legacyAvatar !== "error.error") {
             return asset($legacyAvatar);
         }
@@ -139,7 +174,7 @@ function profileImageUrl($image)
 function profileImageExists($userId)
 {
     $user = User::find($userId);
-    if ($user && !empty($user->image)) {
+    if (!empty(profileImageValue($user))) {
         return true;
     }
 
@@ -149,7 +184,7 @@ function profileImageExists($userId)
 function deleteProfileImage($userId)
 {
     $user = User::find($userId);
-    $image = $user ? $user->image : null;
+    $image = profileImageValue($user);
 
     if (!empty($image) && !filter_var($image, FILTER_VALIDATE_URL)) {
         if (str_starts_with($image, 'assets/img/') && file_exists(base_path($image))) {

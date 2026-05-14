@@ -369,7 +369,7 @@ class AdminController extends Controller
         $path = $profilePhoto->storeAs("users/{$id}/profile", $filename, "s3");
 
         deleteProfileImage($id);
-        $userData["image"] = $path;
+        $userData[Schema::hasColumn("users", "profile_image") ? "profile_image" : "image"] = $path;
 
         \Log::info("Profile photo uploaded to S3", [
           "user_id" => $id,
