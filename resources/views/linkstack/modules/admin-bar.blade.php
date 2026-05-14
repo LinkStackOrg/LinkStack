@@ -96,14 +96,14 @@ if(Auth::user()->id == $userinfo->id){
            </ul>
            <ul id="linkstack-admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
               <li id="linkstack-admin-bar-my-account" class="menupop with-avatar">
-                 <a class="ab-item" aria-haspopup="true" href="#"><span class="display-name">{{Auth::user()->name}}</span>
-                  <img src="{{ profileImageUrl(Auth::user()->id) }}" class="avatar avatar-26 photo" height="26" width="26" style="object-fit:cover;">
+                 <a class="ab-item" aria-haspopup="true" href="#"><span class="display-name">{{ optional(auth()->user())->name }}</span>
+                  <img src="{{ profileImageUrl(auth()->id()) }}" class="avatar avatar-26 photo" height="26" width="26" style="object-fit:cover;">
                 </a>
                  <div class="ab-sub-wrapper">
                     <ul id="linkstack-admin-bar-user-actions" class="ab-submenu">
                        <li id="linkstack-admin-bar-user-info"><a class="ab-item" tabindex="-1" href="{{ url('/studio/page') }}">
-                        <img src="{{ profileImageUrl(Auth::user()->id) }}" class="avatar avatar-64 photo" height="64" width="64" style="object-fit:cover;">
-                        <span class="display-name">{{Auth::user()->name}}</span></a></li>
+                        <img src="{{ profileImageUrl(auth()->id()) }}" class="avatar avatar-64 photo" height="64" width="64" style="object-fit:cover;">
+                        <span class="display-name">{{ optional(auth()->user())->name }}</span></a></li>
                        <li><a class="ab-item" href="{{ url('/studio/page') }}">{{__('messages.Edit my profile')}}</a></li>
                        <li><a class="ab-item" onclick="submitForm()" style="cursor:pointer">{{__('messages.Log out')}}</a></li>
                     </ul>

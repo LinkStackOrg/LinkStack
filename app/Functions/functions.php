@@ -104,20 +104,28 @@ function findAvatar($name)
 
 function profileImageValue($user)
 {
-    if (!$user) {
+    try {
+        if (!$user) {
+            return null;
+        }
+
+        if (Schema::hasColumn('users', 'profile_image') && !empty($user->profile_image)) {
+            return $user->profile_image;
+        }
+
+        $image = $user->image ?? null;
+        if (empty($image) || isJsonProfileSettings($image)) {
+            return null;
+        }
+
+        return $image;
+    } catch (\Throwable $e) {
+        Log::warning('Unable to resolve profile image value', [
+            'message' => $e->getMessage(),
+        ]);
+
         return null;
     }
-
-    if (Schema::hasColumn('users', 'profile_image') && !empty($user->profile_image)) {
-        return $user->profile_image;
-    }
-
-    $image = $user->image ?? null;
-    if (empty($image) || isJsonProfileSettings($image)) {
-        return null;
-    }
-
-    return $image;
 }
 
 function isJsonProfileSettings($value)
@@ -138,50 +146,56 @@ function isJsonProfileSettings($value)
 
 function profileImageUrl($image)
 {
-    $legacyAvatar = null;
-    $userId = null;
+    try {
+        $legacyAvatar = null;
+        $userId = null;
 
-    if (is_numeric($image)) {
-        $user = User::find($image);
-        if ($user) {
-            $userId = $user->id;
-            $legacyAvatar = findAvatar($user->id);
-            $image = profileImageValue($user);
+        if (is_numeric($image)) {
+            $user = User::find($image);
+            if ($user) {
+                $userId = $user->id;
+                $legacyAvatar = findAvatar($user->id);
+                $image = profileImageValue($user);
+            }
         }
-    }
 
-    if (empty($image) || isJsonProfileSettings($image)) {
-        if ($legacyAvatar && $legacyAvatar !== "error.error") {
-            return asset($legacyAvatar);
+        if (empty($image) || isJsonProfileSettings($image)) {
+            if ($legacyAvatar && $legacyAvatar !== "error.error") {
+                return asset($legacyAvatar);
+            }
+
+            return asset('assets/img/user.png');
         }
+
+        if (Str::startsWith($image, ['http://', 'https://'])) {
+            return $image;
+        }
+
+        if (Str::startsWith($image, 'users/')) {
+            if (!$userId && preg_match('/^users\/([^\/]+)\/profile\//', $image, $matches)) {
+                $userId = $matches[1];
+            }
+
+            if ($userId) {
+                return url('/media/profile/' . rawurlencode($userId)) . '?v=' . urlencode(profileImageCacheBuster($image));
+            }
+
+            return asset('assets/img/user.png');
+        }
+
+        if (Str::startsWith($image, 'assets/img/')) {
+            return asset($image);
+        }
+
+        return asset('assets/img/' . ltrim($image, '/'));
+    } catch (\Throwable $e) {
+        Log::warning('Unable to generate profile image URL', [
+            'input' => $image,
+            'message' => $e->getMessage(),
+        ]);
 
         return asset('assets/img/user.png');
     }
-
-    if (Str::startsWith($image, ['http://', 'https://'])) {
-        return $image;
-    }
-
-    if (Str::startsWith($image, 'users/')) {
-        if (!$userId && preg_match('/^users\/([^\/]+)\/profile\//', $image, $matches)) {
-            $userId = $matches[1];
-        }
-
-        if ($userId) {
-            return route('media.profile', [
-                'userId' => $userId,
-                'v' => profileImageCacheBuster($image),
-            ]);
-        }
-
-        return asset('assets/img/user.png');
-    }
-
-    if (Str::startsWith($image, 'assets/img/')) {
-        return asset($image);
-    }
-
-    return asset('assets/img/' . ltrim($image, '/'));
 }
 
 function profileImageCacheBuster($image)
@@ -200,12 +214,25 @@ function profileImageCacheBuster($image)
 
 function profileImageExists($userId)
 {
-    $user = User::find($userId);
-    if (!empty(profileImageValue($user))) {
-        return true;
-    }
+    try {
+        if (empty($userId)) {
+            return false;
+        }
 
-    return findAvatar($userId) !== "error.error";
+        $user = User::find($userId);
+        if (!empty(profileImageValue($user))) {
+            return true;
+        }
+
+        return findAvatar($userId) !== "error.error";
+    } catch (\Throwable $e) {
+        Log::warning('Unable to check profile image existence', [
+            'user_id' => $userId,
+            'message' => $e->getMessage(),
+        ]);
+
+        return false;
+    }
 }
 
 function deleteProfileImage($userId)

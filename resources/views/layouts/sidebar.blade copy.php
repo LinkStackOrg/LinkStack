@@ -426,13 +426,13 @@ $usrhandl = Auth::user()->littlelink_name;
 
                 <li class="nav-item dropdown">
                   <a class="py-0 nav-link d-flex align-items-center dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-target="#navbarDropdownIcon">
-					<img src="{{ profileImageUrl(Auth::user()->id) }}" alt="User-Profile" class="img-fluid avatar avatar-40 avatar-rounded" style="object-fit:cover;">
+					<img src="{{ profileImageUrl(auth()->id()) }}" alt="User-Profile" class="img-fluid avatar avatar-40 avatar-rounded" style="object-fit:cover;">
                     <div class="caption ms-3 d-none d-md-block ">
-                        <h6 class="mb-0 caption-title">{{Auth::user()->name}}</h6>
+                        <h6 class="mb-0 caption-title">{{ optional(auth()->user())->name }}</h6>
                         <p class="mb-0 caption-sub-title">
-                          @if(Auth::user()->role == "admin")
+                          @if(optional(auth()->user())->role == "admin")
                           {{__('messages.Administrator')}}
-                          @elseif(Auth::user()->role == "vip")
+                          @elseif(optional(auth()->user())->role == "vip")
                           {{__('messages.Verified user')}}
                           @else
                           {{__('messages.User')}}
