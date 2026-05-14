@@ -40,11 +40,7 @@
                             </div>
                             
                             <div class="form-group col-lg-8">
-                              @if(profileImageExists($user->id))
                               <img src="{{ profileImageUrl($user->id) }}" class="bd-placeholder-img img-thumbnail" width="100" height="100" draggable="false">
-                              @else
-                              <img src="{{ asset('assets/linkstack/images/logo.svg') }}" class="bd-placeholder-img img-thumbnail" width="100" height="100" draggable="false">
-                              @endif
                               @if(profileImageExists($user->id))<br><a title="Remove icon" class="hvr-grow p-1 text-danger" style="padding-left:5px;" href="?delete"><i class="bi bi-trash-fill"></i> {{__('messages.Delete')}}</a>@endif
                               @if($_SERVER['QUERY_STRING'] === 'delete' and profileImageExists($user->id))@php deleteProfileImage($user->id); \App\Models\User::where('id', $user->id)->update(['image' => null]); header("Location: ".url()->current()); die(); @endphp @endif
                           </div><br>

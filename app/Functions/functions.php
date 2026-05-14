@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use App\Models\User;
 
 if (!function_exists('preloadDirectoryFiles')) {
@@ -100,48 +101,49 @@ function findAvatar($name)
     return "error.error";
 }
 
-function profileImageUrl($userId)
+function profileImageUrl($image)
 {
-    $user = User::find($userId);
-    $image = $user ? $user->image : null;
+    $legacyAvatar = null;
 
-    if (!empty($image)) {
-        if (filter_var($image, FILTER_VALIDATE_URL)) {
-            return $image;
-        }
-
-        if (str_starts_with($image, 'assets/img/') && file_exists(base_path($image))) {
-            return url($image);
-        }
-
-        if (!str_contains($image, '/') && file_exists(base_path('assets/img/' . $image))) {
-            return url('assets/img/' . $image);
-        }
-
-        try {
-            if (Storage::disk('s3')->exists($image)) {
-                return Storage::disk('s3')->url($image);
-            }
-        } catch (\Throwable $e) {
-            Log::warning('Unable to resolve profile image from S3', [
-                'user_id' => $userId,
-                'path' => $image,
-                'message' => $e->getMessage(),
-            ]);
+    if (is_numeric($image)) {
+        $user = User::find($image);
+        if ($user) {
+            $legacyAvatar = findAvatar($user->id);
+            $image = $user->image;
         }
     }
 
-    $legacyAvatar = findAvatar($userId);
-    if ($legacyAvatar !== "error.error" && file_exists(base_path($legacyAvatar))) {
-        return url($legacyAvatar);
+    if (empty($image)) {
+        if ($legacyAvatar && $legacyAvatar !== "error.error") {
+            return asset($legacyAvatar);
+        }
+
+        return asset('assets/img/user.png');
     }
 
-    return null;
+    if (Str::startsWith($image, ['http://', 'https://'])) {
+        return $image;
+    }
+
+    if (Str::startsWith($image, 'users/')) {
+        return Storage::disk('s3')->url($image);
+    }
+
+    if (Str::startsWith($image, 'assets/img/')) {
+        return asset($image);
+    }
+
+    return asset('assets/img/' . ltrim($image, '/'));
 }
 
 function profileImageExists($userId)
 {
-    return profileImageUrl($userId) !== null;
+    $user = User::find($userId);
+    if ($user && !empty($user->image)) {
+        return true;
+    }
+
+    return findAvatar($userId) !== "error.error";
 }
 
 function deleteProfileImage($userId)

@@ -45,13 +45,7 @@ class Impersonate
                 $storageToken = $request->session()->get('display_auth_nav');
 
                 if ($storageToken === $rememberToken) {
-                    if (profileImageExists($impersonateUserId)) {
-                        $avatarUrl = profileImageUrl($impersonateUserId);
-                    } elseif (file_exists(base_path("assets/linkstack/images/") . findFile('avatar'))) {
-                        $avatarUrl = url("assets/linkstack/images/") . "/" . findFile('avatar');
-                    } else {
-                        $avatarUrl = asset('assets/linkstack/images/logo.svg');
-                    }
+                    $avatarUrl = profileImageUrl($impersonateUserId);
 
                     $customHtml = <<<EOD
 <style>

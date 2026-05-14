@@ -95,13 +95,7 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="p-2 mb-3">
-                                @if(profileImageExists($id))
-                                    <img alt="avatar" class="rounded-avatar fadein" src="{{ profileImageUrl($id) }}" height="128px" width="128px" style="object-fit: cover;">
-                                @elseif(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
-                                    <img alt="avatar" class="fadein" src="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}" height="128px" width="128px" style="object-fit: cover;">
-                                @else
-                                    <img alt="avatar" class="fadein" src="{{ asset('assets/linkstack/images/logo.svg') }}" height="128px" style="width:auto;min-width:128px;object-fit: cover;">
-                                @endif
+                                <img alt="avatar" class="rounded-avatar fadein" src="{{ profileImageUrl($id) }}" height="128px" width="128px" style="object-fit: cover;">
                             </div>
                             <h5 class="card-title">{{$userData->name}}</h5>
                             <p class="card-text"><a href="{{url("/@".$userData->littlelink_name)}}">{{url("/@".$userData->littlelink_name)}} <i style="font-size:80%" class="bi bi-box-arrow-up-right"></i></a></p>
