@@ -1,6 +1,6 @@
 # Livelatch Fork Summary
 
-This file tracks changes made in the Livelatch fork only. It intentionally excludes the inherited upstream LinkStack history.
+This file tracks changes made by codex in the Livelatch fork only. It intentionally excludes the inherited upstream LinkStack history.
 
 Fork range used for the initial backfill: `upstream/main..main`.
 
