@@ -20,9 +20,17 @@ class ReportSubmissionMail extends Mailable
         $this->formData = $formData;
     }
 
-    public function build()
+    public function envelope(): Envelope
     {
-        return $this->view('layouts.send-report')
-                    ->subject(__('messages.report_mail_admin_subject'));
+        return new Envelope(
+            subject: __('messages.report_mail_admin_subject'),
+        );
+    }
+
+    public function content(): Content
+    {
+        return new Content(
+            view: 'layouts.send-report',
+        );
     }
 }
