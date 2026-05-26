@@ -26,7 +26,7 @@
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.13",
         "fakerphp/faker": "^1.9.1",
-        "laravel/breeze": "^2.0",
+        "laravel/breeze": "^1.29",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.6",
         "spatie/laravel-ignition": "^2.0",
