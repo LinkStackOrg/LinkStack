@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Http\Livewire;
+use Livewire\Attributes\On;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\User;
@@ -11,6 +11,9 @@ use App\Models\Link;
 class UserTable extends DataTableComponent
 {
     protected $model = User::class;
+
+    #[On('refresh-user-table')]
+    public function refreshTable(): void {}
 
     public function configure(): void
     {
