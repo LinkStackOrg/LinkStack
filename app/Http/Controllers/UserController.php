@@ -613,6 +613,8 @@ class UserController extends Controller
         $profilePhoto = $request->file('image');
         $pageName = $request->littlelink_name;
         $pageDescription = strip_tags($request->pageDescription, '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
+        $pageDescription = preg_replace('/\bon\w+\s*=\s*(["\']).*?\1/i', '', $pageDescription);
+        $pageDescription = preg_replace('/\bon\w+\s*=\s*[^\s>]*/i', '', $pageDescription);
         $pageDescription = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $pageDescription);
         $pageDescription = strip_tags_except_allowed_protocols($pageDescription);
         $name = $request->name;
