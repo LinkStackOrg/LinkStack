@@ -288,6 +288,9 @@ class UserController extends Controller
         $filteredLinkData['type_params'] = json_encode($customParams);
 
         if ($OrigLink) {
+            if ($OrigLink->user_id !== $userId) {
+                abort(403);
+            }
             $currentValues = $OrigLink->getAttributes();
             $nonNullFilteredLinkData = array_filter($filteredLinkData, function($value) {return !is_null($value);});
             $updatedValues = array_merge($currentValues, $nonNullFilteredLinkData);
@@ -331,6 +334,7 @@ class UserController extends Controller
 
             $linkNewOrders[$linkId] = $newOrder;
             Link::where("id", $linkId)
+                ->where("user_id", Auth::user()->id)
                 ->update([
                     'order' => $newOrder
                 ]);
