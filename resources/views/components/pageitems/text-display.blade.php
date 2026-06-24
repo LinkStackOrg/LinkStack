@@ -1,3 +1,2 @@
 
-<div class='button-text'> {{$title}}</div>
-
+<div class='button-text dynamic-contrast'> {{$title}}</div>
