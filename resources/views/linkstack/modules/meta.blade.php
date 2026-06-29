@@ -2,7 +2,7 @@
 
 {{-- Fediverse rel="me" links --}}
 @php
-  $relMe = "mastodon, firefish, streams";
+  $relMe = "mastodon, firefish, streams, friendica";
   $relMeList = explode(', ', $relMe);
 @endphp
 
