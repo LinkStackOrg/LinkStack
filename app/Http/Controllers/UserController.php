@@ -405,8 +405,12 @@ class UserController extends Controller
         $vcard->addPhoneNumber($data['home_phone'], 'HOME');
         $vcard->addPhoneNumber($data['work_phone'], 'WORK');
         $vcard->addPhoneNumber($data['cell_phone'], 'CELL');
-        $vcard->addAddress($data['home_address_street'], '', $data['home_address_city'], $data['home_address_state'], $data['home_address_zip'], $data['home_address_country'], 'HOME');
-        $vcard->addAddress($data['work_address_street'], '', $data['work_address_city'], $data['work_address_state'], $data['work_address_zip'], $data['work_address_country'], 'WORK');
+        if (array_filter([$data['home_address_street'], $data['home_address_city'], $data['home_address_state'], $data['home_address_zip'], $data['home_address_country']], fn ($part) => trim((string) $part) !== '')) {
+            $vcard->addAddress($data['home_address_street'], '', $data['home_address_city'], $data['home_address_state'], $data['home_address_zip'], $data['home_address_country'], 'HOME');
+        }
+        if (array_filter([$data['work_address_street'], $data['work_address_city'], $data['work_address_state'], $data['work_address_zip'], $data['work_address_country']], fn ($part) => trim((string) $part) !== '')) {
+            $vcard->addAddress($data['work_address_street'], '', $data['work_address_city'], $data['work_address_state'], $data['work_address_zip'], $data['work_address_country'], 'WORK');
+        }
         
 
         // $vcard->addPhoto(base_path('img/1.png'));
