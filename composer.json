@@ -46,9 +46,7 @@
     },
     "scripts": {
         "post-update-cmd": [
-            "php artisan vendor:publish --tag=laravel-assets --ansi --force",
-            "php artisan lang:update",
-            "composer remove laravel-lang/common"
+            "php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
