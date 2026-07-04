@@ -14,6 +14,10 @@
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
+    index.php
+    RewriteCond %{REQUEST_URI} !^/index\.php$
+    RewriteRule \.php$ - [F,L]
+
     # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
@@ -33,3 +37,27 @@ Deny from all
     Order allow,deny
     Deny from all
 </Files>
+<Files ~ "\.log$">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Block access to .env files
+    RewriteRule ^.*\.env$ - [F,L]
+
+    # Block access to SQLite database files
+    RewriteRule ^.*\.sqlite$ - [F,L]
+
+    # Block access to ZIP files
+    RewriteRule ^.*\.zip$ - [F,L]
+
+    # Block access to LOG files
+    RewriteRule ^.*\.log$ - [F,L]
+</IfModule>
