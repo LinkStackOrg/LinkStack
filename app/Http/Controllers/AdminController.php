@@ -571,11 +571,42 @@ class AdminController extends Controller
   //Saves .env config
   public function editENV(request $request)
   {
+    // Protect against malicious env content
     $config = $request->altConfig;
 
-    file_put_contents(".env", $config);
+    if (empty($config)) {
+      return back()->with("error", "The configuration is empty.");
+    }
 
-    return Redirect("/admin/config?alternative-config");
+    // Reject obviously unsafe content
+    if (
+      str_contains($config, "<?php") ||
+      str_contains($config, "eval(") ||
+      str_contains($config, "system(") ||
+      str_contains($config, "shell_exec")
+    ) {
+      return back()->with(
+        "error",
+        "This configuration contains disallowed content for security reasons.",
+      );
+    }
+
+    // Optional: enforce a size limit
+    if (strlen($config) > 10000) {
+      return back()->with("error", "The configuration is too large.");
+    }
+
+    file_put_contents(base_path('.env'), $config);
+
+    // Clear cached configuration
+    try {
+      \Artisan::call('config:clear');
+      \Artisan::call('cache:clear');
+    } catch (\Exception $e) {
+    }
+
+    return redirect("/admin/config?alternative-config")
+      ->with("success", "Configuration updated successfully.");
   }
 
   //Shows config file editor page
