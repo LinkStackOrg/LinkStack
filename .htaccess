@@ -14,7 +14,6 @@
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
-    index.php
     RewriteCond %{REQUEST_URI} !^/index\.php$
     RewriteRule \.php$ - [F,L]
 
