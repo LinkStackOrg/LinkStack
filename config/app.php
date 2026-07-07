@@ -19,7 +19,7 @@ return [
     |
     */
 
-    'supported_locales' => locales('LOCALES', 'de, es, pt, zh, ms'),
+    'supported_locales' => locales('LOCALES', 'de, es, pt, zh, ms, it'),
 
     /*
     |--------------------------------------------------------------------------
