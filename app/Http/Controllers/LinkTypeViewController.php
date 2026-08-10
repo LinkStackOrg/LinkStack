@@ -17,12 +17,14 @@ class LinkTypeViewController extends Controller
             'link' => '',
             'button_id' => 0,
             'buttons' => [],
+            'custom_icon' => '',
         ];
-    
+
         if ($linkId) {
             $link = Link::find($linkId);
             $data['title'] = $link->title;
             $data['link'] = $link->link;
+            $data['custom_icon'] = $link->custom_icon;
             if (Route::currentRouteName() != 'showButtons') {
                 $data['button_id'] = $link->button_id;
             }

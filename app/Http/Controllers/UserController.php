@@ -225,7 +225,8 @@ class UserController extends Controller
                 'title' => $LinkTitle ?? $button?->alt,
                 'user_id' => Auth::user()->id,
                 'button_id' => $button?->id ?? $button_id,
-                'type' => $request->typename // Save the link type
+                'type' => $request->typename, // Save the link type
+                'custom_icon' => $request->custom_icon ?? null,
             ];
         } else {
             $linkTypePath = base_path("blocks/{$linkType->typename}/handler.php");
