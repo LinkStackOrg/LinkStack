@@ -107,7 +107,7 @@
                                             <br><br>
                                             <div class="mb-3">
                                                 <input type="file"
-                                                    accept="image/jpeg,image/jpg,image/png,image/webp,image/gif"
+                                                    accept="{{ validation_image_accept() }}"
                                                     class="form-control form-control-lg" name="image"><br>
                                             </div>
                                         </div>

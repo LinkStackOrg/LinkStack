@@ -219,7 +219,7 @@
                                                 data-bs-toggle="tooltip" data-bs-placement="right"
                                                 title="Delete profile picture"><i
                                                     class="bi bi-trash-fill text-white"></i></a>
-                                            <input class="file-upload" type="file" accept="image/*">
+                                            <input class="file-upload" type="file" accept="{{ validation_image_accept() }}">
                                         </div>
                                     @endif
                                 </div>
@@ -250,7 +250,7 @@
                                                         <label class="form-label"
                                                             for="customFile">{{ __('messages.Profile Picture') }}</label>
                                                         <input type="file"
-                                                            accept="image/jpeg,image/jpg,image/png,image/webp"
+                                                            accept="{{ validation_image_accept() }}"
                                                             name="image" class="form-control" id="customFile">
                                                     </div>
                                                 @endif
