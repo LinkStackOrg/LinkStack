@@ -188,7 +188,7 @@
                   @if(file_exists(base_path(findAvatar(Auth::user()->id))))
                   <div class="upload-icone bg-primary">
                     <a href="{{ route('delProfilePicture') }}" style="top:1px;position:relative;" data-bs-toggle="tooltip" data-bs-placement="right" title="Delete profile picture"><i class="bi bi-trash-fill text-white"></i></a>
-                    <input class="file-upload" type="file" accept="image/*">
+                    <input class="file-upload" type="file" accept="{{ validation_image_accept() }}">
                   </div>
                   @endif
                 </div>                
@@ -215,7 +215,7 @@
                     @if($page->littlelink_name != '')
                     <div class="form-group col-lg-8">
                       <label class="form-label" for="customFile">{{__('messages.Profile Picture')}}</label>
-                      <input type="file" accept="image/jpeg,image/jpg,image/png,image/webp" name="image" class="form-control" id="customFile">
+                      <input type="file" accept="{{ validation_image_accept() }}" name="image" class="form-control" id="customFile">
                   </div>
                     @endif
                 

@@ -322,10 +322,12 @@ class AdminController extends Controller
   public function editUser(request $request)
   {
     $request->validate([
-      "name" => "",
-      "email" => "",
-      "password" => "",
-      "littlelink_name" => "",
+      "name" => "sometimes|string|max:255",
+      "email" => "sometimes|email|max:255",
+      "password" => "sometimes|string|min:8",
+      "littlelink_name" => "sometimes|string|max:255",
+      "image" => 'sometimes|file|mimes:' . implode(',', validation_image_extensions()) . '|max:2048',
+      "background" => 'sometimes|file|mimes:' . implode(',', validation_image_extensions()) . '|max:2048',
     ]);
 
     $id = $request->id;
@@ -334,7 +336,7 @@ class AdminController extends Controller
     $password = Hash::make($request->password);
     $profilePhoto = $request->file("image");
     $littlelink_name = $request->littlelink_name;
-    $littlelink_description = $request->littlelink_description;
+    $littlelink_description = sanitize_rich_text($request->littlelink_description);
     $role = $request->role;
     $customBackground = $request->file("background");
     $theme = $request->theme;
@@ -366,7 +368,10 @@ class AdminController extends Controller
       ]);
     }
     if (!empty($profilePhoto)) {
-      $profilePhoto->move(base_path("assets/img"), $id . "_" . time() . ".png");
+      $profilePhoto->move(
+        base_path("assets/img"),
+        $id . "_" . time() . "." . $profilePhoto->extension(),
+      );
     }
     if (!empty($customBackground)) {
       $directory = base_path("assets/img/background-img/");
@@ -433,6 +438,11 @@ class AdminController extends Controller
     $message = $request->message;
     $logo = $request->file("image");
     $icon = $request->file("icon");
+
+    $request->validate([
+      "image" => 'sometimes|file|mimes:' . implode(',', validation_image_extensions()) . '|max:2048',
+      "icon" => 'sometimes|file|mimes:' . implode(',', validation_image_extensions()) . '|max:2048',
+    ]);
 
     Page::first()->update(["home_message" => $message]);
 

@@ -35,7 +35,7 @@
                             <div class="form-group col-lg-8">
                               <label>{{__('messages.Logo')}}</label>
                               <div class="mb-3">
-                                <input type="file" class="form-control form-control-lg" name="image">
+                                <input type="file" class="form-control form-control-lg" accept="{{ validation_image_accept() }}" name="image">
                             </div>
                             </div>
                             
@@ -52,7 +52,7 @@
                             <div class="form-group col-lg-8">
                               <label>{{__('messages.Custom background')}}</label>
                               <div class="mb-3">
-                                <input type="file" class="form-control form-control-lg" name="background">
+                                <input type="file" class="form-control form-control-lg" accept="{{ validation_image_accept() }}" name="background">
                             </div>
                             </div>
                             <div class="form-group col-lg-8">

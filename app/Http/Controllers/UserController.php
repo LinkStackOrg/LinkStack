@@ -602,11 +602,11 @@ class UserController extends Controller
                 'isunique:users,id,'.$userId,
             ],
             'name' => 'sometimes|max:255|string',
-            'image' => 'sometimes|image|mimes:jpeg,jpg,png,webp|max:2048', // Max file size: 2MB
+            'image' => 'sometimes|file|mimes:' . implode(',', validation_image_extensions()) . '|max:2048', // Max file size: 2MB
         ], [
             'littlelink_name.unique' => __('messages.That handle has already been taken'),
-            'image.image' => __('messages.The selected file must be an image'),
-            'image.mimes' => __('messages.The image must be') . ' JPEG, JPG, PNG, webP.',
+            'image.file' => __('messages.The selected file must be an image'),
+            'image.mimes' => __('messages.The image must be') . ' ' . validation_image_label() . '.',
             'image.max' => __('messages.The image size should not exceed 2MB'),
         ]);
     
@@ -616,11 +616,7 @@ class UserController extends Controller
     
         $profilePhoto = $request->file('image');
         $pageName = $request->littlelink_name;
-        $pageDescription = strip_tags($request->pageDescription, '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
-        $pageDescription = preg_replace('/\bon\w+\s*=\s*(["\']).*?\1/i', '', $pageDescription);
-        $pageDescription = preg_replace('/\bon\w+\s*=\s*[^\s>]*/i', '', $pageDescription);
-        $pageDescription = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $pageDescription);
-        $pageDescription = strip_tags_except_allowed_protocols($pageDescription);
+        $pageDescription = sanitize_rich_text($request->pageDescription);
         $name = $request->name;
         $checkmark = $request->checkmark;
         $sharebtn = $request->sharebtn;
@@ -676,11 +672,11 @@ class UserController extends Controller
         $littlelink_name = Auth::user()->littlelink_name;
     
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,jpg,png,webp,gif|max:2048', // Max file size: 2MB
+            'image' => 'required|file|mimes:' . implode(',', validation_image_extensions()) . '|max:2048', // Max file size: 2MB
         ], [
             'image.required' => __('messages.Please select an image'),
-            'image.image' => __('messages.The selected file must be an image'),
-            'image.mimes' => __('messages.The image must be') . ' JPEG, JPG, PNG, webP, GIF.',
+            'image.file' => __('messages.The selected file must be an image'),
+            'image.mimes' => __('messages.The image must be') . ' ' . validation_image_label() . '.',
             'image.max' => __('messages.The image size should not exceed 2MB'),
         ]);
     
@@ -705,7 +701,7 @@ class UserController extends Controller
             $fileName = $userId . '_' . time() . "." . $customBackground->extension();
             $customBackground->move(base_path('assets/img/background-img/'), $fileName);
     
-            if (extension_loaded('imagick')) {
+            if (extension_loaded('imagick') && strtolower($customBackground->extension()) !== 'svg') {
                 $imagePath = base_path('assets/img/background-img/') . $fileName;
                 $image = new \Imagick($imagePath);
                 $image->stripImage();
@@ -980,16 +976,12 @@ class UserController extends Controller
             }
 
             if (isset($userData['littlelink_description'])) {
-                $sanitizedText = $userData['littlelink_description'];
-                $sanitizedText = strip_tags($sanitizedText, '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
-                $sanitizedText = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $sanitizedText);
-                $sanitizedText = strip_tags_except_allowed_protocols($sanitizedText);
-                $user->littlelink_description = $sanitizedText;
+                $user->littlelink_description = sanitize_rich_text($userData['littlelink_description']);
             }
 
             if (isset($userData['image_data'])) {
 
-                $allowedExtensions = array('jpeg', 'jpg', 'png', 'webp');
+                $allowedExtensions = validation_image_extensions();
                 $userExtension = strtolower($userData['image_extension']);
 
                 if (in_array($userExtension, $allowedExtensions)) {
@@ -1035,9 +1027,7 @@ class UserController extends Controller
                 
                 // Sanitize the title
                 if ($linkData['button_id'] == 93) {
-                    $sanitizedText = strip_tags($linkData['title'], '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
-                    $sanitizedText = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $sanitizedText);
-                    $sanitizedText = strip_tags_except_allowed_protocols($sanitizedText);
+                    $sanitizedText = sanitize_rich_text($linkData['title']);
                 
                     $newLink->title = $sanitizedText;
                 } else {
