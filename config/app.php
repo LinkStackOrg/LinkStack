@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'supported_locales' => array_map('trim', explode(',', env('LOCALES', 'de, es, pt, zh, ms'))),
+    'supported_locales' => array_map('trim', explode(',', env('LOCALES', 'de, es, pt, zh, ms, it'))),
 
     /*
     |--------------------------------------------------------------------------
