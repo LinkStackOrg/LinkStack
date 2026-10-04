@@ -1145,4 +1145,6 @@ return [
     'next' => 'Nächste &raquo;',
 
 
+    'or' => 'oder',
+    'Sign in with :provider' => 'Mit :provider anmelden',
 ];

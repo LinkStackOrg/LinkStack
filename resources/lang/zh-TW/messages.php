@@ -1135,4 +1135,6 @@ return [
     'next' => '下一頁 &raquo;',
 
 
+    'or' => '或',
+    'Sign in with :provider' => '使用 :provider 登入',
 ];

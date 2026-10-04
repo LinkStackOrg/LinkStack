@@ -1062,4 +1062,6 @@ izado con éxito!',
 
 'Add new link' => 'Engadir novo enlace',
 
+  'or' => 'ou',
+  'Sign in with :provider' => 'Iniciar sesión con :provider',
 );

@@ -14,6 +14,7 @@
         "livewire/livewire": "^3.5",
         "rappasoft/laravel-livewire-tables": "^3.0",
         "simplesoftwareio/simple-qrcode": "~4",
+        "socialiteproviders/openidconnect": "^1.0",
         "spatie/laravel-backup": "^9.1",
         "symfony/yaml": "^6.0|^7.0"
     },

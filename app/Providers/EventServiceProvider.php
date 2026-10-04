@@ -18,6 +18,14 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
+        // SocialiteProviders packages register their driver by listening for this event;
+        // without the mapping Socialite has no "openidconnect" driver and every SSO
+        // request fails with "Driver [openidconnect] not supported", however complete the
+        // configuration is. Installing the package alone is not enough.
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            \SocialiteProviders\OpenIDConnect\OpenIDConnectExtendSocialite::class.'@handle',
+        ],
     ];
 
     /**

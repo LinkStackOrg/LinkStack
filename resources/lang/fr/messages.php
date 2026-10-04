@@ -1078,4 +1078,6 @@ return array (
   
   
   
+  'or' => 'ou',
+  'Sign in with :provider' => 'Se connecter avec :provider',
 );

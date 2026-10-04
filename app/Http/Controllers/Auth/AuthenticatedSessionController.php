@@ -32,6 +32,15 @@ class AuthenticatedSessionController extends Controller
         return redirect('/update?finishing');
     }
 
+    // Straight to the provider when this instance signs in only through it, so no one is
+    // shown a form nobody uses. ?local=1 still reaches the form, so local accounts — and
+    // an instance whose provider is down — always keep a way in.
+    if (! $request->has('local')
+        && config('services.openidconnect.auto_launch')
+        && ! empty(config('services.openidconnect.client_id'))) {
+        return redirect()->route('social.redirect', 'openidconnect');
+    }
+
     return view('auth.login');
 }
 
@@ -129,6 +138,21 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
+        $oidc = $request->session()->get('oidc_logout');
+
+        // OIDC session: RP-initiated logout. Hand off to the IdP's end_session_endpoint
+        // (logout() mints a state and keeps the session for it); the local logout is
+        // completed in the post-logout callback after that state is validated. Local and
+        // non-OIDC social sessions fall straight through to the plain logout below.
+        if (is_array($oidc) && ! empty($oidc['provider'])) {
+            try {
+                return \Socialite::driver($oidc['provider'])
+                    ->logout($oidc['id_token'] ?? null, route('social.logout.callback'));
+            } catch (\Throwable $e) {
+                // IdP advertises no end_session_endpoint (or driver gone) — logout locally.
+            }
+        }
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

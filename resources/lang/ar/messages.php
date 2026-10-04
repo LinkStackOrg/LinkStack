@@ -1137,4 +1137,8 @@ return [
     'next' => 'التالي &raquo;',
 
 
+
+    'or' => 'أو',
+
+    'Sign in with :provider' => 'تسجيل الدخول باستخدام :provider',
 ];

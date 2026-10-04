@@ -1140,4 +1140,14 @@ return [
     'next' => 'Next &raquo;',
 
 
+
+    // Single sign-on
+    'or' => 'or',
+    'Sign in with :provider' => 'Sign in with :provider',
+    'Your identity provider did not release an email address.' => 'Your identity provider did not release an email address.',
+    'Your email address is not verified with the identity provider.' => 'Your email address is not verified with the identity provider.',
+    'An account with this email address already exists.' => 'An account with this email address already exists.',
+    'This instance does not create accounts from single sign-on.' => 'This instance does not create accounts from single sign-on.',
+    'Your account is not permitted to sign in to this instance.' => 'Your account is not permitted to sign in to this instance.',
+
 ];

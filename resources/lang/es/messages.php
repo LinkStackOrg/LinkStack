@@ -1063,4 +1063,6 @@ return array (
 
 'Add new link' => 'Agregar nuevo enlace',
 
+  'or' => 'o',
+  'Sign in with :provider' => 'Iniciar sesión con :provider',
 );

@@ -1137,4 +1137,6 @@ return [
     'next' => 'Следующая ⮕',
 
 
+    'or' => 'или',
+    'Sign in with :provider' => 'Войти через :provider',
 ];

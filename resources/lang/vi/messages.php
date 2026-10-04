@@ -1075,4 +1075,6 @@ return [
     'next' => 'Tiếp theo & Raquo;',
 
 
+    'or' => 'hoặc',
+    'Sign in with :provider' => 'Đăng nhập bằng :provider',
 ];

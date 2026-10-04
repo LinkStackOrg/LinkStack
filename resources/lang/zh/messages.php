@@ -1137,4 +1137,6 @@ return [
     'next' => '下一页 &raquo;',
 
 
+    'or' => '或',
+    'Sign in with :provider' => '使用 :provider 登录',
 ];

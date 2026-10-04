@@ -71,6 +71,35 @@ foreach($pages as $page)
                   <button type="submit" class="btn btn-primary">{{__('messages.Sign In')}}</button>
                 </div>
                 @if(env('ENABLE_SOCIAL_LOGIN') == 'true')
+                @php($oidcName = config('services.openidconnect.display_name'))
+                @php($oidcEnabled = !empty(config('services.openidconnect.client_id')))
+                @php($oidcIcon = config('services.openidconnect.icon'))
+                @php($ssoText = __('messages.Sign in with :provider', ['provider' => $oidcName]))
+                @php($otherProviders = !empty(env('FACEBOOK_CLIENT_ID')) || !empty(env('TWITTER_CLIENT_ID'))
+                    || !empty(env('GOOGLE_CLIENT_ID')) || !empty(env('GITHUB_CLIENT_ID')))
+                {{-- A named provider is a sign-in route in its own right, so it sits with the
+                     submit button above and mirrors it exactly — same wrapper, centred and
+                     auto-width, same theme colour and hover — rather than becoming one more
+                     icon in the row below. --}}
+                @if($oidcEnabled)
+                {{-- Separates the password form from the provider, which otherwise sit flush
+                     against each other. --}}
+                <div class="d-flex align-items-center my-3">
+                  <hr class="flex-grow-1 m-0">
+                  <span class="px-3 text-muted small">{{ __('messages.or') }}</span>
+                  <hr class="flex-grow-1 m-0">
+                </div>
+                <div class="d-flex justify-content-center my-3">
+                  <a href="{{ route('social.redirect','openidconnect') }}"
+                     class="btn btn-primary" aria-label="{{ $ssoText }}">
+                    @if(!empty($oidcIcon))<i class="bi {{ $oidcIcon }} me-1"></i>@endif{{ $ssoText }}
+                  </a>
+                </div>
+                @endif
+                {{-- The heading introduces the icon row, so it appears only when that row has
+                     something in it: an instance with single sign-on alone should not be
+                     offered "other accounts" that do not exist. --}}
+                @if($otherProviders)
                 <p class="text-center my-3">{{__('messages.or sign in with other accounts?')}}</p>
                 <div class="d-flex justify-content-center">
                   <ul class="list-group list-group-horizontal list-group-flush">
@@ -104,6 +133,7 @@ foreach($pages as $page)
                     @endif
                   </ul>
                 </div>
+                @endif
                 @else
                 <br>
                 @endif

@@ -584,4 +584,6 @@ return array (
   'throttle' => 'Твърде много опити за влизане. Моля, опитайте отново след :seconds секунди.',
   'previous' => '« Предишен',
   'next' => 'Следващия "',
+  'or' => 'или',
+  'Sign in with :provider' => 'Влез с :provider',
 );

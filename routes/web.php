@@ -96,7 +96,7 @@ Route::middleware(['auth', 'blocked', 'impersonate'])->group(function () {
 Route::group([
     'middleware' => env('REGISTER_AUTH'),
 ], function () {
-if(env('FORCE_ROUTE_HTTPS') == 'true'){URL::forceScheme('https');}
+if(config('app.force_route_https')){URL::forceScheme('https');}
 if(isset($_COOKIE['LinkCount'])){if($_COOKIE['LinkCount'] == '20'){$LinkPage = 'showLinks20';}elseif($_COOKIE['LinkCount'] == '30'){$LinkPage = 'showLinks30';}elseif($_COOKIE['LinkCount'] == 'all'){$LinkPage = 'showLinksAll';} else {$LinkPage = 'showLinks';}} else {$LinkPage = 'showLinks';} //Shows correct link number
 Route::get('/dashboard', [AdminController::class, 'index'])->name('panelIndex');
 Route::get('/dashboard/site-stats', [AdminController::class, 'stats']);
@@ -145,6 +145,9 @@ Route::get('/studio/linkparamform_part/{typeid}/{linkid}', [LinkTypeViewControll
 }
 
 //Social login route
+// RP-initiated logout landing — registered before the {provider} routes so it isn't
+// swallowed by the generic /social-auth/{provider}/callback match.
+Route::get('/social-auth/logout/callback', [SocialLoginController::class, 'logoutCallback'])->name('social.logout.callback');
 Route::get('/social-auth/{provider}/callback', [SocialLoginController::class, 'providerCallback']);
 Route::get('/social-auth/{provider}', [SocialLoginController::class, 'redirectToProvider'])->name('social.redirect');
 
@@ -153,7 +156,7 @@ Route::middleware(['auth', 'blocked', 'impersonate'])->group(function () {
 Route::group([
     'middleware' => 'admin',
 ], function () {
-    if(env('FORCE_ROUTE_HTTPS') == 'true'){URL::forceScheme('https');}
+    if(config('app.force_route_https')){URL::forceScheme('https');}
     Route::get('/panel/index', function(){return redirect(url('dashboard'));});
     Route::get('/admin/users', [AdminController::class, 'users'])->name('showUsers');
     Route::get('/admin/links/{id}', [AdminController::class, 'showLinksUser'])->name('showLinksUser');

@@ -1133,4 +1133,6 @@ return [
     'next' => 'Nästa &raquo;',
 
 
+    'or' => 'eller',
+    'Sign in with :provider' => 'Logga in med :provider',
 ];

@@ -172,7 +172,13 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Laravel\Socialite\SocialiteServiceProvider::class,
+        // Socialite is bound by SocialiteProviders\Manager\ServiceProvider instead, which
+        // extends this one and adds the extendSocialite hook that community drivers
+        // register through. Listing Laravel's provider here binds the plain factory first,
+        // and every added driver then fails with "Driver [...] not supported" — built-in
+        // providers (Google, Facebook, Twitter, GitHub) are unaffected either way, since
+        // the replacement is a superset. Registered automatically via package discovery.
+        // Laravel\Socialite\SocialiteServiceProvider::class,
         App\Providers\LivewireServiceProvider::class,
 
 
@@ -246,5 +252,44 @@ return [
         'OEmbed' => Cohensive\OEmbed\Facades\OEmbed::class
 
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Trusted Hosts & Frame Embedding
+    |--------------------------------------------------------------------------
+    |
+    | ALLOWED_HOSTS is the Host header allow-list. Left empty the application URL's
+    | domain and its subdomains are trusted, which is right for a single-domain
+    | instance; name hosts here when one instance answers on several apexes, since
+    | the OIDC redirect is derived from the incoming host and must not be forgeable.
+    |
+    | ALLOWED_FRAME_ORIGINS lists who may embed this instance, written into the CSP
+    | frame-ancestors directive. Empty sends no directive and embedding stays
+    | unrestricted, matching long-standing behaviour. Entries are origins
+    | (https://apps.example.com) because frame-ancestors matches on origin and
+    | ignores any path. Embedding across sites also needs SESSION_SAME_SITE=none,
+    | or the browser withholds the session cookie inside the frame.
+    |
+    */
+
+    /*
+    | Scheme forcing. Previously read from the environment at request time, which a
+    | cached config silently turns into null; declared here so `config:cache` keeps
+    | them working. Values and defaults are unchanged.
+    */
+
+    'force_https' => filter_var(env('FORCE_HTTPS', false), FILTER_VALIDATE_BOOLEAN),
+
+    'force_route_https' => filter_var(env('FORCE_ROUTE_HTTPS', false), FILTER_VALIDATE_BOOLEAN),
+
+    'allowed_hosts' => array_values(array_filter(array_map(
+        'trim',
+        explode(',', (string) env('ALLOWED_HOSTS', ''))
+    ))),
+
+    'allowed_frame_origins' => array_values(array_filter(array_map(
+        'trim',
+        explode(',', (string) env('ALLOWED_FRAME_ORIGINS', ''))
+    ))),
 
 ];
