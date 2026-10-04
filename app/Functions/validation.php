@@ -134,3 +134,109 @@ if (!function_exists('strip_tags_except_allowed_protocols')) {
         return sanitize_rich_text($str);
     }
 }
+
+if (!function_exists('validation_disallowed_characters')) {
+    function validation_disallowed_characters(): array
+    {
+        return array_values(array_filter((array) config('validation.disallowed_characters', [' ', '/', '\\', '?', '#', '%', '<', '>', ':', '&'])));
+    }
+}
+
+if (!function_exists('validation_disallowed_phrases')) {
+    function validation_disallowed_phrases(): array
+    {
+        return array_values(array_filter((array) config('validation.disallowed_phrases', ['admin', 'root', 'support', 'www', 'http', 'https'])));
+    }
+}
+
+if (!function_exists('validation_disallowed_regex')) {
+    function validation_disallowed_regex(): string
+    {
+        $chars = validation_disallowed_characters();
+        $phrases = validation_disallowed_phrases();
+
+        // build char class
+        $escapedChars = array_map(static fn($c) => preg_quote($c, '/'), $chars);
+        $charClass = count($escapedChars) ? '[' . implode('', $escapedChars) . ']' : '';
+
+        // build phrases alternation
+        $escapedPhrases = array_map(static fn($p) => preg_quote($p, '/'), $phrases);
+        $phraseAlt = count($escapedPhrases) ? '\\b(?:' . implode('|', $escapedPhrases) . ')\\b' : '';
+
+        $parts = array_filter([$charClass, $phraseAlt]);
+        if (empty($parts)) {
+            return '/(?!) /'; // pattern that never matches
+        }
+
+        $pattern = '(?:' . implode('|', $parts) . ')';
+
+        return '/' . $pattern . '/iu';
+    }
+}
+
+if (!function_exists('validation_length_min')) {
+    function validation_length_min(string $key): int
+    {
+        $default = 0;
+        $value = config("validation.lengths.$key.min", $default);
+        return is_numeric($value) ? (int) $value : $default;
+    }
+}
+
+if (!function_exists('validation_length_max')) {
+    function validation_length_max(string $key): int
+    {
+        $default = 255;
+        $value = config("validation.lengths.$key.max", $default);
+        return is_numeric($value) ? (int) $value : $default;
+    }
+}
+
+if (!function_exists('validation_name_min')) {
+    function validation_name_min(): int
+    {
+        return validation_length_min('name');
+    }
+}
+
+if (!function_exists('validation_name_max')) {
+    function validation_name_max(): int
+    {
+        return validation_length_max('name');
+    }
+}
+
+if (!function_exists('validation_handle_min')) {
+    function validation_handle_min(): int
+    {
+        return validation_length_min('handle');
+    }
+}
+
+if (!function_exists('validation_handle_max')) {
+    function validation_handle_max(): int
+    {
+        return validation_length_max('handle');
+    }
+}
+
+if (!function_exists('validation_email_max')) {
+    function validation_email_max(): int
+    {
+        return validation_length_max('email');
+    }
+}
+
+if (!function_exists('validation_password_min')) {
+    function validation_password_min(): int
+    {
+        return validation_length_min('password');
+    }
+}
+
+if (!function_exists('validation_password_max')) {
+    function validation_password_max(): int
+    {
+        return validation_length_max('password');
+    }
+}

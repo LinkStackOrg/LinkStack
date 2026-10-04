@@ -23,8 +23,11 @@ class RegisteredUserController extends Controller
 
     public function validateHandle(Request $request)
     {
+        $pattern = validation_disallowed_regex();
+        $min = validation_handle_min();
+        $max = validation_handle_max();
         $validator = Validator::make($request->all(), [
-            'littlelink_name' => 'required|string|max:50|unique:users|regex:/^[\p{L}0-9-_]+$/u',
+            'littlelink_name' => 'required|string|min:'.$min.'|max:'.$max.'|unique:users|regex:/^[\\p{L}0-9-_]+$/u|not_regex:'.$pattern,
         ]);
     
         if ($validator->fails()) {
@@ -36,11 +39,20 @@ class RegisteredUserController extends Controller
 
     public function store(Request $request)
     {
+        $pattern = validation_disallowed_regex();
+        $nameMin = validation_name_min();
+        $nameMax = validation_name_max();
+        $handleMin = validation_handle_min();
+        $handleMax = validation_handle_max();
+        $emailMax = validation_email_max();
+        $passwordMin = validation_password_min();
+        $passwordMax = validation_password_max();
+
         $request->validate([
-            'name' => 'required|string|max:255',
-            'littlelink_name' => 'required|string|max:50|unique:users|regex:/^[\p{L}0-9-_]+$/u',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8',
+            'name' => 'required|string|min:'.$nameMin.'|max:'.$nameMax.'|not_regex:'.$pattern,
+            'littlelink_name' => 'required|string|min:'.$handleMin.'|max:'.$handleMax.'|unique:users|regex:/^[\\p{L}0-9-_]+$/u|not_regex:'.$pattern,
+            'email' => 'required|string|email|max:'.$emailMax.'|unique:users|not_regex:'.$pattern,
+            'password' => 'required|string|min:'.$passwordMin.'|max:'.$passwordMax,
         ]);
 
         $name = $request->input('name');

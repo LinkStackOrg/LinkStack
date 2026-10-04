@@ -299,11 +299,22 @@ class AdminController extends Controller
   //Save user edit
   public function editUser(request $request)
   {
+    $pattern = validation_disallowed_regex();
+    $nameMin = validation_name_min();
+    $nameMax = validation_name_max();
+    $handleMin = validation_handle_min();
+    $handleMax = validation_handle_max();
+    $emailMax = validation_email_max();
+    $passwordMin = validation_password_min();
+    $passwordMax = validation_password_max();
+
     $request->validate([
-      "name" => "",
-      "email" => "",
-      "password" => "",
-      "littlelink_name" => "",
+      "name" => "sometimes|string|min:{$nameMin}|max:{$nameMax}|not_regex:".$pattern,
+      "email" => "sometimes|email|max:{$emailMax}|not_regex:".$pattern,
+      "password" => "sometimes|string|min:{$passwordMin}|max:{$passwordMax}",
+      "littlelink_name" => "sometimes|string|min:{$handleMin}|max:{$handleMax}|regex:/^[\\p{L}0-9-_]+$/u|not_regex:".$pattern,
+      "image" => "sometimes|file|mimes:".implode(',', validation_image_extensions())."|max:2048",
+      "background" => "sometimes|file|mimes:".implode(',', validation_image_extensions())."|max:4096",
     ]);
 
     $id = $request->id;
