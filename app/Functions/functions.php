@@ -199,4 +199,3 @@ function footer($key)
     } else {
         $title = env('TITLE_FOOTER_'.$upperStr);
     }
-}
