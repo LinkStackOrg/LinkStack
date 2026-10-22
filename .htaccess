@@ -5,6 +5,11 @@
 
     RewriteEngine On
 
+    # Private log directories must never be served, including rotated logs.
+    # Keep this before the front-controller rule so existing files and
+    # application routes under these paths are denied consistently.
+    RewriteRule ^(?:assets/)?storage/logs(?:/|$) - [F,L,NC]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
