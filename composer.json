@@ -34,8 +34,7 @@
     },
     "autoload": {
         "files": [
-            "app/Functions/functions.php",
-            "app/Functions/validation.php"
+            "app/Functions/functions.php"
         ],
         "psr-4": {
             "App\\": "app/",
