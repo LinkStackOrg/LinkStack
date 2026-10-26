@@ -27,7 +27,7 @@ if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
         if (!EnvEditor::keyExists('UPDATE_SECURITY_KEY')) {
             EnvEditor::addKey('UPDATE_SECURITY_KEY', $encodedKey);
         } else {
-            EnvEditor::setKey('UPDATE_SECURITY_KEY', $encodedKey);
+            EnvEditor::editKey('UPDATE_SECURITY_KEY', $encodedKey);
         }
 
         Cookie::queue(
