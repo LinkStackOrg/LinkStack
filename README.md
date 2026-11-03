@@ -284,8 +284,8 @@ Thank you for all your efforts!
 
 ### Stargazers
 
-<a href="https://star-history.com/#LinkStackOrg/LinkStack&LinkStackOrg/linkstack-docker&LinkStackOrg/linkstack-themes&Date">
-    <img alt="Star History Chart" width="700px" src="https://api.star-history.com/svg?repos=LinkStackOrg/LinkStack,LinkStackOrg/linkstack-docker,LinkStackOrg/linkstack-themes&type=Date">
+<a href="https://star-history.dera.page/#LinkStackOrg/LinkStack&LinkStackOrg/linkstack-docker&LinkStackOrg/linkstack-themes&Date">
+    <img alt="Star History Chart" width="700px" src="https://star-history.dera.page/svg?repos=LinkStackOrg/LinkStack,LinkStackOrg/linkstack-docker,LinkStackOrg/linkstack-themes&type=Date">
 </a>
 
 <br>
