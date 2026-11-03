@@ -953,6 +953,14 @@ class ButtonSeeder extends Seeder
                 "group" => "default",
                 "mb" => false,
             ],
+
+            [
+                "name" => "furtrack",
+                "alt" => "Furtrack",
+                "exclude" => false,
+                "group" => "default",
+                "mb" => false,
+            ],
         ];
 
         Button::insert($buttons);
