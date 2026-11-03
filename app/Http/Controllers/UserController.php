@@ -616,7 +616,7 @@ class UserController extends Controller
     
         $profilePhoto = $request->file('image');
         $pageName = $request->littlelink_name;
-        $pageDescription = strip_tags($request->pageDescription, '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
+        $pageDescription = strip_tags($request->pageDescription, '<a><br><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
         $pageDescription = preg_replace('/\bon\w+\s*=\s*(["\']).*?\1/i', '', $pageDescription);
         $pageDescription = preg_replace('/\bon\w+\s*=\s*[^\s>]*/i', '', $pageDescription);
         $pageDescription = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $pageDescription);
@@ -981,7 +981,7 @@ class UserController extends Controller
 
             if (isset($userData['littlelink_description'])) {
                 $sanitizedText = $userData['littlelink_description'];
-                $sanitizedText = strip_tags($sanitizedText, '<a><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
+                $sanitizedText = strip_tags($sanitizedText, '<a><br><p><strong><i><ul><ol><li><blockquote><h2><h3><h4>');
                 $sanitizedText = preg_replace("/<a([^>]*)>/i", "<a $1 rel=\"noopener noreferrer nofollow\">", $sanitizedText);
                 $sanitizedText = strip_tags_except_allowed_protocols($sanitizedText);
                 $user->littlelink_description = $sanitizedText;
