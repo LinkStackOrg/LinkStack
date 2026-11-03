@@ -51,12 +51,12 @@ return [
 
     # Login Page
     'Sign In' => 'Sign In',
-    'Login to stay connected' => 'Login to stay connected',
+    'Login to stay connected' => 'Login to continue',
     'Email' => 'Email',
     'Password' => 'Password',
     'Remember Me' => 'Remember Me',
     'Forgot Password?' => 'Forgot Password?',
-    'or sign in with other accounts?' => 'or sign in with other accounts?',
+    'or sign in with other accounts?' => 'or sign in with social accounts?',
     'Don’t have an account?' => 'Don’t have an account?',
     'Click here to sign up' => 'Click here to sign up',
 
