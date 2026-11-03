@@ -972,6 +972,23 @@ class UserController extends Controller
             $file = $request->file('import');
             $jsonString = $file->get();
             $userData = json_decode($jsonString, true);
+
+            // Validate every link before changing the profile or replacing existing links.
+            Validator::make(is_array($userData) ? $userData : [], ['links' => 'present|array'])->validate();
+            foreach ($userData['links'] as $linkData) {
+                if (!is_array($linkData)) {
+                    throw new \Exception('Invalid link');
+                }
+                $linkRules = 'nullable|exturl';
+                if (($linkData['type'] ?? null) === 'vcard') {
+                    $linkRules = ['required', 'string', 'json', function ($attribute, $value, $fail) {
+                        if (!is_string($value) || !is_object(json_decode($value))) {
+                            $fail('Invalid vCard contact data.');
+                        }
+                    }];
+                }
+                Validator::make($linkData, ['link' => $linkRules])->validate();
+            }
     
             // Update the authenticated user's profile data if defined in the JSON file
             $user = auth()->user();
@@ -1018,14 +1035,6 @@ class UserController extends Controller
     
             // Loop through each link in $userData and create a new link for the user
             foreach ($userData['links'] as $linkData) {
-
-                $validatedData = Validator::make($linkData, [
-                    'link' => 'nullable|exturl',
-                ]);
-
-                if ($validatedData->fails()) {
-                    throw new \Exception('Invalid link');
-                }
 
                 $newLink = new Link();
     
