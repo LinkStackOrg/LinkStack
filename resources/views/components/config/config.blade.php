@@ -495,7 +495,7 @@ document.getElementById("MAINTENANCE_MODE-form").addEventListener("change", func
 
 <br><br><br><br><br>
 
-<script src="{{ asset('assets/external-dependencies/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ asset('assets/external-dependencies/jquery-3.7.1.min.js') }}"></script>
 
 <script type="text/javascript">
 $(document).ready(function () {

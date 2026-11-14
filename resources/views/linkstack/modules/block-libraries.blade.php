@@ -20,7 +20,7 @@
         @case('jquery')
             @once
                 @push('linkstack-head')
-                    <script src="{{ asset('assets/external-dependencies/jquery-3.4.1.min.js') }}"></script>
+                    <script src="{{ asset('assets/external-dependencies/jquery-3.7.1.min.js') }}"></script>
                 @endpush
             @endonce
         @break

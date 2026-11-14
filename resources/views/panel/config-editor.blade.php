@@ -186,7 +186,7 @@
                   @endif
                   
                   @push("sidebar-scripts")
-                  <script src="{{ asset('assets/external-dependencies/jquery-1.11.1.min.js') }}"></script>
+                  <script src="{{ asset('assets/external-dependencies/jquery-3.7.1.min.js') }}"></script>
                   <script src="{{ asset('assets/external-dependencies/bootstrap.min.js') }}"></script>
                   <script>
                   //$('#myTab a').click(function(e) {

@@ -22,7 +22,7 @@
 
 <span class="javascripts">
     <script src="{{ asset('assets/external-dependencies/jquery.slim.min.js') }}"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            integrity="sha384-5AkRS45j4ukf+JbWAfHL8P4onPA9p0KwwP7pUdjSQA3ss9edbJUJc/XcYAiheSSz"
             crossorigin="anonymous"></script>
     <script src="{{ asset('assets/external-dependencies/vue.js') }}"></script>
     <script src="{{ asset('assets/external-dependencies/bootstrap.bundle.min.js') }}"
