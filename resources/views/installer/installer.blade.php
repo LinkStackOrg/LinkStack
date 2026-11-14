@@ -241,7 +241,7 @@
 <option value="No">{{__('messages.No')}}</option>
 <option value="Yes">{{__('messages.Yes')}}</option>
 </select>
-<script src="{{ asset('assets/external-dependencies/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ asset('assets/external-dependencies/jquery-3.7.1.min.js') }}"></script>
 <script src="{{ asset('assets/external-dependencies/sweetalert2.min.js') }}"></script>
 <script>
 $("#select").change(function(){
